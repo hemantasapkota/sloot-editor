@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16px"
+   height="16px"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="main.svg"
+   inkscape:export-filename="C:\NewIBIS\gal\modeling-ws\ios-developer\icons\main.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs2987">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="-6.6241888 : 22.505508 : 1"
+       inkscape:vp_y="2875.2801 : -2.5002719 : 0"
+       inkscape:vp_z="-6.6698216 : -35.626222 : 1"
+       inkscape:persp3d-origin="-14.314419 : -6.5536899 : 1"
+       id="perspective2993" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.197802"
+     inkscape:cx="9.8912233"
+     inkscape:cy="9.8819614"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1280"
+     inkscape:window-height="744"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2990">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <text
+       xml:space="preserve"
+       style="font-size:9.03761578px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="0.41518712"
+       y="16.186821"
+       id="text3067"
+       sodipodi:linespacing="125%"
+       transform="scale(1.3104201,0.76311405)"><tspan
+         sodipodi:role="line"
+         id="tspan3069"
+         x="0.41518712"
+         y="16.186821" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13.99213886px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="0.32741448"
+       y="10.400373"
+       id="text2986"
+       sodipodi:linespacing="125%"
+       transform="scale(1.3153286,0.76026629)"><tspan
+         sodipodi:role="line"
+         id="tspan2988"
+         x="0.32741448"
+         y="10.400373">io</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11.99587154px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="6.6199064"
+       y="13.420966"
+       id="text2990"
+       sodipodi:linespacing="125%"
+       transform="scale(0.85210303,1.173567)"><tspan
+         sodipodi:role="line"
+         id="tspan2992"
+         x="6.6199064"
+         y="13.420966">s</tspan></text>
+  </g>
+</svg>

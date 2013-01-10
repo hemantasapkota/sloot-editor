@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Shared
+Bundle-SymbolicName: com.laex.cg2d.shared;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.laex.cg2d.shared.activator.Activator
+Bundle-Vendor: Hemanta Sapkota
+Require-Bundle: org.eclipse.ui.ide;bundle-version="3.6.1",
+ org.apache.commons.lang;bundle-version="2.4.0",
+ org.eclipse.core.resources;bundle-version="3.8.0",
+ org.eclipse.core.runtime;bundle-version="3.8.0",
+ org.eclipse.draw2d;bundle-version="3.8.0",
+ org.eclipse.ui;bundle-version="3.103.0",
+ libgdx-0.9.6;bundle-version="0.9.6",
+ com.laex.cg2d.protobuf;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: protobuf-java-2.4.1.jar,.
+Export-Package: 
+ com.laex.cg2d.shared,
+ com.laex.cg2d.shared.adapter,
+ com.laex.cg2d.shared.dnd,
+ com.laex.cg2d.shared.figures,
+ com.laex.cg2d.shared.model,
+ com.laex.cg2d.shared.model.joints,
+ com.laex.cg2d.shared.prefs,
+ com.laex.cg2d.shared.properties.descs,
+ com.laex.cg2d.shared.util,
+ org.eclipse.wb.swt
+

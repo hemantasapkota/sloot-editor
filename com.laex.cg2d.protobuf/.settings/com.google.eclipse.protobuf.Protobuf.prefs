@@ -1,0 +1,8 @@
+compiler.compileProtoFiles=true
+compiler.cppCodeGenerationEnabled=true
+compiler.enableProjectSettings=true
+compiler.protocFilePath=/usr/local/bin/protoc
+compiler.useProtocInCustomPath=true
+compiler.useProtocInSystemPath=false
+eclipse.preferences.version=1
+general.enableProjectSettings=true

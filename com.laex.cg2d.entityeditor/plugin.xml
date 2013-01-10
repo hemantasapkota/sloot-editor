@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.laex.cg2d.entityeditor.EntityFormEditor"
+            default="true"
+            extensions="cge"
+            icon="main.png"
+            id="com.laex.cg3d.entityeditor.EntityEditor"
+            name="Entity Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            canFinishEarly="false"
+            category="com.laex.cg2d.core.wizards.CGWizard"
+            class="com.laex.cg2d.entityeditor.wizards.NewEntityWizard"
+            hasPages="true"
+            icon="main.png"
+            id="com.laex.cg2d.entityeditor.wizards.NewEntityWizard"
+            name="CG2D Entity"
+            project="false">
+      </wizard>
+   </extension>
+
+</plugin>

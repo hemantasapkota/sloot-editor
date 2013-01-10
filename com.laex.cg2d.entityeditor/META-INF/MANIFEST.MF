@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Entity Editor
+Bundle-SymbolicName: com.laex.cg2d.entityeditor;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.laex.cg2d.entityeditor.Activator
+Bundle-Vendor: Hemanta Sapkota
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.gef;bundle-version="3.7.0",
+ org.eclipse.ui;bundle-version="3.7.0",
+ com.laex.cg2d.shared;bundle-version="1.0.0",
+ org.eclipse.core.resources;bundle-version="3.7.100",
+ org.eclipse.ui.forms;bundle-version="3.5.100",
+ org.eclipse.ui.ide;bundle-version="3.7.0",
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors,
+ com.laex.cg2d.protobuf;bundle-version="1.0.0",
+ org.apache.commons.lang;bundle-version="2.6.0",
+ libgdx-0.9.6;bundle-version="0.9.6"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ org.pushingpixels.trident_1.2.0.v20100204-1500.jar,
+ org.eclipse.e4.xwt_0.9.1.SNAPSHOT.jar,
+ org.eclipse.e4.xwt.forms_0.9.1.SNAPSHOT.jar,
+ swing2swt.jar,
+ swt-grouplayout.jar
+Export-Package: com.laex.cg2d.entityeditor

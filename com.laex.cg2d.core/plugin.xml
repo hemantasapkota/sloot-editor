@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            icon="main.png">
+         <run
+               class="com.laex.cg2d.core.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.laex.cg2d.core.Perspective"
+            fixed="true"
+            icon="main.png"
+            id="com.laex.cg2d.core.perspective"
+            name="Laexian Box2D Editor">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+       <view
+             class="org.eclipse.ui.navigator.CommonNavigator"
+             icon="main.png"
+             id="com.laex.cg2d.comnav"
+             name="Projects"
+             restorable="true">
+       </view>
+	      <view
+             allowMultiple="false"
+             class="org.eclipse.ui.views.properties.PropertySheet"
+             id="com.laex.cg2d.core.propertyView"
+             name="Properties"
+             restorable="true">
+   		</view>
+       <view
+             class="org.eclipse.ui.internal.views.log.LogView"
+             id="com.laex.cg2d.core.LogView"
+             name="Log"
+             restorable="true">
+       </view>
+   </extension>
+   
+   
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.laex.cg2d.core.application"
+            name="Laexian Box2D Editor">
+         <property
+               name="aboutText"
+               value="Laexian Box2D Editor">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/sample2.gif">
+         </property>
+         <property
+               name="aboutImage"
+               value="product_lg.gif">
+         </property>
+         <property
+               name="appName"
+               value="Laexian Box2D Editor">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerActionBinding
+            viewerId="com.laex.cg2d.comnav">
+         <includes>
+            <actionExtension
+                  pattern="org.eclipse.ui.navigator.resources.*">
+            </actionExtension>
+         </includes>
+      </viewerActionBinding>
+      <viewerContentBinding
+            viewerId="com.laex.cg2d.comnav">
+         <includes>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resourceContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.filters.*">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.linkHelper">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.workingSets">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         id="com.laex.cg2d.core.menus"
+         name="Casual Games 2D Menu"
+         point="org.eclipse.ui.menus">
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="com.laex.cg2d.core.wizards.CGWizard"
+            name="Casual Games 2D">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <category
+            id="com.laex.cg2d.core.wizards.CGExportCategory"
+            name="Casual Games 2D">
+      </category>
+   </extension>
+</plugin>

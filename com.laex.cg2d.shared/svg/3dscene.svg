@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16px"
+   height="16px"
+   id="svg3071"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="3dscene.svg"
+   inkscape:export-filename="C:\NewIBIS\gal\modeling-ws\ios-developer\icons\3dscene.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs3073">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 6.526508 : 1"
+       inkscape:vp_y="0 : 639.93651 : 0"
+       inkscape:vp_z="16 : 6.526508 : 1"
+       inkscape:persp3d-origin="8 : 4.8200106 : 1"
+       id="perspective3952" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.197802"
+     inkscape:cx="15.979886"
+     inkscape:cy="6.333733"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:object-paths="true"
+     inkscape:snap-global="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="692"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <metadata
+     id="metadata3076">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <path
+       style="fill:#d5e5ff;stroke:#000000;stroke-width:1.07657957px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 11.101792,8.4951736 C 10.231617,8.7777793 9.3121363,10.61004 8.2516625,14.937271 c -0.028162,0.114917 -0.059816,0.203574 -0.088148,0.322105 L 15.215379,14.937271 C 13.890918,11.927827 12.590598,8.0116558 11.101792,8.4951736 z M 4.0205437,9.0588572 C 3.0782048,9.2822649 2.0613243,10.72442 0.90597035,14.252798 L 8.3398107,14.01122 C 6.9426145,11.693715 5.5911086,8.686511 4.0205437,9.0588572 z"
+       id="path4225"
+       inkscape:connector-curvature="0" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4232"
+       sodipodi:cx="4.5049505"
+       sodipodi:cy="7.260396"
+       sodipodi:rx="0.63069308"
+       sodipodi:ry="0.63069308"
+       d="m 5.1356436,7.260396 a 0.63069308,0.63069308 0 1 1 -1.2613862,0 0.63069308,0.63069308 0 1 1 1.2613862,0 z"
+       transform="translate(-0.13514852,4.9103961)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4236"
+       sodipodi:cx="4.5049505"
+       sodipodi:cy="7.260396"
+       sodipodi:rx="0.63069308"
+       sodipodi:ry="0.63069308"
+       d="m 5.1356436,7.260396 a 0.63069308,0.63069308 0 1 1 -1.2613862,0 0.63069308,0.63069308 0 1 1 1.2613862,0 z"
+       transform="translate(6.7207921,4.9103961)" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.58434296px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-0.29072258"
+       y="8.5467396"
+       id="text2986"
+       sodipodi:linespacing="125%"
+       transform="scale(1.1106969,0.90033566)"><tspan
+         sodipodi:role="line"
+         id="tspan2988"
+         x="-0.29072258"
+         y="8.5467396">3D</tspan></text>
+  </g>
+</svg>

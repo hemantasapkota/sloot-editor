@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      
+       <editor
+             class="com.laex.cg2d.screeneditor.ScreenEditor"
+             contributorClass="com.laex.cg2d.screeneditor.contributions.ScreenEditorContributor"
+             default="true"
+             extensions="cgs"
+             icon="main.png"
+             id="com.laex.cg2d.leveleditor"
+             name="CGC Screen Editor">
+        </editor>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="com.laex.cg2d.screeneditor.views.TexturesViewPart"
+            id="com.laex.cg2d.screeneditor.TexturesView"
+            name="Textures"
+            restorable="false">
+      </view>
+      <view
+            class="com.laex.cg2d.screeneditor.views.LayersViewPart"
+            id="com.laex.cg2d.screeneditor.LayersView"
+            name="Layers"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            adaptable="true"
+            class="com.laex.cg2d.screeneditor.properties.ScreenPropertyPage"
+            id="com.laex.cg2d.leveleditor.properties.Box2DPropertyPage"
+            name="CG2D Screen"
+            nameFilter="*.cgs"
+            objectClass="org.eclipse.core.resources.IFile">
+         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.core.resources.IFile">
+            </instanceof>
+         </enabledWhen>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="com.laex.cg2d.core.wizards.CGWizard"
+            class="com.laex.cg2d.screeneditor.wizards.NewScreenWizard"
+            hasPages="true"
+            icon="main.png"
+            id="com.laex.cg2d.screeneditor.wizards.NewScreenWizard"
+            name="CG2D Screen"
+            project="false">
+      </wizard>
+      <wizard
+            category="com.laex.cg2d.core.wizards.CGWizard"
+            class="com.laex.cg2d.screeneditor.wizards.NewProjectWizard"
+            hasPages="true"
+            icon="main.png"
+            id="com.laex.cg2d.screeneditor.wizards.NewCGProjectWizard"
+            name="CG2D Project"
+            project="true">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            category="com.laex.cg2d.core.wizards.CGExportCategory"
+            class="com.laex.cg2d.screeneditor.wizards.ProjectExportWizard"
+            icon="main.png"
+            id="com.laex.cg2d.screeneditor.wizards.ProjectExportWizard"
+            name="CG2D Project Export">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+   </extension>
+
+</plugin>

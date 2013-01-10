@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   id="svg2996"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="removeItemSmall.svg">
+  <defs
+     id="defs2998">
+    <filter
+       inkscape:collect="always"
+       id="filter3775"
+       x="-0.053067775"
+       width="1.1061356"
+       y="-0.18592908"
+       height="1.3718582">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.014756"
+         id="feGaussianBlur3777" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-units="mm"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.2794979"
+     inkscape:cx="27.155165"
+     inkscape:cy="628.85292"
+     inkscape:current-layer="svg2996"
+     id="namedview3000"
+     showgrid="false"
+     inkscape:window-width="1060"
+     inkscape:window-height="592"
+     inkscape:window-x="48"
+     inkscape:window-y="11"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3002">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <text
+     xml:space="preserve"
+     style="font-size:152.42448425000000611px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#800000;fill-opacity:1;stroke:none;font-family:Sans"
+     x="-0.97712356"
+     y="64.454788"
+     id="text2989"
+     sodipodi:linespacing="125%"
+     transform="scale(1.1482556,0.87088623)"
+     inkscape:export-filename="/Users/hemantasapkota/Projects/WS/eclipse-ws/com.laex.box2d.shared/src/resources/images/removeItemSmall.png"
+     inkscape:export-xdpi="25.36632"
+     inkscape:export-ydpi="25.36632"><tspan
+       sodipodi:role="line"
+       x="-0.97712356"
+       y="64.454788"
+       id="tspan2993">-</tspan></text>
+</svg>
