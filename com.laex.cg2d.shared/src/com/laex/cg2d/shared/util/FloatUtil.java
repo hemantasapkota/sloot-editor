@@ -17,8 +17,9 @@ public class FloatUtil {
 
   /**
    * To float.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the float
    */
   public static Float toFloat(Object value) {
@@ -27,8 +28,9 @@ public class FloatUtil {
 
   /**
    * To string.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the string
    */
   public static String toString(Float value) {

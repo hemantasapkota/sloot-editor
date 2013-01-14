@@ -34,15 +34,19 @@ public class BEWeldJoint extends Joint {
 
   /**
    * Instantiates a new bE weld joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public BEWeldJoint(Shape source, Shape target) {
     super(source, target);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getEditableValue()
    */
   @Override
@@ -50,7 +54,9 @@ public class BEWeldJoint extends Joint {
     return this.weldJointDef;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyDescriptors()
    */
   @Override
@@ -58,8 +64,11 @@ public class BEWeldJoint extends Joint {
     return super.getPropertyDescriptors();
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -67,16 +76,20 @@ public class BEWeldJoint extends Joint {
     super.setPropertyValue(id, value);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyValue(java.lang.Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
-    //get refernce angle ; todo
+    // get refernce angle ; todo
     return super.getPropertyValue(id);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getJointType()
    */
   @Override

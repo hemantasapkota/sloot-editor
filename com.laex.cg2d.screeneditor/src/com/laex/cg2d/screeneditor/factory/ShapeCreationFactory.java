@@ -33,14 +33,15 @@ public class ShapeCreationFactory implements CreationFactory {
 
   /** The creation info. */
   ShapeCreationInfo creationInfo = null;
-  
+
   /** The id creator. */
   IDCreationStrategy idCreator = IDCreationStrategy.create();
 
   /**
    * Instantiates a new shape creation factory.
-   *
-   * @param creationInfo the creation info
+   * 
+   * @param creationInfo
+   *          the creation info
    */
   public ShapeCreationFactory(ShapeCreationInfo creationInfo) {
     this.creationInfo = creationInfo;
@@ -48,7 +49,7 @@ public class ShapeCreationFactory implements CreationFactory {
 
   /**
    * Gets the selected layer.
-   *
+   * 
    * @return the selected layer
    */
   private Layer getSelectedLayer() {
@@ -57,7 +58,9 @@ public class ShapeCreationFactory implements CreationFactory {
     return layer;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.requests.CreationFactory#getNewObject()
    */
   @Override
@@ -117,7 +120,9 @@ public class ShapeCreationFactory implements CreationFactory {
     return creationInfo;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.requests.CreationFactory#getObjectType()
    */
   @Override
@@ -127,7 +132,7 @@ public class ShapeCreationFactory implements CreationFactory {
 
   /**
    * Creates a new ShapeCreation object.
-   *
+   * 
    * @return the shape
    */
   private Shape createShape() {

@@ -57,7 +57,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default screen properties.
-   *
+   * 
    * @return the map
    */
   public static Map<String, String> defaultScreenProperties() {
@@ -88,7 +88,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default card width.
-   *
+   * 
    * @return the integer
    */
   public static Integer defaultCardWidth() {
@@ -97,7 +97,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default card height.
-   *
+   * 
    * @return the integer
    */
   public static Integer defaultCardHeight() {
@@ -106,7 +106,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default card no x.
-   *
+   * 
    * @return the integer
    */
   public static Integer defaultCardNoX() {
@@ -115,7 +115,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default card no y.
-   *
+   * 
    * @return the integer
    */
   public static Integer defaultCardNoY() {
@@ -124,7 +124,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default ptm ratio.
-   *
+   * 
    * @return the integer
    */
   public static Integer defaultPTMRatio() {
@@ -133,7 +133,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default gravity x.
-   *
+   * 
    * @return the float
    */
   public static Float defaultGravityX() {
@@ -142,7 +142,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default gravity y.
-   *
+   * 
    * @return the float
    */
   public static Float defaultGravityY() {
@@ -151,7 +151,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default velocity iterations.
-   *
+   * 
    * @return the integer
    */
   public static Integer defaultVelocityIterations() {
@@ -160,7 +160,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default time step.
-   *
+   * 
    * @return the float
    */
   public static Float defaultTimeStep() {
@@ -169,7 +169,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default position iterations.
-   *
+   * 
    * @return the integer
    */
   public static Integer defaultPositionIterations() {
@@ -178,7 +178,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Dedfault time step.
-   *
+   * 
    * @return the float
    */
   public static Float dedfaultTimeStep() {
@@ -187,7 +187,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default bodies flag.
-   *
+   * 
    * @return the boolean
    */
   public static Boolean defaultBodiesFlag() {
@@ -196,7 +196,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default joints flag.
-   *
+   * 
    * @return the boolean
    */
   public static Boolean defaultJointsFlag() {
@@ -205,7 +205,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default entities flag.
-   *
+   * 
    * @return the boolean
    */
   public static Boolean defaultEntitiesFlag() {
@@ -214,7 +214,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default debug data flag.
-   *
+   * 
    * @return the boolean
    */
   public static Boolean defaultDebugDataFlag() {
@@ -223,7 +223,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default mouse joint.
-   *
+   * 
    * @return the boolean
    */
   public static Boolean defaultMouseJoint() {
@@ -232,7 +232,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default aabb flag.
-   *
+   * 
    * @return the boolean
    */
   public static Boolean defaultAABBFlag() {
@@ -241,7 +241,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default inactive bodies flag.
-   *
+   * 
    * @return the boolean
    */
   public static Boolean defaultInactiveBodiesFlag() {

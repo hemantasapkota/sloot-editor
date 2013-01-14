@@ -28,13 +28,13 @@ public class BEMouseJoint extends Joint {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -1124997086104314523L;
-  
+
   /** The Constant MAX_FORCE_PROP. */
   public static final String MAX_FORCE_PROP = "MouseJoint.MaxForce";
-  
+
   /** The Constant FREQUENCY_PROP. */
   public static final String FREQUENCY_PROP = "MouseJoint.Frequency";
-  
+
   /** The Constant DAMPING_RATIO_PROP. */
   public static final String DAMPING_RATIO_PROP = "MouseJoint.DampingRatio";
 
@@ -55,15 +55,19 @@ public class BEMouseJoint extends Joint {
 
   /**
    * Instantiates a new bE mouse joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public BEMouseJoint(Shape source, Shape target) {
     super(source, target);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getEditableValue()
    */
   @Override
@@ -71,7 +75,9 @@ public class BEMouseJoint extends Joint {
     return mouseJointDef;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyDescriptors()
    */
   @Override
@@ -79,8 +85,11 @@ public class BEMouseJoint extends Joint {
     return (IPropertyDescriptor[]) ArrayUtils.addAll(super.getPropertyDescriptors(), descriptors);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -95,7 +104,9 @@ public class BEMouseJoint extends Joint {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyValue(java.lang.Object)
    */
   @Override
@@ -115,8 +126,9 @@ public class BEMouseJoint extends Joint {
 
   /**
    * Checks if is damping ratio prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is damping ratio prop
    */
   private boolean isDampingRatioProp(Object id) {
@@ -125,8 +137,9 @@ public class BEMouseJoint extends Joint {
 
   /**
    * Checks if is frequency prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is frequency prop
    */
   private boolean isFrequencyProp(Object id) {
@@ -135,15 +148,18 @@ public class BEMouseJoint extends Joint {
 
   /**
    * Checks if is max force prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is max force prop
    */
   private boolean isMaxForceProp(Object id) {
     return MAX_FORCE_PROP.equals(id);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getJointType()
    */
   @Override

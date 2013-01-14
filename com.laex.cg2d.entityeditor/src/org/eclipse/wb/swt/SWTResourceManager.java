@@ -119,10 +119,12 @@ public class SWTResourceManager {
 
   /**
    * Returns an {@link Image} encoded by the specified {@link InputStream}.
-   *
-   * @param stream the {@link InputStream} encoding the image data
+   * 
+   * @param stream
+   *          the {@link InputStream} encoding the image data
    * @return the {@link Image} encoded by the specified input stream
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   protected static Image getImage(InputStream stream) throws IOException {
     try {
@@ -188,9 +190,9 @@ public class SWTResourceManager {
 
   /**
    * Gets the missing image.
-   *
+   * 
    * @return the small {@link Image} that can be used as placeholder for missing
-   * image.
+   *         image.
    */
   private static Image getMissingImage() {
     Image image = new Image(Display.getCurrent(), MISSING_IMAGE_SIZE, MISSING_IMAGE_SIZE);

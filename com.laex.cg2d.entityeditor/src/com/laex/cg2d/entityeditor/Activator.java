@@ -13,15 +13,14 @@ package com.laex.cg2d.entityeditor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-
 /**
  * The Class Activator.
  */
 public class Activator extends AbstractUIPlugin {
 
-//The plug-in ID
+  // The plug-in ID
   /** The Constant PLUGIN_ID. */
-public static final String PLUGIN_ID = "com.laex.cg2d.entityeditor"; //$NON-NLS-1$
+  public static final String PLUGIN_ID = "com.laex.cg2d.entityeditor"; //$NON-NLS-1$
 
   // The shared instance
   /** The plugin. */
@@ -59,7 +58,7 @@ public static final String PLUGIN_ID = "com.laex.cg2d.entityeditor"; //$NON-NLS-
 
   /**
    * Returns the shared instance.
-   *
+   * 
    * @return the shared instance
    */
   public static Activator getDefault() {

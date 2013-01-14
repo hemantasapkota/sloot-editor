@@ -21,15 +21,19 @@ public class BEGearJoint extends Joint {
 
   /**
    * Instantiates a new bE gear joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public BEGearJoint(Shape source, Shape target) {
     super(source, target);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getJointType()
    */
   @Override

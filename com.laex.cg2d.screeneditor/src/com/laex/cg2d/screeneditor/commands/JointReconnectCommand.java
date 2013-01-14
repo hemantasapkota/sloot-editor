@@ -36,8 +36,9 @@ public class JointReconnectCommand extends Command {
   /**
    * Instantiate a command that can reconnect a Connection instance to a
    * different source or target endpoint.
-   *
-   * @param conn the connection instance to reconnect (non-null)
+   * 
+   * @param conn
+   *          the connection instance to reconnect (non-null)
    */
   public JointReconnectCommand(Joint conn) {
     if (conn == null) {
@@ -65,7 +66,7 @@ public class JointReconnectCommand extends Command {
   /**
    * Return true, if reconnecting the connection-instance to newSource is
    * allowed.
-   *
+   * 
    * @return true, if successful
    */
   private boolean checkSourceReconnection() {
@@ -89,7 +90,7 @@ public class JointReconnectCommand extends Command {
   /**
    * Return true, if reconnecting the connection-instance to newTarget is
    * allowed.
-   *
+   * 
    * @return true, if successful
    */
   private boolean checkTargetReconnection() {
@@ -133,8 +134,9 @@ public class JointReconnectCommand extends Command {
    * endpoint. A single instance of this command can only reconnect either the
    * source or the target endpoint.
    * </p>
-   *
-   * @param connectionSource a non-null Shape instance, to be used as a new source endpoint
+   * 
+   * @param connectionSource
+   *          a non-null Shape instance, to be used as a new source endpoint
    */
   public void setNewSource(Shape connectionSource) {
     if (connectionSource == null) {
@@ -154,8 +156,9 @@ public class JointReconnectCommand extends Command {
    * endpoint. A single instance of this command can only reconnect either the
    * source or the target endpoint.
    * </p>
-   *
-   * @param connectionTarget a non-null Shape instance, to be used as a new target endpoint
+   * 
+   * @param connectionTarget
+   *          a non-null Shape instance, to be used as a new target endpoint
    */
   public void setNewTarget(Shape connectionTarget) {
     if (connectionTarget == null) {

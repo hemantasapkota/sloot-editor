@@ -36,22 +36,22 @@ import com.laex.cg2d.shared.util.PlatformUtil;
  * The Class NewScreenPage.
  */
 public class NewScreenPage extends WizardPage {
-  
+
   /** The lbl project name. */
   private Label lblProjectName;
-  
+
   /** The txt project name. */
   private Text txtProjectName;
-  
+
   /** The lbl file name. */
   private Label lblFileName;
-  
+
   /** The txt file name. */
   private Text txtFileName;
-  
+
   /** The btn browse. */
   private Button btnBrowse;
-  
+
   /** The path to project. */
   private IPath pathToProject;
 
@@ -69,8 +69,9 @@ public class NewScreenPage extends WizardPage {
 
   /**
    * Instantiates a new new screen page.
-   *
-   * @param pathToProject the path to project
+   * 
+   * @param pathToProject
+   *          the path to project
    */
   public NewScreenPage(IPath pathToProject) {
     this();
@@ -79,8 +80,9 @@ public class NewScreenPage extends WizardPage {
 
   /**
    * Create contents of the wizard.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   public void createControl(Composite parent) {
     Composite container = new Composite(parent, SWT.NULL);
@@ -178,7 +180,7 @@ public class NewScreenPage extends WizardPage {
 
   /**
    * Gets the project name.
-   *
+   * 
    * @return the project name
    */
   public String getProjectName() {
@@ -187,7 +189,7 @@ public class NewScreenPage extends WizardPage {
 
   /**
    * Gets the file name.
-   *
+   * 
    * @return the file name
    */
   public String getFileName() {
@@ -196,7 +198,7 @@ public class NewScreenPage extends WizardPage {
 
   /**
    * Gets the path to project.
-   *
+   * 
    * @return the path to project
    */
   public IPath getPathToProject() {

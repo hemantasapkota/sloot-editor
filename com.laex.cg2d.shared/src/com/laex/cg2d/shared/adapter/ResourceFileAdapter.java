@@ -20,8 +20,9 @@ public class ResourceFileAdapter {
 
   /**
    * As cg resource file.
-   *
-   * @param rf the rf
+   * 
+   * @param rf
+   *          the rf
    * @return the cG resource file
    */
   public static CGResourceFile asCGResourceFile(ResourceFile rf) {
@@ -31,8 +32,9 @@ public class ResourceFileAdapter {
 
   /**
    * As resource file.
-   *
-   * @param crf the crf
+   * 
+   * @param crf
+   *          the crf
    * @return the resource file
    */
   public static ResourceFile asResourceFile(CGResourceFile crf) {

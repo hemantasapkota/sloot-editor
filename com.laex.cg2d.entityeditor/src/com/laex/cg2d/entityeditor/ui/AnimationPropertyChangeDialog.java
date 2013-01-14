@@ -30,28 +30,28 @@ import org.eclipse.swt.widgets.Text;
  * The Class AnimationPropertyChangeDialog.
  */
 public class AnimationPropertyChangeDialog extends TitleAreaDialog {
-  
+
   /** The txt name. */
   private Text txtName;
-  
+
   /** The name. */
   private String name;
-  
+
   /** The ok button. */
   private Button okButton;
 
   /** The existing name. */
   private String existingName;
-  
+
   /** The anim duration. */
   private String animDuration;
 
   /** The lbl animation name. */
   private Label lblAnimationName;
-  
+
   /** The lbl animation duration. */
   private Label lblAnimationDuration;
-  
+
   /** The txt animation duration. */
   private Text txtAnimationDuration;
 
@@ -59,9 +59,13 @@ public class AnimationPropertyChangeDialog extends TitleAreaDialog {
    * The Class Validator.
    */
   class Validator implements ModifyListener {
-    
-    /* (non-Javadoc)
-     * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events
+     * .ModifyEvent)
      */
     @Override
     public void modifyText(ModifyEvent e) {
@@ -89,10 +93,13 @@ public class AnimationPropertyChangeDialog extends TitleAreaDialog {
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
-   * @param existingName the existing name
-   * @param animDuration the anim duration
+   * 
+   * @param parentShell
+   *          the parent shell
+   * @param existingName
+   *          the existing name
+   * @param animDuration
+   *          the anim duration
    */
   public AnimationPropertyChangeDialog(Shell parentShell, String existingName, String animDuration) {
     super(parentShell);
@@ -102,8 +109,9 @@ public class AnimationPropertyChangeDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -140,8 +148,9 @@ public class AnimationPropertyChangeDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -149,7 +158,9 @@ public class AnimationPropertyChangeDialog extends TitleAreaDialog {
     createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.dialogs.Dialog#okPressed()
    */
   @Override
@@ -161,7 +172,7 @@ public class AnimationPropertyChangeDialog extends TitleAreaDialog {
 
   /**
    * Gets the name.
-   *
+   * 
    * @return the name
    */
   public String getName() {
@@ -170,7 +181,7 @@ public class AnimationPropertyChangeDialog extends TitleAreaDialog {
 
   /**
    * Gets the animation duration.
-   *
+   * 
    * @return the animation duration
    */
   public String getAnimationDuration() {
@@ -179,7 +190,7 @@ public class AnimationPropertyChangeDialog extends TitleAreaDialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override

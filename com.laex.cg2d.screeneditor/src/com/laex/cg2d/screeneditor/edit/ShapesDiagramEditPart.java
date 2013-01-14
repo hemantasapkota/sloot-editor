@@ -41,7 +41,9 @@ import com.laex.cg2d.shared.model.ShapesDiagram;
  */
 public class ShapesDiagramEditPart extends AbstractGraphicalEditPart implements PropertyChangeListener {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#activate()
    */
   public void activate() {
@@ -51,7 +53,9 @@ public class ShapesDiagramEditPart extends AbstractGraphicalEditPart implements 
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#deactivate()
    */
   public void deactivate() {
@@ -61,7 +65,9 @@ public class ShapesDiagramEditPart extends AbstractGraphicalEditPart implements 
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
    */
   protected void createEditPolicies() {
@@ -70,8 +76,12 @@ public class ShapesDiagramEditPart extends AbstractGraphicalEditPart implements 
     installEditPolicy("Snap Feedback", new SnapFeedbackPolicy()); //$NON-NLS-1$
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#getAdapter(java.lang.Class)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editparts.AbstractGraphicalEditPart#getAdapter(java.lang
+   * .Class)
    */
   @Override
   public Object getAdapter(Class adapter) {
@@ -130,30 +140,40 @@ public class ShapesDiagramEditPart extends AbstractGraphicalEditPart implements 
 
   /**
    * Gets the casted model.
-   *
+   * 
    * @return the casted model
    */
   private ShapesDiagram getCastedModel() {
     return (ShapesDiagram) getModel();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren()
    */
   protected List getModelChildren() {
     return getCastedModel().getChildren();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editparts.AbstractEditPart#getCommand(org.eclipse.gef.Request)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editparts.AbstractEditPart#getCommand(org.eclipse.gef.Request
+   * )
    */
   @Override
   public Command getCommand(Request request) {
     return super.getCommand(request);
   }
 
-  /* (non-Javadoc)
-   * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent
+   * )
    */
   public void propertyChange(PropertyChangeEvent evt) {
     String prop = evt.getPropertyName();
@@ -165,7 +185,9 @@ public class ShapesDiagramEditPart extends AbstractGraphicalEditPart implements 
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#refreshChildren()
    */
   @Override
@@ -173,8 +195,12 @@ public class ShapesDiagramEditPart extends AbstractGraphicalEditPart implements 
     super.refreshChildren();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#getLayer(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editparts.AbstractGraphicalEditPart#getLayer(java.lang.
+   * Object)
    */
   @Override
   protected IFigure getLayer(Object layer) {

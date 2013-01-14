@@ -46,11 +46,13 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
 
   /** The anchor. */
   private ConnectionAnchor anchor;
-  
+
   /** The selectable. */
   private boolean selectable = true;;
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#activate()
    */
   public void activate() {
@@ -60,7 +62,9 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#deactivate()
    */
   public void deactivate() {
@@ -70,8 +74,12 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     }
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#getAdapter(java.lang.Class)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editparts.AbstractGraphicalEditPart#getAdapter(java.lang
+   * .Class)
    */
   @Override
   public Object getAdapter(Class key) {
@@ -86,7 +94,9 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     return super.getAdapter(key);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
    */
   protected void createEditPolicies() {
@@ -94,7 +104,9 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ShapeGraphicalNodeEditPolicy());
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
    */
   protected IFigure createFigure() {
@@ -104,7 +116,7 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
 
   /**
    * Creates the figure for model.
-   *
+   * 
    * @return the i figure
    */
   private IFigure createFigureForModel() {
@@ -146,7 +158,7 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
 
   /**
    * Gets the casted model.
-   *
+   * 
    * @return the casted model
    */
   private Shape getCastedModel() {
@@ -155,76 +167,103 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
 
   /**
    * Gets the connection anchor.
-   *
+   * 
    * @return the connection anchor
    */
   protected ConnectionAnchor getConnectionAnchor() {
     if (anchor == null) {
       EditorShapeType type = ((Shape) getModel()).getEditorShapeType();
-      
+
       if (type.isCircle()) {
         anchor = new EllipseAnchor(getFigure());
       } else if (isValidForAnchor(type)) {
         anchor = new ChopboxAnchor(getFigure());
       }
-      
+
     }
     return anchor;
   }
 
   /**
    * Checks if is valid for anchor.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return true, if is valid for anchor
    */
   private boolean isValidForAnchor(EditorShapeType type) {
     return type.isBox() || type.isEntity();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#getModelSourceConnections()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editparts.AbstractGraphicalEditPart#getModelSourceConnections
+   * ()
    */
   protected List<Joint> getModelSourceConnections() {
     return getCastedModel().getSourceJoints();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#getModelTargetConnections()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editparts.AbstractGraphicalEditPart#getModelTargetConnections
+   * ()
    */
   protected List<Joint> getModelTargetConnections() {
     return getCastedModel().getTargetJoints();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.NodeEditPart#getSourceConnectionAnchor(org.eclipse.gef.ConnectionEditPart)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.NodeEditPart#getSourceConnectionAnchor(org.eclipse.gef.
+   * ConnectionEditPart)
    */
   public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart connection) {
     return getConnectionAnchor();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.NodeEditPart#getSourceConnectionAnchor(org.eclipse.gef.Request)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.NodeEditPart#getSourceConnectionAnchor(org.eclipse.gef.
+   * Request)
    */
   public ConnectionAnchor getSourceConnectionAnchor(Request request) {
     return getConnectionAnchor();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.NodeEditPart#getTargetConnectionAnchor(org.eclipse.gef.ConnectionEditPart)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.NodeEditPart#getTargetConnectionAnchor(org.eclipse.gef.
+   * ConnectionEditPart)
    */
   public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connection) {
     return getConnectionAnchor();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.NodeEditPart#getTargetConnectionAnchor(org.eclipse.gef.Request)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.NodeEditPart#getTargetConnectionAnchor(org.eclipse.gef.
+   * Request)
    */
   public ConnectionAnchor getTargetConnectionAnchor(Request request) {
     return getConnectionAnchor();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#isSelectable()
    */
   @Override
@@ -232,8 +271,12 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     return selectable;
   }
 
-  /* (non-Javadoc)
-   * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent
+   * )
    */
   public void propertyChange(PropertyChangeEvent evt) {
     String prop = evt.getPropertyName();
@@ -253,7 +296,9 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#refreshVisuals()
    */
   protected void refreshVisuals() {

@@ -29,34 +29,34 @@ import com.laex.cg2d.shared.util.FloatUtil;
  * The Class BEPrismaticJoint.
  */
 public class BEPrismaticJoint extends Joint {
-  
+
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -7796463519254617969L;
 
   /** The Constant AXIS_PROP. */
   public static final String AXIS_PROP = "PrismaticJoint.WorldAxis";
-  
+
   /** The Constant ANCHOR_PROP. */
   public static final String ANCHOR_PROP = "PrismaticJoint.WorldAnchor";
-  
+
   /** The Constant REFERENCE_ANGLE_PROP. */
   public static final String REFERENCE_ANGLE_PROP = "PrismaticJoint.ReferenceAngle";
-  
+
   /** The Constant ENABLE_LIMIT_PROP. */
   public static final String ENABLE_LIMIT_PROP = "PrismaticJoint.EnableLimit";
-  
+
   /** The Constant LOWER_TRANSLATION_PROP. */
   public static final String LOWER_TRANSLATION_PROP = "PrismaticJoint.LowerTranslation";
-  
+
   /** The Constant UPPER_TRANSLATION_PROP. */
   public static final String UPPER_TRANSLATION_PROP = "PrismaticJoint.UpperTranslation";
-  
+
   /** The Constant ENABLE_MOTOR_PROP. */
   public static final String ENABLE_MOTOR_PROP = "PrismaticJoint.EnableMotor";
-  
+
   /** The Constant MAX_MOTOR_FORCE_PROP. */
   public static final String MAX_MOTOR_FORCE_PROP = "PrismaticJoint.MaxMotorForce";
-  
+
   /** The Constant MOTOR_SPEED_PROP. */
   public static final String MOTOR_SPEED_PROP = "PrismaticJoint.MotorSpeed";
 
@@ -91,24 +91,28 @@ public class BEPrismaticJoint extends Joint {
 
   /** The prismatic joint def. */
   private PrismaticJointDef prismaticJointDef = new PrismaticJointDef();
-  
+
   /** The world axis. */
   private Vector2 worldAxis = new Vector2();
-  
+
   /** The world anchor. */
   private Vector2 worldAnchor = new Vector2();
 
   /**
    * Instantiates a new bE prismatic joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public BEPrismaticJoint(Shape source, Shape target) {
     super(source, target);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getEditableValue()
    */
   @Override
@@ -116,8 +120,11 @@ public class BEPrismaticJoint extends Joint {
     return prismaticJointDef;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -144,7 +151,9 @@ public class BEPrismaticJoint extends Joint {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyValue(java.lang.Object)
    */
   @Override
@@ -173,8 +182,9 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is world anchor prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is world anchor prop
    */
   private boolean isWorldAnchorProp(Object id) {
@@ -183,8 +193,9 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is world axis prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is world axis prop
    */
   private boolean isWorldAxisProp(Object id) {
@@ -193,8 +204,9 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is motor speed prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is motor speed prop
    */
   private boolean isMotorSpeedProp(Object id) {
@@ -203,8 +215,9 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is max motor force prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is max motor force prop
    */
   private boolean isMaxMotorForceProp(Object id) {
@@ -213,8 +226,9 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is enable motor prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is enable motor prop
    */
   private boolean isEnableMotorProp(Object id) {
@@ -223,8 +237,9 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is upper translation prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is upper translation prop
    */
   private boolean isUpperTranslationProp(Object id) {
@@ -233,8 +248,9 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is lower translation prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is lower translation prop
    */
   private boolean isLowerTranslationProp(Object id) {
@@ -243,8 +259,9 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is enable limit prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is enable limit prop
    */
   private boolean isEnableLimitProp(Object id) {
@@ -253,15 +270,18 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Checks if is reference angle prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is reference angle prop
    */
   private boolean isReferenceAngleProp(Object id) {
     return REFERENCE_ANGLE_PROP.equals(id);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyDescriptors()
    */
   @Override
@@ -269,7 +289,9 @@ public class BEPrismaticJoint extends Joint {
     return (IPropertyDescriptor[]) ArrayUtils.addAll(super.getPropertyDescriptors(), descriptors);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getJointType()
    */
   @Override
@@ -279,7 +301,7 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Gets the world anchor.
-   *
+   * 
    * @return the world anchor
    */
   public Vector2 getWorldAnchor() {
@@ -288,7 +310,7 @@ public class BEPrismaticJoint extends Joint {
 
   /**
    * Gets the world axis.
-   *
+   * 
    * @return the world axis
    */
   public Vector2 getWorldAxis() {

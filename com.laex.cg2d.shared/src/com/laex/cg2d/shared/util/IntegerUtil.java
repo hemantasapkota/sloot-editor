@@ -17,8 +17,9 @@ public class IntegerUtil {
 
   /**
    * To int.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the integer
    */
   public static Integer toInt(Object value) {
@@ -27,8 +28,9 @@ public class IntegerUtil {
 
   /**
    * To short.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the short
    */
   public static short toShort(Object value) {
@@ -37,8 +39,9 @@ public class IntegerUtil {
 
   /**
    * To string.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the string
    */
   public static String toString(Integer value) {

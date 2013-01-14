@@ -39,7 +39,7 @@ public abstract class Joint extends ModelElement {
 
   /** The Constant JOINT_TYPE_PROP. */
   public static final String JOINT_TYPE_PROP = "JointDef.JointType";
-  
+
   /** The Constant COLLIDE_CONNECTED_PROP. */
   public static final String COLLIDE_CONNECTED_PROP = "JointDef.CollideConnected";
 
@@ -48,10 +48,10 @@ public abstract class Joint extends ModelElement {
 
   /** The is connected. */
   private Boolean isConnected = Boolean.FALSE;
-  
+
   /** The source. */
   private Shape source;
-  
+
   /** The target. */
   private Shape target;
 
@@ -75,9 +75,11 @@ public abstract class Joint extends ModelElement {
 
   /**
    * Instantiates a new joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public Joint(Shape source, Shape target) {
     reconnect(source, target);
@@ -86,12 +88,14 @@ public abstract class Joint extends ModelElement {
 
   /**
    * Gets the joint type.
-   *
+   * 
    * @return the joint type
    */
   public abstract JointType getJointType();
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.ModelElement#getEditableValue()
    */
   @Override
@@ -99,21 +103,28 @@ public abstract class Joint extends ModelElement {
     return jointDef;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.ModelElement#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.model.ModelElement#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   public void setPropertyValue(Object id, Object value) {
     if (isCollideConnected(id)) {
 
       this.jointDef.collideConnected = BooleanUtil.toBool(value);
-      
+
     } else {
       super.setPropertyValue(id, value);
     }
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.ModelElement#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.model.ModelElement#getPropertyValue(java.lang.Object)
    */
   public Object getPropertyValue(Object id) {
     if (isCollideConnected(id)) {
@@ -128,8 +139,9 @@ public abstract class Joint extends ModelElement {
 
   /**
    * Checks if is joint type prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is joint type prop
    */
   private boolean isJointTypeProp(Object id) {
@@ -138,15 +150,18 @@ public abstract class Joint extends ModelElement {
 
   /**
    * Checks if is collide connected.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is collide connected
    */
   private boolean isCollideConnected(Object id) {
     return COLLIDE_CONNECTED_PROP.equals(id);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.ModelElement#getPropertyDescriptors()
    */
   public IPropertyDescriptor[] getPropertyDescriptors() {
@@ -155,7 +170,7 @@ public abstract class Joint extends ModelElement {
 
   /**
    * Gets the source.
-   *
+   * 
    * @return the source
    */
   public Shape getSource() {
@@ -164,7 +179,7 @@ public abstract class Joint extends ModelElement {
 
   /**
    * Gets the target.
-   *
+   * 
    * @return the target
    */
   public Shape getTarget() {
@@ -195,9 +210,11 @@ public abstract class Joint extends ModelElement {
 
   /**
    * Reconnect.
-   *
-   * @param newSource the new source
-   * @param newTarget the new target
+   * 
+   * @param newSource
+   *          the new source
+   * @param newTarget
+   *          the new target
    */
   public void reconnect(Shape newSource, Shape newTarget) {
     if (newSource == null || newTarget == null || newSource == newTarget) {

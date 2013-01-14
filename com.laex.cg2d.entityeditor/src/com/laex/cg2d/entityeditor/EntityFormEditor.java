@@ -42,7 +42,7 @@ public class EntityFormEditor extends FormEditor {
 
   /** The animation form page. */
   AnimationFormPage animationFormPage = new AnimationFormPage(this, "animPage", "Animation");
-  
+
   /** The collision form page. */
   CollisionFormPage collisionFormPage = new CollisionFormPage(this, "collisionPage", "Collision");
 
@@ -54,14 +54,16 @@ public class EntityFormEditor extends FormEditor {
 
   /**
    * Gets the model.
-   *
+   * 
    * @return the model
    */
   public Entity getModel() {
     return entityModel;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.forms.editor.FormEditor#addPages()
    */
   @Override
@@ -74,7 +76,9 @@ public class EntityFormEditor extends FormEditor {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.EditorPart#setInput(org.eclipse.ui.IEditorInput)
    */
   @Override
@@ -96,13 +100,15 @@ public class EntityFormEditor extends FormEditor {
     setPartName(input.getName());
   }
 
-
   /**
    * Parses the entity file.
-   *
-   * @param input the input
-   * @throws IOException Signals that an I/O exception has occurred.
-   * @throws CoreException the core exception
+   * 
+   * @param input
+   *          the input
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
    */
   private void parseEntityFile(IEditorInput input) throws IOException, CoreException {
     IFile file = ((IFileEditorInput) input).getFile();
@@ -110,7 +116,9 @@ public class EntityFormEditor extends FormEditor {
     entityModel = EntityAdapter.asEntity(cgEntityModel);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.EditorPart#isSaveAsAllowed()
    */
   @Override
@@ -118,8 +126,12 @@ public class EntityFormEditor extends FormEditor {
     return true;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor
+   * )
    */
   @Override
   public void doSave(IProgressMonitor monitor) {
@@ -136,9 +148,11 @@ public class EntityFormEditor extends FormEditor {
 
   /**
    * Do save proto base.
-   *
-   * @param monitor the monitor
-   * @throws CoreException the core exception
+   * 
+   * @param monitor
+   *          the monitor
+   * @throws CoreException
+   *           the core exception
    */
   private void doSaveProtoBase(IProgressMonitor monitor) throws CoreException {
     IFile file = ((FileEditorInput) getEditorInput()).getFile();
@@ -147,7 +161,9 @@ public class EntityFormEditor extends FormEditor {
     PlatformUtil.saveProto(monitor, file, bais);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.EditorPart#doSaveAs()
    */
   @Override

@@ -14,23 +14,23 @@ package com.laex.cg2d.shared.model;
  * The Enum EditorShapeType.
  */
 public enum EditorShapeType {
-  
+
   /** The simple shape circle. */
-  SIMPLE_SHAPE_CIRCLE, 
- /** The simple shape box. */
- SIMPLE_SHAPE_BOX, 
- /** The simple shape hedge. */
- SIMPLE_SHAPE_HEDGE, 
- /** The simple shape vedge. */
- SIMPLE_SHAPE_VEDGE, 
- /** The background shape. */
- BACKGROUND_SHAPE, 
- /** The entity shape. */
- ENTITY_SHAPE;
+  SIMPLE_SHAPE_CIRCLE,
+  /** The simple shape box. */
+  SIMPLE_SHAPE_BOX,
+  /** The simple shape hedge. */
+  SIMPLE_SHAPE_HEDGE,
+  /** The simple shape vedge. */
+  SIMPLE_SHAPE_VEDGE,
+  /** The background shape. */
+  BACKGROUND_SHAPE,
+  /** The entity shape. */
+  ENTITY_SHAPE;
 
   /**
    * Checks if is box.
-   *
+   * 
    * @return true, if is box
    */
   public boolean isBox() {
@@ -39,7 +39,7 @@ public enum EditorShapeType {
 
   /**
    * Checks if is circle.
-   *
+   * 
    * @return true, if is circle
    */
   public boolean isCircle() {
@@ -48,7 +48,7 @@ public enum EditorShapeType {
 
   /**
    * Checks if is background.
-   *
+   * 
    * @return true, if is background
    */
   public boolean isBackground() {
@@ -57,7 +57,7 @@ public enum EditorShapeType {
 
   /**
    * Checks if is entity.
-   *
+   * 
    * @return true, if is entity
    */
   public boolean isEntity() {
@@ -66,7 +66,7 @@ public enum EditorShapeType {
 
   /**
    * Checks if is edge.
-   *
+   * 
    * @return true, if is edge
    */
   public boolean isEdge() {

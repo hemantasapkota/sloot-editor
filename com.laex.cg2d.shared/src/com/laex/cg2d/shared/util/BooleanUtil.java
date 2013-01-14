@@ -23,8 +23,9 @@ public class BooleanUtil {
 
   /**
    * To bool.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the boolean
    */
   public static Boolean toBool(Object value) {
@@ -39,8 +40,9 @@ public class BooleanUtil {
 
   /**
    * Parses the integer.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the boolean
    */
   private static Boolean parseInteger(Object value) {
@@ -54,8 +56,9 @@ public class BooleanUtil {
 
   /**
    * Gets the integer from boolean.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the integer from boolean
    */
   public static Integer getIntegerFromBoolean(Boolean value) {
@@ -68,8 +71,9 @@ public class BooleanUtil {
 
   /**
    * To string.
-   *
-   * @param value the value
+   * 
+   * @param value
+   *          the value
    * @return the string
    */
   public static String toString(Boolean value) {

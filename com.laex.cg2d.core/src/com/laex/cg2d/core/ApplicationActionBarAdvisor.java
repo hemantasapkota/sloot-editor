@@ -40,36 +40,41 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
   /** The exit action. */
   private IWorkbenchAction exitAction;
-  
+
   /** The about action. */
   private IWorkbenchAction aboutAction;
-  
+
   /** The save action. */
   private IWorkbenchAction saveAction;
-  
+
   /** The prefernces action. */
   private IWorkbenchAction preferncesAction;
-  
+
   /** The show views list action. */
   private IContributionItem showViewsListAction;
 
   /** The show texture view action. */
   private IAction showTextureViewAction;
-  
+
   /** The show layers view action. */
   private IAction showLayersViewAction;
 
   /**
    * Instantiates a new application action bar advisor.
-   *
-   * @param configurer the configurer
+   * 
+   * @param configurer
+   *          the configurer
    */
   public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
     super(configurer);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.application.ActionBarAdvisor#makeActions(org.eclipse.ui.IWorkbenchWindow)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.application.ActionBarAdvisor#makeActions(org.eclipse.ui.
+   * IWorkbenchWindow)
    */
   protected void makeActions(final IWorkbenchWindow window) {
     exitAction = ActionFactory.QUIT.create(window);
@@ -102,15 +107,23 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.application.ActionBarAdvisor#fillCoolBar(org.eclipse.jface.action.ICoolBarManager)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.application.ActionBarAdvisor#fillCoolBar(org.eclipse.jface
+   * .action.ICoolBarManager)
    */
   @Override
   protected void fillCoolBar(ICoolBarManager coolBar) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.application.ActionBarAdvisor#fillMenuBar(org.eclipse.jface.action.IMenuManager)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.application.ActionBarAdvisor#fillMenuBar(org.eclipse.jface
+   * .action.IMenuManager)
    */
   protected void fillMenuBar(IMenuManager menuBar) {
     MenuManager fileMenu = new MenuManager("&File", IWorkbenchActionConstants.M_FILE);

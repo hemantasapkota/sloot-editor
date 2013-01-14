@@ -17,7 +17,9 @@ import org.eclipse.gef.tools.TargetingTool;
  */
 public class ConeTool2 extends TargetingTool {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.tools.AbstractTool#getCommandName()
    */
   @Override

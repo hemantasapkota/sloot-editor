@@ -25,7 +25,9 @@ public class VerticalEdgeFigure extends Shape {
   public VerticalEdgeFigure() {
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.draw2d.Shape#fillShape(org.eclipse.draw2d.Graphics)
    */
   @Override
@@ -39,7 +41,9 @@ public class VerticalEdgeFigure extends Shape {
     graphics.drawLine(getBounds().x, getBounds().y, getBounds().x, h);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.draw2d.Shape#outlineShape(org.eclipse.draw2d.Graphics)
    */
   @Override

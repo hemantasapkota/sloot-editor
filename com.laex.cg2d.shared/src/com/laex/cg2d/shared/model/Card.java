@@ -21,13 +21,13 @@ public class Card extends ModelElement {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -1170672262125613001L;
-  
+
   /** The Constant BACKGROUND_PROP. */
   public static final String BACKGROUND_PROP = "Card.Background";
-  
+
   /** The Constant CARD_NO_X_PROP. */
   public static final String CARD_NO_X_PROP = "Card.NoX";
-  
+
   /** The Constant CARD_NO_Y_PROP. */
   public static final String CARD_NO_Y_PROP = "Card.NoY";
 
@@ -45,13 +45,13 @@ public class Card extends ModelElement {
 
   /** The card number x. */
   private int cardNumberX;
-  
+
   /** The card number y. */
   private int cardNumberY;
-  
+
   /** The card w. */
   private int cardW;
-  
+
   /** The card h. */
   private int cardH;
 
@@ -63,11 +63,15 @@ public class Card extends ModelElement {
 
   /**
    * Instantiates a new card.
-   *
-   * @param cNoX the c no x
-   * @param cNoY the c no y
-   * @param cardW the card w
-   * @param cardH the card h
+   * 
+   * @param cNoX
+   *          the c no x
+   * @param cNoY
+   *          the c no y
+   * @param cardW
+   *          the card w
+   * @param cardH
+   *          the card h
    */
   public Card(int cNoX, int cNoY, int cardW, int cardH) {
     this.cardNumberX = cNoX;
@@ -76,7 +80,9 @@ public class Card extends ModelElement {
     this.cardH = cardH;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.ModelElement#getEditableValue()
    */
   @Override
@@ -86,7 +92,7 @@ public class Card extends ModelElement {
 
   /**
    * Gets the descriptors.
-   *
+   * 
    * @return the descriptors
    */
   public static IPropertyDescriptor[] getDescriptors() {
@@ -95,7 +101,7 @@ public class Card extends ModelElement {
 
   /**
    * Gets the card number x.
-   *
+   * 
    * @return the card number x
    */
   public int getCardNumberX() {
@@ -104,7 +110,7 @@ public class Card extends ModelElement {
 
   /**
    * Gets the card number y.
-   *
+   * 
    * @return the card number y
    */
   public int getCardNumberY() {
@@ -113,7 +119,7 @@ public class Card extends ModelElement {
 
   /**
    * Gets the card h.
-   *
+   * 
    * @return the card h
    */
   public int getCardH() {
@@ -122,15 +128,18 @@ public class Card extends ModelElement {
 
   /**
    * Gets the card w.
-   *
+   * 
    * @return the card w
    */
   public int getCardW() {
     return cardW;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.ModelElement#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.model.ModelElement#getPropertyValue(java.lang.Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
@@ -143,8 +152,12 @@ public class Card extends ModelElement {
     return super.getPropertyValue(id);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.ModelElement#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.model.ModelElement#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {

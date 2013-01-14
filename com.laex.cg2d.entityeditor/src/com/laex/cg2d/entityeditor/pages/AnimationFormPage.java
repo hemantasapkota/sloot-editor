@@ -67,22 +67,22 @@ public class AnimationFormPage extends FormPage {
 
   /** The txt animation name. */
   private Text txtAnimationName;
-  
+
   /** The frames composite. */
   private Composite framesComposite;
-  
+
   /** The managed form. */
   private IManagedForm managedForm;
-  
+
   /** The sctn frames. */
   private Section sctnFrames;
-  
+
   /** The list items. */
   private java.util.List<AnimationListViewItem> listItems = new ArrayList<AnimationListViewItem>();
-  
+
   /** The table. */
   private Table table;
-  
+
   /** The table viewer. */
   private TableViewer tableViewer;
 
@@ -91,7 +91,7 @@ public class AnimationFormPage extends FormPage {
 
   /** The dirty. */
   private boolean dirty = false;
-  
+
   /** The entity form editor. */
   private EntityFormEditor entityFormEditor;
 
@@ -100,27 +100,29 @@ public class AnimationFormPage extends FormPage {
 
   /** The mghprlnk add frames. */
   private ImageHyperlink mghprlnkAddFrames;
-  
+
   /** The mghprlnk remove. */
   private ImageHyperlink mghprlnkRemove;
-  
+
   /** The mghprlnk change animation name. */
   private ImageHyperlink mghprlnkChangeAnimationName;
-  
+
   /** The lbl duration. */
   private Label lblDuration;
-  
+
   /** The preview external. */
   private ImageHyperlink previewExternal;
-  
+
   /** The txt animation duration. */
   private Text txtAnimationDuration;
 
   /**
    * Create the form page.
-   *
-   * @param id the id
-   * @param title the title
+   * 
+   * @param id
+   *          the id
+   * @param title
+   *          the title
    */
   public AnimationFormPage(String id, String title) {
     super(id, title);
@@ -128,10 +130,13 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Create the form page.
-   *
-   * @param editor the editor
-   * @param id the id
-   * @param title the title
+   * 
+   * @param editor
+   *          the editor
+   * @param id
+   *          the id
+   * @param title
+   *          the title
    * @wbp.parser.constructor
    * @wbp.eval.method.parameter id "Some id"
    * @wbp.eval.method.parameter title "Some title"
@@ -174,7 +179,9 @@ public class AnimationFormPage extends FormPage {
     handleAnimationListSeletionListener();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.forms.editor.FormPage#isDirty()
    */
   @Override
@@ -184,8 +191,9 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Sets the dirty.
-   *
-   * @param dirty the new dirty
+   * 
+   * @param dirty
+   *          the new dirty
    */
   public void setDirty(boolean dirty) {
     this.dirty = dirty;
@@ -193,8 +201,9 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Create contents of the form.
-   *
-   * @param managedForm the managed form
+   * 
+   * @param managedForm
+   *          the managed form
    */
   @Override
   protected void createFormContent(IManagedForm managedForm) {
@@ -564,7 +573,7 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Selected animation list item.
-   *
+   * 
    * @return the animation list view item
    */
   private AnimationListViewItem selectedAnimationListItem() {
@@ -578,8 +587,9 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Adds the new animation.
-   *
-   * @param alvi the alvi
+   * 
+   * @param alvi
+   *          the alvi
    */
   private void addNewAnimation(AnimationListViewItem alvi) {
     resetFramesComposite();
@@ -600,7 +610,7 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Provide new name.
-   *
+   * 
    * @return the string
    */
   private String provideNewName() {
@@ -609,9 +619,11 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Creates the animation from strip.
-   *
-   * @param selectedImage the selected image
-   * @param alvi the alvi
+   * 
+   * @param selectedImage
+   *          the selected image
+   * @param alvi
+   *          the alvi
    */
   private void createAnimationFromStrip(Image selectedImage, AnimationListViewItem alvi) {
     resetFramesComposite();
@@ -633,8 +645,9 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Adds the group frame to frames composite.
-   *
-   * @param extractImage the extract image
+   * 
+   * @param extractImage
+   *          the extract image
    */
   private void addGroupFrameToFramesComposite(Image extractImage) {
     Button btn = managedForm.getToolkit().createButton(framesComposite, "", SWT.NONE);

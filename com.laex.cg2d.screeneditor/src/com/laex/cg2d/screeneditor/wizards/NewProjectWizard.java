@@ -28,7 +28,7 @@ import com.laex.cg2d.shared.ICGCProject;
  * The Class NewProjectWizard.
  */
 public class NewProjectWizard extends Wizard implements INewWizard {
-  
+
   /** The page1. */
   private NewProjectPage page1;
 
@@ -40,7 +40,9 @@ public class NewProjectWizard extends Wizard implements INewWizard {
     setNeedsProgressMonitor(true);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.wizard.Wizard#addPages()
    */
   public void addPages() {
@@ -48,7 +50,9 @@ public class NewProjectWizard extends Wizard implements INewWizard {
     addPage(page1);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.wizard.Wizard#performFinish()
    */
   public boolean performFinish() {
@@ -66,8 +70,8 @@ public class NewProjectWizard extends Wizard implements INewWizard {
         monitor.worked(1);
         b2Prj.createFolder(newProject, monitor, ICGCProject.SCREEN_FOLDER);
         monitor.worked(1);
-//        b2Prj.createFolder(newProject, monitor, ICGCProject.SCRIPTS_FOLDER);
-//        monitor.worked(1);
+        // b2Prj.createFolder(newProject, monitor, ICGCProject.SCRIPTS_FOLDER);
+        // monitor.worked(1);
         b2Prj.createFolder(newProject, monitor, ICGCProject.TEXTURES_FOLDER);
         monitor.worked(1);
         b2Prj.createFolder(newProject, monitor, ICGCProject.TMP_FOLDER);
@@ -89,8 +93,11 @@ public class NewProjectWizard extends Wizard implements INewWizard {
     return true;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
+   * org.eclipse.jface.viewers.IStructuredSelection)
    */
   public void init(IWorkbench workbench, IStructuredSelection selection) {
   }

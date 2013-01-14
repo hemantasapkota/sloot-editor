@@ -30,10 +30,10 @@ import org.eclipse.ui.forms.widgets.Section;
  * The Class AddLayerDialog.
  */
 class AddLayerDialog extends Dialog {
-  
+
   /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
-  
+
   /** The text. */
   private Text text;
 
@@ -42,8 +42,9 @@ class AddLayerDialog extends Dialog {
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
+   * 
+   * @param parentShell
+   *          the parent shell
    */
   public AddLayerDialog(Shell parentShell) {
     super(parentShell);
@@ -51,8 +52,9 @@ class AddLayerDialog extends Dialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -81,8 +83,9 @@ class AddLayerDialog extends Dialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -92,7 +95,7 @@ class AddLayerDialog extends Dialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override
@@ -100,7 +103,9 @@ class AddLayerDialog extends Dialog {
     return new Point(450, 142);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.dialogs.Dialog#okPressed()
    */
   @Override
@@ -111,7 +116,7 @@ class AddLayerDialog extends Dialog {
 
   /**
    * Gets the layer name.
-   *
+   * 
    * @return the layer name
    */
   public String getLayerName() {

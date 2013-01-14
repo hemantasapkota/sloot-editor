@@ -230,12 +230,14 @@ public class ResourceManager extends SWTResourceManager {
    * Provider for plugin resources, used by WindowBuilder at design time.
    */
   public interface PluginResourceProvider {
-    
+
     /**
      * Gets the entry.
-     *
-     * @param symbolicName the symbolic name
-     * @param path the path
+     * 
+     * @param symbolicName
+     *          the symbolic name
+     * @param path
+     *          the path
      * @return the entry
      */
     URL getEntry(String symbolicName, String path);
@@ -294,8 +296,9 @@ public class ResourceManager extends SWTResourceManager {
 
   /**
    * Returns an {@link Image} based on given {@link URL}.
-   *
-   * @param url the url
+   * 
+   * @param url
+   *          the url
    * @return the plugin image from url
    */
   private static Image getPluginImageFromUrl(URL url) {
@@ -374,9 +377,11 @@ public class ResourceManager extends SWTResourceManager {
 
   /**
    * Returns an {@link URL} based on a {@link Bundle} and resource entry path.
-   *
-   * @param symbolicName the symbolic name
-   * @param path the path
+   * 
+   * @param symbolicName
+   *          the symbolic name
+   * @param path
+   *          the path
    * @return the plugin image url
    */
   private static URL getPluginImageURL(String symbolicName, String path) {
@@ -397,11 +402,14 @@ public class ResourceManager extends SWTResourceManager {
 
   /**
    * Returns an {@link URL} based on a plugin and file path.
-   *
-   * @param plugin the plugin {@link Object} containing the file path.
-   * @param name the file path.
+   * 
+   * @param plugin
+   *          the plugin {@link Object} containing the file path.
+   * @param name
+   *          the file path.
    * @return the {@link URL} representing the file at the specified path.
-   * @throws Exception the exception
+   * @throws Exception
+   *           the exception
    */
   private static URL getPluginImageURL(Object plugin, String name) throws Exception {
     // try to work with 'plugin' as with OSGI BundleContext

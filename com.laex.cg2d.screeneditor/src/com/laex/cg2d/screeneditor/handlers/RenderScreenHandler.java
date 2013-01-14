@@ -19,8 +19,12 @@ import org.eclipse.core.commands.ExecutionException;
  */
 public class RenderScreenHandler extends AbstractHandler {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands
+   * .ExecutionEvent)
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {

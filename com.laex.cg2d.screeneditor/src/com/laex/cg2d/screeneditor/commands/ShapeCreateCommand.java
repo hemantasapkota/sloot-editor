@@ -31,23 +31,27 @@ public class ShapeCreateCommand extends Command {
 
   /** The layer. */
   private Layer layer;
-  
+
   /** The new shape. */
   private Shape newShape;
-  
+
   /** The parent. */
   private final ShapesDiagram parent;
-  
+
   /** The bounds. */
   private Rectangle bounds;
 
   /**
    * Instantiates a new shape create command.
-   *
-   * @param newShape the new shape
-   * @param layer the layer
-   * @param parent the parent
-   * @param bounds the bounds
+   * 
+   * @param newShape
+   *          the new shape
+   * @param layer
+   *          the layer
+   * @param parent
+   *          the parent
+   * @param bounds
+   *          the bounds
    */
   public ShapeCreateCommand(Shape newShape, Layer layer, ShapesDiagram parent, Rectangle bounds) {
     this.layer = layer;
@@ -57,21 +61,27 @@ public class ShapeCreateCommand extends Command {
     setLabel("shape creation");
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#canExecute()
    */
   public boolean canExecute() {
     return layer != null && newShape != null && parent != null && bounds != null;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#execute()
    */
   public void execute() {
     redo();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#redo()
    */
   public void redo() {
@@ -113,7 +123,9 @@ public class ShapeCreateCommand extends Command {
     newShape.setParentLayer(layer);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#undo()
    */
   public void undo() {

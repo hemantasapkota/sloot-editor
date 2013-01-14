@@ -28,8 +28,11 @@ class ShapeResizableEditPolicy extends ResizableEditPolicy {
   public ShapeResizableEditPolicy() {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#createDragSourceFeedbackFigure()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#
+   * createDragSourceFeedbackFigure()
    */
   @Override
   protected IFigure createDragSourceFeedbackFigure() {

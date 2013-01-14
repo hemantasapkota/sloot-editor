@@ -41,7 +41,7 @@ public class EntitiesUtil {
 
   /**
    * Empty vertices.
-   *
+   * 
    * @return the vector2[]
    */
   public static Vector2[] emptyVertices() {
@@ -54,8 +54,9 @@ public class EntitiesUtil {
 
   /**
    * Checks if is valid.
-   *
-   * @param e the e
+   * 
+   * @param e
+   *          the e
    * @return true, if is valid
    */
   public static boolean isValid(Entity e) {
@@ -76,11 +77,14 @@ public class EntitiesUtil {
 
   /**
    * Visit model and init entities.
-   *
-   * @param model the model
+   * 
+   * @param model
+   *          the model
    * @return true, if successful
-   * @throws CoreException the core exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   public static boolean visitModelAndInitEntities(GameModel model) throws CoreException, IOException {
     boolean toRemove = false;
@@ -112,11 +116,14 @@ public class EntitiesUtil {
 
   /**
    * Creates the entity model from file.
-   *
-   * @param file the file
+   * 
+   * @param file
+   *          the file
    * @return the entity
-   * @throws CoreException the core exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   public static Entity createEntityModelFromFile(String file) throws CoreException, IOException {
     IFile f = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(file));
@@ -127,11 +134,14 @@ public class EntitiesUtil {
 
   /**
    * Creates the entity model from file.
-   *
-   * @param file the file
+   * 
+   * @param file
+   *          the file
    * @return the entity
-   * @throws CoreException the core exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   public static Entity createEntityModelFromFile(IFile file) throws CoreException, IOException {
     return createEntityModelFromFile(file.getContents());
@@ -139,10 +149,12 @@ public class EntitiesUtil {
 
   /**
    * Creates the entity model from file.
-   *
-   * @param contents the contents
+   * 
+   * @param contents
+   *          the contents
    * @return the entity
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   public static Entity createEntityModelFromFile(InputStream contents) throws IOException {
     if (contents == null) {
@@ -151,16 +163,17 @@ public class EntitiesUtil {
 
     CGEntity cgEntityModel = CGEntity.parseFrom(contents);
     Entity entityModel = EntityAdapter.asEntity(cgEntityModel);
-    
+
     return entityModel;
   }
 
-
   /**
    * Extract sprite2.
-   *
-   * @param baseImageData the base image data
-   * @param entityBounds the entity bounds
+   * 
+   * @param baseImageData
+   *          the base image data
+   * @param entityBounds
+   *          the entity bounds
    * @return the image data
    */
   private static ImageData extractSprite2(ImageData baseImageData, Rectangle entityBounds) {
@@ -183,8 +196,9 @@ public class EntitiesUtil {
 
   /**
    * Creates the image strip.
-   *
-   * @param strip the strip
+   * 
+   * @param strip
+   *          the strip
    * @return the queue
    */
   public static Queue<Image> createImageStrip(Image strip) {
@@ -207,8 +221,9 @@ public class EntitiesUtil {
 
   /**
    * Gets the default animation.
-   *
-   * @param e the e
+   * 
+   * @param e
+   *          the e
    * @return the default animation
    */
   public static EntityAnimation getDefaultAnimation(Entity e) {
@@ -222,8 +237,9 @@ public class EntitiesUtil {
 
   /**
    * Gets the internal name.
-   *
-   * @param resourceName the resource name
+   * 
+   * @param resourceName
+   *          the resource name
    * @return the internal name
    */
   public static String getInternalName(String resourceName) {
@@ -232,8 +248,9 @@ public class EntitiesUtil {
 
   /**
    * Gets the default frame.
-   *
-   * @param e the e
+   * 
+   * @param e
+   *          the e
    * @return the default frame
    */
   public static Image getDefaultFrame(Entity e) {

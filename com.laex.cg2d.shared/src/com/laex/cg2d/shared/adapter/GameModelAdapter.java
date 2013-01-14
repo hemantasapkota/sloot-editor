@@ -39,8 +39,9 @@ public class GameModelAdapter {
 
   /**
    * As body type.
-   *
-   * @param cbt the cbt
+   * 
+   * @param cbt
+   *          the cbt
    * @return the body type
    */
   public static BodyType asBodyType(CGBodyType cbt) {
@@ -63,8 +64,9 @@ public class GameModelAdapter {
 
   /**
    * As editor shape type.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the editor shape type
    */
   public static EditorShapeType asEditorShapeType(CGEditorShapeType type) {
@@ -89,8 +91,9 @@ public class GameModelAdapter {
 
   /**
    * As rectangle.
-   *
-   * @param b the b
+   * 
+   * @param b
+   *          the b
    * @return the rectangle
    */
   public static Rectangle asRectangle(CGBounds b) {
@@ -99,8 +102,9 @@ public class GameModelAdapter {
 
   /**
    * As body def.
-   *
-   * @param cgBodyDef the cg body def
+   * 
+   * @param cgBodyDef
+   *          the cg body def
    * @return the body def
    */
   public static BodyDef asBodyDef(CGBodyDef cgBodyDef) {
@@ -126,33 +130,35 @@ public class GameModelAdapter {
 
     return bdef;
   }
-  
+
   /**
    * As fixture def.
-   *
-   * @param fixDef the fix def
+   * 
+   * @param fixDef
+   *          the fix def
    * @return the fixture def
    */
   public static FixtureDef asFixtureDef(CGFixtureDef fixDef) {
     FixtureDef fdef = new FixtureDef();
-    
+
     fdef.density = fixDef.getDensity();
-    
+
     fdef.filter.categoryBits = (short) fixDef.getFilter().getCategoryBits();
     fdef.filter.groupIndex = (short) fixDef.getFilter().getGroupIndex();
     fdef.filter.maskBits = (short) fixDef.getFilter().getMaskBits();
-    
+
     fdef.friction = fixDef.getFriction();
     fdef.isSensor = fixDef.getSensor();
     fdef.restitution = fixDef.getRestitution();
-    
+
     return fdef;
   }
 
   /**
    * As game model.
-   *
-   * @param cgModel the cg model
+   * 
+   * @param cgModel
+   *          the cg model
    * @return the game model
    */
   public static GameModel asGameModel(CGGameModel cgModel) {

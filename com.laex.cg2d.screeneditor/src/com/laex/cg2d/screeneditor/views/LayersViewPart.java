@@ -69,13 +69,13 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
   /** The Constant ID. */
   public static final String ID = "com.laex.cg2d.screeneditor.LayersView"; //$NON-NLS-1$
-  
+
   /** The Constant VISIBLE_PROP. */
   public static final String VISIBLE_PROP = "Visible";
-  
+
   /** The Constant LOCKED_PROP. */
   public static final String LOCKED_PROP = "Locked";
-  
+
   /** The Constant NAME_PROP. */
   public static final String NAME_PROP = "Name";
 
@@ -90,16 +90,24 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
    * The Class TableLabelProvider.
    */
   private class TableLabelProvider extends LabelProvider implements ITableLabelProvider {
-    
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object, int)
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang
+     * .Object, int)
      */
     public Image getColumnImage(Object element, int columnIndex) {
       return ((LayerItem) element).getImage(columnIndex);
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object, int)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang
+     * .Object, int)
      */
     public String getColumnText(Object element, int columnIndex) {
       return ((LayerItem) element).getText(columnIndex);
@@ -111,23 +119,33 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
    * The Class ContentProvider.
    */
   private static class ContentProvider implements IStructuredContentProvider {
-    
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java
+     * .lang.Object)
      */
     public Object[] getElements(Object inputElement) {
       List<LayerItem> lis = (List<LayerItem>) inputElement;
       return lis.toArray();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.eclipse.jface.viewers.IContentProvider#dispose()
      */
     public void dispose() {
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface
+     * .viewers.Viewer, java.lang.Object, java.lang.Object)
      */
     public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
     }
@@ -138,26 +156,27 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
    * The Class LayerItem.
    */
   class LayerItem implements IAdaptable {
-    
+
     /** The id. */
     int id;
-    
+
     /** The name. */
     String name;
-    
+
     /** The visible. */
     boolean visible;
-    
+
     /** The locked. */
     boolean locked;
-    
+
     /** The reference layer. */
     Layer referenceLayer;
 
     /**
      * Gets the text.
-     *
-     * @param index the index
+     * 
+     * @param index
+     *          the index
      * @return the text
      */
     String getText(int index) {
@@ -170,8 +189,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
     /**
      * Gets the image.
-     *
-     * @param index the index
+     * 
+     * @param index
+     *          the index
      * @return the image
      */
     Image getImage(int index) {
@@ -186,8 +206,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
     /**
      * Gets the eye.
-     *
-     * @param status the status
+     * 
+     * @param status
+     *          the status
      * @return the eye
      */
     Image getEye(boolean status) {
@@ -199,8 +220,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
     /**
      * Gets the locked.
-     *
-     * @param status the status
+     * 
+     * @param status
+     *          the status
      * @return the locked
      */
     Image getLocked(boolean status) {
@@ -210,7 +232,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
       return SharedImages.UNLOCKED.createImage();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
      */
     @Override
@@ -220,7 +244,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
     /**
      * To layer.
-     *
+     * 
      * @return the layer
      */
     public Layer toLayer() {
@@ -234,25 +258,25 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
   /** The table. */
   private Table table;
-  
+
   /** The table viewer. */
   private TableViewer tableViewer;
 
   /** The add action. */
   private Action addAction;
-  
+
   /** The remove action. */
   private Action removeAction;
 
   /** The lock action. */
   private Action lockAction;
-  
+
   /** The visibility action. */
   private Action visibilityAction;
 
   /** The up action. */
   private Action upAction;
-  
+
   /** The down action. */
   private Action downAction;
 
@@ -384,8 +408,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
   /**
    * Create contents of the view part.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   public void createPartControl(Composite parent) {
@@ -491,8 +516,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
   /**
    * Needed for having better visibility of the icons when selected.
-   *
-   * @param table2 the table2
+   * 
+   * @param table2
+   *          the table2
    */
   private void addCustomSelectionRenderer(Table table2) {
     table2.addListener(SWT.EraseItem, new Listener() {
@@ -699,7 +725,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
   /**
    * Gets the shapes editor.
-   *
+   * 
    * @return the shapes editor
    */
   private ScreenEditor getShapesEditor() {
@@ -727,7 +753,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
   private void initializeMenu() {
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.WorkbenchPart#getAdapter(java.lang.Class)
    */
   @Override
@@ -745,7 +773,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
     return null;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
    */
   @Override
@@ -754,7 +784,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
   /**
    * Gets the table viewer.
-   *
+   * 
    * @return the table viewer
    */
   private TableViewer getTableViewer() {
@@ -763,7 +793,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
 
   /**
    * Selected layers.
-   *
+   * 
    * @return the list
    */
   private List<LayerItem> selectedLayers() {

@@ -33,7 +33,7 @@ import com.laex.cg2d.shared.model.joints.BEWeldJoint;
 public class JointCreateCommand extends Command {
   /** The connection instance. */
   private Joint connection;
-  
+
   /** The type. */
   private JointType type;
 
@@ -44,9 +44,11 @@ public class JointCreateCommand extends Command {
 
   /**
    * Instantiate a command that can create a connection between two shapes.
-   *
-   * @param source the source endpoint (a non-null Shape instance)
-   * @param type the type
+   * 
+   * @param source
+   *          the source endpoint (a non-null Shape instance)
+   * @param type
+   *          the type
    * @see Connection#setLineStyle(int)
    */
   public JointCreateCommand(Shape source, JointType type) {
@@ -132,8 +134,9 @@ public class JointCreateCommand extends Command {
 
   /**
    * Set the target endpoint for the connection.
-   *
-   * @param target that target endpoint (a non-null Shape instance)
+   * 
+   * @param target
+   *          that target endpoint (a non-null Shape instance)
    */
   public void setTarget(Shape target) {
     if (target == null) {

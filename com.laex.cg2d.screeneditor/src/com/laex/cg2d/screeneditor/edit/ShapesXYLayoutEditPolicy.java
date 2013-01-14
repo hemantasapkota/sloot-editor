@@ -31,8 +31,12 @@ import com.laex.cg2d.shared.model.ShapesDiagram;
  */
 public class ShapesXYLayoutEditPolicy extends XYLayoutEditPolicy {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#createChangeConstraintCommand(org.eclipse.gef.requests.ChangeBoundsRequest, org.eclipse.gef.EditPart, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#
+   * createChangeConstraintCommand(org.eclipse.gef.requests.ChangeBoundsRequest,
+   * org.eclipse.gef.EditPart, java.lang.Object)
    */
   protected Command createChangeConstraintCommand(ChangeBoundsRequest request, EditPart child, Object constraint) {
     boolean childTest = child instanceof ShapeEditPart;
@@ -44,15 +48,22 @@ public class ShapesXYLayoutEditPolicy extends XYLayoutEditPolicy {
     return super.createChangeConstraintCommand(request, child, constraint);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#createChangeConstraintCommand(org.eclipse.gef.EditPart, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#
+   * createChangeConstraintCommand(org.eclipse.gef.EditPart, java.lang.Object)
    */
   protected Command createChangeConstraintCommand(EditPart child, Object constraint) {
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#createChildEditPolicy(org.eclipse.gef.EditPart)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#createChildEditPolicy
+   * (org.eclipse.gef.EditPart)
    */
   @Override
   protected EditPolicy createChildEditPolicy(EditPart child) {
@@ -85,7 +96,9 @@ public class ShapesXYLayoutEditPolicy extends XYLayoutEditPolicy {
     return createCommand;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editpolicies.GraphicalEditPolicy#getFeedbackLayer()
    */
   @Override

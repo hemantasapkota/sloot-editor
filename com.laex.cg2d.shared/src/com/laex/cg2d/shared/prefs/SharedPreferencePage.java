@@ -32,14 +32,18 @@ public class SharedPreferencePage extends FieldEditorPreferencePage implements I
 
   /**
    * Initialize the preference page.
-   *
-   * @param workbench the workbench
+   * 
+   * @param workbench
+   *          the workbench
    */
   public void init(IWorkbench workbench) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
    */
   @Override
   protected void createFieldEditors() {

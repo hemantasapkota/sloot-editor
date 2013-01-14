@@ -29,10 +29,10 @@ public class Vec2PropertySource implements IPropertySource {
 
   /** The Constant X_PROP. */
   public static final String X_PROP = "x";
-  
+
   /** The Constant Y_PROP. */
   public static final String Y_PROP = "y";
-  
+
   /** The descriptor. */
   protected static IPropertyDescriptor[] descriptor;
 
@@ -57,14 +57,17 @@ public class Vec2PropertySource implements IPropertySource {
 
   /**
    * Instantiates a new vec2 property source.
-   *
-   * @param vec2 the vec2
+   * 
+   * @param vec2
+   *          the vec2
    */
   public Vec2PropertySource(Vector2 vec2) {
     this.vec2 = vec2;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
    */
   @Override
@@ -72,16 +75,23 @@ public class Vec2PropertySource implements IPropertySource {
     return new Vector2(this.vec2.x, this.vec2.y);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
    */
   @Override
   public IPropertyDescriptor[] getPropertyDescriptors() {
     return descriptor;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang
+   * .Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
@@ -96,8 +106,9 @@ public class Vec2PropertySource implements IPropertySource {
 
   /**
    * Checks if is y prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is y prop
    */
   private boolean isYProp(Object id) {
@@ -106,31 +117,44 @@ public class Vec2PropertySource implements IPropertySource {
 
   /**
    * Checks if is x prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is x prop
    */
   private boolean isXProp(Object id) {
     return id.equals(X_PROP);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang
+   * .Object)
    */
   @Override
   public boolean isPropertySet(Object id) {
     return true;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java
+   * .lang.Object)
    */
   @Override
   public void resetPropertyValue(Object id) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang
+   * .Object, java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -142,7 +166,9 @@ public class Vec2PropertySource implements IPropertySource {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see java.lang.Object#toString()
    */
   @Override

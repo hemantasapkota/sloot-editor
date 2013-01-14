@@ -26,23 +26,24 @@ import org.eclipse.swt.widgets.Spinner;
  * The Class CustomGridSizeDialog.
  */
 class CustomGridSizeDialog extends Dialog {
-  
+
   /** The txt width. */
   private Spinner txtWidth;
-  
+
   /** The txt height. */
   private Spinner txtHeight;
-  
+
   /** The width. */
   private int width;
-  
+
   /** The height. */
   private int height;
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
+   * 
+   * @param parentShell
+   *          the parent shell
    */
   public CustomGridSizeDialog(Shell parentShell) {
     super(parentShell);
@@ -50,8 +51,9 @@ class CustomGridSizeDialog extends Dialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -82,8 +84,9 @@ class CustomGridSizeDialog extends Dialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -93,7 +96,7 @@ class CustomGridSizeDialog extends Dialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override
@@ -101,7 +104,9 @@ class CustomGridSizeDialog extends Dialog {
     return new Point(209, 144);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.dialogs.Dialog#okPressed()
    */
   @Override
@@ -113,7 +118,7 @@ class CustomGridSizeDialog extends Dialog {
 
   /**
    * Gets the width.
-   *
+   * 
    * @return the width
    */
   public int getWidth() {
@@ -122,7 +127,7 @@ class CustomGridSizeDialog extends Dialog {
 
   /**
    * Gets the height.
-   *
+   * 
    * @return the height
    */
   public int getHeight() {

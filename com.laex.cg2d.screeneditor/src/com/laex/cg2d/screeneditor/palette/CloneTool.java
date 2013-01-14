@@ -34,7 +34,7 @@ public class CloneTool extends MarqueeSelectionTool {
 
   /** The start location. */
   private Point startLocation;
-  
+
   /** The end location. */
   private Point endLocation;
 
@@ -45,7 +45,9 @@ public class CloneTool extends MarqueeSelectionTool {
     super();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.tools.AbstractTool#activate()
    */
   @Override
@@ -54,8 +56,11 @@ public class CloneTool extends MarqueeSelectionTool {
 
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.tools.MarqueeSelectionTool#setViewer(org.eclipse.gef.EditPartViewer)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.gef.tools.MarqueeSelectionTool#setViewer(org.eclipse.gef.
+   * EditPartViewer)
    */
   @Override
   public void setViewer(EditPartViewer viewer) {
@@ -85,7 +90,9 @@ public class CloneTool extends MarqueeSelectionTool {
     });
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.tools.MarqueeSelectionTool#getCommandName()
    */
   @Override
@@ -93,7 +100,9 @@ public class CloneTool extends MarqueeSelectionTool {
     return "Clone";
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.tools.MarqueeSelectionTool#handleButtonUp(int)
    */
   @Override
@@ -133,7 +142,7 @@ public class CloneTool extends MarqueeSelectionTool {
 
   /**
    * Calculate area.
-   *
+   * 
    * @return the rectangle
    */
   private Rectangle calculateArea() {

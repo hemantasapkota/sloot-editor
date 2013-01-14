@@ -19,7 +19,7 @@ public class Box2DUtil {
 
   /**
    * Gets the box2 d types.
-   *
+   * 
    * @return the box2 d types
    */
   public static String[] getBox2DTypes() {

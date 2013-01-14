@@ -26,28 +26,31 @@ import org.eclipse.swt.widgets.Text;
  * The Class SimpleTextChangeDialog.
  */
 public class SimpleTextChangeDialog extends TitleAreaDialog {
-  
+
   /** The txt name. */
   private Text txtName;
-  
+
   /** The name. */
   private String name;
-  
+
   /** The ok button. */
   private Button okButton;
-  
+
   /** The existing name. */
   private String existingName;
-  
+
   /** The description. */
   private String description;
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
-   * @param existingName the existing name
-   * @param description the description
+   * 
+   * @param parentShell
+   *          the parent shell
+   * @param existingName
+   *          the existing name
+   * @param description
+   *          the description
    */
   public SimpleTextChangeDialog(Shell parentShell, String existingName, String description) {
     super(parentShell);
@@ -57,8 +60,9 @@ public class SimpleTextChangeDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -82,8 +86,9 @@ public class SimpleTextChangeDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -91,7 +96,9 @@ public class SimpleTextChangeDialog extends TitleAreaDialog {
     createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.dialogs.Dialog#okPressed()
    */
   @Override
@@ -102,7 +109,7 @@ public class SimpleTextChangeDialog extends TitleAreaDialog {
 
   /**
    * Gets the name.
-   *
+   * 
    * @return the name
    */
   public String getName() {
@@ -111,7 +118,7 @@ public class SimpleTextChangeDialog extends TitleAreaDialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override

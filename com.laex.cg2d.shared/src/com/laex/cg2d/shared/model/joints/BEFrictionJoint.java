@@ -28,7 +28,7 @@ public class BEFrictionJoint extends Joint {
 
   /** The Constant MAX_FORCE_PROP. */
   public static final String MAX_FORCE_PROP = "FrictionJoint.MaxForce";
-  
+
   /** The Constant MAX_TORQUE_PROP. */
   public static final String MAX_TORQUE_PROP = "FrictionJoint.MaxTorque";
 
@@ -48,15 +48,19 @@ public class BEFrictionJoint extends Joint {
 
   /**
    * Instantiates a new bE friction joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public BEFrictionJoint(Shape source, Shape target) {
     super(source, target);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getEditableValue()
    */
   @Override
@@ -64,7 +68,9 @@ public class BEFrictionJoint extends Joint {
     return frictionJointDef;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyDescriptors()
    */
   @Override
@@ -72,8 +78,11 @@ public class BEFrictionJoint extends Joint {
     return (IPropertyDescriptor[]) ArrayUtils.addAll(super.getPropertyDescriptors(), descriptors);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -86,7 +95,9 @@ public class BEFrictionJoint extends Joint {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyValue(java.lang.Object)
    */
   @Override
@@ -100,7 +111,9 @@ public class BEFrictionJoint extends Joint {
     return super.getPropertyValue(id);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getJointType()
    */
   @Override
@@ -110,8 +123,9 @@ public class BEFrictionJoint extends Joint {
 
   /**
    * Checks if is max force prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is max force prop
    */
   private boolean isMaxForceProp(Object id) {
@@ -120,8 +134,9 @@ public class BEFrictionJoint extends Joint {
 
   /**
    * Checks if is max torque prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is max torque prop
    */
   private boolean isMaxTorqueProp(Object id) {

@@ -33,7 +33,7 @@ public class BEPulleyJoint extends Joint {
 
   /** The Constant GROUND_ANCHOR_A_PROP. */
   public static final String GROUND_ANCHOR_A_PROP = "PulleyJoint.GroundAnchorA";
-  
+
   /** The Constant GROUND_ANCHOR_B_PROP. */
   public static final String GROUND_ANCHOR_B_PROP = "PulleyJoint.GroundAnchorB";
 
@@ -55,18 +55,20 @@ public class BEPulleyJoint extends Joint {
 
   /** The pulley joint def. */
   private PulleyJointDef pulleyJointDef = new PulleyJointDef();
-  
+
   /** The ground anchor b. */
   private Vector2 groundAnchorA, groundAnchorB;
-  
+
   /** The ratio. */
   float ratio;
 
   /**
    * Instantiates a new bE pulley joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public BEPulleyJoint(Shape source, Shape target) {
     super(source, target);
@@ -76,7 +78,9 @@ public class BEPulleyJoint extends Joint {
     ratio = 1;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getEditableValue()
    */
   @Override
@@ -84,7 +88,9 @@ public class BEPulleyJoint extends Joint {
     return pulleyJointDef;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyDescriptors()
    */
   @Override
@@ -92,8 +98,11 @@ public class BEPulleyJoint extends Joint {
     return (IPropertyDescriptor[]) ArrayUtils.addAll(super.getPropertyDescriptors(), descriptors);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -110,7 +119,9 @@ public class BEPulleyJoint extends Joint {
 
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyValue(java.lang.Object)
    */
   @Override
@@ -128,8 +139,9 @@ public class BEPulleyJoint extends Joint {
 
   /**
    * Checks if is ratio prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is ratio prop
    */
   private boolean isRatioProp(Object id) {
@@ -138,8 +150,9 @@ public class BEPulleyJoint extends Joint {
 
   /**
    * Checks if is ground anchor a.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is ground anchor a
    */
   private boolean isGroundAnchorA(Object id) {
@@ -148,15 +161,18 @@ public class BEPulleyJoint extends Joint {
 
   /**
    * Checks if is ground anchor b.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is ground anchor b
    */
   private boolean isGroundAnchorB(Object id) {
     return GROUND_ANCHOR_B_PROP.equals(id);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getJointType()
    */
   @Override
@@ -166,7 +182,7 @@ public class BEPulleyJoint extends Joint {
 
   /**
    * Gets the ground anchor a.
-   *
+   * 
    * @return the ground anchor a
    */
   public Vector2 getGroundAnchorA() {
@@ -175,7 +191,7 @@ public class BEPulleyJoint extends Joint {
 
   /**
    * Gets the ground anchor b.
-   *
+   * 
    * @return the ground anchor b
    */
   public Vector2 getGroundAnchorB() {
@@ -184,7 +200,7 @@ public class BEPulleyJoint extends Joint {
 
   /**
    * Gets the ratio.
-   *
+   * 
    * @return the ratio
    */
   public float getRatio() {

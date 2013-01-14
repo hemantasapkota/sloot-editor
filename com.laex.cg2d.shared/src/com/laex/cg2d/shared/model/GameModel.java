@@ -10,15 +10,14 @@
  */
 package com.laex.cg2d.shared.model;
 
-
 /**
  * The Class GameModel.
  */
 public class GameModel {
-  
+
   /** The shapes. */
   ShapesDiagram shapes = new ShapesDiagram();
-  
+
   /**
    * Instantiates a new game model.
    */
@@ -27,7 +26,7 @@ public class GameModel {
 
   /**
    * Gets the diagram.
-   *
+   * 
    * @return the diagram
    */
   public ShapesDiagram getDiagram() {

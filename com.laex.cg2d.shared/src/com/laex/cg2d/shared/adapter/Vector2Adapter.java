@@ -20,8 +20,9 @@ public class Vector2Adapter {
 
   /**
    * As cg vector2.
-   *
-   * @param v the v
+   * 
+   * @param v
+   *          the v
    * @return the cG vector2
    */
   public static CGVector2 asCGVector2(Vector2 v) {
@@ -30,8 +31,9 @@ public class Vector2Adapter {
 
   /**
    * As vector2.
-   *
-   * @param v the v
+   * 
+   * @param v
+   *          the v
    * @return the vector2
    */
   public static Vector2 asVector2(CGVector2 v) {

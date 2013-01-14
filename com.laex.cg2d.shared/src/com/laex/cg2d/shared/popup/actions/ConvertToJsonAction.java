@@ -41,7 +41,7 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
 
   /** The shell. */
   private Shell shell;
-  
+
   /** The struc sel. */
   private IStructuredSelection strucSel;
 
@@ -54,9 +54,11 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
 
   /**
    * Sets the active part.
-   *
-   * @param action the action
-   * @param targetPart the target part
+   * 
+   * @param action
+   *          the action
+   * @param targetPart
+   *          the target part
    * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
    */
   public void setActivePart(IAction action, IWorkbenchPart targetPart) {
@@ -65,8 +67,9 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
 
   /**
    * Run.
-   *
-   * @param action the action
+   * 
+   * @param action
+   *          the action
    * @see IActionDelegate#run(IAction)
    */
   public void run(IAction action) {
@@ -88,7 +91,7 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
       String jsonFormat = "";
 
       if (cgcPrj.isScreenFile(file)) {
-        
+
         CGGameModel model = null;
         try {
           model = CGGameModel.parseFrom(file.getContents());
@@ -107,7 +110,7 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
         jsonFormat = JsonFormat.printToString(model);
       } else if (cgcPrj.isEntityFile(file)) {
         CGEntity entity = null;
-        
+
         try {
           entity = CGEntity.parseFrom(file.getContents());
         } catch (IOException e) {
@@ -115,12 +118,12 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
         } catch (CoreException e) {
           e.printStackTrace();
         }
-        
+
         if (entity == null) {
-          //todo log this result
+          // todo log this result
           return;
         }
-        
+
         jsonFormat = JsonFormat.printToString(entity);
       }
 
@@ -141,9 +144,11 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
 
   /**
    * Selection changed.
-   *
-   * @param action the action
-   * @param selection the selection
+   * 
+   * @param action
+   *          the action
+   * @param selection
+   *          the selection
    * @see IActionDelegate#selectionChanged(IAction, ISelection)
    */
   public void selectionChanged(IAction action, ISelection selection) {

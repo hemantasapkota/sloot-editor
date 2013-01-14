@@ -20,22 +20,22 @@ import com.laex.cg2d.shared.model.EntityAnimation;
  * The Class AnimationListViewItem.
  */
 class AnimationListViewItem {
-  
+
   /** The name. */
   private String name;
-  
+
   /** The first frame. */
   private Image firstFrame;
-  
+
   /** The frames. */
   private Queue<Image> frames;
-  
+
   /** The animation. */
   private EntityAnimation animation;
 
   /**
    * Gets the name.
-   *
+   * 
    * @return the name
    */
   public String getName() {
@@ -44,8 +44,9 @@ class AnimationListViewItem {
 
   /**
    * Sets the name.
-   *
-   * @param name the new name
+   * 
+   * @param name
+   *          the new name
    */
   public void setName(String name) {
     this.name = name;
@@ -53,7 +54,7 @@ class AnimationListViewItem {
 
   /**
    * Gets the first frame.
-   *
+   * 
    * @return the first frame
    */
   public Image getFirstFrame() {
@@ -62,8 +63,9 @@ class AnimationListViewItem {
 
   /**
    * Sets the first frame.
-   *
-   * @param firstFrame the new first frame
+   * 
+   * @param firstFrame
+   *          the new first frame
    */
   public void setFirstFrame(Image firstFrame) {
     this.firstFrame = firstFrame;
@@ -71,7 +73,7 @@ class AnimationListViewItem {
 
   /**
    * Gets the frames.
-   *
+   * 
    * @return the frames
    */
   public Queue<Image> getFrames() {
@@ -80,8 +82,9 @@ class AnimationListViewItem {
 
   /**
    * Sets the frames.
-   *
-   * @param frames the new frames
+   * 
+   * @param frames
+   *          the new frames
    */
   public void setFrames(Queue<Image> frames) {
     this.frames = frames;
@@ -89,7 +92,7 @@ class AnimationListViewItem {
 
   /**
    * Gets the animation.
-   *
+   * 
    * @return the animation
    */
   public EntityAnimation getAnimation() {
@@ -98,8 +101,9 @@ class AnimationListViewItem {
 
   /**
    * Sets the animation.
-   *
-   * @param animation the new animation
+   * 
+   * @param animation
+   *          the new animation
    */
   public void setAnimation(EntityAnimation animation) {
     this.animation = animation;

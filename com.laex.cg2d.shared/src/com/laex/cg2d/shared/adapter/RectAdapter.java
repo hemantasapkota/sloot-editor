@@ -19,8 +19,9 @@ public class RectAdapter {
 
   /**
    * D2d rect.
-   *
-   * @param r the r
+   * 
+   * @param r
+   *          the r
    * @return the rectangle
    */
   public static Rectangle d2dRect(com.badlogic.gdx.math.Rectangle r) {
@@ -34,8 +35,9 @@ public class RectAdapter {
 
   /**
    * Gdx rect.
-   *
-   * @param r the r
+   * 
+   * @param r
+   *          the r
    * @return the com.badlogic.gdx.math. rectangle
    */
   public static com.badlogic.gdx.math.Rectangle gdxRect(Rectangle r) {

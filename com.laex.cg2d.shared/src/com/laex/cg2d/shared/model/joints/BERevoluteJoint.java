@@ -34,22 +34,22 @@ public class BERevoluteJoint extends Joint {
 
   /** The Constant REFERENCE_ANGLE_PROP. */
   public static final String REFERENCE_ANGLE_PROP = "RevoluteJoint.ReferenceAngle";
-  
+
   /** The Constant ENABLE_LIMIT_PROP. */
   public static final String ENABLE_LIMIT_PROP = "RevoluteJoint.EnableLimit";
-  
+
   /** The Constant LOWER_ANGLE_PROP. */
   public static final String LOWER_ANGLE_PROP = "RevoluteJoint.LowerAngle";
-  
+
   /** The Constant UPPER_ANGLE_PROP. */
   public static final String UPPER_ANGLE_PROP = "RevoluteJoint.UpperAngle";
-  
+
   /** The Constant ENABLE_MOTOR_PROP. */
   public static final String ENABLE_MOTOR_PROP = "RevoluteJoint.EnableMotor";
-  
+
   /** The Constant MOTOR_SPEED_PROP. */
   public static final String MOTOR_SPEED_PROP = "RevoluteJoint.MotorSpeed";
-  
+
   /** The Constant MAX_MOTOR_TORQUE_PROP. */
   public static final String MAX_MOTOR_TORQUE_PROP = "RevoluteJoint.MaxMotorTorque";
 
@@ -80,21 +80,25 @@ public class BERevoluteJoint extends Joint {
 
   /** The revolute joint def. */
   private RevoluteJointDef revoluteJointDef = new RevoluteJointDef();
-  
+
   /** The anchor. */
   private Vector2 anchor = new Vector2();
 
   /**
    * Instantiates a new bE revolute joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public BERevoluteJoint(Shape source, Shape target) {
     super(source, target);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getEditableValue()
    */
   @Override
@@ -102,7 +106,9 @@ public class BERevoluteJoint extends Joint {
     return revoluteJointDef;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyDescriptors()
    */
   @Override
@@ -110,8 +116,11 @@ public class BERevoluteJoint extends Joint {
     return (IPropertyDescriptor[]) ArrayUtils.addAll(super.getPropertyDescriptors(), descriptor);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -134,7 +143,9 @@ public class BERevoluteJoint extends Joint {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyValue(java.lang.Object)
    */
   @Override
@@ -165,8 +176,9 @@ public class BERevoluteJoint extends Joint {
 
   /**
    * Checks if is max motor torque prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is max motor torque prop
    */
   private boolean isMaxMotorTorqueProp(Object id) {
@@ -175,8 +187,9 @@ public class BERevoluteJoint extends Joint {
 
   /**
    * Checks if is motor speed prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is motor speed prop
    */
   private boolean isMotorSpeedProp(Object id) {
@@ -185,8 +198,9 @@ public class BERevoluteJoint extends Joint {
 
   /**
    * Checks if is enable motor prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is enable motor prop
    */
   private boolean isEnableMotorProp(Object id) {
@@ -195,8 +209,9 @@ public class BERevoluteJoint extends Joint {
 
   /**
    * Checks if is upper angle prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is upper angle prop
    */
   private boolean isUpperAngleProp(Object id) {
@@ -205,8 +220,9 @@ public class BERevoluteJoint extends Joint {
 
   /**
    * Checks if is lower angle prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is lower angle prop
    */
   private boolean isLowerAngleProp(Object id) {
@@ -215,8 +231,9 @@ public class BERevoluteJoint extends Joint {
 
   /**
    * Checks if is enable limit prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is enable limit prop
    */
   private boolean isEnableLimitProp(Object id) {
@@ -225,8 +242,9 @@ public class BERevoluteJoint extends Joint {
 
   /**
    * Checks if is reference angle prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is reference angle prop
    */
   private boolean isReferenceAngleProp(Object id) {
@@ -235,14 +253,16 @@ public class BERevoluteJoint extends Joint {
 
   /**
    * Gets the anchor.
-   *
+   * 
    * @return the anchor
    */
   public Vector2 getAnchor() {
     return anchor;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getJointType()
    */
   @Override

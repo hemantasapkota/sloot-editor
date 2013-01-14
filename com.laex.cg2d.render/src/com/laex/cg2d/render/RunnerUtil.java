@@ -18,57 +18,61 @@ import com.laex.cg2d.protobuf.GameObject.CGEntityAnimation;
 
 /**
  * The Class RunnerUtil.
- *
+ * 
  * @author hemantasapkota
  */
 public class RunnerUtil {
 
-	/**
-	 * identical to EntitiesUtil.getDefaultAnimtion()
-	 *
-	 * @param e the e
-	 * @return the default animation
-	 */
-	public static CGEntityAnimation getDefaultAnimation(CGEntity e) {
-		for (CGEntityAnimation ea : e.getAnimationsList()) {
-			if (ea.getDefaultAnimation()) {
-				return ea;
-			}
-		}
-		return null;
-	}
+  /**
+   * identical to EntitiesUtil.getDefaultAnimtion()
+   * 
+   * @param e
+   *          the e
+   * @return the default animation
+   */
+  public static CGEntityAnimation getDefaultAnimation(CGEntity e) {
+    for (CGEntityAnimation ea : e.getAnimationsList()) {
+      if (ea.getDefaultAnimation()) {
+        return ea;
+      }
+    }
+    return null;
+  }
 
-	/**
-	 * To int.
-	 *
-	 * @param value the value
-	 * @return the integer
-	 */
-	public static Integer toInt(Object value) {
-		return Integer.parseInt(value.toString());
-	}
+  /**
+   * To int.
+   * 
+   * @param value
+   *          the value
+   * @return the integer
+   */
+  public static Integer toInt(Object value) {
+    return Integer.parseInt(value.toString());
+  }
 
-	/**
-	 * To float.
-	 *
-	 * @param value the value
-	 * @return the float
-	 */
-	public static Float toFloat(Object value) {
-		return Float.valueOf(value.toString());
-	}
+  /**
+   * To float.
+   * 
+   * @param value
+   *          the value
+   * @return the float
+   */
+  public static Float toFloat(Object value) {
+    return Float.valueOf(value.toString());
+  }
 
-	/**
-	 * identical to EntitiesUtil.createEntityModelFromFile()
-	 *
-	 * @param entityFileName the entity file name
-	 * @return the cG entity
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static CGEntity createEntityModelFromFile(String entityFileName)
-			throws IOException {
-		return CGEntity.parseFrom(Gdx.files.absolute(entityFileName).read());
+  /**
+   * identical to EntitiesUtil.createEntityModelFromFile()
+   * 
+   * @param entityFileName
+   *          the entity file name
+   * @return the cG entity
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static CGEntity createEntityModelFromFile(String entityFileName) throws IOException {
+    return CGEntity.parseFrom(Gdx.files.absolute(entityFileName).read());
 
-	}
+  }
 
 }

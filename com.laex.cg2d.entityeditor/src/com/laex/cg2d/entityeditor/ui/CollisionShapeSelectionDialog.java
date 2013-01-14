@@ -41,20 +41,21 @@ import com.laex.cg2d.shared.model.EntityCollisionType;
  * The Class CollisionShapeSelectionDialog.
  */
 public class CollisionShapeSelectionDialog extends TitleAreaDialog {
-  
+
   /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
-  
+
   /** The type selected. */
   private EntityCollisionType typeSelected = EntityCollisionType.NONE;
-  
+
   /** The phs ed fixture file. */
   private IFile phsEdFixtureFile = null;
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
+   * 
+   * @param parentShell
+   *          the parent shell
    */
   public CollisionShapeSelectionDialog(Shell parentShell) {
     super(parentShell);
@@ -62,8 +63,9 @@ public class CollisionShapeSelectionDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -141,7 +143,7 @@ public class CollisionShapeSelectionDialog extends TitleAreaDialog {
 
   /**
    * Gets the type selected.
-   *
+   * 
    * @return the type selected
    */
   public EntityCollisionType getTypeSelected() {
@@ -150,7 +152,7 @@ public class CollisionShapeSelectionDialog extends TitleAreaDialog {
 
   /**
    * Gets the phs ed fixture file.
-   *
+   * 
    * @return the phs ed fixture file
    */
   public IFile getPhsEdFixtureFile() {
@@ -159,8 +161,9 @@ public class CollisionShapeSelectionDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -168,7 +171,7 @@ public class CollisionShapeSelectionDialog extends TitleAreaDialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override

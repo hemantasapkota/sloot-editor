@@ -23,21 +23,28 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
   /**
    * Instantiates a new application workbench window advisor.
-   *
-   * @param configurer the configurer
+   * 
+   * @param configurer
+   *          the configurer
    */
   public ApplicationWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
     super(configurer);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.application.WorkbenchWindowAdvisor#createActionBarAdvisor(org.eclipse.ui.application.IActionBarConfigurer)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.application.WorkbenchWindowAdvisor#createActionBarAdvisor
+   * (org.eclipse.ui.application.IActionBarConfigurer)
    */
   public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
     return new ApplicationActionBarAdvisor(configurer);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.application.WorkbenchWindowAdvisor#preWindowOpen()
    */
   public void preWindowOpen() {
@@ -46,7 +53,9 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
     configurer.setShowCoolBar(true);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.application.WorkbenchWindowAdvisor#postWindowOpen()
    */
   @Override

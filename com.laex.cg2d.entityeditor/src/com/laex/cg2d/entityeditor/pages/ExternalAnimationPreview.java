@@ -32,44 +32,48 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
 
   /** The animation strip. */
   String animationStrip;
-  
+
   /** The rows. */
   private int rows;
-  
+
   /** The cols. */
   private int cols;
-  
+
   /** The duration. */
   private float duration;
-  
+
   /** The state time. */
   private float stateTime;
-  
+
   /** The spr. */
   private Sprite spr;
-  
+
   /** The batch. */
   private SpriteBatch batch;
-  
+
   /** The cam. */
   private OrthographicCamera cam;
-  
+
   /** The sprite animation. */
   private Animation spriteAnimation;
 
   /** The shape renderer. */
   private ShapeRenderer shapeRenderer;
-  
+
   /** The h. */
   float w, h;
 
   /**
    * Instantiates a new external animation preview.
-   *
-   * @param animationStrip the animation strip
-   * @param rows the rows
-   * @param cols the cols
-   * @param duration the duration
+   * 
+   * @param animationStrip
+   *          the animation strip
+   * @param rows
+   *          the rows
+   * @param cols
+   *          the cols
+   * @param duration
+   *          the duration
    */
   public ExternalAnimationPreview(String animationStrip, int rows, int cols, float duration) {
     this.animationStrip = animationStrip;
@@ -78,7 +82,9 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     this.duration = duration;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.badlogic.gdx.ApplicationAdapter#create()
    */
   @Override
@@ -117,7 +123,9 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     spr = new Sprite(spriteAnimation.getKeyFrame(stateTime, true));
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.badlogic.gdx.ApplicationAdapter#dispose()
    */
   @Override
@@ -128,7 +136,9 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     batch.dispose();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.badlogic.gdx.ApplicationAdapter#render()
    */
   @Override

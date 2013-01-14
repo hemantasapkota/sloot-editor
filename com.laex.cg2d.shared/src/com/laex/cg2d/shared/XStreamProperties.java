@@ -19,15 +19,17 @@ public class XStreamProperties {
 
   /** The class loader. */
   private ClassLoader classLoader;
-  
+
   /** The class aliases. */
   private Map<String, Class> classAliases;
 
   /**
    * Instantiates a new x stream properties.
-   *
-   * @param clz the clz
-   * @param aliases the aliases
+   * 
+   * @param clz
+   *          the clz
+   * @param aliases
+   *          the aliases
    */
   public XStreamProperties(ClassLoader clz, Map<String, Class> aliases) {
     this.classLoader = clz;
@@ -36,7 +38,7 @@ public class XStreamProperties {
 
   /**
    * Gets the class loader.
-   *
+   * 
    * @return the class loader
    */
   public ClassLoader getClassLoader() {
@@ -45,7 +47,7 @@ public class XStreamProperties {
 
   /**
    * Gets the class aliases.
-   *
+   * 
    * @return the class aliases
    */
   public Map<String, Class> getClassAliases() {

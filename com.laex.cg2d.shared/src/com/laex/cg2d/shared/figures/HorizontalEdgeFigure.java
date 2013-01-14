@@ -25,7 +25,9 @@ public class HorizontalEdgeFigure extends Shape {
   public HorizontalEdgeFigure() {
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.draw2d.Shape#fillShape(org.eclipse.draw2d.Graphics)
    */
   @Override
@@ -39,7 +41,9 @@ public class HorizontalEdgeFigure extends Shape {
     graphics.drawLine(getBounds().x, getBounds().y, w, getBounds().y);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.draw2d.Shape#outlineShape(org.eclipse.draw2d.Graphics)
    */
   @Override

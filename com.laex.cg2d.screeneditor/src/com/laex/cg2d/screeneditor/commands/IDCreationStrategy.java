@@ -22,22 +22,22 @@ public class IDCreationStrategy {
 
   /** The box format. */
   static String BOX_FORMAT = "box%d";
-  
+
   /** The circle format. */
   static String CIRCLE_FORMAT = "circle%d";
-  
+
   /** The entity format. */
   static String ENTITY_FORMAT = "entity%d";
-  
+
   /** The edge format. */
   static String EDGE_FORMAT = "edge%d";
-  
+
   /** The background format. */
   static String BACKGROUND_FORMAT = "bg%d";
 
   /**
    * Creates the.
-   *
+   * 
    * @return the iD creation strategy
    */
   public static IDCreationStrategy create() {
@@ -47,8 +47,9 @@ public class IDCreationStrategy {
 
   /**
    * New box id.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the string
    */
   public String newBoxId(EditorShapeType type) {
@@ -57,8 +58,9 @@ public class IDCreationStrategy {
 
   /**
    * New cirlce id.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the string
    */
   public String newCirlceId(EditorShapeType type) {
@@ -67,8 +69,9 @@ public class IDCreationStrategy {
 
   /**
    * New entity id.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the string
    */
   public String newEntityId(EditorShapeType type) {
@@ -77,8 +80,9 @@ public class IDCreationStrategy {
 
   /**
    * New edge id.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the string
    */
   public String newEdgeId(EditorShapeType type) {
@@ -87,8 +91,9 @@ public class IDCreationStrategy {
 
   /**
    * New background id.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the string
    */
   public String newBackgroundId(EditorShapeType type) {
@@ -97,10 +102,13 @@ public class IDCreationStrategy {
 
   /**
    * Checks if is id used.
-   *
-   * @param model the model
-   * @param type the type
-   * @param id the id
+   * 
+   * @param model
+   *          the model
+   * @param type
+   *          the type
+   * @param id
+   *          the id
    * @return true, if is id used
    */
   private synchronized boolean isIdUsed(GameModel model, EditorShapeType type, String id) {
@@ -118,8 +126,9 @@ public class IDCreationStrategy {
 
   /**
    * Gets the available id.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the available id
    */
   private synchronized int getAvailableId(EditorShapeType type) {

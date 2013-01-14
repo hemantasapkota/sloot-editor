@@ -16,13 +16,13 @@ import java.util.Map;
  * The Interface IScreenPropertyManager.
  */
 public interface IScreenPropertyManager {
-  
+
   /**
    * Update screen properties.
-   *
-   * @param props the props
+   * 
+   * @param props
+   *          the props
    */
   void updateScreenProperties(Map<String, String> props);
-  
 
 }

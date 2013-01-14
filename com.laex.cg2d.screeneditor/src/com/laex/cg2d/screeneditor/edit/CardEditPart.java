@@ -24,23 +24,27 @@ public class CardEditPart extends AbstractGraphicalEditPart {
 
   /** The card number x. */
   private int cardNumberX;
-  
+
   /** The card number y. */
   private int cardNumberY;
-  
+
   /** The card height. */
   private int cardHeight;
-  
+
   /** The card width. */
   private int cardWidth;
 
   /**
    * Instantiates a new card edit part.
-   *
-   * @param cardNumberX the card number x
-   * @param cardNumberY the card number y
-   * @param cardWidth the card width
-   * @param cardHeight the card height
+   * 
+   * @param cardNumberX
+   *          the card number x
+   * @param cardNumberY
+   *          the card number y
+   * @param cardWidth
+   *          the card width
+   * @param cardHeight
+   *          the card height
    */
   public CardEditPart(int cardNumberX, int cardNumberY, int cardWidth, int cardHeight) {
     this.cardNumberX = cardNumberX;
@@ -49,7 +53,9 @@ public class CardEditPart extends AbstractGraphicalEditPart {
     this.cardHeight = cardHeight;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
    */
   @Override
@@ -68,7 +74,9 @@ public class CardEditPart extends AbstractGraphicalEditPart {
     return rf;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
    */
   @Override

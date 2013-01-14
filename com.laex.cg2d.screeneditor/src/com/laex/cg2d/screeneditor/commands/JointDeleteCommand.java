@@ -24,8 +24,9 @@ public class JointDeleteCommand extends Command {
 
   /**
    * Instantiates a new joint delete command.
-   *
-   * @param joint the joint
+   * 
+   * @param joint
+   *          the joint
    */
   public JointDeleteCommand(Joint joint) {
     if (joint == null) {
@@ -35,7 +36,9 @@ public class JointDeleteCommand extends Command {
     this.joint = joint;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#execute()
    */
   @Override
@@ -43,7 +46,9 @@ public class JointDeleteCommand extends Command {
     joint.disconnect();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#undo()
    */
   @Override

@@ -32,7 +32,9 @@ import com.laex.cg2d.shared.model.ModelElement;
  */
 class JointEditPart extends AbstractConnectionEditPart implements PropertyChangeListener {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#activate()
    */
   public void activate() {
@@ -42,15 +44,21 @@ class JointEditPart extends AbstractConnectionEditPart implements PropertyChange
     }
   }
 
-  /* (non-Javadoc)
-   * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent
+   * )
    */
   @Override
   public void propertyChange(PropertyChangeEvent arg0) {
     refreshVisuals();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractConnectionEditPart#createFigure()
    */
   @Override
@@ -60,7 +68,9 @@ class JointEditPart extends AbstractConnectionEditPart implements PropertyChange
     return jointCon;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
    */
   @Override
@@ -76,7 +86,9 @@ class JointEditPart extends AbstractConnectionEditPart implements PropertyChange
     });
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#deactivate()
    */
   public void deactivate() {
@@ -88,7 +100,7 @@ class JointEditPart extends AbstractConnectionEditPart implements PropertyChange
 
   /**
    * Gets the casted model.
-   *
+   * 
    * @return the casted model
    */
   private Joint getCastedModel() {

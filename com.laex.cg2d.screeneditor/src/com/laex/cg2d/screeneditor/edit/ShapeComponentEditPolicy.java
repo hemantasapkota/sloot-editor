@@ -24,8 +24,12 @@ import com.laex.cg2d.shared.model.ShapesDiagram;
  */
 public class ShapeComponentEditPolicy extends ComponentEditPolicy {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.ComponentEditPolicy#createDeleteCommand(org.eclipse.gef.requests.GroupRequest)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editpolicies.ComponentEditPolicy#createDeleteCommand(org
+   * .eclipse.gef.requests.GroupRequest)
    */
   protected Command createDeleteCommand(GroupRequest deleteRequest) {
     Object parent = getHost().getParent().getModel();

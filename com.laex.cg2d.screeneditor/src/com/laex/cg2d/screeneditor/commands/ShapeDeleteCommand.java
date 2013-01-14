@@ -26,63 +26,66 @@ import com.laex.cg2d.shared.model.ShapesDiagram;
  * The Class ShapeDeleteCommand.
  */
 public class ShapeDeleteCommand extends Command {
-  
+
   /** The child. */
   private final Shape child;
-  
+
   /** The parent layer. */
   private Layer parentLayer;
 
   /** The parent. */
   private final ShapesDiagram parent;
-  
+
   /** The source connections. */
   private List sourceConnections;
-  
+
   /** The target connections. */
   private List targetConnections;
-  
+
   /** The was removed. */
   private boolean wasRemoved;
-  
+
   /**
    * The Enum DeleteCommandType.
    */
   public enum DeleteCommandType {
-    
+
     /** The undoable. */
-    UNDOABLE, 
- /** The non undoable. */
- NON_UNDOABLE;
-    
+    UNDOABLE,
+    /** The non undoable. */
+    NON_UNDOABLE;
+
     /**
      * Checks if is undoable.
-     *
+     * 
      * @return true, if is undoable
      */
     boolean isUndoable() {
       return this == UNDOABLE;
     }
-    
+
     /**
      * Checks if is non undoable.
-     *
+     * 
      * @return true, if is non undoable
      */
     boolean isNonUndoable() {
       return this == NON_UNDOABLE;
     }
   };
-  
+
   /** The cmd type. */
   private DeleteCommandType cmdType;
 
   /**
    * Instantiates a new shape delete command.
-   *
-   * @param parent the parent
-   * @param child the child
-   * @param delCmdType the del cmd type
+   * 
+   * @param parent
+   *          the parent
+   * @param child
+   *          the child
+   * @param delCmdType
+   *          the del cmd type
    */
   public ShapeDeleteCommand(ShapesDiagram parent, Shape child, DeleteCommandType delCmdType) {
     if (parent == null || child == null) {
@@ -96,8 +99,9 @@ public class ShapeDeleteCommand extends Command {
 
   /**
    * Adds the connections.
-   *
-   * @param connections the connections
+   * 
+   * @param connections
+   *          the connections
    */
   private void addConnections(List connections) {
     for (int i = 0; i < connections.size(); i++) {
@@ -114,7 +118,7 @@ public class ShapeDeleteCommand extends Command {
   public boolean canUndo() {
     if (cmdType.isNonUndoable())
       return false;
-    
+
     return wasRemoved;
   }
 
@@ -128,7 +132,7 @@ public class ShapeDeleteCommand extends Command {
     sourceConnections = child.getSourceJoints();
     targetConnections = child.getTargetJoints();
     redo();
-    
+
     Activator.getDefault().getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Shape remove from screen"));
   }
 
@@ -147,7 +151,7 @@ public class ShapeDeleteCommand extends Command {
       removeConnections(sourceConnections);
       removeConnections(targetConnections);
       //
-//      IDCreationStrategy.decrement(child.getEditorShapeType());
+      // IDCreationStrategy.decrement(child.getEditorShapeType());
     }
   }
 
@@ -181,8 +185,9 @@ public class ShapeDeleteCommand extends Command {
 
   /**
    * The main method.
-   *
-   * @param args the arguments
+   * 
+   * @param args
+   *          the arguments
    */
   public static void main(String[] args) {
   }

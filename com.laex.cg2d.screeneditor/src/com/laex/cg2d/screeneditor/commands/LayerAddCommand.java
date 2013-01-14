@@ -22,15 +22,17 @@ public class LayerAddCommand extends Command {
 
   /** The new layer. */
   private Layer newLayer;
-  
+
   /** The diagram. */
   private ShapesDiagram diagram;
 
   /**
    * Instantiates a new layer add command.
-   *
-   * @param newLayer the new layer
-   * @param diagram the diagram
+   * 
+   * @param newLayer
+   *          the new layer
+   * @param diagram
+   *          the diagram
    */
   public LayerAddCommand(Layer newLayer, ShapesDiagram diagram) {
     this.newLayer = newLayer;
@@ -38,7 +40,9 @@ public class LayerAddCommand extends Command {
     this.setLabel("Add Layer");
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#canExecute()
    */
   @Override
@@ -46,7 +50,9 @@ public class LayerAddCommand extends Command {
     return newLayer != null && diagram != null && diagram.getLayers() != null;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#execute()
    */
   @Override
@@ -54,7 +60,9 @@ public class LayerAddCommand extends Command {
     redo();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#redo()
    */
   @Override
@@ -62,7 +70,9 @@ public class LayerAddCommand extends Command {
     diagram.getLayers().add(newLayer);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#undo()
    */
   @Override

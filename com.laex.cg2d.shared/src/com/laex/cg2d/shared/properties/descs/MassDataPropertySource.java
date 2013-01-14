@@ -28,13 +28,13 @@ public class MassDataPropertySource implements IPropertySource {
 
   /** The mass prop. */
   public static String MASS_PROP = "mass";
-  
+
   /** The rotational inertia prop. */
   public static String ROTATIONAL_INERTIA_PROP = "I";
-  
+
   /** The center prop. */
   public static String CENTER_PROP = "center";
-  
+
   /** The descriptors. */
   protected static IPropertyDescriptor[] descriptors;
 
@@ -51,14 +51,17 @@ public class MassDataPropertySource implements IPropertySource {
 
   /**
    * Instantiates a new mass data property source.
-   *
-   * @param massdata the massdata
+   * 
+   * @param massdata
+   *          the massdata
    */
   public MassDataPropertySource(MassData massdata) {
     this.massData = massdata;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
    */
   @Override
@@ -66,16 +69,23 @@ public class MassDataPropertySource implements IPropertySource {
     return this.massData;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
    */
   @Override
   public IPropertyDescriptor[] getPropertyDescriptors() {
     return descriptors;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang
+   * .Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
@@ -93,8 +103,9 @@ public class MassDataPropertySource implements IPropertySource {
 
   /**
    * Checks if is center prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is center prop
    */
   private boolean isCenterProp(Object id) {
@@ -103,8 +114,9 @@ public class MassDataPropertySource implements IPropertySource {
 
   /**
    * Checks if is rotational inertia prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is rotational inertia prop
    */
   private boolean isRotationalInertiaProp(Object id) {
@@ -113,31 +125,44 @@ public class MassDataPropertySource implements IPropertySource {
 
   /**
    * Checks if is mass prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is mass prop
    */
   private boolean isMassProp(Object id) {
     return id.equals(MASS_PROP);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang
+   * .Object)
    */
   @Override
   public boolean isPropertySet(Object id) {
     return true;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java
+   * .lang.Object)
    */
   @Override
   public void resetPropertyValue(Object id) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang
+   * .Object, java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -146,9 +171,11 @@ public class MassDataPropertySource implements IPropertySource {
 
   /**
    * Sets the property value.
-   *
-   * @param propName the prop name
-   * @param value the value
+   * 
+   * @param propName
+   *          the prop name
+   * @param value
+   *          the value
    */
   public void setPropertyValue(String propName, Object value) {
     // if (isCenterProp(propName)) {
@@ -162,7 +189,9 @@ public class MassDataPropertySource implements IPropertySource {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see java.lang.Object#toString()
    */
   @Override

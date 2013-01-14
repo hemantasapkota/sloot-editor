@@ -48,364 +48,369 @@ import com.laex.cg2d.protobuf.GameObject.CGShape;
  * The Class EntityManager.
  */
 public class EntityManager extends AbstractGameComponentManager {
-	
-	/** The batch. */
-	private SpriteBatch batch;
-	
-	/** The state time. */
-	float stateTime = 0;
-	
-	/** The draw bodies. */
-	boolean drawBodies;
 
-	/** The shape to sprite map. */
-	private Map<CGShape, Sprite> shapeToSpriteMap;
-	
-	/** The shape to entity map. */
-	private Map<CGShape, CGEntity> shapeToEntityMap;
-	
-	/** The entity to animation map. */
-	private Map<CGEntity, Animation> entityToAnimationMap;
-	// x = origin x, y = origin y, z = radius
-	/** The entity animation origin map. */
-	private Map<CGEntityAnimation, Vector3> entityAnimationOriginMap;
+  /** The batch. */
+  private SpriteBatch batch;
 
-	/**
-	 * Instantiates a new entity manager.
-	 *
-	 * @param model the model
-	 * @param world the world
-	 * @param cam the cam
-	 * @param batch the batch
-	 */
-	public EntityManager(CGGameModel model, World world, Camera cam,
-			SpriteBatch batch) {
-		super(model, world, cam);
-		this.batch = batch;
+  /** The state time. */
+  float stateTime = 0;
 
-		this.drawBodies = model.getScreenPrefs().getDebugDrawPrefs()
-				.getDrawBodies();
+  /** The draw bodies. */
+  boolean drawBodies;
 
-		this.shapeToSpriteMap = new HashMap<GameObject.CGShape, Sprite>();
-		this.shapeToEntityMap = new HashMap<GameObject.CGShape, GameObject.CGEntity>();
-		this.entityToAnimationMap = new HashMap<GameObject.CGEntity, Animation>();
-		this.entityAnimationOriginMap = new HashMap<GameObject.CGEntityAnimation, Vector3>();
-	}
+  /** The shape to sprite map. */
+  private Map<CGShape, Sprite> shapeToSpriteMap;
 
-	/**
-	 * Update state time.
-	 *
-	 * @param stateTime the state time
-	 */
-	public void updateStateTime(float stateTime) {
-		this.stateTime = stateTime;
-	}
+  /** The shape to entity map. */
+  private Map<CGShape, CGEntity> shapeToEntityMap;
 
-	/* (non-Javadoc)
-	 * @see com.laex.cg2d.render.IGameComponentManager#create()
-	 */
-	@Override
-	public void create() {
-		
-		try {
-			createBodies();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		createJoints();
-	}
+  /** The entity to animation map. */
+  private Map<CGEntity, Animation> entityToAnimationMap;
+  // x = origin x, y = origin y, z = radius
+  /** The entity animation origin map. */
+  private Map<CGEntityAnimation, Vector3> entityAnimationOriginMap;
 
-	/**
-	 * Joints must be created after all shapes are created including entities,
-	 * boxes, circles. Therefore, we create joints here in EntityManager and not
-	 * ShapeManager or BackgroundManager.
-	 */
-	private void createJoints() {
-		for (CGLayer layer : model().getLayersList()) {
-			for (CGShape shape : layer.getShapeList()) {
-				createJoints(shape);
-			}
-		}
-	}
+  /**
+   * Instantiates a new entity manager.
+   * 
+   * @param model
+   *          the model
+   * @param world
+   *          the world
+   * @param cam
+   *          the cam
+   * @param batch
+   *          the batch
+   */
+  public EntityManager(CGGameModel model, World world, Camera cam, SpriteBatch batch) {
+    super(model, world, cam);
+    this.batch = batch;
 
-	/**
-	 * Creates the bodies.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	private void createBodies() throws IOException {
-		for (CGLayer layer : model().getLayersList()) {
-			for (CGShape shape : layer.getShapeList()) {
-				CGEditorShapeType eType = shape.getEditorShapeType();
+    this.drawBodies = model.getScreenPrefs().getDebugDrawPrefs().getDrawBodies();
 
-				if (!(eType == CGEditorShapeType.ENTITY_SHAPE)) {
-					continue;
-				}
-				
-				CGEntity entity = CGEntity.parseFrom(Gdx.files.absolute(
-						shape.getEntityRefFile().getResourceFileAbsolute())
-						.read());
-				
-				shapeToEntityMap.put(shape, entity);
+    this.shapeToSpriteMap = new HashMap<GameObject.CGShape, Sprite>();
+    this.shapeToEntityMap = new HashMap<GameObject.CGShape, GameObject.CGEntity>();
+    this.entityToAnimationMap = new HashMap<GameObject.CGEntity, Animation>();
+    this.entityAnimationOriginMap = new HashMap<GameObject.CGEntityAnimation, Vector3>();
+  }
 
-				Body b = createBody(shape, entity);
-				b.setUserData(shape);
+  /**
+   * Update state time.
+   * 
+   * @param stateTime
+   *          the state time
+   */
+  public void updateStateTime(float stateTime) {
+    this.stateTime = stateTime;
+  }
 
-				CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(entity);
-				
-				System.err.println(ea.getAnimationResourceFile().getResourceFile());
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.render.IGameComponentManager#create()
+   */
+  @Override
+  public void create() {
 
-				// Resource file empty indicates this entity might not have image
-				// & collision shape
-				// defined. Ignore this and do not create bodies or shape for
-				// this kind of object.
-				if (ea.getAnimationResourceFile().getResourceFileAbsolute()
-						.trim().isEmpty()) {
-					world().destroyBody(b);
-					continue;
-				}
+    try {
+      createBodies();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
-				FileHandle handle = Gdx.files.absolute(ea
-						.getAnimationResourceFile().getResourceFileAbsolute());
+    createJoints();
+  }
 
-				Texture tex = new Texture(handle);
-				tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+  /**
+   * Joints must be created after all shapes are created including entities,
+   * boxes, circles. Therefore, we create joints here in EntityManager and not
+   * ShapeManager or BackgroundManager.
+   */
+  private void createJoints() {
+    for (CGLayer layer : model().getLayersList()) {
+      for (CGShape shape : layer.getShapeList()) {
+        createJoints(shape);
+      }
+    }
+  }
 
-				Animation spriteAnimation = null;
-				if (ea.getCols() / ea.getRows() > 1) {
-					// create sprite sheet animation
-					TextureRegion[][] tmp = TextureRegion.split(tex,
-							tex.getWidth() / ea.getCols(),
-							tex.getHeight() / ea.getRows());
-					TextureRegion[] walkFrames = new TextureRegion[ea.getCols()
-							* ea.getRows()];
-					int index = 0;
-					for (int i = 0; i < ea.getRows(); i++) {
-						for (int j = 0; j < ea.getCols(); j++) {
-							walkFrames[index++] = tmp[i][j];
-						}
-					}
-					spriteAnimation = new Animation(ea.getAnimationDuration(),
-							walkFrames);
-					entityToAnimationMap.put(entity, spriteAnimation);
-				}
+  /**
+   * Creates the bodies.
+   * 
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  private void createBodies() throws IOException {
+    for (CGLayer layer : model().getLayersList()) {
+      for (CGShape shape : layer.getShapeList()) {
+        CGEditorShapeType eType = shape.getEditorShapeType();
 
-				Sprite spr = null;
-				if (spriteAnimation == null) {
-					spr = new Sprite(tex);
-				} else {
-					spr = new Sprite(spriteAnimation.getKeyFrame(stateTime,
-							true));
-				}
+        if (!(eType == CGEditorShapeType.ENTITY_SHAPE)) {
+          continue;
+        }
 
-				// Set the position & size
-				float x = shape.getBounds().getX();
-				float y = shape.getBounds().getY();
-				float width = shape.getBounds().getWidth();
-				float height = shape.getBounds().getHeight();
+        CGEntity entity = CGEntity.parseFrom(Gdx.files.absolute(shape.getEntityRefFile().getResourceFileAbsolute())
+            .read());
 
-				Vector2 scrPos = new Vector2(x, y);
-				Vector2 worldPos = screenToWorldFlipped(scrPos, height);
-				spr.setPosition(worldPos.x * scaleFactor(), worldPos.y
-						* scaleFactor());
+        shapeToEntityMap.put(shape, entity);
 
-				// the position circle (collision shape) will vary with that of
-				// a box. so
-				// we need to check and set position for each types
-				if (ea.getCollisionType() == CGEntityCollisionType.CIRCLE) {
-					float radius = entityAnimationOriginMap.get(ea).z;
-					float x1 = (worldPos.x - radius);
-					float y1 = (worldPos.y - radius);
-					spr.setPosition(x1 * scaleFactor(), y1 * scaleFactor());
-				}
+        Body b = createBody(shape, entity);
+        b.setUserData(shape);
 
-				float w = ((float) width / ptmRatio()) * scaleFactor();
-				float h = ((float) height / ptmRatio()) * scaleFactor();
+        CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(entity);
 
-				spr.setSize(w, h);
+        System.err.println(ea.getAnimationResourceFile().getResourceFile());
 
-				shapeToSpriteMap.put(shape, spr);
-			}
-		}
-	}
+        // Resource file empty indicates this entity might not have
+        // image
+        // & collision shape
+        // defined. Ignore this and do not create bodies or shape for
+        // this kind of object.
+        if (ea.getAnimationResourceFile().getResourceFileAbsolute().trim().isEmpty()) {
+          world().destroyBody(b);
+          continue;
+        }
 
-	/* (non-Javadoc)
-	 * @see com.laex.cg2d.render.IGameComponentManager#render()
-	 */
-	@Override
-	public void render() {
-		if (!drawBodies) {
-			return;
-		}
+        FileHandle handle = Gdx.files.absolute(ea.getAnimationResourceFile().getResourceFileAbsolute());
 
-		batch.begin();
-		Iterator<Body> itr = world().getBodies();
-		while (itr.hasNext()) {
-			Body b = itr.next();
-			//
-			if (!(b.getUserData() instanceof CGShape)) {
-				continue;
-			}
+        Texture tex = new Texture(handle);
+        tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
-			CGShape shape = (CGShape) b.getUserData();
-			if (!(shape.getEditorShapeType() == CGEditorShapeType.ENTITY_SHAPE)) {
-				continue;
-			}
+        Animation spriteAnimation = null;
+        if (ea.getCols() / ea.getRows() > 1) {
+          // create sprite sheet animation
+          TextureRegion[][] tmp = TextureRegion.split(tex, tex.getWidth() / ea.getCols(),
+              tex.getHeight() / ea.getRows());
+          TextureRegion[] walkFrames = new TextureRegion[ea.getCols() * ea.getRows()];
+          int index = 0;
+          for (int i = 0; i < ea.getRows(); i++) {
+            for (int j = 0; j < ea.getCols(); j++) {
+              walkFrames[index++] = tmp[i][j];
+            }
+          }
+          spriteAnimation = new Animation(ea.getAnimationDuration(), walkFrames);
+          entityToAnimationMap.put(entity, spriteAnimation);
+        }
 
-			Vector2 pos = b.getPosition();
+        Sprite spr = null;
+        if (spriteAnimation == null) {
+          spr = new Sprite(tex);
+        } else {
+          spr = new Sprite(spriteAnimation.getKeyFrame(stateTime, true));
+        }
 
-			// position for circle collision shape & box collision shape differ.
-			CGEntity e = shapeToEntityMap.get(shape);
-			CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(e);
+        // Set the position & size
+        float x = shape.getBounds().getX();
+        float y = shape.getBounds().getY();
+        float width = shape.getBounds().getWidth();
+        float height = shape.getBounds().getHeight();
 
-			// Position of circle should be adjusted of radius.
-			if (ea.getCollisionType() == CGEntityCollisionType.CIRCLE) {
-				float radius = entityAnimationOriginMap.get(ea).z;
-				pos.x = pos.x - radius;
-				pos.y = pos.y - radius;
-			}
+        Vector2 scrPos = new Vector2(x, y);
+        Vector2 worldPos = screenToWorldFlipped(scrPos, height);
+        spr.setPosition(worldPos.x * scaleFactor(), worldPos.y * scaleFactor());
 
-			Sprite spr = shapeToSpriteMap.get(shape);
-			if (spr != null) {
-				spr.setPosition(pos.x * scaleFactor(), pos.y * scaleFactor());
-				// setting origin important for rotations to work properly
-				Vector3 origin = entityAnimationOriginMap.get(ea);
-				spr.setOrigin(origin.x, origin.y);
-				spr.setRotation(b.getAngle() * MathUtils.radiansToDegrees);
+        // the position circle (collision shape) will vary with that of
+        // a box. so
+        // we need to check and set position for each types
+        if (ea.getCollisionType() == CGEntityCollisionType.CIRCLE) {
+          float radius = entityAnimationOriginMap.get(ea).z;
+          float x1 = (worldPos.x - radius);
+          float y1 = (worldPos.y - radius);
+          spr.setPosition(x1 * scaleFactor(), y1 * scaleFactor());
+        }
 
-				Animation anim = entityToAnimationMap.get(shapeToEntityMap
-						.get(shape));
-				if (anim != null) {
-					TextureRegion tr = anim.getKeyFrame(stateTime, true);
-					spr.setRegion(tr);
-				}
-				spr.draw(batch);
-			}
-		}
-		batch.end();
-	}
+        float w = ((float) width / ptmRatio()) * scaleFactor();
+        float h = ((float) height / ptmRatio()) * scaleFactor();
 
-	/* (non-Javadoc)
-	 * @see com.laex.cg2d.render.IGameComponentManager#dispose()
-	 */
-	@Override
-	public void dispose() {
-		Iterator<Body> itr = world().getBodies();
-		while (itr.hasNext()) {
-			Body b = itr.next();
-			if (!(b.getUserData() instanceof CGShape)) {
-				continue;
-			}
-			CGShape shape = (CGShape) b.getUserData();
-			Sprite spr = shapeToSpriteMap.get(shape);
-			if (spr != null) {
-				spr.getTexture().dispose();
-			}
-		}
-	}
+        spr.setSize(w, h);
 
-	/* (non-Javadoc)
-	 * @see com.laex.cg2d.render.AbstractGameComponentManager#createEntityCollisionShape(com.laex.cg2d.protobuf.GameObject.CGShape, com.laex.cg2d.protobuf.GameObject.CGEntity, com.badlogic.gdx.physics.box2d.BodyDef, com.badlogic.gdx.physics.box2d.FixtureDef, com.badlogic.gdx.physics.box2d.Body, com.badlogic.gdx.math.Vector2)
-	 */
-	@Override
-	public void createEntityCollisionShape(CGShape shape, CGEntity entity,
-			BodyDef bodyDef, FixtureDef fixDef, Body b, Vector2 pos) {
+        shapeToSpriteMap.put(shape, spr);
+      }
+    }
+  }
 
-		CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(entity);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.render.IGameComponentManager#render()
+   */
+  @Override
+  public void render() {
+    if (!drawBodies) {
+      return;
+    }
 
-		CGEntityCollisionType shapeType = ea.getCollisionType();
-		PolygonShape polyShape = new PolygonShape();
-		Vector2[] va = null;
+    batch.begin();
+    Iterator<Body> itr = world().getBodies();
+    while (itr.hasNext()) {
+      Body b = itr.next();
+      //
+      if (!(b.getUserData() instanceof CGShape)) {
+        continue;
+      }
 
-		// check if shape type is NONE. NONE shape type means that this entity
-		// has no collision parameters defined.
-		// We simple ignore this and do not craete any shape collision for this
-		// object
-		if (shapeType == CGEntityCollisionType.NONE) {
-			return;
-		}
+      CGShape shape = (CGShape) b.getUserData();
+      if (!(shape.getEditorShapeType() == CGEditorShapeType.ENTITY_SHAPE)) {
+        continue;
+      }
 
-		switch (shapeType) {
-		case BOX:
-			va = normalizeVertices(ea.getVerticesList(), shape.getBounds()
-					.getHeight());
-			polyShape.set(va);
+      Vector2 pos = b.getPosition();
 
-			entityAnimationOriginMap.put(ea, new Vector3(0, 0, 0));
+      // position for circle collision shape & box collision shape differ.
+      CGEntity e = shapeToEntityMap.get(shape);
+      CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(e);
 
-			fixDef.shape = polyShape;
-			b.createFixture(fixDef);
-			break;
+      // Position of circle should be adjusted of radius.
+      if (ea.getCollisionType() == CGEntityCollisionType.CIRCLE) {
+        float radius = entityAnimationOriginMap.get(ea).z;
+        pos.x = pos.x - radius;
+        pos.y = pos.y - radius;
+      }
 
-		case CIRCLE:
-			// destroy the body and create a new one for circle because the
-			// position has to be updated
-			world().destroyBody(b);
+      Sprite spr = shapeToSpriteMap.get(shape);
+      if (spr != null) {
+        spr.setPosition(pos.x * scaleFactor(), pos.y * scaleFactor());
+        // setting origin important for rotations to work properly
+        Vector3 origin = entityAnimationOriginMap.get(ea);
+        spr.setOrigin(origin.x, origin.y);
+        spr.setRotation(b.getAngle() * MathUtils.radiansToDegrees);
 
-			CircleShape circShape = new CircleShape();
+        Animation anim = entityToAnimationMap.get(shapeToEntityMap.get(shape));
+        if (anim != null) {
+          TextureRegion tr = anim.getKeyFrame(stateTime, true);
+          spr.setRegion(tr);
+        }
+        spr.draw(batch);
+      }
+    }
+    batch.end();
+  }
 
-			// this radius is calculated for circle's collision shape data not
-			// the sprite width/height data
-			float radius = calculateRadiusOfCircleShape(ea.getShpWidth());
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.render.IGameComponentManager#dispose()
+   */
+  @Override
+  public void dispose() {
+    Iterator<Body> itr = world().getBodies();
+    while (itr.hasNext()) {
+      Body b = itr.next();
+      if (!(b.getUserData() instanceof CGShape)) {
+        continue;
+      }
+      CGShape shape = (CGShape) b.getUserData();
+      Sprite spr = shapeToSpriteMap.get(shape);
+      if (spr != null) {
+        spr.getTexture().dispose();
+      }
+    }
+  }
 
-			Vector2 cpos = new Vector2();
-			cpos.y = ea.getShpY();
-			cpos.x = ea.getShpX();
-			cpos = screenToWorld(cpos);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.render.AbstractGameComponentManager#createEntityCollisionShape
+   * (com.laex.cg2d.protobuf.GameObject.CGShape,
+   * com.laex.cg2d.protobuf.GameObject.CGEntity,
+   * com.badlogic.gdx.physics.box2d.BodyDef,
+   * com.badlogic.gdx.physics.box2d.FixtureDef,
+   * com.badlogic.gdx.physics.box2d.Body, com.badlogic.gdx.math.Vector2)
+   */
+  @Override
+  public void createEntityCollisionShape(CGShape shape, CGEntity entity, BodyDef bodyDef, FixtureDef fixDef, Body b,
+      Vector2 pos) {
 
-			// this formula is too arcane. explain why it is needed and where
-			// did it arise from.
-			// float ox = ((((ea.getShpX() + ea.getShpWidth()) / ptmRatio()) /
-			// scaleFactor()) / 2)
-			// + (scaleFactor() * radius);
-			// float oy = ((((ea.getShpY() + ea.getShpHeight()) / ptmRatio()) /
-			// scaleFactor()) / 2)
-			// + (scaleFactor() * radius);
+    CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(entity);
 
-			// the formulate below was reduced from the above one
-			float radiusScaled = scaleFactor() * radius;
+    CGEntityCollisionType shapeType = ea.getCollisionType();
+    PolygonShape polyShape = new PolygonShape();
+    Vector2[] va = null;
 
-			float ox = ((5 * (ea.getShpX() + ea.getShpWidth())) / (ptmRatio() * ptmRatio()))
-					+ radiusScaled;
+    // check if shape type is NONE. NONE shape type means that this entity
+    // has no collision parameters defined.
+    // We simple ignore this and do not craete any shape collision for this
+    // object
+    if (shapeType == CGEntityCollisionType.NONE) {
+      return;
+    }
 
-			float oy = ((5 * (ea.getShpY() + ea.getShpHeight())) / (ptmRatio() * ptmRatio()))
-					+ radiusScaled;
+    switch (shapeType) {
+    case BOX:
+      va = normalizeVertices(ea.getVerticesList(), shape.getBounds().getHeight());
+      polyShape.set(va);
 
-			bodyDef.position.set(pos.add(radius, radius));
-			b = world().createBody(bodyDef);
+      entityAnimationOriginMap.put(ea, new Vector3(0, 0, 0));
 
-			circShape.setRadius(radius);
-			circShape.setPosition(cpos);
+      fixDef.shape = polyShape;
+      b.createFixture(fixDef);
+      break;
 
-			entityAnimationOriginMap.put(ea, new Vector3(ox, oy, radius));
+    case CIRCLE:
+      // destroy the body and create a new one for circle because the
+      // position has to be updated
+      world().destroyBody(b);
 
-			fixDef.shape = circShape;
-			b.createFixture(fixDef);
-			break;
+      CircleShape circShape = new CircleShape();
 
-		case CUSTOM:
-			BodyEditorLoader bel = new BodyEditorLoader(Gdx.files.absolute(ea
-					.getFixtureFile().getResourceFileAbsolute()));
-			// scale = image width or image height / ptmRatio
-			/*
-			 * bodyScale: Consider this: scale is a factor which scales the
-			 * vertices created by Physcis Editor. This scale is not equals to
-			 * ptmRatio or scaleFactor. bodyScale is the width or height of the
-			 * image / ptmRatio imageWidth = 32, scale = imageWidth / ptmRatio =
-			 * 32 / 16 = 2 imageWidth = 32, scale = imageWidth / ptmRatio = 32 /
-			 * 32 = 1
-			 */
-			float bodyScale = (shape.getBounds().getWidth() / ptmRatio());
-			bel.attachFixture(b, ea.getAnimationName(), fixDef, bodyScale);
-			Vector2 or = bel.getOrigin(ea.getAnimationName(), bodyScale);
-			entityAnimationOriginMap.put(ea, new Vector3(or.x, or.y, 0));
-			break;
+      // this radius is calculated for circle's collision shape data not
+      // the sprite width/height data
+      float radius = calculateRadiusOfCircleShape(ea.getShpWidth());
 
-		case NONE:
-		default:
-			break;
-		}
+      Vector2 cpos = new Vector2();
+      cpos.y = ea.getShpY();
+      cpos.x = ea.getShpX();
+      cpos = screenToWorld(cpos);
 
-	}
+      // this formula is too arcane. explain why it is needed and where
+      // did it arise from.
+      // float ox = ((((ea.getShpX() + ea.getShpWidth()) / ptmRatio()) /
+      // scaleFactor()) / 2)
+      // + (scaleFactor() * radius);
+      // float oy = ((((ea.getShpY() + ea.getShpHeight()) / ptmRatio()) /
+      // scaleFactor()) / 2)
+      // + (scaleFactor() * radius);
+
+      // the formulate below was reduced from the above one
+      float radiusScaled = scaleFactor() * radius;
+
+      float ox = ((5 * (ea.getShpX() + ea.getShpWidth())) / (ptmRatio() * ptmRatio())) + radiusScaled;
+
+      float oy = ((5 * (ea.getShpY() + ea.getShpHeight())) / (ptmRatio() * ptmRatio())) + radiusScaled;
+
+      bodyDef.position.set(pos.add(radius, radius));
+      b = world().createBody(bodyDef);
+
+      circShape.setRadius(radius);
+      circShape.setPosition(cpos);
+
+      entityAnimationOriginMap.put(ea, new Vector3(ox, oy, radius));
+
+      fixDef.shape = circShape;
+      b.createFixture(fixDef);
+      break;
+
+    case CUSTOM:
+      BodyEditorLoader bel = new BodyEditorLoader(Gdx.files.absolute(ea.getFixtureFile().getResourceFileAbsolute()));
+      // scale = image width or image height / ptmRatio
+      /*
+       * bodyScale: Consider this: scale is a factor which scales the vertices
+       * created by Physcis Editor. This scale is not equals to ptmRatio or
+       * scaleFactor. bodyScale is the width or height of the image / ptmRatio
+       * imageWidth = 32, scale = imageWidth / ptmRatio = 32 / 16 = 2 imageWidth
+       * = 32, scale = imageWidth / ptmRatio = 32 / 32 = 1
+       */
+      float bodyScale = (shape.getBounds().getWidth() / ptmRatio());
+      bel.attachFixture(b, ea.getAnimationName(), fixDef, bodyScale);
+      Vector2 or = bel.getOrigin(ea.getAnimationName(), bodyScale);
+      entityAnimationOriginMap.put(ea, new Vector3(or.x, or.y, 0));
+      break;
+
+    case NONE:
+    default:
+      break;
+    }
+
+  }
 }

@@ -19,15 +19,23 @@ import org.eclipse.swt.graphics.Image;
  */
 class AnimationTableLabelProvider extends LabelProvider implements ITableLabelProvider {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object, int)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.
+   * Object, int)
    */
   public Image getColumnImage(Object element, int columnIndex) {
     return ((AnimationListViewItem) element).getFirstFrame();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object, int)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object
+   * , int)
    */
   public String getColumnText(Object element, int columnIndex) {
     return ((AnimationListViewItem) element).getName();

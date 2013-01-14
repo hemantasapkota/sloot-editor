@@ -60,51 +60,53 @@ import com.laex.cg2d.shared.util.PlatformUtil;
  * The Class ListExistingScreensDialog.
  */
 public class ListExistingScreensDialog extends Dialog {
-  
+
   /** The list. */
   private List list;
-  
+
   /** The list viewer. */
   private ListViewer listViewer;
-  
+
   /** The res list. */
   private java.util.List<IResource> resList;
 
   /** The command stack. */
   private CommandStack commandStack;
-  
+
   /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
-  
+
   /** The btn import in new. */
   private Button btnImportInNew;
-  
+
   /** The txt new layer name. */
   private Text txtNewLayerName;
-  
+
   /** The lbl new label. */
   private Label lblNewLabel;
-  
+
   /** The new layer name composite. */
   private Composite newLayerNameComposite;
-  
+
   /** The label. */
   private Label label;
-  
+
   /** The label_1. */
   private Label label_1;
-  
+
   /** The lbl shape prefix. */
   private Label lblShapePrefix;
-  
+
   /** The txt suffix. */
   private Text txtSuffix;
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
-   * @param cmdStack the cmd stack
+   * 
+   * @param parentShell
+   *          the parent shell
+   * @param cmdStack
+   *          the cmd stack
    */
   public ListExistingScreensDialog(Shell parentShell, CommandStack cmdStack) {
     super(parentShell);
@@ -113,8 +115,9 @@ public class ListExistingScreensDialog extends Dialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -272,8 +275,9 @@ public class ListExistingScreensDialog extends Dialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -283,7 +287,9 @@ public class ListExistingScreensDialog extends Dialog {
     getButton(OK).setEnabled(false);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.dialogs.Dialog#okPressed()
    */
   @Override
@@ -366,7 +372,7 @@ public class ListExistingScreensDialog extends Dialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override

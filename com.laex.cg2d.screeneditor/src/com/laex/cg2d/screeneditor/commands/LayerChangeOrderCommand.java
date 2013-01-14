@@ -19,64 +19,76 @@ import com.laex.cg2d.shared.model.ShapesDiagram;
  * The Class LayerChangeOrderCommand.
  */
 public class LayerChangeOrderCommand extends Command {
-  
+
   /** The diagram. */
   private ShapesDiagram diagram;
-  
+
   /** The layers. */
   private Layer[] layers;
 
   /**
    * Instantiates a new layer change order command.
-   *
-   * @param diagram the diagram
-   * @param layers the layers
+   * 
+   * @param diagram
+   *          the diagram
+   * @param layers
+   *          the layers
    */
   public LayerChangeOrderCommand(ShapesDiagram diagram, Layer[] layers) {
     this.diagram = diagram;
     this.layers = layers;
     setLabel("Change layer order");
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#canExecute()
    */
   @Override
   public boolean canExecute() {
-    return (layers !=  null) && (diagram != null);
+    return (layers != null) && (diagram != null);
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#canUndo()
    */
   @Override
   public boolean canUndo() {
     return false;
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#execute()
    */
   @Override
   public void execute() {
     redo();
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#redo()
    */
   @Override
   public void redo() {
-    //clear the layers
+    // clear the layers
     diagram.getLayers().clear();
-    
-    //add the layers in the specified order
+
+    // add the layers in the specified order
     for (Layer o : layers) {
       diagram.getLayers().add(o);
     }
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#undo()
    */
   @Override

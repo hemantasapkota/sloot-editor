@@ -23,21 +23,21 @@ public final class DNDFileTransfer {
    * The Enum TransferType.
    */
   public enum TransferType {
-    
+
     /** The none. */
-    NONE, 
- /** The texture. */
- TEXTURE, 
- /** The entity. */
- ENTITY;
+    NONE,
+    /** The texture. */
+    TEXTURE,
+    /** The entity. */
+    ENTITY;
   }
 
   /** The transfer type. */
   public static TransferType transferType = TransferType.NONE;
-  
+
   /** The file. */
   public static IFile file = null;
-  
+
   /** The entity. */
   public static Entity entity = null;
 

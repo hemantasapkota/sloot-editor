@@ -46,10 +46,10 @@ import com.laex.cg2d.shared.util.ScreenPropertiesUtil;
  * The Class NewScreenWizard.
  */
 public class NewScreenWizard extends Wizard implements INewWizard {
-  
+
   /** The page. */
   private NewScreenPage page;
-  
+
   /** The path to project. */
   private IPath pathToProject;
 
@@ -60,7 +60,9 @@ public class NewScreenWizard extends Wizard implements INewWizard {
     setNeedsProgressMonitor(true);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.wizard.Wizard#addPages()
    */
   @Override
@@ -73,8 +75,11 @@ public class NewScreenWizard extends Wizard implements INewWizard {
     addPage(page);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
+   * org.eclipse.jface.viewers.IStructuredSelection)
    */
   @Override
   public void init(IWorkbench workbench, IStructuredSelection selection) {
@@ -98,7 +103,9 @@ public class NewScreenWizard extends Wizard implements INewWizard {
     pathToProject = path;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.wizard.Wizard#performFinish()
    */
   @Override

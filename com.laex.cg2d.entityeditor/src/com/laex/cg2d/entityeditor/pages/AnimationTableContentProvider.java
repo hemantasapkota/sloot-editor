@@ -25,28 +25,39 @@ class AnimationTableContentProvider implements IStructuredContentProvider {
 
   /**
    * Instantiates a new animation table content provider.
-   *
-   * @param items the items
+   * 
+   * @param items
+   *          the items
    */
   public AnimationTableContentProvider(List items) {
     this.listItems = items;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang
+   * .Object)
    */
   public Object[] getElements(Object inputElement) {
     return listItems.toArray();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.viewers.IContentProvider#dispose()
    */
   public void dispose() {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface
+   * .viewers.Viewer, java.lang.Object, java.lang.Object)
    */
   public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
   }

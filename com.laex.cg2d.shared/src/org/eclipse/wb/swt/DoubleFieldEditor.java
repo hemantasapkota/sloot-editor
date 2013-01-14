@@ -24,13 +24,13 @@ import org.eclipse.swt.widgets.Text;
  * @author scheglov_ke
  */
 public class DoubleFieldEditor extends StringFieldEditor {
-  
+
   /** The Constant DEFAULT_TEXT_LIMIT. */
   private static final int DEFAULT_TEXT_LIMIT = 10;
-  
+
   /** The m_min valid value. */
   private double m_minValidValue;
-  
+
   /** The m_max valid value. */
   private double m_maxValidValue = Double.MAX_VALUE;
 
@@ -86,7 +86,7 @@ public class DoubleFieldEditor extends StringFieldEditor {
   // //////////////////////////////////////////////////////////////////////////
   /**
    * Gets the message_not double.
-   *
+   * 
    * @return the message_not double
    */
   private static String getMessage_notDouble() {
@@ -96,9 +96,11 @@ public class DoubleFieldEditor extends StringFieldEditor {
 
   /**
    * Gets the message_invalid range.
-   *
-   * @param min the min
-   * @param max the max
+   * 
+   * @param min
+   *          the min
+   * @param max
+   *          the max
    * @return the message_invalid range
    */
   private static String getMessage_invalidRange(double min, double max) {
@@ -110,8 +112,9 @@ public class DoubleFieldEditor extends StringFieldEditor {
 
   /**
    * Replace integer_with double.
-   *
-   * @param message the message
+   * 
+   * @param message
+   *          the message
    * @return the string
    */
   private static String replaceInteger_withDouble(String message) {
@@ -129,7 +132,9 @@ public class DoubleFieldEditor extends StringFieldEditor {
   // FieldEditor
   //
   // //////////////////////////////////////////////////////////////////////////
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.StringFieldEditor#checkState()
    */
   @Override
@@ -153,7 +158,9 @@ public class DoubleFieldEditor extends StringFieldEditor {
     return false;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.StringFieldEditor#doLoad()
    */
   @Override
@@ -165,7 +172,9 @@ public class DoubleFieldEditor extends StringFieldEditor {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.StringFieldEditor#doLoadDefault()
    */
   @Override
@@ -178,7 +187,9 @@ public class DoubleFieldEditor extends StringFieldEditor {
     valueChanged();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.StringFieldEditor#doStore()
    */
   @Override
@@ -197,9 +208,10 @@ public class DoubleFieldEditor extends StringFieldEditor {
   // //////////////////////////////////////////////////////////////////////////
   /**
    * Returns this field editor's current value as a double.
-   *
+   * 
    * @return the value
-   * @throws NumberFormatException if the <code>String</code> does not contain a parsable double
+   * @throws NumberFormatException
+   *           if the <code>String</code> does not contain a parsable double
    */
   public double getDoubleValue() throws NumberFormatException {
     return new Double(getStringValue()).doubleValue();

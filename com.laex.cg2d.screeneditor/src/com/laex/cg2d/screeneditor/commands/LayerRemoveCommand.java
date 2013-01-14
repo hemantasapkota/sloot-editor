@@ -30,7 +30,7 @@ public class LayerRemoveCommand extends Command {
 
   /** The parent. */
   private ShapesDiagram parent;
-  
+
   /** The layer. */
   private Layer layer;
 
@@ -39,9 +39,11 @@ public class LayerRemoveCommand extends Command {
 
   /**
    * Instantiates a new layer remove command.
-   *
-   * @param layer the layer
-   * @param parent the parent
+   * 
+   * @param layer
+   *          the layer
+   * @param parent
+   *          the parent
    */
   public LayerRemoveCommand(Layer layer, ShapesDiagram parent) {
     this.layer = layer;
@@ -52,9 +54,11 @@ public class LayerRemoveCommand extends Command {
 
   /**
    * Builds the remove shape commands.
-   *
-   * @param layer the layer
-   * @param parent the parent
+   * 
+   * @param layer
+   *          the layer
+   * @param parent
+   *          the parent
    */
   private void buildRemoveShapeCommands(Layer layer, ShapesDiagram parent) {
     CompoundCommand cc = new CompoundCommand("Remove shapes in layer");
@@ -73,9 +77,11 @@ public class LayerRemoveCommand extends Command {
 
   /**
    * Builds the add shape commands.
-   *
-   * @param layer the layer
-   * @param parent the parent
+   * 
+   * @param layer
+   *          the layer
+   * @param parent
+   *          the parent
    */
   private void buildAddShapeCommands(Layer layer, ShapesDiagram parent) {
     CompoundCommand cc = new CompoundCommand("Add shapes in layer");
@@ -86,7 +92,9 @@ public class LayerRemoveCommand extends Command {
     cc.execute();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#canExecute()
    */
   @Override
@@ -94,7 +102,9 @@ public class LayerRemoveCommand extends Command {
     return layer != null && parent != null;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#execute()
    */
   @Override
@@ -103,7 +113,9 @@ public class LayerRemoveCommand extends Command {
     buildRemoveShapeCommands(layer, parent);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#redo()
    */
   @Override
@@ -111,7 +123,9 @@ public class LayerRemoveCommand extends Command {
     parent.getLayers().remove(layer);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#undo()
    */
   @Override

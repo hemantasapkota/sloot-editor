@@ -58,61 +58,65 @@ import com.laex.cg2d.shared.ResourceManager;
  * The Class ImportSpriteDialog.
  */
 public class ImportSpriteDialog extends Dialog {
-  
+
   /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
-  
+
   /** The txt cols. */
   private Spinner txtCols;
-  
+
   /** The txt rows. */
   private Spinner txtRows;
 
   /** The sprite composite. */
   private ScrolledComposite spriteComposite;
-  
+
   /** The selected image. */
   private Image selectedImage;
 
   /** The resource file. */
   private String resourceFile;
-  
+
   /** The resource file absolute. */
   private String resourceFileAbsolute;
 
   /** The cols. */
   private int cols;
-  
+
   /** The rows. */
   private int rows;
-  
+
   /** The ok button. */
   private Button okButton;
 
   /** The edml. */
   private ExtractionDataModifyListener edml = new ExtractionDataModifyListener();
-  
+
   /** The figure canvas. */
   private FigureCanvas figureCanvas;
-  
+
   /** The flp. */
   private FreeformLayeredPane flp = new FreeformLayeredPane();
 
   /**
-   * The listener interface for receiving extractionDataModify events.
-   * The class that is interested in processing a extractionDataModify
-   * event implements this interface, and the object created
-   * with that class is registered with a component using the
-   * component's <code>addExtractionDataModifyListener<code> method. When
+   * The listener interface for receiving extractionDataModify events. The class
+   * that is interested in processing a extractionDataModify event implements
+   * this interface, and the object created with that class is registered with a
+   * component using the component's
+   * <code>addExtractionDataModifyListener<code> method. When
    * the extractionDataModify event occurs, that object's appropriate
    * method is invoked.
-   *
+   * 
    * @see ExtractionDataModifyEvent
    */
   class ExtractionDataModifyListener implements ModifyListener {
 
-    /* (non-Javadoc)
-     * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events
+     * .ModifyEvent)
      */
     @Override
     public void modifyText(ModifyEvent e) {
@@ -126,8 +130,9 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
+   * 
+   * @param parentShell
+   *          the parent shell
    * @wbp.parser.constructor
    */
   public ImportSpriteDialog(Shell parentShell) {
@@ -136,8 +141,9 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -282,7 +288,7 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Gets the selected image.
-   *
+   * 
    * @return the selected image
    */
   public Image getSelectedImage() {
@@ -291,7 +297,7 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Gets the cols.
-   *
+   * 
    * @return the cols
    */
   public int getCols() {
@@ -300,7 +306,7 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Gets the rows.
-   *
+   * 
    * @return the rows
    */
   public int getRows() {
@@ -309,7 +315,7 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Gets the resource file.
-   *
+   * 
    * @return the resource file
    */
   public String getResourceFile() {
@@ -318,14 +324,16 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Gets the resource file absolute.
-   *
+   * 
    * @return the resource file absolute
    */
   public String getResourceFileAbsolute() {
     return resourceFileAbsolute;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.dialogs.Dialog#okPressed()
    */
   @Override
@@ -338,8 +346,9 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -351,7 +360,7 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override
@@ -361,7 +370,7 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Gets the sprite composite.
-   *
+   * 
    * @return the sprite composite
    */
   public ScrolledComposite getSpriteComposite() {
@@ -370,7 +379,7 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Gets the txt cols.
-   *
+   * 
    * @return the txt cols
    */
   private Spinner getTxtCols() {
@@ -379,7 +388,7 @@ public class ImportSpriteDialog extends Dialog {
 
   /**
    * Gets the txt rows.
-   *
+   * 
    * @return the txt rows
    */
   private Spinner getTxtRows() {

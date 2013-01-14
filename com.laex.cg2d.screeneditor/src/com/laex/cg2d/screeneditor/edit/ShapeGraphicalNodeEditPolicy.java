@@ -26,8 +26,12 @@ import com.laex.cg2d.shared.model.Shape;
  */
 public class ShapeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getConnectionCompleteCommand(org.eclipse.gef.requests.CreateConnectionRequest)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#
+   * getConnectionCompleteCommand
+   * (org.eclipse.gef.requests.CreateConnectionRequest)
    */
   protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
     JointCreateCommand cmd = (JointCreateCommand) request.getStartCommand();
@@ -35,8 +39,12 @@ public class ShapeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     return cmd;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getConnectionCreateCommand(org.eclipse.gef.requests.CreateConnectionRequest)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getConnectionCreateCommand
+   * (org.eclipse.gef.requests.CreateConnectionRequest)
    */
   protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
     Shape source = (Shape) getHost().getModel();
@@ -46,8 +54,12 @@ public class ShapeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     return cmd;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectSourceCommand(org.eclipse.gef.requests.ReconnectRequest)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectSourceCommand
+   * (org.eclipse.gef.requests.ReconnectRequest)
    */
   protected Command getReconnectSourceCommand(ReconnectRequest request) {
     Joint jonn = (Joint) request.getConnectionEditPart().getModel();
@@ -57,8 +69,12 @@ public class ShapeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     return cmd;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectTargetCommand(org.eclipse.gef.requests.ReconnectRequest)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectTargetCommand
+   * (org.eclipse.gef.requests.ReconnectRequest)
    */
   protected Command getReconnectTargetCommand(ReconnectRequest request) {
     Joint jonn = (Joint) request.getConnectionEditPart().getModel();

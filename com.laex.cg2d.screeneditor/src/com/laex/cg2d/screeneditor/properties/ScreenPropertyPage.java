@@ -51,8 +51,12 @@ public class ScreenPropertyPage extends PropertyPage {
    */
   private final class SpinnerChecker implements ModifyListener {
 
-    /* (non-Javadoc)
-     * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events
+     * .ModifyEvent)
      */
     @Override
     public void modifyText(ModifyEvent e) {
@@ -72,9 +76,13 @@ public class ScreenPropertyPage extends PropertyPage {
    * The Class FloatChecker.
    */
   private final class FloatChecker implements ModifyListener, FocusListener {
-    
-    /* (non-Javadoc)
-     * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events
+     * .ModifyEvent)
      */
     @Override
     public void modifyText(ModifyEvent e) {
@@ -89,15 +97,23 @@ public class ScreenPropertyPage extends PropertyPage {
       }
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.swt.events.FocusListener#focusGained(org.eclipse.swt.events.FocusEvent)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.swt.events.FocusListener#focusGained(org.eclipse.swt.events
+     * .FocusEvent)
      */
     @Override
     public void focusGained(FocusEvent e) {
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.swt.events.FocusListener#focusLost(org.eclipse.swt.events.FocusEvent)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.swt.events.FocusListener#focusLost(org.eclipse.swt.events
+     * .FocusEvent)
      */
     @Override
     public void focusLost(FocusEvent e) {
@@ -111,58 +127,58 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /** The float checker. */
   final FloatChecker floatChecker = new FloatChecker();
-  
+
   /** The int checker. */
   final SpinnerChecker intChecker = new SpinnerChecker();
 
   /** The composite_2. */
   private Composite composite_2;
-  
+
   /** The txt ptm. */
   private Spinner txtPTM;
-  
+
   /** The txt time step. */
   private Text txtTimeStep;
-  
+
   /** The txt gravity x. */
   private Text txtGravityX;
-  
+
   /** The txt gravity y. */
   private Text txtGravityY;
-  
+
   /** The txt velocity itr. */
   private Spinner txtVelocityItr;
-  
+
   /** The txt pos itr. */
   private Spinner txtPosItr;
-  
+
   /** The btn bodies. */
   private Button btnBodies;
-  
+
   /** The btn joints. */
   private Button btnJoints;
-  
+
   /** The btn aabb. */
   private Button btnAabb;
-  
+
   /** The btn inactive modies. */
   private Button btnInactiveModies;
-  
+
   /** The btn install mouse joint. */
   private Button btnInstallMouseJoint;
-  
+
   /** The btn draw debug data. */
   private Button btnDrawDebugData;
-  
+
   /** The btn draw entities. */
   private Button btnDrawEntities;
-  
+
   /** The grp card settings. */
   private Group grpCardSettings;
-  
+
   /** The txt card no x. */
   private Spinner txtCardNoX;
-  
+
   /** The txt card no y. */
   private Spinner txtCardNoY;
 
@@ -181,8 +197,9 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /**
    * Populate properties.
-   *
-   * @throws CoreException the core exception
+   * 
+   * @throws CoreException
+   *           the core exception
    */
   private void populateProperties() throws CoreException {
     // Populate owner text field
@@ -214,8 +231,9 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /**
    * Creates the contents.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    * @see PreferencePage#createContents(Composite)
    */
@@ -360,7 +378,9 @@ public class ScreenPropertyPage extends PropertyPage {
     return composite_2;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.PreferencePage#performDefaults()
    */
   protected void performDefaults() {
@@ -390,8 +410,9 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /**
    * Apply changes.
-   *
-   * @param props the props
+   * 
+   * @param props
+   *          the props
    */
   private void applyChanges(Map<String, String> props) {
     // Update changes to the active screen editor
@@ -403,7 +424,9 @@ public class ScreenPropertyPage extends PropertyPage {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.preference.PreferencePage#performOk()
    */
   public boolean performOk() {
@@ -423,7 +446,7 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /**
    * Construct map.
-   *
+   * 
    * @return the map
    */
   private Map<String, String> constructMap() {

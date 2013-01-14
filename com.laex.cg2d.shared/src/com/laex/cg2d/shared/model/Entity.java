@@ -17,14 +17,14 @@ import org.eclipse.swt.graphics.Image;
 
 /**
  * The Class Entity.
- *
+ * 
  * @author hemantasapkota
  */
 public class Entity {
 
   /** The internal name. */
   private String internalName;
-  
+
   /** The animation list. */
   private List<EntityAnimation> animationList;
 
@@ -41,7 +41,7 @@ public class Entity {
 
   /**
    * Gets the internal name.
-   *
+   * 
    * @return the internal name
    */
   public String getInternalName() {
@@ -50,8 +50,9 @@ public class Entity {
 
   /**
    * Sets the internal name.
-   *
-   * @param internalName the new internal name
+   * 
+   * @param internalName
+   *          the new internal name
    */
   public void setInternalName(String internalName) {
     this.internalName = internalName;
@@ -59,8 +60,9 @@ public class Entity {
 
   /**
    * Adds the entity animation.
-   *
-   * @param anim the anim
+   * 
+   * @param anim
+   *          the anim
    */
   public void addEntityAnimation(EntityAnimation anim) {
     animationList.add(anim);
@@ -68,7 +70,7 @@ public class Entity {
 
   /**
    * Gets the default frame.
-   *
+   * 
    * @return the default frame
    */
   public Image getDefaultFrame() {
@@ -77,8 +79,9 @@ public class Entity {
 
   /**
    * Sets the default frame.
-   *
-   * @param defaultFrame the new default frame
+   * 
+   * @param defaultFrame
+   *          the new default frame
    */
   public void setDefaultFrame(Image defaultFrame) {
     this.defaultFrame = defaultFrame;
@@ -86,7 +89,7 @@ public class Entity {
 
   /**
    * Gets the animation list.
-   *
+   * 
    * @return the animation list
    */
   public List<EntityAnimation> getAnimationList() {

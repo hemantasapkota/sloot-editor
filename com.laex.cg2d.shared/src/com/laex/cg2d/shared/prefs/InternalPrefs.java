@@ -21,7 +21,7 @@ public class InternalPrefs {
 
   /**
    * Pref store.
-   *
+   * 
    * @return the i preference store
    */
   private static IPreferenceStore prefStore() {
@@ -30,7 +30,7 @@ public class InternalPrefs {
 
   /**
    * Game runner.
-   *
+   * 
    * @return the string
    */
   public static String gameRunner() {

@@ -26,13 +26,13 @@ public class RectanglePropertySource implements IPropertySource {
 
   /** The Constant X_PROP. */
   public static final String X_PROP = "x";
-  
+
   /** The Constant Y_PROP. */
   public static final String Y_PROP = "y";
-  
+
   /** The Constant WIDTH_PROP. */
   public static final String WIDTH_PROP = "width";
-  
+
   /** The Constant HEIGHT_PROP. */
   public static final String HEIGHT_PROP = "height";
 
@@ -60,22 +60,26 @@ public class RectanglePropertySource implements IPropertySource {
 
   /** The rect. */
   protected Rectangle rect;
-  
+
   /** The immutable size. */
   private boolean immutableSize;
 
   /**
    * Instantiates a new rectangle property source.
-   *
-   * @param rect the rect
-   * @param immutableSize the immutable size
+   * 
+   * @param rect
+   *          the rect
+   * @param immutableSize
+   *          the immutable size
    */
   public RectanglePropertySource(Rectangle rect, boolean immutableSize) {
     this.rect = rect;
     this.immutableSize = immutableSize;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
    */
   @Override
@@ -83,16 +87,23 @@ public class RectanglePropertySource implements IPropertySource {
     return rect;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
    */
   @Override
   public IPropertyDescriptor[] getPropertyDescriptors() {
     return descriptor;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang
+   * .Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
@@ -111,23 +122,35 @@ public class RectanglePropertySource implements IPropertySource {
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang
+   * .Object)
    */
   @Override
   public boolean isPropertySet(Object id) {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java
+   * .lang.Object)
    */
   @Override
   public void resetPropertyValue(Object id) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang
+   * .Object, java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -152,8 +175,9 @@ public class RectanglePropertySource implements IPropertySource {
 
   /**
    * Checks if is y prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is y prop
    */
   private boolean isYProp(Object id) {
@@ -162,8 +186,9 @@ public class RectanglePropertySource implements IPropertySource {
 
   /**
    * Checks if is x prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is x prop
    */
   private boolean isXProp(Object id) {
@@ -172,8 +197,9 @@ public class RectanglePropertySource implements IPropertySource {
 
   /**
    * Checks if is width prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is width prop
    */
   private boolean isWidthProp(Object id) {
@@ -182,8 +208,9 @@ public class RectanglePropertySource implements IPropertySource {
 
   /**
    * Checks if is height prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is height prop
    */
   private boolean isHeightProp(Object id) {
@@ -192,8 +219,9 @@ public class RectanglePropertySource implements IPropertySource {
 
   /**
    * Sets the x prop.
-   *
-   * @param value the new x prop
+   * 
+   * @param value
+   *          the new x prop
    */
   private void setXProp(Float value) {
     if (value != null) {
@@ -203,8 +231,9 @@ public class RectanglePropertySource implements IPropertySource {
 
   /**
    * Sets the y prop.
-   *
-   * @param value the new y prop
+   * 
+   * @param value
+   *          the new y prop
    */
   private void setYProp(Float value) {
     if (value != null) {
@@ -214,8 +243,9 @@ public class RectanglePropertySource implements IPropertySource {
 
   /**
    * Sets the width prop.
-   *
-   * @param value the new width prop
+   * 
+   * @param value
+   *          the new width prop
    */
   private void setWidthProp(Float value) {
     if (value != null) {
@@ -225,8 +255,9 @@ public class RectanglePropertySource implements IPropertySource {
 
   /**
    * Sets the height prop.
-   *
-   * @param value the new height prop
+   * 
+   * @param value
+   *          the new height prop
    */
   private void setHeightProp(Float value) {
     if (value != null) {

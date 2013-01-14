@@ -49,7 +49,7 @@ public final class PlatformUtil {
 
   /**
    * Checks if is entity editor active.
-   *
+   * 
    * @return true, if is entity editor active
    */
   public static boolean isEntityEditorActive() {
@@ -67,7 +67,7 @@ public final class PlatformUtil {
 
   /**
    * Checks if is screen editor active.
-   *
+   * 
    * @return true, if is screen editor active
    */
   public static boolean isScreenEditorActive() {
@@ -86,7 +86,7 @@ public final class PlatformUtil {
   // use in conjunction with isScreenEditorActive
   /**
    * Gets the screen layer manager.
-   *
+   * 
    * @return the screen layer manager
    */
   public static ILayerManager getScreenLayerManager() {
@@ -95,7 +95,7 @@ public final class PlatformUtil {
 
   /**
    * Gets the screen property manager.
-   *
+   * 
    * @return the screen property manager
    */
   public static IScreenPropertyManager getScreenPropertyManager() {
@@ -105,7 +105,7 @@ public final class PlatformUtil {
 
   /**
    * Gets the screen model.
-   *
+   * 
    * @return the screen model
    */
   public static GameModel getScreenModel() {
@@ -115,7 +115,7 @@ public final class PlatformUtil {
 
   /**
    * Gets the active editor input.
-   *
+   * 
    * @return the active editor input
    */
   public static IEditorInput getActiveEditorInput() {
@@ -124,10 +124,12 @@ public final class PlatformUtil {
 
   /**
    * Gets the list of screens in current project.
-   *
-   * @param input the input
+   * 
+   * @param input
+   *          the input
    * @return the list of screens in current project
-   * @throws CoreException the core exception
+   * @throws CoreException
+   *           the core exception
    */
   public static List<IResource> getListOfScreensInCurrentProject(IEditorInput input) throws CoreException {
     ICGCProject b2Prj = CGCProject.getInstance();
@@ -151,11 +153,15 @@ public final class PlatformUtil {
 
   /**
    * Save proto.
-   *
-   * @param monitor the monitor
-   * @param file the file
-   * @param byteInputStream the byte input stream
-   * @throws CoreException the core exception
+   * 
+   * @param monitor
+   *          the monitor
+   * @param file
+   *          the file
+   * @param byteInputStream
+   *          the byte input stream
+   * @throws CoreException
+   *           the core exception
    */
   public static void saveProto(IProgressMonitor monitor, IFile file, ByteArrayInputStream byteInputStream)
       throws CoreException {
@@ -164,10 +170,13 @@ public final class PlatformUtil {
 
   /**
    * Open container resource dialog.
-   *
-   * @param shell the shell
-   * @param root the root
-   * @param title the title
+   * 
+   * @param shell
+   *          the shell
+   * @param root
+   *          the root
+   * @param title
+   *          the title
    * @return the container selection dialog
    */
   public static ContainerSelectionDialog openContainerResourceDialog(Shell shell, IWorkspaceRoot root, String title) {
@@ -181,8 +190,9 @@ public final class PlatformUtil {
 
   /**
    * Standard method.
-   *
-   * @param resource the resource
+   * 
+   * @param resource
+   *          the resource
    * @return the string
    */
   public static String resourceString(IResource resource) {
@@ -191,8 +201,9 @@ public final class PlatformUtil {
 
   /**
    * Resource string absolute.
-   *
-   * @param resource the resource
+   * 
+   * @param resource
+   *          the resource
    * @return the string
    */
   public static String resourceStringAbsolute(IResource resource) {
@@ -201,8 +212,9 @@ public final class PlatformUtil {
 
   /**
    * Creates the image.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return the image
    */
   public static Image createImage(final ImageData id) {
@@ -217,8 +229,9 @@ public final class PlatformUtil {
 
   /**
    * Gets the image descriptor.
-   *
-   * @param i the i
+   * 
+   * @param i
+   *          the i
    * @return the image descriptor
    */
   public static ImageDescriptor getImageDescriptor(final Image i) {
@@ -232,9 +245,11 @@ public final class PlatformUtil {
 
   /**
    * Gets the image descriptor.
-   *
-   * @param i the i
-   * @param maximumSize the maximum size
+   * 
+   * @param i
+   *          the i
+   * @param maximumSize
+   *          the maximum size
    * @return the image descriptor
    */
   public static ImageDescriptor getImageDescriptor(final Image i, final Point maximumSize) {

@@ -26,10 +26,12 @@ public class ScreenPropertiesUtil {
 
   /**
    * Gets the card properties.
-   *
-   * @param res the res
+   * 
+   * @param res
+   *          the res
    * @return the card properties
-   * @throws CoreException the core exception
+   * @throws CoreException
+   *           the core exception
    */
   public static Map<String, String> getCardProperties(IResource res) throws CoreException {
     String cardNoX = res.getPersistentProperty(new QualifiedName("", PreferenceConstants.CARD_NO_X));
@@ -49,10 +51,12 @@ public class ScreenPropertiesUtil {
 
   /**
    * Gets the screen properties.
-   *
-   * @param res the res
+   * 
+   * @param res
+   *          the res
    * @return the screen properties
-   * @throws CoreException the core exception
+   * @throws CoreException
+   *           the core exception
    */
   public static Map<String, String> getScreenProperties(IResource res) throws CoreException {
 
@@ -109,10 +113,13 @@ public class ScreenPropertiesUtil {
 
   /**
    * Persist screen properties.
-   *
-   * @param res the res
-   * @param props the props
-   * @throws CoreException the core exception
+   * 
+   * @param res
+   *          the res
+   * @param props
+   *          the props
+   * @throws CoreException
+   *           the core exception
    */
   public static void persistScreenProperties(IResource res, Map<String, String> props) throws CoreException {
     res.setPersistentProperty(new QualifiedName("", PreferenceConstants.DRAW_BODIES),

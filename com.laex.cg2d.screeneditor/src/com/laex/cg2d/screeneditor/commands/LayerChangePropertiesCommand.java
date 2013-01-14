@@ -23,18 +23,20 @@ public class LayerChangePropertiesCommand extends Command {
 
   /** The diagram. */
   private ShapesDiagram diagram;
-  
+
   /** The layer. */
   private Layer layer;
-  
+
   /** The old layer. */
   private Layer oldLayer;
 
   /**
    * Instantiates a new layer change properties command.
-   *
-   * @param layer the layer
-   * @param diagram the diagram
+   * 
+   * @param layer
+   *          the layer
+   * @param diagram
+   *          the diagram
    */
   public LayerChangePropertiesCommand(Layer layer, ShapesDiagram diagram) {
     this.diagram = diagram;
@@ -42,7 +44,9 @@ public class LayerChangePropertiesCommand extends Command {
     this.setLabel("Change Layer Properties");
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#canExecute()
    */
   @Override
@@ -50,7 +54,9 @@ public class LayerChangePropertiesCommand extends Command {
     return layer != null && diagram != null && diagram.getLayers() != null;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#execute()
    */
   @Override
@@ -58,7 +64,9 @@ public class LayerChangePropertiesCommand extends Command {
     redo();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#redo()
    */
   @Override
@@ -80,7 +88,9 @@ public class LayerChangePropertiesCommand extends Command {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#undo()
    */
   @Override

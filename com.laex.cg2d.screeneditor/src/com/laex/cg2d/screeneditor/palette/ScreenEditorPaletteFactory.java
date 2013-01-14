@@ -51,7 +51,7 @@ public final class ScreenEditorPaletteFactory {
 
   /** The entities drawer. */
   private static PaletteDrawer entitiesDrawer;
-  
+
   /** The palette root. */
   private static PaletteRoot paletteRoot;
 
@@ -63,10 +63,13 @@ public final class ScreenEditorPaletteFactory {
 
   /**
    * Creates a new ScreenEditorPalette object.
-   *
-   * @param edInp the ed inp
-   * @throws IOException Signals that an I/O exception has occurred.
-   * @throws CoreException the core exception
+   * 
+   * @param edInp
+   *          the ed inp
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
    */
   public static void createEntitesPaletteItems(final IEditorInput edInp) throws IOException, CoreException {
     loadEntities(edInp);
@@ -78,10 +81,13 @@ public final class ScreenEditorPaletteFactory {
    * 
    * Entities with default animation, animation frame but not collision shape
    * are allowed.
-   *
-   * @param res the res
-   * @throws CoreException the core exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * 
+   * @param res
+   *          the res
+   * @throws CoreException
+   *           the core exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   private static void loadNewEntity(IResource res) throws CoreException, IOException {
     Entity e = EntitiesUtil.createEntityModelFromFile((IFile) res);
@@ -106,8 +112,9 @@ public final class ScreenEditorPaletteFactory {
 
   /**
    * Removes the entity.
-   *
-   * @param res the res
+   * 
+   * @param res
+   *          the res
    */
   public static void removeEntity(IResource res) {
     String name = EntitiesUtil.getInternalName(res.getName());
@@ -123,10 +130,13 @@ public final class ScreenEditorPaletteFactory {
 
   /**
    * Load entities.
-   *
-   * @param edInp the ed inp
-   * @throws IOException Signals that an I/O exception has occurred.
-   * @throws CoreException the core exception
+   * 
+   * @param edInp
+   *          the ed inp
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
    */
   private static void loadEntities(final IEditorInput edInp) throws IOException, CoreException {
     for (int i = 0; i < entitiesDrawer.getChildren().size(); i++) {
@@ -157,7 +167,7 @@ public final class ScreenEditorPaletteFactory {
 
   /**
    * Creates a new ScreenEditorPalette object.
-   *
+   * 
    * @return the palette container
    */
   private static PaletteContainer createEntitiesDrawer() {
@@ -167,7 +177,7 @@ public final class ScreenEditorPaletteFactory {
 
   /**
    * Creates a new ScreenEditorPalette object.
-   *
+   * 
    * @return the palette container
    */
   private static PaletteContainer createShapesDrawer() {
@@ -220,7 +230,7 @@ public final class ScreenEditorPaletteFactory {
 
   /**
    * Creates a new ScreenEditorPalette object.
-   *
+   * 
    * @return the palette container
    */
   private static PaletteContainer createJointsDrawer() {
@@ -254,8 +264,9 @@ public final class ScreenEditorPaletteFactory {
 
   /**
    * Create the "Tools" group.
-   *
-   * @param palette the palette
+   * 
+   * @param palette
+   *          the palette
    * @return the palette container
    */
   private static PaletteContainer createToolsGroup(PaletteRoot palette) {
@@ -275,8 +286,9 @@ public final class ScreenEditorPaletteFactory {
 
   /**
    * Gets the joint connection tool.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the joint connection tool
    */
   private static ConnectionCreationToolEntry getJointConnectionTool(final JointType type) {

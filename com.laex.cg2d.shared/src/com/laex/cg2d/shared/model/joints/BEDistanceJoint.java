@@ -32,10 +32,10 @@ public class BEDistanceJoint extends Joint {
 
   /** The Constant LENGTH_PROP. */
   public static final String LENGTH_PROP = "DistanceJoint.Length";
-  
+
   /** The Constant FREUENCY_HZ_PROP. */
   public static final String FREUENCY_HZ_PROP = "DistanceJoint.FrequencyHZ";
-  
+
   /** The Constant DAMPING_RATIO. */
   public static final String DAMPING_RATIO = "DistanceJoint.DampingRatio";
 
@@ -57,16 +57,20 @@ public class BEDistanceJoint extends Joint {
 
   /**
    * Instantiates a new bE distance joint.
-   *
-   * @param source the source
-   * @param target the target
+   * 
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    */
   public BEDistanceJoint(Shape source, Shape target) {
     super(source, target);
     calculateLength();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getEditableValue()
    */
   @Override
@@ -74,7 +78,9 @@ public class BEDistanceJoint extends Joint {
     return distanceJointDef;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyValue(java.lang.Object)
    */
   @Override
@@ -91,8 +97,11 @@ public class BEDistanceJoint extends Joint {
     return super.getPropertyValue(id);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -107,8 +116,9 @@ public class BEDistanceJoint extends Joint {
 
   /**
    * Checks if is damping ratio prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is damping ratio prop
    */
   private boolean isDampingRatioProp(Object id) {
@@ -117,8 +127,9 @@ public class BEDistanceJoint extends Joint {
 
   /**
    * Checks if is frequency hz prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is frequency hz prop
    */
   private boolean isFrequencyHzProp(Object id) {
@@ -127,15 +138,18 @@ public class BEDistanceJoint extends Joint {
 
   /**
    * Checks if is length prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is length prop
    */
   private boolean isLengthProp(Object id) {
     return LENGTH_PROP.equals(id);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getPropertyDescriptors()
    */
   @Override
@@ -143,7 +157,9 @@ public class BEDistanceJoint extends Joint {
     return (IPropertyDescriptor[]) ArrayUtils.addAll(super.getPropertyDescriptors(), descriptor);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#reconnect()
    */
   @Override
@@ -165,7 +181,9 @@ public class BEDistanceJoint extends Joint {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.Joint#getJointType()
    */
   @Override

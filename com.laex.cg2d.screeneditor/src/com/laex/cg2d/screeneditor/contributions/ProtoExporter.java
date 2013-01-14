@@ -31,12 +31,16 @@ class ProtoExporter {
 
   /**
    * Export.
-   *
-   * @param destinationPath the destination path
-   * @param model the model
-   * @param monitor the monitor
+   * 
+   * @param destinationPath
+   *          the destination path
+   * @param model
+   *          the model
+   * @param monitor
+   *          the monitor
    * @return the input stream
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   public static InputStream export(String destinationPath, GameModel model, IProgressMonitor monitor)
       throws IOException {
@@ -120,25 +124,26 @@ class ProtoExporter {
     return null;
   }
 
-//  private static PBodyType toPBodyType(BodyType bt) {
-//    switch (bt) {
-//    case StaticBody:
-//      return PBodyType.STATIC;
-//    case DynamicBody:
-//      return PBodyType.DYNAMIC;
-//    case KinematicBody:
-//      return PBodyType.KINEMATIC;
-//    }
-//    return null;
-//  }
+  // private static PBodyType toPBodyType(BodyType bt) {
+  // switch (bt) {
+  // case StaticBody:
+  // return PBodyType.STATIC;
+  // case DynamicBody:
+  // return PBodyType.DYNAMIC;
+  // case KinematicBody:
+  // return PBodyType.KINEMATIC;
+  // }
+  // return null;
+  // }
 
   /**
- * To relative filepath.
- *
- * @param workspaceFilePath the workspace file path
- * @return the string
- */
-private static String toRelativeFilepath(String workspaceFilePath) {
+   * To relative filepath.
+   * 
+   * @param workspaceFilePath
+   *          the workspace file path
+   * @return the string
+   */
+  private static String toRelativeFilepath(String workspaceFilePath) {
     if (workspaceFilePath == null || StringUtils.isEmpty(workspaceFilePath)) {
       return PlatformUtil.STRING_EMPTY;
     }
@@ -150,10 +155,13 @@ private static String toRelativeFilepath(String workspaceFilePath) {
 
   /**
    * Export images.
-   *
-   * @param sourcePath the source path
-   * @param destPath the dest path
-   * @param monitor the monitor
+   * 
+   * @param sourcePath
+   *          the source path
+   * @param destPath
+   *          the dest path
+   * @param monitor
+   *          the monitor
    */
   private static void exportImages(String sourcePath, String destPath, IProgressMonitor monitor) {
     IPath srcPath = new Path(sourcePath);

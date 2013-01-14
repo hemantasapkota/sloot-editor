@@ -23,110 +23,114 @@ import com.laex.cg2d.protobuf.GameObject.CGShape;
  * The Class ShapeManager.
  */
 public class ShapeManager extends AbstractGameComponentManager {
-	
-	/** The debug draw. */
-	private Box2DDebugRenderer debugDraw;
-	
-	/** The draw debug data. */
-	private boolean drawDebugData;
-	
-	/** The draw aabb. */
-	private boolean drawAABB;
-	
-	/** The draw bodies. */
-	private boolean drawBodies;
-	
-	/** The draw inactive bodies. */
-	private boolean drawInactiveBodies;
-	
-	/** The draw joints. */
-	private boolean drawJoints;
 
-	/**
-	 * Instantiates a new shape manager.
-	 *
-	 * @param model the model
-	 * @param world the world
-	 * @param cam the cam
-	 */
-	public ShapeManager(CGGameModel model, World world, Camera cam) {
-		super(model, world, cam);
+  /** The debug draw. */
+  private Box2DDebugRenderer debugDraw;
 
-		this.drawAABB = model.getScreenPrefs().getDebugDrawPrefs()
-				.getDrawAABB();
-		this.drawBodies = model.getScreenPrefs().getDebugDrawPrefs()
-				.getDrawBodies();
-		this.drawInactiveBodies = model.getScreenPrefs().getDebugDrawPrefs()
-				.getDrawInactiveBodies();
-		this.drawJoints = model.getScreenPrefs().getDebugDrawPrefs()
-				.getDrawJoints();
-		this.drawDebugData = model.getScreenPrefs().getDebugDrawPrefs()
-				.getDrawDebugData();
-	}
+  /** The draw debug data. */
+  private boolean drawDebugData;
 
-	/**
-	 * Inits the box2d.
-	 */
-	private void initBox2d() {
-		debugDraw = new Box2DDebugRenderer();
+  /** The draw aabb. */
+  private boolean drawAABB;
 
-		debugDraw.setDrawAABBs(drawAABB);
-		debugDraw.setDrawBodies(drawBodies);
-		debugDraw.setDrawInactiveBodies(drawInactiveBodies);
-		debugDraw.setDrawJoints(drawJoints);
-	}
+  /** The draw bodies. */
+  private boolean drawBodies;
 
-	/* (non-Javadoc)
-	 * @see com.laex.cg2d.render.IGameComponentManager#create()
-	 */
-	@Override
-	public void create() {
-		initBox2d();
-		createShapes();
-	}
+  /** The draw inactive bodies. */
+  private boolean drawInactiveBodies;
 
-	/**
-	 * Creates the shapes.
-	 */
-	private void createShapes() {
-		for (CGLayer layer : model().getLayersList()) {
-			for (CGShape shape : layer.getShapeList()) {
+  /** The draw joints. */
+  private boolean drawJoints;
 
-				CGEditorShapeType eType = shape.getEditorShapeType();
+  /**
+   * Instantiates a new shape manager.
+   * 
+   * @param model
+   *          the model
+   * @param world
+   *          the world
+   * @param cam
+   *          the cam
+   */
+  public ShapeManager(CGGameModel model, World world, Camera cam) {
+    super(model, world, cam);
 
-				switch (eType) {
-				case SIMPLE_SHAPE_BOX:
-				case SIMPLE_SHAPE_CIRCLE:
-				case SIMPLE_SHAPE_HEDGE:
-				case SIMPLE_SHAPE_VEDGE:
-					Body b = createBody(shape, null);
-					b.setUserData(shape);
-					break;
-				case BACKGROUND_SHAPE:
-					break;
-				case ENTITY_SHAPE:
-					break;
-				default:
-					break;
-				}
-			}
-		}
-	}
+    this.drawAABB = model.getScreenPrefs().getDebugDrawPrefs().getDrawAABB();
+    this.drawBodies = model.getScreenPrefs().getDebugDrawPrefs().getDrawBodies();
+    this.drawInactiveBodies = model.getScreenPrefs().getDebugDrawPrefs().getDrawInactiveBodies();
+    this.drawJoints = model.getScreenPrefs().getDebugDrawPrefs().getDrawJoints();
+    this.drawDebugData = model.getScreenPrefs().getDebugDrawPrefs().getDrawDebugData();
+  }
 
-	/* (non-Javadoc)
-	 * @see com.laex.cg2d.render.IGameComponentManager#render()
-	 */
-	@Override
-	public void render() {
-		if (drawDebugData) {
-			debugDraw.render(world(), camera().combined.scl(scaleFactor()));
-		}
-	}
+  /**
+   * Inits the box2d.
+   */
+  private void initBox2d() {
+    debugDraw = new Box2DDebugRenderer();
 
-	/* (non-Javadoc)
-	 * @see com.laex.cg2d.render.IGameComponentManager#dispose()
-	 */
-	@Override
-	public void dispose() {
-	}
+    debugDraw.setDrawAABBs(drawAABB);
+    debugDraw.setDrawBodies(drawBodies);
+    debugDraw.setDrawInactiveBodies(drawInactiveBodies);
+    debugDraw.setDrawJoints(drawJoints);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.render.IGameComponentManager#create()
+   */
+  @Override
+  public void create() {
+    initBox2d();
+    createShapes();
+  }
+
+  /**
+   * Creates the shapes.
+   */
+  private void createShapes() {
+    for (CGLayer layer : model().getLayersList()) {
+      for (CGShape shape : layer.getShapeList()) {
+
+        CGEditorShapeType eType = shape.getEditorShapeType();
+
+        switch (eType) {
+        case SIMPLE_SHAPE_BOX:
+        case SIMPLE_SHAPE_CIRCLE:
+        case SIMPLE_SHAPE_HEDGE:
+        case SIMPLE_SHAPE_VEDGE:
+          Body b = createBody(shape, null);
+          b.setUserData(shape);
+          break;
+        case BACKGROUND_SHAPE:
+          break;
+        case ENTITY_SHAPE:
+          break;
+        default:
+          break;
+        }
+      }
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.render.IGameComponentManager#render()
+   */
+  @Override
+  public void render() {
+    if (drawDebugData) {
+      debugDraw.render(world(), camera().combined.scl(scaleFactor()));
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.render.IGameComponentManager#dispose()
+   */
+  @Override
+  public void dispose() {
+  }
 }

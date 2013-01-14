@@ -25,7 +25,7 @@ public class JointDefPropertySource implements IPropertySource {
 
   /** The Constant JOINT_TYPE_PROP. */
   public static final String JOINT_TYPE_PROP = "JointDef.JointType";
-  
+
   /** The Constant COLLIDE_CONNECTED_PROP. */
   public static final String COLLIDE_CONNECTED_PROP = "JointDef.CollideConnected";
 
@@ -45,14 +45,17 @@ public class JointDefPropertySource implements IPropertySource {
 
   /**
    * Instantiates a new joint def property source.
-   *
-   * @param jointDef the joint def
+   * 
+   * @param jointDef
+   *          the joint def
    */
   public JointDefPropertySource(JointDef jointDef) {
     this.jointDef = jointDef;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
    */
   @Override
@@ -60,8 +63,12 @@ public class JointDefPropertySource implements IPropertySource {
     return jointDef;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang
+   * .Object, java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -70,8 +77,12 @@ public class JointDefPropertySource implements IPropertySource {
     }
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang
+   * .Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
@@ -83,31 +94,43 @@ public class JointDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is collide connected.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is collide connected
    */
   private boolean isCollideConnected(Object id) {
     return COLLIDE_CONNECTED_PROP.equals(id);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang
+   * .Object)
    */
   @Override
   public boolean isPropertySet(Object id) {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java
+   * .lang.Object)
    */
   @Override
   public void resetPropertyValue(Object id) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
    */
   @Override
   public IPropertyDescriptor[] getPropertyDescriptors() {

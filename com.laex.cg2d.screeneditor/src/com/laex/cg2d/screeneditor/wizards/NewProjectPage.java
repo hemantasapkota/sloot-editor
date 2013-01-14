@@ -30,10 +30,10 @@ import com.laex.cg2d.shared.CGCProject;
  * The Class NewProjectPage.
  */
 public class NewProjectPage extends WizardPage {
-  
+
   /** The lbl project name. */
   private Label lblProjectName;
-  
+
   /** The txt project name. */
   private Text txtProjectName;
 
@@ -46,12 +46,12 @@ public class NewProjectPage extends WizardPage {
     setDescription("Create a new CG2D Project");
     setPageComplete(false);
   }
-  
 
   /**
    * Create contents of the wizard.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   public void createControl(Composite parent) {
     Composite container = new Composite(parent, SWT.NULL);
@@ -76,11 +76,12 @@ public class NewProjectPage extends WizardPage {
       }
     });
   }
-  
+
   /**
    * Validate project name.
-   *
-   * @throws CoreException the core exception
+   * 
+   * @throws CoreException
+   *           the core exception
    */
   private void validateProjectName() throws CoreException {
     String prjName = txtProjectName.getText();
@@ -108,7 +109,7 @@ public class NewProjectPage extends WizardPage {
 
   /**
    * Gets the project name.
-   *
+   * 
    * @return the project name
    */
   public String getProjectName() {

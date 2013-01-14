@@ -29,11 +29,12 @@ import com.laex.cg2d.shared.util.EntitiesUtil;
  * The Class EntityAdapter.
  */
 public class EntityAdapter {
-  
+
   /**
    * To cg entity collision type.
-   *
-   * @param et the et
+   * 
+   * @param et
+   *          the et
    * @return the cG entity collision type
    */
   public static CGEntityCollisionType toCGEntityCollisionType(EntityCollisionType et) {
@@ -52,8 +53,9 @@ public class EntityAdapter {
 
   /**
    * To entity collision type.
-   *
-   * @param cgt the cgt
+   * 
+   * @param cgt
+   *          the cgt
    * @return the entity collision type
    */
   public static EntityCollisionType toEntityCollisionType(CGEntityCollisionType cgt) {
@@ -74,8 +76,9 @@ public class EntityAdapter {
 
   /**
    * New default entity.
-   *
-   * @param filename the filename
+   * 
+   * @param filename
+   *          the filename
    * @return the entity
    */
   public static Entity newDefaultEntity(String filename) {
@@ -95,8 +98,9 @@ public class EntityAdapter {
 
   /**
    * As cg entity.
-   *
-   * @param e the e
+   * 
+   * @param e
+   *          the e
    * @return the cG entity
    */
   public static CGEntity asCGEntity(Entity e) {
@@ -125,8 +129,9 @@ public class EntityAdapter {
 
   /**
    * As entity.
-   *
-   * @param cge the cge
+   * 
+   * @param cge
+   *          the cge
    * @return the entity
    */
   public static Entity asEntity(CGEntity cge) {

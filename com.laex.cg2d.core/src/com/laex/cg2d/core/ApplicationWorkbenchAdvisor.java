@@ -31,15 +31,22 @@ import org.osgi.framework.Bundle;
  */
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.application.WorkbenchAdvisor#createWorkbenchWindowAdvisor(org.eclipse.ui.application.IWorkbenchWindowConfigurer)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.application.WorkbenchAdvisor#createWorkbenchWindowAdvisor
+   * (org.eclipse.ui.application.IWorkbenchWindowConfigurer)
    */
   public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
     return new ApplicationWorkbenchWindowAdvisor(configurer);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.application.WorkbenchAdvisor#initialize(org.eclipse.ui.application.IWorkbenchConfigurer)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.ui.application.WorkbenchAdvisor#initialize(org.eclipse.ui.
+   * application.IWorkbenchConfigurer)
    */
   @Override
   public void initialize(IWorkbenchConfigurer configurer) {
@@ -48,14 +55,19 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     hackForShowingProjectIconInRCPApplications(configurer);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.application.WorkbenchAdvisor#getInitialWindowPerspectiveId()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.application.WorkbenchAdvisor#getInitialWindowPerspectiveId()
    */
   public String getInitialWindowPerspectiveId() {
     return Perspective.ID;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.application.WorkbenchAdvisor#getDefaultPageInput()
    */
   @Override
@@ -63,14 +75,15 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     IWorkspace workspace = ResourcesPlugin.getWorkspace();
     return workspace.getRoot();
   }
-  
+
   /**
    * Hack taken from
    * <url>http://francisu.wordpress.com/2008/05/27/magic-required
    * -to-use-the-common-navigator-in-an-rcp-application/</url> Hopefully it will
    * be solved on Indigo.
-   *
-   * @param configurer the configurer
+   * 
+   * @param configurer
+   *          the configurer
    */
   private void hackForShowingProjectIconInRCPApplications(IWorkbenchConfigurer configurer) {
     final String ICONS_PATH = "icons/full/";
@@ -83,12 +96,17 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
   /**
    * Declare workbench image.
-   *
-   * @param configurer_p the configurer_p
-   * @param ideBundle the ide bundle
-   * @param symbolicName the symbolic name
-   * @param path the path
-   * @param shared the shared
+   * 
+   * @param configurer_p
+   *          the configurer_p
+   * @param ideBundle
+   *          the ide bundle
+   * @param symbolicName
+   *          the symbolic name
+   * @param path
+   *          the path
+   * @param shared
+   *          the shared
    */
   private void declareWorkbenchImage(IWorkbenchConfigurer configurer_p, Bundle ideBundle, String symbolicName,
       String path, boolean shared) {

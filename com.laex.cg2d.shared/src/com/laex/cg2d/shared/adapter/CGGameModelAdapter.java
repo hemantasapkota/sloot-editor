@@ -50,15 +50,17 @@ public class CGGameModelAdapter {
 
   /** The model. */
   GameModel model;
-  
+
   /** The prefs. */
   private Map<String, String> prefs;
 
   /**
    * Instantiates a new cG game model adapter.
-   *
-   * @param model the model
-   * @param prefs the prefs
+   * 
+   * @param model
+   *          the model
+   * @param prefs
+   *          the prefs
    */
   public CGGameModelAdapter(GameModel model, Map<String, String> prefs) {
     this.model = model;
@@ -67,8 +69,9 @@ public class CGGameModelAdapter {
 
   /**
    * As cg body type.
-   *
-   * @param bt the bt
+   * 
+   * @param bt
+   *          the bt
    * @return the cG body type
    */
   private static CGBodyType asCGBodyType(BodyType bt) {
@@ -85,8 +88,9 @@ public class CGGameModelAdapter {
 
   /**
    * As cg editor type.
-   *
-   * @param st the st
+   * 
+   * @param st
+   *          the st
    * @return the cG editor shape type
    */
   private static CGEditorShapeType asCGEditorType(EditorShapeType st) {
@@ -111,8 +115,9 @@ public class CGGameModelAdapter {
 
   /**
    * Make cg body def.
-   *
-   * @param bdef the bdef
+   * 
+   * @param bdef
+   *          the bdef
    * @return the cG body def. builder
    */
   private CGBodyDef.Builder makeCGBodyDef(BodyDef bdef) {
@@ -127,8 +132,9 @@ public class CGGameModelAdapter {
 
   /**
    * Make cg fixture def.
-   *
-   * @param fdef the fdef
+   * 
+   * @param fdef
+   *          the fdef
    * @return the cG fixture def. builder
    */
   private CGFixtureDef.Builder makeCGFixtureDef(FixtureDef fdef) {
@@ -145,10 +151,13 @@ public class CGGameModelAdapter {
 
   /**
    * Make shape.
-   *
-   * @param fdef the fdef
-   * @param bdef the bdef
-   * @param s the s
+   * 
+   * @param fdef
+   *          the fdef
+   * @param bdef
+   *          the bdef
+   * @param s
+   *          the s
    * @return the cG shape. builder
    */
   private CGShape.Builder makeShape(CGFixtureDef fdef, CGBodyDef bdef, Shape s) {
@@ -165,7 +174,7 @@ public class CGGameModelAdapter {
 
   /**
    * As cg game model.
-   *
+   * 
    * @return the cG game model
    */
   public CGGameModel asCGGameModel() {
@@ -244,10 +253,13 @@ public class CGGameModelAdapter {
   /**
    * When we are building joints, we only take the source joints from Shape.
    * There's no need to make joints for target.
-   *
-   * @param shapeToCGShapeMap the shape to cg shape map
-   * @param s the s
-   * @param j the j
+   * 
+   * @param shapeToCGShapeMap
+   *          the shape to cg shape map
+   * @param s
+   *          the s
+   * @param j
+   *          the j
    */
   private void buildJoints(Map<Shape, CGShape> shapeToCGShapeMap, Shape s, Joint j) {
     CGShape source = shapeToCGShapeMap.get(j.getSource());

@@ -39,10 +39,10 @@ public class CGCProject implements ICGCProject {
 
   /** The instance. */
   private static ICGCProject instance;
-  
+
   /** The Constant PROJECT_TYPE. */
   public static final String PROJECT_TYPE = "cg2d-project";
-  
+
   /** The Constant PROJECT_QUALIFIER. */
   public static final QualifiedName PROJECT_QUALIFIER = new QualifiedName("", "project-type");
 
@@ -54,7 +54,7 @@ public class CGCProject implements ICGCProject {
 
   /**
    * Gets the single instance of CGCProject.
-   *
+   * 
    * @return single instance of CGCProject
    */
   public static ICGCProject getInstance() {
@@ -64,8 +64,12 @@ public class CGCProject implements ICGCProject {
     return instance;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#createProject(org.eclipse.core.runtime.IProgressMonitor, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#createProject(org.eclipse.core.runtime
+   * .IProgressMonitor, java.lang.String)
    */
   @Override
   public IProject createProject(IProgressMonitor monitor, String projectName) throws CoreException {
@@ -83,8 +87,12 @@ public class CGCProject implements ICGCProject {
     return project;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#createFolder(org.eclipse.core.resources.IProject, org.eclipse.core.runtime.IProgressMonitor, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#createFolder(org.eclipse.core.resources
+   * .IProject, org.eclipse.core.runtime.IProgressMonitor, java.lang.String)
    */
   @Override
   public void createFolder(IProject project, IProgressMonitor monitor, String which) throws CoreException {
@@ -101,8 +109,12 @@ public class CGCProject implements ICGCProject {
     folder.create(true, true, monitor);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#createFile(org.eclipse.core.resources.IProject, java.lang.String, java.lang.String, java.io.ByteArrayInputStream)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#createFile(org.eclipse.core.resources.
+   * IProject, java.lang.String, java.lang.String, java.io.ByteArrayInputStream)
    */
   @Override
   public IFile createFile(IProject project, String inWhichFolder, String filename, final ByteArrayInputStream source)
@@ -123,8 +135,12 @@ public class CGCProject implements ICGCProject {
     return file;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#createFile(org.eclipse.core.runtime.IPath, java.io.ByteArrayInputStream)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#createFile(org.eclipse.core.runtime.IPath,
+   * java.io.ByteArrayInputStream)
    */
   @Override
   public IFile createFile(IPath path, final ByteArrayInputStream source) throws CoreException {
@@ -135,8 +151,12 @@ public class CGCProject implements ICGCProject {
     return file;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#getCurrentProject(org.eclipse.ui.IEditorInput)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#getCurrentProject(org.eclipse.ui.IEditorInput
+   * )
    */
   @Override
   public IProject getCurrentProject(IEditorInput fileEditorInput) {
@@ -145,8 +165,9 @@ public class CGCProject implements ICGCProject {
 
   /**
    * Checks if is textures folder.
-   *
-   * @param which the which
+   * 
+   * @param which
+   *          the which
    * @return true, if is textures folder
    */
   private boolean isTexturesFolder(String which) {
@@ -155,8 +176,9 @@ public class CGCProject implements ICGCProject {
 
   /**
    * Checks if is scripts folder.
-   *
-   * @param which the which
+   * 
+   * @param which
+   *          the which
    * @return true, if is scripts folder
    */
   private boolean isScriptsFolder(String which) {
@@ -165,8 +187,9 @@ public class CGCProject implements ICGCProject {
 
   /**
    * Checks if is entities folder.
-   *
-   * @param which the which
+   * 
+   * @param which
+   *          the which
    * @return true, if is entities folder
    */
   private boolean isEntitiesFolder(String which) {
@@ -175,8 +198,9 @@ public class CGCProject implements ICGCProject {
 
   /**
    * Checks if is maps folder.
-   *
-   * @param which the which
+   * 
+   * @param which
+   *          the which
    * @return true, if is maps folder
    */
   private boolean isMapsFolder(String which) {
@@ -185,16 +209,21 @@ public class CGCProject implements ICGCProject {
 
   /**
    * Checks if is tmp folder.
-   *
-   * @param which the which
+   * 
+   * @param which
+   *          the which
    * @return true, if is tmp folder
    */
   private boolean isTmpFolder(String which) {
     return TMP_FOLDER.equals(which);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#getFileContents(org.eclipse.ui.IEditorInput, org.eclipse.core.runtime.IPath)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#getFileContents(org.eclipse.ui.IEditorInput
+   * , org.eclipse.core.runtime.IPath)
    */
   @Override
   public InputStream getFileContents(IEditorInput fileEditorInput, IPath path) throws CoreException {
@@ -202,8 +231,12 @@ public class CGCProject implements ICGCProject {
     return file.getContents();
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#getTexturesFolder(org.eclipse.ui.IEditorInput)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#getTexturesFolder(org.eclipse.ui.IEditorInput
+   * )
    */
   @Override
   public IFolder getTexturesFolder(IEditorInput fileEditorInput) throws CoreException {
@@ -216,8 +249,12 @@ public class CGCProject implements ICGCProject {
     return texturesFolder;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#exists(org.eclipse.core.runtime.IPath, boolean)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#exists(org.eclipse.core.runtime.IPath,
+   * boolean)
    */
   @Override
   public boolean exists(IPath pathToResource, boolean isProject) {
@@ -238,8 +275,12 @@ public class CGCProject implements ICGCProject {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#getEntititesFolder(org.eclipse.ui.IEditorInput)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#getEntititesFolder(org.eclipse.ui.IEditorInput
+   * )
    */
   @Override
   public IFolder getEntititesFolder(IEditorInput fileEditorInput) throws CoreException {
@@ -251,8 +292,12 @@ public class CGCProject implements ICGCProject {
     return entFolder;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#getScreensFolder(org.eclipse.ui.IEditorInput)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#getScreensFolder(org.eclipse.ui.IEditorInput
+   * )
    */
   @Override
   public IFolder getScreensFolder(IEditorInput fileEditorInput) throws CoreException {
@@ -264,8 +309,12 @@ public class CGCProject implements ICGCProject {
     return entFolder;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#deleteFile(org.eclipse.core.resources.IFile)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#deleteFile(org.eclipse.core.resources.
+   * IFile)
    */
   @Override
   public void deleteFile(final IFile file) {
@@ -287,8 +336,12 @@ public class CGCProject implements ICGCProject {
     }
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#isEntityFile(org.eclipse.core.resources.IFile)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#isEntityFile(org.eclipse.core.resources
+   * .IFile)
    */
   @Override
   public boolean isEntityFile(IFile resource) {
@@ -298,8 +351,12 @@ public class CGCProject implements ICGCProject {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ICGCProject#isScreenFile(org.eclipse.core.resources.IFile)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ICGCProject#isScreenFile(org.eclipse.core.resources
+   * .IFile)
    */
   @Override
   public boolean isScreenFile(IFile resource) {

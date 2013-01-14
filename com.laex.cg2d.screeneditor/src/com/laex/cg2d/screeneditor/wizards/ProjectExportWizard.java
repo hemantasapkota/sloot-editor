@@ -23,7 +23,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 
   /** The page1. */
   ProjectExportWizardPage1 page1;
-  
+
   /** The selected project. */
   IProject selectedProject;
 
@@ -33,7 +33,9 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
   public ProjectExportWizard() {
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.wizard.Wizard#addPages()
    */
   @Override
@@ -42,7 +44,9 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
     addPage(page1);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.wizard.Wizard#performFinish()
    */
   @Override
@@ -50,13 +54,16 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
+   * org.eclipse.jface.viewers.IStructuredSelection)
    */
   @Override
   public void init(IWorkbench workbench, IStructuredSelection selection) {
     selectedProject = (IProject) selection.getFirstElement();
-    
+
     if (selectedProject != null) {
       setWindowTitle("Export " + selectedProject.getName());
     } else {

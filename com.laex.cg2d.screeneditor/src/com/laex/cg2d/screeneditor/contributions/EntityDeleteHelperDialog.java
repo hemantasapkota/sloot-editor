@@ -32,8 +32,9 @@ public class EntityDeleteHelperDialog extends Dialog {
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
+   * 
+   * @param parentShell
+   *          the parent shell
    */
   public EntityDeleteHelperDialog(Shell parentShell) {
     super(parentShell);
@@ -41,9 +42,11 @@ public class EntityDeleteHelperDialog extends Dialog {
 
   /**
    * Instantiates a new entity delete helper dialog.
-   *
-   * @param entityResource the entity resource
-   * @param parentShell the parent shell
+   * 
+   * @param entityResource
+   *          the entity resource
+   * @param parentShell
+   *          the parent shell
    */
   public EntityDeleteHelperDialog(IResource entityResource, Shell parentShell) {
     super(parentShell);
@@ -52,8 +55,9 @@ public class EntityDeleteHelperDialog extends Dialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -68,8 +72,9 @@ public class EntityDeleteHelperDialog extends Dialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -78,7 +83,7 @@ public class EntityDeleteHelperDialog extends Dialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override
@@ -86,7 +91,9 @@ public class EntityDeleteHelperDialog extends Dialog {
     return new Point(450, 124);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.dialogs.Dialog#okPressed()
    */
   @Override

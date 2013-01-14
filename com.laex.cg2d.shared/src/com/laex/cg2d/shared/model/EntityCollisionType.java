@@ -14,22 +14,22 @@ package com.laex.cg2d.shared.model;
  * The Enum EntityCollisionType.
  */
 public enum EntityCollisionType {
-  
+
   /** The none. */
-  NONE, 
- /** The box. */
- BOX, 
- /** The circle. */
- CIRCLE, 
- /** The custom. */
- CUSTOM;
+  NONE,
+  /** The box. */
+  BOX,
+  /** The circle. */
+  CIRCLE,
+  /** The custom. */
+  CUSTOM;
 
   /** The sarr. */
   private static String[] sarr;
 
   /**
    * Checks if is none.
-   *
+   * 
    * @return true, if is none
    */
   public boolean isNone() {
@@ -38,7 +38,7 @@ public enum EntityCollisionType {
 
   /**
    * Checks if is box.
-   *
+   * 
    * @return true, if is box
    */
   public boolean isBox() {
@@ -47,7 +47,7 @@ public enum EntityCollisionType {
 
   /**
    * Checks if is circle.
-   *
+   * 
    * @return true, if is circle
    */
   public boolean isCircle() {
@@ -56,7 +56,7 @@ public enum EntityCollisionType {
 
   /**
    * Checks if is custom.
-   *
+   * 
    * @return true, if is custom
    */
   public boolean isCustom() {
@@ -65,8 +65,9 @@ public enum EntityCollisionType {
 
   /**
    * Shape type from ordinal.
-   *
-   * @param ord the ord
+   * 
+   * @param ord
+   *          the ord
    * @return the entity collision type
    */
   public static EntityCollisionType shapeTypeFromOrdinal(int ord) {
@@ -75,7 +76,7 @@ public enum EntityCollisionType {
 
   /**
    * String values.
-   *
+   * 
    * @return the string[]
    */
   public static String[] stringValues() {

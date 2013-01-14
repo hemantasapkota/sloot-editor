@@ -44,22 +44,22 @@ public class TexturesViewPart extends ViewPart {
 
   /** The Constant ID. */
   public static final String ID = "com.laex.cg2d.screeneditor.TexturesView"; //$NON-NLS-1$
-  
+
   /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
-  
+
   /** The img canvas. */
   private Canvas imgCanvas;
 
   /**
-   * The listener interface for receiving texturesSelection events.
-   * The class that is interested in processing a texturesSelection
-   * event implements this interface, and the object created
-   * with that class is registered with a component using the
-   * component's <code>addTexturesSelectionListener<code> method. When
+   * The listener interface for receiving texturesSelection events. The class
+   * that is interested in processing a texturesSelection event implements this
+   * interface, and the object created with that class is registered with a
+   * component using the component's
+   * <code>addTexturesSelectionListener<code> method. When
    * the texturesSelection event occurs, that object's appropriate
    * method is invoked.
-   *
+   * 
    * @see TexturesSelectionEvent
    */
   private final class TexturesSelectionListener implements ISelectionListener {
@@ -70,8 +70,11 @@ public class TexturesViewPart extends ViewPart {
     private void fallback() {
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.
+     * IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
      */
     @Override
     public void selectionChanged(IWorkbenchPart part, ISelection selection) {
@@ -115,8 +118,9 @@ public class TexturesViewPart extends ViewPart {
 
     /**
      * Checks if is pNG extension.
-     *
-     * @param ifile the ifile
+     * 
+     * @param ifile
+     *          the ifile
      * @return true, if is pNG extension
      */
     private boolean isPNGExtension(IFile ifile) {
@@ -126,7 +130,7 @@ public class TexturesViewPart extends ViewPart {
 
   /** The tsl. */
   private TexturesSelectionListener tsl = new TexturesSelectionListener();
-  
+
   /** The image composite. */
   private ScrolledComposite imageComposite;
 
@@ -145,8 +149,9 @@ public class TexturesViewPart extends ViewPart {
 
   /**
    * Create contents of the view part.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   public void createPartControl(Composite parent) {
@@ -198,7 +203,9 @@ public class TexturesViewPart extends ViewPart {
     IMenuManager menuManager = getViewSite().getActionBars().getMenuManager();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
    */
   @Override

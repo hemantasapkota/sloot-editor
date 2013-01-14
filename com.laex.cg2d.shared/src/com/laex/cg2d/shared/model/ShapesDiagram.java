@@ -22,22 +22,22 @@ public class ShapesDiagram extends ModelElement {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -5281704420611797268L;
-  
+
   /** The Constant CHILD_ADDED_PROP. */
   public static final String CHILD_ADDED_PROP = "ShapesDiagram.ChildAdded";
-  
+
   /** The Constant CHILD_REMOVED_PROP. */
   public static final String CHILD_REMOVED_PROP = "ShapesDiagram.ChildRemoved";
 
   /** The shapes. */
   private List<Shape> shapes = new ArrayList<Shape>();
-  
+
   /** The layers. */
   private Queue<Layer> layers = new LinkedList<Layer>();
 
   /**
    * Checks if is current layer locked.
-   *
+   * 
    * @return true, if is current layer locked
    */
   public boolean isCurrentLayerLocked() {
@@ -53,8 +53,9 @@ public class ShapesDiagram extends ModelElement {
 
   /**
    * Adds the child.
-   *
-   * @param s the s
+   * 
+   * @param s
+   *          the s
    * @return true, if successful
    */
   public boolean addChild(Shape s) {
@@ -67,9 +68,11 @@ public class ShapesDiagram extends ModelElement {
 
   /**
    * Adds the child.
-   *
-   * @param s the s
-   * @param index the index
+   * 
+   * @param s
+   *          the s
+   * @param index
+   *          the index
    * @return true, if successful
    */
   public boolean addChild(Shape s, int index) {
@@ -83,8 +86,9 @@ public class ShapesDiagram extends ModelElement {
 
   /**
    * Removes the child.
-   *
-   * @param s the s
+   * 
+   * @param s
+   *          the s
    * @return true, if successful
    */
   public boolean removeChild(Shape s) {
@@ -97,7 +101,7 @@ public class ShapesDiagram extends ModelElement {
 
   /**
    * Gets the children.
-   *
+   * 
    * @return the children
    */
   public List<Shape> getChildren() {
@@ -106,7 +110,7 @@ public class ShapesDiagram extends ModelElement {
 
   /**
    * Gets the layers.
-   *
+   * 
    * @return the layers
    */
   public Queue<Layer> getLayers() {

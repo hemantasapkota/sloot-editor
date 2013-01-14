@@ -49,13 +49,13 @@ public class ScreenEditorContributor extends ActionBarContributor {
 
   /** The togggle grid action. */
   private Action togggleGridAction;
-  
+
   /** The grid16x16 action. */
   private Action grid16x16Action;
-  
+
   /** The grid32x32 action. */
   private Action grid32x32Action;
-  
+
   /** The grid custom size action. */
   private Action gridCustomSizeAction;
 
@@ -165,8 +165,12 @@ public class ScreenEditorContributor extends ActionBarContributor {
 
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.ui.actions.ActionBarContributor#setActiveEditor(org.eclipse.ui.IEditorPart)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.ui.actions.ActionBarContributor#setActiveEditor(org.eclipse
+   * .ui.IEditorPart)
    */
   @Override
   public void setActiveEditor(IEditorPart targetEditor) {
@@ -174,8 +178,12 @@ public class ScreenEditorContributor extends ActionBarContributor {
     this.shapesEditor = (ScreenEditor) targetEditor;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.part.EditorActionBarContributor#contributeToToolBar(org.eclipse.jface.action.IToolBarManager)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.part.EditorActionBarContributor#contributeToToolBar(org.
+   * eclipse.jface.action.IToolBarManager)
    */
   @Override
   public void contributeToToolBar(IToolBarManager mgr) {
@@ -190,16 +198,24 @@ public class ScreenEditorContributor extends ActionBarContributor {
     super.contributeToToolBar(mgr);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.part.EditorActionBarContributor#contributeToCoolBar(org.eclipse.jface.action.ICoolBarManager)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.part.EditorActionBarContributor#contributeToCoolBar(org.
+   * eclipse.jface.action.ICoolBarManager)
    */
   @Override
   public void contributeToCoolBar(ICoolBarManager coolBarManager) {
     super.contributeToCoolBar(coolBarManager);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.part.EditorActionBarContributor#contributeToMenu(org.eclipse.jface.action.IMenuManager)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.part.EditorActionBarContributor#contributeToMenu(org.eclipse
+   * .jface.action.IMenuManager)
    */
   @Override
   public void contributeToMenu(IMenuManager menuManager) {
@@ -214,11 +230,14 @@ public class ScreenEditorContributor extends ActionBarContributor {
 
   /**
    * Builds the runner command from properties.
-   *
-   * @param props the props
-   * @param screenFile the screen file
+   * 
+   * @param props
+   *          the props
+   * @param screenFile
+   *          the screen file
    * @return the string
-   * @throws CoreException the core exception
+   * @throws CoreException
+   *           the core exception
    */
   private String buildRunnerCommandFromProperties(Map<String, String> props, String screenFile) throws CoreException {
     StringBuilder cmd = new StringBuilder("java -jar ");
@@ -272,7 +291,9 @@ public class ScreenEditorContributor extends ActionBarContributor {
     return cmd.toString();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.ui.actions.ActionBarContributor#buildActions()
    */
   @Override
@@ -280,8 +301,11 @@ public class ScreenEditorContributor extends ActionBarContributor {
     createActions();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.ui.actions.ActionBarContributor#declareGlobalActionKeys()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.ui.actions.ActionBarContributor#declareGlobalActionKeys()
    */
   @Override
   protected void declareGlobalActionKeys() {

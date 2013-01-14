@@ -27,192 +27,203 @@ import com.laex.cg2d.protobuf.GameObject.CGGameModel;
  */
 public abstract class MyGdxGame extends ApplicationAdapter {
 
-	/** The batch. */
-	private SpriteBatch batch;
-	
-	/** The cam. */
-	private OrthographicCamera cam;
-	
-	/** The model. */
-	private CGGameModel model;
-	
-	/** The world. */
-	private World world;
-	
-	/** The state time. */
-	float stateTime;
+  /** The batch. */
+  private SpriteBatch batch;
 
-	/** The shape manager. */
-	private ShapeManager shapeManager;
-	
-	/** The bg manager. */
-	private BackgroundManager bgManager;
-	
-	/** The entity manager. */
-	private EntityManager entityManager;
-	
-	/** The mouse joint manager. */
-	private MouseJointManager mouseJointManager;
+  /** The cam. */
+  private OrthographicCamera cam;
 
-	/** The gravity x. */
-	private float gravityX;
-	
-	/** The gravity y. */
-	private float gravityY;
-	
-	/** The time step. */
-	private float timeStep;
-	
-	/** The velocity iterations. */
-	private int velocityIterations;
-	
-	/** The position iterations. */
-	private int positionIterations;
-	
-	/**
-	 * Load game model.
-	 *
-	 * @return the cG game model
-	 * @throws GdxRuntimeException the gdx runtime exception
-	 */
-	public abstract CGGameModel loadGameModel() throws GdxRuntimeException;
+  /** The model. */
+  private CGGameModel model;
 
-	/* (non-Javadoc)
-	 * @see com.badlogic.gdx.ApplicationAdapter#create()
-	 */
-	@Override
-	public void create() {
-		model = loadGameModel();
-		
-		gravityX = model.getScreenPrefs().getWorldPrefs().getGravityX();
-		gravityY = model.getScreenPrefs().getWorldPrefs().getGravityY();
-		timeStep = model.getScreenPrefs().getWorldPrefs().getTimeStep();
-		velocityIterations = model.getScreenPrefs().getWorldPrefs()
-				.getVelocityIterations();
-		positionIterations = model.getScreenPrefs().getWorldPrefs()
-				.getPositionIterations();
+  /** The world. */
+  private World world;
 
-		 Texture.setEnforcePotImages(false);
+  /** The state time. */
+  float stateTime;
 
-		// models init
-		world = new World(new Vector2(gravityX, gravityY), true);
+  /** The shape manager. */
+  private ShapeManager shapeManager;
 
-		// render init
-		batch = new SpriteBatch();
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
+  /** The bg manager. */
+  private BackgroundManager bgManager;
 
-		cam = new OrthographicCamera(w / IGameComponentManager.MAGIC_SCALAR, h
-				/ IGameComponentManager.MAGIC_SCALAR);
-		cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
+  /** The entity manager. */
+  private EntityManager entityManager;
 
-		shapeManager = new ShapeManager(model, world, cam);
-		entityManager = new EntityManager(model, world, cam, batch);
-		bgManager = new BackgroundManager(model, world, cam, batch);
-		mouseJointManager = new MouseJointManager(model, world, cam);
+  /** The mouse joint manager. */
+  private MouseJointManager mouseJointManager;
 
-		mouseJointManager.create();
-		shapeManager.create();
-		bgManager.create();
-		entityManager.create();
+  /** The gravity x. */
+  private float gravityX;
 
-		Gdx.input.setInputProcessor(mouseJointManager);
-	}
+  /** The gravity y. */
+  private float gravityY;
 
-	/**
-	 * Handle input.
-	 */
-	private void handleInput() {
-		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-			cam.zoom += 0.02;
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-			cam.zoom -= 0.02;
-		}
+  /** The time step. */
+  private float timeStep;
 
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			if (cam.position.x > 0)
-				cam.translate(-0.5f, 0, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			if (cam.position.x < 1024)
-				cam.translate(0.5f, 0, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-			if (cam.position.y > 0)
-				cam.translate(0, -0.5f, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			if (cam.position.y < 1024)
-				cam.translate(0, 0.5f, 0);
-		}
+  /** The velocity iterations. */
+  private int velocityIterations;
 
-	}
+  /** The position iterations. */
+  private int positionIterations;
 
-	/* (non-Javadoc)
-	 * @see com.badlogic.gdx.ApplicationAdapter#dispose()
-	 */
-	@Override
-	public void dispose() {
-		mouseJointManager.dispose();
-		bgManager.dispose();
-		shapeManager.dispose();
-		entityManager.dispose();
-		batch.dispose();
-		world.dispose();
-	}
+  /**
+   * Load game model.
+   * 
+   * @return the cG game model
+   * @throws GdxRuntimeException
+   *           the gdx runtime exception
+   */
+  public abstract CGGameModel loadGameModel() throws GdxRuntimeException;
 
-	/* (non-Javadoc)
-	 * @see com.badlogic.gdx.ApplicationAdapter#render()
-	 */
-	@Override
-	public void render() {
-		handleInput();
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.badlogic.gdx.ApplicationAdapter#create()
+   */
+  @Override
+  public void create() {
+    model = loadGameModel();
 
-		GL10 gl = Gdx.graphics.getGL10();
-		stateTime += Gdx.graphics.getDeltaTime();
-		entityManager.updateStateTime(stateTime);
+    gravityX = model.getScreenPrefs().getWorldPrefs().getGravityX();
+    gravityY = model.getScreenPrefs().getWorldPrefs().getGravityY();
+    timeStep = model.getScreenPrefs().getWorldPrefs().getTimeStep();
+    velocityIterations = model.getScreenPrefs().getWorldPrefs().getVelocityIterations();
+    positionIterations = model.getScreenPrefs().getWorldPrefs().getPositionIterations();
 
-		world.step(1 / timeStep, velocityIterations, positionIterations);
-		updateCamera(gl);
+    Texture.setEnforcePotImages(false);
 
-		batch.setProjectionMatrix(cam.combined);
+    // models init
+    world = new World(new Vector2(gravityX, gravityY), true);
 
-		bgManager.render();
-		entityManager.render();
-		shapeManager.render();
-	}
+    // render init
+    batch = new SpriteBatch();
+    float w = Gdx.graphics.getWidth();
+    float h = Gdx.graphics.getHeight();
 
-	/**
-	 * Update camera.
-	 *
-	 * @param gl the gl
-	 */
-	private void updateCamera(GL10 gl) {
-		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+    cam = new OrthographicCamera(w / IGameComponentManager.MAGIC_SCALAR, h / IGameComponentManager.MAGIC_SCALAR);
+    cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
 
-		cam.update();
-		cam.apply(gl);
-	}
+    shapeManager = new ShapeManager(model, world, cam);
+    entityManager = new EntityManager(model, world, cam, batch);
+    bgManager = new BackgroundManager(model, world, cam, batch);
+    mouseJointManager = new MouseJointManager(model, world, cam);
 
-	/* (non-Javadoc)
-	 * @see com.badlogic.gdx.ApplicationAdapter#resize(int, int)
-	 */
-	@Override
-	public void resize(int width, int height) {
-	}
+    mouseJointManager.create();
+    shapeManager.create();
+    bgManager.create();
+    entityManager.create();
 
-	/* (non-Javadoc)
-	 * @see com.badlogic.gdx.ApplicationAdapter#pause()
-	 */
-	@Override
-	public void pause() {
-	}
+    Gdx.input.setInputProcessor(mouseJointManager);
+  }
 
-	/* (non-Javadoc)
-	 * @see com.badlogic.gdx.ApplicationAdapter#resume()
-	 */
-	@Override
-	public void resume() {
-	}
+  /**
+   * Handle input.
+   */
+  private void handleInput() {
+    if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+      cam.zoom += 0.02;
+    }
+    if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+      cam.zoom -= 0.02;
+    }
+
+    if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+      if (cam.position.x > 0)
+        cam.translate(-0.5f, 0, 0);
+    }
+    if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+      if (cam.position.x < 1024)
+        cam.translate(0.5f, 0, 0);
+    }
+    if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+      if (cam.position.y > 0)
+        cam.translate(0, -0.5f, 0);
+    }
+    if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+      if (cam.position.y < 1024)
+        cam.translate(0, 0.5f, 0);
+    }
+
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.badlogic.gdx.ApplicationAdapter#dispose()
+   */
+  @Override
+  public void dispose() {
+    mouseJointManager.dispose();
+    bgManager.dispose();
+    shapeManager.dispose();
+    entityManager.dispose();
+    batch.dispose();
+    world.dispose();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.badlogic.gdx.ApplicationAdapter#render()
+   */
+  @Override
+  public void render() {
+    handleInput();
+
+    GL10 gl = Gdx.graphics.getGL10();
+    stateTime += Gdx.graphics.getDeltaTime();
+    entityManager.updateStateTime(stateTime);
+
+    world.step(1 / timeStep, velocityIterations, positionIterations);
+    updateCamera(gl);
+
+    batch.setProjectionMatrix(cam.combined);
+
+    bgManager.render();
+    entityManager.render();
+    shapeManager.render();
+  }
+
+  /**
+   * Update camera.
+   * 
+   * @param gl
+   *          the gl
+   */
+  private void updateCamera(GL10 gl) {
+    gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+
+    cam.update();
+    cam.apply(gl);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.badlogic.gdx.ApplicationAdapter#resize(int, int)
+   */
+  @Override
+  public void resize(int width, int height) {
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.badlogic.gdx.ApplicationAdapter#pause()
+   */
+  @Override
+  public void pause() {
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.badlogic.gdx.ApplicationAdapter#resume()
+   */
+  @Override
+  public void resume() {
+  }
 }

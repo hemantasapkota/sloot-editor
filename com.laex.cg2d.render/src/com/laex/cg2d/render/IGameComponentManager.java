@@ -14,23 +14,23 @@ package com.laex.cg2d.render;
  * The Interface IGameComponentManager.
  */
 public interface IGameComponentManager {
-	
-	/** The magic scalar. */
-	float MAGIC_SCALAR = 10f;
 
-	/**
-	 * Creates the.
-	 */
-	void create();
+  /** The magic scalar. */
+  float MAGIC_SCALAR = 10f;
 
-	/**
-	 * Render.
-	 */
-	void render();
+  /**
+   * Creates the.
+   */
+  void create();
 
-	/**
-	 * Dispose.
-	 */
-	void dispose();
+  /**
+   * Render.
+   */
+  void render();
+
+  /**
+   * Dispose.
+   */
+  void dispose();
 
 }

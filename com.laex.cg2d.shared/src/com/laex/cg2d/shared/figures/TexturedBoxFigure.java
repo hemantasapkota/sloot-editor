@@ -21,8 +21,9 @@ public class TexturedBoxFigure extends ImageFigure {
 
   /**
    * Instantiates a new textured box figure.
-   *
-   * @param texture the texture
+   * 
+   * @param texture
+   *          the texture
    */
   public TexturedBoxFigure(Image texture) {
     setSize(texture.getBounds().width, texture.getBounds().height);

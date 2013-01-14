@@ -26,26 +26,30 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /** The id. */
   private int id;
-  
+
   /** The name. */
   private String name;
-  
+
   /** The visible. */
   private boolean visible;
-  
+
   /** The locked. */
   private boolean locked;
-  
+
   /** The current. */
   private boolean current;
 
   /**
    * Creates the.
-   *
-   * @param id the id
-   * @param name the name
-   * @param visible the visible
-   * @param locked the locked
+   * 
+   * @param id
+   *          the id
+   * @param name
+   *          the name
+   * @param visible
+   *          the visible
+   * @param locked
+   *          the locked
    * @return the layer
    */
   public static Layer create(int id, String name, boolean visible, boolean locked) {
@@ -54,11 +58,15 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Instantiates a new layer.
-   *
-   * @param id the id
-   * @param name the name
-   * @param visible the visible
-   * @param locked the locked
+   * 
+   * @param id
+   *          the id
+   * @param name
+   *          the name
+   * @param visible
+   *          the visible
+   * @param locked
+   *          the locked
    */
   public Layer(int id, String name, boolean visible, boolean locked) {
     this.id = id;
@@ -69,8 +77,9 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Adds the.
-   *
-   * @param child the child
+   * 
+   * @param child
+   *          the child
    */
   public void add(Shape child) {
     children.add(child);
@@ -78,8 +87,9 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Removes the.
-   *
-   * @param child the child
+   * 
+   * @param child
+   *          the child
    */
   public void remove(Shape child) {
     children.remove(child);
@@ -87,7 +97,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Gets the children.
-   *
+   * 
    * @return the children
    */
   public List<Shape> getChildren() {
@@ -96,7 +106,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Gets the name.
-   *
+   * 
    * @return the name
    */
   public String getName() {
@@ -105,7 +115,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Checks if is current.
-   *
+   * 
    * @return true, if is current
    */
   public boolean isCurrent() {
@@ -114,7 +124,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Checks if is visible.
-   *
+   * 
    * @return true, if is visible
    */
   public boolean isVisible() {
@@ -123,7 +133,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Checks if is locked.
-   *
+   * 
    * @return true, if is locked
    */
   public boolean isLocked() {
@@ -132,7 +142,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Gets the id.
-   *
+   * 
    * @return the id
    */
   public int getId() {
@@ -141,8 +151,9 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Sets the current.
-   *
-   * @param current the new current
+   * 
+   * @param current
+   *          the new current
    */
   public void setCurrent(boolean current) {
     this.current = current;
@@ -150,8 +161,9 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Sets the visible.
-   *
-   * @param visible the new visible
+   * 
+   * @param visible
+   *          the new visible
    */
   public void setVisible(boolean visible) {
     this.visible = visible;
@@ -159,8 +171,9 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Sets the locked.
-   *
-   * @param locked the new locked
+   * 
+   * @param locked
+   *          the new locked
    */
   public void setLocked(boolean locked) {
     this.locked = locked;
@@ -168,14 +181,17 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Sets the name.
-   *
-   * @param name the new name
+   * 
+   * @param name
+   *          the new name
    */
   public void setName(String name) {
     this.name = name;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see java.lang.Comparable#compareTo(java.lang.Object)
    */
   @Override

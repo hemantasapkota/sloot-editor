@@ -21,50 +21,53 @@ import org.eclipse.core.runtime.IPath;
 import com.laex.cg2d.shared.ICGCProject;
 
 /**
- * The listener interface for receiving entityResourceChange events.
- * The class that is interested in processing a entityResourceChange
- * event implements this interface, and the object created
- * with that class is registered with a component using the
- * component's <code>addEntityResourceChangeListener<code> method. When
+ * The listener interface for receiving entityResourceChange events. The class
+ * that is interested in processing a entityResourceChange event implements this
+ * interface, and the object created with that class is registered with a
+ * component using the component's
+ * <code>addEntityResourceChangeListener<code> method. When
  * the entityResourceChange event occurs, that object's appropriate
  * method is invoked.
- *
+ * 
  * @see EntityResourceChangeEvent
  */
 public class EntityResourceChangeListener implements IResourceChangeListener {
 
   /**
-   * The listener interface for receiving entityChange events.
-   * The class that is interested in processing a entityChange
-   * event implements this interface, and the object created
-   * with that class is registered with a component using the
-   * component's <code>addEntityChangeListener<code> method. When
+   * The listener interface for receiving entityChange events. The class that is
+   * interested in processing a entityChange event implements this interface,
+   * and the object created with that class is registered with a component using
+   * the component's <code>addEntityChangeListener<code> method. When
    * the entityChange event occurs, that object's appropriate
    * method is invoked.
-   *
+   * 
    * @see EntityChangeEvent
    */
   interface EntityChangeListener {
-    
+
     /**
      * Entity changed.
-     *
-     * @param resource the resource
+     * 
+     * @param resource
+     *          the resource
      */
     void entityChanged(IResource resource);
 
     /**
      * Entity copied.
-     *
-     * @param entityResource the entity resource
-     * @param copiedPathFrom the copied path from
+     * 
+     * @param entityResource
+     *          the entity resource
+     * @param copiedPathFrom
+     *          the copied path from
      */
     void entityCopied(IResource entityResource, IPath copiedPathFrom);
 
     /**
      * Entity removed.
-     *
-     * @param resource the resource
+     * 
+     * @param resource
+     *          the resource
      */
     void entityRemoved(IResource resource);
   }
@@ -76,8 +79,9 @@ public class EntityResourceChangeListener implements IResourceChangeListener {
 
     /**
      * Checks if is resource valid.
-     *
-     * @param res the res
+     * 
+     * @param res
+     *          the res
      * @return true, if is resource valid
      */
     private boolean isResourceValid(IResource res) {
@@ -93,8 +97,12 @@ public class EntityResourceChangeListener implements IResourceChangeListener {
       return false;
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.core.resources.IResourceDeltaVisitor#visit(org.eclipse.core.resources.IResourceDelta)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.core.resources.IResourceDeltaVisitor#visit(org.eclipse.core
+     * .resources.IResourceDelta)
      */
     @Override
     public boolean visit(IResourceDelta delta) throws CoreException {
@@ -140,15 +148,20 @@ public class EntityResourceChangeListener implements IResourceChangeListener {
 
   /**
    * Adds the entity change listener.
-   *
-   * @param chgList the chg list
+   * 
+   * @param chgList
+   *          the chg list
    */
   public void addEntityChangeListener(EntityChangeListener chgList) {
     this.chgList = chgList;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.
+   * eclipse.core.resources.IResourceChangeEvent)
    */
   @Override
   public void resourceChanged(IResourceChangeEvent event) {

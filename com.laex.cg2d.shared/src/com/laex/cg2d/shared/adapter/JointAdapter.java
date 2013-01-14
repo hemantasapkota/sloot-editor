@@ -43,8 +43,9 @@ public class JointAdapter {
 
   /**
    * As joint type.
-   *
-   * @param cjt the cjt
+   * 
+   * @param cjt
+   *          the cjt
    * @return the joint type
    */
   private static JointType asJointType(CGJointType cjt) {
@@ -80,8 +81,9 @@ public class JointAdapter {
 
   /**
    * As cg joint type.
-   *
-   * @param jt the jt
+   * 
+   * @param jt
+   *          the jt
    * @return the cG joint type
    */
   private static CGJointType asCGJointType(JointType jt) {
@@ -116,10 +118,13 @@ public class JointAdapter {
 
   /**
    * As joint.
-   *
-   * @param cj the cj
-   * @param source the source
-   * @param target the target
+   * 
+   * @param cj
+   *          the cj
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    * @return the joint
    */
   public static Joint asJoint(CGJoint cj, Shape source, Shape target) {
@@ -131,7 +136,8 @@ public class JointAdapter {
       j = new BEDistanceJoint(source, target);
       j.setPropertyValue(BEDistanceJoint.DAMPING_RATIO, Float.toString(cj.getDistanceJointDef().getDampingRatio()));
       j.setPropertyValue(BEDistanceJoint.FREUENCY_HZ_PROP, Float.toString(cj.getDistanceJointDef().getFreqencyHz()));
-      j.setPropertyValue(BEDistanceJoint.COLLIDE_CONNECTED_PROP, BooleanUtil.toString(cj.getDistanceJointDef().getCollideConnected()));
+      j.setPropertyValue(BEDistanceJoint.COLLIDE_CONNECTED_PROP,
+          BooleanUtil.toString(cj.getDistanceJointDef().getCollideConnected()));
       break;
     case FRICTION:
       j = new BEFrictionJoint(source, target);
@@ -200,11 +206,15 @@ public class JointAdapter {
 
   /**
    * As cg joint.
-   *
-   * @param j the j
-   * @param s the s
-   * @param source the source
-   * @param target the target
+   * 
+   * @param j
+   *          the j
+   * @param s
+   *          the s
+   * @param source
+   *          the source
+   * @param target
+   *          the target
    * @return the cG joint
    */
   public static CGJoint asCGJoint(Joint j, Shape s, CGShape source, CGShape target) {

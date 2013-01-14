@@ -30,37 +30,37 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /** The Constant TYPE_PROP. */
   public static final String TYPE_PROP = "BodyDef.type";
-  
+
   /** The Constant LINEAR_VELOCITY. */
   public static final String LINEAR_VELOCITY = "BodyDef.linearVelocity";
-  
+
   /** The Constant ANGLE_PROP. */
   public static final String ANGLE_PROP = "BodyDef.angle";
-  
+
   /** The Constant ANGULAR_VELOCITY. */
   public static final String ANGULAR_VELOCITY = "BodyDef.angularVelocity";
-  
+
   /** The Constant LINEAR_DAMPING_PROP. */
   public static final String LINEAR_DAMPING_PROP = "BodyDef.LinearDamping";
-  
+
   /** The Constant ANGULAR_DAMPING_PROP. */
   public static final String ANGULAR_DAMPING_PROP = "BodyDef.AngularDamping";
-  
+
   /** The Constant ALLOW_SLEEP_PROP. */
   public static final String ALLOW_SLEEP_PROP = "BodyDef.AllowSleep";
-  
+
   /** The Constant AWAKE_PROP. */
   public static final String AWAKE_PROP = "BodyDef.Awake";
-  
+
   /** The Constant FIXED_ROTATION_PROP. */
   public static final String FIXED_ROTATION_PROP = "BodyDef.FixedRotation";
-  
+
   /** The Constant BULLET_PROP. */
   public static final String BULLET_PROP = "BodyDef.Bullet";
-  
+
   /** The Constant ACTIVE_PROP. */
   public static final String ACTIVE_PROP = "BodyDef.Active";
-  
+
   /** The Constant GRAVITY_SCALE_PROP. */
   private static final Object GRAVITY_SCALE_PROP = "BodyDef.gravityScale";
 
@@ -105,14 +105,17 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Instantiates a new body def property source.
-   *
-   * @param bodyDef the body def
+   * 
+   * @param bodyDef
+   *          the body def
    */
   public BodyDefPropertySource(BodyDef bodyDef) {
     this.bodyDef = bodyDef;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
    */
   @Override
@@ -120,16 +123,23 @@ public class BodyDefPropertySource implements IPropertySource {
     return bodyDef;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
    */
   @Override
   public IPropertyDescriptor[] getPropertyDescriptors() {
     return descriptors;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang
+   * .Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
@@ -176,8 +186,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is gravity scale prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is gravity scale prop
    */
   private boolean isGravityScaleProp(Object id) {
@@ -186,8 +197,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is type prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is type prop
    */
   private boolean isTypeProp(Object id) {
@@ -196,8 +208,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is linear velocity prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is linear velocity prop
    */
   private boolean isLinearVelocityProp(Object id) {
@@ -206,8 +219,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is angular velocity prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is angular velocity prop
    */
   private boolean isAngularVelocityProp(Object id) {
@@ -216,8 +230,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is awake prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is awake prop
    */
   private boolean isAwakeProp(Object id) {
@@ -226,8 +241,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is active prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is active prop
    */
   private boolean isActiveProp(Object id) {
@@ -236,8 +252,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is allow sleep prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is allow sleep prop
    */
   private boolean isAllowSleepProp(Object id) {
@@ -246,8 +263,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is fixed rotation prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is fixed rotation prop
    */
   private boolean isFixedRotationProp(Object id) {
@@ -256,8 +274,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is bullet prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is bullet prop
    */
   private boolean isBulletProp(Object id) {
@@ -266,8 +285,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is angular damping prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is angular damping prop
    */
   private boolean isAngularDampingProp(Object id) {
@@ -276,8 +296,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is linear damping prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is linear damping prop
    */
   private boolean isLinearDampingProp(Object id) {
@@ -286,31 +307,44 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is angle prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is angle prop
    */
   private boolean isAngleProp(Object id) {
     return ANGLE_PROP.equals(id);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang
+   * .Object)
    */
   @Override
   public boolean isPropertySet(Object id) {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java
+   * .lang.Object)
    */
   @Override
   public void resetPropertyValue(Object id) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang
+   * .Object, java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -341,7 +375,9 @@ public class BodyDefPropertySource implements IPropertySource {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see java.lang.Object#toString()
    */
   @Override
@@ -351,8 +387,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Gets the index of body type.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the index of body type
    */
   private int getIndexOfBodyType(BodyType type) {
@@ -370,8 +407,9 @@ public class BodyDefPropertySource implements IPropertySource {
 
   /**
    * Gets the body type.
-   *
-   * @param index the index
+   * 
+   * @param index
+   *          the index
    * @return the body type
    */
   private BodyType getBodyType(int index) {

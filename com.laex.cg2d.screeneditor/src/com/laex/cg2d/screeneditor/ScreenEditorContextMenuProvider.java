@@ -27,15 +27,17 @@ class ScreenEditorContextMenuProvider extends ContextMenuProvider {
 
   /** The action registry. */
   private ActionRegistry actionRegistry;
-  
+
   /** The edit part viewer. */
   private EditPartViewer editPartViewer;
 
   /**
    * Instantiates a new screen editor context menu provider.
-   *
-   * @param viewer the viewer
-   * @param registry the registry
+   * 
+   * @param viewer
+   *          the viewer
+   * @param registry
+   *          the registry
    */
   public ScreenEditorContextMenuProvider(EditPartViewer viewer, ActionRegistry registry) {
     super(viewer);
@@ -46,8 +48,12 @@ class ScreenEditorContextMenuProvider extends ContextMenuProvider {
     this.editPartViewer = viewer;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.ContextMenuProvider#buildContextMenu(org.eclipse.jface.action.IMenuManager)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.ContextMenuProvider#buildContextMenu(org.eclipse.jface.
+   * action.IMenuManager)
    */
   public void buildContextMenu(IMenuManager menu) {
     // Add standard action groups to the menu
@@ -68,8 +74,9 @@ class ScreenEditorContextMenuProvider extends ContextMenuProvider {
 
   /**
    * Gets the action.
-   *
-   * @param actionId the action id
+   * 
+   * @param actionId
+   *          the action id
    * @return the action
    */
   private IAction getAction(String actionId) {

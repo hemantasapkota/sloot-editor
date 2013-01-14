@@ -39,34 +39,34 @@ public class Shape extends ModelElement implements Cloneable {
 
   /** The Constant SHAPE_ID. */
   public static final String SHAPE_ID = "Shape.shapeId";
-  
+
   /** The Constant SHAPE_VISIBLE. */
   public static final String SHAPE_VISIBLE = "Shape.visible";
-  
+
   /** The Constant SHAPE_LOCKED. */
   public static final String SHAPE_LOCKED = "Shape.locked";
 
   /** The Constant BOUNDS_PROP. */
   public static final String BOUNDS_PROP = "Shape.Bounds";
-  
+
   /** The Constant BODY_DEF_PROP. */
   public static final String BODY_DEF_PROP = "Shape.BodyDef";
-  
+
   /** The Constant FIXTURE_DEF_PROP. */
   public static final String FIXTURE_DEF_PROP = "Shape.FixtureDef";
-  
+
   /** The Constant BACKGROUND_ENTITY. */
   public static final String BACKGROUND_ENTITY = "Shape.BackgroundEntity";
   // represents joints
   /** The Constant SOURCE_JOINT_PROP. */
   public static final String SOURCE_JOINT_PROP = "Shape.SourceJoint";
-  
+
   /** The Constant TARGET_JOINT_PROP. */
   public static final String TARGET_JOINT_PROP = "Shape.TargetJoint";
 
   /** The descriptors. */
   private static IPropertyDescriptor[] descriptors;
-  
+
   /** The bg descriptor. */
   private static IPropertyDescriptor[] bgDescriptor;
   static {
@@ -88,40 +88,40 @@ public class Shape extends ModelElement implements Cloneable {
 
   /** The id. */
   private String id;
-  
+
   /** The visible. */
   private boolean visible = true;
-  
+
   /** The locked. */
   private boolean locked = false;
-  
+
   /** The background. */
   private Boolean background = false;
-  
+
   /** The background resource file. */
   private ResourceFile backgroundResourceFile;
-  
+
   /** The bounds. */
   private Rectangle bounds = new Rectangle(0, 0, 16, 16);
-  
+
   /** The body def. */
   private BodyDef bodyDef = new BodyDef();
-  
+
   /** The fixture def. */
   private FixtureDef fixtureDef = new FixtureDef();
-  
+
   /** The parent layer. */
   private Layer parentLayer = null;
-  
+
   /** The editor shape type. */
   private EditorShapeType editorShapeType;
-  
+
   /** The entity resource file. */
   private ResourceFile entityResourceFile;
-  
+
   /** The source joints. */
   private List<Joint> sourceJoints = new ArrayList<Joint>();
-  
+
   /** The target joints. */
   private List<Joint> targetJoints = new ArrayList<Joint>();
 
@@ -130,8 +130,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Instantiates a new shape.
-   *
-   * @param shapeType the shape type
+   * 
+   * @param shapeType
+   *          the shape type
    */
   public Shape(EditorShapeType shapeType) {
     id = PlatformUtil.STRING_EMPTY;
@@ -141,7 +142,9 @@ public class Shape extends ModelElement implements Cloneable {
     this.locked = false;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.model.ModelElement#getPropertyDescriptors()
    */
   public IPropertyDescriptor[] getPropertyDescriptors() {
@@ -153,7 +156,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the id.
-   *
+   * 
    * @return the id
    */
   public String getId() {
@@ -162,7 +165,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the background resource file.
-   *
+   * 
    * @return the background resource file
    */
   public ResourceFile getBackgroundResourceFile() {
@@ -171,7 +174,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the editor shape type.
-   *
+   * 
    * @return the editor shape type
    */
   public EditorShapeType getEditorShapeType() {
@@ -180,7 +183,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the parent layer.
-   *
+   * 
    * @return the parent layer
    */
   public Layer getParentLayer() {
@@ -189,7 +192,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the body def.
-   *
+   * 
    * @return the body def
    */
   public BodyDef getBodyDef() {
@@ -198,7 +201,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the fixture def.
-   *
+   * 
    * @return the fixture def
    */
   public FixtureDef getFixtureDef() {
@@ -207,7 +210,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the entity.
-   *
+   * 
    * @return the entity
    */
   public Entity getEntity() {
@@ -216,7 +219,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the entity resource file.
-   *
+   * 
    * @return the entity resource file
    */
   public ResourceFile getEntityResourceFile() {
@@ -225,7 +228,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the bounds.
-   *
+   * 
    * @return the bounds
    */
   public Rectangle getBounds() {
@@ -234,7 +237,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Checks if is background.
-   *
+   * 
    * @return the boolean
    */
   public Boolean isBackground() {
@@ -243,7 +246,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Checks if is visible.
-   *
+   * 
    * @return true, if is visible
    */
   public boolean isVisible() {
@@ -252,7 +255,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Checks if is locked.
-   *
+   * 
    * @return true, if is locked
    */
   public boolean isLocked() {
@@ -261,7 +264,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the source joints.
-   *
+   * 
    * @return the source joints
    */
   public List<Joint> getSourceJoints() {
@@ -270,7 +273,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Gets the target joints.
-   *
+   * 
    * @return the target joints
    */
   public List<Joint> getTargetJoints() {
@@ -279,8 +282,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the background resource file.
-   *
-   * @param backgroundResourceFile the new background resource file
+   * 
+   * @param backgroundResourceFile
+   *          the new background resource file
    */
   public void setBackgroundResourceFile(ResourceFile backgroundResourceFile) {
     this.backgroundResourceFile = backgroundResourceFile;
@@ -288,8 +292,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the entity.
-   *
-   * @param entity the new entity
+   * 
+   * @param entity
+   *          the new entity
    */
   public void setEntity(Entity entity) {
     this.entity = entity;
@@ -297,8 +302,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the entity resource file.
-   *
-   * @param entityResourceFile the new entity resource file
+   * 
+   * @param entityResourceFile
+   *          the new entity resource file
    */
   public void setEntityResourceFile(ResourceFile entityResourceFile) {
     this.entityResourceFile = entityResourceFile;
@@ -306,8 +312,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the parent layer.
-   *
-   * @param parentLayer the new parent layer
+   * 
+   * @param parentLayer
+   *          the new parent layer
    */
   public void setParentLayer(Layer parentLayer) {
     this.parentLayer = parentLayer;
@@ -315,8 +322,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the visible.
-   *
-   * @param visible the new visible
+   * 
+   * @param visible
+   *          the new visible
    */
   public void setVisible(boolean visible) {
     this.visible = visible;
@@ -325,8 +333,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the locked.
-   *
-   * @param locked the new locked
+   * 
+   * @param locked
+   *          the new locked
    */
   public void setLocked(boolean locked) {
     this.locked = locked;
@@ -335,8 +344,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the background.
-   *
-   * @param background the new background
+   * 
+   * @param background
+   *          the new background
    */
   public void setBackground(Boolean background) {
     this.background = background;
@@ -344,8 +354,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Adds the joint.
-   *
-   * @param jon the jon
+   * 
+   * @param jon
+   *          the jon
    */
   public void addJoint(Joint jon) {
     boolean isSourceEqualTarget = jon.getSource().getId().equals(jon.getTarget().getId());
@@ -368,8 +379,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Removes the joint.
-   *
-   * @param jon the jon
+   * 
+   * @param jon
+   *          the jon
    */
   void removeJoint(Joint jon) {
     if (jon == null) {
@@ -388,7 +400,9 @@ public class Shape extends ModelElement implements Cloneable {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see java.lang.Object#clone()
    */
   @Override
@@ -411,7 +425,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Clone shape.
-   *
+   * 
    * @return the shape
    */
   public Shape cloneShape() {
@@ -425,7 +439,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Clone body def.
-   *
+   * 
    * @return the body def
    */
   private BodyDef cloneBodyDef() {
@@ -443,7 +457,7 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Clone fixture def.
-   *
+   * 
    * @return the fixture def
    */
   private FixtureDef cloneFixtureDef() {
@@ -463,8 +477,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the id.
-   *
-   * @param id the new id
+   * 
+   * @param id
+   *          the new id
    */
   public void setId(String id) {
     if (id != null) {
@@ -475,8 +490,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the body def.
-   *
-   * @param value the new body def
+   * 
+   * @param value
+   *          the new body def
    */
   private void setBodyDef(BodyDef value) {
     if (value != null) {
@@ -487,8 +503,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Sets the bounds.
-   *
-   * @param value the new bounds
+   * 
+   * @param value
+   *          the new bounds
    */
   public void setBounds(Rectangle value) {
     if (value != null) {
@@ -499,8 +516,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Checks if is background entity prop.
-   *
-   * @param propertyId the property id
+   * 
+   * @param propertyId
+   *          the property id
    * @return true, if is background entity prop
    */
   private boolean isBackgroundEntityProp(Object propertyId) {
@@ -509,8 +527,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Checks if is shape id prop.
-   *
-   * @param propertyId the property id
+   * 
+   * @param propertyId
+   *          the property id
    * @return true, if is shape id prop
    */
   private boolean isShapeIdProp(Object propertyId) {
@@ -519,8 +538,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Checks if is bounds prop.
-   *
-   * @param propertyId the property id
+   * 
+   * @param propertyId
+   *          the property id
    * @return true, if is bounds prop
    */
   private boolean isBoundsProp(Object propertyId) {
@@ -529,8 +549,9 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Checks if is body def prop.
-   *
-   * @param propertyId the property id
+   * 
+   * @param propertyId
+   *          the property id
    * @return true, if is body def prop
    */
   private boolean isBodyDefProp(Object propertyId) {
@@ -539,20 +560,25 @@ public class Shape extends ModelElement implements Cloneable {
 
   /**
    * Checks if is fixture def prop.
-   *
-   * @param propertyId the property id
+   * 
+   * @param propertyId
+   *          the property id
    * @return true, if is fixture def prop
    */
   private boolean isFixtureDefProp(Object propertyId) {
     return FIXTURE_DEF_PROP.equals(propertyId);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.ModelElement#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.model.ModelElement#setPropertyValue(java.lang.Object,
+   * java.lang.Object)
    */
   public void setPropertyValue(Object propertyId, Object value) {
     if (isShapeIdProp(propertyId)) {
-      
+
       String newShapeId = String.valueOf(value);
       if (!newShapeId.trim().isEmpty()) {
         if (StringUtils.isAlphanumeric(newShapeId)) {
@@ -562,7 +588,7 @@ public class Shape extends ModelElement implements Cloneable {
               .log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Attempt to set non-alphanumeric id to shape"));
         }
       }
-      
+
     } else if (isBodyDefProp(propertyId)) {
       setBodyDef((BodyDef) value);
     } else if (isBoundsProp(propertyId)) {
@@ -572,8 +598,11 @@ public class Shape extends ModelElement implements Cloneable {
     }
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.model.ModelElement#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.model.ModelElement#getPropertyValue(java.lang.Object)
    */
   public Object getPropertyValue(Object propertyId) {
     if (isShapeIdProp(propertyId)) {

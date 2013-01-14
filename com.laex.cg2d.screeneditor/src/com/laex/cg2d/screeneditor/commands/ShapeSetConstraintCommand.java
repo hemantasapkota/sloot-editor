@@ -26,13 +26,13 @@ import com.laex.cg2d.shared.model.joints.BEDistanceJoint;
  * The Class ShapeSetConstraintCommand.
  */
 public class ShapeSetConstraintCommand extends Command {
-  
+
   /** The new bounds. */
   private final Rectangle newBounds;
-  
+
   /** The old bounds. */
   private Rectangle oldBounds;
-  
+
   /** The request. */
   private final ChangeBoundsRequest request;
 
@@ -41,10 +41,13 @@ public class ShapeSetConstraintCommand extends Command {
 
   /**
    * Instantiates a new shape set constraint command.
-   *
-   * @param shape the shape
-   * @param req the req
-   * @param newBounds the new bounds
+   * 
+   * @param shape
+   *          the shape
+   * @param req
+   *          the req
+   * @param newBounds
+   *          the new bounds
    */
   public ShapeSetConstraintCommand(Shape shape, ChangeBoundsRequest req, Rectangle newBounds) {
     if (shape == null || req == null || newBounds == null) {
@@ -106,8 +109,9 @@ public class ShapeSetConstraintCommand extends Command {
 
   /**
    * Update joint.
-   *
-   * @param jd the jd
+   * 
+   * @param jd
+   *          the jd
    */
   private void updateJoint(Joint jd) {
     // jd.computeWorldAnchors();
@@ -115,8 +119,9 @@ public class ShapeSetConstraintCommand extends Command {
 
   /**
    * Update distance joints.
-   *
-   * @param jd the jd
+   * 
+   * @param jd
+   *          the jd
    */
   private void updateDistanceJoints(Joint jd) {
 

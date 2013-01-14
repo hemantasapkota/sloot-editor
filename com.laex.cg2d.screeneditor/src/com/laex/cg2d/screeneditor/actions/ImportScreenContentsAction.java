@@ -25,15 +25,18 @@ public class ImportScreenContentsAction extends Action {
 
   /**
    * Instantiates a new import screen contents action.
-   *
-   * @param cmdStack the cmd stack
+   * 
+   * @param cmdStack
+   *          the cmd stack
    */
   public ImportScreenContentsAction(CommandStack cmdStack) {
     setText("Import Screen Contents");
     this.commandStak = cmdStack;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.action.Action#run()
    */
   @Override

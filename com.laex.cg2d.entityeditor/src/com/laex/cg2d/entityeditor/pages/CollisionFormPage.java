@@ -71,16 +71,16 @@ public class CollisionFormPage extends FormPage {
 
   /** The frames composite. */
   private Composite framesComposite;
-  
+
   /** The managed form. */
   private IManagedForm managedForm;
-  
+
   /** The sctn frames. */
   private Section sctnFrames;
-  
+
   /** The table. */
   private Table table;
-  
+
   /** The table viewer. */
   private TableViewer tableViewer;
 
@@ -89,40 +89,40 @@ public class CollisionFormPage extends FormPage {
 
   /** The dirty. */
   private boolean dirty = false;
-  
+
   /** The entity form editor. */
   private EntityFormEditor entityFormEditor;
-  
+
   /** The txt x. */
   private Spinner txtX;
-  
+
   /** The txt y. */
   private Spinner txtY;
-  
+
   /** The txt width. */
   private Spinner txtWidth;
-  
+
   /** The txt height. */
   private Spinner txtHeight;
 
   /** The collision shape hyper link. */
   private ImageHyperlink collisionShapeHyperLink;
-  
+
   /** The sctn shapes. */
   private Section sctnShapes;
-  
+
   /** The sctn shape properties. */
   private Section sctnShapeProperties;
-  
+
   /** The sctn shapes composite. */
   private Composite sctnShapesComposite;
-  
+
   /** The collision shape. */
   private EntityCollisionType collisionShape = EntityCollisionType.NONE;
-  
+
   /** The mghprlnk add. */
   private ImageHyperlink mghprlnkAdd;
-  
+
   /** The mghprlnk rem. */
   private ImageHyperlink mghprlnkRem;
 
@@ -131,15 +131,17 @@ public class CollisionFormPage extends FormPage {
 
   /** The figure canvas. */
   private FigureCanvas figureCanvas;
-  
+
   /** The freeform layered pane. */
   private FreeformLayeredPane freeformLayeredPane;
 
   /**
    * Create the form page.
-   *
-   * @param id the id
-   * @param title the title
+   * 
+   * @param id
+   *          the id
+   * @param title
+   *          the title
    */
   public CollisionFormPage(String id, String title) {
     super(id, title);
@@ -147,10 +149,13 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Create the form page.
-   *
-   * @param editor the editor
-   * @param id the id
-   * @param title the title
+   * 
+   * @param editor
+   *          the editor
+   * @param id
+   *          the id
+   * @param title
+   *          the title
    * @wbp.parser.constructor
    * @wbp.eval.method.parameter id "Some id"
    * @wbp.eval.method.parameter title "Some title"
@@ -221,7 +226,9 @@ public class CollisionFormPage extends FormPage {
     handleAnimationListSeletionListener();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.forms.editor.FormPage#isDirty()
    */
   @Override
@@ -231,8 +238,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Sets the dirty.
-   *
-   * @param dirty the new dirty
+   * 
+   * @param dirty
+   *          the new dirty
    */
   public void setDirty(boolean dirty) {
     this.dirty = dirty;
@@ -240,8 +248,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Create contents of the form.
-   *
-   * @param managedForm the managed form
+   * 
+   * @param managedForm
+   *          the managed form
    */
   @Override
   protected void createFormContent(IManagedForm managedForm) {
@@ -314,7 +323,7 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
-        
+
       }
     });
     txtX.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -450,7 +459,7 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Calculate vertices of shape.
-   *
+   * 
    * @return the list
    */
   private List<Vector2> calculateVerticesOfShape() {
@@ -487,7 +496,7 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Shape type bounding box.
-   *
+   * 
    * @return the rectangle
    */
   private Rectangle shapeTypeBoundingBox() {
@@ -575,8 +584,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Sets the shape properties.
-   *
-   * @param ea the new shape properties
+   * 
+   * @param ea
+   *          the new shape properties
    */
   private void setShapeProperties(EntityAnimation ea) {
     txtX.setSelection(ea.getShpX());
@@ -597,8 +607,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Sets the shape properties state.
-   *
-   * @param state the new shape properties state
+   * 
+   * @param state
+   *          the new shape properties state
    */
   private void setShapePropertiesState(boolean state) {
     txtX.setEnabled(state);
@@ -609,7 +620,7 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Selected animation list item.
-   *
+   * 
    * @return the animation list view item
    */
   private AnimationListViewItem selectedAnimationListItem() {
@@ -623,8 +634,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Adds the new animation.
-   *
-   * @param alvi the alvi
+   * 
+   * @param alvi
+   *          the alvi
    */
   private void addNewAnimation(AnimationListViewItem alvi) {
     resetFramesComposite();
@@ -639,9 +651,11 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Creates the frames from strip.
-   *
-   * @param selectedImage the selected image
-   * @param alvi the alvi
+   * 
+   * @param selectedImage
+   *          the selected image
+   * @param alvi
+   *          the alvi
    */
   private void createFramesFromStrip(Image selectedImage, AnimationListViewItem alvi) {
     Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage);
@@ -650,9 +664,11 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Animation frame preview.
-   *
-   * @param colType the col type
-   * @param animation the animation
+   * 
+   * @param colType
+   *          the col type
+   * @param animation
+   *          the animation
    */
   private void animationFramePreview(EntityCollisionType colType, final Queue<Image> animation) {
     freeformLayeredPane.removeAll();

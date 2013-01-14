@@ -39,8 +39,9 @@ public class ShapesEditPartFactory implements EditPartFactory {
 
   /**
    * Maps an object to an EditPart.
-   *
-   * @param modelElement the model element
+   * 
+   * @param modelElement
+   *          the model element
    * @return the part for element
    */
   private EditPart getPartForElement(Object modelElement) {

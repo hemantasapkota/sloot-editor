@@ -25,10 +25,10 @@ public class FixtureFilterPropertySource implements IPropertySource {
 
   /** The Constant CATEGORY_BITS_PROP. */
   public static final String CATEGORY_BITS_PROP = "Filter.categoryBits";
-  
+
   /** The Constant MASK_BITS. */
   public static final String MASK_BITS = "Filter.maskBits";
-  
+
   /** The Constant GROUP_INDEX. */
   public static final String GROUP_INDEX = "Filter.groupIndex";
 
@@ -49,14 +49,17 @@ public class FixtureFilterPropertySource implements IPropertySource {
 
   /**
    * Instantiates a new fixture filter property source.
-   *
-   * @param filter the filter
+   * 
+   * @param filter
+   *          the filter
    */
   public FixtureFilterPropertySource(Filter filter) {
     this.filter = filter;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
    */
   @Override
@@ -64,16 +67,23 @@ public class FixtureFilterPropertySource implements IPropertySource {
     return filter;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
    */
   @Override
   public IPropertyDescriptor[] getPropertyDescriptors() {
     return descriptors;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang
+   * .Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
@@ -91,8 +101,9 @@ public class FixtureFilterPropertySource implements IPropertySource {
 
   /**
    * Checks if is group index prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is group index prop
    */
   private boolean isGroupIndexProp(Object id) {
@@ -101,8 +112,9 @@ public class FixtureFilterPropertySource implements IPropertySource {
 
   /**
    * Checks if is mask bits prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is mask bits prop
    */
   private boolean isMaskBitsProp(Object id) {
@@ -111,31 +123,44 @@ public class FixtureFilterPropertySource implements IPropertySource {
 
   /**
    * Checks if is category bits prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is category bits prop
    */
   private boolean isCategoryBitsProp(Object id) {
     return CATEGORY_BITS_PROP.equals(id);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang
+   * .Object)
    */
   @Override
   public boolean isPropertySet(Object id) {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java
+   * .lang.Object)
    */
   @Override
   public void resetPropertyValue(Object id) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang
+   * .Object, java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {

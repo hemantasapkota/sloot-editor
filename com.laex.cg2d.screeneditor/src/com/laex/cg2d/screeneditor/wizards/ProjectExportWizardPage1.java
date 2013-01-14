@@ -30,14 +30,15 @@ public class ProjectExportWizardPage1 extends WizardPage {
 
   /** The project. */
   private IProject project;
-  
+
   /** The combo. */
   private Combo combo;
 
   /**
    * Create the wizard.
-   *
-   * @param project the project
+   * 
+   * @param project
+   *          the project
    */
   public ProjectExportWizardPage1(IProject project) {
     super("wizardPage");
@@ -49,8 +50,9 @@ public class ProjectExportWizardPage1 extends WizardPage {
 
   /**
    * Create contents of the wizard.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   public void createControl(Composite parent) {
     Composite container = new Composite(parent, SWT.NULL);

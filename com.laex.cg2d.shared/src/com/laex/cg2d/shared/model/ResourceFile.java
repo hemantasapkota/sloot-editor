@@ -19,15 +19,17 @@ public class ResourceFile {
 
   /** The resource file. */
   private String resourceFile;
-  
+
   /** The resource file absolute. */
   private String resourceFileAbsolute;
 
   /**
    * Creates the.
-   *
-   * @param resFile the res file
-   * @param resFileAbs the res file abs
+   * 
+   * @param resFile
+   *          the res file
+   * @param resFileAbs
+   *          the res file abs
    * @return the resource file
    */
   public static ResourceFile create(String resFile, String resFileAbs) {
@@ -39,7 +41,7 @@ public class ResourceFile {
 
   /**
    * Empty resource file.
-   *
+   * 
    * @return the resource file
    */
   public static ResourceFile emptyResourceFile() {
@@ -56,7 +58,7 @@ public class ResourceFile {
 
   /**
    * Checks if is empty.
-   *
+   * 
    * @return true, if is empty
    */
   public boolean isEmpty() {
@@ -68,7 +70,7 @@ public class ResourceFile {
 
   /**
    * Gets the resource file.
-   *
+   * 
    * @return the resource file
    */
   public String getResourceFile() {
@@ -77,7 +79,7 @@ public class ResourceFile {
 
   /**
    * Gets the resource file absolute.
-   *
+   * 
    * @return the resource file absolute
    */
   public String getResourceFileAbsolute() {
@@ -86,8 +88,9 @@ public class ResourceFile {
 
   /**
    * Sets the resource file.
-   *
-   * @param resourceFile the new resource file
+   * 
+   * @param resourceFile
+   *          the new resource file
    */
   public void setResourceFile(String resourceFile) {
     this.resourceFile = resourceFile;
@@ -95,8 +98,9 @@ public class ResourceFile {
 
   /**
    * Sets the resource file absolute.
-   *
-   * @param resourceFileAbsolute the new resource file absolute
+   * 
+   * @param resourceFileAbsolute
+   *          the new resource file absolute
    */
   public void setResourceFileAbsolute(String resourceFileAbsolute) {
     this.resourceFileAbsolute = resourceFileAbsolute;

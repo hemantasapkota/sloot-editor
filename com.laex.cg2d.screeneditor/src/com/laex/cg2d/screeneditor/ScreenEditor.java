@@ -96,22 +96,22 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /** The palette model. */
   private static PaletteRoot PALETTE_MODEL;
-  
+
   /** The Constant CARD_LAYER. */
   private static final String CARD_LAYER = "Card Layer";
-  
+
   /** The card layer. */
   private ScalableFreeformLayeredPane cardLayer;
-  
+
   /** The scalable root edit part. */
   private ScalableFreeformRootEditPart scalableRootEditPart;
-  
+
   /** The resource listener. */
   private EntityResourceChangeListener resourceListener = new EntityResourceChangeListener();
 
   /** The model. */
   private GameModel model;
-  
+
   /** The card height. */
   int x, y, cardWidthh, cardHeight;
 
@@ -122,7 +122,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     setEditDomain(new DefaultEditDomain(this));
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.ui.parts.GraphicalEditor#configureGraphicalViewer()
    */
   protected void configureGraphicalViewer() {
@@ -147,7 +149,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       }
     });
     manager.setZoom(1);
-    
+
     // Scroll-wheel Zoom
     getGraphicalViewer().setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.MOD1), MouseWheelZoomHandler.SINGLETON);
 
@@ -159,7 +161,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Gets the scalable free form root edit part.
-   *
+   * 
    * @return the scalable free form root edit part
    */
   private ScalableFreeformRootEditPart getScalableFreeFormRootEditPart() {
@@ -181,8 +183,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Sets the grid state.
-   *
-   * @param state the new grid state
+   * 
+   * @param state
+   *          the new grid state
    */
   public void setGridState(boolean state) {
     getGraphicalViewer().setProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED, true);
@@ -192,9 +195,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Sets the grid dimension.
-   *
-   * @param width the width
-   * @param height the height
+   * 
+   * @param width
+   *          the width
+   * @param height
+   *          the height
    */
   public void setGridDimension(int width, int height) {
     getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_SPACING, new Dimension(width, height));
@@ -202,23 +207,30 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Gets the grid state.
-   *
+   * 
    * @return the grid state
    */
   public boolean getGridState() {
     return (Boolean) getGraphicalViewer().getProperty(SnapToGrid.PROPERTY_GRID_VISIBLE);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.ui.parts.GraphicalEditor#commandStackChanged(java.util.EventObject)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.ui.parts.GraphicalEditor#commandStackChanged(java.util.
+   * EventObject)
    */
   public void commandStackChanged(EventObject event) {
     firePropertyChange(IEditorPart.PROP_DIRTY);
     super.commandStackChanged(event);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#createPaletteViewerProvider()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#
+   * createPaletteViewerProvider()
    */
   protected PaletteViewerProvider createPaletteViewerProvider() {
     return new PaletteViewerProvider(getEditDomain()) {
@@ -229,8 +241,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     };
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor
+   * )
    */
   public void doSave(IProgressMonitor monitor) {
     try {
@@ -243,11 +259,15 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Perform save.
-   *
-   * @param file the file
-   * @param monitor the monitor
-   * @param screenPrefs the screen prefs
-   * @throws CoreException the core exception
+   * 
+   * @param file
+   *          the file
+   * @param monitor
+   *          the monitor
+   * @param screenPrefs
+   *          the screen prefs
+   * @throws CoreException
+   *           the core exception
    */
   private void performSave(IFile file, IProgressMonitor monitor, Map<String, String> screenPrefs) throws CoreException {
     CGGameModel cgGameModel = new CGGameModelAdapter(model, screenPrefs).asCGGameModel();
@@ -255,7 +275,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     getCommandStack().markSaveLocation();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.ui.parts.GraphicalEditor#dispose()
    */
   @Override
@@ -264,8 +286,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     super.dispose();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#getAdapter(java.lang.Class)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#getAdapter(java
+   * .lang.Class)
    */
   public Object getAdapter(Class type) {
     if (type == ShapeAdapter.class) {
@@ -288,15 +314,18 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Gets the model.
-   *
+   * 
    * @return the model
    */
   public GameModel getModel() {
     return model;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#getPaletteRoot()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#getPaletteRoot()
    */
   protected PaletteRoot getPaletteRoot() {
     if (PALETTE_MODEL == null)
@@ -306,8 +335,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Handle load exception.
-   *
-   * @param e the e
+   * 
+   * @param e
+   *          the e
    */
   private void handleLoadException(Exception e) {
     model = new GameModel();
@@ -315,8 +345,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     model.getDiagram().getLayers().add(firstLayer);
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#initializeGraphicalViewer()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#
+   * initializeGraphicalViewer()
    */
   protected void initializeGraphicalViewer() {
     super.initializeGraphicalViewer();
@@ -379,14 +412,18 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     });
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.ui.parts.GraphicalEditor#isSaveAsAllowed()
    */
   public boolean isSaveAsAllowed() {
     return false;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.EditorPart#setInput(org.eclipse.ui.IEditorInput)
    */
   protected void setInput(final IEditorInput input) {
@@ -521,39 +558,57 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     }
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ILayerManager#addLayer(com.laex.cg2d.shared.model.Layer)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ILayerManager#addLayer(com.laex.cg2d.shared.model.
+   * Layer)
    */
   @Override
   public void addLayer(Layer newLayer) {
     getEditDomain().getCommandStack().execute(new LayerAddCommand(newLayer, getModel().getDiagram()));
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ILayerManager#changeLayerProperties(com.laex.cg2d.shared.model.Layer)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ILayerManager#changeLayerProperties(com.laex.cg2d.
+   * shared.model.Layer)
    */
   @Override
   public void changeLayerProperties(Layer newLayer) {
     getEditDomain().getCommandStack().execute(new LayerChangePropertiesCommand(newLayer, getModel().getDiagram()));
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ILayerManager#changeLayerOrder(com.laex.cg2d.shared.model.Layer[])
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ILayerManager#changeLayerOrder(com.laex.cg2d.shared
+   * .model.Layer[])
    */
   @Override
   public void changeLayerOrder(Layer[] orderedLayers) {
     getEditDomain().getCommandStack().execute(new LayerChangeOrderCommand(getModel().getDiagram(), orderedLayers));
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.ILayerManager#removeLayer(com.laex.cg2d.shared.model.Layer)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.ILayerManager#removeLayer(com.laex.cg2d.shared.model
+   * .Layer)
    */
   @Override
   public void removeLayer(Layer layer) {
     getEditDomain().getCommandStack().execute(new LayerRemoveCommand(layer, getModel().getDiagram()));
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.ILayerManager#updateCardLayer(int, int, int, int)
    */
   @Override
@@ -568,7 +623,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.ILayerManager#updateCardLayerZoom(double)
    */
   @Override
@@ -578,8 +635,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Use the command stack and delete commands to remove the entities.
-   *
-   * @param resource the resource
+   * 
+   * @param resource
+   *          the resource
    */
   private void removeDeletedOrInvalidEntities(final IResource resource) {
     String entityName = EntitiesUtil.getInternalName(resource.getName());
@@ -599,8 +657,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       getCommandStack().execute(cc);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.shared.IScreenPropertyManager#updateScreenProperties(java.util.Map)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.shared.IScreenPropertyManager#updateScreenProperties(java
+   * .util.Map)
    */
   @Override
   public void updateScreenProperties(Map<String, String> props) {
@@ -612,7 +674,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.ILayerManager#getNewLayerId()
    */
   @Override
@@ -624,7 +688,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return id;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.ILayerManager#getCurrentLayer()
    */
   @Override
@@ -637,7 +703,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return null;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.ILayerManager#layerCount()
    */
   @Override
@@ -645,7 +713,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return getModel().getDiagram().getLayers().size();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.shared.ILayerManager#getLayerAt(int)
    */
   @Override

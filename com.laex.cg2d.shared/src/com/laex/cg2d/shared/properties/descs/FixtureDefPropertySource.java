@@ -27,16 +27,16 @@ public class FixtureDefPropertySource implements IPropertySource {
 
   /** The Constant FRICITON_PROP. */
   public static final String FRICITON_PROP = "FixtureDef.friction";
-  
+
   /** The Constant RESTIUTION_PROP. */
   public static final String RESTIUTION_PROP = "FixtureDef.restitution";
-  
+
   /** The Constant DENSITY_PROP. */
   public static final String DENSITY_PROP = "FixtureDef.density";
-  
+
   /** The Constant SENSOR_PROP. */
   public static final String SENSOR_PROP = "FixtureDef.isSensor";
-  
+
   /** The Constant FILTER_PROP. */
   public static final String FILTER_PROP = "FixtureDef.filter";
 
@@ -60,8 +60,9 @@ public class FixtureDefPropertySource implements IPropertySource {
 
   /**
    * Instantiates a new fixture def property source.
-   *
-   * @param fixtureDef the fixture def
+   * 
+   * @param fixtureDef
+   *          the fixture def
    */
   public FixtureDefPropertySource(FixtureDef fixtureDef) {
     this.fixtureDef = fixtureDef;
@@ -71,7 +72,9 @@ public class FixtureDefPropertySource implements IPropertySource {
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
    */
   @Override
@@ -79,16 +82,23 @@ public class FixtureDefPropertySource implements IPropertySource {
     return fixtureDef;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
    */
   @Override
   public IPropertyDescriptor[] getPropertyDescriptors() {
     return descriptors;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang
+   * .Object)
    */
   @Override
   public Object getPropertyValue(Object id) {
@@ -110,23 +120,35 @@ public class FixtureDefPropertySource implements IPropertySource {
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang
+   * .Object)
    */
   @Override
   public boolean isPropertySet(Object id) {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java
+   * .lang.Object)
    */
   @Override
   public void resetPropertyValue(Object id) {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang
+   * .Object, java.lang.Object)
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
@@ -145,8 +167,9 @@ public class FixtureDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is restitution prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is restitution prop
    */
   private boolean isRestitutionProp(Object id) {
@@ -155,8 +178,9 @@ public class FixtureDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is density prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is density prop
    */
   private boolean isDensityProp(Object id) {
@@ -165,8 +189,9 @@ public class FixtureDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is friction prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is friction prop
    */
   private boolean isFrictionProp(Object id) {
@@ -175,8 +200,9 @@ public class FixtureDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is sensor prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is sensor prop
    */
   private boolean isSensorProp(Object id) {
@@ -185,8 +211,9 @@ public class FixtureDefPropertySource implements IPropertySource {
 
   /**
    * Checks if is filter prop.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return true, if is filter prop
    */
   private boolean isFilterProp(Object id) {

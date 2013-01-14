@@ -25,22 +25,22 @@ public class ShapeCreationInfo {
 
   /** The editor shape type. */
   private EditorShapeType editorShapeType;
-  
+
   /** The layer. */
   private Layer layer;
-  
+
   /** The shape. */
   private Shape shape;
 
   /** The entity resource file. */
   private IFile entityResourceFile;
-  
+
   /** The background resource file. */
   private IFile backgroundResourceFile;
-  
+
   /** The background resource file absolute. */
   private String backgroundResourceFileAbsolute;
-  
+
   /** The entity. */
   private Entity entity;
 
@@ -52,8 +52,9 @@ public class ShapeCreationInfo {
 
   /**
    * Instantiates a new shape creation info.
-   *
-   * @param builder the builder
+   * 
+   * @param builder
+   *          the builder
    */
   private ShapeCreationInfo(Builder builder) {
     shape = builder.creationInfo.shape;
@@ -67,7 +68,7 @@ public class ShapeCreationInfo {
 
   /**
    * Gets the layer.
-   *
+   * 
    * @return the layer
    */
   public Layer getLayer() {
@@ -76,7 +77,7 @@ public class ShapeCreationInfo {
 
   /**
    * Gets the editor shape type.
-   *
+   * 
    * @return the editor shape type
    */
   public EditorShapeType getEditorShapeType() {
@@ -85,7 +86,7 @@ public class ShapeCreationInfo {
 
   /**
    * Gets the shape.
-   *
+   * 
    * @return the shape
    */
   public Shape getShape() {
@@ -94,7 +95,7 @@ public class ShapeCreationInfo {
 
   /**
    * Gets the entity resource file.
-   *
+   * 
    * @return the entity resource file
    */
   public IFile getEntityResourceFile() {
@@ -103,7 +104,7 @@ public class ShapeCreationInfo {
 
   /**
    * Gets the background resource file.
-   *
+   * 
    * @return the background resource file
    */
   public IFile getBackgroundResourceFile() {
@@ -112,7 +113,7 @@ public class ShapeCreationInfo {
 
   /**
    * Gets the background resource file absolute.
-   *
+   * 
    * @return the background resource file absolute
    */
   public String getBackgroundResourceFileAbsolute() {
@@ -121,7 +122,7 @@ public class ShapeCreationInfo {
 
   /**
    * Gets the entity.
-   *
+   * 
    * @return the entity
    */
   public Entity getEntity() {
@@ -130,8 +131,9 @@ public class ShapeCreationInfo {
 
   /**
    * Sets the shape.
-   *
-   * @param shape the new shape
+   * 
+   * @param shape
+   *          the new shape
    */
   public void setShape(Shape shape) {
     this.shape = shape;
@@ -141,14 +143,15 @@ public class ShapeCreationInfo {
    * The Class Builder.
    */
   public static class Builder {
-    
+
     /** The creation info. */
     ShapeCreationInfo creationInfo = new ShapeCreationInfo();
 
     /**
      * Sets the editor shape type.
-     *
-     * @param type the type
+     * 
+     * @param type
+     *          the type
      * @return the builder
      */
     public Builder setEditorShapeType(EditorShapeType type) {
@@ -158,8 +161,9 @@ public class ShapeCreationInfo {
 
     /**
      * Sets the entity resource file.
-     *
-     * @param efile the efile
+     * 
+     * @param efile
+     *          the efile
      * @return the builder
      */
     public Builder setEntityResourceFile(IFile efile) {
@@ -169,8 +173,9 @@ public class ShapeCreationInfo {
 
     /**
      * Sets the background resource file.
-     *
-     * @param bfile the bfile
+     * 
+     * @param bfile
+     *          the bfile
      * @return the builder
      */
     public Builder setBackgroundResourceFile(IFile bfile) {
@@ -181,7 +186,7 @@ public class ShapeCreationInfo {
 
     /**
      * Builds the.
-     *
+     * 
      * @return the shape creation info
      */
     public ShapeCreationInfo build() {
