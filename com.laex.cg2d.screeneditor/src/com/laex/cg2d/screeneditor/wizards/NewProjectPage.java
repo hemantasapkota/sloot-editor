@@ -42,8 +42,8 @@ public class NewProjectPage extends WizardPage {
    */
   public NewProjectPage() {
     super("wizardPage");
-    setTitle("New CG2D Game Project");
-    setDescription("Create a new CG2D Project");
+    setTitle("New Project");
+    setDescription("Create a new Project");
     setPageComplete(false);
   }
 

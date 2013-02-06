@@ -62,8 +62,8 @@ public class NewScreenPage extends WizardPage {
    */
   public NewScreenPage() {
     super("wizardPage");
-    setTitle("New CG2D Screen File");
-    setDescription("Create a new CG2D Screen File");
+    setTitle("New Screen File");
+    setDescription("Create a new Screen File");
     setPageComplete(false);
   }
 

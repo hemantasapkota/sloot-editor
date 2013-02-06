@@ -58,7 +58,7 @@
             hasPages="true"
             icon="main.png"
             id="com.laex.cg2d.screeneditor.wizards.NewScreenWizard"
-            name="CG2D Screen"
+            name="Screen"
             project="false">
       </wizard>
       <wizard
@@ -67,18 +67,8 @@
             hasPages="true"
             icon="main.png"
             id="com.laex.cg2d.screeneditor.wizards.NewCGProjectWizard"
-            name="CG2D Project"
+            name="Box2D Editor Project"
             project="true">
-      </wizard>
-   </extension>
-   <extension
-         point="org.eclipse.ui.exportWizards">
-      <wizard
-            category="com.laex.cg2d.core.wizards.CGExportCategory"
-            class="com.laex.cg2d.screeneditor.wizards.ProjectExportWizard"
-            icon="main.png"
-            id="com.laex.cg2d.screeneditor.wizards.ProjectExportWizard"
-            name="CG2D Project Export">
       </wizard>
    </extension>
    <extension

@@ -107,14 +107,10 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="com.laex.cg2d.core.wizards.CGWizard"
-            name="Casual Games 2D">
+            name="Box2D Editor">
       </category>
    </extension>
    <extension
          point="org.eclipse.ui.exportWizards">
-      <category
-            id="com.laex.cg2d.core.wizards.CGExportCategory"
-            name="Casual Games 2D">
-      </category>
    </extension>
 </plugin>
