@@ -11,8 +11,7 @@ Require-Bundle: org.apache.commons.lang;bundle-version="2.3.0",
  org.eclipse.ui;bundle-version="3.103.0",
  org.eclipse.core.resources,
  com.laex.cg2d.protobuf;bundle-version="1.0.0",
- libgdx-0.9.6;bundle-version="0.9.6",
- j2objc-eclipse-plugin;bundle-version="1.0.0"
+ libgdx-0.9.6;bundle-version="0.9.6"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
 Bundle-Vendor: Hemanta Sapkota
