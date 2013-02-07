@@ -10,9 +10,12 @@
  */
 package com.laex.cg2d.screeneditor.views;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -80,6 +83,19 @@ public class SimpleTextChangeDialog extends TitleAreaDialog {
     txtName = new Text(container, SWT.BORDER);
     txtName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
     txtName.setText(existingName);
+    txtName.addModifyListener(new ModifyListener() {
+      
+      @Override
+      public void modifyText(ModifyEvent e) {
+        if (StringUtils.isEmpty(txtName.getText())) {
+          setErrorMessage("Text cannot be empty");
+          getButton(OK).setEnabled(false);
+        } else {
+          setErrorMessage(null);
+          getButton(OK).setEnabled(true);
+        }
+      }
+    });
 
     return area;
   }
