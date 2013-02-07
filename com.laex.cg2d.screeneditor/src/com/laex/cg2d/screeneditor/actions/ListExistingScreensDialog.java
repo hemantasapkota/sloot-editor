@@ -131,7 +131,6 @@ public class ListExistingScreensDialog extends Dialog {
       public void widgetSelected(SelectionEvent e) {
         validateNewLayerNameSelection();
       }
-
     });
 
     FormData fd_btnImportInNew = new FormData();
@@ -172,7 +171,6 @@ public class ListExistingScreensDialog extends Dialog {
     txtNewLayerName.setLayoutData(gd_txtNewLayerName);
     txtNewLayerName.setText("");
     txtNewLayerName.addModifyListener(new ModifyListener() {
-
       @Override
       public void modifyText(ModifyEvent e) {
         validateSuffix();
@@ -234,7 +232,7 @@ public class ListExistingScreensDialog extends Dialog {
     } catch (CoreException e) {
       e.printStackTrace();
     }
-
+    
     return container;
   }
 
@@ -247,7 +245,7 @@ public class ListExistingScreensDialog extends Dialog {
       newLayerNameComposite.setEnabled(true);
       txtNewLayerName.setFocus();
 
-      if (StringUtils.isEmpty(txtNewLayerName.getText())) {
+      if (!isNewLayerNameValid()) {
         getButton(OK).setEnabled(false);
         return;
       } else {
@@ -259,13 +257,23 @@ public class ListExistingScreensDialog extends Dialog {
       newLayerNameComposite.setEnabled(false);
     }
   }
+  
+  private boolean isNewLayerNameValid() {
+      if (StringUtils.isEmpty(txtNewLayerName.getText())) {
+        return false;
+      }
+      return true;
+  }
 
   /**
-   * Validate suffix.
+   * Validate suffix. 
    */
   private void validateSuffix() {
+    boolean isAlphaNumeric = StringUtils.isAlphanumeric(txtSuffix.getText());
+    
     // validate suffix
-    if (StringUtils.isEmpty(txtSuffix.getText()) || !StringUtils.isAlphanumeric(txtSuffix.getText())) {
+    // for the suffix to be valid
+    if (!isAlphaNumeric) {
       getButton(OK).setEnabled(false);
     } else {
       getButton(OK).setEnabled(true);
@@ -284,7 +292,7 @@ public class ListExistingScreensDialog extends Dialog {
     createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
     createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
 
-    getButton(OK).setEnabled(false);
+    getButton(OK).setEnabled(true);
   }
 
   /*
