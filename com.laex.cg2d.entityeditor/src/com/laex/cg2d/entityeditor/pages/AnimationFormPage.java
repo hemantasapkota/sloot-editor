@@ -12,7 +12,6 @@ package com.laex.cg2d.entityeditor.pages;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Queue;
 
 import org.eclipse.jface.action.Action;
@@ -46,8 +45,6 @@ import org.eclipse.ui.forms.widgets.ImageHyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import com.badlogic.gdx.backends.jogl.JoglApplication;
-import com.badlogic.gdx.backends.jogl.JoglApplicationConfiguration;
 import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.entityeditor.ui.AnimationPropertyChangeDialog;
 import com.laex.cg2d.entityeditor.ui.ImportSpriteDialog;
@@ -55,7 +52,6 @@ import com.laex.cg2d.shared.ResourceManager;
 import com.laex.cg2d.shared.SharedImages;
 import com.laex.cg2d.shared.model.Entity;
 import com.laex.cg2d.shared.model.EntityAnimation;
-import com.laex.cg2d.shared.model.EntityCollisionType;
 import com.laex.cg2d.shared.model.ResourceFile;
 import com.laex.cg2d.shared.util.EntitiesUtil;
 import com.laex.cg2d.shared.util.FloatUtil;
@@ -76,9 +72,6 @@ public class AnimationFormPage extends FormPage {
 
   /** The sctn frames. */
   private Section sctnFrames;
-
-  /** The list items. */
-  private java.util.List<AnimationListViewItem> listItems = new ArrayList<AnimationListViewItem>();
 
   /** The table. */
   private Table table;
@@ -116,6 +109,8 @@ public class AnimationFormPage extends FormPage {
   /** The txt animation duration. */
   private Text txtAnimationDuration;
 
+  private AnimationFormPageController animController = new AnimationFormPageController();
+
   /**
    * Create the form page.
    * 
@@ -149,18 +144,14 @@ public class AnimationFormPage extends FormPage {
   /**
    * Update animations.
    */
-  private void updateAnimations() {
+  private void loadAnimationsFromModel() {
     Entity model = this.entityFormEditor.getModel();
 
     for (EntityAnimation ea : model.getAnimationList()) {
       if (ea == null)
         continue;
-
-      AnimationListViewItem alvi = new AnimationListViewItem();
-      alvi.setName(ea.getAnimationName());
-      alvi.setFirstFrame(SharedImages.BOX.createImage());
-      alvi.setFrames(new LinkedList<Image>());
-      alvi.setAnimation(ea);
+      
+      AnimationListViewItem alvi = animController.addAnimation(ea);
 
       if (!ea.getAnimationResourceFile().isEmpty()) {
         Image frameImage = ResourceManager.getImageOfRelativePath(ea.getAnimationResourceFile().getResourceFile());
@@ -169,8 +160,8 @@ public class AnimationFormPage extends FormPage {
       } else {
         previewExternal.setEnabled(false);
       }
-
-      addNewAnimation(alvi);
+      
+      updateUIOnNewAnimationAdd(alvi, animController.indexOf(alvi));
     }
 
     table.select(0);
@@ -217,27 +208,10 @@ public class AnimationFormPage extends FormPage {
       public void run() {
         super.run();
 
-        AnimationListViewItem alvi = new AnimationListViewItem();
-        alvi.setName(provideNewName());
-        alvi.setFirstFrame(SharedImages.BOX.createImage());
-        alvi.setFrames(new LinkedList<Image>());
-        alvi.setAnimation(new EntityAnimation());
-        alvi.getAnimation().setAnimationName(alvi.getName());
-        // alvi.getAnimation().setVertices(new ArrayList<Vector2>()); // set
-        // empty
-        // vertices
-        alvi.getAnimation().setShapeType(EntityCollisionType.NONE); // NONE
-                                                                    // indicates
-                                                                    // no
-        // collision
-        // parameters
-        if (listItems.size() == 0) {
-          alvi.getAnimation().setDefaultAnimation(true);
-        }
+        AnimationListViewItem alvi = animController.createEmptyAnimation();
 
-        addNewAnimation(alvi);
+        updateUIOnNewAnimationAdd(alvi, animController.indexOf(alvi));
 
-        //
         entityFormEditor.getModel().addEntityAnimation(alvi.getAnimation());
         dirty = true;
         entityFormEditor.editorDirtyStateChanged();
@@ -309,8 +283,14 @@ public class AnimationFormPage extends FormPage {
     btnDefaultAnimation.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
-        if (selectedAnimationListItem() != null) {
-          animationDefaultChanged();
+        AnimationListViewItem alvi = selectedAnimationListItem();
+
+        if (alvi != null) {
+
+          animController.defaultAnimationChanged(alvi, btnDefaultAnimation.getSelection());
+          dirty = true;
+          entityFormEditor.editorDirtyStateChanged();
+
         }
       }
     });
@@ -322,7 +302,22 @@ public class AnimationFormPage extends FormPage {
     mghprlnkChangeAnimationName.addHyperlinkListener(new HyperlinkAdapter() {
       @Override
       public void linkActivated(HyperlinkEvent e) {
-        animationNameChangeDialog();
+
+        AnimationPropertyChangeDialog stcd = new AnimationPropertyChangeDialog(getSite().getShell(), txtAnimationName
+            .getText(), txtAnimationDuration.getText());
+        int resp = stcd.open();
+        if (resp == AnimationPropertyChangeDialog.CANCEL) {
+          return;
+        }
+
+        txtAnimationName.setText(stcd.getName());
+        txtAnimationDuration.setText(stcd.getAnimationDuration());
+
+        animController.animationNameChange(selectedAnimationListItem(), stcd.getName(), stcd.getAnimationDuration());
+
+        dirty = true;
+        entityFormEditor.editorDirtyStateChanged();
+        tableViewer.refresh();
       }
     });
     mghprlnkChangeAnimationName.setImage(SharedImages.CHANGE_ITEM_SMALL.createImage());
@@ -353,7 +348,8 @@ public class AnimationFormPage extends FormPage {
     previewExternal.addHyperlinkListener(new HyperlinkAdapter() {
       @Override
       public void linkActivated(HyperlinkEvent e) {
-        previewAnimationExternal();
+        float duration = FloatUtil.toFloat(txtAnimationDuration.getText());
+        animController.previewAnimationExternal(selectedAnimationListItem().getAnimation(), duration);
       }
     });
 
@@ -397,8 +393,8 @@ public class AnimationFormPage extends FormPage {
     sctnAnimations.setTextClient(mghprlnkRemove);
 
     tableViewer.setLabelProvider(new AnimationTableLabelProvider());
-    tableViewer.setContentProvider(new AnimationTableContentProvider(listItems));
-    tableViewer.setInput(listItems);
+    tableViewer.setContentProvider(new AnimationTableContentProvider(animController.getAnimations()));
+    tableViewer.setInput(animController.getAnimations());
     tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
       @Override
       public void selectionChanged(SelectionChangedEvent event) {
@@ -406,121 +402,43 @@ public class AnimationFormPage extends FormPage {
       }
     });
 
-    //
-    updateAnimations();
+    // load animations from mode
+    loadAnimationsFromModel();
 
-    if (listItems.size() == 0) {
-      resetUI();
+    if (animController.animationsCount() == 0) {
+      disableUIState();
     }
-  }
-
-  /**
-   * Preview animation external.
-   */
-  protected void previewAnimationExternal() {
-    EntityAnimation ea = selectedAnimationListItem().getAnimation();
-    String animStrip = ea.getAnimationResourceFile().getResourceFileAbsolute();
-
-    if (animStrip == null)
-      return;
-
-    int rows = ea.getRows();
-    int cols = ea.getCols();
-
-    // Use JOGL Application
-    JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
-    jac.width = 200;
-    jac.height = 200;
-    jac.title = ea.getAnimationName();
-
-    ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip, rows, cols,
-        FloatUtil.toFloat(txtAnimationDuration.getText()));
-    new JoglApplication(eap, jac);
-  }
-
-  /**
-   * Animation duration changed.
-   */
-  private void animationDurationChanged() {
-    selectedAnimationListItem().getAnimation().setAnimationDelay(FloatUtil.toFloat(txtAnimationDuration.getText()));
-
-    dirty = true;
-    entityFormEditor.editorDirtyStateChanged();
-  }
-
-  /**
-   * Animation default changed.
-   */
-  private void animationDefaultChanged() {
-    AnimationListViewItem alvi = selectedAnimationListItem();
-    alvi.getAnimation().setDefaultAnimation(btnDefaultAnimation.getSelection());
-
-    // Undefault if any other items exist
-    for (AnimationListViewItem ai : listItems) {
-      if (ai != alvi) {
-        ai.getAnimation().setDefaultAnimation(false);
-      }
-    }
-
-    dirty = true;
-    entityFormEditor.editorDirtyStateChanged();
-  }
-
-  /**
-   * Animation name change dialog.
-   */
-  private void animationNameChangeDialog() {
-    AnimationPropertyChangeDialog stcd = new AnimationPropertyChangeDialog(getSite().getShell(),
-        txtAnimationName.getText(), txtAnimationDuration.getText());
-    int resp = stcd.open();
-    if (resp == AnimationPropertyChangeDialog.CANCEL) {
-      return;
-    }
-
-    txtAnimationName.setText(stcd.getName());
-    txtAnimationDuration.setText(stcd.getAnimationDuration());
-
-    AnimationListViewItem alvi = selectedAnimationListItem();
-    alvi.setName(stcd.getName());
-    if (alvi.getAnimation() != null) {
-      alvi.getAnimation().setAnimationName(stcd.getName());
-      alvi.getAnimation().setAnimationDelay(FloatUtil.toFloat(stcd.getAnimationDuration()));
-      dirty = true;
-      entityFormEditor.editorDirtyStateChanged();
-    }
-
-    tableViewer.refresh();
   }
 
   /**
    * Removes the selected animation.
    */
   private void removeSelectedAnimation() {
-    AnimationListViewItem anim = selectedAnimationListItem();
+    AnimationListViewItem alvi = selectedAnimationListItem();
 
-    listItems.indexOf(anim);
-    listItems.remove(anim);
+    animController.removeAnimation(alvi);
+
     // sync with the model
-    entityFormEditor.getModel().getAnimationList().remove(anim.getAnimation());
-    anim.getFrames().clear();
+    entityFormEditor.getModel().getAnimationList().remove(alvi.getAnimation());
+
     dirty = true;
     entityFormEditor.editorDirtyStateChanged();
 
     tableViewer.refresh();
 
     // select
-    table.select(listItems.size() - 1);
+    table.select(animController.getAnimations().size() - 1);
     handleAnimationListSeletionListener();
 
-    if (listItems.isEmpty()) {
-      resetUI();
+    if (animController.animationsCount() == 0) {
+      disableUIState();
     }
   }
 
   /**
    * Reset ui.
    */
-  private void resetUI() {
+  private void disableUIState() {
     txtAnimationName.setText("");
     txtAnimationDuration.setEnabled(false);
     mghprlnkAddFrames.setEnabled(false);
@@ -591,14 +509,13 @@ public class AnimationFormPage extends FormPage {
    * @param alvi
    *          the alvi
    */
-  private void addNewAnimation(AnimationListViewItem alvi) {
+  private void updateUIOnNewAnimationAdd(AnimationListViewItem alvi, int index) {
     resetFramesComposite();
-    listItems.add(alvi);
     tableViewer.refresh();
 
     // select the recently created object
-    int index = listItems.indexOf(alvi);
     table.select(index);
+
     handleAnimationListSeletionListener();
 
     mghprlnkAddFrames.setEnabled(true);
@@ -606,15 +523,6 @@ public class AnimationFormPage extends FormPage {
     txtAnimationDuration.setEnabled(true);
     mghprlnkRemove.setEnabled(true);
     btnDefaultAnimation.setEnabled(true);
-  }
-
-  /**
-   * Provide new name.
-   * 
-   * @return the string
-   */
-  private String provideNewName() {
-    return "Animation " + (listItems.size() + 1);
   }
 
   /**
