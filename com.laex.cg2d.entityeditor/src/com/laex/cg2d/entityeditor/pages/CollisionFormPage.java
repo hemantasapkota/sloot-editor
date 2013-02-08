@@ -135,6 +135,10 @@ public class CollisionFormPage extends FormPage {
   /** The freeform layered pane. */
   private FreeformLayeredPane freeformLayeredPane;
 
+  private RectangleFigure rectangleFigure;
+
+  private Ellipse ellipseFigure;
+
   /**
    * Create the form page.
    * 
@@ -324,6 +328,7 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
+        handleAnimationListSeletionListener();
       }
     });
     txtX.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -337,6 +342,7 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
+        handleAnimationListSeletionListener();
       }
     });
     GridData gd_txtY = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -354,6 +360,8 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
+        handleAnimationListSeletionListener();
+
       }
     });
     managedForm.getToolkit().adapt(txtWidth);
@@ -370,6 +378,7 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
+        handleAnimationListSeletionListener();
       }
     });
     managedForm.getToolkit().adapt(txtHeight);
@@ -546,13 +555,7 @@ public class CollisionFormPage extends FormPage {
     }
 
     // preview animation at the end
-    if (ai.getAnimation() != null) {
-
-      if (ai.getFrames() != null && !ai.getFrames().isEmpty()) {
-        animationFramePreview(ai.getAnimation().getShapeType(), ai.getFrames());
-      }
-
-    }
+    doPreview(ai);
 
     // select appr. shape
     if (ai.getAnimation().getShapeType() != null) {
@@ -575,7 +578,7 @@ public class CollisionFormPage extends FormPage {
       mghprlnkAdd.setEnabled(false);
       mghprlnkRem.setEnabled(true);
 
-      animationFramePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+      animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFrames());
 
     } else {
       removeCollisionShape();
@@ -584,6 +587,14 @@ public class CollisionFormPage extends FormPage {
       mghprlnkRem.setEnabled(false);
     }
 
+  }
+
+  private void doPreview(AnimationListViewItem ai) {
+    if (ai.getAnimation() != null) {
+      if (ai.getFrames() != null && !ai.getFrames().isEmpty()) {
+        animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+      }
+    }
   }
 
   /**
@@ -674,7 +685,7 @@ public class CollisionFormPage extends FormPage {
    * @param animation
    *          the animation
    */
-  private void animationFramePreview(EntityCollisionType colType, final Queue<Image> animation) {
+  private void animationAndCollisionShapePreview(EntityCollisionType colType, final Queue<Image> animation) {
     freeformLayeredPane.removeAll();
 
     Image i = animation.peek();
@@ -685,16 +696,17 @@ public class CollisionFormPage extends FormPage {
 
     switch (colType) {
     case BOX:
-      RectangleFigure rf = new RectangleFigure();
-      rf.setAlpha(120);
-      rf.setBounds(shapeTypeBoundingBox());
-      freeformLayeredPane.add(rf);
+      rectangleFigure = new RectangleFigure();
+      rectangleFigure.setAlpha(120);
+      rectangleFigure.setBounds(shapeTypeBoundingBox());
+
+      freeformLayeredPane.add(rectangleFigure);
       break;
     case CIRCLE:
-      Ellipse ef = new Ellipse();
-      ef.setAlpha(120);
-      ef.setBounds(shapeTypeBoundingBox());
-      freeformLayeredPane.add(ef);
+      ellipseFigure = new Ellipse();
+      ellipseFigure.setAlpha(120);
+      ellipseFigure.setBounds(shapeTypeBoundingBox());
+      freeformLayeredPane.add(ellipseFigure);
       break;
     case CUSTOM:
       break;
@@ -704,6 +716,22 @@ public class CollisionFormPage extends FormPage {
       break;
     }
 
+  }
+
+  private void clearCollisionFigure() {
+    if (rectangleFigure != null) {
+      if (freeformLayeredPane.getChildren().contains(rectangleFigure)) {
+        freeformLayeredPane.remove(rectangleFigure);
+        rectangleFigure = null;
+      }
+    }
+
+    if (ellipseFigure != null) {
+      if (freeformLayeredPane.getChildren().contains(ellipseFigure)) {
+        freeformLayeredPane.remove(ellipseFigure);
+        ellipseFigure = null;
+      }
+    }
   }
 
   /**
@@ -716,6 +744,7 @@ public class CollisionFormPage extends FormPage {
     }
 
     collisionShape = EntityCollisionType.NONE;
+    clearCollisionFigure();
     sctnShapesComposite.layout(true);
     resetShapeProperties();
 
@@ -771,6 +800,8 @@ public class CollisionFormPage extends FormPage {
       break;
 
     }
+
+    doPreview(selectedAnimationListItem());
 
     sctnShapesComposite.layout(true);
   }
