@@ -159,18 +159,14 @@ public class EntityManager extends AbstractGameComponentManager {
 
         CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(entity);
 
-        System.err.println(ea.getAnimationResourceFile().getResourceFile());
-
         // Resource file empty indicates this entity might not have
-        // image
-        // & collision shape
-        // defined. Ignore this and do not create bodies or shape for
+        // image & collision shape defined. Ignore this and do not create bodies or shape for
         // this kind of object.
         if (ea.getAnimationResourceFile().getResourceFileAbsolute().trim().isEmpty()) {
           world().destroyBody(b);
           continue;
         }
-
+        
         FileHandle handle = Gdx.files.absolute(ea.getAnimationResourceFile().getResourceFileAbsolute());
 
         Texture tex = new Texture(handle);
@@ -330,9 +326,11 @@ public class EntityManager extends AbstractGameComponentManager {
 
     // check if shape type is NONE. NONE shape type means that this entity
     // has no collision parameters defined.
-    // We simple ignore this and do not craete any shape collision for this
+    // We simple ignore this and do not create any shape collision for this
     // object
     if (shapeType == CGEntityCollisionType.NONE) {
+      ///set empty origin vertex so that other codes do not have to check null pointer exception on its part
+      entityAnimationOriginMap.put(ea, new Vector3(0, 0, 0));
       return;
     }
 
