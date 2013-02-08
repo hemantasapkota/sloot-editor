@@ -55,9 +55,6 @@ public class EntityManager extends AbstractGameComponentManager {
   /** The state time. */
   float stateTime = 0;
 
-  /** The draw bodies. */
-  boolean drawBodies;
-
   /** The shape to sprite map. */
   private Map<CGShape, Sprite> shapeToSpriteMap;
 
@@ -69,6 +66,8 @@ public class EntityManager extends AbstractGameComponentManager {
   // x = origin x, y = origin y, z = radius
   /** The entity animation origin map. */
   private Map<CGEntityAnimation, Vector3> entityAnimationOriginMap;
+
+  private boolean drawEntities;
 
   /**
    * Instantiates a new entity manager.
@@ -86,7 +85,7 @@ public class EntityManager extends AbstractGameComponentManager {
     super(model, world, cam);
     this.batch = batch;
 
-    this.drawBodies = model.getScreenPrefs().getDebugDrawPrefs().getDrawBodies();
+    this.drawEntities = model.getScreenPrefs().getDebugDrawPrefs().getDrawEntities();
 
     this.shapeToSpriteMap = new HashMap<GameObject.CGShape, Sprite>();
     this.shapeToEntityMap = new HashMap<GameObject.CGShape, GameObject.CGEntity>();
@@ -232,7 +231,7 @@ public class EntityManager extends AbstractGameComponentManager {
    */
   @Override
   public void render() {
-    if (!drawBodies) {
+    if (!drawEntities) {
       return;
     }
 
