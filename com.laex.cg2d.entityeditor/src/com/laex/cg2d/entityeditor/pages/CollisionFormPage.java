@@ -171,7 +171,7 @@ public class CollisionFormPage extends FormPage {
         if (event.getSelectedPage().equals(CollisionFormPage.this)) {
           resetAll();
 
-          reflectAnimationsFromModelToScreen();
+          loadAnimationsFromModel();
           setShapePropertiesState(true);
 
           // Edge case. Disable add/remove collision shape link if there are no
@@ -192,6 +192,7 @@ public class CollisionFormPage extends FormPage {
   private void resetAll() {
     animationListItems.clear();
     tableViewer.refresh();
+    freeformLayeredPane.removeAll();
     removeCollisionShape();
     resetFramesComposite();
     resetShapeProperties();
@@ -200,7 +201,7 @@ public class CollisionFormPage extends FormPage {
   /**
    * Reflect animations from model to screen.
    */
-  private void reflectAnimationsFromModelToScreen() {
+  private void loadAnimationsFromModel() {
     Entity model = this.entityFormEditor.getModel();
 
     for (EntityAnimation ea : model.getAnimationList()) {
@@ -323,7 +324,6 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
-
       }
     });
     txtX.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -547,7 +547,11 @@ public class CollisionFormPage extends FormPage {
 
     // preview animation at the end
     if (ai.getAnimation() != null) {
-      animationFramePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+
+      if (ai.getFrames() != null && !ai.getFrames().isEmpty()) {
+        animationFramePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+      }
+
     }
 
     // select appr. shape
