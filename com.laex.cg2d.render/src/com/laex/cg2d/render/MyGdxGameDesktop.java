@@ -63,7 +63,8 @@ public class MyGdxGameDesktop {
     Option velocityItr = new Option("velItr", true, "Velocity Iterations");
     Option positionItr = new Option("posItr", true, "Position Iterations");
 
-    Option screenFile = new Option("screenFile", true, "CG2D Screen File");
+    Option screenFile = new Option("screenFile", true, "Screen File");
+    Option screenController = new Option("screenController", true, "Screen Controller File");
 
     gnuOptions.addOption(cardWidth);
     gnuOptions.addOption(cardHeight);
@@ -85,6 +86,7 @@ public class MyGdxGameDesktop {
     gnuOptions.addOption(positionItr);
 
     gnuOptions.addOption(screenFile);
+    gnuOptions.addOption(screenController);
 
     return gnuOptions;
   }
@@ -190,6 +192,11 @@ public class MyGdxGameDesktop {
     if (cmd.hasOption("screenFile")) {
       prefs.put(PreferenceConstants.SCREEN_FILE, cmd.getOptionValue("screenFile"));
     }
+    
+    // screen controller file
+    if (cmd.hasOption("screenController")) {
+      prefs.put(PreferenceConstants.SCREEN_CONTROLLER, cmd.getOptionValue("screenController"));
+    }
 
     return prefs;
   }
@@ -207,13 +214,14 @@ public class MyGdxGameDesktop {
 
     Map<String, Object> prefs = parse(options, args);
 
-    String cg2dFile = (String) prefs.get(PreferenceConstants.SCREEN_FILE);
+    String screenFile = (String) prefs.get(PreferenceConstants.SCREEN_FILE);
+    String screenControllerFile = (String) prefs.get(PreferenceConstants.SCREEN_CONTROLLER); 
 
     InputStream is;
     CGGameModel model = null;
 
     try {
-      is = new FileInputStream(cg2dFile);
+      is = new FileInputStream(screenFile);
       model = CGGameModel.parseFrom(is);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -229,10 +237,10 @@ public class MyGdxGameDesktop {
     JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
     jac.width = cardWidth;
     jac.height = cardHeight;
-    jac.title = cg2dFile;
+    jac.title = screenFile;
 
     final CGGameModel modelMain = model;
-    MyGdxGame mgd = new MyGdxGame() {
+    MyGdxGame mgd = new MyGdxGame(screenControllerFile) {
       @Override
       public CGGameModel loadGameModel() {
         return modelMain;

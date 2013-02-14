@@ -20,7 +20,10 @@ public class PreferenceConstants {
 
   /** The Constant SCREEN_FILE. */
   public static final String SCREEN_FILE = "ScreenFile";
-
+  
+   /** The Constant SCREEN_CONTROLLER. */
+  public static final String SCREEN_CONTROLLER = "ScreenControllerFile";
+ 
   /** The Constant PTM_RATIO. */
   public static final String PTM_RATIO = "PTM_RATIO";
 

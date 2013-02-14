@@ -239,7 +239,7 @@ public class EntityManager extends AbstractGameComponentManager {
     Iterator<Body> itr = world().getBodies();
     while (itr.hasNext()) {
       Body b = itr.next();
-      //
+      
       if (!(b.getUserData() instanceof CGShape)) {
         continue;
       }
@@ -248,7 +248,7 @@ public class EntityManager extends AbstractGameComponentManager {
       if (!(shape.getEditorShapeType() == CGEditorShapeType.ENTITY_SHAPE)) {
         continue;
       }
-
+      
       Vector2 pos = b.getPosition();
 
       // position for circle collision shape & box collision shape differ.

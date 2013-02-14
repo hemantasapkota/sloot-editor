@@ -95,8 +95,11 @@ public class ScreenEditorContributor extends ActionBarContributor {
 
               monitor.beginTask("Building rendering command", 5);
               ILog log = Activator.getDefault().getLog();
+              
               String mapFile = file.getLocation().makeAbsolute().toOSString();
-              String command = buildRunnerCommandFromProperties(props, mapFile);
+              String controllerFile = file.getLocation().removeFileExtension().addFileExtension("lua").makeAbsolute().toOSString();
+              
+              String command = buildRunnerCommandFromProperties(props, mapFile, controllerFile);
               log.log(new Status(IStatus.INFO, Activator.PLUGIN_ID, command));
               monitor.worked(5);
 
@@ -239,11 +242,12 @@ public class ScreenEditorContributor extends ActionBarContributor {
    * @throws CoreException
    *           the core exception
    */
-  private String buildRunnerCommandFromProperties(Map<String, String> props, String screenFile) throws CoreException {
+  private String buildRunnerCommandFromProperties(Map<String, String> props, String screenFile, String controllerFile) throws CoreException {
     StringBuilder cmd = new StringBuilder("java -jar ");
 
     cmd.append(InternalPrefs.gameRunner());
     cmd.append(" -screenFile ").append(screenFile);
+    cmd.append(" -screenController ").append(controllerFile);
 
     // cmd.append(" -cw ").append(props.get(PreferenceConstants.CARD_WIDTH));
     // cmd.append(" -ch ").append(props.get(PreferenceConstants.CARD_HEIGHT));

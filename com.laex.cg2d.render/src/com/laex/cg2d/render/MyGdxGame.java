@@ -69,6 +69,14 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   /** The position iterations. */
   private int positionIterations;
 
+  private LuaScriptManager luaScriptManager;
+
+  private String screenControllerFileLua;
+
+  public MyGdxGame(String screenControllerFile) {
+    this.screenControllerFileLua = screenControllerFile;
+  }
+
   /**
    * Load game model.
    * 
@@ -110,6 +118,11 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     entityManager = new EntityManager(model, world, cam, batch);
     bgManager = new BackgroundManager(model, world, cam, batch);
     mouseJointManager = new MouseJointManager(model, world, cam);
+
+    if (!screenControllerFileLua.trim().isEmpty()) {
+      luaScriptManager = new LuaScriptManager(model, world, cam, screenControllerFileLua);
+      luaScriptManager.create();
+    }
 
     mouseJointManager.create();
     shapeManager.create();
@@ -185,6 +198,8 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     bgManager.render();
     entityManager.render();
     shapeManager.render();
+    luaScriptManager.render();
+
   }
 
   /**
