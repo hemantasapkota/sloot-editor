@@ -12,7 +12,6 @@ package com.laex.cg2d.render;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -128,6 +127,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     shapeManager.create();
     bgManager.create();
     entityManager.create();
+    luaScriptManager.create();
 
     Gdx.input.setInputProcessor(mouseJointManager);
   }
@@ -136,29 +136,29 @@ public abstract class MyGdxGame extends ApplicationAdapter {
    * Handle input.
    */
   private void handleInput() {
-    if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-      cam.zoom += 0.02;
-    }
-    if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-      cam.zoom -= 0.02;
-    }
-
-    if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-      if (cam.position.x > 0)
-        cam.translate(-0.5f, 0, 0);
-    }
-    if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-      if (cam.position.x < 1024)
-        cam.translate(0.5f, 0, 0);
-    }
-    if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-      if (cam.position.y > 0)
-        cam.translate(0, -0.5f, 0);
-    }
-    if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-      if (cam.position.y < 1024)
-        cam.translate(0, 0.5f, 0);
-    }
+//    if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+//      cam.zoom += 0.02;
+//    }
+//    if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+//      cam.zoom -= 0.02;
+//    }
+//
+//    if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+//      if (cam.position.x > 0)
+//        cam.translate(-0.5f, 0, 0);
+//    }
+//    if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+//      if (cam.position.x < 1024)
+//        cam.translate(0.5f, 0, 0);
+//    }
+//    if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+//      if (cam.position.y > 0)
+//        cam.translate(0, -0.5f, 0);
+//    }
+//    if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+//      if (cam.position.y < 1024)
+//        cam.translate(0, 0.5f, 0);
+//    }
 
   }
 
@@ -199,7 +199,6 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     entityManager.render();
     shapeManager.render();
     luaScriptManager.render();
-
   }
 
   /**

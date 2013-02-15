@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: luaJ
+Bundle-SymbolicName: luaj-3.0-alpha
+Bundle-Version: 1.0.0
+Bundle-ClassPath: luaj-jse-3.0-alpha2.jar,
+ luaj-sources-3.0-alpha2.jar
+Export-Package: org.luaj.vm2,
+ org.luaj.vm2.ast,
+ org.luaj.vm2.compiler,
+ org.luaj.vm2.lib,
+ org.luaj.vm2.lib.jse,
+ org.luaj.vm2.luajc,
+ org.luaj.vm2.parser,
+ org.luaj.vm2.script
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

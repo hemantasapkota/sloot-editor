@@ -34,11 +34,17 @@ public class LuaScriptManager extends AbstractGameComponentManager {
 
   @Override
   public void create() {
+    Iterator<Body> itr = world().getBodies();
+    while (itr.hasNext()) {
+      Body b = itr.next();
+      Object userData = b.getUserData();
 
-  }
+      if (userData instanceof CGShape) {
+        CGShape shape = (CGShape) userData;
+        this.execute("init", b, camera(), shape.getId());
+      }
 
-  private void execute(String functionName, Body body, String id) {
-    globals.get(functionName).call(CoerceJavaToLua.coerce(body), LuaValue.valueOf(id));
+    }
   }
 
   public void render() {
@@ -46,13 +52,17 @@ public class LuaScriptManager extends AbstractGameComponentManager {
     while (itr.hasNext()) {
       Body b = itr.next();
       Object userData = b.getUserData();
-      
+
       if (userData instanceof CGShape) {
         CGShape shape = (CGShape) userData;
-        this.execute("update", b, shape.getId());
+        this.execute("update", b, camera(), shape.getId());
       }
 
     }
+  }
+
+  private void execute(String functionName, Body body, Camera cam, String id) {
+    globals.get(functionName).call(CoerceJavaToLua.coerce(body), CoerceJavaToLua.coerce(cam), LuaValue.valueOf(id));
   }
 
   @Override
