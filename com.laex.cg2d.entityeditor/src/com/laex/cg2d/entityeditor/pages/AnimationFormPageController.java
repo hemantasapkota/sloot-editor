@@ -1,14 +1,11 @@
 package com.laex.cg2d.entityeditor.pages;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.swt.graphics.Image;
 
-import com.badlogic.gdx.backends.jogl.JoglApplication;
-import com.badlogic.gdx.backends.jogl.JoglApplicationConfiguration;
 import com.laex.cg2d.shared.SharedImages;
 import com.laex.cg2d.shared.model.EntityAnimation;
 import com.laex.cg2d.shared.model.EntityCollisionType;
@@ -76,13 +73,22 @@ public class AnimationFormPageController {
     int cols = entAnim.getCols();
 
     // Use JOGL Application
-    JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
-    jac.width = 200;
-    jac.height = 200;
-    jac.title = entAnim.getAnimationName();
-
-    ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip, rows, cols, duration);
-    new JoglApplication(eap, jac);
+//    JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
+//    jac.width = 200;
+//    jac.height = 200;
+//    jac.title = entAnim.getAnimationName();
+//
+//    ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip, rows, cols, duration);
+//    new JoglApplication(eap, jac);
+    
+//    LwjglApplicationConfiguration lac = new LwjglApplicationConfiguration();
+//    lac.width = 200;
+//    lac.height = 200;
+//    lac.title = entAnim.getAnimationName();
+//    
+//    
+//    ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip, rows, cols, duration);
+//    new LwjglApplication(eap, lac);
   }
 
   public void animationDurationChanged(EntityAnimation anim, float duration) {

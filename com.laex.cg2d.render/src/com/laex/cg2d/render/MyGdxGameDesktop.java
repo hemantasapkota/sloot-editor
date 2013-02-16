@@ -24,8 +24,8 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import com.badlogic.gdx.backends.jogl.JoglApplication;
-import com.badlogic.gdx.backends.jogl.JoglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.laex.cg2d.protobuf.GameObject.CGGameModel;
 
 /**
@@ -233,11 +233,16 @@ public class MyGdxGameDesktop {
 
     int cardWidth = model.getScreenPrefs().getCardPrefs().getCardWidth();
     int cardHeight = model.getScreenPrefs().getCardPrefs().getCardHeight();
+    
+    LwjglApplicationConfiguration lwapp = new LwjglApplicationConfiguration();
+    lwapp.width = cardWidth;
+    lwapp.height = cardHeight;
+    lwapp.title = screenFile;
 
-    JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
-    jac.width = cardWidth;
-    jac.height = cardHeight;
-    jac.title = screenFile;
+//    JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
+//    jac.width = cardWidth;
+//    jac.height = cardHeight;
+//    jac.title = screenFile;
 
     final CGGameModel modelMain = model;
     MyGdxGame mgd = new MyGdxGame(screenControllerFile) {
@@ -247,6 +252,7 @@ public class MyGdxGameDesktop {
       }
     };
 
-    new JoglApplication(mgd, jac);
+//    new JoglApplication(mgd, jac);
+    new LwjglApplication(mgd, lwapp);
   }
 }

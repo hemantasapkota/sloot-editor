@@ -92,7 +92,7 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     super.create();
 
     this.shapeRenderer = new ShapeRenderer();
-
+    
     Texture.setEnforcePotImages(false);
 
     batch = new SpriteBatch();

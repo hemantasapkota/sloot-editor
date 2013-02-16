@@ -17,6 +17,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.laex.cg2d.protobuf.GameObject.CGGameModel;
@@ -117,17 +123,33 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     entityManager = new EntityManager(model, world, cam, batch);
     bgManager = new BackgroundManager(model, world, cam, batch);
     mouseJointManager = new MouseJointManager(model, world, cam);
-
-    if (!screenControllerFileLua.trim().isEmpty()) {
-      luaScriptManager = new LuaScriptManager(model, world, cam, screenControllerFileLua);
-      luaScriptManager.create();
-    }
+    luaScriptManager = new LuaScriptManager(model, world, cam, screenControllerFileLua);
 
     mouseJointManager.create();
     shapeManager.create();
     bgManager.create();
     entityManager.create();
     luaScriptManager.create();
+    
+
+    // sample create body
+//    BodyDef bodyDef = new BodyDef();
+//    bodyDef.type = BodyType.DynamicBody;
+//    bodyDef.position.set(6, 3);
+
+//    Body body = world.createBody(bodyDef);
+    
+
+//    CircleShape circle = new CircleShape();
+//    circle.setRadius(6f);
+//
+//    FixtureDef fixtureDef = new FixtureDef();
+//    fixtureDef.shape = circle;
+//    fixtureDef.density = 0.5f;
+//    fixtureDef.friction = 0.4f;
+//    fixtureDef.restitution = 0.6f;
+//
+//    body.createFixture(fixtureDef);
 
     Gdx.input.setInputProcessor(mouseJointManager);
   }
@@ -136,29 +158,29 @@ public abstract class MyGdxGame extends ApplicationAdapter {
    * Handle input.
    */
   private void handleInput() {
-//    if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-//      cam.zoom += 0.02;
-//    }
-//    if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-//      cam.zoom -= 0.02;
-//    }
-//
-//    if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-//      if (cam.position.x > 0)
-//        cam.translate(-0.5f, 0, 0);
-//    }
-//    if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-//      if (cam.position.x < 1024)
-//        cam.translate(0.5f, 0, 0);
-//    }
-//    if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-//      if (cam.position.y > 0)
-//        cam.translate(0, -0.5f, 0);
-//    }
-//    if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-//      if (cam.position.y < 1024)
-//        cam.translate(0, 0.5f, 0);
-//    }
+    // if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+    // cam.zoom += 0.02;
+    // }
+    // if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+    // cam.zoom -= 0.02;
+    // }
+    //
+    // if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+    // if (cam.position.x > 0)
+    // cam.translate(-0.5f, 0, 0);
+    // }
+    // if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+    // if (cam.position.x < 1024)
+    // cam.translate(0.5f, 0, 0);
+    // }
+    // if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+    // if (cam.position.y > 0)
+    // cam.translate(0, -0.5f, 0);
+    // }
+    // if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+    // if (cam.position.y < 1024)
+    // cam.translate(0, 0.5f, 0);
+    // }
 
   }
 
