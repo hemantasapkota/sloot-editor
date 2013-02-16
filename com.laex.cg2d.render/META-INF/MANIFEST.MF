@@ -6,8 +6,9 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Hemanta Sapkota
 Require-Bundle: org.apache.commons.cli;bundle-version="1.2.0",
  com.laex.cg2d.protobuf;bundle-version="1.0.0",
- libgdx-0.9.6;bundle-version="0.9.6",
- luaj-3.0-alpha;bundle-version="1.0.0"
+ luaj-3.0-alpha;bundle-version="1.0.0",
+ org.apache.commons.lang;bundle-version="2.6.0",
+ libgdx-0.9.8;bundle-version="0.9.8"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: com.laex.cg2d.render
