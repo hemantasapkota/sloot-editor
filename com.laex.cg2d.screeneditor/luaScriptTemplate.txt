@@ -1,0 +1,8 @@
+function init(world, cam) 
+end
+
+function initBody(world, cam, body, id)
+end
+
+function update(world, cam, body, id)
+end

@@ -89,7 +89,7 @@ public class LuaScriptManager extends AbstractGameComponentManager {
     LuaValue worldLua = CoerceJavaToLua.coerce(world());
     LuaValue cameraLua = CoerceJavaToLua.coerce(camera());
     LuaValue bodyLua = CoerceJavaToLua.coerce(body);
-
+    
     globals.get(functionName).invoke(new LuaValue[]
       { worldLua, cameraLua, bodyLua, LuaValue.valueOf(id) });
   }

@@ -70,6 +70,15 @@
             name="Box2D Editor Project"
             project="true">
       </wizard>
+      <wizard
+            category="com.laex.cg2d.core.wizards.CGWizard"
+            class="com.laex.cg2d.screeneditor.wizards.NewScriptWizard"
+            hasPages="true"
+            icon="main.png"
+            id="com.laex.cg2d.screeneditor.wizard1"
+            name="Script"
+            project="false">
+      </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.menus">

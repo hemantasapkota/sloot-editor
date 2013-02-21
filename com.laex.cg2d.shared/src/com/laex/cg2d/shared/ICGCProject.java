@@ -48,7 +48,7 @@ public interface ICGCProject {
   String GLOBALS_EXTENSION = "globals";
 
   /** The script extension. */
-  String SCRIPT_EXTENSION = "cgescript";
+  String SCRIPT_EXTENSION = "lua";
 
   /** The png extension. */
   String PNG_EXTENSION = "png";
