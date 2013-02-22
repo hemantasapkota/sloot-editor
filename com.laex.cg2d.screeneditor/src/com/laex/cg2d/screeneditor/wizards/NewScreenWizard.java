@@ -134,8 +134,8 @@ public class NewScreenWizard extends Wizard implements INewWizard {
 
         Map<String, String> defaultScreenPrefs = PreferenceInitializer.defaultScreenProperties();
         CGGameModel cgGameModel = new CGGameModelAdapter(model, defaultScreenPrefs).asCGGameModel();
-
-        PlatformUtil.saveProto(monitor, createdFile, new ByteArrayInputStream(cgGameModel.toString().getBytes()));
+        
+        PlatformUtil.saveProto(monitor, createdFile, new ByteArrayInputStream(cgGameModel.toByteArray()));
         // Set some default properties for this screen file
         ScreenPropertiesUtil.persistScreenProperties(createdFile, defaultScreenPrefs);
 

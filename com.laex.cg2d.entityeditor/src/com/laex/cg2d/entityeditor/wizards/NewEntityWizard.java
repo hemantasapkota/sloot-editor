@@ -114,7 +114,7 @@ public class NewEntityWizard extends Wizard implements INewWizard {
         // default entity model
         Entity entityModel = EntityAdapter.newDefaultEntity(filename);
         CGEntity cgEntity = EntityAdapter.asCGEntity(entityModel);
-        ByteArrayInputStream bios = new ByteArrayInputStream(cgEntity.toString().getBytes());
+        ByteArrayInputStream bios = new ByteArrayInputStream(cgEntity.toByteArray());
         IFile file = b2dMgr.createFile(npath, bios);
 
         // open the file

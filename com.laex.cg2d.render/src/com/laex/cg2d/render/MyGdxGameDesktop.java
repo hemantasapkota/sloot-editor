@@ -222,7 +222,7 @@ public class MyGdxGameDesktop {
 
     try {
       is = new FileInputStream(screenFile);
-      model = CGGameModel.parseFrom(is);
+      model = CGGameModel.PARSER.parseFrom(is);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
       return;
