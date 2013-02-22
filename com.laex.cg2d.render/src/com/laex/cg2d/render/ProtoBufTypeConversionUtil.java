@@ -166,6 +166,9 @@ public class ProtoBufTypeConversionUtil {
   public static RevoluteJointDef asRevoluteJoint(Body bodyA, Body bodyB, CGRevoluteJointDef _jdef) {
     RevoluteJointDef jdef = new RevoluteJointDef();
     jdef.collideConnected = _jdef.getCollideConnected();
+    
+    System.err.println(jdef.collideConnected);
+    
     jdef.enableLimit = _jdef.getEnableLimit();
     jdef.enableMotor = _jdef.getEnableMotor();
     jdef.lowerAngle = _jdef.getLowerAngle();
@@ -174,7 +177,11 @@ public class ProtoBufTypeConversionUtil {
     jdef.referenceAngle = _jdef.getReferenceAngle();
     jdef.upperAngle = _jdef.getUpperAngle();
 
-    jdef.initialize(bodyA, bodyB, ProtoBufTypeConversionUtil.asVector2(_jdef.getWorldAnchor()));
+    //TODO: decide what to use in anchor: the world anchor defined in screen editor
+    //or bodys world center
+//    jdef.initialize(bodyA, bodyB, ProtoBufTypeConversionUtil.asVector2(_jdef.getWorldAnchor()));
+    Vector2 avg = bodyA.getWorldCenter().add(bodyB.getWorldCenter());
+    jdef.initialize(bodyA, bodyB, avg.div(2));
     return jdef;
 
   }

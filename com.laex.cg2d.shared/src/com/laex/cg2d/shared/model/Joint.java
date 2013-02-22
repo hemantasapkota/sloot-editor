@@ -62,7 +62,7 @@ public abstract class Joint extends ModelElement {
   // boolean value.
   // Therefore, an extra booelan had to be created. This correctly persists
   // the value.
-  // private boolean coolideConnected = false;
+  private boolean coolideConnected = false;
 
   static {
     PropertyDescriptor jointType = new TextPropertyDescriptor(JOINT_TYPE_PROP, "#Type");
@@ -102,6 +102,10 @@ public abstract class Joint extends ModelElement {
   public Object getEditableValue() {
     return jointDef;
   }
+  
+  public boolean isCollideConnected() {
+    return coolideConnected;
+  }
 
   /*
    * (non-Javadoc)
@@ -114,6 +118,7 @@ public abstract class Joint extends ModelElement {
     if (isCollideConnected(id)) {
 
       this.jointDef.collideConnected = BooleanUtil.toBool(value);
+      this.coolideConnected = BooleanUtil.toBool(value);
 
     } else {
       super.setPropertyValue(id, value);
@@ -128,7 +133,7 @@ public abstract class Joint extends ModelElement {
    */
   public Object getPropertyValue(Object id) {
     if (isCollideConnected(id)) {
-      return BooleanUtil.getIntegerFromBoolean(this.jointDef.collideConnected);
+      return BooleanUtil.getIntegerFromBoolean(this.coolideConnected);
     }
 
     if (isJointTypeProp(id)) {

@@ -224,20 +224,20 @@ public class JointAdapter {
     switch (j.getJointType()) {
     case DistanceJoint:
       DistanceJointDef dj = (DistanceJointDef) j.getEditableValue();
-      CGDistanceJointDef cdj = CGDistanceJointDef.newBuilder().setCollideConnected(dj.collideConnected)
+      CGDistanceJointDef cdj = CGDistanceJointDef.newBuilder().setCollideConnected(j.isCollideConnected())
           .setFreqencyHz(dj.frequencyHz).setDampingRatio(dj.dampingRatio).build();
       jointBuilder = jointBuilder.setDistanceJointDef(cdj);
       break;
     case FrictionJoint:
       FrictionJointDef fj = (FrictionJointDef) j.getEditableValue();
-      CGFrictionJointDef fdj = CGFrictionJointDef.newBuilder().setCollideConnected(fj.collideConnected)
+      CGFrictionJointDef fdj = CGFrictionJointDef.newBuilder().setCollideConnected(j.isCollideConnected())
           .setMaxForce(fj.maxForce).setMaxTorque(fj.maxTorque).build();
       jointBuilder = jointBuilder.setFrictionJointDef(fdj);
       break;
     case PrismaticJoint:
       BEPrismaticJoint bpj = (BEPrismaticJoint) j;
       PrismaticJointDef pj = (PrismaticJointDef) j.getEditableValue();
-      CGPrismaticJointDef cpj = CGPrismaticJointDef.newBuilder().setCollideConnected(pj.collideConnected)
+      CGPrismaticJointDef cpj = CGPrismaticJointDef.newBuilder().setCollideConnected(j.isCollideConnected())
           .setEnableLimit(pj.enableLimit).setReferenceAngle(pj.referenceAngle).setEnableMotor(pj.enableMotor)
           .setLowerTranslation(pj.lowerTranslation).setMaxMotorForce(pj.maxMotorForce)
           .setUpperTranslation(pj.upperTranslation).setMotorSpeed(pj.motorSpeed)
@@ -248,14 +248,14 @@ public class JointAdapter {
     case PulleyJoint:
       BEPulleyJoint bplj = (BEPulleyJoint) j;
       PulleyJointDef pjd = (PulleyJointDef) j.getEditableValue();
-      CGPulleyJointDef cplj = CGPulleyJointDef.newBuilder().setCollideConnected(pjd.collideConnected)
+      CGPulleyJointDef cplj = CGPulleyJointDef.newBuilder().setCollideConnected(j.isCollideConnected())
           .setGroundAnchorA(Vector2Adapter.asCGVector2(bplj.getGroundAnchorA()))
           .setGroundAnchorB(Vector2Adapter.asCGVector2(bplj.getGroundAnchorB())).setRatio(pjd.ratio).build();
       jointBuilder = jointBuilder.setPulleyJointDef(cplj);
       break;
     case RevoluteJoint:
       RevoluteJointDef rjd = (RevoluteJointDef) j.getEditableValue();
-      CGRevoluteJointDef crj = CGRevoluteJointDef.newBuilder().setCollideConnected(rjd.collideConnected)
+      CGRevoluteJointDef crj = CGRevoluteJointDef.newBuilder().setCollideConnected(j.isCollideConnected())
           .setEnableLimit(rjd.enableLimit).setEnableMotor(rjd.enableMotor).setLowerAngle(rjd.lowerAngle)
           .setMaxMotorTorque(rjd.maxMotorTorque).setMotorSpeed(rjd.motorSpeed).setReferenceAngle(rjd.referenceAngle)
           .setUpperAngle(rjd.upperAngle).build();
@@ -263,7 +263,7 @@ public class JointAdapter {
       break;
     case WeldJoint:
       WeldJointDef wjd = (WeldJointDef) j.getEditableValue();
-      CGWeldJointDef wj = CGWeldJointDef.newBuilder().setCollideConnected(wjd.collideConnected).build();
+      CGWeldJointDef wj = CGWeldJointDef.newBuilder().setCollideConnected(j.isCollideConnected()).build();
       jointBuilder = jointBuilder.setWeldJointDef(wj);
       break;
     case GearJoint:
