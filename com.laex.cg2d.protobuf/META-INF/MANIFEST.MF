@@ -4,7 +4,7 @@ Bundle-Name: Protobuf1
 Bundle-SymbolicName: com.laex.cg2d.protobuf
 Bundle-Version: 1.0.0
 Bundle-ClassPath: .,
- protobuf-java-2.4.1.jar,
+ protobuf-java-2.5.0rc1.jar,
  protobuf-java-format-1.2.jar
 Export-Package: com.google.protobuf;version="1.0.0",
  com.googlecode.protobuf.format,

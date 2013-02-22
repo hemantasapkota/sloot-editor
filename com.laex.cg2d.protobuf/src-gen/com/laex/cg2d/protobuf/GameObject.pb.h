@@ -647,6 +647,15 @@ class CGRevoluteJointDef : public ::google::protobuf::Message {
   inline float maxmotortorque() const;
   inline void set_maxmotortorque(float value);
 
+  // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
+  inline bool has_worldanchor() const;
+  inline void clear_worldanchor();
+  static const int kWorldAnchorFieldNumber = 9;
+  inline const ::com::laex::cg2d::protobuf::CGVector2& worldanchor() const;
+  inline ::com::laex::cg2d::protobuf::CGVector2* mutable_worldanchor();
+  inline ::com::laex::cg2d::protobuf::CGVector2* release_worldanchor();
+  inline void set_allocated_worldanchor(::com::laex::cg2d::protobuf::CGVector2* worldanchor);
+
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGRevoluteJointDef)
  private:
   inline void set_has_collideconnected();
@@ -665,6 +674,8 @@ class CGRevoluteJointDef : public ::google::protobuf::Message {
   inline void clear_has_motorspeed();
   inline void set_has_maxmotortorque();
   inline void clear_has_maxmotortorque();
+  inline void set_has_worldanchor();
+  inline void clear_has_worldanchor();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -676,9 +687,10 @@ class CGRevoluteJointDef : public ::google::protobuf::Message {
   float upperangle_;
   float motorspeed_;
   float maxmotortorque_;
+  ::com::laex::cg2d::protobuf::CGVector2* worldanchor_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fprotobuf_2fGameObject_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fprotobuf_2fGameObject_2eproto();
@@ -3766,6 +3778,44 @@ inline float CGRevoluteJointDef::maxmotortorque() const {
 inline void CGRevoluteJointDef::set_maxmotortorque(float value) {
   set_has_maxmotortorque();
   maxmotortorque_ = value;
+}
+
+// optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
+inline bool CGRevoluteJointDef::has_worldanchor() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void CGRevoluteJointDef::set_has_worldanchor() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void CGRevoluteJointDef::clear_has_worldanchor() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void CGRevoluteJointDef::clear_worldanchor() {
+  if (worldanchor_ != NULL) worldanchor_->::com::laex::cg2d::protobuf::CGVector2::Clear();
+  clear_has_worldanchor();
+}
+inline const ::com::laex::cg2d::protobuf::CGVector2& CGRevoluteJointDef::worldanchor() const {
+  return worldanchor_ != NULL ? *worldanchor_ : *default_instance_->worldanchor_;
+}
+inline ::com::laex::cg2d::protobuf::CGVector2* CGRevoluteJointDef::mutable_worldanchor() {
+  set_has_worldanchor();
+  if (worldanchor_ == NULL) worldanchor_ = new ::com::laex::cg2d::protobuf::CGVector2;
+  return worldanchor_;
+}
+inline ::com::laex::cg2d::protobuf::CGVector2* CGRevoluteJointDef::release_worldanchor() {
+  clear_has_worldanchor();
+  ::com::laex::cg2d::protobuf::CGVector2* temp = worldanchor_;
+  worldanchor_ = NULL;
+  return temp;
+}
+inline void CGRevoluteJointDef::set_allocated_worldanchor(::com::laex::cg2d::protobuf::CGVector2* worldanchor) {
+  delete worldanchor_;
+  worldanchor_ = worldanchor;
+  if (worldanchor) {
+    set_has_worldanchor();
+  } else {
+    clear_has_worldanchor();
+  }
 }
 
 // -------------------------------------------------------------------

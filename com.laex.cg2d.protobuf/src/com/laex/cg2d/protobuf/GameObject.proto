@@ -47,6 +47,7 @@ message CGRevoluteJointDef {
 	optional bool enableMotor = 6;
 	optional float motorSpeed = 7;
 	optional float maxMotorTorque = 8;
+	optional CGVector2 worldAnchor = 9;
 }
 
 message CGPrismaticJointDef {

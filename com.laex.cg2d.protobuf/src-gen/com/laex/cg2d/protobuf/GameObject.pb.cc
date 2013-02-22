@@ -160,7 +160,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fprotobuf_2fGameObject_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGDistanceJointDef));
   CGRevoluteJointDef_descriptor_ = file->message_type(3);
-  static const int CGRevoluteJointDef_offsets_[8] = {
+  static const int CGRevoluteJointDef_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, collideconnected_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, referenceangle_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, enablelimit_),
@@ -169,6 +169,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fprotobuf_2fGameObject_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, enablemotor_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, motorspeed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, maxmotortorque_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, worldanchor_),
   };
   CGRevoluteJointDef_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -670,104 +671,105 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fprotobuf_2fGameObject_2eproto() {
     "m.laex.cg2d.protobuf.CGWeldJointDef\"X\n\022C"
     "GDistanceJointDef\022\030\n\020collideConnected\030\001 "
     "\001(\010\022\022\n\nfreqencyHz\030\002 \001(\002\022\024\n\014dampingRatio\030"
-    "\003 \001(\002\"\304\001\n\022CGRevoluteJointDef\022\030\n\020collideC"
+    "\003 \001(\002\"\374\001\n\022CGRevoluteJointDef\022\030\n\020collideC"
     "onnected\030\001 \001(\010\022\026\n\016referenceAngle\030\002 \001(\002\022\023"
     "\n\013enableLimit\030\003 \001(\010\022\022\n\nlowerAngle\030\004 \001(\002\022"
     "\022\n\nupperAngle\030\005 \001(\002\022\023\n\013enableMotor\030\006 \001(\010"
     "\022\022\n\nmotorSpeed\030\007 \001(\002\022\026\n\016maxMotorTorque\030\010"
-    " \001(\002\"\264\002\n\023CGPrismaticJointDef\022\030\n\020collideC"
-    "onnected\030\001 \001(\010\0221\n\006anchor\030\002 \001(\0132!.com.lae"
-    "x.cg2d.protobuf.CGVector2\022/\n\004axis\030\003 \001(\0132"
-    "!.com.laex.cg2d.protobuf.CGVector2\022\026\n\016re"
-    "ferenceAngle\030\005 \001(\002\022\023\n\013enableLimit\030\006 \001(\010\022"
-    "\030\n\020lowerTranslation\030\007 \001(\002\022\030\n\020upperTransl"
-    "ation\030\010 \001(\002\022\023\n\013enableMotor\030\t \001(\010\022\025\n\rmaxM"
-    "otorForce\030\n \001(\002\022\022\n\nmotorSpeed\030\013 \001(\002\"\257\001\n\020"
-    "CGPulleyJointDef\022\030\n\020collideConnected\030\001 \001"
-    "(\010\0228\n\rgroundAnchorA\030\002 \001(\0132!.com.laex.cg2"
-    "d.protobuf.CGVector2\0228\n\rgroundAnchorB\030\003 "
-    "\001(\0132!.com.laex.cg2d.protobuf.CGVector2\022\r"
-    "\n\005ratio\030\004 \001(\002\"S\n\022CGFrictionJointDef\022\030\n\020c"
-    "ollideConnected\030\001 \001(\010\022\020\n\010maxForce\030\002 \001(\002\022"
-    "\021\n\tmaxTorque\030\003 \001(\002\"*\n\016CGWeldJointDef\022\030\n\020"
-    "collideConnected\030\001 \001(\010\"D\n\016CGResourceFile"
-    "\022\024\n\014resourceFile\030\001 \001(\t\022\034\n\024resourceFileAb"
-    "solute\030\002 \001(\t\"\273\003\n\021CGEntityAnimation\022\025\n\ran"
-    "imationName\030\001 \001(\t\022E\n\025animationResourceFi"
-    "le\030\002 \001(\0132&.com.laex.cg2d.protobuf.CGReso"
-    "urceFile\022;\n\013fixtureFile\030\003 \001(\0132&.com.laex"
-    ".cg2d.protobuf.CGResourceFile\022\031\n\021animati"
-    "onDuration\030\004 \001(\002\022\030\n\020defaultAnimation\030\005 \001"
-    "(\010\022\014\n\004cols\030\006 \001(\005\022\014\n\004rows\030\007 \001(\005\022D\n\rcollis"
-    "ionType\030\010 \001(\0162-.com.laex.cg2d.protobuf.C"
-    "GEntityCollisionType\022\014\n\004shpX\030\t \001(\005\022\014\n\004sh"
-    "pY\030\n \001(\005\022\020\n\010shpWidth\030\013 \001(\005\022\021\n\tshpHeight\030"
-    "\014 \001(\005\0223\n\010vertices\030\r \003(\0132!.com.laex.cg2d."
-    "protobuf.CGVector2\"_\n\010CGEntity\022\024\n\014intern"
-    "alName\030\001 \001(\t\022=\n\nanimations\030\002 \003(\0132).com.l"
-    "aex.cg2d.protobuf.CGEntityAnimation\"\?\n\010C"
-    "GBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\r\n\005width\030\003"
-    " \001(\002\022\016\n\006height\030\004 \001(\002\"!\n\tCGVector2\022\t\n\001x\030\001"
-    " \002(\002\022\t\n\001y\030\002 \002(\002\"\215\003\n\tCGBodyDef\022\016\n\006active\030"
-    "\001 \001(\010\022\022\n\nallowSleep\030\002 \001(\010\022\r\n\005angle\030\003 \001(\002"
-    "\022\026\n\016angularDamping\030\004 \001(\002\022\027\n\017angularVeloc"
-    "ity\030\005 \001(\002\022\r\n\005awake\030\006 \001(\010\022\016\n\006bullet\030\007 \001(\010"
-    "\022\025\n\rfixedRotation\030\010 \001(\010\022\026\n\016intertialScal"
-    "e\030\t \001(\002\022\026\n\016linearDampitng\030\n \001(\002\022\024\n\014gravi"
-    "tyScale\030\013 \001(\002\0229\n\016linearVelocity\030\014 \001(\0132!."
-    "com.laex.cg2d.protobuf.CGVector2\0220\n\004type"
-    "\030\r \001(\0162\".com.laex.cg2d.protobuf.CGBodyTy"
-    "pe\0223\n\010position\030\016 \001(\0132!.com.laex.cg2d.pro"
-    "tobuf.CGVector2\"F\n\010CGFilter\022\024\n\014categoryB"
-    "its\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngroupInde"
-    "x\030\003 \001(\005\"\210\001\n\014CGFixtureDef\022\017\n\007density\030\001 \001("
-    "\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitution\030\003 \001(\002"
-    "\022\016\n\006sensor\030\004 \001(\010\0220\n\006filter\030\005 \001(\0132 .com.l"
-    "aex.cg2d.protobuf.CGFilter\"\346\003\n\007CGShape\022\n"
-    "\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locked\030\003 "
-    "\001(\010\022\022\n\nbackground\030\004 \001(\010\022F\n\026backgroundRes"
-    "ourceFile\030\005 \001(\0132&.com.laex.cg2d.protobuf"
-    ".CGResourceFile\022B\n\017editorShapeType\030\006 \001(\016"
-    "2).com.laex.cg2d.protobuf.CGEditorShapeT"
-    "ype\0220\n\006bounds\030\007 \001(\0132 .com.laex.cg2d.prot"
-    "obuf.CGBounds\0222\n\007bodyDef\030\010 \001(\0132!.com.lae"
-    "x.cg2d.protobuf.CGBodyDef\0228\n\nfixtureDef\030"
-    "\t \001(\0132$.com.laex.cg2d.protobuf.CGFixture"
-    "Def\022/\n\006joints\030\n \003(\0132\037.com.laex.cg2d.prot"
-    "obuf.CGJoint\022=\n\rentityRefFile\030\013 \001(\0132&.co"
-    "m.laex.cg2d.protobuf.CGResourceFile\"t\n\007C"
-    "GLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007visi"
-    "ble\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022.\n\005shape\030\005 \003(\013"
-    "2\037.com.laex.cg2d.protobuf.CGShape\"\271\005\n\023CG"
-    "ScreenPreferences\022X\n\016debugDrawPrefs\030\001 \001("
-    "\0132@.com.laex.cg2d.protobuf.CGScreenPrefe"
-    "rences.DebugDrawPreferences\022P\n\nworldPref"
-    "s\030\002 \001(\0132<.com.laex.cg2d.protobuf.CGScree"
-    "nPreferences.WorldPreferences\022N\n\tcardPre"
-    "fs\030\003 \001(\0132;.com.laex.cg2d.protobuf.CGScre"
-    "enPreferences.CardPreferences\032\264\001\n\024DebugD"
-    "rawPreferences\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndr"
-    "awJoints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022draw"
-    "InactiveBodies\030\004 \001(\010\022\031\n\021installMouseJoin"
-    "t\030\005 \001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n\014drawEn"
-    "tities\030\007 \001(\010\032\222\001\n\020WorldPreferences\022\020\n\010ptm"
-    "Ratio\030\001 \001(\005\022\032\n\022velocityIterations\030\002 \001(\005\022"
-    "\032\n\022positionIterations\030\003 \001(\005\022\020\n\010timeStep\030"
-    "\004 \001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001("
-    "\002\032Z\n\017CardPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017\n"
-    "\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\ncar"
-    "dHeight\030\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOWN"
-    "\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DISTA"
-    "NCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t"
-    "\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROP"
-    "E\020\013*B\n\025CGEntityCollisionType\022\010\n\004NONE\020\000\022\007"
-    "\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBod"
-    "yType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNA"
-    "MIC\020\003*\232\001\n\021CGEditorShapeType\022\027\n\023SIMPLE_SH"
-    "APE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022SI"
-    "MPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDGE"
-    "\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAPE"
-    "\020\006", 4682);
+    " \001(\002\0226\n\013worldAnchor\030\t \001(\0132!.com.laex.cg2"
+    "d.protobuf.CGVector2\"\264\002\n\023CGPrismaticJoin"
+    "tDef\022\030\n\020collideConnected\030\001 \001(\010\0221\n\006anchor"
+    "\030\002 \001(\0132!.com.laex.cg2d.protobuf.CGVector"
+    "2\022/\n\004axis\030\003 \001(\0132!.com.laex.cg2d.protobuf"
+    ".CGVector2\022\026\n\016referenceAngle\030\005 \001(\002\022\023\n\013en"
+    "ableLimit\030\006 \001(\010\022\030\n\020lowerTranslation\030\007 \001("
+    "\002\022\030\n\020upperTranslation\030\010 \001(\002\022\023\n\013enableMot"
+    "or\030\t \001(\010\022\025\n\rmaxMotorForce\030\n \001(\002\022\022\n\nmotor"
+    "Speed\030\013 \001(\002\"\257\001\n\020CGPulleyJointDef\022\030\n\020coll"
+    "ideConnected\030\001 \001(\010\0228\n\rgroundAnchorA\030\002 \001("
+    "\0132!.com.laex.cg2d.protobuf.CGVector2\0228\n\r"
+    "groundAnchorB\030\003 \001(\0132!.com.laex.cg2d.prot"
+    "obuf.CGVector2\022\r\n\005ratio\030\004 \001(\002\"S\n\022CGFrict"
+    "ionJointDef\022\030\n\020collideConnected\030\001 \001(\010\022\020\n"
+    "\010maxForce\030\002 \001(\002\022\021\n\tmaxTorque\030\003 \001(\002\"*\n\016CG"
+    "WeldJointDef\022\030\n\020collideConnected\030\001 \001(\010\"D"
+    "\n\016CGResourceFile\022\024\n\014resourceFile\030\001 \001(\t\022\034"
+    "\n\024resourceFileAbsolute\030\002 \001(\t\"\273\003\n\021CGEntit"
+    "yAnimation\022\025\n\ranimationName\030\001 \001(\t\022E\n\025ani"
+    "mationResourceFile\030\002 \001(\0132&.com.laex.cg2d"
+    ".protobuf.CGResourceFile\022;\n\013fixtureFile\030"
+    "\003 \001(\0132&.com.laex.cg2d.protobuf.CGResourc"
+    "eFile\022\031\n\021animationDuration\030\004 \001(\002\022\030\n\020defa"
+    "ultAnimation\030\005 \001(\010\022\014\n\004cols\030\006 \001(\005\022\014\n\004rows"
+    "\030\007 \001(\005\022D\n\rcollisionType\030\010 \001(\0162-.com.laex"
+    ".cg2d.protobuf.CGEntityCollisionType\022\014\n\004"
+    "shpX\030\t \001(\005\022\014\n\004shpY\030\n \001(\005\022\020\n\010shpWidth\030\013 \001"
+    "(\005\022\021\n\tshpHeight\030\014 \001(\005\0223\n\010vertices\030\r \003(\0132"
+    "!.com.laex.cg2d.protobuf.CGVector2\"_\n\010CG"
+    "Entity\022\024\n\014internalName\030\001 \001(\t\022=\n\nanimatio"
+    "ns\030\002 \003(\0132).com.laex.cg2d.protobuf.CGEnti"
+    "tyAnimation\"\?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030"
+    "\002 \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n\t"
+    "CGVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\215\003\n\tCGBo"
+    "dyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001("
+    "\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 \001(\002"
+    "\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 \001(\010"
+    "\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010\022"
+    "\026\n\016intertialScale\030\t \001(\002\022\026\n\016linearDampitn"
+    "g\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0229\n\016linearV"
+    "elocity\030\014 \001(\0132!.com.laex.cg2d.protobuf.C"
+    "GVector2\0220\n\004type\030\r \001(\0162\".com.laex.cg2d.p"
+    "rotobuf.CGBodyType\0223\n\010position\030\016 \001(\0132!.c"
+    "om.laex.cg2d.protobuf.CGVector2\"F\n\010CGFil"
+    "ter\022\024\n\014categoryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 "
+    "\001(\005\022\022\n\ngroupIndex\030\003 \001(\005\"\210\001\n\014CGFixtureDef"
+    "\022\017\n\007density\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013r"
+    "estitution\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\0220\n\006filt"
+    "er\030\005 \001(\0132 .com.laex.cg2d.protobuf.CGFilt"
+    "er\"\346\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 "
+    "\001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022"
+    "F\n\026backgroundResourceFile\030\005 \001(\0132&.com.la"
+    "ex.cg2d.protobuf.CGResourceFile\022B\n\017edito"
+    "rShapeType\030\006 \001(\0162).com.laex.cg2d.protobu"
+    "f.CGEditorShapeType\0220\n\006bounds\030\007 \001(\0132 .co"
+    "m.laex.cg2d.protobuf.CGBounds\0222\n\007bodyDef"
+    "\030\010 \001(\0132!.com.laex.cg2d.protobuf.CGBodyDe"
+    "f\0228\n\nfixtureDef\030\t \001(\0132$.com.laex.cg2d.pr"
+    "otobuf.CGFixtureDef\022/\n\006joints\030\n \003(\0132\037.co"
+    "m.laex.cg2d.protobuf.CGJoint\022=\n\rentityRe"
+    "fFile\030\013 \001(\0132&.com.laex.cg2d.protobuf.CGR"
+    "esourceFile\"t\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004na"
+    "me\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004 \001("
+    "\010\022.\n\005shape\030\005 \003(\0132\037.com.laex.cg2d.protobu"
+    "f.CGShape\"\271\005\n\023CGScreenPreferences\022X\n\016deb"
+    "ugDrawPrefs\030\001 \001(\0132@.com.laex.cg2d.protob"
+    "uf.CGScreenPreferences.DebugDrawPreferen"
+    "ces\022P\n\nworldPrefs\030\002 \001(\0132<.com.laex.cg2d."
+    "protobuf.CGScreenPreferences.WorldPrefer"
+    "ences\022N\n\tcardPrefs\030\003 \001(\0132;.com.laex.cg2d"
+    ".protobuf.CGScreenPreferences.CardPrefer"
+    "ences\032\264\001\n\024DebugDrawPreferences\022\022\n\ndrawBo"
+    "dies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawAA"
+    "BB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n\021"
+    "installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugData"
+    "\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\222\001\n\020WorldPr"
+    "eferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velocityI"
+    "terations\030\002 \001(\005\022\032\n\022positionIterations\030\003 "
+    "\001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001(\002\022"
+    "\020\n\010gravityY\030\006 \001(\002\032Z\n\017CardPreferences\022\017\n\007"
+    "cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcardWi"
+    "dth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJoin"
+    "tType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRIS"
+    "MATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOU"
+    "SE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010F"
+    "RICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollision"
+    "Type\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006C"
+    "USTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\tKIN"
+    "EMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorShapeT"
+    "ype\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPLE_S"
+    "HAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n\022SI"
+    "MPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAPE\020\005"
+    "\022\020\n\014ENTITY_SHAPE\020\006", 4738);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/protobuf/GameObject.proto", &protobuf_RegisterTypes);
   CGGameModel::default_instance_ = new CGGameModel();
@@ -1728,6 +1730,9 @@ void CGJoint::CopyFrom(const CGJoint& from) {
 
 bool CGJoint::IsInitialized() const {
 
+  if (has_revolutejointdef()) {
+    if (!this->revolutejointdef().IsInitialized()) return false;
+  }
   if (has_prismaticjointdef()) {
     if (!this->prismaticjointdef().IsInitialized()) return false;
   }
@@ -2056,6 +2061,7 @@ const int CGRevoluteJointDef::kUpperAngleFieldNumber;
 const int CGRevoluteJointDef::kEnableMotorFieldNumber;
 const int CGRevoluteJointDef::kMotorSpeedFieldNumber;
 const int CGRevoluteJointDef::kMaxMotorTorqueFieldNumber;
+const int CGRevoluteJointDef::kWorldAnchorFieldNumber;
 #endif  // !_MSC_VER
 
 CGRevoluteJointDef::CGRevoluteJointDef()
@@ -2064,6 +2070,7 @@ CGRevoluteJointDef::CGRevoluteJointDef()
 }
 
 void CGRevoluteJointDef::InitAsDefaultInstance() {
+  worldanchor_ = const_cast< ::com::laex::cg2d::protobuf::CGVector2*>(&::com::laex::cg2d::protobuf::CGVector2::default_instance());
 }
 
 CGRevoluteJointDef::CGRevoluteJointDef(const CGRevoluteJointDef& from)
@@ -2082,6 +2089,7 @@ void CGRevoluteJointDef::SharedCtor() {
   enablemotor_ = false;
   motorspeed_ = 0;
   maxmotortorque_ = 0;
+  worldanchor_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2091,6 +2099,7 @@ CGRevoluteJointDef::~CGRevoluteJointDef() {
 
 void CGRevoluteJointDef::SharedDtor() {
   if (this != default_instance_) {
+    delete worldanchor_;
   }
 }
 
@@ -2125,6 +2134,11 @@ void CGRevoluteJointDef::Clear() {
     enablemotor_ = false;
     motorspeed_ = 0;
     maxmotortorque_ = 0;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (has_worldanchor()) {
+      if (worldanchor_ != NULL) worldanchor_->::com::laex::cg2d::protobuf::CGVector2::Clear();
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -2259,6 +2273,20 @@ bool CGRevoluteJointDef::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(74)) goto parse_worldAnchor;
+        break;
+      }
+
+      // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_worldAnchor:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_worldanchor()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -2321,6 +2349,12 @@ void CGRevoluteJointDef::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->maxmotortorque(), output);
   }
 
+  // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
+  if (has_worldanchor()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->worldanchor(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -2367,6 +2401,13 @@ void CGRevoluteJointDef::SerializeWithCachedSizes(
   // optional float maxMotorTorque = 8;
   if (has_maxmotortorque()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->maxmotortorque(), target);
+  }
+
+  // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
+  if (has_worldanchor()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->worldanchor(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2421,6 +2462,15 @@ int CGRevoluteJointDef::ByteSize() const {
     }
 
   }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
+    if (has_worldanchor()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->worldanchor());
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -2472,6 +2522,11 @@ void CGRevoluteJointDef::MergeFrom(const CGRevoluteJointDef& from) {
       set_maxmotortorque(from.maxmotortorque());
     }
   }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_worldanchor()) {
+      mutable_worldanchor()->::com::laex::cg2d::protobuf::CGVector2::MergeFrom(from.worldanchor());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -2489,6 +2544,9 @@ void CGRevoluteJointDef::CopyFrom(const CGRevoluteJointDef& from) {
 
 bool CGRevoluteJointDef::IsInitialized() const {
 
+  if (has_worldanchor()) {
+    if (!this->worldanchor().IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -2502,6 +2560,7 @@ void CGRevoluteJointDef::Swap(CGRevoluteJointDef* other) {
     std::swap(enablemotor_, other->enablemotor_);
     std::swap(motorspeed_, other->motorspeed_);
     std::swap(maxmotortorque_, other->maxmotortorque_);
+    std::swap(worldanchor_, other->worldanchor_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

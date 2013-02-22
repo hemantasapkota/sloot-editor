@@ -271,7 +271,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    */
   private void performSave(IFile file, IProgressMonitor monitor, Map<String, String> screenPrefs) throws CoreException {
     CGGameModel cgGameModel = new CGGameModelAdapter(model, screenPrefs).asCGGameModel();
-    PlatformUtil.saveProto(monitor, file, new ByteArrayInputStream(cgGameModel.toByteArray()));
+    PlatformUtil.saveProto(monitor, file, new ByteArrayInputStream(cgGameModel.toString().getBytes()));
     getCommandStack().markSaveLocation();
   }
 
