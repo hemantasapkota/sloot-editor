@@ -174,7 +174,7 @@ public class ProtoBufTypeConversionUtil {
     jdef.referenceAngle = _jdef.getReferenceAngle();
     jdef.upperAngle = _jdef.getUpperAngle();
 
-    jdef.initialize(bodyA, bodyB, bodyA.getWorldCenter());
+    jdef.initialize(bodyA, bodyB, ProtoBufTypeConversionUtil.asVector2(_jdef.getWorldAnchor()));
     return jdef;
 
   }

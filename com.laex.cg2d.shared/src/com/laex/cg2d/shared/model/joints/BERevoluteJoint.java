@@ -21,6 +21,7 @@ import com.badlogic.gdx.physics.box2d.JointDef.JointType;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
 import com.laex.cg2d.shared.model.Joint;
 import com.laex.cg2d.shared.model.Shape;
+import com.laex.cg2d.shared.properties.descs.Vec2PropertySource;
 import com.laex.cg2d.shared.util.BooleanUtil;
 import com.laex.cg2d.shared.util.FloatUtil;
 
@@ -53,6 +54,9 @@ public class BERevoluteJoint extends Joint {
   /** The Constant MAX_MOTOR_TORQUE_PROP. */
   public static final String MAX_MOTOR_TORQUE_PROP = "RevoluteJoint.MaxMotorTorque";
 
+  /** The Constant ANCHOR_PROP. */
+  public static final String WORLD_ANCHOR_PROP = "RevoluteJoint.WorldAnchor";
+
   /** The descriptor. */
   private static IPropertyDescriptor[] descriptor;
 
@@ -66,6 +70,7 @@ public class BERevoluteJoint extends Joint {
         BooleanUtil.BOOLEAN_STRING_VALUES);
     PropertyDescriptor motorSpeedProp = new TextPropertyDescriptor(MOTOR_SPEED_PROP, "Motor Speed");
     PropertyDescriptor maxMotorTorqueProp = new TextPropertyDescriptor(MAX_MOTOR_TORQUE_PROP, "Max Motor Torque");
+    PropertyDescriptor worldAnchorProp = new PropertyDescriptor(WORLD_ANCHOR_PROP, "WorldAnchor");
 
     descriptor = new IPropertyDescriptor[]
       {
@@ -75,14 +80,15 @@ public class BERevoluteJoint extends Joint {
           upperAngleProp,
           enableMotorProp,
           motorSpeedProp,
-          maxMotorTorqueProp };
+          maxMotorTorqueProp,
+          worldAnchorProp };
   };
 
   /** The revolute joint def. */
   private RevoluteJointDef revoluteJointDef = new RevoluteJointDef();
 
   /** The anchor. */
-  private Vector2 anchor = new Vector2();
+  private Vector2 worldAnchor = new Vector2();
 
   /**
    * Instantiates a new bE revolute joint.
@@ -124,7 +130,9 @@ public class BERevoluteJoint extends Joint {
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
-    if (isReferenceAngleProp(id)) {
+    if (isWorldAnchorProp(id)) {
+      this.worldAnchor = (Vector2) value;
+    } else if (isReferenceAngleProp(id)) {
       revoluteJointDef.referenceAngle = (float) Math.toRadians(FloatUtil.toFloat(value));
     } else if (isEnableLimitProp(id)) {
       revoluteJointDef.enableLimit = BooleanUtil.toBool(value);
@@ -150,6 +158,9 @@ public class BERevoluteJoint extends Joint {
    */
   @Override
   public Object getPropertyValue(Object id) {
+    if (isWorldAnchorProp(id)) {
+      return new Vec2PropertySource(this.worldAnchor);
+    }
     if (isReferenceAngleProp(id)) {
       return Double.toString(Math.toDegrees(revoluteJointDef.referenceAngle));
     }
@@ -172,6 +183,10 @@ public class BERevoluteJoint extends Joint {
       return Float.toString(revoluteJointDef.maxMotorTorque);
     }
     return super.getPropertyValue(id);
+  }
+
+  private boolean isWorldAnchorProp(Object id) {
+    return WORLD_ANCHOR_PROP.equals(id);
   }
 
   /**
@@ -256,8 +271,8 @@ public class BERevoluteJoint extends Joint {
    * 
    * @return the anchor
    */
-  public Vector2 getAnchor() {
-    return anchor;
+  public Vector2 getWorldAnchor() {
+    return worldAnchor;
   }
 
   /*
