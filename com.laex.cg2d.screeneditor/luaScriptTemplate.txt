@@ -6,3 +6,9 @@ end
 
 function update(world, cam, body, id)
 end
+
+function keyPressed(world, cam, key) 
+	if key == "RIGHT" then
+		cam:translate(0.5, 0, 0)
+	end
+end

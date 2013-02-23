@@ -238,6 +238,7 @@ public class MyGdxGameDesktop {
     lwapp.width = cardWidth;
     lwapp.height = cardHeight;
     lwapp.title = screenFile;
+    lwapp.forceExit = true;
 
 //    JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
 //    jac.width = cardWidth;

@@ -10,8 +10,11 @@
  */
 package com.laex.cg2d.render;
 
+import java.lang.reflect.Field;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -72,6 +75,8 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   private String screenControllerFileLua;
 
+  private static Field[] gdxInputKeys = Input.Keys.class.getFields();
+
   public MyGdxGame(String screenControllerFile) {
     this.screenControllerFileLua = screenControllerFile;
   }
@@ -124,57 +129,35 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     bgManager.create();
     entityManager.create();
     luaScriptManager.create();
-    
-
-    // sample create body
-//    BodyDef bodyDef = new BodyDef();
-//    bodyDef.type = BodyType.DynamicBody;
-//    bodyDef.position.set(6, 3);
-
-//    Body body = world.createBody(bodyDef);
-    
-
-//    CircleShape circle = new CircleShape();
-//    circle.setRadius(6f);
-//
-//    FixtureDef fixtureDef = new FixtureDef();
-//    fixtureDef.shape = circle;
-//    fixtureDef.density = 0.5f;
-//    fixtureDef.friction = 0.4f;
-//    fixtureDef.restitution = 0.6f;
-//
-//    body.createFixture(fixtureDef);
 
     Gdx.input.setInputProcessor(mouseJointManager);
   }
 
   /**
    * Handle input.
+   * 
+   * @throws IllegalAccessException
+   * @throws IllegalArgumentException
    */
   private void handleInput() {
-    // if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-    // cam.zoom += 0.02;
-    // }
-    // if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-    // cam.zoom -= 0.02;
-    // }
-    //
-    // if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-    // if (cam.position.x > 0)
-    // cam.translate(-0.5f, 0, 0);
-    // }
-    // if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-    // if (cam.position.x < 1024)
-    // cam.translate(0.5f, 0, 0);
-    // }
-    // if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-    // if (cam.position.y > 0)
-    // cam.translate(0, -0.5f, 0);
-    // }
-    // if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-    // if (cam.position.y < 1024)
-    // cam.translate(0, 0.5f, 0);
-    // }
+
+    //go through all the fields defined in gdx input keys
+    //check if any of them is pressed. if pressed, exceute the script and forward the key name with it
+    for (Field f : MyGdxGame.gdxInputKeys) {
+
+      try {
+        
+        if (Gdx.input.isKeyPressed(f.getInt(f))) {
+          luaScriptManager.executeKeyPressed(f.getName());
+        }
+
+      } catch (IllegalArgumentException e) {
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        e.printStackTrace();
+      }
+
+    }
 
   }
 
@@ -189,6 +172,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     bgManager.dispose();
     shapeManager.dispose();
     entityManager.dispose();
+    luaScriptManager.dispose();
     batch.dispose();
     world.dispose();
   }

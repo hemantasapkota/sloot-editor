@@ -14,11 +14,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.laex.cg2d.protobuf.GameObject.CGGameModel;
 import com.laex.cg2d.protobuf.GameObject.CGShape;
 
-public class LuaScriptManager extends AbstractGameComponentManager {
+public class LuaScriptManager extends AbstractGameComponentManager implements IGameScript {
 
-  Globals globals = JsePlatform.standardGlobals();
-  LuaValue chunk;
-  boolean scriptFileExists = false;
+  private Globals globals = JsePlatform.standardGlobals();
+  private LuaValue chunk;
+  private boolean scriptFileExists = false;
 
   public LuaScriptManager(CGGameModel model, World world, Camera cam) {
     super(model, world, cam);
@@ -45,7 +45,7 @@ public class LuaScriptManager extends AbstractGameComponentManager {
   public void create() {
     if (!scriptFileExists)
       return;
-    
+
     executeInit();
 
     Iterator<Body> itr = world().getBodies();
@@ -55,7 +55,7 @@ public class LuaScriptManager extends AbstractGameComponentManager {
 
       if (userData instanceof CGShape) {
         CGShape shape = (CGShape) userData;
-        this.execute("initBody", b, shape.getId());
+        this.executeInitBody(b, shape.getId());
       }
 
     }
@@ -72,29 +72,42 @@ public class LuaScriptManager extends AbstractGameComponentManager {
 
       if (userData instanceof CGShape) {
         CGShape shape = (CGShape) userData;
-        this.execute("update", b, shape.getId());
+        executeUpdate(b, shape.getId());
       }
 
     }
   }
 
-  private void executeInit() {
-    LuaValue worldLua = CoerceJavaToLua.coerce(world());
-    LuaValue cameraLua = CoerceJavaToLua.coerce(camera());
- 
-    globals.get("init").invoke(new LuaValue[] { worldLua, cameraLua });
-  }
-
-  private void execute(String functionName, Body body, String id) {
-    LuaValue worldLua = CoerceJavaToLua.coerce(world());
-    LuaValue cameraLua = CoerceJavaToLua.coerce(camera());
-    LuaValue bodyLua = CoerceJavaToLua.coerce(body);
-    
-    globals.get(functionName).invoke(new LuaValue[]
-      { worldLua, cameraLua, bodyLua, LuaValue.valueOf(id) });
+  @Override
+  public void dispose() {
   }
 
   @Override
-  public void dispose() {
+  public void executeInit() {
+    globals.get("init").invoke(new LuaValue[]
+      { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()) });
+  }
+
+  @Override
+  public void executeInitBody(Body body, String bodyId) {
+    LuaValue bodyLua = CoerceJavaToLua.coerce(body);
+
+    globals.get("initBody").invoke(new LuaValue[]
+      { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
+  }
+
+  @Override
+  public void executeUpdate(Body body, String bodyId) {
+    LuaValue bodyLua = CoerceJavaToLua.coerce(body);
+
+    globals.get("update").invoke(new LuaValue[]
+      { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
+  }
+
+  @Override
+  public void executeKeyPressed(String key) {
+    globals.get("keyPressed").invoke(new LuaValue[]
+      { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), LuaValue.valueOf(key) });
+
   }
 }
