@@ -8,105 +8,36 @@ public final class GameObject {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  /**
-   * Protobuf enum {@code com.laex.cg2d.protobuf.CGJointType}
-   */
   public enum CGJointType
       implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>UNKNOWN = 1;</code>
-     */
     UNKNOWN(0, 1),
-    /**
-     * <code>REVOLUTE = 2;</code>
-     */
     REVOLUTE(1, 2),
-    /**
-     * <code>PRISMATIC = 3;</code>
-     */
     PRISMATIC(2, 3),
-    /**
-     * <code>DISTANCE = 4;</code>
-     */
     DISTANCE(3, 4),
-    /**
-     * <code>PULLEY = 5;</code>
-     */
     PULLEY(4, 5),
-    /**
-     * <code>MOUSE = 6;</code>
-     */
     MOUSE(5, 6),
-    /**
-     * <code>GEAR = 7;</code>
-     */
     GEAR(6, 7),
-    /**
-     * <code>WHEEL = 8;</code>
-     */
     WHEEL(7, 8),
-    /**
-     * <code>WELD = 9;</code>
-     */
     WELD(8, 9),
-    /**
-     * <code>FRICTION = 10;</code>
-     */
     FRICTION(9, 10),
-    /**
-     * <code>ROPE = 11;</code>
-     */
     ROPE(10, 11),
     ;
-
-    /**
-     * <code>UNKNOWN = 1;</code>
-     */
+    
     public static final int UNKNOWN_VALUE = 1;
-    /**
-     * <code>REVOLUTE = 2;</code>
-     */
     public static final int REVOLUTE_VALUE = 2;
-    /**
-     * <code>PRISMATIC = 3;</code>
-     */
     public static final int PRISMATIC_VALUE = 3;
-    /**
-     * <code>DISTANCE = 4;</code>
-     */
     public static final int DISTANCE_VALUE = 4;
-    /**
-     * <code>PULLEY = 5;</code>
-     */
     public static final int PULLEY_VALUE = 5;
-    /**
-     * <code>MOUSE = 6;</code>
-     */
     public static final int MOUSE_VALUE = 6;
-    /**
-     * <code>GEAR = 7;</code>
-     */
     public static final int GEAR_VALUE = 7;
-    /**
-     * <code>WHEEL = 8;</code>
-     */
     public static final int WHEEL_VALUE = 8;
-    /**
-     * <code>WELD = 9;</code>
-     */
     public static final int WELD_VALUE = 9;
-    /**
-     * <code>FRICTION = 10;</code>
-     */
     public static final int FRICTION_VALUE = 10;
-    /**
-     * <code>ROPE = 11;</code>
-     */
     public static final int ROPE_VALUE = 11;
-
-
+    
+    
     public final int getNumber() { return value; }
-
+    
     public static CGJointType valueOf(int value) {
       switch (value) {
         case 1: return UNKNOWN;
@@ -123,7 +54,7 @@ public final class GameObject {
         default: return null;
       }
     }
-
+    
     public static com.google.protobuf.Internal.EnumLiteMap<CGJointType>
         internalGetValueMap() {
       return internalValueMap;
@@ -135,7 +66,7 @@ public final class GameObject {
               return CGJointType.valueOf(number);
             }
           };
-
+    
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -148,9 +79,11 @@ public final class GameObject {
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.getDescriptor().getEnumTypes().get(0);
     }
-
-    private static final CGJointType[] VALUES = values();
-
+    
+    private static final CGJointType[] VALUES = {
+      UNKNOWN, REVOLUTE, PRISMATIC, DISTANCE, PULLEY, MOUSE, GEAR, WHEEL, WELD, FRICTION, ROPE, 
+    };
+    
     public static CGJointType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -159,61 +92,34 @@ public final class GameObject {
       }
       return VALUES[desc.getIndex()];
     }
-
+    
     private final int index;
     private final int value;
-
+    
     private CGJointType(int index, int value) {
       this.index = index;
       this.value = value;
     }
-
+    
     // @@protoc_insertion_point(enum_scope:com.laex.cg2d.protobuf.CGJointType)
   }
-
-  /**
-   * Protobuf enum {@code com.laex.cg2d.protobuf.CGEntityCollisionType}
-   */
+  
   public enum CGEntityCollisionType
       implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>NONE = 0;</code>
-     */
     NONE(0, 0),
-    /**
-     * <code>BOX = 1;</code>
-     */
     BOX(1, 1),
-    /**
-     * <code>CIRCLE = 2;</code>
-     */
     CIRCLE(2, 2),
-    /**
-     * <code>CUSTOM = 3;</code>
-     */
     CUSTOM(3, 3),
     ;
-
-    /**
-     * <code>NONE = 0;</code>
-     */
+    
     public static final int NONE_VALUE = 0;
-    /**
-     * <code>BOX = 1;</code>
-     */
     public static final int BOX_VALUE = 1;
-    /**
-     * <code>CIRCLE = 2;</code>
-     */
     public static final int CIRCLE_VALUE = 2;
-    /**
-     * <code>CUSTOM = 3;</code>
-     */
     public static final int CUSTOM_VALUE = 3;
-
-
+    
+    
     public final int getNumber() { return value; }
-
+    
     public static CGEntityCollisionType valueOf(int value) {
       switch (value) {
         case 0: return NONE;
@@ -223,7 +129,7 @@ public final class GameObject {
         default: return null;
       }
     }
-
+    
     public static com.google.protobuf.Internal.EnumLiteMap<CGEntityCollisionType>
         internalGetValueMap() {
       return internalValueMap;
@@ -235,7 +141,7 @@ public final class GameObject {
               return CGEntityCollisionType.valueOf(number);
             }
           };
-
+    
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -248,9 +154,11 @@ public final class GameObject {
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.getDescriptor().getEnumTypes().get(1);
     }
-
-    private static final CGEntityCollisionType[] VALUES = values();
-
+    
+    private static final CGEntityCollisionType[] VALUES = {
+      NONE, BOX, CIRCLE, CUSTOM, 
+    };
+    
     public static CGEntityCollisionType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -259,53 +167,32 @@ public final class GameObject {
       }
       return VALUES[desc.getIndex()];
     }
-
+    
     private final int index;
     private final int value;
-
+    
     private CGEntityCollisionType(int index, int value) {
       this.index = index;
       this.value = value;
     }
-
+    
     // @@protoc_insertion_point(enum_scope:com.laex.cg2d.protobuf.CGEntityCollisionType)
   }
-
-  /**
-   * Protobuf enum {@code com.laex.cg2d.protobuf.CGBodyType}
-   */
+  
   public enum CGBodyType
       implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>STATIC = 1;</code>
-     */
     STATIC(0, 1),
-    /**
-     * <code>KINEMATIC = 2;</code>
-     */
     KINEMATIC(1, 2),
-    /**
-     * <code>DYNAMIC = 3;</code>
-     */
     DYNAMIC(2, 3),
     ;
-
-    /**
-     * <code>STATIC = 1;</code>
-     */
+    
     public static final int STATIC_VALUE = 1;
-    /**
-     * <code>KINEMATIC = 2;</code>
-     */
     public static final int KINEMATIC_VALUE = 2;
-    /**
-     * <code>DYNAMIC = 3;</code>
-     */
     public static final int DYNAMIC_VALUE = 3;
-
-
+    
+    
     public final int getNumber() { return value; }
-
+    
     public static CGBodyType valueOf(int value) {
       switch (value) {
         case 1: return STATIC;
@@ -314,7 +201,7 @@ public final class GameObject {
         default: return null;
       }
     }
-
+    
     public static com.google.protobuf.Internal.EnumLiteMap<CGBodyType>
         internalGetValueMap() {
       return internalValueMap;
@@ -326,7 +213,7 @@ public final class GameObject {
               return CGBodyType.valueOf(number);
             }
           };
-
+    
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -339,9 +226,11 @@ public final class GameObject {
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.getDescriptor().getEnumTypes().get(2);
     }
-
-    private static final CGBodyType[] VALUES = values();
-
+    
+    private static final CGBodyType[] VALUES = {
+      STATIC, KINEMATIC, DYNAMIC, 
+    };
+    
     public static CGBodyType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -350,77 +239,38 @@ public final class GameObject {
       }
       return VALUES[desc.getIndex()];
     }
-
+    
     private final int index;
     private final int value;
-
+    
     private CGBodyType(int index, int value) {
       this.index = index;
       this.value = value;
     }
-
+    
     // @@protoc_insertion_point(enum_scope:com.laex.cg2d.protobuf.CGBodyType)
   }
-
-  /**
-   * Protobuf enum {@code com.laex.cg2d.protobuf.CGEditorShapeType}
-   */
+  
   public enum CGEditorShapeType
       implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>SIMPLE_SHAPE_CIRCLE = 1;</code>
-     */
     SIMPLE_SHAPE_CIRCLE(0, 1),
-    /**
-     * <code>SIMPLE_SHAPE_BOX = 2;</code>
-     */
     SIMPLE_SHAPE_BOX(1, 2),
-    /**
-     * <code>SIMPLE_SHAPE_HEDGE = 3;</code>
-     */
     SIMPLE_SHAPE_HEDGE(2, 3),
-    /**
-     * <code>SIMPLE_SHAPE_VEDGE = 4;</code>
-     */
     SIMPLE_SHAPE_VEDGE(3, 4),
-    /**
-     * <code>BACKGROUND_SHAPE = 5;</code>
-     */
     BACKGROUND_SHAPE(4, 5),
-    /**
-     * <code>ENTITY_SHAPE = 6;</code>
-     */
     ENTITY_SHAPE(5, 6),
     ;
-
-    /**
-     * <code>SIMPLE_SHAPE_CIRCLE = 1;</code>
-     */
+    
     public static final int SIMPLE_SHAPE_CIRCLE_VALUE = 1;
-    /**
-     * <code>SIMPLE_SHAPE_BOX = 2;</code>
-     */
     public static final int SIMPLE_SHAPE_BOX_VALUE = 2;
-    /**
-     * <code>SIMPLE_SHAPE_HEDGE = 3;</code>
-     */
     public static final int SIMPLE_SHAPE_HEDGE_VALUE = 3;
-    /**
-     * <code>SIMPLE_SHAPE_VEDGE = 4;</code>
-     */
     public static final int SIMPLE_SHAPE_VEDGE_VALUE = 4;
-    /**
-     * <code>BACKGROUND_SHAPE = 5;</code>
-     */
     public static final int BACKGROUND_SHAPE_VALUE = 5;
-    /**
-     * <code>ENTITY_SHAPE = 6;</code>
-     */
     public static final int ENTITY_SHAPE_VALUE = 6;
-
-
+    
+    
     public final int getNumber() { return value; }
-
+    
     public static CGEditorShapeType valueOf(int value) {
       switch (value) {
         case 1: return SIMPLE_SHAPE_CIRCLE;
@@ -432,7 +282,7 @@ public final class GameObject {
         default: return null;
       }
     }
-
+    
     public static com.google.protobuf.Internal.EnumLiteMap<CGEditorShapeType>
         internalGetValueMap() {
       return internalValueMap;
@@ -444,7 +294,7 @@ public final class GameObject {
               return CGEditorShapeType.valueOf(number);
             }
           };
-
+    
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -457,9 +307,11 @@ public final class GameObject {
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.getDescriptor().getEnumTypes().get(3);
     }
-
-    private static final CGEditorShapeType[] VALUES = values();
-
+    
+    private static final CGEditorShapeType[] VALUES = {
+      SIMPLE_SHAPE_CIRCLE, SIMPLE_SHAPE_BOX, SIMPLE_SHAPE_HEDGE, SIMPLE_SHAPE_VEDGE, BACKGROUND_SHAPE, ENTITY_SHAPE, 
+    };
+    
     public static CGEditorShapeType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -468,233 +320,99 @@ public final class GameObject {
       }
       return VALUES[desc.getIndex()];
     }
-
+    
     private final int index;
     private final int value;
-
+    
     private CGEditorShapeType(int index, int value) {
       this.index = index;
       this.value = value;
     }
-
+    
     // @@protoc_insertion_point(enum_scope:com.laex.cg2d.protobuf.CGEditorShapeType)
   }
-
+  
   public interface CGGameModelOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     java.util.List<com.laex.cg2d.protobuf.GameObject.CGLayer> 
         getLayersList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGLayer getLayers(int index);
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     int getLayersCount();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGLayerOrBuilder> 
         getLayersOrBuilderList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGLayerOrBuilder getLayersOrBuilder(
         int index);
-
+    
     // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
     boolean hasScreenPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGScreenPreferences getScreenPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGGameModel}
-   */
   public static final class CGGameModel extends
       com.google.protobuf.GeneratedMessage
       implements CGGameModelOrBuilder {
     // Use CGGameModel.newBuilder() to construct.
-    private CGGameModel(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGGameModel(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGGameModel(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGGameModel(boolean noInit) {}
+    
     private static final CGGameModel defaultInstance;
     public static CGGameModel getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGGameModel getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGGameModel(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                layers_ = new java.util.ArrayList<com.laex.cg2d.protobuf.GameObject.CGLayer>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              layers_.add(input.readMessage(com.laex.cg2d.protobuf.GameObject.CGLayer.PARSER, extensionRegistry));
-              break;
-            }
-            case 18: {
-              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = screenPrefs_.toBuilder();
-              }
-              screenPrefs_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(screenPrefs_);
-                screenPrefs_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          layers_ = java.util.Collections.unmodifiableList(layers_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGGameModel_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGGameModel_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGGameModel.class, com.laex.cg2d.protobuf.GameObject.CGGameModel.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGGameModel_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGGameModel> PARSER =
-        new com.google.protobuf.AbstractParser<CGGameModel>() {
-      public CGGameModel parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGGameModel(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGGameModel> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
     public static final int LAYERS_FIELD_NUMBER = 1;
     private java.util.List<com.laex.cg2d.protobuf.GameObject.CGLayer> layers_;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     public java.util.List<com.laex.cg2d.protobuf.GameObject.CGLayer> getLayersList() {
       return layers_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGLayerOrBuilder> 
         getLayersOrBuilderList() {
       return layers_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     public int getLayersCount() {
       return layers_.size();
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGLayer getLayers(int index) {
       return layers_.get(index);
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGLayerOrBuilder getLayersOrBuilder(
         int index) {
       return layers_.get(index);
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
     public static final int SCREENPREFS_FIELD_NUMBER = 2;
     private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences screenPrefs_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
     public boolean hasScreenPrefs() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences getScreenPrefs() {
       return screenPrefs_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder() {
       return screenPrefs_;
     }
-
+    
     private void initFields() {
       layers_ = java.util.Collections.emptyList();
       screenPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.getDefaultInstance();
@@ -703,7 +421,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       for (int i = 0; i < getLayersCount(); i++) {
         if (!getLayers(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -713,7 +431,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -725,12 +443,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       for (int i = 0; i < layers_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -744,83 +462,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGGameModel parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGGameModel prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGGameModel}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGGameModelOrBuilder {
@@ -828,21 +557,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGGameModel_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGGameModel_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGGameModel.class, com.laex.cg2d.protobuf.GameObject.CGGameModel.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGGameModel_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGGameModel.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -855,7 +581,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         if (layersBuilder_ == null) {
@@ -872,20 +598,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGGameModel_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGGameModel.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGGameModel getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGGameModel.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGGameModel build() {
         com.laex.cg2d.protobuf.GameObject.CGGameModel result = buildPartial();
         if (!result.isInitialized()) {
@@ -893,7 +619,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGGameModel buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGGameModel result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGGameModel buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGGameModel result = new com.laex.cg2d.protobuf.GameObject.CGGameModel(this);
         int from_bitField0_ = bitField0_;
@@ -919,7 +655,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGGameModel) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGGameModel)other);
@@ -928,7 +664,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGGameModel other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGGameModel.getDefaultInstance()) return this;
         if (layersBuilder_ == null) {
@@ -963,7 +699,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         for (int i = 0; i < getLayersCount(); i++) {
           if (!getLayers(i).isInitialized()) {
@@ -973,26 +709,51 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGGameModel parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGGameModel) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              com.laex.cg2d.protobuf.GameObject.CGLayer.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGLayer.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addLayers(subBuilder.buildPartial());
+              break;
+            }
+            case 18: {
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.newBuilder();
+              if (hasScreenPrefs()) {
+                subBuilder.mergeFrom(getScreenPrefs());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setScreenPrefs(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
       private java.util.List<com.laex.cg2d.protobuf.GameObject.CGLayer> layers_ =
         java.util.Collections.emptyList();
@@ -1002,13 +763,10 @@ public final class GameObject {
           bitField0_ |= 0x00000001;
          }
       }
-
+      
       private com.google.protobuf.RepeatedFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGLayer, com.laex.cg2d.protobuf.GameObject.CGLayer.Builder, com.laex.cg2d.protobuf.GameObject.CGLayerOrBuilder> layersBuilder_;
-
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
+      
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGLayer> getLayersList() {
         if (layersBuilder_ == null) {
           return java.util.Collections.unmodifiableList(layers_);
@@ -1016,9 +774,6 @@ public final class GameObject {
           return layersBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public int getLayersCount() {
         if (layersBuilder_ == null) {
           return layers_.size();
@@ -1026,9 +781,6 @@ public final class GameObject {
           return layersBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGLayer getLayers(int index) {
         if (layersBuilder_ == null) {
           return layers_.get(index);
@@ -1036,9 +788,6 @@ public final class GameObject {
           return layersBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder setLayers(
           int index, com.laex.cg2d.protobuf.GameObject.CGLayer value) {
         if (layersBuilder_ == null) {
@@ -1053,9 +802,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder setLayers(
           int index, com.laex.cg2d.protobuf.GameObject.CGLayer.Builder builderForValue) {
         if (layersBuilder_ == null) {
@@ -1067,9 +813,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder addLayers(com.laex.cg2d.protobuf.GameObject.CGLayer value) {
         if (layersBuilder_ == null) {
           if (value == null) {
@@ -1083,9 +826,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder addLayers(
           int index, com.laex.cg2d.protobuf.GameObject.CGLayer value) {
         if (layersBuilder_ == null) {
@@ -1100,9 +840,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder addLayers(
           com.laex.cg2d.protobuf.GameObject.CGLayer.Builder builderForValue) {
         if (layersBuilder_ == null) {
@@ -1114,9 +851,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder addLayers(
           int index, com.laex.cg2d.protobuf.GameObject.CGLayer.Builder builderForValue) {
         if (layersBuilder_ == null) {
@@ -1128,9 +862,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder addAllLayers(
           java.lang.Iterable<? extends com.laex.cg2d.protobuf.GameObject.CGLayer> values) {
         if (layersBuilder_ == null) {
@@ -1142,9 +873,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder clearLayers() {
         if (layersBuilder_ == null) {
           layers_ = java.util.Collections.emptyList();
@@ -1155,9 +883,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public Builder removeLayers(int index) {
         if (layersBuilder_ == null) {
           ensureLayersIsMutable();
@@ -1168,16 +893,10 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGLayer.Builder getLayersBuilder(
           int index) {
         return getLayersFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGLayerOrBuilder getLayersOrBuilder(
           int index) {
         if (layersBuilder_ == null) {
@@ -1185,9 +904,6 @@ public final class GameObject {
           return layersBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGLayerOrBuilder> 
            getLayersOrBuilderList() {
         if (layersBuilder_ != null) {
@@ -1196,24 +912,15 @@ public final class GameObject {
           return java.util.Collections.unmodifiableList(layers_);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGLayer.Builder addLayersBuilder() {
         return getLayersFieldBuilder().addBuilder(
             com.laex.cg2d.protobuf.GameObject.CGLayer.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGLayer.Builder addLayersBuilder(
           int index) {
         return getLayersFieldBuilder().addBuilder(
             index, com.laex.cg2d.protobuf.GameObject.CGLayer.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
-       */
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGLayer.Builder> 
            getLayersBuilderList() {
         return getLayersFieldBuilder().getBuilderList();
@@ -1232,20 +939,14 @@ public final class GameObject {
         }
         return layersBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
       private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences screenPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder, com.laex.cg2d.protobuf.GameObject.CGScreenPreferencesOrBuilder> screenPrefsBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       public boolean hasScreenPrefs() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences getScreenPrefs() {
         if (screenPrefsBuilder_ == null) {
           return screenPrefs_;
@@ -1253,9 +954,6 @@ public final class GameObject {
           return screenPrefsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       public Builder setScreenPrefs(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences value) {
         if (screenPrefsBuilder_ == null) {
           if (value == null) {
@@ -1269,9 +967,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       public Builder setScreenPrefs(
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder builderForValue) {
         if (screenPrefsBuilder_ == null) {
@@ -1283,9 +978,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       public Builder mergeScreenPrefs(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences value) {
         if (screenPrefsBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -1302,9 +994,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       public Builder clearScreenPrefs() {
         if (screenPrefsBuilder_ == null) {
           screenPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.getDefaultInstance();
@@ -1315,17 +1004,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder getScreenPrefsBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getScreenPrefsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder() {
         if (screenPrefsBuilder_ != null) {
           return screenPrefsBuilder_.getMessageOrBuilder();
@@ -1333,9 +1016,6 @@ public final class GameObject {
           return screenPrefs_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder, com.laex.cg2d.protobuf.GameObject.CGScreenPreferencesOrBuilder> 
           getScreenPrefsFieldBuilder() {
@@ -1349,569 +1029,244 @@ public final class GameObject {
         }
         return screenPrefsBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGGameModel)
     }
-
+    
     static {
       defaultInstance = new CGGameModel(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGGameModel)
   }
-
+  
   public interface CGJointOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional string sourceShapeId = 1;
-    /**
-     * <code>optional string sourceShapeId = 1;</code>
-     */
     boolean hasSourceShapeId();
-    /**
-     * <code>optional string sourceShapeId = 1;</code>
-     */
-    java.lang.String getSourceShapeId();
-    /**
-     * <code>optional string sourceShapeId = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getSourceShapeIdBytes();
-
+    String getSourceShapeId();
+    
     // optional string targetShapeId = 2;
-    /**
-     * <code>optional string targetShapeId = 2;</code>
-     */
     boolean hasTargetShapeId();
-    /**
-     * <code>optional string targetShapeId = 2;</code>
-     */
-    java.lang.String getTargetShapeId();
-    /**
-     * <code>optional string targetShapeId = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getTargetShapeIdBytes();
-
+    String getTargetShapeId();
+    
     // optional .com.laex.cg2d.protobuf.CGJointType type = 3;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGJointType type = 3;</code>
-     */
     boolean hasType();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGJointType type = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGJointType getType();
-
+    
     // optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-     */
     boolean hasDistanceJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef getDistanceJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGDistanceJointDefOrBuilder getDistanceJointDefOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-     */
     boolean hasRevoluteJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef getRevoluteJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDefOrBuilder getRevoluteJointDefOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-     */
     boolean hasPrismaticJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef getPrismaticJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDefOrBuilder getPrismaticJointDefOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-     */
     boolean hasPulleyJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef getPulleyJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGPulleyJointDefOrBuilder getPulleyJointDefOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-     */
     boolean hasFrictionJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef getFrictionJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGFrictionJointDefOrBuilder getFrictionJointDefOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-     */
     boolean hasWeldJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGWeldJointDef getWeldJointDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGWeldJointDefOrBuilder getWeldJointDefOrBuilder();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGJoint}
-   */
   public static final class CGJoint extends
       com.google.protobuf.GeneratedMessage
       implements CGJointOrBuilder {
     // Use CGJoint.newBuilder() to construct.
-    private CGJoint(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGJoint(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGJoint(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGJoint(boolean noInit) {}
+    
     private static final CGJoint defaultInstance;
     public static CGJoint getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGJoint getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGJoint(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              sourceShapeId_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              targetShapeId_ = input.readBytes();
-              break;
-            }
-            case 24: {
-              int rawValue = input.readEnum();
-              com.laex.cg2d.protobuf.GameObject.CGJointType value = com.laex.cg2d.protobuf.GameObject.CGJointType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(3, rawValue);
-              } else {
-                bitField0_ |= 0x00000004;
-                type_ = value;
-              }
-              break;
-            }
-            case 42: {
-              com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = distanceJointDef_.toBuilder();
-              }
-              distanceJointDef_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(distanceJointDef_);
-                distanceJointDef_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
-              break;
-            }
-            case 50: {
-              com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                subBuilder = revoluteJointDef_.toBuilder();
-              }
-              revoluteJointDef_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(revoluteJointDef_);
-                revoluteJointDef_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000010;
-              break;
-            }
-            case 58: {
-              com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
-                subBuilder = prismaticJointDef_.toBuilder();
-              }
-              prismaticJointDef_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(prismaticJointDef_);
-                prismaticJointDef_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000020;
-              break;
-            }
-            case 66: {
-              com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000040) == 0x00000040)) {
-                subBuilder = pulleyJointDef_.toBuilder();
-              }
-              pulleyJointDef_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(pulleyJointDef_);
-                pulleyJointDef_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000040;
-              break;
-            }
-            case 74: {
-              com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000080) == 0x00000080)) {
-                subBuilder = frictionJointDef_.toBuilder();
-              }
-              frictionJointDef_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(frictionJointDef_);
-                frictionJointDef_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000080;
-              break;
-            }
-            case 82: {
-              com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000100) == 0x00000100)) {
-                subBuilder = weldJointDef_.toBuilder();
-              }
-              weldJointDef_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(weldJointDef_);
-                weldJointDef_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000100;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGJoint_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGJoint_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGJoint.class, com.laex.cg2d.protobuf.GameObject.CGJoint.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGJoint_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGJoint> PARSER =
-        new com.google.protobuf.AbstractParser<CGJoint>() {
-      public CGJoint parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGJoint(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGJoint> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional string sourceShapeId = 1;
     public static final int SOURCESHAPEID_FIELD_NUMBER = 1;
     private java.lang.Object sourceShapeId_;
-    /**
-     * <code>optional string sourceShapeId = 1;</code>
-     */
     public boolean hasSourceShapeId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional string sourceShapeId = 1;</code>
-     */
-    public java.lang.String getSourceShapeId() {
+    public String getSourceShapeId() {
       java.lang.Object ref = sourceShapeId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
           sourceShapeId_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string sourceShapeId = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getSourceShapeIdBytes() {
+    private com.google.protobuf.ByteString getSourceShapeIdBytes() {
       java.lang.Object ref = sourceShapeId_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
         sourceShapeId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional string targetShapeId = 2;
     public static final int TARGETSHAPEID_FIELD_NUMBER = 2;
     private java.lang.Object targetShapeId_;
-    /**
-     * <code>optional string targetShapeId = 2;</code>
-     */
     public boolean hasTargetShapeId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional string targetShapeId = 2;</code>
-     */
-    public java.lang.String getTargetShapeId() {
+    public String getTargetShapeId() {
       java.lang.Object ref = targetShapeId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
           targetShapeId_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string targetShapeId = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTargetShapeIdBytes() {
+    private com.google.protobuf.ByteString getTargetShapeIdBytes() {
       java.lang.Object ref = targetShapeId_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
         targetShapeId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGJointType type = 3;
     public static final int TYPE_FIELD_NUMBER = 3;
     private com.laex.cg2d.protobuf.GameObject.CGJointType type_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGJointType type = 3;</code>
-     */
     public boolean hasType() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGJointType type = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGJointType getType() {
       return type_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;
     public static final int DISTANCEJOINTDEF_FIELD_NUMBER = 5;
     private com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef distanceJointDef_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-     */
     public boolean hasDistanceJointDef() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef getDistanceJointDef() {
       return distanceJointDef_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGDistanceJointDefOrBuilder getDistanceJointDefOrBuilder() {
       return distanceJointDef_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;
     public static final int REVOLUTEJOINTDEF_FIELD_NUMBER = 6;
     private com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef revoluteJointDef_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-     */
     public boolean hasRevoluteJointDef() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef getRevoluteJointDef() {
       return revoluteJointDef_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDefOrBuilder getRevoluteJointDefOrBuilder() {
       return revoluteJointDef_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;
     public static final int PRISMATICJOINTDEF_FIELD_NUMBER = 7;
     private com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef prismaticJointDef_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-     */
     public boolean hasPrismaticJointDef() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef getPrismaticJointDef() {
       return prismaticJointDef_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDefOrBuilder getPrismaticJointDefOrBuilder() {
       return prismaticJointDef_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;
     public static final int PULLEYJOINTDEF_FIELD_NUMBER = 8;
     private com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef pulleyJointDef_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-     */
     public boolean hasPulleyJointDef() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef getPulleyJointDef() {
       return pulleyJointDef_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGPulleyJointDefOrBuilder getPulleyJointDefOrBuilder() {
       return pulleyJointDef_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;
     public static final int FRICTIONJOINTDEF_FIELD_NUMBER = 9;
     private com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef frictionJointDef_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-     */
     public boolean hasFrictionJointDef() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef getFrictionJointDef() {
       return frictionJointDef_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGFrictionJointDefOrBuilder getFrictionJointDefOrBuilder() {
       return frictionJointDef_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;
     public static final int WELDJOINTDEF_FIELD_NUMBER = 10;
     private com.laex.cg2d.protobuf.GameObject.CGWeldJointDef weldJointDef_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-     */
     public boolean hasWeldJointDef() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGWeldJointDef getWeldJointDef() {
       return weldJointDef_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGWeldJointDefOrBuilder getWeldJointDefOrBuilder() {
       return weldJointDef_;
     }
-
+    
     private void initFields() {
       sourceShapeId_ = "";
       targetShapeId_ = "";
@@ -1927,7 +1282,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (hasRevoluteJointDef()) {
         if (!getRevoluteJointDef().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -1949,7 +1304,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -1982,12 +1337,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2029,83 +1384,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGJoint parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGJoint prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGJoint}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGJointOrBuilder {
@@ -2113,21 +1479,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGJoint_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGJoint_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGJoint.class, com.laex.cg2d.protobuf.GameObject.CGJoint.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGJoint_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGJoint.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2144,7 +1507,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         sourceShapeId_ = "";
@@ -2191,20 +1554,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGJoint_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGJoint.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGJoint getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGJoint.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGJoint build() {
         com.laex.cg2d.protobuf.GameObject.CGJoint result = buildPartial();
         if (!result.isInitialized()) {
@@ -2212,7 +1575,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGJoint buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGJoint result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGJoint buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGJoint result = new com.laex.cg2d.protobuf.GameObject.CGJoint(this);
         int from_bitField0_ = bitField0_;
@@ -2281,7 +1654,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGJoint) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGJoint)other);
@@ -2290,18 +1663,14 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGJoint other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGJoint.getDefaultInstance()) return this;
         if (other.hasSourceShapeId()) {
-          bitField0_ |= 0x00000001;
-          sourceShapeId_ = other.sourceShapeId_;
-          onChanged();
+          setSourceShapeId(other.getSourceShapeId());
         }
         if (other.hasTargetShapeId()) {
-          bitField0_ |= 0x00000002;
-          targetShapeId_ = other.targetShapeId_;
-          onChanged();
+          setTargetShapeId(other.getTargetShapeId());
         }
         if (other.hasType()) {
           setType(other.getType());
@@ -2327,7 +1696,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (hasRevoluteJointDef()) {
           if (!getRevoluteJointDef().isInitialized()) {
@@ -2349,69 +1718,127 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGJoint parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGJoint) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              sourceShapeId_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              targetShapeId_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+              com.laex.cg2d.protobuf.GameObject.CGJointType value = com.laex.cg2d.protobuf.GameObject.CGJointType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(3, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                type_ = value;
+              }
+              break;
+            }
+            case 42: {
+              com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.newBuilder();
+              if (hasDistanceJointDef()) {
+                subBuilder.mergeFrom(getDistanceJointDef());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setDistanceJointDef(subBuilder.buildPartial());
+              break;
+            }
+            case 50: {
+              com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.newBuilder();
+              if (hasRevoluteJointDef()) {
+                subBuilder.mergeFrom(getRevoluteJointDef());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setRevoluteJointDef(subBuilder.buildPartial());
+              break;
+            }
+            case 58: {
+              com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.newBuilder();
+              if (hasPrismaticJointDef()) {
+                subBuilder.mergeFrom(getPrismaticJointDef());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setPrismaticJointDef(subBuilder.buildPartial());
+              break;
+            }
+            case 66: {
+              com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.newBuilder();
+              if (hasPulleyJointDef()) {
+                subBuilder.mergeFrom(getPulleyJointDef());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setPulleyJointDef(subBuilder.buildPartial());
+              break;
+            }
+            case 74: {
+              com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.newBuilder();
+              if (hasFrictionJointDef()) {
+                subBuilder.mergeFrom(getFrictionJointDef());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFrictionJointDef(subBuilder.buildPartial());
+              break;
+            }
+            case 82: {
+              com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.newBuilder();
+              if (hasWeldJointDef()) {
+                subBuilder.mergeFrom(getWeldJointDef());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setWeldJointDef(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional string sourceShapeId = 1;
       private java.lang.Object sourceShapeId_ = "";
-      /**
-       * <code>optional string sourceShapeId = 1;</code>
-       */
       public boolean hasSourceShapeId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional string sourceShapeId = 1;</code>
-       */
-      public java.lang.String getSourceShapeId() {
+      public String getSourceShapeId() {
         java.lang.Object ref = sourceShapeId_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           sourceShapeId_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string sourceShapeId = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getSourceShapeIdBytes() {
-        java.lang.Object ref = sourceShapeId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          sourceShapeId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string sourceShapeId = 1;</code>
-       */
-      public Builder setSourceShapeId(
-          java.lang.String value) {
+      public Builder setSourceShapeId(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2420,72 +1847,34 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string sourceShapeId = 1;</code>
-       */
       public Builder clearSourceShapeId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         sourceShapeId_ = getDefaultInstance().getSourceShapeId();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string sourceShapeId = 1;</code>
-       */
-      public Builder setSourceShapeIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      void setSourceShapeId(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
         sourceShapeId_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional string targetShapeId = 2;
       private java.lang.Object targetShapeId_ = "";
-      /**
-       * <code>optional string targetShapeId = 2;</code>
-       */
       public boolean hasTargetShapeId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional string targetShapeId = 2;</code>
-       */
-      public java.lang.String getTargetShapeId() {
+      public String getTargetShapeId() {
         java.lang.Object ref = targetShapeId_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           targetShapeId_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string targetShapeId = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTargetShapeIdBytes() {
-        java.lang.Object ref = targetShapeId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          targetShapeId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string targetShapeId = 2;</code>
-       */
-      public Builder setTargetShapeId(
-          java.lang.String value) {
+      public Builder setTargetShapeId(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2494,46 +1883,26 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string targetShapeId = 2;</code>
-       */
       public Builder clearTargetShapeId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         targetShapeId_ = getDefaultInstance().getTargetShapeId();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string targetShapeId = 2;</code>
-       */
-      public Builder setTargetShapeIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+      void setTargetShapeId(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
         targetShapeId_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGJointType type = 3;
       private com.laex.cg2d.protobuf.GameObject.CGJointType type_ = com.laex.cg2d.protobuf.GameObject.CGJointType.UNKNOWN;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGJointType type = 3;</code>
-       */
       public boolean hasType() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGJointType type = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGJointType getType() {
         return type_;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGJointType type = 3;</code>
-       */
       public Builder setType(com.laex.cg2d.protobuf.GameObject.CGJointType value) {
         if (value == null) {
           throw new NullPointerException();
@@ -2543,29 +1912,20 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGJointType type = 3;</code>
-       */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000004);
         type_ = com.laex.cg2d.protobuf.GameObject.CGJointType.UNKNOWN;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;
       private com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef distanceJointDef_ = com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef, com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGDistanceJointDefOrBuilder> distanceJointDefBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       public boolean hasDistanceJointDef() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef getDistanceJointDef() {
         if (distanceJointDefBuilder_ == null) {
           return distanceJointDef_;
@@ -2573,9 +1933,6 @@ public final class GameObject {
           return distanceJointDefBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       public Builder setDistanceJointDef(com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef value) {
         if (distanceJointDefBuilder_ == null) {
           if (value == null) {
@@ -2589,9 +1946,6 @@ public final class GameObject {
         bitField0_ |= 0x00000008;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       public Builder setDistanceJointDef(
           com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder builderForValue) {
         if (distanceJointDefBuilder_ == null) {
@@ -2603,9 +1957,6 @@ public final class GameObject {
         bitField0_ |= 0x00000008;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       public Builder mergeDistanceJointDef(com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef value) {
         if (distanceJointDefBuilder_ == null) {
           if (((bitField0_ & 0x00000008) == 0x00000008) &&
@@ -2622,9 +1973,6 @@ public final class GameObject {
         bitField0_ |= 0x00000008;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       public Builder clearDistanceJointDef() {
         if (distanceJointDefBuilder_ == null) {
           distanceJointDef_ = com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.getDefaultInstance();
@@ -2635,17 +1983,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder getDistanceJointDefBuilder() {
         bitField0_ |= 0x00000008;
         onChanged();
         return getDistanceJointDefFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGDistanceJointDefOrBuilder getDistanceJointDefOrBuilder() {
         if (distanceJointDefBuilder_ != null) {
           return distanceJointDefBuilder_.getMessageOrBuilder();
@@ -2653,9 +1995,6 @@ public final class GameObject {
           return distanceJointDef_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGDistanceJointDef distanceJointDef = 5;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef, com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGDistanceJointDefOrBuilder> 
           getDistanceJointDefFieldBuilder() {
@@ -2669,20 +2008,14 @@ public final class GameObject {
         }
         return distanceJointDefBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;
       private com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef revoluteJointDef_ = com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef, com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDefOrBuilder> revoluteJointDefBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       public boolean hasRevoluteJointDef() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef getRevoluteJointDef() {
         if (revoluteJointDefBuilder_ == null) {
           return revoluteJointDef_;
@@ -2690,9 +2023,6 @@ public final class GameObject {
           return revoluteJointDefBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       public Builder setRevoluteJointDef(com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef value) {
         if (revoluteJointDefBuilder_ == null) {
           if (value == null) {
@@ -2706,9 +2036,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       public Builder setRevoluteJointDef(
           com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder builderForValue) {
         if (revoluteJointDefBuilder_ == null) {
@@ -2720,9 +2047,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       public Builder mergeRevoluteJointDef(com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef value) {
         if (revoluteJointDefBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
@@ -2739,9 +2063,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       public Builder clearRevoluteJointDef() {
         if (revoluteJointDefBuilder_ == null) {
           revoluteJointDef_ = com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.getDefaultInstance();
@@ -2752,17 +2073,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder getRevoluteJointDefBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
         return getRevoluteJointDefFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDefOrBuilder getRevoluteJointDefOrBuilder() {
         if (revoluteJointDefBuilder_ != null) {
           return revoluteJointDefBuilder_.getMessageOrBuilder();
@@ -2770,9 +2085,6 @@ public final class GameObject {
           return revoluteJointDef_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGRevoluteJointDef revoluteJointDef = 6;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef, com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDefOrBuilder> 
           getRevoluteJointDefFieldBuilder() {
@@ -2786,20 +2098,14 @@ public final class GameObject {
         }
         return revoluteJointDefBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;
       private com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef prismaticJointDef_ = com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef, com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDefOrBuilder> prismaticJointDefBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       public boolean hasPrismaticJointDef() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef getPrismaticJointDef() {
         if (prismaticJointDefBuilder_ == null) {
           return prismaticJointDef_;
@@ -2807,9 +2113,6 @@ public final class GameObject {
           return prismaticJointDefBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       public Builder setPrismaticJointDef(com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef value) {
         if (prismaticJointDefBuilder_ == null) {
           if (value == null) {
@@ -2823,9 +2126,6 @@ public final class GameObject {
         bitField0_ |= 0x00000020;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       public Builder setPrismaticJointDef(
           com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder builderForValue) {
         if (prismaticJointDefBuilder_ == null) {
@@ -2837,9 +2137,6 @@ public final class GameObject {
         bitField0_ |= 0x00000020;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       public Builder mergePrismaticJointDef(com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef value) {
         if (prismaticJointDefBuilder_ == null) {
           if (((bitField0_ & 0x00000020) == 0x00000020) &&
@@ -2856,9 +2153,6 @@ public final class GameObject {
         bitField0_ |= 0x00000020;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       public Builder clearPrismaticJointDef() {
         if (prismaticJointDefBuilder_ == null) {
           prismaticJointDef_ = com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.getDefaultInstance();
@@ -2869,17 +2163,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder getPrismaticJointDefBuilder() {
         bitField0_ |= 0x00000020;
         onChanged();
         return getPrismaticJointDefFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDefOrBuilder getPrismaticJointDefOrBuilder() {
         if (prismaticJointDefBuilder_ != null) {
           return prismaticJointDefBuilder_.getMessageOrBuilder();
@@ -2887,9 +2175,6 @@ public final class GameObject {
           return prismaticJointDef_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPrismaticJointDef prismaticJointDef = 7;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef, com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDefOrBuilder> 
           getPrismaticJointDefFieldBuilder() {
@@ -2903,20 +2188,14 @@ public final class GameObject {
         }
         return prismaticJointDefBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;
       private com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef pulleyJointDef_ = com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef, com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGPulleyJointDefOrBuilder> pulleyJointDefBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       public boolean hasPulleyJointDef() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef getPulleyJointDef() {
         if (pulleyJointDefBuilder_ == null) {
           return pulleyJointDef_;
@@ -2924,9 +2203,6 @@ public final class GameObject {
           return pulleyJointDefBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       public Builder setPulleyJointDef(com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef value) {
         if (pulleyJointDefBuilder_ == null) {
           if (value == null) {
@@ -2940,9 +2216,6 @@ public final class GameObject {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       public Builder setPulleyJointDef(
           com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder builderForValue) {
         if (pulleyJointDefBuilder_ == null) {
@@ -2954,9 +2227,6 @@ public final class GameObject {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       public Builder mergePulleyJointDef(com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef value) {
         if (pulleyJointDefBuilder_ == null) {
           if (((bitField0_ & 0x00000040) == 0x00000040) &&
@@ -2973,9 +2243,6 @@ public final class GameObject {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       public Builder clearPulleyJointDef() {
         if (pulleyJointDefBuilder_ == null) {
           pulleyJointDef_ = com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.getDefaultInstance();
@@ -2986,17 +2253,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder getPulleyJointDefBuilder() {
         bitField0_ |= 0x00000040;
         onChanged();
         return getPulleyJointDefFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGPulleyJointDefOrBuilder getPulleyJointDefOrBuilder() {
         if (pulleyJointDefBuilder_ != null) {
           return pulleyJointDefBuilder_.getMessageOrBuilder();
@@ -3004,9 +2265,6 @@ public final class GameObject {
           return pulleyJointDef_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGPulleyJointDef pulleyJointDef = 8;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef, com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGPulleyJointDefOrBuilder> 
           getPulleyJointDefFieldBuilder() {
@@ -3020,20 +2278,14 @@ public final class GameObject {
         }
         return pulleyJointDefBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;
       private com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef frictionJointDef_ = com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef, com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGFrictionJointDefOrBuilder> frictionJointDefBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       public boolean hasFrictionJointDef() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef getFrictionJointDef() {
         if (frictionJointDefBuilder_ == null) {
           return frictionJointDef_;
@@ -3041,9 +2293,6 @@ public final class GameObject {
           return frictionJointDefBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       public Builder setFrictionJointDef(com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef value) {
         if (frictionJointDefBuilder_ == null) {
           if (value == null) {
@@ -3057,9 +2306,6 @@ public final class GameObject {
         bitField0_ |= 0x00000080;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       public Builder setFrictionJointDef(
           com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder builderForValue) {
         if (frictionJointDefBuilder_ == null) {
@@ -3071,9 +2317,6 @@ public final class GameObject {
         bitField0_ |= 0x00000080;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       public Builder mergeFrictionJointDef(com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef value) {
         if (frictionJointDefBuilder_ == null) {
           if (((bitField0_ & 0x00000080) == 0x00000080) &&
@@ -3090,9 +2333,6 @@ public final class GameObject {
         bitField0_ |= 0x00000080;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       public Builder clearFrictionJointDef() {
         if (frictionJointDefBuilder_ == null) {
           frictionJointDef_ = com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.getDefaultInstance();
@@ -3103,17 +2343,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder getFrictionJointDefBuilder() {
         bitField0_ |= 0x00000080;
         onChanged();
         return getFrictionJointDefFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFrictionJointDefOrBuilder getFrictionJointDefOrBuilder() {
         if (frictionJointDefBuilder_ != null) {
           return frictionJointDefBuilder_.getMessageOrBuilder();
@@ -3121,9 +2355,6 @@ public final class GameObject {
           return frictionJointDef_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFrictionJointDef frictionJointDef = 9;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef, com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGFrictionJointDefOrBuilder> 
           getFrictionJointDefFieldBuilder() {
@@ -3137,20 +2368,14 @@ public final class GameObject {
         }
         return frictionJointDefBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;
       private com.laex.cg2d.protobuf.GameObject.CGWeldJointDef weldJointDef_ = com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGWeldJointDef, com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGWeldJointDefOrBuilder> weldJointDefBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       public boolean hasWeldJointDef() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGWeldJointDef getWeldJointDef() {
         if (weldJointDefBuilder_ == null) {
           return weldJointDef_;
@@ -3158,9 +2383,6 @@ public final class GameObject {
           return weldJointDefBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       public Builder setWeldJointDef(com.laex.cg2d.protobuf.GameObject.CGWeldJointDef value) {
         if (weldJointDefBuilder_ == null) {
           if (value == null) {
@@ -3174,9 +2396,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       public Builder setWeldJointDef(
           com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder builderForValue) {
         if (weldJointDefBuilder_ == null) {
@@ -3188,9 +2407,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       public Builder mergeWeldJointDef(com.laex.cg2d.protobuf.GameObject.CGWeldJointDef value) {
         if (weldJointDefBuilder_ == null) {
           if (((bitField0_ & 0x00000100) == 0x00000100) &&
@@ -3207,9 +2423,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       public Builder clearWeldJointDef() {
         if (weldJointDefBuilder_ == null) {
           weldJointDef_ = com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.getDefaultInstance();
@@ -3220,17 +2433,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder getWeldJointDefBuilder() {
         bitField0_ |= 0x00000100;
         onChanged();
         return getWeldJointDefFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGWeldJointDefOrBuilder getWeldJointDefOrBuilder() {
         if (weldJointDefBuilder_ != null) {
           return weldJointDefBuilder_.getMessageOrBuilder();
@@ -3238,9 +2445,6 @@ public final class GameObject {
           return weldJointDef_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGWeldJointDef weldJointDef = 10;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGWeldJointDef, com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder, com.laex.cg2d.protobuf.GameObject.CGWeldJointDefOrBuilder> 
           getWeldJointDefFieldBuilder() {
@@ -3254,205 +2458,92 @@ public final class GameObject {
         }
         return weldJointDefBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGJoint)
     }
-
+    
     static {
       defaultInstance = new CGJoint(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGJoint)
   }
-
+  
   public interface CGDistanceJointDefOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional bool collideConnected = 1;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     boolean hasCollideConnected();
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     boolean getCollideConnected();
-
+    
     // optional float freqencyHz = 2;
-    /**
-     * <code>optional float freqencyHz = 2;</code>
-     */
     boolean hasFreqencyHz();
-    /**
-     * <code>optional float freqencyHz = 2;</code>
-     */
     float getFreqencyHz();
-
+    
     // optional float dampingRatio = 3;
-    /**
-     * <code>optional float dampingRatio = 3;</code>
-     */
     boolean hasDampingRatio();
-    /**
-     * <code>optional float dampingRatio = 3;</code>
-     */
     float getDampingRatio();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGDistanceJointDef}
-   */
   public static final class CGDistanceJointDef extends
       com.google.protobuf.GeneratedMessage
       implements CGDistanceJointDefOrBuilder {
     // Use CGDistanceJointDef.newBuilder() to construct.
-    private CGDistanceJointDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGDistanceJointDef(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGDistanceJointDef(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGDistanceJointDef(boolean noInit) {}
+    
     private static final CGDistanceJointDef defaultInstance;
     public static CGDistanceJointDef getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGDistanceJointDef getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGDistanceJointDef(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              collideConnected_ = input.readBool();
-              break;
-            }
-            case 21: {
-              bitField0_ |= 0x00000002;
-              freqencyHz_ = input.readFloat();
-              break;
-            }
-            case 29: {
-              bitField0_ |= 0x00000004;
-              dampingRatio_ = input.readFloat();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.class, com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGDistanceJointDef> PARSER =
-        new com.google.protobuf.AbstractParser<CGDistanceJointDef>() {
-      public CGDistanceJointDef parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGDistanceJointDef(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGDistanceJointDef> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional bool collideConnected = 1;
     public static final int COLLIDECONNECTED_FIELD_NUMBER = 1;
     private boolean collideConnected_;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean hasCollideConnected() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean getCollideConnected() {
       return collideConnected_;
     }
-
+    
     // optional float freqencyHz = 2;
     public static final int FREQENCYHZ_FIELD_NUMBER = 2;
     private float freqencyHz_;
-    /**
-     * <code>optional float freqencyHz = 2;</code>
-     */
     public boolean hasFreqencyHz() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional float freqencyHz = 2;</code>
-     */
     public float getFreqencyHz() {
       return freqencyHz_;
     }
-
+    
     // optional float dampingRatio = 3;
     public static final int DAMPINGRATIO_FIELD_NUMBER = 3;
     private float dampingRatio_;
-    /**
-     * <code>optional float dampingRatio = 3;</code>
-     */
     public boolean hasDampingRatio() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional float dampingRatio = 3;</code>
-     */
     public float getDampingRatio() {
       return dampingRatio_;
     }
-
+    
     private void initFields() {
       collideConnected_ = false;
       freqencyHz_ = 0F;
@@ -3462,11 +2553,11 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -3481,12 +2572,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3504,83 +2595,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGDistanceJointDef}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGDistanceJointDefOrBuilder {
@@ -3588,21 +2690,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.class, com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3613,7 +2712,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         collideConnected_ = false;
@@ -3624,20 +2723,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef build() {
         com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef result = buildPartial();
         if (!result.isInitialized()) {
@@ -3645,7 +2744,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef result = new com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef(this);
         int from_bitField0_ = bitField0_;
@@ -3666,7 +2775,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef)other);
@@ -3675,7 +2784,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.getDefaultInstance()) return this;
         if (other.hasCollideConnected()) {
@@ -3690,285 +2799,31 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional bool collideConnected = 1;
-      private boolean collideConnected_ ;
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
-      public boolean hasCollideConnected() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
-      public boolean getCollideConnected() {
-        return collideConnected_;
-      }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
-      public Builder setCollideConnected(boolean value) {
-        bitField0_ |= 0x00000001;
-        collideConnected_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
-      public Builder clearCollideConnected() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        collideConnected_ = false;
-        onChanged();
-        return this;
-      }
-
-      // optional float freqencyHz = 2;
-      private float freqencyHz_ ;
-      /**
-       * <code>optional float freqencyHz = 2;</code>
-       */
-      public boolean hasFreqencyHz() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional float freqencyHz = 2;</code>
-       */
-      public float getFreqencyHz() {
-        return freqencyHz_;
-      }
-      /**
-       * <code>optional float freqencyHz = 2;</code>
-       */
-      public Builder setFreqencyHz(float value) {
-        bitField0_ |= 0x00000002;
-        freqencyHz_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float freqencyHz = 2;</code>
-       */
-      public Builder clearFreqencyHz() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        freqencyHz_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float dampingRatio = 3;
-      private float dampingRatio_ ;
-      /**
-       * <code>optional float dampingRatio = 3;</code>
-       */
-      public boolean hasDampingRatio() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional float dampingRatio = 3;</code>
-       */
-      public float getDampingRatio() {
-        return dampingRatio_;
-      }
-      /**
-       * <code>optional float dampingRatio = 3;</code>
-       */
-      public Builder setDampingRatio(float value) {
-        bitField0_ |= 0x00000004;
-        dampingRatio_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float dampingRatio = 3;</code>
-       */
-      public Builder clearDampingRatio() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        dampingRatio_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGDistanceJointDef)
-    }
-
-    static {
-      defaultInstance = new CGDistanceJointDef(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGDistanceJointDef)
-  }
-
-  public interface CGRevoluteJointDefOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional bool collideConnected = 1;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
-    boolean hasCollideConnected();
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
-    boolean getCollideConnected();
-
-    // optional float referenceAngle = 2;
-    /**
-     * <code>optional float referenceAngle = 2;</code>
-     */
-    boolean hasReferenceAngle();
-    /**
-     * <code>optional float referenceAngle = 2;</code>
-     */
-    float getReferenceAngle();
-
-    // optional bool enableLimit = 3;
-    /**
-     * <code>optional bool enableLimit = 3;</code>
-     */
-    boolean hasEnableLimit();
-    /**
-     * <code>optional bool enableLimit = 3;</code>
-     */
-    boolean getEnableLimit();
-
-    // optional float lowerAngle = 4;
-    /**
-     * <code>optional float lowerAngle = 4;</code>
-     */
-    boolean hasLowerAngle();
-    /**
-     * <code>optional float lowerAngle = 4;</code>
-     */
-    float getLowerAngle();
-
-    // optional float upperAngle = 5;
-    /**
-     * <code>optional float upperAngle = 5;</code>
-     */
-    boolean hasUpperAngle();
-    /**
-     * <code>optional float upperAngle = 5;</code>
-     */
-    float getUpperAngle();
-
-    // optional bool enableMotor = 6;
-    /**
-     * <code>optional bool enableMotor = 6;</code>
-     */
-    boolean hasEnableMotor();
-    /**
-     * <code>optional bool enableMotor = 6;</code>
-     */
-    boolean getEnableMotor();
-
-    // optional float motorSpeed = 7;
-    /**
-     * <code>optional float motorSpeed = 7;</code>
-     */
-    boolean hasMotorSpeed();
-    /**
-     * <code>optional float motorSpeed = 7;</code>
-     */
-    float getMotorSpeed();
-
-    // optional float maxMotorTorque = 8;
-    /**
-     * <code>optional float maxMotorTorque = 8;</code>
-     */
-    boolean hasMaxMotorTorque();
-    /**
-     * <code>optional float maxMotorTorque = 8;</code>
-     */
-    float getMaxMotorTorque();
-
-    // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-     */
-    boolean hasWorldAnchor();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-     */
-    com.laex.cg2d.protobuf.GameObject.CGVector2 getWorldAnchor();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-     */
-    com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getWorldAnchorOrBuilder();
-  }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGRevoluteJointDef}
-   */
-  public static final class CGRevoluteJointDef extends
-      com.google.protobuf.GeneratedMessage
-      implements CGRevoluteJointDefOrBuilder {
-    // Use CGRevoluteJointDef.newBuilder() to construct.
-    private CGRevoluteJointDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private CGRevoluteJointDef(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final CGRevoluteJointDef defaultInstance;
-    public static CGRevoluteJointDef getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public CGRevoluteJointDef getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGRevoluteJointDef(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              done = true;
-              break;
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                done = true;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               }
               break;
             }
@@ -3979,242 +2834,256 @@ public final class GameObject {
             }
             case 21: {
               bitField0_ |= 0x00000002;
-              referenceAngle_ = input.readFloat();
+              freqencyHz_ = input.readFloat();
               break;
             }
-            case 24: {
+            case 29: {
               bitField0_ |= 0x00000004;
-              enableLimit_ = input.readBool();
-              break;
-            }
-            case 37: {
-              bitField0_ |= 0x00000008;
-              lowerAngle_ = input.readFloat();
-              break;
-            }
-            case 45: {
-              bitField0_ |= 0x00000010;
-              upperAngle_ = input.readFloat();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              enableMotor_ = input.readBool();
-              break;
-            }
-            case 61: {
-              bitField0_ |= 0x00000040;
-              motorSpeed_ = input.readFloat();
-              break;
-            }
-            case 69: {
-              bitField0_ |= 0x00000080;
-              maxMotorTorque_ = input.readFloat();
-              break;
-            }
-            case 74: {
-              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000100) == 0x00000100)) {
-                subBuilder = worldAnchor_.toBuilder();
-              }
-              worldAnchor_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGVector2.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(worldAnchor_);
-                worldAnchor_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000100;
+              dampingRatio_ = input.readFloat();
               break;
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
       }
+      
+      private int bitField0_;
+      
+      // optional bool collideConnected = 1;
+      private boolean collideConnected_ ;
+      public boolean hasCollideConnected() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public boolean getCollideConnected() {
+        return collideConnected_;
+      }
+      public Builder setCollideConnected(boolean value) {
+        bitField0_ |= 0x00000001;
+        collideConnected_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCollideConnected() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        collideConnected_ = false;
+        onChanged();
+        return this;
+      }
+      
+      // optional float freqencyHz = 2;
+      private float freqencyHz_ ;
+      public boolean hasFreqencyHz() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public float getFreqencyHz() {
+        return freqencyHz_;
+      }
+      public Builder setFreqencyHz(float value) {
+        bitField0_ |= 0x00000002;
+        freqencyHz_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearFreqencyHz() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        freqencyHz_ = 0F;
+        onChanged();
+        return this;
+      }
+      
+      // optional float dampingRatio = 3;
+      private float dampingRatio_ ;
+      public boolean hasDampingRatio() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public float getDampingRatio() {
+        return dampingRatio_;
+      }
+      public Builder setDampingRatio(float value) {
+        bitField0_ |= 0x00000004;
+        dampingRatio_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearDampingRatio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        dampingRatio_ = 0F;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGDistanceJointDef)
     }
+    
+    static {
+      defaultInstance = new CGDistanceJointDef(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGDistanceJointDef)
+  }
+  
+  public interface CGRevoluteJointDefOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // optional bool collideConnected = 1;
+    boolean hasCollideConnected();
+    boolean getCollideConnected();
+    
+    // optional float referenceAngle = 2;
+    boolean hasReferenceAngle();
+    float getReferenceAngle();
+    
+    // optional bool enableLimit = 3;
+    boolean hasEnableLimit();
+    boolean getEnableLimit();
+    
+    // optional float lowerAngle = 4;
+    boolean hasLowerAngle();
+    float getLowerAngle();
+    
+    // optional float upperAngle = 5;
+    boolean hasUpperAngle();
+    float getUpperAngle();
+    
+    // optional bool enableMotor = 6;
+    boolean hasEnableMotor();
+    boolean getEnableMotor();
+    
+    // optional float motorSpeed = 7;
+    boolean hasMotorSpeed();
+    float getMotorSpeed();
+    
+    // optional float maxMotorTorque = 8;
+    boolean hasMaxMotorTorque();
+    float getMaxMotorTorque();
+    
+    // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
+    boolean hasWorldAnchor();
+    com.laex.cg2d.protobuf.GameObject.CGVector2 getWorldAnchor();
+    com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getWorldAnchorOrBuilder();
+  }
+  public static final class CGRevoluteJointDef extends
+      com.google.protobuf.GeneratedMessage
+      implements CGRevoluteJointDefOrBuilder {
+    // Use CGRevoluteJointDef.newBuilder() to construct.
+    private CGRevoluteJointDef(Builder builder) {
+      super(builder);
+    }
+    private CGRevoluteJointDef(boolean noInit) {}
+    
+    private static final CGRevoluteJointDef defaultInstance;
+    public static CGRevoluteJointDef getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public CGRevoluteJointDef getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.class, com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGRevoluteJointDef> PARSER =
-        new com.google.protobuf.AbstractParser<CGRevoluteJointDef>() {
-      public CGRevoluteJointDef parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGRevoluteJointDef(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGRevoluteJointDef> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional bool collideConnected = 1;
     public static final int COLLIDECONNECTED_FIELD_NUMBER = 1;
     private boolean collideConnected_;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean hasCollideConnected() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean getCollideConnected() {
       return collideConnected_;
     }
-
+    
     // optional float referenceAngle = 2;
     public static final int REFERENCEANGLE_FIELD_NUMBER = 2;
     private float referenceAngle_;
-    /**
-     * <code>optional float referenceAngle = 2;</code>
-     */
     public boolean hasReferenceAngle() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional float referenceAngle = 2;</code>
-     */
     public float getReferenceAngle() {
       return referenceAngle_;
     }
-
+    
     // optional bool enableLimit = 3;
     public static final int ENABLELIMIT_FIELD_NUMBER = 3;
     private boolean enableLimit_;
-    /**
-     * <code>optional bool enableLimit = 3;</code>
-     */
     public boolean hasEnableLimit() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional bool enableLimit = 3;</code>
-     */
     public boolean getEnableLimit() {
       return enableLimit_;
     }
-
+    
     // optional float lowerAngle = 4;
     public static final int LOWERANGLE_FIELD_NUMBER = 4;
     private float lowerAngle_;
-    /**
-     * <code>optional float lowerAngle = 4;</code>
-     */
     public boolean hasLowerAngle() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional float lowerAngle = 4;</code>
-     */
     public float getLowerAngle() {
       return lowerAngle_;
     }
-
+    
     // optional float upperAngle = 5;
     public static final int UPPERANGLE_FIELD_NUMBER = 5;
     private float upperAngle_;
-    /**
-     * <code>optional float upperAngle = 5;</code>
-     */
     public boolean hasUpperAngle() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    /**
-     * <code>optional float upperAngle = 5;</code>
-     */
     public float getUpperAngle() {
       return upperAngle_;
     }
-
+    
     // optional bool enableMotor = 6;
     public static final int ENABLEMOTOR_FIELD_NUMBER = 6;
     private boolean enableMotor_;
-    /**
-     * <code>optional bool enableMotor = 6;</code>
-     */
     public boolean hasEnableMotor() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    /**
-     * <code>optional bool enableMotor = 6;</code>
-     */
     public boolean getEnableMotor() {
       return enableMotor_;
     }
-
+    
     // optional float motorSpeed = 7;
     public static final int MOTORSPEED_FIELD_NUMBER = 7;
     private float motorSpeed_;
-    /**
-     * <code>optional float motorSpeed = 7;</code>
-     */
     public boolean hasMotorSpeed() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
-    /**
-     * <code>optional float motorSpeed = 7;</code>
-     */
     public float getMotorSpeed() {
       return motorSpeed_;
     }
-
+    
     // optional float maxMotorTorque = 8;
     public static final int MAXMOTORTORQUE_FIELD_NUMBER = 8;
     private float maxMotorTorque_;
-    /**
-     * <code>optional float maxMotorTorque = 8;</code>
-     */
     public boolean hasMaxMotorTorque() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
-    /**
-     * <code>optional float maxMotorTorque = 8;</code>
-     */
     public float getMaxMotorTorque() {
       return maxMotorTorque_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
     public static final int WORLDANCHOR_FIELD_NUMBER = 9;
     private com.laex.cg2d.protobuf.GameObject.CGVector2 worldAnchor_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-     */
     public boolean hasWorldAnchor() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2 getWorldAnchor() {
       return worldAnchor_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getWorldAnchorOrBuilder() {
       return worldAnchor_;
     }
-
+    
     private void initFields() {
       collideConnected_ = false;
       referenceAngle_ = 0F;
@@ -4230,7 +3099,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (hasWorldAnchor()) {
         if (!getWorldAnchor().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -4240,7 +3109,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -4273,12 +3142,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -4320,83 +3189,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGRevoluteJointDef}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDefOrBuilder {
@@ -4404,21 +3284,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.class, com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4430,7 +3307,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         collideConnected_ = false;
@@ -4457,20 +3334,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef build() {
         com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef result = buildPartial();
         if (!result.isInitialized()) {
@@ -4478,7 +3355,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef result = new com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef(this);
         int from_bitField0_ = bitField0_;
@@ -4527,7 +3414,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef)other);
@@ -4536,7 +3423,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.getDefaultInstance()) return this;
         if (other.hasCollideConnected()) {
@@ -4569,7 +3456,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (hasWorldAnchor()) {
           if (!getWorldAnchor().isInitialized()) {
@@ -4579,303 +3466,260 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              collideConnected_ = input.readBool();
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              referenceAngle_ = input.readFloat();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              enableLimit_ = input.readBool();
+              break;
+            }
+            case 37: {
+              bitField0_ |= 0x00000008;
+              lowerAngle_ = input.readFloat();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000010;
+              upperAngle_ = input.readFloat();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              enableMotor_ = input.readBool();
+              break;
+            }
+            case 61: {
+              bitField0_ |= 0x00000040;
+              motorSpeed_ = input.readFloat();
+              break;
+            }
+            case 69: {
+              bitField0_ |= 0x00000080;
+              maxMotorTorque_ = input.readFloat();
+              break;
+            }
+            case 74: {
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder();
+              if (hasWorldAnchor()) {
+                subBuilder.mergeFrom(getWorldAnchor());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setWorldAnchor(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional bool collideConnected = 1;
       private boolean collideConnected_ ;
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public boolean hasCollideConnected() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public boolean getCollideConnected() {
         return collideConnected_;
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public Builder setCollideConnected(boolean value) {
         bitField0_ |= 0x00000001;
         collideConnected_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public Builder clearCollideConnected() {
         bitField0_ = (bitField0_ & ~0x00000001);
         collideConnected_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional float referenceAngle = 2;
       private float referenceAngle_ ;
-      /**
-       * <code>optional float referenceAngle = 2;</code>
-       */
       public boolean hasReferenceAngle() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional float referenceAngle = 2;</code>
-       */
       public float getReferenceAngle() {
         return referenceAngle_;
       }
-      /**
-       * <code>optional float referenceAngle = 2;</code>
-       */
       public Builder setReferenceAngle(float value) {
         bitField0_ |= 0x00000002;
         referenceAngle_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float referenceAngle = 2;</code>
-       */
       public Builder clearReferenceAngle() {
         bitField0_ = (bitField0_ & ~0x00000002);
         referenceAngle_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional bool enableLimit = 3;
       private boolean enableLimit_ ;
-      /**
-       * <code>optional bool enableLimit = 3;</code>
-       */
       public boolean hasEnableLimit() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional bool enableLimit = 3;</code>
-       */
       public boolean getEnableLimit() {
         return enableLimit_;
       }
-      /**
-       * <code>optional bool enableLimit = 3;</code>
-       */
       public Builder setEnableLimit(boolean value) {
         bitField0_ |= 0x00000004;
         enableLimit_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool enableLimit = 3;</code>
-       */
       public Builder clearEnableLimit() {
         bitField0_ = (bitField0_ & ~0x00000004);
         enableLimit_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional float lowerAngle = 4;
       private float lowerAngle_ ;
-      /**
-       * <code>optional float lowerAngle = 4;</code>
-       */
       public boolean hasLowerAngle() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional float lowerAngle = 4;</code>
-       */
       public float getLowerAngle() {
         return lowerAngle_;
       }
-      /**
-       * <code>optional float lowerAngle = 4;</code>
-       */
       public Builder setLowerAngle(float value) {
         bitField0_ |= 0x00000008;
         lowerAngle_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float lowerAngle = 4;</code>
-       */
       public Builder clearLowerAngle() {
         bitField0_ = (bitField0_ & ~0x00000008);
         lowerAngle_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float upperAngle = 5;
       private float upperAngle_ ;
-      /**
-       * <code>optional float upperAngle = 5;</code>
-       */
       public boolean hasUpperAngle() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional float upperAngle = 5;</code>
-       */
       public float getUpperAngle() {
         return upperAngle_;
       }
-      /**
-       * <code>optional float upperAngle = 5;</code>
-       */
       public Builder setUpperAngle(float value) {
         bitField0_ |= 0x00000010;
         upperAngle_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float upperAngle = 5;</code>
-       */
       public Builder clearUpperAngle() {
         bitField0_ = (bitField0_ & ~0x00000010);
         upperAngle_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional bool enableMotor = 6;
       private boolean enableMotor_ ;
-      /**
-       * <code>optional bool enableMotor = 6;</code>
-       */
       public boolean hasEnableMotor() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional bool enableMotor = 6;</code>
-       */
       public boolean getEnableMotor() {
         return enableMotor_;
       }
-      /**
-       * <code>optional bool enableMotor = 6;</code>
-       */
       public Builder setEnableMotor(boolean value) {
         bitField0_ |= 0x00000020;
         enableMotor_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool enableMotor = 6;</code>
-       */
       public Builder clearEnableMotor() {
         bitField0_ = (bitField0_ & ~0x00000020);
         enableMotor_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional float motorSpeed = 7;
       private float motorSpeed_ ;
-      /**
-       * <code>optional float motorSpeed = 7;</code>
-       */
       public boolean hasMotorSpeed() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      /**
-       * <code>optional float motorSpeed = 7;</code>
-       */
       public float getMotorSpeed() {
         return motorSpeed_;
       }
-      /**
-       * <code>optional float motorSpeed = 7;</code>
-       */
       public Builder setMotorSpeed(float value) {
         bitField0_ |= 0x00000040;
         motorSpeed_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float motorSpeed = 7;</code>
-       */
       public Builder clearMotorSpeed() {
         bitField0_ = (bitField0_ & ~0x00000040);
         motorSpeed_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float maxMotorTorque = 8;
       private float maxMotorTorque_ ;
-      /**
-       * <code>optional float maxMotorTorque = 8;</code>
-       */
       public boolean hasMaxMotorTorque() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
-      /**
-       * <code>optional float maxMotorTorque = 8;</code>
-       */
       public float getMaxMotorTorque() {
         return maxMotorTorque_;
       }
-      /**
-       * <code>optional float maxMotorTorque = 8;</code>
-       */
       public Builder setMaxMotorTorque(float value) {
         bitField0_ |= 0x00000080;
         maxMotorTorque_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float maxMotorTorque = 8;</code>
-       */
       public Builder clearMaxMotorTorque() {
         bitField0_ = (bitField0_ & ~0x00000080);
         maxMotorTorque_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;
       private com.laex.cg2d.protobuf.GameObject.CGVector2 worldAnchor_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> worldAnchorBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       public boolean hasWorldAnchor() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getWorldAnchor() {
         if (worldAnchorBuilder_ == null) {
           return worldAnchor_;
@@ -4883,9 +3727,6 @@ public final class GameObject {
           return worldAnchorBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       public Builder setWorldAnchor(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (worldAnchorBuilder_ == null) {
           if (value == null) {
@@ -4899,9 +3740,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       public Builder setWorldAnchor(
           com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (worldAnchorBuilder_ == null) {
@@ -4913,9 +3751,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       public Builder mergeWorldAnchor(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (worldAnchorBuilder_ == null) {
           if (((bitField0_ & 0x00000100) == 0x00000100) &&
@@ -4932,9 +3767,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       public Builder clearWorldAnchor() {
         if (worldAnchorBuilder_ == null) {
           worldAnchor_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -4945,17 +3777,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder getWorldAnchorBuilder() {
         bitField0_ |= 0x00000100;
         onChanged();
         return getWorldAnchorFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getWorldAnchorOrBuilder() {
         if (worldAnchorBuilder_ != null) {
           return worldAnchorBuilder_.getMessageOrBuilder();
@@ -4963,9 +3789,6 @@ public final class GameObject {
           return worldAnchor_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 worldAnchor = 9;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
           getWorldAnchorFieldBuilder() {
@@ -4979,458 +3802,198 @@ public final class GameObject {
         }
         return worldAnchorBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGRevoluteJointDef)
     }
-
+    
     static {
       defaultInstance = new CGRevoluteJointDef(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGRevoluteJointDef)
   }
-
+  
   public interface CGPrismaticJointDefOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional bool collideConnected = 1;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     boolean hasCollideConnected();
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     boolean getCollideConnected();
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-     */
     boolean hasAnchor();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2 getAnchor();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getAnchorOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-     */
     boolean hasAxis();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2 getAxis();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getAxisOrBuilder();
-
+    
     // optional float referenceAngle = 5;
-    /**
-     * <code>optional float referenceAngle = 5;</code>
-     */
     boolean hasReferenceAngle();
-    /**
-     * <code>optional float referenceAngle = 5;</code>
-     */
     float getReferenceAngle();
-
+    
     // optional bool enableLimit = 6;
-    /**
-     * <code>optional bool enableLimit = 6;</code>
-     */
     boolean hasEnableLimit();
-    /**
-     * <code>optional bool enableLimit = 6;</code>
-     */
     boolean getEnableLimit();
-
+    
     // optional float lowerTranslation = 7;
-    /**
-     * <code>optional float lowerTranslation = 7;</code>
-     */
     boolean hasLowerTranslation();
-    /**
-     * <code>optional float lowerTranslation = 7;</code>
-     */
     float getLowerTranslation();
-
+    
     // optional float upperTranslation = 8;
-    /**
-     * <code>optional float upperTranslation = 8;</code>
-     */
     boolean hasUpperTranslation();
-    /**
-     * <code>optional float upperTranslation = 8;</code>
-     */
     float getUpperTranslation();
-
+    
     // optional bool enableMotor = 9;
-    /**
-     * <code>optional bool enableMotor = 9;</code>
-     */
     boolean hasEnableMotor();
-    /**
-     * <code>optional bool enableMotor = 9;</code>
-     */
     boolean getEnableMotor();
-
+    
     // optional float maxMotorForce = 10;
-    /**
-     * <code>optional float maxMotorForce = 10;</code>
-     */
     boolean hasMaxMotorForce();
-    /**
-     * <code>optional float maxMotorForce = 10;</code>
-     */
     float getMaxMotorForce();
-
+    
     // optional float motorSpeed = 11;
-    /**
-     * <code>optional float motorSpeed = 11;</code>
-     */
     boolean hasMotorSpeed();
-    /**
-     * <code>optional float motorSpeed = 11;</code>
-     */
     float getMotorSpeed();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGPrismaticJointDef}
-   */
   public static final class CGPrismaticJointDef extends
       com.google.protobuf.GeneratedMessage
       implements CGPrismaticJointDefOrBuilder {
     // Use CGPrismaticJointDef.newBuilder() to construct.
-    private CGPrismaticJointDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGPrismaticJointDef(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGPrismaticJointDef(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGPrismaticJointDef(boolean noInit) {}
+    
     private static final CGPrismaticJointDef defaultInstance;
     public static CGPrismaticJointDef getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGPrismaticJointDef getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGPrismaticJointDef(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              collideConnected_ = input.readBool();
-              break;
-            }
-            case 18: {
-              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = anchor_.toBuilder();
-              }
-              anchor_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGVector2.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(anchor_);
-                anchor_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-            case 26: {
-              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = axis_.toBuilder();
-              }
-              axis_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGVector2.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(axis_);
-                axis_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-            case 45: {
-              bitField0_ |= 0x00000008;
-              referenceAngle_ = input.readFloat();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000010;
-              enableLimit_ = input.readBool();
-              break;
-            }
-            case 61: {
-              bitField0_ |= 0x00000020;
-              lowerTranslation_ = input.readFloat();
-              break;
-            }
-            case 69: {
-              bitField0_ |= 0x00000040;
-              upperTranslation_ = input.readFloat();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000080;
-              enableMotor_ = input.readBool();
-              break;
-            }
-            case 85: {
-              bitField0_ |= 0x00000100;
-              maxMotorForce_ = input.readFloat();
-              break;
-            }
-            case 93: {
-              bitField0_ |= 0x00000200;
-              motorSpeed_ = input.readFloat();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.class, com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGPrismaticJointDef> PARSER =
-        new com.google.protobuf.AbstractParser<CGPrismaticJointDef>() {
-      public CGPrismaticJointDef parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGPrismaticJointDef(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGPrismaticJointDef> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional bool collideConnected = 1;
     public static final int COLLIDECONNECTED_FIELD_NUMBER = 1;
     private boolean collideConnected_;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean hasCollideConnected() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean getCollideConnected() {
       return collideConnected_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;
     public static final int ANCHOR_FIELD_NUMBER = 2;
     private com.laex.cg2d.protobuf.GameObject.CGVector2 anchor_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-     */
     public boolean hasAnchor() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2 getAnchor() {
       return anchor_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getAnchorOrBuilder() {
       return anchor_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;
     public static final int AXIS_FIELD_NUMBER = 3;
     private com.laex.cg2d.protobuf.GameObject.CGVector2 axis_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-     */
     public boolean hasAxis() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2 getAxis() {
       return axis_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getAxisOrBuilder() {
       return axis_;
     }
-
+    
     // optional float referenceAngle = 5;
     public static final int REFERENCEANGLE_FIELD_NUMBER = 5;
     private float referenceAngle_;
-    /**
-     * <code>optional float referenceAngle = 5;</code>
-     */
     public boolean hasReferenceAngle() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional float referenceAngle = 5;</code>
-     */
     public float getReferenceAngle() {
       return referenceAngle_;
     }
-
+    
     // optional bool enableLimit = 6;
     public static final int ENABLELIMIT_FIELD_NUMBER = 6;
     private boolean enableLimit_;
-    /**
-     * <code>optional bool enableLimit = 6;</code>
-     */
     public boolean hasEnableLimit() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    /**
-     * <code>optional bool enableLimit = 6;</code>
-     */
     public boolean getEnableLimit() {
       return enableLimit_;
     }
-
+    
     // optional float lowerTranslation = 7;
     public static final int LOWERTRANSLATION_FIELD_NUMBER = 7;
     private float lowerTranslation_;
-    /**
-     * <code>optional float lowerTranslation = 7;</code>
-     */
     public boolean hasLowerTranslation() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    /**
-     * <code>optional float lowerTranslation = 7;</code>
-     */
     public float getLowerTranslation() {
       return lowerTranslation_;
     }
-
+    
     // optional float upperTranslation = 8;
     public static final int UPPERTRANSLATION_FIELD_NUMBER = 8;
     private float upperTranslation_;
-    /**
-     * <code>optional float upperTranslation = 8;</code>
-     */
     public boolean hasUpperTranslation() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
-    /**
-     * <code>optional float upperTranslation = 8;</code>
-     */
     public float getUpperTranslation() {
       return upperTranslation_;
     }
-
+    
     // optional bool enableMotor = 9;
     public static final int ENABLEMOTOR_FIELD_NUMBER = 9;
     private boolean enableMotor_;
-    /**
-     * <code>optional bool enableMotor = 9;</code>
-     */
     public boolean hasEnableMotor() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
-    /**
-     * <code>optional bool enableMotor = 9;</code>
-     */
     public boolean getEnableMotor() {
       return enableMotor_;
     }
-
+    
     // optional float maxMotorForce = 10;
     public static final int MAXMOTORFORCE_FIELD_NUMBER = 10;
     private float maxMotorForce_;
-    /**
-     * <code>optional float maxMotorForce = 10;</code>
-     */
     public boolean hasMaxMotorForce() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
-    /**
-     * <code>optional float maxMotorForce = 10;</code>
-     */
     public float getMaxMotorForce() {
       return maxMotorForce_;
     }
-
+    
     // optional float motorSpeed = 11;
     public static final int MOTORSPEED_FIELD_NUMBER = 11;
     private float motorSpeed_;
-    /**
-     * <code>optional float motorSpeed = 11;</code>
-     */
     public boolean hasMotorSpeed() {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
-    /**
-     * <code>optional float motorSpeed = 11;</code>
-     */
     public float getMotorSpeed() {
       return motorSpeed_;
     }
-
+    
     private void initFields() {
       collideConnected_ = false;
       anchor_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -5447,7 +4010,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (hasAnchor()) {
         if (!getAnchor().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -5463,7 +4026,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -5499,12 +4062,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5550,83 +4113,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGPrismaticJointDef}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDefOrBuilder {
@@ -5634,21 +4208,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.class, com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -5661,7 +4232,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         collideConnected_ = false;
@@ -5694,20 +4265,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef build() {
         com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef result = buildPartial();
         if (!result.isInitialized()) {
@@ -5715,7 +4286,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef result = new com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef(this);
         int from_bitField0_ = bitField0_;
@@ -5772,7 +4353,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef)other);
@@ -5781,7 +4362,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.getDefaultInstance()) return this;
         if (other.hasCollideConnected()) {
@@ -5817,7 +4398,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (hasAnchor()) {
           if (!getAnchor().isInitialized()) {
@@ -5833,72 +4414,122 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              collideConnected_ = input.readBool();
+              break;
+            }
+            case 18: {
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder();
+              if (hasAnchor()) {
+                subBuilder.mergeFrom(getAnchor());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setAnchor(subBuilder.buildPartial());
+              break;
+            }
+            case 26: {
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder();
+              if (hasAxis()) {
+                subBuilder.mergeFrom(getAxis());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setAxis(subBuilder.buildPartial());
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000008;
+              referenceAngle_ = input.readFloat();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000010;
+              enableLimit_ = input.readBool();
+              break;
+            }
+            case 61: {
+              bitField0_ |= 0x00000020;
+              lowerTranslation_ = input.readFloat();
+              break;
+            }
+            case 69: {
+              bitField0_ |= 0x00000040;
+              upperTranslation_ = input.readFloat();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000080;
+              enableMotor_ = input.readBool();
+              break;
+            }
+            case 85: {
+              bitField0_ |= 0x00000100;
+              maxMotorForce_ = input.readFloat();
+              break;
+            }
+            case 93: {
+              bitField0_ |= 0x00000200;
+              motorSpeed_ = input.readFloat();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional bool collideConnected = 1;
       private boolean collideConnected_ ;
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public boolean hasCollideConnected() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public boolean getCollideConnected() {
         return collideConnected_;
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public Builder setCollideConnected(boolean value) {
         bitField0_ |= 0x00000001;
         collideConnected_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public Builder clearCollideConnected() {
         bitField0_ = (bitField0_ & ~0x00000001);
         collideConnected_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;
       private com.laex.cg2d.protobuf.GameObject.CGVector2 anchor_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> anchorBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       public boolean hasAnchor() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getAnchor() {
         if (anchorBuilder_ == null) {
           return anchor_;
@@ -5906,9 +4537,6 @@ public final class GameObject {
           return anchorBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       public Builder setAnchor(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (anchorBuilder_ == null) {
           if (value == null) {
@@ -5922,9 +4550,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       public Builder setAnchor(
           com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (anchorBuilder_ == null) {
@@ -5936,9 +4561,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       public Builder mergeAnchor(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (anchorBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -5955,9 +4577,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       public Builder clearAnchor() {
         if (anchorBuilder_ == null) {
           anchor_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -5968,17 +4587,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder getAnchorBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getAnchorFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getAnchorOrBuilder() {
         if (anchorBuilder_ != null) {
           return anchorBuilder_.getMessageOrBuilder();
@@ -5986,9 +4599,6 @@ public final class GameObject {
           return anchor_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 anchor = 2;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
           getAnchorFieldBuilder() {
@@ -6002,20 +4612,14 @@ public final class GameObject {
         }
         return anchorBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;
       private com.laex.cg2d.protobuf.GameObject.CGVector2 axis_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> axisBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       public boolean hasAxis() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getAxis() {
         if (axisBuilder_ == null) {
           return axis_;
@@ -6023,9 +4627,6 @@ public final class GameObject {
           return axisBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       public Builder setAxis(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (axisBuilder_ == null) {
           if (value == null) {
@@ -6039,9 +4640,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       public Builder setAxis(
           com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (axisBuilder_ == null) {
@@ -6053,9 +4651,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       public Builder mergeAxis(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (axisBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
@@ -6072,9 +4667,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       public Builder clearAxis() {
         if (axisBuilder_ == null) {
           axis_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -6085,17 +4677,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder getAxisBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getAxisFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getAxisOrBuilder() {
         if (axisBuilder_ != null) {
           return axisBuilder_.getMessageOrBuilder();
@@ -6103,9 +4689,6 @@ public final class GameObject {
           return axis_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 axis = 3;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
           getAxisFieldBuilder() {
@@ -6119,503 +4702,261 @@ public final class GameObject {
         }
         return axisBuilder_;
       }
-
+      
       // optional float referenceAngle = 5;
       private float referenceAngle_ ;
-      /**
-       * <code>optional float referenceAngle = 5;</code>
-       */
       public boolean hasReferenceAngle() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional float referenceAngle = 5;</code>
-       */
       public float getReferenceAngle() {
         return referenceAngle_;
       }
-      /**
-       * <code>optional float referenceAngle = 5;</code>
-       */
       public Builder setReferenceAngle(float value) {
         bitField0_ |= 0x00000008;
         referenceAngle_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float referenceAngle = 5;</code>
-       */
       public Builder clearReferenceAngle() {
         bitField0_ = (bitField0_ & ~0x00000008);
         referenceAngle_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional bool enableLimit = 6;
       private boolean enableLimit_ ;
-      /**
-       * <code>optional bool enableLimit = 6;</code>
-       */
       public boolean hasEnableLimit() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional bool enableLimit = 6;</code>
-       */
       public boolean getEnableLimit() {
         return enableLimit_;
       }
-      /**
-       * <code>optional bool enableLimit = 6;</code>
-       */
       public Builder setEnableLimit(boolean value) {
         bitField0_ |= 0x00000010;
         enableLimit_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool enableLimit = 6;</code>
-       */
       public Builder clearEnableLimit() {
         bitField0_ = (bitField0_ & ~0x00000010);
         enableLimit_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional float lowerTranslation = 7;
       private float lowerTranslation_ ;
-      /**
-       * <code>optional float lowerTranslation = 7;</code>
-       */
       public boolean hasLowerTranslation() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional float lowerTranslation = 7;</code>
-       */
       public float getLowerTranslation() {
         return lowerTranslation_;
       }
-      /**
-       * <code>optional float lowerTranslation = 7;</code>
-       */
       public Builder setLowerTranslation(float value) {
         bitField0_ |= 0x00000020;
         lowerTranslation_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float lowerTranslation = 7;</code>
-       */
       public Builder clearLowerTranslation() {
         bitField0_ = (bitField0_ & ~0x00000020);
         lowerTranslation_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float upperTranslation = 8;
       private float upperTranslation_ ;
-      /**
-       * <code>optional float upperTranslation = 8;</code>
-       */
       public boolean hasUpperTranslation() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      /**
-       * <code>optional float upperTranslation = 8;</code>
-       */
       public float getUpperTranslation() {
         return upperTranslation_;
       }
-      /**
-       * <code>optional float upperTranslation = 8;</code>
-       */
       public Builder setUpperTranslation(float value) {
         bitField0_ |= 0x00000040;
         upperTranslation_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float upperTranslation = 8;</code>
-       */
       public Builder clearUpperTranslation() {
         bitField0_ = (bitField0_ & ~0x00000040);
         upperTranslation_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional bool enableMotor = 9;
       private boolean enableMotor_ ;
-      /**
-       * <code>optional bool enableMotor = 9;</code>
-       */
       public boolean hasEnableMotor() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
-      /**
-       * <code>optional bool enableMotor = 9;</code>
-       */
       public boolean getEnableMotor() {
         return enableMotor_;
       }
-      /**
-       * <code>optional bool enableMotor = 9;</code>
-       */
       public Builder setEnableMotor(boolean value) {
         bitField0_ |= 0x00000080;
         enableMotor_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool enableMotor = 9;</code>
-       */
       public Builder clearEnableMotor() {
         bitField0_ = (bitField0_ & ~0x00000080);
         enableMotor_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional float maxMotorForce = 10;
       private float maxMotorForce_ ;
-      /**
-       * <code>optional float maxMotorForce = 10;</code>
-       */
       public boolean hasMaxMotorForce() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
-      /**
-       * <code>optional float maxMotorForce = 10;</code>
-       */
       public float getMaxMotorForce() {
         return maxMotorForce_;
       }
-      /**
-       * <code>optional float maxMotorForce = 10;</code>
-       */
       public Builder setMaxMotorForce(float value) {
         bitField0_ |= 0x00000100;
         maxMotorForce_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float maxMotorForce = 10;</code>
-       */
       public Builder clearMaxMotorForce() {
         bitField0_ = (bitField0_ & ~0x00000100);
         maxMotorForce_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float motorSpeed = 11;
       private float motorSpeed_ ;
-      /**
-       * <code>optional float motorSpeed = 11;</code>
-       */
       public boolean hasMotorSpeed() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
-      /**
-       * <code>optional float motorSpeed = 11;</code>
-       */
       public float getMotorSpeed() {
         return motorSpeed_;
       }
-      /**
-       * <code>optional float motorSpeed = 11;</code>
-       */
       public Builder setMotorSpeed(float value) {
         bitField0_ |= 0x00000200;
         motorSpeed_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float motorSpeed = 11;</code>
-       */
       public Builder clearMotorSpeed() {
         bitField0_ = (bitField0_ & ~0x00000200);
         motorSpeed_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGPrismaticJointDef)
     }
-
+    
     static {
       defaultInstance = new CGPrismaticJointDef(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGPrismaticJointDef)
   }
-
+  
   public interface CGPulleyJointDefOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional bool collideConnected = 1;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     boolean hasCollideConnected();
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     boolean getCollideConnected();
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-     */
     boolean hasGroundAnchorA();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2 getGroundAnchorA();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getGroundAnchorAOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-     */
     boolean hasGroundAnchorB();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2 getGroundAnchorB();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getGroundAnchorBOrBuilder();
-
+    
     // optional float ratio = 4;
-    /**
-     * <code>optional float ratio = 4;</code>
-     */
     boolean hasRatio();
-    /**
-     * <code>optional float ratio = 4;</code>
-     */
     float getRatio();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGPulleyJointDef}
-   */
   public static final class CGPulleyJointDef extends
       com.google.protobuf.GeneratedMessage
       implements CGPulleyJointDefOrBuilder {
     // Use CGPulleyJointDef.newBuilder() to construct.
-    private CGPulleyJointDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGPulleyJointDef(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGPulleyJointDef(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGPulleyJointDef(boolean noInit) {}
+    
     private static final CGPulleyJointDef defaultInstance;
     public static CGPulleyJointDef getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGPulleyJointDef getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGPulleyJointDef(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              collideConnected_ = input.readBool();
-              break;
-            }
-            case 18: {
-              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = groundAnchorA_.toBuilder();
-              }
-              groundAnchorA_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGVector2.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(groundAnchorA_);
-                groundAnchorA_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-            case 26: {
-              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = groundAnchorB_.toBuilder();
-              }
-              groundAnchorB_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGVector2.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(groundAnchorB_);
-                groundAnchorB_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-            case 37: {
-              bitField0_ |= 0x00000008;
-              ratio_ = input.readFloat();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.class, com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGPulleyJointDef> PARSER =
-        new com.google.protobuf.AbstractParser<CGPulleyJointDef>() {
-      public CGPulleyJointDef parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGPulleyJointDef(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGPulleyJointDef> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional bool collideConnected = 1;
     public static final int COLLIDECONNECTED_FIELD_NUMBER = 1;
     private boolean collideConnected_;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean hasCollideConnected() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean getCollideConnected() {
       return collideConnected_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;
     public static final int GROUNDANCHORA_FIELD_NUMBER = 2;
     private com.laex.cg2d.protobuf.GameObject.CGVector2 groundAnchorA_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-     */
     public boolean hasGroundAnchorA() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2 getGroundAnchorA() {
       return groundAnchorA_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getGroundAnchorAOrBuilder() {
       return groundAnchorA_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;
     public static final int GROUNDANCHORB_FIELD_NUMBER = 3;
     private com.laex.cg2d.protobuf.GameObject.CGVector2 groundAnchorB_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-     */
     public boolean hasGroundAnchorB() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2 getGroundAnchorB() {
       return groundAnchorB_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getGroundAnchorBOrBuilder() {
       return groundAnchorB_;
     }
-
+    
     // optional float ratio = 4;
     public static final int RATIO_FIELD_NUMBER = 4;
     private float ratio_;
-    /**
-     * <code>optional float ratio = 4;</code>
-     */
     public boolean hasRatio() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional float ratio = 4;</code>
-     */
     public float getRatio() {
       return ratio_;
     }
-
+    
     private void initFields() {
       collideConnected_ = false;
       groundAnchorA_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -6626,7 +4967,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (hasGroundAnchorA()) {
         if (!getGroundAnchorA().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -6642,7 +4983,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -6660,12 +5001,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -6687,83 +5028,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGPulleyJointDef}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGPulleyJointDefOrBuilder {
@@ -6771,21 +5123,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.class, com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -6798,7 +5147,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         collideConnected_ = false;
@@ -6819,20 +5168,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef build() {
         com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef result = buildPartial();
         if (!result.isInitialized()) {
@@ -6840,7 +5189,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef result = new com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef(this);
         int from_bitField0_ = bitField0_;
@@ -6873,7 +5232,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef)other);
@@ -6882,7 +5241,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.getDefaultInstance()) return this;
         if (other.hasCollideConnected()) {
@@ -6900,7 +5259,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (hasGroundAnchorA()) {
           if (!getGroundAnchorA().isInitialized()) {
@@ -6916,72 +5275,92 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              collideConnected_ = input.readBool();
+              break;
+            }
+            case 18: {
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder();
+              if (hasGroundAnchorA()) {
+                subBuilder.mergeFrom(getGroundAnchorA());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setGroundAnchorA(subBuilder.buildPartial());
+              break;
+            }
+            case 26: {
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder();
+              if (hasGroundAnchorB()) {
+                subBuilder.mergeFrom(getGroundAnchorB());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setGroundAnchorB(subBuilder.buildPartial());
+              break;
+            }
+            case 37: {
+              bitField0_ |= 0x00000008;
+              ratio_ = input.readFloat();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional bool collideConnected = 1;
       private boolean collideConnected_ ;
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public boolean hasCollideConnected() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public boolean getCollideConnected() {
         return collideConnected_;
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public Builder setCollideConnected(boolean value) {
         bitField0_ |= 0x00000001;
         collideConnected_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public Builder clearCollideConnected() {
         bitField0_ = (bitField0_ & ~0x00000001);
         collideConnected_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;
       private com.laex.cg2d.protobuf.GameObject.CGVector2 groundAnchorA_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> groundAnchorABuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       public boolean hasGroundAnchorA() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getGroundAnchorA() {
         if (groundAnchorABuilder_ == null) {
           return groundAnchorA_;
@@ -6989,9 +5368,6 @@ public final class GameObject {
           return groundAnchorABuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       public Builder setGroundAnchorA(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (groundAnchorABuilder_ == null) {
           if (value == null) {
@@ -7005,9 +5381,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       public Builder setGroundAnchorA(
           com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (groundAnchorABuilder_ == null) {
@@ -7019,9 +5392,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       public Builder mergeGroundAnchorA(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (groundAnchorABuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -7038,9 +5408,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       public Builder clearGroundAnchorA() {
         if (groundAnchorABuilder_ == null) {
           groundAnchorA_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -7051,17 +5418,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder getGroundAnchorABuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getGroundAnchorAFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getGroundAnchorAOrBuilder() {
         if (groundAnchorABuilder_ != null) {
           return groundAnchorABuilder_.getMessageOrBuilder();
@@ -7069,9 +5430,6 @@ public final class GameObject {
           return groundAnchorA_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorA = 2;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
           getGroundAnchorAFieldBuilder() {
@@ -7085,20 +5443,14 @@ public final class GameObject {
         }
         return groundAnchorABuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;
       private com.laex.cg2d.protobuf.GameObject.CGVector2 groundAnchorB_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> groundAnchorBBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       public boolean hasGroundAnchorB() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getGroundAnchorB() {
         if (groundAnchorBBuilder_ == null) {
           return groundAnchorB_;
@@ -7106,9 +5458,6 @@ public final class GameObject {
           return groundAnchorBBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       public Builder setGroundAnchorB(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (groundAnchorBBuilder_ == null) {
           if (value == null) {
@@ -7122,9 +5471,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       public Builder setGroundAnchorB(
           com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (groundAnchorBBuilder_ == null) {
@@ -7136,9 +5482,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       public Builder mergeGroundAnchorB(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (groundAnchorBBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
@@ -7155,9 +5498,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       public Builder clearGroundAnchorB() {
         if (groundAnchorBBuilder_ == null) {
           groundAnchorB_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -7168,17 +5508,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder getGroundAnchorBBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getGroundAnchorBFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getGroundAnchorBOrBuilder() {
         if (groundAnchorBBuilder_ != null) {
           return groundAnchorBBuilder_.getMessageOrBuilder();
@@ -7186,9 +5520,6 @@ public final class GameObject {
           return groundAnchorB_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 groundAnchorB = 3;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
           getGroundAnchorBFieldBuilder() {
@@ -7202,238 +5533,113 @@ public final class GameObject {
         }
         return groundAnchorBBuilder_;
       }
-
+      
       // optional float ratio = 4;
       private float ratio_ ;
-      /**
-       * <code>optional float ratio = 4;</code>
-       */
       public boolean hasRatio() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional float ratio = 4;</code>
-       */
       public float getRatio() {
         return ratio_;
       }
-      /**
-       * <code>optional float ratio = 4;</code>
-       */
       public Builder setRatio(float value) {
         bitField0_ |= 0x00000008;
         ratio_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float ratio = 4;</code>
-       */
       public Builder clearRatio() {
         bitField0_ = (bitField0_ & ~0x00000008);
         ratio_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGPulleyJointDef)
     }
-
+    
     static {
       defaultInstance = new CGPulleyJointDef(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGPulleyJointDef)
   }
-
+  
   public interface CGFrictionJointDefOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional bool collideConnected = 1;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     boolean hasCollideConnected();
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     boolean getCollideConnected();
-
+    
     // optional float maxForce = 2;
-    /**
-     * <code>optional float maxForce = 2;</code>
-     */
     boolean hasMaxForce();
-    /**
-     * <code>optional float maxForce = 2;</code>
-     */
     float getMaxForce();
-
+    
     // optional float maxTorque = 3;
-    /**
-     * <code>optional float maxTorque = 3;</code>
-     */
     boolean hasMaxTorque();
-    /**
-     * <code>optional float maxTorque = 3;</code>
-     */
     float getMaxTorque();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGFrictionJointDef}
-   */
   public static final class CGFrictionJointDef extends
       com.google.protobuf.GeneratedMessage
       implements CGFrictionJointDefOrBuilder {
     // Use CGFrictionJointDef.newBuilder() to construct.
-    private CGFrictionJointDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGFrictionJointDef(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGFrictionJointDef(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGFrictionJointDef(boolean noInit) {}
+    
     private static final CGFrictionJointDef defaultInstance;
     public static CGFrictionJointDef getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGFrictionJointDef getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGFrictionJointDef(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              collideConnected_ = input.readBool();
-              break;
-            }
-            case 21: {
-              bitField0_ |= 0x00000002;
-              maxForce_ = input.readFloat();
-              break;
-            }
-            case 29: {
-              bitField0_ |= 0x00000004;
-              maxTorque_ = input.readFloat();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.class, com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGFrictionJointDef> PARSER =
-        new com.google.protobuf.AbstractParser<CGFrictionJointDef>() {
-      public CGFrictionJointDef parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGFrictionJointDef(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGFrictionJointDef> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional bool collideConnected = 1;
     public static final int COLLIDECONNECTED_FIELD_NUMBER = 1;
     private boolean collideConnected_;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean hasCollideConnected() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean getCollideConnected() {
       return collideConnected_;
     }
-
+    
     // optional float maxForce = 2;
     public static final int MAXFORCE_FIELD_NUMBER = 2;
     private float maxForce_;
-    /**
-     * <code>optional float maxForce = 2;</code>
-     */
     public boolean hasMaxForce() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional float maxForce = 2;</code>
-     */
     public float getMaxForce() {
       return maxForce_;
     }
-
+    
     // optional float maxTorque = 3;
     public static final int MAXTORQUE_FIELD_NUMBER = 3;
     private float maxTorque_;
-    /**
-     * <code>optional float maxTorque = 3;</code>
-     */
     public boolean hasMaxTorque() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional float maxTorque = 3;</code>
-     */
     public float getMaxTorque() {
       return maxTorque_;
     }
-
+    
     private void initFields() {
       collideConnected_ = false;
       maxForce_ = 0F;
@@ -7443,11 +5649,11 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -7462,12 +5668,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -7485,83 +5691,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGFrictionJointDef}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGFrictionJointDefOrBuilder {
@@ -7569,21 +5786,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.class, com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -7594,7 +5808,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         collideConnected_ = false;
@@ -7605,20 +5819,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef build() {
         com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef result = buildPartial();
         if (!result.isInitialized()) {
@@ -7626,7 +5840,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef result = new com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef(this);
         int from_bitField0_ = bitField0_;
@@ -7647,7 +5871,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef)other);
@@ -7656,7 +5880,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.getDefaultInstance()) return this;
         if (other.hasCollideConnected()) {
@@ -7671,201 +5895,31 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional bool collideConnected = 1;
-      private boolean collideConnected_ ;
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
-      public boolean hasCollideConnected() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
-      public boolean getCollideConnected() {
-        return collideConnected_;
-      }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
-      public Builder setCollideConnected(boolean value) {
-        bitField0_ |= 0x00000001;
-        collideConnected_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
-      public Builder clearCollideConnected() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        collideConnected_ = false;
-        onChanged();
-        return this;
-      }
-
-      // optional float maxForce = 2;
-      private float maxForce_ ;
-      /**
-       * <code>optional float maxForce = 2;</code>
-       */
-      public boolean hasMaxForce() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional float maxForce = 2;</code>
-       */
-      public float getMaxForce() {
-        return maxForce_;
-      }
-      /**
-       * <code>optional float maxForce = 2;</code>
-       */
-      public Builder setMaxForce(float value) {
-        bitField0_ |= 0x00000002;
-        maxForce_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float maxForce = 2;</code>
-       */
-      public Builder clearMaxForce() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        maxForce_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float maxTorque = 3;
-      private float maxTorque_ ;
-      /**
-       * <code>optional float maxTorque = 3;</code>
-       */
-      public boolean hasMaxTorque() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional float maxTorque = 3;</code>
-       */
-      public float getMaxTorque() {
-        return maxTorque_;
-      }
-      /**
-       * <code>optional float maxTorque = 3;</code>
-       */
-      public Builder setMaxTorque(float value) {
-        bitField0_ |= 0x00000004;
-        maxTorque_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float maxTorque = 3;</code>
-       */
-      public Builder clearMaxTorque() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        maxTorque_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGFrictionJointDef)
-    }
-
-    static {
-      defaultInstance = new CGFrictionJointDef(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGFrictionJointDef)
-  }
-
-  public interface CGWeldJointDefOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional bool collideConnected = 1;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
-    boolean hasCollideConnected();
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
-    boolean getCollideConnected();
-  }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGWeldJointDef}
-   */
-  public static final class CGWeldJointDef extends
-      com.google.protobuf.GeneratedMessage
-      implements CGWeldJointDefOrBuilder {
-    // Use CGWeldJointDef.newBuilder() to construct.
-    private CGWeldJointDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private CGWeldJointDef(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final CGWeldJointDef defaultInstance;
-    public static CGWeldJointDef getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public CGWeldJointDef getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGWeldJointDef(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              done = true;
-              break;
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                done = true;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               }
               break;
             }
@@ -7874,62 +5928,142 @@ public final class GameObject {
               collideConnected_ = input.readBool();
               break;
             }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              maxForce_ = input.readFloat();
+              break;
+            }
+            case 29: {
+              bitField0_ |= 0x00000004;
+              maxTorque_ = input.readFloat();
+              break;
+            }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
       }
+      
+      private int bitField0_;
+      
+      // optional bool collideConnected = 1;
+      private boolean collideConnected_ ;
+      public boolean hasCollideConnected() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public boolean getCollideConnected() {
+        return collideConnected_;
+      }
+      public Builder setCollideConnected(boolean value) {
+        bitField0_ |= 0x00000001;
+        collideConnected_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCollideConnected() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        collideConnected_ = false;
+        onChanged();
+        return this;
+      }
+      
+      // optional float maxForce = 2;
+      private float maxForce_ ;
+      public boolean hasMaxForce() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public float getMaxForce() {
+        return maxForce_;
+      }
+      public Builder setMaxForce(float value) {
+        bitField0_ |= 0x00000002;
+        maxForce_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearMaxForce() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        maxForce_ = 0F;
+        onChanged();
+        return this;
+      }
+      
+      // optional float maxTorque = 3;
+      private float maxTorque_ ;
+      public boolean hasMaxTorque() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public float getMaxTorque() {
+        return maxTorque_;
+      }
+      public Builder setMaxTorque(float value) {
+        bitField0_ |= 0x00000004;
+        maxTorque_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearMaxTorque() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        maxTorque_ = 0F;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGFrictionJointDef)
     }
+    
+    static {
+      defaultInstance = new CGFrictionJointDef(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGFrictionJointDef)
+  }
+  
+  public interface CGWeldJointDefOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // optional bool collideConnected = 1;
+    boolean hasCollideConnected();
+    boolean getCollideConnected();
+  }
+  public static final class CGWeldJointDef extends
+      com.google.protobuf.GeneratedMessage
+      implements CGWeldJointDefOrBuilder {
+    // Use CGWeldJointDef.newBuilder() to construct.
+    private CGWeldJointDef(Builder builder) {
+      super(builder);
+    }
+    private CGWeldJointDef(boolean noInit) {}
+    
+    private static final CGWeldJointDef defaultInstance;
+    public static CGWeldJointDef getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public CGWeldJointDef getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.class, com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGWeldJointDef> PARSER =
-        new com.google.protobuf.AbstractParser<CGWeldJointDef>() {
-      public CGWeldJointDef parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGWeldJointDef(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGWeldJointDef> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional bool collideConnected = 1;
     public static final int COLLIDECONNECTED_FIELD_NUMBER = 1;
     private boolean collideConnected_;
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean hasCollideConnected() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional bool collideConnected = 1;</code>
-     */
     public boolean getCollideConnected() {
       return collideConnected_;
     }
-
+    
     private void initFields() {
       collideConnected_ = false;
     }
@@ -7937,11 +6071,11 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -7950,12 +6084,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -7965,83 +6099,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGWeldJointDef prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGWeldJointDef}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGWeldJointDefOrBuilder {
@@ -8049,21 +6194,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.class, com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -8074,27 +6216,27 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         collideConnected_ = false;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGWeldJointDef getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGWeldJointDef build() {
         com.laex.cg2d.protobuf.GameObject.CGWeldJointDef result = buildPartial();
         if (!result.isInitialized()) {
@@ -8102,7 +6244,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGWeldJointDef buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGWeldJointDef result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGWeldJointDef buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGWeldJointDef result = new com.laex.cg2d.protobuf.GameObject.CGWeldJointDef(this);
         int from_bitField0_ = bitField0_;
@@ -8115,7 +6267,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGWeldJointDef) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGWeldJointDef)other);
@@ -8124,7 +6276,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGWeldJointDef other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.getDefaultInstance()) return this;
         if (other.hasCollideConnected()) {
@@ -8133,294 +6285,181 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGWeldJointDef parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGWeldJointDef) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              collideConnected_ = input.readBool();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional bool collideConnected = 1;
       private boolean collideConnected_ ;
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public boolean hasCollideConnected() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public boolean getCollideConnected() {
         return collideConnected_;
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public Builder setCollideConnected(boolean value) {
         bitField0_ |= 0x00000001;
         collideConnected_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool collideConnected = 1;</code>
-       */
       public Builder clearCollideConnected() {
         bitField0_ = (bitField0_ & ~0x00000001);
         collideConnected_ = false;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGWeldJointDef)
     }
-
+    
     static {
       defaultInstance = new CGWeldJointDef(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGWeldJointDef)
   }
-
+  
   public interface CGResourceFileOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional string resourceFile = 1;
-    /**
-     * <code>optional string resourceFile = 1;</code>
-     */
     boolean hasResourceFile();
-    /**
-     * <code>optional string resourceFile = 1;</code>
-     */
-    java.lang.String getResourceFile();
-    /**
-     * <code>optional string resourceFile = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getResourceFileBytes();
-
+    String getResourceFile();
+    
     // optional string resourceFileAbsolute = 2;
-    /**
-     * <code>optional string resourceFileAbsolute = 2;</code>
-     */
     boolean hasResourceFileAbsolute();
-    /**
-     * <code>optional string resourceFileAbsolute = 2;</code>
-     */
-    java.lang.String getResourceFileAbsolute();
-    /**
-     * <code>optional string resourceFileAbsolute = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getResourceFileAbsoluteBytes();
+    String getResourceFileAbsolute();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGResourceFile}
-   */
   public static final class CGResourceFile extends
       com.google.protobuf.GeneratedMessage
       implements CGResourceFileOrBuilder {
     // Use CGResourceFile.newBuilder() to construct.
-    private CGResourceFile(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGResourceFile(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGResourceFile(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGResourceFile(boolean noInit) {}
+    
     private static final CGResourceFile defaultInstance;
     public static CGResourceFile getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGResourceFile getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGResourceFile(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              resourceFile_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              resourceFileAbsolute_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGResourceFile_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGResourceFile_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGResourceFile.class, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGResourceFile_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGResourceFile> PARSER =
-        new com.google.protobuf.AbstractParser<CGResourceFile>() {
-      public CGResourceFile parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGResourceFile(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGResourceFile> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional string resourceFile = 1;
     public static final int RESOURCEFILE_FIELD_NUMBER = 1;
     private java.lang.Object resourceFile_;
-    /**
-     * <code>optional string resourceFile = 1;</code>
-     */
     public boolean hasResourceFile() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional string resourceFile = 1;</code>
-     */
-    public java.lang.String getResourceFile() {
+    public String getResourceFile() {
       java.lang.Object ref = resourceFile_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
           resourceFile_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string resourceFile = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getResourceFileBytes() {
+    private com.google.protobuf.ByteString getResourceFileBytes() {
       java.lang.Object ref = resourceFile_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
         resourceFile_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional string resourceFileAbsolute = 2;
     public static final int RESOURCEFILEABSOLUTE_FIELD_NUMBER = 2;
     private java.lang.Object resourceFileAbsolute_;
-    /**
-     * <code>optional string resourceFileAbsolute = 2;</code>
-     */
     public boolean hasResourceFileAbsolute() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional string resourceFileAbsolute = 2;</code>
-     */
-    public java.lang.String getResourceFileAbsolute() {
+    public String getResourceFileAbsolute() {
       java.lang.Object ref = resourceFileAbsolute_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
           resourceFileAbsolute_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string resourceFileAbsolute = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getResourceFileAbsoluteBytes() {
+    private com.google.protobuf.ByteString getResourceFileAbsoluteBytes() {
       java.lang.Object ref = resourceFileAbsolute_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
         resourceFileAbsolute_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
+    
     private void initFields() {
       resourceFile_ = "";
       resourceFileAbsolute_ = "";
@@ -8429,11 +6468,11 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -8445,12 +6484,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -8464,83 +6503,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGResourceFile parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGResourceFile prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGResourceFile}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder {
@@ -8548,21 +6598,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGResourceFile_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGResourceFile_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGResourceFile.class, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGResourceFile_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGResourceFile.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -8573,7 +6620,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         resourceFile_ = "";
@@ -8582,20 +6629,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGResourceFile_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile build() {
         com.laex.cg2d.protobuf.GameObject.CGResourceFile result = buildPartial();
         if (!result.isInitialized()) {
@@ -8603,7 +6650,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGResourceFile buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGResourceFile result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGResourceFile result = new com.laex.cg2d.protobuf.GameObject.CGResourceFile(this);
         int from_bitField0_ = bitField0_;
@@ -8620,7 +6677,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGResourceFile) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGResourceFile)other);
@@ -8629,89 +6686,78 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGResourceFile other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance()) return this;
         if (other.hasResourceFile()) {
-          bitField0_ |= 0x00000001;
-          resourceFile_ = other.resourceFile_;
-          onChanged();
+          setResourceFile(other.getResourceFile());
         }
         if (other.hasResourceFileAbsolute()) {
-          bitField0_ |= 0x00000002;
-          resourceFileAbsolute_ = other.resourceFileAbsolute_;
-          onChanged();
+          setResourceFileAbsolute(other.getResourceFileAbsolute());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGResourceFile parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGResourceFile) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              resourceFile_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              resourceFileAbsolute_ = input.readBytes();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional string resourceFile = 1;
       private java.lang.Object resourceFile_ = "";
-      /**
-       * <code>optional string resourceFile = 1;</code>
-       */
       public boolean hasResourceFile() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional string resourceFile = 1;</code>
-       */
-      public java.lang.String getResourceFile() {
+      public String getResourceFile() {
         java.lang.Object ref = resourceFile_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           resourceFile_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string resourceFile = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getResourceFileBytes() {
-        java.lang.Object ref = resourceFile_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          resourceFile_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string resourceFile = 1;</code>
-       */
-      public Builder setResourceFile(
-          java.lang.String value) {
+      public Builder setResourceFile(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8720,72 +6766,34 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string resourceFile = 1;</code>
-       */
       public Builder clearResourceFile() {
         bitField0_ = (bitField0_ & ~0x00000001);
         resourceFile_ = getDefaultInstance().getResourceFile();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string resourceFile = 1;</code>
-       */
-      public Builder setResourceFileBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      void setResourceFile(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
         resourceFile_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional string resourceFileAbsolute = 2;
       private java.lang.Object resourceFileAbsolute_ = "";
-      /**
-       * <code>optional string resourceFileAbsolute = 2;</code>
-       */
       public boolean hasResourceFileAbsolute() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional string resourceFileAbsolute = 2;</code>
-       */
-      public java.lang.String getResourceFileAbsolute() {
+      public String getResourceFileAbsolute() {
         java.lang.Object ref = resourceFileAbsolute_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           resourceFileAbsolute_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string resourceFileAbsolute = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getResourceFileAbsoluteBytes() {
-        java.lang.Object ref = resourceFileAbsolute_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          resourceFileAbsolute_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string resourceFileAbsolute = 2;</code>
-       */
-      public Builder setResourceFileAbsolute(
-          java.lang.String value) {
+      public Builder setResourceFileAbsolute(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8794,652 +6802,290 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string resourceFileAbsolute = 2;</code>
-       */
       public Builder clearResourceFileAbsolute() {
         bitField0_ = (bitField0_ & ~0x00000002);
         resourceFileAbsolute_ = getDefaultInstance().getResourceFileAbsolute();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string resourceFileAbsolute = 2;</code>
-       */
-      public Builder setResourceFileAbsoluteBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+      void setResourceFileAbsolute(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
         resourceFileAbsolute_ = value;
         onChanged();
-        return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGResourceFile)
     }
-
+    
     static {
       defaultInstance = new CGResourceFile(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGResourceFile)
   }
-
+  
   public interface CGEntityAnimationOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional string animationName = 1;
-    /**
-     * <code>optional string animationName = 1;</code>
-     */
     boolean hasAnimationName();
-    /**
-     * <code>optional string animationName = 1;</code>
-     */
-    java.lang.String getAnimationName();
-    /**
-     * <code>optional string animationName = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getAnimationNameBytes();
-
+    String getAnimationName();
+    
     // optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-     */
     boolean hasAnimationResourceFile();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGResourceFile getAnimationResourceFile();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getAnimationResourceFileOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-     */
     boolean hasFixtureFile();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGResourceFile getFixtureFile();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getFixtureFileOrBuilder();
-
+    
     // optional float animationDuration = 4;
-    /**
-     * <code>optional float animationDuration = 4;</code>
-     */
     boolean hasAnimationDuration();
-    /**
-     * <code>optional float animationDuration = 4;</code>
-     */
     float getAnimationDuration();
-
+    
     // optional bool defaultAnimation = 5;
-    /**
-     * <code>optional bool defaultAnimation = 5;</code>
-     */
     boolean hasDefaultAnimation();
-    /**
-     * <code>optional bool defaultAnimation = 5;</code>
-     */
     boolean getDefaultAnimation();
-
+    
     // optional int32 cols = 6;
-    /**
-     * <code>optional int32 cols = 6;</code>
-     */
     boolean hasCols();
-    /**
-     * <code>optional int32 cols = 6;</code>
-     */
     int getCols();
-
+    
     // optional int32 rows = 7;
-    /**
-     * <code>optional int32 rows = 7;</code>
-     */
     boolean hasRows();
-    /**
-     * <code>optional int32 rows = 7;</code>
-     */
     int getRows();
-
+    
     // optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;</code>
-     */
     boolean hasCollisionType();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType getCollisionType();
-
+    
     // optional int32 shpX = 9;
-    /**
-     * <code>optional int32 shpX = 9;</code>
-     */
     boolean hasShpX();
-    /**
-     * <code>optional int32 shpX = 9;</code>
-     */
     int getShpX();
-
+    
     // optional int32 shpY = 10;
-    /**
-     * <code>optional int32 shpY = 10;</code>
-     */
     boolean hasShpY();
-    /**
-     * <code>optional int32 shpY = 10;</code>
-     */
     int getShpY();
-
+    
     // optional int32 shpWidth = 11;
-    /**
-     * <code>optional int32 shpWidth = 11;</code>
-     */
     boolean hasShpWidth();
-    /**
-     * <code>optional int32 shpWidth = 11;</code>
-     */
     int getShpWidth();
-
+    
     // optional int32 shpHeight = 12;
-    /**
-     * <code>optional int32 shpHeight = 12;</code>
-     */
     boolean hasShpHeight();
-    /**
-     * <code>optional int32 shpHeight = 12;</code>
-     */
     int getShpHeight();
-
+    
     // repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     java.util.List<com.laex.cg2d.protobuf.GameObject.CGVector2> 
         getVerticesList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2 getVertices(int index);
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     int getVerticesCount();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
         getVerticesOrBuilderList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getVerticesOrBuilder(
         int index);
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGEntityAnimation}
-   */
   public static final class CGEntityAnimation extends
       com.google.protobuf.GeneratedMessage
       implements CGEntityAnimationOrBuilder {
     // Use CGEntityAnimation.newBuilder() to construct.
-    private CGEntityAnimation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGEntityAnimation(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGEntityAnimation(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGEntityAnimation(boolean noInit) {}
+    
     private static final CGEntityAnimation defaultInstance;
     public static CGEntityAnimation getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGEntityAnimation getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGEntityAnimation(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              animationName_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = animationResourceFile_.toBuilder();
-              }
-              animationResourceFile_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGResourceFile.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(animationResourceFile_);
-                animationResourceFile_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-            case 26: {
-              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = fixtureFile_.toBuilder();
-              }
-              fixtureFile_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGResourceFile.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(fixtureFile_);
-                fixtureFile_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-            case 37: {
-              bitField0_ |= 0x00000008;
-              animationDuration_ = input.readFloat();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              defaultAnimation_ = input.readBool();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              cols_ = input.readInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              rows_ = input.readInt32();
-              break;
-            }
-            case 64: {
-              int rawValue = input.readEnum();
-              com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType value = com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(8, rawValue);
-              } else {
-                bitField0_ |= 0x00000080;
-                collisionType_ = value;
-              }
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              shpX_ = input.readInt32();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              shpY_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000400;
-              shpWidth_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000800;
-              shpHeight_ = input.readInt32();
-              break;
-            }
-            case 106: {
-              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
-                vertices_ = new java.util.ArrayList<com.laex.cg2d.protobuf.GameObject.CGVector2>();
-                mutable_bitField0_ |= 0x00001000;
-              }
-              vertices_.add(input.readMessage(com.laex.cg2d.protobuf.GameObject.CGVector2.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
-          vertices_ = java.util.Collections.unmodifiableList(vertices_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.class, com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGEntityAnimation> PARSER =
-        new com.google.protobuf.AbstractParser<CGEntityAnimation>() {
-      public CGEntityAnimation parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGEntityAnimation(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGEntityAnimation> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional string animationName = 1;
     public static final int ANIMATIONNAME_FIELD_NUMBER = 1;
     private java.lang.Object animationName_;
-    /**
-     * <code>optional string animationName = 1;</code>
-     */
     public boolean hasAnimationName() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional string animationName = 1;</code>
-     */
-    public java.lang.String getAnimationName() {
+    public String getAnimationName() {
       java.lang.Object ref = animationName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
           animationName_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string animationName = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getAnimationNameBytes() {
+    private com.google.protobuf.ByteString getAnimationNameBytes() {
       java.lang.Object ref = animationName_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
         animationName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;
     public static final int ANIMATIONRESOURCEFILE_FIELD_NUMBER = 2;
     private com.laex.cg2d.protobuf.GameObject.CGResourceFile animationResourceFile_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-     */
     public boolean hasAnimationResourceFile() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGResourceFile getAnimationResourceFile() {
       return animationResourceFile_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getAnimationResourceFileOrBuilder() {
       return animationResourceFile_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;
     public static final int FIXTUREFILE_FIELD_NUMBER = 3;
     private com.laex.cg2d.protobuf.GameObject.CGResourceFile fixtureFile_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-     */
     public boolean hasFixtureFile() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGResourceFile getFixtureFile() {
       return fixtureFile_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getFixtureFileOrBuilder() {
       return fixtureFile_;
     }
-
+    
     // optional float animationDuration = 4;
     public static final int ANIMATIONDURATION_FIELD_NUMBER = 4;
     private float animationDuration_;
-    /**
-     * <code>optional float animationDuration = 4;</code>
-     */
     public boolean hasAnimationDuration() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional float animationDuration = 4;</code>
-     */
     public float getAnimationDuration() {
       return animationDuration_;
     }
-
+    
     // optional bool defaultAnimation = 5;
     public static final int DEFAULTANIMATION_FIELD_NUMBER = 5;
     private boolean defaultAnimation_;
-    /**
-     * <code>optional bool defaultAnimation = 5;</code>
-     */
     public boolean hasDefaultAnimation() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    /**
-     * <code>optional bool defaultAnimation = 5;</code>
-     */
     public boolean getDefaultAnimation() {
       return defaultAnimation_;
     }
-
+    
     // optional int32 cols = 6;
     public static final int COLS_FIELD_NUMBER = 6;
     private int cols_;
-    /**
-     * <code>optional int32 cols = 6;</code>
-     */
     public boolean hasCols() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    /**
-     * <code>optional int32 cols = 6;</code>
-     */
     public int getCols() {
       return cols_;
     }
-
+    
     // optional int32 rows = 7;
     public static final int ROWS_FIELD_NUMBER = 7;
     private int rows_;
-    /**
-     * <code>optional int32 rows = 7;</code>
-     */
     public boolean hasRows() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
-    /**
-     * <code>optional int32 rows = 7;</code>
-     */
     public int getRows() {
       return rows_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;
     public static final int COLLISIONTYPE_FIELD_NUMBER = 8;
     private com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType collisionType_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;</code>
-     */
     public boolean hasCollisionType() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType getCollisionType() {
       return collisionType_;
     }
-
+    
     // optional int32 shpX = 9;
     public static final int SHPX_FIELD_NUMBER = 9;
     private int shpX_;
-    /**
-     * <code>optional int32 shpX = 9;</code>
-     */
     public boolean hasShpX() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
-    /**
-     * <code>optional int32 shpX = 9;</code>
-     */
     public int getShpX() {
       return shpX_;
     }
-
+    
     // optional int32 shpY = 10;
     public static final int SHPY_FIELD_NUMBER = 10;
     private int shpY_;
-    /**
-     * <code>optional int32 shpY = 10;</code>
-     */
     public boolean hasShpY() {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
-    /**
-     * <code>optional int32 shpY = 10;</code>
-     */
     public int getShpY() {
       return shpY_;
     }
-
+    
     // optional int32 shpWidth = 11;
     public static final int SHPWIDTH_FIELD_NUMBER = 11;
     private int shpWidth_;
-    /**
-     * <code>optional int32 shpWidth = 11;</code>
-     */
     public boolean hasShpWidth() {
       return ((bitField0_ & 0x00000400) == 0x00000400);
     }
-    /**
-     * <code>optional int32 shpWidth = 11;</code>
-     */
     public int getShpWidth() {
       return shpWidth_;
     }
-
+    
     // optional int32 shpHeight = 12;
     public static final int SHPHEIGHT_FIELD_NUMBER = 12;
     private int shpHeight_;
-    /**
-     * <code>optional int32 shpHeight = 12;</code>
-     */
     public boolean hasShpHeight() {
       return ((bitField0_ & 0x00000800) == 0x00000800);
     }
-    /**
-     * <code>optional int32 shpHeight = 12;</code>
-     */
     public int getShpHeight() {
       return shpHeight_;
     }
-
+    
     // repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;
     public static final int VERTICES_FIELD_NUMBER = 13;
     private java.util.List<com.laex.cg2d.protobuf.GameObject.CGVector2> vertices_;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     public java.util.List<com.laex.cg2d.protobuf.GameObject.CGVector2> getVerticesList() {
       return vertices_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
         getVerticesOrBuilderList() {
       return vertices_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     public int getVerticesCount() {
       return vertices_.size();
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2 getVertices(int index) {
       return vertices_.get(index);
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getVerticesOrBuilder(
         int index) {
       return vertices_.get(index);
     }
-
+    
     private void initFields() {
       animationName_ = "";
       animationResourceFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
@@ -9459,7 +7105,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       for (int i = 0; i < getVerticesCount(); i++) {
         if (!getVertices(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -9469,7 +7115,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -9514,12 +7160,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -9577,83 +7223,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGEntityAnimation prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGEntityAnimation}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGEntityAnimationOrBuilder {
@@ -9661,21 +7318,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.class, com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -9689,7 +7343,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         animationName_ = "";
@@ -9732,20 +7386,20 @@ public final class GameObject {
         }
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGEntityAnimation getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGEntityAnimation build() {
         com.laex.cg2d.protobuf.GameObject.CGEntityAnimation result = buildPartial();
         if (!result.isInitialized()) {
@@ -9753,7 +7407,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGEntityAnimation buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGEntityAnimation result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGEntityAnimation buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGEntityAnimation result = new com.laex.cg2d.protobuf.GameObject.CGEntityAnimation(this);
         int from_bitField0_ = bitField0_;
@@ -9827,7 +7491,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGEntityAnimation) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGEntityAnimation)other);
@@ -9836,13 +7500,11 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGEntityAnimation other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.getDefaultInstance()) return this;
         if (other.hasAnimationName()) {
-          bitField0_ |= 0x00000001;
-          animationName_ = other.animationName_;
-          onChanged();
+          setAnimationName(other.getAnimationName());
         }
         if (other.hasAnimationResourceFile()) {
           mergeAnimationResourceFile(other.getAnimationResourceFile());
@@ -9906,7 +7568,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         for (int i = 0; i < getVerticesCount(); i++) {
           if (!getVertices(i).isInitialized()) {
@@ -9916,69 +7578,132 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGEntityAnimation parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGEntityAnimation) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              animationName_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGResourceFile.newBuilder();
+              if (hasAnimationResourceFile()) {
+                subBuilder.mergeFrom(getAnimationResourceFile());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setAnimationResourceFile(subBuilder.buildPartial());
+              break;
+            }
+            case 26: {
+              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGResourceFile.newBuilder();
+              if (hasFixtureFile()) {
+                subBuilder.mergeFrom(getFixtureFile());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFixtureFile(subBuilder.buildPartial());
+              break;
+            }
+            case 37: {
+              bitField0_ |= 0x00000008;
+              animationDuration_ = input.readFloat();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              defaultAnimation_ = input.readBool();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              cols_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              rows_ = input.readInt32();
+              break;
+            }
+            case 64: {
+              int rawValue = input.readEnum();
+              com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType value = com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(8, rawValue);
+              } else {
+                bitField0_ |= 0x00000080;
+                collisionType_ = value;
+              }
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
+              shpX_ = input.readInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              shpY_ = input.readInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000400;
+              shpWidth_ = input.readInt32();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000800;
+              shpHeight_ = input.readInt32();
+              break;
+            }
+            case 106: {
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addVertices(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional string animationName = 1;
       private java.lang.Object animationName_ = "";
-      /**
-       * <code>optional string animationName = 1;</code>
-       */
       public boolean hasAnimationName() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional string animationName = 1;</code>
-       */
-      public java.lang.String getAnimationName() {
+      public String getAnimationName() {
         java.lang.Object ref = animationName_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           animationName_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string animationName = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getAnimationNameBytes() {
-        java.lang.Object ref = animationName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          animationName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string animationName = 1;</code>
-       */
-      public Builder setAnimationName(
-          java.lang.String value) {
+      public Builder setAnimationName(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -9987,42 +7712,25 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string animationName = 1;</code>
-       */
       public Builder clearAnimationName() {
         bitField0_ = (bitField0_ & ~0x00000001);
         animationName_ = getDefaultInstance().getAnimationName();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string animationName = 1;</code>
-       */
-      public Builder setAnimationNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      void setAnimationName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
         animationName_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;
       private com.laex.cg2d.protobuf.GameObject.CGResourceFile animationResourceFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGResourceFile, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder, com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder> animationResourceFileBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       public boolean hasAnimationResourceFile() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile getAnimationResourceFile() {
         if (animationResourceFileBuilder_ == null) {
           return animationResourceFile_;
@@ -10030,9 +7738,6 @@ public final class GameObject {
           return animationResourceFileBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       public Builder setAnimationResourceFile(com.laex.cg2d.protobuf.GameObject.CGResourceFile value) {
         if (animationResourceFileBuilder_ == null) {
           if (value == null) {
@@ -10046,9 +7751,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       public Builder setAnimationResourceFile(
           com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder builderForValue) {
         if (animationResourceFileBuilder_ == null) {
@@ -10060,9 +7762,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       public Builder mergeAnimationResourceFile(com.laex.cg2d.protobuf.GameObject.CGResourceFile value) {
         if (animationResourceFileBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -10079,9 +7778,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       public Builder clearAnimationResourceFile() {
         if (animationResourceFileBuilder_ == null) {
           animationResourceFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
@@ -10092,17 +7788,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder getAnimationResourceFileBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getAnimationResourceFileFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getAnimationResourceFileOrBuilder() {
         if (animationResourceFileBuilder_ != null) {
           return animationResourceFileBuilder_.getMessageOrBuilder();
@@ -10110,9 +7800,6 @@ public final class GameObject {
           return animationResourceFile_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile animationResourceFile = 2;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGResourceFile, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder, com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder> 
           getAnimationResourceFileFieldBuilder() {
@@ -10126,20 +7813,14 @@ public final class GameObject {
         }
         return animationResourceFileBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;
       private com.laex.cg2d.protobuf.GameObject.CGResourceFile fixtureFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGResourceFile, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder, com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder> fixtureFileBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       public boolean hasFixtureFile() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile getFixtureFile() {
         if (fixtureFileBuilder_ == null) {
           return fixtureFile_;
@@ -10147,9 +7828,6 @@ public final class GameObject {
           return fixtureFileBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       public Builder setFixtureFile(com.laex.cg2d.protobuf.GameObject.CGResourceFile value) {
         if (fixtureFileBuilder_ == null) {
           if (value == null) {
@@ -10163,9 +7841,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       public Builder setFixtureFile(
           com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder builderForValue) {
         if (fixtureFileBuilder_ == null) {
@@ -10177,9 +7852,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       public Builder mergeFixtureFile(com.laex.cg2d.protobuf.GameObject.CGResourceFile value) {
         if (fixtureFileBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
@@ -10196,9 +7868,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       public Builder clearFixtureFile() {
         if (fixtureFileBuilder_ == null) {
           fixtureFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
@@ -10209,17 +7878,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder getFixtureFileBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getFixtureFileFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getFixtureFileOrBuilder() {
         if (fixtureFileBuilder_ != null) {
           return fixtureFileBuilder_.getMessageOrBuilder();
@@ -10227,9 +7890,6 @@ public final class GameObject {
           return fixtureFile_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile fixtureFile = 3;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGResourceFile, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder, com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder> 
           getFixtureFileFieldBuilder() {
@@ -10243,156 +7903,99 @@ public final class GameObject {
         }
         return fixtureFileBuilder_;
       }
-
+      
       // optional float animationDuration = 4;
       private float animationDuration_ ;
-      /**
-       * <code>optional float animationDuration = 4;</code>
-       */
       public boolean hasAnimationDuration() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional float animationDuration = 4;</code>
-       */
       public float getAnimationDuration() {
         return animationDuration_;
       }
-      /**
-       * <code>optional float animationDuration = 4;</code>
-       */
       public Builder setAnimationDuration(float value) {
         bitField0_ |= 0x00000008;
         animationDuration_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float animationDuration = 4;</code>
-       */
       public Builder clearAnimationDuration() {
         bitField0_ = (bitField0_ & ~0x00000008);
         animationDuration_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional bool defaultAnimation = 5;
       private boolean defaultAnimation_ ;
-      /**
-       * <code>optional bool defaultAnimation = 5;</code>
-       */
       public boolean hasDefaultAnimation() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional bool defaultAnimation = 5;</code>
-       */
       public boolean getDefaultAnimation() {
         return defaultAnimation_;
       }
-      /**
-       * <code>optional bool defaultAnimation = 5;</code>
-       */
       public Builder setDefaultAnimation(boolean value) {
         bitField0_ |= 0x00000010;
         defaultAnimation_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool defaultAnimation = 5;</code>
-       */
       public Builder clearDefaultAnimation() {
         bitField0_ = (bitField0_ & ~0x00000010);
         defaultAnimation_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional int32 cols = 6;
       private int cols_ ;
-      /**
-       * <code>optional int32 cols = 6;</code>
-       */
       public boolean hasCols() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional int32 cols = 6;</code>
-       */
       public int getCols() {
         return cols_;
       }
-      /**
-       * <code>optional int32 cols = 6;</code>
-       */
       public Builder setCols(int value) {
         bitField0_ |= 0x00000020;
         cols_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 cols = 6;</code>
-       */
       public Builder clearCols() {
         bitField0_ = (bitField0_ & ~0x00000020);
         cols_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional int32 rows = 7;
       private int rows_ ;
-      /**
-       * <code>optional int32 rows = 7;</code>
-       */
       public boolean hasRows() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      /**
-       * <code>optional int32 rows = 7;</code>
-       */
       public int getRows() {
         return rows_;
       }
-      /**
-       * <code>optional int32 rows = 7;</code>
-       */
       public Builder setRows(int value) {
         bitField0_ |= 0x00000040;
         rows_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 rows = 7;</code>
-       */
       public Builder clearRows() {
         bitField0_ = (bitField0_ & ~0x00000040);
         rows_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;
       private com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType collisionType_ = com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType.NONE;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;</code>
-       */
       public boolean hasCollisionType() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType getCollisionType() {
         return collisionType_;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;</code>
-       */
       public Builder setCollisionType(com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType value) {
         if (value == null) {
           throw new NullPointerException();
@@ -10402,148 +8005,97 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGEntityCollisionType collisionType = 8;</code>
-       */
       public Builder clearCollisionType() {
         bitField0_ = (bitField0_ & ~0x00000080);
         collisionType_ = com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType.NONE;
         onChanged();
         return this;
       }
-
+      
       // optional int32 shpX = 9;
       private int shpX_ ;
-      /**
-       * <code>optional int32 shpX = 9;</code>
-       */
       public boolean hasShpX() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
-      /**
-       * <code>optional int32 shpX = 9;</code>
-       */
       public int getShpX() {
         return shpX_;
       }
-      /**
-       * <code>optional int32 shpX = 9;</code>
-       */
       public Builder setShpX(int value) {
         bitField0_ |= 0x00000100;
         shpX_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 shpX = 9;</code>
-       */
       public Builder clearShpX() {
         bitField0_ = (bitField0_ & ~0x00000100);
         shpX_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional int32 shpY = 10;
       private int shpY_ ;
-      /**
-       * <code>optional int32 shpY = 10;</code>
-       */
       public boolean hasShpY() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
-      /**
-       * <code>optional int32 shpY = 10;</code>
-       */
       public int getShpY() {
         return shpY_;
       }
-      /**
-       * <code>optional int32 shpY = 10;</code>
-       */
       public Builder setShpY(int value) {
         bitField0_ |= 0x00000200;
         shpY_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 shpY = 10;</code>
-       */
       public Builder clearShpY() {
         bitField0_ = (bitField0_ & ~0x00000200);
         shpY_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional int32 shpWidth = 11;
       private int shpWidth_ ;
-      /**
-       * <code>optional int32 shpWidth = 11;</code>
-       */
       public boolean hasShpWidth() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
-      /**
-       * <code>optional int32 shpWidth = 11;</code>
-       */
       public int getShpWidth() {
         return shpWidth_;
       }
-      /**
-       * <code>optional int32 shpWidth = 11;</code>
-       */
       public Builder setShpWidth(int value) {
         bitField0_ |= 0x00000400;
         shpWidth_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 shpWidth = 11;</code>
-       */
       public Builder clearShpWidth() {
         bitField0_ = (bitField0_ & ~0x00000400);
         shpWidth_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional int32 shpHeight = 12;
       private int shpHeight_ ;
-      /**
-       * <code>optional int32 shpHeight = 12;</code>
-       */
       public boolean hasShpHeight() {
         return ((bitField0_ & 0x00000800) == 0x00000800);
       }
-      /**
-       * <code>optional int32 shpHeight = 12;</code>
-       */
       public int getShpHeight() {
         return shpHeight_;
       }
-      /**
-       * <code>optional int32 shpHeight = 12;</code>
-       */
       public Builder setShpHeight(int value) {
         bitField0_ |= 0x00000800;
         shpHeight_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 shpHeight = 12;</code>
-       */
       public Builder clearShpHeight() {
         bitField0_ = (bitField0_ & ~0x00000800);
         shpHeight_ = 0;
         onChanged();
         return this;
       }
-
+      
       // repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;
       private java.util.List<com.laex.cg2d.protobuf.GameObject.CGVector2> vertices_ =
         java.util.Collections.emptyList();
@@ -10553,13 +8105,10 @@ public final class GameObject {
           bitField0_ |= 0x00001000;
          }
       }
-
+      
       private com.google.protobuf.RepeatedFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> verticesBuilder_;
-
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
+      
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGVector2> getVerticesList() {
         if (verticesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(vertices_);
@@ -10567,9 +8116,6 @@ public final class GameObject {
           return verticesBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public int getVerticesCount() {
         if (verticesBuilder_ == null) {
           return vertices_.size();
@@ -10577,9 +8123,6 @@ public final class GameObject {
           return verticesBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getVertices(int index) {
         if (verticesBuilder_ == null) {
           return vertices_.get(index);
@@ -10587,9 +8130,6 @@ public final class GameObject {
           return verticesBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder setVertices(
           int index, com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (verticesBuilder_ == null) {
@@ -10604,9 +8144,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder setVertices(
           int index, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (verticesBuilder_ == null) {
@@ -10618,9 +8155,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder addVertices(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (verticesBuilder_ == null) {
           if (value == null) {
@@ -10634,9 +8168,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder addVertices(
           int index, com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (verticesBuilder_ == null) {
@@ -10651,9 +8182,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder addVertices(
           com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (verticesBuilder_ == null) {
@@ -10665,9 +8193,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder addVertices(
           int index, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (verticesBuilder_ == null) {
@@ -10679,9 +8204,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder addAllVertices(
           java.lang.Iterable<? extends com.laex.cg2d.protobuf.GameObject.CGVector2> values) {
         if (verticesBuilder_ == null) {
@@ -10693,9 +8215,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder clearVertices() {
         if (verticesBuilder_ == null) {
           vertices_ = java.util.Collections.emptyList();
@@ -10706,9 +8225,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public Builder removeVertices(int index) {
         if (verticesBuilder_ == null) {
           ensureVerticesIsMutable();
@@ -10719,16 +8235,10 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder getVerticesBuilder(
           int index) {
         return getVerticesFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getVerticesOrBuilder(
           int index) {
         if (verticesBuilder_ == null) {
@@ -10736,9 +8246,6 @@ public final class GameObject {
           return verticesBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
            getVerticesOrBuilderList() {
         if (verticesBuilder_ != null) {
@@ -10747,24 +8254,15 @@ public final class GameObject {
           return java.util.Collections.unmodifiableList(vertices_);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder addVerticesBuilder() {
         return getVerticesFieldBuilder().addBuilder(
             com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder addVerticesBuilder(
           int index) {
         return getVerticesFieldBuilder().addBuilder(
             index, com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGVector2 vertices = 13;</code>
-       */
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGVector2.Builder> 
            getVerticesBuilderList() {
         return getVerticesFieldBuilder().getBuilderList();
@@ -10783,247 +8281,117 @@ public final class GameObject {
         }
         return verticesBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGEntityAnimation)
     }
-
+    
     static {
       defaultInstance = new CGEntityAnimation(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGEntityAnimation)
   }
-
+  
   public interface CGEntityOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional string internalName = 1;
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
     boolean hasInternalName();
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    java.lang.String getInternalName();
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getInternalNameBytes();
-
+    String getInternalName();
+    
     // repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     java.util.List<com.laex.cg2d.protobuf.GameObject.CGEntityAnimation> 
         getAnimationsList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGEntityAnimation getAnimations(int index);
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     int getAnimationsCount();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGEntityAnimationOrBuilder> 
         getAnimationsOrBuilderList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGEntityAnimationOrBuilder getAnimationsOrBuilder(
         int index);
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGEntity}
-   */
   public static final class CGEntity extends
       com.google.protobuf.GeneratedMessage
       implements CGEntityOrBuilder {
     // Use CGEntity.newBuilder() to construct.
-    private CGEntity(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGEntity(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGEntity(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGEntity(boolean noInit) {}
+    
     private static final CGEntity defaultInstance;
     public static CGEntity getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGEntity getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGEntity(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              internalName_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                animations_ = new java.util.ArrayList<com.laex.cg2d.protobuf.GameObject.CGEntityAnimation>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              animations_.add(input.readMessage(com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          animations_ = java.util.Collections.unmodifiableList(animations_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntity_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntity_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGEntity.class, com.laex.cg2d.protobuf.GameObject.CGEntity.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntity_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGEntity> PARSER =
-        new com.google.protobuf.AbstractParser<CGEntity>() {
-      public CGEntity parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGEntity(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGEntity> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional string internalName = 1;
     public static final int INTERNALNAME_FIELD_NUMBER = 1;
     private java.lang.Object internalName_;
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
     public boolean hasInternalName() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    public java.lang.String getInternalName() {
+    public String getInternalName() {
       java.lang.Object ref = internalName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
           internalName_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getInternalNameBytes() {
+    private com.google.protobuf.ByteString getInternalNameBytes() {
       java.lang.Object ref = internalName_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
         internalName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
+    
     // repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;
     public static final int ANIMATIONS_FIELD_NUMBER = 2;
     private java.util.List<com.laex.cg2d.protobuf.GameObject.CGEntityAnimation> animations_;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     public java.util.List<com.laex.cg2d.protobuf.GameObject.CGEntityAnimation> getAnimationsList() {
       return animations_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGEntityAnimationOrBuilder> 
         getAnimationsOrBuilderList() {
       return animations_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     public int getAnimationsCount() {
       return animations_.size();
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGEntityAnimation getAnimations(int index) {
       return animations_.get(index);
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGEntityAnimationOrBuilder getAnimationsOrBuilder(
         int index) {
       return animations_.get(index);
     }
-
+    
     private void initFields() {
       internalName_ = "";
       animations_ = java.util.Collections.emptyList();
@@ -11032,7 +8400,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       for (int i = 0; i < getAnimationsCount(); i++) {
         if (!getAnimations(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -11042,7 +8410,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -11054,12 +8422,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -11073,83 +8441,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGEntity parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGEntity prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGEntity}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGEntityOrBuilder {
@@ -11157,21 +8536,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntity_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntity_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGEntity.class, com.laex.cg2d.protobuf.GameObject.CGEntity.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntity_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGEntity.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -11183,7 +8559,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         internalName_ = "";
@@ -11196,20 +8572,20 @@ public final class GameObject {
         }
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGEntity_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGEntity.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGEntity getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGEntity.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGEntity build() {
         com.laex.cg2d.protobuf.GameObject.CGEntity result = buildPartial();
         if (!result.isInitialized()) {
@@ -11217,7 +8593,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGEntity buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGEntity result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGEntity buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGEntity result = new com.laex.cg2d.protobuf.GameObject.CGEntity(this);
         int from_bitField0_ = bitField0_;
@@ -11239,7 +8625,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGEntity) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGEntity)other);
@@ -11248,13 +8634,11 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGEntity other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGEntity.getDefaultInstance()) return this;
         if (other.hasInternalName()) {
-          bitField0_ |= 0x00000001;
-          internalName_ = other.internalName_;
-          onChanged();
+          setInternalName(other.getInternalName());
         }
         if (animationsBuilder_ == null) {
           if (!other.animations_.isEmpty()) {
@@ -11285,7 +8669,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         for (int i = 0; i < getAnimationsCount(); i++) {
           if (!getAnimations(i).isInitialized()) {
@@ -11295,69 +8679,63 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGEntity parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGEntity) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              internalName_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addAnimations(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional string internalName = 1;
       private java.lang.Object internalName_ = "";
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
       public boolean hasInternalName() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public java.lang.String getInternalName() {
+      public String getInternalName() {
         java.lang.Object ref = internalName_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           internalName_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getInternalNameBytes() {
-        java.lang.Object ref = internalName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          internalName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public Builder setInternalName(
-          java.lang.String value) {
+      public Builder setInternalName(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -11366,29 +8744,18 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
       public Builder clearInternalName() {
         bitField0_ = (bitField0_ & ~0x00000001);
         internalName_ = getDefaultInstance().getInternalName();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public Builder setInternalNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      void setInternalName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
         internalName_ = value;
         onChanged();
-        return this;
       }
-
+      
       // repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;
       private java.util.List<com.laex.cg2d.protobuf.GameObject.CGEntityAnimation> animations_ =
         java.util.Collections.emptyList();
@@ -11398,13 +8765,10 @@ public final class GameObject {
           bitField0_ |= 0x00000002;
          }
       }
-
+      
       private com.google.protobuf.RepeatedFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGEntityAnimation, com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder, com.laex.cg2d.protobuf.GameObject.CGEntityAnimationOrBuilder> animationsBuilder_;
-
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
+      
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGEntityAnimation> getAnimationsList() {
         if (animationsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(animations_);
@@ -11412,9 +8776,6 @@ public final class GameObject {
           return animationsBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public int getAnimationsCount() {
         if (animationsBuilder_ == null) {
           return animations_.size();
@@ -11422,9 +8783,6 @@ public final class GameObject {
           return animationsBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGEntityAnimation getAnimations(int index) {
         if (animationsBuilder_ == null) {
           return animations_.get(index);
@@ -11432,9 +8790,6 @@ public final class GameObject {
           return animationsBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder setAnimations(
           int index, com.laex.cg2d.protobuf.GameObject.CGEntityAnimation value) {
         if (animationsBuilder_ == null) {
@@ -11449,9 +8804,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder setAnimations(
           int index, com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder builderForValue) {
         if (animationsBuilder_ == null) {
@@ -11463,9 +8815,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder addAnimations(com.laex.cg2d.protobuf.GameObject.CGEntityAnimation value) {
         if (animationsBuilder_ == null) {
           if (value == null) {
@@ -11479,9 +8828,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder addAnimations(
           int index, com.laex.cg2d.protobuf.GameObject.CGEntityAnimation value) {
         if (animationsBuilder_ == null) {
@@ -11496,9 +8842,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder addAnimations(
           com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder builderForValue) {
         if (animationsBuilder_ == null) {
@@ -11510,9 +8853,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder addAnimations(
           int index, com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder builderForValue) {
         if (animationsBuilder_ == null) {
@@ -11524,9 +8864,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder addAllAnimations(
           java.lang.Iterable<? extends com.laex.cg2d.protobuf.GameObject.CGEntityAnimation> values) {
         if (animationsBuilder_ == null) {
@@ -11538,9 +8875,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder clearAnimations() {
         if (animationsBuilder_ == null) {
           animations_ = java.util.Collections.emptyList();
@@ -11551,9 +8885,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public Builder removeAnimations(int index) {
         if (animationsBuilder_ == null) {
           ensureAnimationsIsMutable();
@@ -11564,16 +8895,10 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder getAnimationsBuilder(
           int index) {
         return getAnimationsFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGEntityAnimationOrBuilder getAnimationsOrBuilder(
           int index) {
         if (animationsBuilder_ == null) {
@@ -11581,9 +8906,6 @@ public final class GameObject {
           return animationsBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGEntityAnimationOrBuilder> 
            getAnimationsOrBuilderList() {
         if (animationsBuilder_ != null) {
@@ -11592,24 +8914,15 @@ public final class GameObject {
           return java.util.Collections.unmodifiableList(animations_);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder addAnimationsBuilder() {
         return getAnimationsFieldBuilder().addBuilder(
             com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder addAnimationsBuilder(
           int index) {
         return getAnimationsFieldBuilder().addBuilder(
             index, com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGEntityAnimation animations = 2;</code>
-       */
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder> 
            getAnimationsBuilderList() {
         return getAnimationsFieldBuilder().getBuilderList();
@@ -11628,109 +8941,403 @@ public final class GameObject {
         }
         return animationsBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGEntity)
     }
-
+    
     static {
       defaultInstance = new CGEntity(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGEntity)
   }
-
+  
   public interface CGBoundsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional float x = 1;
-    /**
-     * <code>optional float x = 1;</code>
-     */
     boolean hasX();
-    /**
-     * <code>optional float x = 1;</code>
-     */
     float getX();
-
+    
     // optional float y = 2;
-    /**
-     * <code>optional float y = 2;</code>
-     */
     boolean hasY();
-    /**
-     * <code>optional float y = 2;</code>
-     */
     float getY();
-
+    
     // optional float width = 3;
-    /**
-     * <code>optional float width = 3;</code>
-     */
     boolean hasWidth();
-    /**
-     * <code>optional float width = 3;</code>
-     */
     float getWidth();
-
+    
     // optional float height = 4;
-    /**
-     * <code>optional float height = 4;</code>
-     */
     boolean hasHeight();
-    /**
-     * <code>optional float height = 4;</code>
-     */
     float getHeight();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGBounds}
-   */
   public static final class CGBounds extends
       com.google.protobuf.GeneratedMessage
       implements CGBoundsOrBuilder {
     // Use CGBounds.newBuilder() to construct.
-    private CGBounds(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGBounds(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGBounds(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGBounds(boolean noInit) {}
+    
     private static final CGBounds defaultInstance;
     public static CGBounds getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGBounds getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_descriptor;
     }
-    private CGBounds(
-        com.google.protobuf.CodedInputStream input,
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // optional float x = 1;
+    public static final int X_FIELD_NUMBER = 1;
+    private float x_;
+    public boolean hasX() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public float getX() {
+      return x_;
+    }
+    
+    // optional float y = 2;
+    public static final int Y_FIELD_NUMBER = 2;
+    private float y_;
+    public boolean hasY() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public float getY() {
+      return y_;
+    }
+    
+    // optional float width = 3;
+    public static final int WIDTH_FIELD_NUMBER = 3;
+    private float width_;
+    public boolean hasWidth() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public float getWidth() {
+      return width_;
+    }
+    
+    // optional float height = 4;
+    public static final int HEIGHT_FIELD_NUMBER = 4;
+    private float height_;
+    public boolean hasHeight() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public float getHeight() {
+      return height_;
+    }
+    
+    private void initFields() {
+      x_ = 0F;
+      y_ = 0F;
+      width_ = 0F;
+      height_ = 0F;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeFloat(1, x_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, y_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeFloat(3, width_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(4, height_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(1, x_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, y_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(3, width_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(4, height_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
+        com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGBounds prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.laex.cg2d.protobuf.GameObject.CGBoundsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_fieldAccessorTable;
+      }
+      
+      // Construct using com.laex.cg2d.protobuf.GameObject.CGBounds.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        x_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        y_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        width_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        height_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.laex.cg2d.protobuf.GameObject.CGBounds.getDescriptor();
+      }
+      
+      public com.laex.cg2d.protobuf.GameObject.CGBounds getDefaultInstanceForType() {
+        return com.laex.cg2d.protobuf.GameObject.CGBounds.getDefaultInstance();
+      }
+      
+      public com.laex.cg2d.protobuf.GameObject.CGBounds build() {
+        com.laex.cg2d.protobuf.GameObject.CGBounds result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.laex.cg2d.protobuf.GameObject.CGBounds buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGBounds result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.laex.cg2d.protobuf.GameObject.CGBounds buildPartial() {
+        com.laex.cg2d.protobuf.GameObject.CGBounds result = new com.laex.cg2d.protobuf.GameObject.CGBounds(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.x_ = x_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.y_ = y_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.width_ = width_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.height_ = height_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.laex.cg2d.protobuf.GameObject.CGBounds) {
+          return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGBounds)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGBounds other) {
+        if (other == com.laex.cg2d.protobuf.GameObject.CGBounds.getDefaultInstance()) return this;
+        if (other.hasX()) {
+          setX(other.getX());
+        }
+        if (other.hasY()) {
+          setY(other.getY());
+        }
+        if (other.hasWidth()) {
+          setWidth(other.getWidth());
+        }
+        if (other.hasHeight()) {
+          setHeight(other.getHeight());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              done = true;
-              break;
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                done = true;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               }
               break;
             }
@@ -11756,685 +9363,165 @@ public final class GameObject {
             }
           }
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
       }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGBounds.class, com.laex.cg2d.protobuf.GameObject.CGBounds.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<CGBounds> PARSER =
-        new com.google.protobuf.AbstractParser<CGBounds>() {
-      public CGBounds parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGBounds(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGBounds> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional float x = 1;
-    public static final int X_FIELD_NUMBER = 1;
-    private float x_;
-    /**
-     * <code>optional float x = 1;</code>
-     */
-    public boolean hasX() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional float x = 1;</code>
-     */
-    public float getX() {
-      return x_;
-    }
-
-    // optional float y = 2;
-    public static final int Y_FIELD_NUMBER = 2;
-    private float y_;
-    /**
-     * <code>optional float y = 2;</code>
-     */
-    public boolean hasY() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional float y = 2;</code>
-     */
-    public float getY() {
-      return y_;
-    }
-
-    // optional float width = 3;
-    public static final int WIDTH_FIELD_NUMBER = 3;
-    private float width_;
-    /**
-     * <code>optional float width = 3;</code>
-     */
-    public boolean hasWidth() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional float width = 3;</code>
-     */
-    public float getWidth() {
-      return width_;
-    }
-
-    // optional float height = 4;
-    public static final int HEIGHT_FIELD_NUMBER = 4;
-    private float height_;
-    /**
-     * <code>optional float height = 4;</code>
-     */
-    public boolean hasHeight() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional float height = 4;</code>
-     */
-    public float getHeight() {
-      return height_;
-    }
-
-    private void initFields() {
-      x_ = 0F;
-      y_ = 0F;
-      width_ = 0F;
-      height_ = 0F;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeFloat(1, x_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeFloat(2, y_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeFloat(3, width_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeFloat(4, height_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(1, x_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, y_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, width_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, height_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.laex.cg2d.protobuf.GameObject.CGBounds parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGBounds prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGBounds}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.laex.cg2d.protobuf.GameObject.CGBoundsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGBounds.class, com.laex.cg2d.protobuf.GameObject.CGBounds.Builder.class);
-      }
-
-      // Construct using com.laex.cg2d.protobuf.GameObject.CGBounds.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        x_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        y_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        width_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        height_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBounds_descriptor;
-      }
-
-      public com.laex.cg2d.protobuf.GameObject.CGBounds getDefaultInstanceForType() {
-        return com.laex.cg2d.protobuf.GameObject.CGBounds.getDefaultInstance();
-      }
-
-      public com.laex.cg2d.protobuf.GameObject.CGBounds build() {
-        com.laex.cg2d.protobuf.GameObject.CGBounds result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.laex.cg2d.protobuf.GameObject.CGBounds buildPartial() {
-        com.laex.cg2d.protobuf.GameObject.CGBounds result = new com.laex.cg2d.protobuf.GameObject.CGBounds(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.x_ = x_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.y_ = y_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.width_ = width_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.height_ = height_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.laex.cg2d.protobuf.GameObject.CGBounds) {
-          return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGBounds)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGBounds other) {
-        if (other == com.laex.cg2d.protobuf.GameObject.CGBounds.getDefaultInstance()) return this;
-        if (other.hasX()) {
-          setX(other.getX());
-        }
-        if (other.hasY()) {
-          setY(other.getY());
-        }
-        if (other.hasWidth()) {
-          setWidth(other.getWidth());
-        }
-        if (other.hasHeight()) {
-          setHeight(other.getHeight());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGBounds parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGBounds) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
+      
       private int bitField0_;
-
+      
       // optional float x = 1;
       private float x_ ;
-      /**
-       * <code>optional float x = 1;</code>
-       */
       public boolean hasX() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional float x = 1;</code>
-       */
       public float getX() {
         return x_;
       }
-      /**
-       * <code>optional float x = 1;</code>
-       */
       public Builder setX(float value) {
         bitField0_ |= 0x00000001;
         x_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float x = 1;</code>
-       */
       public Builder clearX() {
         bitField0_ = (bitField0_ & ~0x00000001);
         x_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float y = 2;
       private float y_ ;
-      /**
-       * <code>optional float y = 2;</code>
-       */
       public boolean hasY() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional float y = 2;</code>
-       */
       public float getY() {
         return y_;
       }
-      /**
-       * <code>optional float y = 2;</code>
-       */
       public Builder setY(float value) {
         bitField0_ |= 0x00000002;
         y_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float y = 2;</code>
-       */
       public Builder clearY() {
         bitField0_ = (bitField0_ & ~0x00000002);
         y_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float width = 3;
       private float width_ ;
-      /**
-       * <code>optional float width = 3;</code>
-       */
       public boolean hasWidth() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional float width = 3;</code>
-       */
       public float getWidth() {
         return width_;
       }
-      /**
-       * <code>optional float width = 3;</code>
-       */
       public Builder setWidth(float value) {
         bitField0_ |= 0x00000004;
         width_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float width = 3;</code>
-       */
       public Builder clearWidth() {
         bitField0_ = (bitField0_ & ~0x00000004);
         width_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float height = 4;
       private float height_ ;
-      /**
-       * <code>optional float height = 4;</code>
-       */
       public boolean hasHeight() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional float height = 4;</code>
-       */
       public float getHeight() {
         return height_;
       }
-      /**
-       * <code>optional float height = 4;</code>
-       */
       public Builder setHeight(float value) {
         bitField0_ |= 0x00000008;
         height_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float height = 4;</code>
-       */
       public Builder clearHeight() {
         bitField0_ = (bitField0_ & ~0x00000008);
         height_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGBounds)
     }
-
+    
     static {
       defaultInstance = new CGBounds(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGBounds)
   }
-
+  
   public interface CGVector2OrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // required float x = 1;
-    /**
-     * <code>required float x = 1;</code>
-     */
     boolean hasX();
-    /**
-     * <code>required float x = 1;</code>
-     */
     float getX();
-
+    
     // required float y = 2;
-    /**
-     * <code>required float y = 2;</code>
-     */
     boolean hasY();
-    /**
-     * <code>required float y = 2;</code>
-     */
     float getY();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGVector2}
-   */
   public static final class CGVector2 extends
       com.google.protobuf.GeneratedMessage
       implements CGVector2OrBuilder {
     // Use CGVector2.newBuilder() to construct.
-    private CGVector2(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGVector2(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGVector2(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGVector2(boolean noInit) {}
+    
     private static final CGVector2 defaultInstance;
     public static CGVector2 getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGVector2 getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGVector2(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 13: {
-              bitField0_ |= 0x00000001;
-              x_ = input.readFloat();
-              break;
-            }
-            case 21: {
-              bitField0_ |= 0x00000002;
-              y_ = input.readFloat();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGVector2_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGVector2_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGVector2.class, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGVector2_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGVector2> PARSER =
-        new com.google.protobuf.AbstractParser<CGVector2>() {
-      public CGVector2 parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGVector2(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGVector2> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // required float x = 1;
     public static final int X_FIELD_NUMBER = 1;
     private float x_;
-    /**
-     * <code>required float x = 1;</code>
-     */
     public boolean hasX() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>required float x = 1;</code>
-     */
     public float getX() {
       return x_;
     }
-
+    
     // required float y = 2;
     public static final int Y_FIELD_NUMBER = 2;
     private float y_;
-    /**
-     * <code>required float y = 2;</code>
-     */
     public boolean hasY() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>required float y = 2;</code>
-     */
     public float getY() {
       return y_;
     }
-
+    
     private void initFields() {
       x_ = 0F;
       y_ = 0F;
@@ -12443,7 +9530,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (!hasX()) {
         memoizedIsInitialized = 0;
         return false;
@@ -12455,7 +9542,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -12467,12 +9554,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -12486,83 +9573,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGVector2 parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGVector2 prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGVector2}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder {
@@ -12570,21 +9668,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGVector2_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGVector2_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGVector2.class, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGVector2_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -12595,7 +9690,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         x_ = 0F;
@@ -12604,20 +9699,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGVector2_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGVector2.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGVector2 build() {
         com.laex.cg2d.protobuf.GameObject.CGVector2 result = buildPartial();
         if (!result.isInitialized()) {
@@ -12625,7 +9720,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGVector2 buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGVector2 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGVector2 buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGVector2 result = new com.laex.cg2d.protobuf.GameObject.CGVector2(this);
         int from_bitField0_ = bitField0_;
@@ -12642,7 +9747,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGVector2) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGVector2)other);
@@ -12651,7 +9756,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGVector2 other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance()) return this;
         if (other.hasX()) {
@@ -12663,7 +9768,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (!hasX()) {
           
@@ -12675,673 +9780,335 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGVector2 parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGVector2) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 13: {
+              bitField0_ |= 0x00000001;
+              x_ = input.readFloat();
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              y_ = input.readFloat();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // required float x = 1;
       private float x_ ;
-      /**
-       * <code>required float x = 1;</code>
-       */
       public boolean hasX() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>required float x = 1;</code>
-       */
       public float getX() {
         return x_;
       }
-      /**
-       * <code>required float x = 1;</code>
-       */
       public Builder setX(float value) {
         bitField0_ |= 0x00000001;
         x_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>required float x = 1;</code>
-       */
       public Builder clearX() {
         bitField0_ = (bitField0_ & ~0x00000001);
         x_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // required float y = 2;
       private float y_ ;
-      /**
-       * <code>required float y = 2;</code>
-       */
       public boolean hasY() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>required float y = 2;</code>
-       */
       public float getY() {
         return y_;
       }
-      /**
-       * <code>required float y = 2;</code>
-       */
       public Builder setY(float value) {
         bitField0_ |= 0x00000002;
         y_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>required float y = 2;</code>
-       */
       public Builder clearY() {
         bitField0_ = (bitField0_ & ~0x00000002);
         y_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGVector2)
     }
-
+    
     static {
       defaultInstance = new CGVector2(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGVector2)
   }
-
+  
   public interface CGBodyDefOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional bool active = 1;
-    /**
-     * <code>optional bool active = 1;</code>
-     */
     boolean hasActive();
-    /**
-     * <code>optional bool active = 1;</code>
-     */
     boolean getActive();
-
+    
     // optional bool allowSleep = 2;
-    /**
-     * <code>optional bool allowSleep = 2;</code>
-     */
     boolean hasAllowSleep();
-    /**
-     * <code>optional bool allowSleep = 2;</code>
-     */
     boolean getAllowSleep();
-
+    
     // optional float angle = 3;
-    /**
-     * <code>optional float angle = 3;</code>
-     */
     boolean hasAngle();
-    /**
-     * <code>optional float angle = 3;</code>
-     */
     float getAngle();
-
+    
     // optional float angularDamping = 4;
-    /**
-     * <code>optional float angularDamping = 4;</code>
-     */
     boolean hasAngularDamping();
-    /**
-     * <code>optional float angularDamping = 4;</code>
-     */
     float getAngularDamping();
-
+    
     // optional float angularVelocity = 5;
-    /**
-     * <code>optional float angularVelocity = 5;</code>
-     */
     boolean hasAngularVelocity();
-    /**
-     * <code>optional float angularVelocity = 5;</code>
-     */
     float getAngularVelocity();
-
+    
     // optional bool awake = 6;
-    /**
-     * <code>optional bool awake = 6;</code>
-     */
     boolean hasAwake();
-    /**
-     * <code>optional bool awake = 6;</code>
-     */
     boolean getAwake();
-
+    
     // optional bool bullet = 7;
-    /**
-     * <code>optional bool bullet = 7;</code>
-     */
     boolean hasBullet();
-    /**
-     * <code>optional bool bullet = 7;</code>
-     */
     boolean getBullet();
-
+    
     // optional bool fixedRotation = 8;
-    /**
-     * <code>optional bool fixedRotation = 8;</code>
-     */
     boolean hasFixedRotation();
-    /**
-     * <code>optional bool fixedRotation = 8;</code>
-     */
     boolean getFixedRotation();
-
+    
     // optional float intertialScale = 9;
-    /**
-     * <code>optional float intertialScale = 9;</code>
-     */
     boolean hasIntertialScale();
-    /**
-     * <code>optional float intertialScale = 9;</code>
-     */
     float getIntertialScale();
-
+    
     // optional float linearDampitng = 10;
-    /**
-     * <code>optional float linearDampitng = 10;</code>
-     */
     boolean hasLinearDampitng();
-    /**
-     * <code>optional float linearDampitng = 10;</code>
-     */
     float getLinearDampitng();
-
+    
     // optional float gravityScale = 11;
-    /**
-     * <code>optional float gravityScale = 11;</code>
-     */
     boolean hasGravityScale();
-    /**
-     * <code>optional float gravityScale = 11;</code>
-     */
     float getGravityScale();
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-     */
     boolean hasLinearVelocity();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2 getLinearVelocity();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getLinearVelocityOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGBodyType type = 13;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyType type = 13;</code>
-     */
     boolean hasType();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyType type = 13;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGBodyType getType();
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 position = 14;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-     */
     boolean hasPosition();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2 getPosition();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getPositionOrBuilder();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGBodyDef}
-   */
   public static final class CGBodyDef extends
       com.google.protobuf.GeneratedMessage
       implements CGBodyDefOrBuilder {
     // Use CGBodyDef.newBuilder() to construct.
-    private CGBodyDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGBodyDef(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGBodyDef(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGBodyDef(boolean noInit) {}
+    
     private static final CGBodyDef defaultInstance;
     public static CGBodyDef getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGBodyDef getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGBodyDef(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              active_ = input.readBool();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              allowSleep_ = input.readBool();
-              break;
-            }
-            case 29: {
-              bitField0_ |= 0x00000004;
-              angle_ = input.readFloat();
-              break;
-            }
-            case 37: {
-              bitField0_ |= 0x00000008;
-              angularDamping_ = input.readFloat();
-              break;
-            }
-            case 45: {
-              bitField0_ |= 0x00000010;
-              angularVelocity_ = input.readFloat();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              awake_ = input.readBool();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              bullet_ = input.readBool();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              fixedRotation_ = input.readBool();
-              break;
-            }
-            case 77: {
-              bitField0_ |= 0x00000100;
-              intertialScale_ = input.readFloat();
-              break;
-            }
-            case 85: {
-              bitField0_ |= 0x00000200;
-              linearDampitng_ = input.readFloat();
-              break;
-            }
-            case 93: {
-              bitField0_ |= 0x00000400;
-              gravityScale_ = input.readFloat();
-              break;
-            }
-            case 98: {
-              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000800) == 0x00000800)) {
-                subBuilder = linearVelocity_.toBuilder();
-              }
-              linearVelocity_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGVector2.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(linearVelocity_);
-                linearVelocity_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000800;
-              break;
-            }
-            case 104: {
-              int rawValue = input.readEnum();
-              com.laex.cg2d.protobuf.GameObject.CGBodyType value = com.laex.cg2d.protobuf.GameObject.CGBodyType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(13, rawValue);
-              } else {
-                bitField0_ |= 0x00001000;
-                type_ = value;
-              }
-              break;
-            }
-            case 114: {
-              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = null;
-              if (((bitField0_ & 0x00002000) == 0x00002000)) {
-                subBuilder = position_.toBuilder();
-              }
-              position_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGVector2.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(position_);
-                position_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00002000;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBodyDef_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBodyDef_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGBodyDef.class, com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBodyDef_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGBodyDef> PARSER =
-        new com.google.protobuf.AbstractParser<CGBodyDef>() {
-      public CGBodyDef parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGBodyDef(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGBodyDef> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional bool active = 1;
     public static final int ACTIVE_FIELD_NUMBER = 1;
     private boolean active_;
-    /**
-     * <code>optional bool active = 1;</code>
-     */
     public boolean hasActive() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional bool active = 1;</code>
-     */
     public boolean getActive() {
       return active_;
     }
-
+    
     // optional bool allowSleep = 2;
     public static final int ALLOWSLEEP_FIELD_NUMBER = 2;
     private boolean allowSleep_;
-    /**
-     * <code>optional bool allowSleep = 2;</code>
-     */
     public boolean hasAllowSleep() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional bool allowSleep = 2;</code>
-     */
     public boolean getAllowSleep() {
       return allowSleep_;
     }
-
+    
     // optional float angle = 3;
     public static final int ANGLE_FIELD_NUMBER = 3;
     private float angle_;
-    /**
-     * <code>optional float angle = 3;</code>
-     */
     public boolean hasAngle() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional float angle = 3;</code>
-     */
     public float getAngle() {
       return angle_;
     }
-
+    
     // optional float angularDamping = 4;
     public static final int ANGULARDAMPING_FIELD_NUMBER = 4;
     private float angularDamping_;
-    /**
-     * <code>optional float angularDamping = 4;</code>
-     */
     public boolean hasAngularDamping() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional float angularDamping = 4;</code>
-     */
     public float getAngularDamping() {
       return angularDamping_;
     }
-
+    
     // optional float angularVelocity = 5;
     public static final int ANGULARVELOCITY_FIELD_NUMBER = 5;
     private float angularVelocity_;
-    /**
-     * <code>optional float angularVelocity = 5;</code>
-     */
     public boolean hasAngularVelocity() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    /**
-     * <code>optional float angularVelocity = 5;</code>
-     */
     public float getAngularVelocity() {
       return angularVelocity_;
     }
-
+    
     // optional bool awake = 6;
     public static final int AWAKE_FIELD_NUMBER = 6;
     private boolean awake_;
-    /**
-     * <code>optional bool awake = 6;</code>
-     */
     public boolean hasAwake() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    /**
-     * <code>optional bool awake = 6;</code>
-     */
     public boolean getAwake() {
       return awake_;
     }
-
+    
     // optional bool bullet = 7;
     public static final int BULLET_FIELD_NUMBER = 7;
     private boolean bullet_;
-    /**
-     * <code>optional bool bullet = 7;</code>
-     */
     public boolean hasBullet() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
-    /**
-     * <code>optional bool bullet = 7;</code>
-     */
     public boolean getBullet() {
       return bullet_;
     }
-
+    
     // optional bool fixedRotation = 8;
     public static final int FIXEDROTATION_FIELD_NUMBER = 8;
     private boolean fixedRotation_;
-    /**
-     * <code>optional bool fixedRotation = 8;</code>
-     */
     public boolean hasFixedRotation() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
-    /**
-     * <code>optional bool fixedRotation = 8;</code>
-     */
     public boolean getFixedRotation() {
       return fixedRotation_;
     }
-
+    
     // optional float intertialScale = 9;
     public static final int INTERTIALSCALE_FIELD_NUMBER = 9;
     private float intertialScale_;
-    /**
-     * <code>optional float intertialScale = 9;</code>
-     */
     public boolean hasIntertialScale() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
-    /**
-     * <code>optional float intertialScale = 9;</code>
-     */
     public float getIntertialScale() {
       return intertialScale_;
     }
-
+    
     // optional float linearDampitng = 10;
     public static final int LINEARDAMPITNG_FIELD_NUMBER = 10;
     private float linearDampitng_;
-    /**
-     * <code>optional float linearDampitng = 10;</code>
-     */
     public boolean hasLinearDampitng() {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
-    /**
-     * <code>optional float linearDampitng = 10;</code>
-     */
     public float getLinearDampitng() {
       return linearDampitng_;
     }
-
+    
     // optional float gravityScale = 11;
     public static final int GRAVITYSCALE_FIELD_NUMBER = 11;
     private float gravityScale_;
-    /**
-     * <code>optional float gravityScale = 11;</code>
-     */
     public boolean hasGravityScale() {
       return ((bitField0_ & 0x00000400) == 0x00000400);
     }
-    /**
-     * <code>optional float gravityScale = 11;</code>
-     */
     public float getGravityScale() {
       return gravityScale_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;
     public static final int LINEARVELOCITY_FIELD_NUMBER = 12;
     private com.laex.cg2d.protobuf.GameObject.CGVector2 linearVelocity_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-     */
     public boolean hasLinearVelocity() {
       return ((bitField0_ & 0x00000800) == 0x00000800);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2 getLinearVelocity() {
       return linearVelocity_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getLinearVelocityOrBuilder() {
       return linearVelocity_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGBodyType type = 13;
     public static final int TYPE_FIELD_NUMBER = 13;
     private com.laex.cg2d.protobuf.GameObject.CGBodyType type_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyType type = 13;</code>
-     */
     public boolean hasType() {
       return ((bitField0_ & 0x00001000) == 0x00001000);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyType type = 13;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGBodyType getType() {
       return type_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGVector2 position = 14;
     public static final int POSITION_FIELD_NUMBER = 14;
     private com.laex.cg2d.protobuf.GameObject.CGVector2 position_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-     */
     public boolean hasPosition() {
       return ((bitField0_ & 0x00002000) == 0x00002000);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2 getPosition() {
       return position_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getPositionOrBuilder() {
       return position_;
     }
-
+    
     private void initFields() {
       active_ = false;
       allowSleep_ = false;
@@ -13362,7 +10129,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (hasLinearVelocity()) {
         if (!getLinearVelocity().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -13378,7 +10145,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -13426,12 +10193,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -13493,83 +10260,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGBodyDef parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGBodyDef prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGBodyDef}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGBodyDefOrBuilder {
@@ -13577,21 +10355,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBodyDef_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBodyDef_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGBodyDef.class, com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBodyDef_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGBodyDef.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -13604,7 +10379,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         active_ = false;
@@ -13645,20 +10420,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGBodyDef_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGBodyDef.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGBodyDef getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGBodyDef.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGBodyDef build() {
         com.laex.cg2d.protobuf.GameObject.CGBodyDef result = buildPartial();
         if (!result.isInitialized()) {
@@ -13666,7 +10441,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGBodyDef buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGBodyDef result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGBodyDef buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGBodyDef result = new com.laex.cg2d.protobuf.GameObject.CGBodyDef(this);
         int from_bitField0_ = bitField0_;
@@ -13739,7 +10524,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGBodyDef) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGBodyDef)other);
@@ -13748,7 +10533,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGBodyDef other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGBodyDef.getDefaultInstance()) return this;
         if (other.hasActive()) {
@@ -13796,7 +10581,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (hasLinearVelocity()) {
           if (!getLinearVelocity().isInitialized()) {
@@ -13812,402 +10597,358 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGBodyDef parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGBodyDef) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              active_ = input.readBool();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              allowSleep_ = input.readBool();
+              break;
+            }
+            case 29: {
+              bitField0_ |= 0x00000004;
+              angle_ = input.readFloat();
+              break;
+            }
+            case 37: {
+              bitField0_ |= 0x00000008;
+              angularDamping_ = input.readFloat();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000010;
+              angularVelocity_ = input.readFloat();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              awake_ = input.readBool();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              bullet_ = input.readBool();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              fixedRotation_ = input.readBool();
+              break;
+            }
+            case 77: {
+              bitField0_ |= 0x00000100;
+              intertialScale_ = input.readFloat();
+              break;
+            }
+            case 85: {
+              bitField0_ |= 0x00000200;
+              linearDampitng_ = input.readFloat();
+              break;
+            }
+            case 93: {
+              bitField0_ |= 0x00000400;
+              gravityScale_ = input.readFloat();
+              break;
+            }
+            case 98: {
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder();
+              if (hasLinearVelocity()) {
+                subBuilder.mergeFrom(getLinearVelocity());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setLinearVelocity(subBuilder.buildPartial());
+              break;
+            }
+            case 104: {
+              int rawValue = input.readEnum();
+              com.laex.cg2d.protobuf.GameObject.CGBodyType value = com.laex.cg2d.protobuf.GameObject.CGBodyType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(13, rawValue);
+              } else {
+                bitField0_ |= 0x00001000;
+                type_ = value;
+              }
+              break;
+            }
+            case 114: {
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGVector2.newBuilder();
+              if (hasPosition()) {
+                subBuilder.mergeFrom(getPosition());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setPosition(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional bool active = 1;
       private boolean active_ ;
-      /**
-       * <code>optional bool active = 1;</code>
-       */
       public boolean hasActive() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional bool active = 1;</code>
-       */
       public boolean getActive() {
         return active_;
       }
-      /**
-       * <code>optional bool active = 1;</code>
-       */
       public Builder setActive(boolean value) {
         bitField0_ |= 0x00000001;
         active_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool active = 1;</code>
-       */
       public Builder clearActive() {
         bitField0_ = (bitField0_ & ~0x00000001);
         active_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional bool allowSleep = 2;
       private boolean allowSleep_ ;
-      /**
-       * <code>optional bool allowSleep = 2;</code>
-       */
       public boolean hasAllowSleep() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional bool allowSleep = 2;</code>
-       */
       public boolean getAllowSleep() {
         return allowSleep_;
       }
-      /**
-       * <code>optional bool allowSleep = 2;</code>
-       */
       public Builder setAllowSleep(boolean value) {
         bitField0_ |= 0x00000002;
         allowSleep_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool allowSleep = 2;</code>
-       */
       public Builder clearAllowSleep() {
         bitField0_ = (bitField0_ & ~0x00000002);
         allowSleep_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional float angle = 3;
       private float angle_ ;
-      /**
-       * <code>optional float angle = 3;</code>
-       */
       public boolean hasAngle() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional float angle = 3;</code>
-       */
       public float getAngle() {
         return angle_;
       }
-      /**
-       * <code>optional float angle = 3;</code>
-       */
       public Builder setAngle(float value) {
         bitField0_ |= 0x00000004;
         angle_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float angle = 3;</code>
-       */
       public Builder clearAngle() {
         bitField0_ = (bitField0_ & ~0x00000004);
         angle_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float angularDamping = 4;
       private float angularDamping_ ;
-      /**
-       * <code>optional float angularDamping = 4;</code>
-       */
       public boolean hasAngularDamping() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional float angularDamping = 4;</code>
-       */
       public float getAngularDamping() {
         return angularDamping_;
       }
-      /**
-       * <code>optional float angularDamping = 4;</code>
-       */
       public Builder setAngularDamping(float value) {
         bitField0_ |= 0x00000008;
         angularDamping_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float angularDamping = 4;</code>
-       */
       public Builder clearAngularDamping() {
         bitField0_ = (bitField0_ & ~0x00000008);
         angularDamping_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float angularVelocity = 5;
       private float angularVelocity_ ;
-      /**
-       * <code>optional float angularVelocity = 5;</code>
-       */
       public boolean hasAngularVelocity() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional float angularVelocity = 5;</code>
-       */
       public float getAngularVelocity() {
         return angularVelocity_;
       }
-      /**
-       * <code>optional float angularVelocity = 5;</code>
-       */
       public Builder setAngularVelocity(float value) {
         bitField0_ |= 0x00000010;
         angularVelocity_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float angularVelocity = 5;</code>
-       */
       public Builder clearAngularVelocity() {
         bitField0_ = (bitField0_ & ~0x00000010);
         angularVelocity_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional bool awake = 6;
       private boolean awake_ ;
-      /**
-       * <code>optional bool awake = 6;</code>
-       */
       public boolean hasAwake() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional bool awake = 6;</code>
-       */
       public boolean getAwake() {
         return awake_;
       }
-      /**
-       * <code>optional bool awake = 6;</code>
-       */
       public Builder setAwake(boolean value) {
         bitField0_ |= 0x00000020;
         awake_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool awake = 6;</code>
-       */
       public Builder clearAwake() {
         bitField0_ = (bitField0_ & ~0x00000020);
         awake_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional bool bullet = 7;
       private boolean bullet_ ;
-      /**
-       * <code>optional bool bullet = 7;</code>
-       */
       public boolean hasBullet() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      /**
-       * <code>optional bool bullet = 7;</code>
-       */
       public boolean getBullet() {
         return bullet_;
       }
-      /**
-       * <code>optional bool bullet = 7;</code>
-       */
       public Builder setBullet(boolean value) {
         bitField0_ |= 0x00000040;
         bullet_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool bullet = 7;</code>
-       */
       public Builder clearBullet() {
         bitField0_ = (bitField0_ & ~0x00000040);
         bullet_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional bool fixedRotation = 8;
       private boolean fixedRotation_ ;
-      /**
-       * <code>optional bool fixedRotation = 8;</code>
-       */
       public boolean hasFixedRotation() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
-      /**
-       * <code>optional bool fixedRotation = 8;</code>
-       */
       public boolean getFixedRotation() {
         return fixedRotation_;
       }
-      /**
-       * <code>optional bool fixedRotation = 8;</code>
-       */
       public Builder setFixedRotation(boolean value) {
         bitField0_ |= 0x00000080;
         fixedRotation_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool fixedRotation = 8;</code>
-       */
       public Builder clearFixedRotation() {
         bitField0_ = (bitField0_ & ~0x00000080);
         fixedRotation_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional float intertialScale = 9;
       private float intertialScale_ ;
-      /**
-       * <code>optional float intertialScale = 9;</code>
-       */
       public boolean hasIntertialScale() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
-      /**
-       * <code>optional float intertialScale = 9;</code>
-       */
       public float getIntertialScale() {
         return intertialScale_;
       }
-      /**
-       * <code>optional float intertialScale = 9;</code>
-       */
       public Builder setIntertialScale(float value) {
         bitField0_ |= 0x00000100;
         intertialScale_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float intertialScale = 9;</code>
-       */
       public Builder clearIntertialScale() {
         bitField0_ = (bitField0_ & ~0x00000100);
         intertialScale_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float linearDampitng = 10;
       private float linearDampitng_ ;
-      /**
-       * <code>optional float linearDampitng = 10;</code>
-       */
       public boolean hasLinearDampitng() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
-      /**
-       * <code>optional float linearDampitng = 10;</code>
-       */
       public float getLinearDampitng() {
         return linearDampitng_;
       }
-      /**
-       * <code>optional float linearDampitng = 10;</code>
-       */
       public Builder setLinearDampitng(float value) {
         bitField0_ |= 0x00000200;
         linearDampitng_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float linearDampitng = 10;</code>
-       */
       public Builder clearLinearDampitng() {
         bitField0_ = (bitField0_ & ~0x00000200);
         linearDampitng_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float gravityScale = 11;
       private float gravityScale_ ;
-      /**
-       * <code>optional float gravityScale = 11;</code>
-       */
       public boolean hasGravityScale() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
-      /**
-       * <code>optional float gravityScale = 11;</code>
-       */
       public float getGravityScale() {
         return gravityScale_;
       }
-      /**
-       * <code>optional float gravityScale = 11;</code>
-       */
       public Builder setGravityScale(float value) {
         bitField0_ |= 0x00000400;
         gravityScale_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float gravityScale = 11;</code>
-       */
       public Builder clearGravityScale() {
         bitField0_ = (bitField0_ & ~0x00000400);
         gravityScale_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;
       private com.laex.cg2d.protobuf.GameObject.CGVector2 linearVelocity_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> linearVelocityBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       public boolean hasLinearVelocity() {
         return ((bitField0_ & 0x00000800) == 0x00000800);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getLinearVelocity() {
         if (linearVelocityBuilder_ == null) {
           return linearVelocity_;
@@ -14215,9 +10956,6 @@ public final class GameObject {
           return linearVelocityBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       public Builder setLinearVelocity(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (linearVelocityBuilder_ == null) {
           if (value == null) {
@@ -14231,9 +10969,6 @@ public final class GameObject {
         bitField0_ |= 0x00000800;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       public Builder setLinearVelocity(
           com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (linearVelocityBuilder_ == null) {
@@ -14245,9 +10980,6 @@ public final class GameObject {
         bitField0_ |= 0x00000800;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       public Builder mergeLinearVelocity(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (linearVelocityBuilder_ == null) {
           if (((bitField0_ & 0x00000800) == 0x00000800) &&
@@ -14264,9 +10996,6 @@ public final class GameObject {
         bitField0_ |= 0x00000800;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       public Builder clearLinearVelocity() {
         if (linearVelocityBuilder_ == null) {
           linearVelocity_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -14277,17 +11006,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder getLinearVelocityBuilder() {
         bitField0_ |= 0x00000800;
         onChanged();
         return getLinearVelocityFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getLinearVelocityOrBuilder() {
         if (linearVelocityBuilder_ != null) {
           return linearVelocityBuilder_.getMessageOrBuilder();
@@ -14295,9 +11018,6 @@ public final class GameObject {
           return linearVelocity_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 linearVelocity = 12;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
           getLinearVelocityFieldBuilder() {
@@ -14311,24 +11031,15 @@ public final class GameObject {
         }
         return linearVelocityBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGBodyType type = 13;
       private com.laex.cg2d.protobuf.GameObject.CGBodyType type_ = com.laex.cg2d.protobuf.GameObject.CGBodyType.STATIC;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyType type = 13;</code>
-       */
       public boolean hasType() {
         return ((bitField0_ & 0x00001000) == 0x00001000);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyType type = 13;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGBodyType getType() {
         return type_;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyType type = 13;</code>
-       */
       public Builder setType(com.laex.cg2d.protobuf.GameObject.CGBodyType value) {
         if (value == null) {
           throw new NullPointerException();
@@ -14338,29 +11049,20 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyType type = 13;</code>
-       */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00001000);
         type_ = com.laex.cg2d.protobuf.GameObject.CGBodyType.STATIC;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGVector2 position = 14;
       private com.laex.cg2d.protobuf.GameObject.CGVector2 position_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> positionBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       public boolean hasPosition() {
         return ((bitField0_ & 0x00002000) == 0x00002000);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2 getPosition() {
         if (positionBuilder_ == null) {
           return position_;
@@ -14368,9 +11070,6 @@ public final class GameObject {
           return positionBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       public Builder setPosition(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (positionBuilder_ == null) {
           if (value == null) {
@@ -14384,9 +11083,6 @@ public final class GameObject {
         bitField0_ |= 0x00002000;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       public Builder setPosition(
           com.laex.cg2d.protobuf.GameObject.CGVector2.Builder builderForValue) {
         if (positionBuilder_ == null) {
@@ -14398,9 +11094,6 @@ public final class GameObject {
         bitField0_ |= 0x00002000;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       public Builder mergePosition(com.laex.cg2d.protobuf.GameObject.CGVector2 value) {
         if (positionBuilder_ == null) {
           if (((bitField0_ & 0x00002000) == 0x00002000) &&
@@ -14417,9 +11110,6 @@ public final class GameObject {
         bitField0_ |= 0x00002000;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       public Builder clearPosition() {
         if (positionBuilder_ == null) {
           position_ = com.laex.cg2d.protobuf.GameObject.CGVector2.getDefaultInstance();
@@ -14430,17 +11120,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2.Builder getPositionBuilder() {
         bitField0_ |= 0x00002000;
         onChanged();
         return getPositionFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder getPositionOrBuilder() {
         if (positionBuilder_ != null) {
           return positionBuilder_.getMessageOrBuilder();
@@ -14448,9 +11132,6 @@ public final class GameObject {
           return position_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGVector2 position = 14;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGVector2, com.laex.cg2d.protobuf.GameObject.CGVector2.Builder, com.laex.cg2d.protobuf.GameObject.CGVector2OrBuilder> 
           getPositionFieldBuilder() {
@@ -14464,205 +11145,92 @@ public final class GameObject {
         }
         return positionBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGBodyDef)
     }
-
+    
     static {
       defaultInstance = new CGBodyDef(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGBodyDef)
   }
-
+  
   public interface CGFilterOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional int32 categoryBits = 1;
-    /**
-     * <code>optional int32 categoryBits = 1;</code>
-     */
     boolean hasCategoryBits();
-    /**
-     * <code>optional int32 categoryBits = 1;</code>
-     */
     int getCategoryBits();
-
+    
     // optional int32 maskBits = 2;
-    /**
-     * <code>optional int32 maskBits = 2;</code>
-     */
     boolean hasMaskBits();
-    /**
-     * <code>optional int32 maskBits = 2;</code>
-     */
     int getMaskBits();
-
+    
     // optional int32 groupIndex = 3;
-    /**
-     * <code>optional int32 groupIndex = 3;</code>
-     */
     boolean hasGroupIndex();
-    /**
-     * <code>optional int32 groupIndex = 3;</code>
-     */
     int getGroupIndex();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGFilter}
-   */
   public static final class CGFilter extends
       com.google.protobuf.GeneratedMessage
       implements CGFilterOrBuilder {
     // Use CGFilter.newBuilder() to construct.
-    private CGFilter(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGFilter(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGFilter(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGFilter(boolean noInit) {}
+    
     private static final CGFilter defaultInstance;
     public static CGFilter getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGFilter getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGFilter(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              categoryBits_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              maskBits_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              groupIndex_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFilter_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFilter_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGFilter.class, com.laex.cg2d.protobuf.GameObject.CGFilter.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFilter_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGFilter> PARSER =
-        new com.google.protobuf.AbstractParser<CGFilter>() {
-      public CGFilter parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGFilter(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGFilter> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional int32 categoryBits = 1;
     public static final int CATEGORYBITS_FIELD_NUMBER = 1;
     private int categoryBits_;
-    /**
-     * <code>optional int32 categoryBits = 1;</code>
-     */
     public boolean hasCategoryBits() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional int32 categoryBits = 1;</code>
-     */
     public int getCategoryBits() {
       return categoryBits_;
     }
-
+    
     // optional int32 maskBits = 2;
     public static final int MASKBITS_FIELD_NUMBER = 2;
     private int maskBits_;
-    /**
-     * <code>optional int32 maskBits = 2;</code>
-     */
     public boolean hasMaskBits() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional int32 maskBits = 2;</code>
-     */
     public int getMaskBits() {
       return maskBits_;
     }
-
+    
     // optional int32 groupIndex = 3;
     public static final int GROUPINDEX_FIELD_NUMBER = 3;
     private int groupIndex_;
-    /**
-     * <code>optional int32 groupIndex = 3;</code>
-     */
     public boolean hasGroupIndex() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional int32 groupIndex = 3;</code>
-     */
     public int getGroupIndex() {
       return groupIndex_;
     }
-
+    
     private void initFields() {
       categoryBits_ = 0;
       maskBits_ = 0;
@@ -14672,11 +11240,11 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -14691,12 +11259,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -14714,83 +11282,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFilter parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGFilter prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGFilter}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGFilterOrBuilder {
@@ -14798,21 +11377,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFilter_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFilter_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGFilter.class, com.laex.cg2d.protobuf.GameObject.CGFilter.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFilter_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGFilter.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -14823,7 +11399,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         categoryBits_ = 0;
@@ -14834,20 +11410,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFilter_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGFilter.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGFilter getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGFilter.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGFilter build() {
         com.laex.cg2d.protobuf.GameObject.CGFilter result = buildPartial();
         if (!result.isInitialized()) {
@@ -14855,7 +11431,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGFilter buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGFilter result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGFilter buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGFilter result = new com.laex.cg2d.protobuf.GameObject.CGFilter(this);
         int from_bitField0_ = bitField0_;
@@ -14876,7 +11462,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGFilter) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGFilter)other);
@@ -14885,7 +11471,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGFilter other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGFilter.getDefaultInstance()) return this;
         if (other.hasCategoryBits()) {
@@ -14900,407 +11486,235 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGFilter parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGFilter) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              categoryBits_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              maskBits_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              groupIndex_ = input.readInt32();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional int32 categoryBits = 1;
       private int categoryBits_ ;
-      /**
-       * <code>optional int32 categoryBits = 1;</code>
-       */
       public boolean hasCategoryBits() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional int32 categoryBits = 1;</code>
-       */
       public int getCategoryBits() {
         return categoryBits_;
       }
-      /**
-       * <code>optional int32 categoryBits = 1;</code>
-       */
       public Builder setCategoryBits(int value) {
         bitField0_ |= 0x00000001;
         categoryBits_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 categoryBits = 1;</code>
-       */
       public Builder clearCategoryBits() {
         bitField0_ = (bitField0_ & ~0x00000001);
         categoryBits_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional int32 maskBits = 2;
       private int maskBits_ ;
-      /**
-       * <code>optional int32 maskBits = 2;</code>
-       */
       public boolean hasMaskBits() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional int32 maskBits = 2;</code>
-       */
       public int getMaskBits() {
         return maskBits_;
       }
-      /**
-       * <code>optional int32 maskBits = 2;</code>
-       */
       public Builder setMaskBits(int value) {
         bitField0_ |= 0x00000002;
         maskBits_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 maskBits = 2;</code>
-       */
       public Builder clearMaskBits() {
         bitField0_ = (bitField0_ & ~0x00000002);
         maskBits_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional int32 groupIndex = 3;
       private int groupIndex_ ;
-      /**
-       * <code>optional int32 groupIndex = 3;</code>
-       */
       public boolean hasGroupIndex() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional int32 groupIndex = 3;</code>
-       */
       public int getGroupIndex() {
         return groupIndex_;
       }
-      /**
-       * <code>optional int32 groupIndex = 3;</code>
-       */
       public Builder setGroupIndex(int value) {
         bitField0_ |= 0x00000004;
         groupIndex_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 groupIndex = 3;</code>
-       */
       public Builder clearGroupIndex() {
         bitField0_ = (bitField0_ & ~0x00000004);
         groupIndex_ = 0;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGFilter)
     }
-
+    
     static {
       defaultInstance = new CGFilter(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGFilter)
   }
-
+  
   public interface CGFixtureDefOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional float density = 1;
-    /**
-     * <code>optional float density = 1;</code>
-     */
     boolean hasDensity();
-    /**
-     * <code>optional float density = 1;</code>
-     */
     float getDensity();
-
+    
     // optional float friction = 2;
-    /**
-     * <code>optional float friction = 2;</code>
-     */
     boolean hasFriction();
-    /**
-     * <code>optional float friction = 2;</code>
-     */
     float getFriction();
-
+    
     // optional float restitution = 3;
-    /**
-     * <code>optional float restitution = 3;</code>
-     */
     boolean hasRestitution();
-    /**
-     * <code>optional float restitution = 3;</code>
-     */
     float getRestitution();
-
+    
     // optional bool sensor = 4;
-    /**
-     * <code>optional bool sensor = 4;</code>
-     */
     boolean hasSensor();
-    /**
-     * <code>optional bool sensor = 4;</code>
-     */
     boolean getSensor();
-
+    
     // optional .com.laex.cg2d.protobuf.CGFilter filter = 5;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-     */
     boolean hasFilter();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGFilter getFilter();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGFilterOrBuilder getFilterOrBuilder();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGFixtureDef}
-   */
   public static final class CGFixtureDef extends
       com.google.protobuf.GeneratedMessage
       implements CGFixtureDefOrBuilder {
     // Use CGFixtureDef.newBuilder() to construct.
-    private CGFixtureDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGFixtureDef(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGFixtureDef(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGFixtureDef(boolean noInit) {}
+    
     private static final CGFixtureDef defaultInstance;
     public static CGFixtureDef getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGFixtureDef getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGFixtureDef(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 13: {
-              bitField0_ |= 0x00000001;
-              density_ = input.readFloat();
-              break;
-            }
-            case 21: {
-              bitField0_ |= 0x00000002;
-              friction_ = input.readFloat();
-              break;
-            }
-            case 29: {
-              bitField0_ |= 0x00000004;
-              restitution_ = input.readFloat();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              sensor_ = input.readBool();
-              break;
-            }
-            case 42: {
-              com.laex.cg2d.protobuf.GameObject.CGFilter.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                subBuilder = filter_.toBuilder();
-              }
-              filter_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGFilter.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(filter_);
-                filter_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000010;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFixtureDef_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFixtureDef_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGFixtureDef.class, com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFixtureDef_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGFixtureDef> PARSER =
-        new com.google.protobuf.AbstractParser<CGFixtureDef>() {
-      public CGFixtureDef parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGFixtureDef(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGFixtureDef> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional float density = 1;
     public static final int DENSITY_FIELD_NUMBER = 1;
     private float density_;
-    /**
-     * <code>optional float density = 1;</code>
-     */
     public boolean hasDensity() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional float density = 1;</code>
-     */
     public float getDensity() {
       return density_;
     }
-
+    
     // optional float friction = 2;
     public static final int FRICTION_FIELD_NUMBER = 2;
     private float friction_;
-    /**
-     * <code>optional float friction = 2;</code>
-     */
     public boolean hasFriction() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional float friction = 2;</code>
-     */
     public float getFriction() {
       return friction_;
     }
-
+    
     // optional float restitution = 3;
     public static final int RESTITUTION_FIELD_NUMBER = 3;
     private float restitution_;
-    /**
-     * <code>optional float restitution = 3;</code>
-     */
     public boolean hasRestitution() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional float restitution = 3;</code>
-     */
     public float getRestitution() {
       return restitution_;
     }
-
+    
     // optional bool sensor = 4;
     public static final int SENSOR_FIELD_NUMBER = 4;
     private boolean sensor_;
-    /**
-     * <code>optional bool sensor = 4;</code>
-     */
     public boolean hasSensor() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional bool sensor = 4;</code>
-     */
     public boolean getSensor() {
       return sensor_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGFilter filter = 5;
     public static final int FILTER_FIELD_NUMBER = 5;
     private com.laex.cg2d.protobuf.GameObject.CGFilter filter_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-     */
     public boolean hasFilter() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGFilter getFilter() {
       return filter_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGFilterOrBuilder getFilterOrBuilder() {
       return filter_;
     }
-
+    
     private void initFields() {
       density_ = 0F;
       friction_ = 0F;
@@ -15312,11 +11726,11 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -15337,12 +11751,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -15368,83 +11782,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGFixtureDef parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGFixtureDef prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGFixtureDef}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGFixtureDefOrBuilder {
@@ -15452,21 +11877,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFixtureDef_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFixtureDef_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGFixtureDef.class, com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFixtureDef_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGFixtureDef.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -15478,7 +11900,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         density_ = 0F;
@@ -15497,20 +11919,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGFixtureDef_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGFixtureDef.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGFixtureDef getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGFixtureDef.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGFixtureDef build() {
         com.laex.cg2d.protobuf.GameObject.CGFixtureDef result = buildPartial();
         if (!result.isInitialized()) {
@@ -15518,7 +11940,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGFixtureDef buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGFixtureDef result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGFixtureDef buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGFixtureDef result = new com.laex.cg2d.protobuf.GameObject.CGFixtureDef(this);
         int from_bitField0_ = bitField0_;
@@ -15551,7 +11983,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGFixtureDef) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGFixtureDef)other);
@@ -15560,7 +11992,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGFixtureDef other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGFixtureDef.getDefaultInstance()) return this;
         if (other.hasDensity()) {
@@ -15581,175 +12013,160 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGFixtureDef parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGFixtureDef) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 13: {
+              bitField0_ |= 0x00000001;
+              density_ = input.readFloat();
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              friction_ = input.readFloat();
+              break;
+            }
+            case 29: {
+              bitField0_ |= 0x00000004;
+              restitution_ = input.readFloat();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              sensor_ = input.readBool();
+              break;
+            }
+            case 42: {
+              com.laex.cg2d.protobuf.GameObject.CGFilter.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGFilter.newBuilder();
+              if (hasFilter()) {
+                subBuilder.mergeFrom(getFilter());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFilter(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional float density = 1;
       private float density_ ;
-      /**
-       * <code>optional float density = 1;</code>
-       */
       public boolean hasDensity() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional float density = 1;</code>
-       */
       public float getDensity() {
         return density_;
       }
-      /**
-       * <code>optional float density = 1;</code>
-       */
       public Builder setDensity(float value) {
         bitField0_ |= 0x00000001;
         density_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float density = 1;</code>
-       */
       public Builder clearDensity() {
         bitField0_ = (bitField0_ & ~0x00000001);
         density_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float friction = 2;
       private float friction_ ;
-      /**
-       * <code>optional float friction = 2;</code>
-       */
       public boolean hasFriction() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional float friction = 2;</code>
-       */
       public float getFriction() {
         return friction_;
       }
-      /**
-       * <code>optional float friction = 2;</code>
-       */
       public Builder setFriction(float value) {
         bitField0_ |= 0x00000002;
         friction_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float friction = 2;</code>
-       */
       public Builder clearFriction() {
         bitField0_ = (bitField0_ & ~0x00000002);
         friction_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional float restitution = 3;
       private float restitution_ ;
-      /**
-       * <code>optional float restitution = 3;</code>
-       */
       public boolean hasRestitution() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional float restitution = 3;</code>
-       */
       public float getRestitution() {
         return restitution_;
       }
-      /**
-       * <code>optional float restitution = 3;</code>
-       */
       public Builder setRestitution(float value) {
         bitField0_ |= 0x00000004;
         restitution_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional float restitution = 3;</code>
-       */
       public Builder clearRestitution() {
         bitField0_ = (bitField0_ & ~0x00000004);
         restitution_ = 0F;
         onChanged();
         return this;
       }
-
+      
       // optional bool sensor = 4;
       private boolean sensor_ ;
-      /**
-       * <code>optional bool sensor = 4;</code>
-       */
       public boolean hasSensor() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional bool sensor = 4;</code>
-       */
       public boolean getSensor() {
         return sensor_;
       }
-      /**
-       * <code>optional bool sensor = 4;</code>
-       */
       public Builder setSensor(boolean value) {
         bitField0_ |= 0x00000008;
         sensor_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool sensor = 4;</code>
-       */
       public Builder clearSensor() {
         bitField0_ = (bitField0_ & ~0x00000008);
         sensor_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGFilter filter = 5;
       private com.laex.cg2d.protobuf.GameObject.CGFilter filter_ = com.laex.cg2d.protobuf.GameObject.CGFilter.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGFilter, com.laex.cg2d.protobuf.GameObject.CGFilter.Builder, com.laex.cg2d.protobuf.GameObject.CGFilterOrBuilder> filterBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       public boolean hasFilter() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFilter getFilter() {
         if (filterBuilder_ == null) {
           return filter_;
@@ -15757,9 +12174,6 @@ public final class GameObject {
           return filterBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       public Builder setFilter(com.laex.cg2d.protobuf.GameObject.CGFilter value) {
         if (filterBuilder_ == null) {
           if (value == null) {
@@ -15773,9 +12187,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       public Builder setFilter(
           com.laex.cg2d.protobuf.GameObject.CGFilter.Builder builderForValue) {
         if (filterBuilder_ == null) {
@@ -15787,9 +12198,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       public Builder mergeFilter(com.laex.cg2d.protobuf.GameObject.CGFilter value) {
         if (filterBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
@@ -15806,9 +12214,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       public Builder clearFilter() {
         if (filterBuilder_ == null) {
           filter_ = com.laex.cg2d.protobuf.GameObject.CGFilter.getDefaultInstance();
@@ -15819,17 +12224,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFilter.Builder getFilterBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
         return getFilterFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFilterOrBuilder getFilterOrBuilder() {
         if (filterBuilder_ != null) {
           return filterBuilder_.getMessageOrBuilder();
@@ -15837,9 +12236,6 @@ public final class GameObject {
           return filter_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFilter filter = 5;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGFilter, com.laex.cg2d.protobuf.GameObject.CGFilter.Builder, com.laex.cg2d.protobuf.GameObject.CGFilterOrBuilder> 
           getFilterFieldBuilder() {
@@ -15853,622 +12249,263 @@ public final class GameObject {
         }
         return filterBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGFixtureDef)
     }
-
+    
     static {
       defaultInstance = new CGFixtureDef(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGFixtureDef)
   }
-
+  
   public interface CGShapeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional string id = 1;
-    /**
-     * <code>optional string id = 1;</code>
-     */
     boolean hasId();
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    java.lang.String getId();
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getIdBytes();
-
+    String getId();
+    
     // optional bool visible = 2;
-    /**
-     * <code>optional bool visible = 2;</code>
-     */
     boolean hasVisible();
-    /**
-     * <code>optional bool visible = 2;</code>
-     */
     boolean getVisible();
-
+    
     // optional bool locked = 3;
-    /**
-     * <code>optional bool locked = 3;</code>
-     */
     boolean hasLocked();
-    /**
-     * <code>optional bool locked = 3;</code>
-     */
     boolean getLocked();
-
+    
     // optional bool background = 4;
-    /**
-     * <code>optional bool background = 4;</code>
-     */
     boolean hasBackground();
-    /**
-     * <code>optional bool background = 4;</code>
-     */
     boolean getBackground();
-
+    
     // optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-     */
     boolean hasBackgroundResourceFile();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGResourceFile getBackgroundResourceFile();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getBackgroundResourceFileOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;</code>
-     */
     boolean hasEditorShapeType();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGEditorShapeType getEditorShapeType();
-
+    
     // optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-     */
     boolean hasBounds();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGBounds getBounds();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGBoundsOrBuilder getBoundsOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-     */
     boolean hasBodyDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGBodyDef getBodyDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGBodyDefOrBuilder getBodyDefOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-     */
     boolean hasFixtureDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGFixtureDef getFixtureDef();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGFixtureDefOrBuilder getFixtureDefOrBuilder();
-
+    
     // repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     java.util.List<com.laex.cg2d.protobuf.GameObject.CGJoint> 
         getJointsList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGJoint getJoints(int index);
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     int getJointsCount();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGJointOrBuilder> 
         getJointsOrBuilderList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGJointOrBuilder getJointsOrBuilder(
         int index);
-
+    
     // optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-     */
     boolean hasEntityRefFile();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGResourceFile getEntityRefFile();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getEntityRefFileOrBuilder();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGShape}
-   */
   public static final class CGShape extends
       com.google.protobuf.GeneratedMessage
       implements CGShapeOrBuilder {
     // Use CGShape.newBuilder() to construct.
-    private CGShape(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGShape(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGShape(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGShape(boolean noInit) {}
+    
     private static final CGShape defaultInstance;
     public static CGShape getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGShape getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGShape(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readBytes();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              visible_ = input.readBool();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              locked_ = input.readBool();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              background_ = input.readBool();
-              break;
-            }
-            case 42: {
-              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                subBuilder = backgroundResourceFile_.toBuilder();
-              }
-              backgroundResourceFile_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGResourceFile.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(backgroundResourceFile_);
-                backgroundResourceFile_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000010;
-              break;
-            }
-            case 48: {
-              int rawValue = input.readEnum();
-              com.laex.cg2d.protobuf.GameObject.CGEditorShapeType value = com.laex.cg2d.protobuf.GameObject.CGEditorShapeType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(6, rawValue);
-              } else {
-                bitField0_ |= 0x00000020;
-                editorShapeType_ = value;
-              }
-              break;
-            }
-            case 58: {
-              com.laex.cg2d.protobuf.GameObject.CGBounds.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000040) == 0x00000040)) {
-                subBuilder = bounds_.toBuilder();
-              }
-              bounds_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGBounds.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(bounds_);
-                bounds_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000040;
-              break;
-            }
-            case 66: {
-              com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000080) == 0x00000080)) {
-                subBuilder = bodyDef_.toBuilder();
-              }
-              bodyDef_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGBodyDef.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(bodyDef_);
-                bodyDef_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000080;
-              break;
-            }
-            case 74: {
-              com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000100) == 0x00000100)) {
-                subBuilder = fixtureDef_.toBuilder();
-              }
-              fixtureDef_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGFixtureDef.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(fixtureDef_);
-                fixtureDef_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000100;
-              break;
-            }
-            case 82: {
-              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
-                joints_ = new java.util.ArrayList<com.laex.cg2d.protobuf.GameObject.CGJoint>();
-                mutable_bitField0_ |= 0x00000200;
-              }
-              joints_.add(input.readMessage(com.laex.cg2d.protobuf.GameObject.CGJoint.PARSER, extensionRegistry));
-              break;
-            }
-            case 90: {
-              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000200) == 0x00000200)) {
-                subBuilder = entityRefFile_.toBuilder();
-              }
-              entityRefFile_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGResourceFile.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(entityRefFile_);
-                entityRefFile_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000200;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
-          joints_ = java.util.Collections.unmodifiableList(joints_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGShape_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGShape_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGShape.class, com.laex.cg2d.protobuf.GameObject.CGShape.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGShape_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGShape> PARSER =
-        new com.google.protobuf.AbstractParser<CGShape>() {
-      public CGShape parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGShape(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGShape> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional string id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private java.lang.Object id_;
-    /**
-     * <code>optional string id = 1;</code>
-     */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public java.lang.String getId() {
+    public String getId() {
       java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
           id_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string id = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIdBytes() {
+    private com.google.protobuf.ByteString getIdBytes() {
       java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
         id_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional bool visible = 2;
     public static final int VISIBLE_FIELD_NUMBER = 2;
     private boolean visible_;
-    /**
-     * <code>optional bool visible = 2;</code>
-     */
     public boolean hasVisible() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional bool visible = 2;</code>
-     */
     public boolean getVisible() {
       return visible_;
     }
-
+    
     // optional bool locked = 3;
     public static final int LOCKED_FIELD_NUMBER = 3;
     private boolean locked_;
-    /**
-     * <code>optional bool locked = 3;</code>
-     */
     public boolean hasLocked() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional bool locked = 3;</code>
-     */
     public boolean getLocked() {
       return locked_;
     }
-
+    
     // optional bool background = 4;
     public static final int BACKGROUND_FIELD_NUMBER = 4;
     private boolean background_;
-    /**
-     * <code>optional bool background = 4;</code>
-     */
     public boolean hasBackground() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional bool background = 4;</code>
-     */
     public boolean getBackground() {
       return background_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;
     public static final int BACKGROUNDRESOURCEFILE_FIELD_NUMBER = 5;
     private com.laex.cg2d.protobuf.GameObject.CGResourceFile backgroundResourceFile_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-     */
     public boolean hasBackgroundResourceFile() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGResourceFile getBackgroundResourceFile() {
       return backgroundResourceFile_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getBackgroundResourceFileOrBuilder() {
       return backgroundResourceFile_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;
     public static final int EDITORSHAPETYPE_FIELD_NUMBER = 6;
     private com.laex.cg2d.protobuf.GameObject.CGEditorShapeType editorShapeType_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;</code>
-     */
     public boolean hasEditorShapeType() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGEditorShapeType getEditorShapeType() {
       return editorShapeType_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;
     public static final int BOUNDS_FIELD_NUMBER = 7;
     private com.laex.cg2d.protobuf.GameObject.CGBounds bounds_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-     */
     public boolean hasBounds() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGBounds getBounds() {
       return bounds_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGBoundsOrBuilder getBoundsOrBuilder() {
       return bounds_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;
     public static final int BODYDEF_FIELD_NUMBER = 8;
     private com.laex.cg2d.protobuf.GameObject.CGBodyDef bodyDef_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-     */
     public boolean hasBodyDef() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGBodyDef getBodyDef() {
       return bodyDef_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGBodyDefOrBuilder getBodyDefOrBuilder() {
       return bodyDef_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;
     public static final int FIXTUREDEF_FIELD_NUMBER = 9;
     private com.laex.cg2d.protobuf.GameObject.CGFixtureDef fixtureDef_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-     */
     public boolean hasFixtureDef() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGFixtureDef getFixtureDef() {
       return fixtureDef_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGFixtureDefOrBuilder getFixtureDefOrBuilder() {
       return fixtureDef_;
     }
-
+    
     // repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;
     public static final int JOINTS_FIELD_NUMBER = 10;
     private java.util.List<com.laex.cg2d.protobuf.GameObject.CGJoint> joints_;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     public java.util.List<com.laex.cg2d.protobuf.GameObject.CGJoint> getJointsList() {
       return joints_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGJointOrBuilder> 
         getJointsOrBuilderList() {
       return joints_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     public int getJointsCount() {
       return joints_.size();
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGJoint getJoints(int index) {
       return joints_.get(index);
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGJointOrBuilder getJointsOrBuilder(
         int index) {
       return joints_.get(index);
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;
     public static final int ENTITYREFFILE_FIELD_NUMBER = 11;
     private com.laex.cg2d.protobuf.GameObject.CGResourceFile entityRefFile_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-     */
     public boolean hasEntityRefFile() {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGResourceFile getEntityRefFile() {
       return entityRefFile_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getEntityRefFileOrBuilder() {
       return entityRefFile_;
     }
-
+    
     private void initFields() {
       id_ = "";
       visible_ = false;
@@ -16486,7 +12523,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (hasBodyDef()) {
         if (!getBodyDef().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -16502,7 +12539,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -16541,12 +12578,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -16596,83 +12633,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGShape parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGShape prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGShape}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGShapeOrBuilder {
@@ -16680,21 +12728,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGShape_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGShape_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGShape.class, com.laex.cg2d.protobuf.GameObject.CGShape.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGShape_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGShape.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -16711,7 +12756,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         id_ = "";
@@ -16762,20 +12807,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGShape_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGShape.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGShape getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGShape.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGShape build() {
         com.laex.cg2d.protobuf.GameObject.CGShape result = buildPartial();
         if (!result.isInitialized()) {
@@ -16783,7 +12828,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGShape buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGShape result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGShape buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGShape result = new com.laex.cg2d.protobuf.GameObject.CGShape(this);
         int from_bitField0_ = bitField0_;
@@ -16861,7 +12916,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGShape) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGShape)other);
@@ -16870,13 +12925,11 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGShape other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGShape.getDefaultInstance()) return this;
         if (other.hasId()) {
-          bitField0_ |= 0x00000001;
-          id_ = other.id_;
-          onChanged();
+          setId(other.getId());
         }
         if (other.hasVisible()) {
           setVisible(other.getVisible());
@@ -16934,7 +12987,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (hasBodyDef()) {
           if (!getBodyDef().isInitialized()) {
@@ -16950,69 +13003,134 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGShape parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGShape) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              visible_ = input.readBool();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              locked_ = input.readBool();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              background_ = input.readBool();
+              break;
+            }
+            case 42: {
+              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGResourceFile.newBuilder();
+              if (hasBackgroundResourceFile()) {
+                subBuilder.mergeFrom(getBackgroundResourceFile());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setBackgroundResourceFile(subBuilder.buildPartial());
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+              com.laex.cg2d.protobuf.GameObject.CGEditorShapeType value = com.laex.cg2d.protobuf.GameObject.CGEditorShapeType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(6, rawValue);
+              } else {
+                bitField0_ |= 0x00000020;
+                editorShapeType_ = value;
+              }
+              break;
+            }
+            case 58: {
+              com.laex.cg2d.protobuf.GameObject.CGBounds.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGBounds.newBuilder();
+              if (hasBounds()) {
+                subBuilder.mergeFrom(getBounds());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setBounds(subBuilder.buildPartial());
+              break;
+            }
+            case 66: {
+              com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGBodyDef.newBuilder();
+              if (hasBodyDef()) {
+                subBuilder.mergeFrom(getBodyDef());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setBodyDef(subBuilder.buildPartial());
+              break;
+            }
+            case 74: {
+              com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGFixtureDef.newBuilder();
+              if (hasFixtureDef()) {
+                subBuilder.mergeFrom(getFixtureDef());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFixtureDef(subBuilder.buildPartial());
+              break;
+            }
+            case 82: {
+              com.laex.cg2d.protobuf.GameObject.CGJoint.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGJoint.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addJoints(subBuilder.buildPartial());
+              break;
+            }
+            case 90: {
+              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGResourceFile.newBuilder();
+              if (hasEntityRefFile()) {
+                subBuilder.mergeFrom(getEntityRefFile());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setEntityRefFile(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional string id = 1;
       private java.lang.Object id_ = "";
-      /**
-       * <code>optional string id = 1;</code>
-       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public java.lang.String getId() {
+      public String getId() {
         java.lang.Object ref = id_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           id_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
-        java.lang.Object ref = id_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          id_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public Builder setId(
-          java.lang.String value) {
+      public Builder setId(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -17021,141 +13139,88 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string id = 1;</code>
-       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string id = 1;</code>
-       */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      void setId(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional bool visible = 2;
       private boolean visible_ ;
-      /**
-       * <code>optional bool visible = 2;</code>
-       */
       public boolean hasVisible() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional bool visible = 2;</code>
-       */
       public boolean getVisible() {
         return visible_;
       }
-      /**
-       * <code>optional bool visible = 2;</code>
-       */
       public Builder setVisible(boolean value) {
         bitField0_ |= 0x00000002;
         visible_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool visible = 2;</code>
-       */
       public Builder clearVisible() {
         bitField0_ = (bitField0_ & ~0x00000002);
         visible_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional bool locked = 3;
       private boolean locked_ ;
-      /**
-       * <code>optional bool locked = 3;</code>
-       */
       public boolean hasLocked() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional bool locked = 3;</code>
-       */
       public boolean getLocked() {
         return locked_;
       }
-      /**
-       * <code>optional bool locked = 3;</code>
-       */
       public Builder setLocked(boolean value) {
         bitField0_ |= 0x00000004;
         locked_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool locked = 3;</code>
-       */
       public Builder clearLocked() {
         bitField0_ = (bitField0_ & ~0x00000004);
         locked_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional bool background = 4;
       private boolean background_ ;
-      /**
-       * <code>optional bool background = 4;</code>
-       */
       public boolean hasBackground() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional bool background = 4;</code>
-       */
       public boolean getBackground() {
         return background_;
       }
-      /**
-       * <code>optional bool background = 4;</code>
-       */
       public Builder setBackground(boolean value) {
         bitField0_ |= 0x00000008;
         background_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool background = 4;</code>
-       */
       public Builder clearBackground() {
         bitField0_ = (bitField0_ & ~0x00000008);
         background_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;
       private com.laex.cg2d.protobuf.GameObject.CGResourceFile backgroundResourceFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGResourceFile, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder, com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder> backgroundResourceFileBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       public boolean hasBackgroundResourceFile() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile getBackgroundResourceFile() {
         if (backgroundResourceFileBuilder_ == null) {
           return backgroundResourceFile_;
@@ -17163,9 +13228,6 @@ public final class GameObject {
           return backgroundResourceFileBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       public Builder setBackgroundResourceFile(com.laex.cg2d.protobuf.GameObject.CGResourceFile value) {
         if (backgroundResourceFileBuilder_ == null) {
           if (value == null) {
@@ -17179,9 +13241,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       public Builder setBackgroundResourceFile(
           com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder builderForValue) {
         if (backgroundResourceFileBuilder_ == null) {
@@ -17193,9 +13252,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       public Builder mergeBackgroundResourceFile(com.laex.cg2d.protobuf.GameObject.CGResourceFile value) {
         if (backgroundResourceFileBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
@@ -17212,9 +13268,6 @@ public final class GameObject {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       public Builder clearBackgroundResourceFile() {
         if (backgroundResourceFileBuilder_ == null) {
           backgroundResourceFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
@@ -17225,17 +13278,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder getBackgroundResourceFileBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
         return getBackgroundResourceFileFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getBackgroundResourceFileOrBuilder() {
         if (backgroundResourceFileBuilder_ != null) {
           return backgroundResourceFileBuilder_.getMessageOrBuilder();
@@ -17243,9 +13290,6 @@ public final class GameObject {
           return backgroundResourceFile_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile backgroundResourceFile = 5;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGResourceFile, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder, com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder> 
           getBackgroundResourceFileFieldBuilder() {
@@ -17259,24 +13303,15 @@ public final class GameObject {
         }
         return backgroundResourceFileBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;
       private com.laex.cg2d.protobuf.GameObject.CGEditorShapeType editorShapeType_ = com.laex.cg2d.protobuf.GameObject.CGEditorShapeType.SIMPLE_SHAPE_CIRCLE;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;</code>
-       */
       public boolean hasEditorShapeType() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGEditorShapeType getEditorShapeType() {
         return editorShapeType_;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;</code>
-       */
       public Builder setEditorShapeType(com.laex.cg2d.protobuf.GameObject.CGEditorShapeType value) {
         if (value == null) {
           throw new NullPointerException();
@@ -17286,29 +13321,20 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGEditorShapeType editorShapeType = 6;</code>
-       */
       public Builder clearEditorShapeType() {
         bitField0_ = (bitField0_ & ~0x00000020);
         editorShapeType_ = com.laex.cg2d.protobuf.GameObject.CGEditorShapeType.SIMPLE_SHAPE_CIRCLE;
         onChanged();
         return this;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;
       private com.laex.cg2d.protobuf.GameObject.CGBounds bounds_ = com.laex.cg2d.protobuf.GameObject.CGBounds.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGBounds, com.laex.cg2d.protobuf.GameObject.CGBounds.Builder, com.laex.cg2d.protobuf.GameObject.CGBoundsOrBuilder> boundsBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       public boolean hasBounds() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGBounds getBounds() {
         if (boundsBuilder_ == null) {
           return bounds_;
@@ -17316,9 +13342,6 @@ public final class GameObject {
           return boundsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       public Builder setBounds(com.laex.cg2d.protobuf.GameObject.CGBounds value) {
         if (boundsBuilder_ == null) {
           if (value == null) {
@@ -17332,9 +13355,6 @@ public final class GameObject {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       public Builder setBounds(
           com.laex.cg2d.protobuf.GameObject.CGBounds.Builder builderForValue) {
         if (boundsBuilder_ == null) {
@@ -17346,9 +13366,6 @@ public final class GameObject {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       public Builder mergeBounds(com.laex.cg2d.protobuf.GameObject.CGBounds value) {
         if (boundsBuilder_ == null) {
           if (((bitField0_ & 0x00000040) == 0x00000040) &&
@@ -17365,9 +13382,6 @@ public final class GameObject {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       public Builder clearBounds() {
         if (boundsBuilder_ == null) {
           bounds_ = com.laex.cg2d.protobuf.GameObject.CGBounds.getDefaultInstance();
@@ -17378,17 +13392,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGBounds.Builder getBoundsBuilder() {
         bitField0_ |= 0x00000040;
         onChanged();
         return getBoundsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGBoundsOrBuilder getBoundsOrBuilder() {
         if (boundsBuilder_ != null) {
           return boundsBuilder_.getMessageOrBuilder();
@@ -17396,9 +13404,6 @@ public final class GameObject {
           return bounds_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBounds bounds = 7;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGBounds, com.laex.cg2d.protobuf.GameObject.CGBounds.Builder, com.laex.cg2d.protobuf.GameObject.CGBoundsOrBuilder> 
           getBoundsFieldBuilder() {
@@ -17412,20 +13417,14 @@ public final class GameObject {
         }
         return boundsBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;
       private com.laex.cg2d.protobuf.GameObject.CGBodyDef bodyDef_ = com.laex.cg2d.protobuf.GameObject.CGBodyDef.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGBodyDef, com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder, com.laex.cg2d.protobuf.GameObject.CGBodyDefOrBuilder> bodyDefBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       public boolean hasBodyDef() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGBodyDef getBodyDef() {
         if (bodyDefBuilder_ == null) {
           return bodyDef_;
@@ -17433,9 +13432,6 @@ public final class GameObject {
           return bodyDefBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       public Builder setBodyDef(com.laex.cg2d.protobuf.GameObject.CGBodyDef value) {
         if (bodyDefBuilder_ == null) {
           if (value == null) {
@@ -17449,9 +13445,6 @@ public final class GameObject {
         bitField0_ |= 0x00000080;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       public Builder setBodyDef(
           com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder builderForValue) {
         if (bodyDefBuilder_ == null) {
@@ -17463,9 +13456,6 @@ public final class GameObject {
         bitField0_ |= 0x00000080;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       public Builder mergeBodyDef(com.laex.cg2d.protobuf.GameObject.CGBodyDef value) {
         if (bodyDefBuilder_ == null) {
           if (((bitField0_ & 0x00000080) == 0x00000080) &&
@@ -17482,9 +13472,6 @@ public final class GameObject {
         bitField0_ |= 0x00000080;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       public Builder clearBodyDef() {
         if (bodyDefBuilder_ == null) {
           bodyDef_ = com.laex.cg2d.protobuf.GameObject.CGBodyDef.getDefaultInstance();
@@ -17495,17 +13482,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder getBodyDefBuilder() {
         bitField0_ |= 0x00000080;
         onChanged();
         return getBodyDefFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGBodyDefOrBuilder getBodyDefOrBuilder() {
         if (bodyDefBuilder_ != null) {
           return bodyDefBuilder_.getMessageOrBuilder();
@@ -17513,9 +13494,6 @@ public final class GameObject {
           return bodyDef_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGBodyDef bodyDef = 8;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGBodyDef, com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder, com.laex.cg2d.protobuf.GameObject.CGBodyDefOrBuilder> 
           getBodyDefFieldBuilder() {
@@ -17529,20 +13507,14 @@ public final class GameObject {
         }
         return bodyDefBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;
       private com.laex.cg2d.protobuf.GameObject.CGFixtureDef fixtureDef_ = com.laex.cg2d.protobuf.GameObject.CGFixtureDef.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGFixtureDef, com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder, com.laex.cg2d.protobuf.GameObject.CGFixtureDefOrBuilder> fixtureDefBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       public boolean hasFixtureDef() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFixtureDef getFixtureDef() {
         if (fixtureDefBuilder_ == null) {
           return fixtureDef_;
@@ -17550,9 +13522,6 @@ public final class GameObject {
           return fixtureDefBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       public Builder setFixtureDef(com.laex.cg2d.protobuf.GameObject.CGFixtureDef value) {
         if (fixtureDefBuilder_ == null) {
           if (value == null) {
@@ -17566,9 +13535,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       public Builder setFixtureDef(
           com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder builderForValue) {
         if (fixtureDefBuilder_ == null) {
@@ -17580,9 +13546,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       public Builder mergeFixtureDef(com.laex.cg2d.protobuf.GameObject.CGFixtureDef value) {
         if (fixtureDefBuilder_ == null) {
           if (((bitField0_ & 0x00000100) == 0x00000100) &&
@@ -17599,9 +13562,6 @@ public final class GameObject {
         bitField0_ |= 0x00000100;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       public Builder clearFixtureDef() {
         if (fixtureDefBuilder_ == null) {
           fixtureDef_ = com.laex.cg2d.protobuf.GameObject.CGFixtureDef.getDefaultInstance();
@@ -17612,17 +13572,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder getFixtureDefBuilder() {
         bitField0_ |= 0x00000100;
         onChanged();
         return getFixtureDefFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGFixtureDefOrBuilder getFixtureDefOrBuilder() {
         if (fixtureDefBuilder_ != null) {
           return fixtureDefBuilder_.getMessageOrBuilder();
@@ -17630,9 +13584,6 @@ public final class GameObject {
           return fixtureDef_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGFixtureDef fixtureDef = 9;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGFixtureDef, com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder, com.laex.cg2d.protobuf.GameObject.CGFixtureDefOrBuilder> 
           getFixtureDefFieldBuilder() {
@@ -17646,7 +13597,7 @@ public final class GameObject {
         }
         return fixtureDefBuilder_;
       }
-
+      
       // repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;
       private java.util.List<com.laex.cg2d.protobuf.GameObject.CGJoint> joints_ =
         java.util.Collections.emptyList();
@@ -17656,13 +13607,10 @@ public final class GameObject {
           bitField0_ |= 0x00000200;
          }
       }
-
+      
       private com.google.protobuf.RepeatedFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGJoint, com.laex.cg2d.protobuf.GameObject.CGJoint.Builder, com.laex.cg2d.protobuf.GameObject.CGJointOrBuilder> jointsBuilder_;
-
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
+      
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGJoint> getJointsList() {
         if (jointsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(joints_);
@@ -17670,9 +13618,6 @@ public final class GameObject {
           return jointsBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public int getJointsCount() {
         if (jointsBuilder_ == null) {
           return joints_.size();
@@ -17680,9 +13625,6 @@ public final class GameObject {
           return jointsBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGJoint getJoints(int index) {
         if (jointsBuilder_ == null) {
           return joints_.get(index);
@@ -17690,9 +13632,6 @@ public final class GameObject {
           return jointsBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder setJoints(
           int index, com.laex.cg2d.protobuf.GameObject.CGJoint value) {
         if (jointsBuilder_ == null) {
@@ -17707,9 +13646,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder setJoints(
           int index, com.laex.cg2d.protobuf.GameObject.CGJoint.Builder builderForValue) {
         if (jointsBuilder_ == null) {
@@ -17721,9 +13657,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder addJoints(com.laex.cg2d.protobuf.GameObject.CGJoint value) {
         if (jointsBuilder_ == null) {
           if (value == null) {
@@ -17737,9 +13670,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder addJoints(
           int index, com.laex.cg2d.protobuf.GameObject.CGJoint value) {
         if (jointsBuilder_ == null) {
@@ -17754,9 +13684,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder addJoints(
           com.laex.cg2d.protobuf.GameObject.CGJoint.Builder builderForValue) {
         if (jointsBuilder_ == null) {
@@ -17768,9 +13695,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder addJoints(
           int index, com.laex.cg2d.protobuf.GameObject.CGJoint.Builder builderForValue) {
         if (jointsBuilder_ == null) {
@@ -17782,9 +13706,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder addAllJoints(
           java.lang.Iterable<? extends com.laex.cg2d.protobuf.GameObject.CGJoint> values) {
         if (jointsBuilder_ == null) {
@@ -17796,9 +13717,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder clearJoints() {
         if (jointsBuilder_ == null) {
           joints_ = java.util.Collections.emptyList();
@@ -17809,9 +13727,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public Builder removeJoints(int index) {
         if (jointsBuilder_ == null) {
           ensureJointsIsMutable();
@@ -17822,16 +13737,10 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGJoint.Builder getJointsBuilder(
           int index) {
         return getJointsFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGJointOrBuilder getJointsOrBuilder(
           int index) {
         if (jointsBuilder_ == null) {
@@ -17839,9 +13748,6 @@ public final class GameObject {
           return jointsBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGJointOrBuilder> 
            getJointsOrBuilderList() {
         if (jointsBuilder_ != null) {
@@ -17850,24 +13756,15 @@ public final class GameObject {
           return java.util.Collections.unmodifiableList(joints_);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGJoint.Builder addJointsBuilder() {
         return getJointsFieldBuilder().addBuilder(
             com.laex.cg2d.protobuf.GameObject.CGJoint.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGJoint.Builder addJointsBuilder(
           int index) {
         return getJointsFieldBuilder().addBuilder(
             index, com.laex.cg2d.protobuf.GameObject.CGJoint.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGJoint joints = 10;</code>
-       */
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGJoint.Builder> 
            getJointsBuilderList() {
         return getJointsFieldBuilder().getBuilderList();
@@ -17886,20 +13783,14 @@ public final class GameObject {
         }
         return jointsBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;
       private com.laex.cg2d.protobuf.GameObject.CGResourceFile entityRefFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGResourceFile, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder, com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder> entityRefFileBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       public boolean hasEntityRefFile() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile getEntityRefFile() {
         if (entityRefFileBuilder_ == null) {
           return entityRefFile_;
@@ -17907,9 +13798,6 @@ public final class GameObject {
           return entityRefFileBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       public Builder setEntityRefFile(com.laex.cg2d.protobuf.GameObject.CGResourceFile value) {
         if (entityRefFileBuilder_ == null) {
           if (value == null) {
@@ -17923,9 +13811,6 @@ public final class GameObject {
         bitField0_ |= 0x00000400;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       public Builder setEntityRefFile(
           com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder builderForValue) {
         if (entityRefFileBuilder_ == null) {
@@ -17937,9 +13822,6 @@ public final class GameObject {
         bitField0_ |= 0x00000400;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       public Builder mergeEntityRefFile(com.laex.cg2d.protobuf.GameObject.CGResourceFile value) {
         if (entityRefFileBuilder_ == null) {
           if (((bitField0_ & 0x00000400) == 0x00000400) &&
@@ -17956,9 +13838,6 @@ public final class GameObject {
         bitField0_ |= 0x00000400;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       public Builder clearEntityRefFile() {
         if (entityRefFileBuilder_ == null) {
           entityRefFile_ = com.laex.cg2d.protobuf.GameObject.CGResourceFile.getDefaultInstance();
@@ -17969,17 +13848,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder getEntityRefFileBuilder() {
         bitField0_ |= 0x00000400;
         onChanged();
         return getEntityRefFileFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder getEntityRefFileOrBuilder() {
         if (entityRefFileBuilder_ != null) {
           return entityRefFileBuilder_.getMessageOrBuilder();
@@ -17987,9 +13860,6 @@ public final class GameObject {
           return entityRefFile_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGResourceFile entityRefFile = 11;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGResourceFile, com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder, com.laex.cg2d.protobuf.GameObject.CGResourceFileOrBuilder> 
           getEntityRefFileFieldBuilder() {
@@ -18003,340 +13873,159 @@ public final class GameObject {
         }
         return entityRefFileBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGShape)
     }
-
+    
     static {
       defaultInstance = new CGShape(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGShape)
   }
-
+  
   public interface CGLayerOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional int32 id = 1;
-    /**
-     * <code>optional int32 id = 1;</code>
-     */
     boolean hasId();
-    /**
-     * <code>optional int32 id = 1;</code>
-     */
     int getId();
-
+    
     // optional string name = 2;
-    /**
-     * <code>optional string name = 2;</code>
-     */
     boolean hasName();
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    java.lang.String getName();
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
+    String getName();
+    
     // optional bool visible = 3;
-    /**
-     * <code>optional bool visible = 3;</code>
-     */
     boolean hasVisible();
-    /**
-     * <code>optional bool visible = 3;</code>
-     */
     boolean getVisible();
-
+    
     // optional bool locked = 4;
-    /**
-     * <code>optional bool locked = 4;</code>
-     */
     boolean hasLocked();
-    /**
-     * <code>optional bool locked = 4;</code>
-     */
     boolean getLocked();
-
+    
     // repeated .com.laex.cg2d.protobuf.CGShape shape = 5;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     java.util.List<com.laex.cg2d.protobuf.GameObject.CGShape> 
         getShapeList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGShape getShape(int index);
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     int getShapeCount();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGShapeOrBuilder> 
         getShapeOrBuilderList();
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGShapeOrBuilder getShapeOrBuilder(
         int index);
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGLayer}
-   */
   public static final class CGLayer extends
       com.google.protobuf.GeneratedMessage
       implements CGLayerOrBuilder {
     // Use CGLayer.newBuilder() to construct.
-    private CGLayer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGLayer(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGLayer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGLayer(boolean noInit) {}
+    
     private static final CGLayer defaultInstance;
     public static CGLayer getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGLayer getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGLayer(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              name_ = input.readBytes();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              visible_ = input.readBool();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              locked_ = input.readBool();
-              break;
-            }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                shape_ = new java.util.ArrayList<com.laex.cg2d.protobuf.GameObject.CGShape>();
-                mutable_bitField0_ |= 0x00000010;
-              }
-              shape_.add(input.readMessage(com.laex.cg2d.protobuf.GameObject.CGShape.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-          shape_ = java.util.Collections.unmodifiableList(shape_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGLayer_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGLayer_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGLayer.class, com.laex.cg2d.protobuf.GameObject.CGLayer.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGLayer_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGLayer> PARSER =
-        new com.google.protobuf.AbstractParser<CGLayer>() {
-      public CGLayer parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGLayer(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGLayer> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional int32 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
-    /**
-     * <code>optional int32 id = 1;</code>
-     */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional int32 id = 1;</code>
-     */
     public int getId() {
       return id_;
     }
-
+    
     // optional string name = 2;
     public static final int NAME_FIELD_NUMBER = 2;
     private java.lang.Object name_;
-    /**
-     * <code>optional string name = 2;</code>
-     */
     public boolean hasName() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    public java.lang.String getName() {
+    public String getName() {
       java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
           name_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
+    private com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
         name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional bool visible = 3;
     public static final int VISIBLE_FIELD_NUMBER = 3;
     private boolean visible_;
-    /**
-     * <code>optional bool visible = 3;</code>
-     */
     public boolean hasVisible() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional bool visible = 3;</code>
-     */
     public boolean getVisible() {
       return visible_;
     }
-
+    
     // optional bool locked = 4;
     public static final int LOCKED_FIELD_NUMBER = 4;
     private boolean locked_;
-    /**
-     * <code>optional bool locked = 4;</code>
-     */
     public boolean hasLocked() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional bool locked = 4;</code>
-     */
     public boolean getLocked() {
       return locked_;
     }
-
+    
     // repeated .com.laex.cg2d.protobuf.CGShape shape = 5;
     public static final int SHAPE_FIELD_NUMBER = 5;
     private java.util.List<com.laex.cg2d.protobuf.GameObject.CGShape> shape_;
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     public java.util.List<com.laex.cg2d.protobuf.GameObject.CGShape> getShapeList() {
       return shape_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGShapeOrBuilder> 
         getShapeOrBuilderList() {
       return shape_;
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     public int getShapeCount() {
       return shape_.size();
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGShape getShape(int index) {
       return shape_.get(index);
     }
-    /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGShapeOrBuilder getShapeOrBuilder(
         int index) {
       return shape_.get(index);
     }
-
+    
     private void initFields() {
       id_ = 0;
       name_ = "";
@@ -18348,7 +14037,7 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       for (int i = 0; i < getShapeCount(); i++) {
         if (!getShape(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -18358,7 +14047,7 @@ public final class GameObject {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -18379,12 +14068,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -18410,83 +14099,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGLayer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGLayer prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGLayer}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGLayerOrBuilder {
@@ -18494,21 +14194,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGLayer_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGLayer_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGLayer.class, com.laex.cg2d.protobuf.GameObject.CGLayer.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGLayer_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGLayer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -18520,7 +14217,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         id_ = 0;
@@ -18539,20 +14236,20 @@ public final class GameObject {
         }
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGLayer_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGLayer.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGLayer getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGLayer.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGLayer build() {
         com.laex.cg2d.protobuf.GameObject.CGLayer result = buildPartial();
         if (!result.isInitialized()) {
@@ -18560,7 +14257,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGLayer buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGLayer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGLayer buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGLayer result = new com.laex.cg2d.protobuf.GameObject.CGLayer(this);
         int from_bitField0_ = bitField0_;
@@ -18594,7 +14301,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGLayer) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGLayer)other);
@@ -18603,16 +14310,14 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGLayer other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGLayer.getDefaultInstance()) return this;
         if (other.hasId()) {
           setId(other.getId());
         }
         if (other.hasName()) {
-          bitField0_ |= 0x00000002;
-          name_ = other.name_;
-          onChanged();
+          setName(other.getName());
         }
         if (other.hasVisible()) {
           setVisible(other.getVisible());
@@ -18649,7 +14354,7 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         for (int i = 0; i < getShapeCount(); i++) {
           if (!getShape(i).isInitialized()) {
@@ -18659,102 +14364,99 @@ public final class GameObject {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGLayer parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGLayer) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              name_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              visible_ = input.readBool();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              locked_ = input.readBool();
+              break;
+            }
+            case 42: {
+              com.laex.cg2d.protobuf.GameObject.CGShape.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGShape.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addShape(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional int32 id = 1;
       private int id_ ;
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
       public int getId() {
         return id_;
       }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
       public Builder setId(int value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional string name = 2;
       private java.lang.Object name_ = "";
-      /**
-       * <code>optional string name = 2;</code>
-       */
       public boolean hasName() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public java.lang.String getName() {
+      public String getName() {
         java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           name_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
+      public Builder setName(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -18763,95 +14465,60 @@ public final class GameObject {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string name = 2;</code>
-       */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000002);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+      void setName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
         name_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional bool visible = 3;
       private boolean visible_ ;
-      /**
-       * <code>optional bool visible = 3;</code>
-       */
       public boolean hasVisible() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional bool visible = 3;</code>
-       */
       public boolean getVisible() {
         return visible_;
       }
-      /**
-       * <code>optional bool visible = 3;</code>
-       */
       public Builder setVisible(boolean value) {
         bitField0_ |= 0x00000004;
         visible_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool visible = 3;</code>
-       */
       public Builder clearVisible() {
         bitField0_ = (bitField0_ & ~0x00000004);
         visible_ = false;
         onChanged();
         return this;
       }
-
+      
       // optional bool locked = 4;
       private boolean locked_ ;
-      /**
-       * <code>optional bool locked = 4;</code>
-       */
       public boolean hasLocked() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional bool locked = 4;</code>
-       */
       public boolean getLocked() {
         return locked_;
       }
-      /**
-       * <code>optional bool locked = 4;</code>
-       */
       public Builder setLocked(boolean value) {
         bitField0_ |= 0x00000008;
         locked_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional bool locked = 4;</code>
-       */
       public Builder clearLocked() {
         bitField0_ = (bitField0_ & ~0x00000008);
         locked_ = false;
         onChanged();
         return this;
       }
-
+      
       // repeated .com.laex.cg2d.protobuf.CGShape shape = 5;
       private java.util.List<com.laex.cg2d.protobuf.GameObject.CGShape> shape_ =
         java.util.Collections.emptyList();
@@ -18861,13 +14528,10 @@ public final class GameObject {
           bitField0_ |= 0x00000010;
          }
       }
-
+      
       private com.google.protobuf.RepeatedFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGShape, com.laex.cg2d.protobuf.GameObject.CGShape.Builder, com.laex.cg2d.protobuf.GameObject.CGShapeOrBuilder> shapeBuilder_;
-
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
+      
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGShape> getShapeList() {
         if (shapeBuilder_ == null) {
           return java.util.Collections.unmodifiableList(shape_);
@@ -18875,9 +14539,6 @@ public final class GameObject {
           return shapeBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public int getShapeCount() {
         if (shapeBuilder_ == null) {
           return shape_.size();
@@ -18885,9 +14546,6 @@ public final class GameObject {
           return shapeBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGShape getShape(int index) {
         if (shapeBuilder_ == null) {
           return shape_.get(index);
@@ -18895,9 +14553,6 @@ public final class GameObject {
           return shapeBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder setShape(
           int index, com.laex.cg2d.protobuf.GameObject.CGShape value) {
         if (shapeBuilder_ == null) {
@@ -18912,9 +14567,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder setShape(
           int index, com.laex.cg2d.protobuf.GameObject.CGShape.Builder builderForValue) {
         if (shapeBuilder_ == null) {
@@ -18926,9 +14578,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder addShape(com.laex.cg2d.protobuf.GameObject.CGShape value) {
         if (shapeBuilder_ == null) {
           if (value == null) {
@@ -18942,9 +14591,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder addShape(
           int index, com.laex.cg2d.protobuf.GameObject.CGShape value) {
         if (shapeBuilder_ == null) {
@@ -18959,9 +14605,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder addShape(
           com.laex.cg2d.protobuf.GameObject.CGShape.Builder builderForValue) {
         if (shapeBuilder_ == null) {
@@ -18973,9 +14616,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder addShape(
           int index, com.laex.cg2d.protobuf.GameObject.CGShape.Builder builderForValue) {
         if (shapeBuilder_ == null) {
@@ -18987,9 +14627,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder addAllShape(
           java.lang.Iterable<? extends com.laex.cg2d.protobuf.GameObject.CGShape> values) {
         if (shapeBuilder_ == null) {
@@ -19001,9 +14638,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder clearShape() {
         if (shapeBuilder_ == null) {
           shape_ = java.util.Collections.emptyList();
@@ -19014,9 +14648,6 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public Builder removeShape(int index) {
         if (shapeBuilder_ == null) {
           ensureShapeIsMutable();
@@ -19027,16 +14658,10 @@ public final class GameObject {
         }
         return this;
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGShape.Builder getShapeBuilder(
           int index) {
         return getShapeFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGShapeOrBuilder getShapeOrBuilder(
           int index) {
         if (shapeBuilder_ == null) {
@@ -19044,9 +14669,6 @@ public final class GameObject {
           return shapeBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public java.util.List<? extends com.laex.cg2d.protobuf.GameObject.CGShapeOrBuilder> 
            getShapeOrBuilderList() {
         if (shapeBuilder_ != null) {
@@ -19055,24 +14677,15 @@ public final class GameObject {
           return java.util.Collections.unmodifiableList(shape_);
         }
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGShape.Builder addShapeBuilder() {
         return getShapeFieldBuilder().addBuilder(
             com.laex.cg2d.protobuf.GameObject.CGShape.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGShape.Builder addShapeBuilder(
           int index) {
         return getShapeFieldBuilder().addBuilder(
             index, com.laex.cg2d.protobuf.GameObject.CGShape.getDefaultInstance());
       }
-      /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGShape shape = 5;</code>
-       */
       public java.util.List<com.laex.cg2d.protobuf.GameObject.CGShape.Builder> 
            getShapeBuilderList() {
         return getShapeFieldBuilder().getBuilderList();
@@ -19091,313 +14704,542 @@ public final class GameObject {
         }
         return shapeBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGLayer)
     }
-
+    
     static {
       defaultInstance = new CGLayer(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGLayer)
   }
-
+  
   public interface CGScreenPreferencesOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
+    
     // optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-     */
     boolean hasDebugDrawPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences getDebugDrawPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-     */
     boolean hasWorldPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences getWorldPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferencesOrBuilder getWorldPrefsOrBuilder();
-
+    
     // optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-     */
     boolean hasCardPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences getCardPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-     */
     com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferencesOrBuilder getCardPrefsOrBuilder();
   }
-  /**
-   * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenPreferences}
-   */
   public static final class CGScreenPreferences extends
       com.google.protobuf.GeneratedMessage
       implements CGScreenPreferencesOrBuilder {
     // Use CGScreenPreferences.newBuilder() to construct.
-    private CGScreenPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private CGScreenPreferences(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private CGScreenPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private CGScreenPreferences(boolean noInit) {}
+    
     private static final CGScreenPreferences defaultInstance;
     public static CGScreenPreferences getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public CGScreenPreferences getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CGScreenPreferences(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = debugDrawPrefs_.toBuilder();
-              }
-              debugDrawPrefs_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(debugDrawPrefs_);
-                debugDrawPrefs_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-            case 18: {
-              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = worldPrefs_.toBuilder();
-              }
-              worldPrefs_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(worldPrefs_);
-                worldPrefs_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-            case 26: {
-              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = cardPrefs_.toBuilder();
-              }
-              cardPrefs_ = input.readMessage(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(cardPrefs_);
-                cardPrefs_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_descriptor;
     }
-
+    
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.class, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder.class);
+      return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_fieldAccessorTable;
     }
-
-    public static com.google.protobuf.Parser<CGScreenPreferences> PARSER =
-        new com.google.protobuf.AbstractParser<CGScreenPreferences>() {
-      public CGScreenPreferences parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGScreenPreferences(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CGScreenPreferences> getParserForType() {
-      return PARSER;
-    }
-
+    
     public interface DebugDrawPreferencesOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
-
+      
       // optional bool drawBodies = 1;
-      /**
-       * <code>optional bool drawBodies = 1;</code>
-       */
       boolean hasDrawBodies();
-      /**
-       * <code>optional bool drawBodies = 1;</code>
-       */
       boolean getDrawBodies();
-
+      
       // optional bool drawJoints = 2;
-      /**
-       * <code>optional bool drawJoints = 2;</code>
-       */
       boolean hasDrawJoints();
-      /**
-       * <code>optional bool drawJoints = 2;</code>
-       */
       boolean getDrawJoints();
-
+      
       // optional bool drawAABB = 3;
-      /**
-       * <code>optional bool drawAABB = 3;</code>
-       */
       boolean hasDrawAABB();
-      /**
-       * <code>optional bool drawAABB = 3;</code>
-       */
       boolean getDrawAABB();
-
+      
       // optional bool drawInactiveBodies = 4;
-      /**
-       * <code>optional bool drawInactiveBodies = 4;</code>
-       */
       boolean hasDrawInactiveBodies();
-      /**
-       * <code>optional bool drawInactiveBodies = 4;</code>
-       */
       boolean getDrawInactiveBodies();
-
+      
       // optional bool installMouseJoint = 5;
-      /**
-       * <code>optional bool installMouseJoint = 5;</code>
-       */
       boolean hasInstallMouseJoint();
-      /**
-       * <code>optional bool installMouseJoint = 5;</code>
-       */
       boolean getInstallMouseJoint();
-
+      
       // optional bool drawDebugData = 6;
-      /**
-       * <code>optional bool drawDebugData = 6;</code>
-       */
       boolean hasDrawDebugData();
-      /**
-       * <code>optional bool drawDebugData = 6;</code>
-       */
       boolean getDrawDebugData();
-
+      
       // optional bool drawEntities = 7;
-      /**
-       * <code>optional bool drawEntities = 7;</code>
-       */
       boolean hasDrawEntities();
-      /**
-       * <code>optional bool drawEntities = 7;</code>
-       */
       boolean getDrawEntities();
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences}
-     */
     public static final class DebugDrawPreferences extends
         com.google.protobuf.GeneratedMessage
         implements DebugDrawPreferencesOrBuilder {
       // Use DebugDrawPreferences.newBuilder() to construct.
-      private DebugDrawPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      private DebugDrawPreferences(Builder builder) {
         super(builder);
-        this.unknownFields = builder.getUnknownFields();
       }
-      private DebugDrawPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+      private DebugDrawPreferences(boolean noInit) {}
+      
       private static final DebugDrawPreferences defaultInstance;
       public static DebugDrawPreferences getDefaultInstance() {
         return defaultInstance;
       }
-
+      
       public DebugDrawPreferences getDefaultInstanceForType() {
         return defaultInstance;
       }
-
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
-        return this.unknownFields;
+      
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_descriptor;
       }
-      private DebugDrawPreferences(
-          com.google.protobuf.CodedInputStream input,
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable;
+      }
+      
+      private int bitField0_;
+      // optional bool drawBodies = 1;
+      public static final int DRAWBODIES_FIELD_NUMBER = 1;
+      private boolean drawBodies_;
+      public boolean hasDrawBodies() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public boolean getDrawBodies() {
+        return drawBodies_;
+      }
+      
+      // optional bool drawJoints = 2;
+      public static final int DRAWJOINTS_FIELD_NUMBER = 2;
+      private boolean drawJoints_;
+      public boolean hasDrawJoints() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public boolean getDrawJoints() {
+        return drawJoints_;
+      }
+      
+      // optional bool drawAABB = 3;
+      public static final int DRAWAABB_FIELD_NUMBER = 3;
+      private boolean drawAABB_;
+      public boolean hasDrawAABB() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public boolean getDrawAABB() {
+        return drawAABB_;
+      }
+      
+      // optional bool drawInactiveBodies = 4;
+      public static final int DRAWINACTIVEBODIES_FIELD_NUMBER = 4;
+      private boolean drawInactiveBodies_;
+      public boolean hasDrawInactiveBodies() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public boolean getDrawInactiveBodies() {
+        return drawInactiveBodies_;
+      }
+      
+      // optional bool installMouseJoint = 5;
+      public static final int INSTALLMOUSEJOINT_FIELD_NUMBER = 5;
+      private boolean installMouseJoint_;
+      public boolean hasInstallMouseJoint() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      public boolean getInstallMouseJoint() {
+        return installMouseJoint_;
+      }
+      
+      // optional bool drawDebugData = 6;
+      public static final int DRAWDEBUGDATA_FIELD_NUMBER = 6;
+      private boolean drawDebugData_;
+      public boolean hasDrawDebugData() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      public boolean getDrawDebugData() {
+        return drawDebugData_;
+      }
+      
+      // optional bool drawEntities = 7;
+      public static final int DRAWENTITIES_FIELD_NUMBER = 7;
+      private boolean drawEntities_;
+      public boolean hasDrawEntities() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      public boolean getDrawEntities() {
+        return drawEntities_;
+      }
+      
+      private void initFields() {
+        drawBodies_ = false;
+        drawJoints_ = false;
+        drawAABB_ = false;
+        drawInactiveBodies_ = false;
+        installMouseJoint_ = false;
+        drawDebugData_ = false;
+        drawEntities_ = false;
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+        
+        memoizedIsInitialized = 1;
+        return true;
+      }
+      
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeBool(1, drawBodies_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeBool(2, drawJoints_);
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          output.writeBool(3, drawAABB_);
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          output.writeBool(4, drawInactiveBodies_);
+        }
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          output.writeBool(5, installMouseJoint_);
+        }
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          output.writeBool(6, drawDebugData_);
+        }
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          output.writeBool(7, drawEntities_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+      
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+      
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(1, drawBodies_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(2, drawJoints_);
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(3, drawAABB_);
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(4, drawInactiveBodies_);
+        }
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(5, installMouseJoint_);
+        }
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(6, drawDebugData_);
+        }
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(7, drawEntities_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+      
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+      
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return newBuilder().mergeFrom(data).buildParsed();
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+          com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
+        return newBuilder().mergeFrom(data, extensionRegistry)
+                 .buildParsed();
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return newBuilder().mergeFrom(data).buildParsed();
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return newBuilder().mergeFrom(data, extensionRegistry)
+                 .buildParsed();
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return newBuilder().mergeFrom(input).buildParsed();
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return newBuilder().mergeFrom(input, extensionRegistry)
+                 .buildParsed();
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        Builder builder = newBuilder();
+        if (builder.mergeDelimitedFrom(input)) {
+          return builder.buildParsed();
+        } else {
+          return null;
+        }
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Builder builder = newBuilder();
+        if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+          return builder.buildParsed();
+        } else {
+          return null;
+        }
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return newBuilder().mergeFrom(input).buildParsed();
+      }
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return newBuilder().mergeFrom(input, extensionRegistry)
+                 .buildParsed();
+      }
+      
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+      
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferencesOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_descriptor;
+        }
+        
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable;
+        }
+        
+        // Construct using com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+        
+        private Builder(BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+        
+        public Builder clear() {
+          super.clear();
+          drawBodies_ = false;
+          bitField0_ = (bitField0_ & ~0x00000001);
+          drawJoints_ = false;
+          bitField0_ = (bitField0_ & ~0x00000002);
+          drawAABB_ = false;
+          bitField0_ = (bitField0_ & ~0x00000004);
+          drawInactiveBodies_ = false;
+          bitField0_ = (bitField0_ & ~0x00000008);
+          installMouseJoint_ = false;
+          bitField0_ = (bitField0_ & ~0x00000010);
+          drawDebugData_ = false;
+          bitField0_ = (bitField0_ & ~0x00000020);
+          drawEntities_ = false;
+          bitField0_ = (bitField0_ & ~0x00000040);
+          return this;
+        }
+        
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+        
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.getDescriptor();
+        }
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences getDefaultInstanceForType() {
+          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
+        }
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences build() {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+        
+        private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences buildParsed()
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(
+              result).asInvalidProtocolBufferException();
+          }
+          return result;
+        }
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences buildPartial() {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences result = new com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.drawBodies_ = drawBodies_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.drawJoints_ = drawJoints_;
+          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          result.drawAABB_ = drawAABB_;
+          if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+            to_bitField0_ |= 0x00000008;
+          }
+          result.drawInactiveBodies_ = drawInactiveBodies_;
+          if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+            to_bitField0_ |= 0x00000010;
+          }
+          result.installMouseJoint_ = installMouseJoint_;
+          if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+            to_bitField0_ |= 0x00000020;
+          }
+          result.drawDebugData_ = drawDebugData_;
+          if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+            to_bitField0_ |= 0x00000040;
+          }
+          result.drawEntities_ = drawEntities_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+        
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences) {
+            return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+        
+        public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences other) {
+          if (other == com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance()) return this;
+          if (other.hasDrawBodies()) {
+            setDrawBodies(other.getDrawBodies());
+          }
+          if (other.hasDrawJoints()) {
+            setDrawJoints(other.getDrawJoints());
+          }
+          if (other.hasDrawAABB()) {
+            setDrawAABB(other.getDrawAABB());
+          }
+          if (other.hasDrawInactiveBodies()) {
+            setDrawInactiveBodies(other.getDrawInactiveBodies());
+          }
+          if (other.hasInstallMouseJoint()) {
+            setInstallMouseJoint(other.getInstallMouseJoint());
+          }
+          if (other.hasDrawDebugData()) {
+            setDrawDebugData(other.getDrawDebugData());
+          }
+          if (other.hasDrawEntities()) {
+            setDrawEntities(other.getDrawEntities());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+        
+        public final boolean isInitialized() {
+          return true;
+        }
+        
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder(
+              this.getUnknownFields());
+          while (true) {
             int tag = input.readTag();
             switch (tag) {
               case 0:
-                done = true;
-                break;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               default: {
                 if (!parseUnknownField(input, unknownFields,
                                        extensionRegistry, tag)) {
-                  done = true;
+                  this.setUnknownFields(unknownFields.build());
+                  onChanged();
+                  return this;
                 }
                 break;
               }
@@ -19438,338 +15280,466 @@ public final class GameObject {
               }
             }
           }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
         }
+        
+        private int bitField0_;
+        
+        // optional bool drawBodies = 1;
+        private boolean drawBodies_ ;
+        public boolean hasDrawBodies() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        public boolean getDrawBodies() {
+          return drawBodies_;
+        }
+        public Builder setDrawBodies(boolean value) {
+          bitField0_ |= 0x00000001;
+          drawBodies_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearDrawBodies() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          drawBodies_ = false;
+          onChanged();
+          return this;
+        }
+        
+        // optional bool drawJoints = 2;
+        private boolean drawJoints_ ;
+        public boolean hasDrawJoints() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        public boolean getDrawJoints() {
+          return drawJoints_;
+        }
+        public Builder setDrawJoints(boolean value) {
+          bitField0_ |= 0x00000002;
+          drawJoints_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearDrawJoints() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          drawJoints_ = false;
+          onChanged();
+          return this;
+        }
+        
+        // optional bool drawAABB = 3;
+        private boolean drawAABB_ ;
+        public boolean hasDrawAABB() {
+          return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+        public boolean getDrawAABB() {
+          return drawAABB_;
+        }
+        public Builder setDrawAABB(boolean value) {
+          bitField0_ |= 0x00000004;
+          drawAABB_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearDrawAABB() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          drawAABB_ = false;
+          onChanged();
+          return this;
+        }
+        
+        // optional bool drawInactiveBodies = 4;
+        private boolean drawInactiveBodies_ ;
+        public boolean hasDrawInactiveBodies() {
+          return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
+        public boolean getDrawInactiveBodies() {
+          return drawInactiveBodies_;
+        }
+        public Builder setDrawInactiveBodies(boolean value) {
+          bitField0_ |= 0x00000008;
+          drawInactiveBodies_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearDrawInactiveBodies() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          drawInactiveBodies_ = false;
+          onChanged();
+          return this;
+        }
+        
+        // optional bool installMouseJoint = 5;
+        private boolean installMouseJoint_ ;
+        public boolean hasInstallMouseJoint() {
+          return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
+        public boolean getInstallMouseJoint() {
+          return installMouseJoint_;
+        }
+        public Builder setInstallMouseJoint(boolean value) {
+          bitField0_ |= 0x00000010;
+          installMouseJoint_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearInstallMouseJoint() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          installMouseJoint_ = false;
+          onChanged();
+          return this;
+        }
+        
+        // optional bool drawDebugData = 6;
+        private boolean drawDebugData_ ;
+        public boolean hasDrawDebugData() {
+          return ((bitField0_ & 0x00000020) == 0x00000020);
+        }
+        public boolean getDrawDebugData() {
+          return drawDebugData_;
+        }
+        public Builder setDrawDebugData(boolean value) {
+          bitField0_ |= 0x00000020;
+          drawDebugData_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearDrawDebugData() {
+          bitField0_ = (bitField0_ & ~0x00000020);
+          drawDebugData_ = false;
+          onChanged();
+          return this;
+        }
+        
+        // optional bool drawEntities = 7;
+        private boolean drawEntities_ ;
+        public boolean hasDrawEntities() {
+          return ((bitField0_ & 0x00000040) == 0x00000040);
+        }
+        public boolean getDrawEntities() {
+          return drawEntities_;
+        }
+        public Builder setDrawEntities(boolean value) {
+          bitField0_ |= 0x00000040;
+          drawEntities_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearDrawEntities() {
+          bitField0_ = (bitField0_ & ~0x00000040);
+          drawEntities_ = false;
+          onChanged();
+          return this;
+        }
+        
+        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences)
       }
+      
+      static {
+        defaultInstance = new DebugDrawPreferences(true);
+        defaultInstance.initFields();
+      }
+      
+      // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences)
+    }
+    
+    public interface WorldPreferencesOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+      
+      // optional int32 ptmRatio = 1;
+      boolean hasPtmRatio();
+      int getPtmRatio();
+      
+      // optional int32 velocityIterations = 2;
+      boolean hasVelocityIterations();
+      int getVelocityIterations();
+      
+      // optional int32 positionIterations = 3;
+      boolean hasPositionIterations();
+      int getPositionIterations();
+      
+      // optional float timeStep = 4;
+      boolean hasTimeStep();
+      float getTimeStep();
+      
+      // optional float gravityX = 5;
+      boolean hasGravityX();
+      float getGravityX();
+      
+      // optional float gravityY = 6;
+      boolean hasGravityY();
+      float getGravityY();
+    }
+    public static final class WorldPreferences extends
+        com.google.protobuf.GeneratedMessage
+        implements WorldPreferencesOrBuilder {
+      // Use WorldPreferences.newBuilder() to construct.
+      private WorldPreferences(Builder builder) {
+        super(builder);
+      }
+      private WorldPreferences(boolean noInit) {}
+      
+      private static final WorldPreferences defaultInstance;
+      public static WorldPreferences getDefaultInstance() {
+        return defaultInstance;
+      }
+      
+      public WorldPreferences getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+      
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.class, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_fieldAccessorTable;
       }
-
-      public static com.google.protobuf.Parser<DebugDrawPreferences> PARSER =
-          new com.google.protobuf.AbstractParser<DebugDrawPreferences>() {
-        public DebugDrawPreferences parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new DebugDrawPreferences(input, extensionRegistry);
-        }
-      };
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<DebugDrawPreferences> getParserForType() {
-        return PARSER;
-      }
-
+      
       private int bitField0_;
-      // optional bool drawBodies = 1;
-      public static final int DRAWBODIES_FIELD_NUMBER = 1;
-      private boolean drawBodies_;
-      /**
-       * <code>optional bool drawBodies = 1;</code>
-       */
-      public boolean hasDrawBodies() {
+      // optional int32 ptmRatio = 1;
+      public static final int PTMRATIO_FIELD_NUMBER = 1;
+      private int ptmRatio_;
+      public boolean hasPtmRatio() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional bool drawBodies = 1;</code>
-       */
-      public boolean getDrawBodies() {
-        return drawBodies_;
+      public int getPtmRatio() {
+        return ptmRatio_;
       }
-
-      // optional bool drawJoints = 2;
-      public static final int DRAWJOINTS_FIELD_NUMBER = 2;
-      private boolean drawJoints_;
-      /**
-       * <code>optional bool drawJoints = 2;</code>
-       */
-      public boolean hasDrawJoints() {
+      
+      // optional int32 velocityIterations = 2;
+      public static final int VELOCITYITERATIONS_FIELD_NUMBER = 2;
+      private int velocityIterations_;
+      public boolean hasVelocityIterations() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional bool drawJoints = 2;</code>
-       */
-      public boolean getDrawJoints() {
-        return drawJoints_;
+      public int getVelocityIterations() {
+        return velocityIterations_;
       }
-
-      // optional bool drawAABB = 3;
-      public static final int DRAWAABB_FIELD_NUMBER = 3;
-      private boolean drawAABB_;
-      /**
-       * <code>optional bool drawAABB = 3;</code>
-       */
-      public boolean hasDrawAABB() {
+      
+      // optional int32 positionIterations = 3;
+      public static final int POSITIONITERATIONS_FIELD_NUMBER = 3;
+      private int positionIterations_;
+      public boolean hasPositionIterations() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional bool drawAABB = 3;</code>
-       */
-      public boolean getDrawAABB() {
-        return drawAABB_;
+      public int getPositionIterations() {
+        return positionIterations_;
       }
-
-      // optional bool drawInactiveBodies = 4;
-      public static final int DRAWINACTIVEBODIES_FIELD_NUMBER = 4;
-      private boolean drawInactiveBodies_;
-      /**
-       * <code>optional bool drawInactiveBodies = 4;</code>
-       */
-      public boolean hasDrawInactiveBodies() {
+      
+      // optional float timeStep = 4;
+      public static final int TIMESTEP_FIELD_NUMBER = 4;
+      private float timeStep_;
+      public boolean hasTimeStep() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional bool drawInactiveBodies = 4;</code>
-       */
-      public boolean getDrawInactiveBodies() {
-        return drawInactiveBodies_;
+      public float getTimeStep() {
+        return timeStep_;
       }
-
-      // optional bool installMouseJoint = 5;
-      public static final int INSTALLMOUSEJOINT_FIELD_NUMBER = 5;
-      private boolean installMouseJoint_;
-      /**
-       * <code>optional bool installMouseJoint = 5;</code>
-       */
-      public boolean hasInstallMouseJoint() {
+      
+      // optional float gravityX = 5;
+      public static final int GRAVITYX_FIELD_NUMBER = 5;
+      private float gravityX_;
+      public boolean hasGravityX() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional bool installMouseJoint = 5;</code>
-       */
-      public boolean getInstallMouseJoint() {
-        return installMouseJoint_;
+      public float getGravityX() {
+        return gravityX_;
       }
-
-      // optional bool drawDebugData = 6;
-      public static final int DRAWDEBUGDATA_FIELD_NUMBER = 6;
-      private boolean drawDebugData_;
-      /**
-       * <code>optional bool drawDebugData = 6;</code>
-       */
-      public boolean hasDrawDebugData() {
+      
+      // optional float gravityY = 6;
+      public static final int GRAVITYY_FIELD_NUMBER = 6;
+      private float gravityY_;
+      public boolean hasGravityY() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional bool drawDebugData = 6;</code>
-       */
-      public boolean getDrawDebugData() {
-        return drawDebugData_;
+      public float getGravityY() {
+        return gravityY_;
       }
-
-      // optional bool drawEntities = 7;
-      public static final int DRAWENTITIES_FIELD_NUMBER = 7;
-      private boolean drawEntities_;
-      /**
-       * <code>optional bool drawEntities = 7;</code>
-       */
-      public boolean hasDrawEntities() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional bool drawEntities = 7;</code>
-       */
-      public boolean getDrawEntities() {
-        return drawEntities_;
-      }
-
+      
       private void initFields() {
-        drawBodies_ = false;
-        drawJoints_ = false;
-        drawAABB_ = false;
-        drawInactiveBodies_ = false;
-        installMouseJoint_ = false;
-        drawDebugData_ = false;
-        drawEntities_ = false;
+        ptmRatio_ = 0;
+        velocityIterations_ = 0;
+        positionIterations_ = 0;
+        timeStep_ = 0F;
+        gravityX_ = 0F;
+        gravityY_ = 0F;
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized != -1) return isInitialized == 1;
-
+        
         memoizedIsInitialized = 1;
         return true;
       }
-
+      
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBool(1, drawBodies_);
+          output.writeInt32(1, ptmRatio_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeBool(2, drawJoints_);
+          output.writeInt32(2, velocityIterations_);
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeBool(3, drawAABB_);
+          output.writeInt32(3, positionIterations_);
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeBool(4, drawInactiveBodies_);
+          output.writeFloat(4, timeStep_);
         }
         if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          output.writeBool(5, installMouseJoint_);
+          output.writeFloat(5, gravityX_);
         }
         if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          output.writeBool(6, drawDebugData_);
-        }
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
-          output.writeBool(7, drawEntities_);
+          output.writeFloat(6, gravityY_);
         }
         getUnknownFields().writeTo(output);
       }
-
+      
       private int memoizedSerializedSize = -1;
       public int getSerializedSize() {
         int size = memoizedSerializedSize;
         if (size != -1) return size;
-
+      
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(1, drawBodies_);
+            .computeInt32Size(1, ptmRatio_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(2, drawJoints_);
+            .computeInt32Size(2, velocityIterations_);
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(3, drawAABB_);
+            .computeInt32Size(3, positionIterations_);
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(4, drawInactiveBodies_);
+            .computeFloatSize(4, timeStep_);
         }
         if (((bitField0_ & 0x00000010) == 0x00000010)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(5, installMouseJoint_);
+            .computeFloatSize(5, gravityX_);
         }
         if (((bitField0_ & 0x00000020) == 0x00000020)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(6, drawDebugData_);
-        }
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(7, drawEntities_);
+            .computeFloatSize(6, gravityY_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
         return size;
       }
-
+      
       private static final long serialVersionUID = 0L;
       @java.lang.Override
       protected java.lang.Object writeReplace()
           throws java.io.ObjectStreamException {
         return super.writeReplace();
       }
-
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        return newBuilder().mergeFrom(data).buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
+        return newBuilder().mergeFrom(data, extensionRegistry)
+                 .buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(byte[] data)
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        return newBuilder().mergeFrom(data).buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
+        return newBuilder().mergeFrom(data, extensionRegistry)
+                 .buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(java.io.InputStream input)
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return newBuilder().mergeFrom(input).buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return newBuilder().mergeFrom(input, extensionRegistry)
+                 .buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseDelimitedFrom(java.io.InputStream input)
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        Builder builder = newBuilder();
+        if (builder.mergeDelimitedFrom(input)) {
+          return builder.buildParsed();
+        } else {
+          return null;
+        }
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseDelimitedFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        Builder builder = newBuilder();
+        if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+          return builder.buildParsed();
+        } else {
+          return null;
+        }
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return newBuilder().mergeFrom(input).buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return newBuilder().mergeFrom(input, extensionRegistry)
+                 .buildParsed();
       }
-
+      
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences prototype) {
+      public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
-
+      
       @java.lang.Override
       protected Builder newBuilderForType(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
-      /**
-       * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences}
-       */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferencesOrBuilder {
+         implements com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferencesOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_descriptor;
+          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_descriptor;
         }
-
+        
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.class, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder.class);
+          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_fieldAccessorTable;
         }
-
-        // Construct using com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.newBuilder()
+        
+        // Construct using com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        
+        private Builder(BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
@@ -19780,496 +15750,145 @@ public final class GameObject {
         private static Builder create() {
           return new Builder();
         }
-
+        
         public Builder clear() {
           super.clear();
-          drawBodies_ = false;
+          ptmRatio_ = 0;
           bitField0_ = (bitField0_ & ~0x00000001);
-          drawJoints_ = false;
+          velocityIterations_ = 0;
           bitField0_ = (bitField0_ & ~0x00000002);
-          drawAABB_ = false;
+          positionIterations_ = 0;
           bitField0_ = (bitField0_ & ~0x00000004);
-          drawInactiveBodies_ = false;
+          timeStep_ = 0F;
           bitField0_ = (bitField0_ & ~0x00000008);
-          installMouseJoint_ = false;
+          gravityX_ = 0F;
           bitField0_ = (bitField0_ & ~0x00000010);
-          drawDebugData_ = false;
+          gravityY_ = 0F;
           bitField0_ = (bitField0_ & ~0x00000020);
-          drawEntities_ = false;
-          bitField0_ = (bitField0_ & ~0x00000040);
           return this;
         }
-
+        
         public Builder clone() {
           return create().mergeFrom(buildPartial());
         }
-
+        
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_descriptor;
+          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.getDescriptor();
         }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences getDefaultInstanceForType() {
-          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences getDefaultInstanceForType() {
+          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.getDefaultInstance();
         }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences build() {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences result = buildPartial();
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences build() {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences buildPartial() {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences result = new com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences(this);
+        
+        private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences buildParsed()
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(
+              result).asInvalidProtocolBufferException();
+          }
+          return result;
+        }
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences buildPartial() {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences result = new com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
             to_bitField0_ |= 0x00000001;
           }
-          result.drawBodies_ = drawBodies_;
+          result.ptmRatio_ = ptmRatio_;
           if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
             to_bitField0_ |= 0x00000002;
           }
-          result.drawJoints_ = drawJoints_;
+          result.velocityIterations_ = velocityIterations_;
           if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
             to_bitField0_ |= 0x00000004;
           }
-          result.drawAABB_ = drawAABB_;
+          result.positionIterations_ = positionIterations_;
           if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
             to_bitField0_ |= 0x00000008;
           }
-          result.drawInactiveBodies_ = drawInactiveBodies_;
+          result.timeStep_ = timeStep_;
           if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
             to_bitField0_ |= 0x00000010;
           }
-          result.installMouseJoint_ = installMouseJoint_;
+          result.gravityX_ = gravityX_;
           if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
             to_bitField0_ |= 0x00000020;
           }
-          result.drawDebugData_ = drawDebugData_;
-          if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-            to_bitField0_ |= 0x00000040;
-          }
-          result.drawEntities_ = drawEntities_;
+          result.gravityY_ = gravityY_;
           result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
         }
-
+        
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences) {
-            return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences)other);
+          if (other instanceof com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences) {
+            return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
-
-        public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences other) {
-          if (other == com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance()) return this;
-          if (other.hasDrawBodies()) {
-            setDrawBodies(other.getDrawBodies());
+        
+        public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences other) {
+          if (other == com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.getDefaultInstance()) return this;
+          if (other.hasPtmRatio()) {
+            setPtmRatio(other.getPtmRatio());
           }
-          if (other.hasDrawJoints()) {
-            setDrawJoints(other.getDrawJoints());
+          if (other.hasVelocityIterations()) {
+            setVelocityIterations(other.getVelocityIterations());
           }
-          if (other.hasDrawAABB()) {
-            setDrawAABB(other.getDrawAABB());
+          if (other.hasPositionIterations()) {
+            setPositionIterations(other.getPositionIterations());
           }
-          if (other.hasDrawInactiveBodies()) {
-            setDrawInactiveBodies(other.getDrawInactiveBodies());
+          if (other.hasTimeStep()) {
+            setTimeStep(other.getTimeStep());
           }
-          if (other.hasInstallMouseJoint()) {
-            setInstallMouseJoint(other.getInstallMouseJoint());
+          if (other.hasGravityX()) {
+            setGravityX(other.getGravityX());
           }
-          if (other.hasDrawDebugData()) {
-            setDrawDebugData(other.getDrawDebugData());
-          }
-          if (other.hasDrawEntities()) {
-            setDrawEntities(other.getDrawEntities());
+          if (other.hasGravityY()) {
+            setGravityY(other.getGravityY());
           }
           this.mergeUnknownFields(other.getUnknownFields());
           return this;
         }
-
+        
         public final boolean isInitialized() {
           return true;
         }
-
+        
         public Builder mergeFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-        private int bitField0_;
-
-        // optional bool drawBodies = 1;
-        private boolean drawBodies_ ;
-        /**
-         * <code>optional bool drawBodies = 1;</code>
-         */
-        public boolean hasDrawBodies() {
-          return ((bitField0_ & 0x00000001) == 0x00000001);
-        }
-        /**
-         * <code>optional bool drawBodies = 1;</code>
-         */
-        public boolean getDrawBodies() {
-          return drawBodies_;
-        }
-        /**
-         * <code>optional bool drawBodies = 1;</code>
-         */
-        public Builder setDrawBodies(boolean value) {
-          bitField0_ |= 0x00000001;
-          drawBodies_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional bool drawBodies = 1;</code>
-         */
-        public Builder clearDrawBodies() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          drawBodies_ = false;
-          onChanged();
-          return this;
-        }
-
-        // optional bool drawJoints = 2;
-        private boolean drawJoints_ ;
-        /**
-         * <code>optional bool drawJoints = 2;</code>
-         */
-        public boolean hasDrawJoints() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        /**
-         * <code>optional bool drawJoints = 2;</code>
-         */
-        public boolean getDrawJoints() {
-          return drawJoints_;
-        }
-        /**
-         * <code>optional bool drawJoints = 2;</code>
-         */
-        public Builder setDrawJoints(boolean value) {
-          bitField0_ |= 0x00000002;
-          drawJoints_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional bool drawJoints = 2;</code>
-         */
-        public Builder clearDrawJoints() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          drawJoints_ = false;
-          onChanged();
-          return this;
-        }
-
-        // optional bool drawAABB = 3;
-        private boolean drawAABB_ ;
-        /**
-         * <code>optional bool drawAABB = 3;</code>
-         */
-        public boolean hasDrawAABB() {
-          return ((bitField0_ & 0x00000004) == 0x00000004);
-        }
-        /**
-         * <code>optional bool drawAABB = 3;</code>
-         */
-        public boolean getDrawAABB() {
-          return drawAABB_;
-        }
-        /**
-         * <code>optional bool drawAABB = 3;</code>
-         */
-        public Builder setDrawAABB(boolean value) {
-          bitField0_ |= 0x00000004;
-          drawAABB_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional bool drawAABB = 3;</code>
-         */
-        public Builder clearDrawAABB() {
-          bitField0_ = (bitField0_ & ~0x00000004);
-          drawAABB_ = false;
-          onChanged();
-          return this;
-        }
-
-        // optional bool drawInactiveBodies = 4;
-        private boolean drawInactiveBodies_ ;
-        /**
-         * <code>optional bool drawInactiveBodies = 4;</code>
-         */
-        public boolean hasDrawInactiveBodies() {
-          return ((bitField0_ & 0x00000008) == 0x00000008);
-        }
-        /**
-         * <code>optional bool drawInactiveBodies = 4;</code>
-         */
-        public boolean getDrawInactiveBodies() {
-          return drawInactiveBodies_;
-        }
-        /**
-         * <code>optional bool drawInactiveBodies = 4;</code>
-         */
-        public Builder setDrawInactiveBodies(boolean value) {
-          bitField0_ |= 0x00000008;
-          drawInactiveBodies_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional bool drawInactiveBodies = 4;</code>
-         */
-        public Builder clearDrawInactiveBodies() {
-          bitField0_ = (bitField0_ & ~0x00000008);
-          drawInactiveBodies_ = false;
-          onChanged();
-          return this;
-        }
-
-        // optional bool installMouseJoint = 5;
-        private boolean installMouseJoint_ ;
-        /**
-         * <code>optional bool installMouseJoint = 5;</code>
-         */
-        public boolean hasInstallMouseJoint() {
-          return ((bitField0_ & 0x00000010) == 0x00000010);
-        }
-        /**
-         * <code>optional bool installMouseJoint = 5;</code>
-         */
-        public boolean getInstallMouseJoint() {
-          return installMouseJoint_;
-        }
-        /**
-         * <code>optional bool installMouseJoint = 5;</code>
-         */
-        public Builder setInstallMouseJoint(boolean value) {
-          bitField0_ |= 0x00000010;
-          installMouseJoint_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional bool installMouseJoint = 5;</code>
-         */
-        public Builder clearInstallMouseJoint() {
-          bitField0_ = (bitField0_ & ~0x00000010);
-          installMouseJoint_ = false;
-          onChanged();
-          return this;
-        }
-
-        // optional bool drawDebugData = 6;
-        private boolean drawDebugData_ ;
-        /**
-         * <code>optional bool drawDebugData = 6;</code>
-         */
-        public boolean hasDrawDebugData() {
-          return ((bitField0_ & 0x00000020) == 0x00000020);
-        }
-        /**
-         * <code>optional bool drawDebugData = 6;</code>
-         */
-        public boolean getDrawDebugData() {
-          return drawDebugData_;
-        }
-        /**
-         * <code>optional bool drawDebugData = 6;</code>
-         */
-        public Builder setDrawDebugData(boolean value) {
-          bitField0_ |= 0x00000020;
-          drawDebugData_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional bool drawDebugData = 6;</code>
-         */
-        public Builder clearDrawDebugData() {
-          bitField0_ = (bitField0_ & ~0x00000020);
-          drawDebugData_ = false;
-          onChanged();
-          return this;
-        }
-
-        // optional bool drawEntities = 7;
-        private boolean drawEntities_ ;
-        /**
-         * <code>optional bool drawEntities = 7;</code>
-         */
-        public boolean hasDrawEntities() {
-          return ((bitField0_ & 0x00000040) == 0x00000040);
-        }
-        /**
-         * <code>optional bool drawEntities = 7;</code>
-         */
-        public boolean getDrawEntities() {
-          return drawEntities_;
-        }
-        /**
-         * <code>optional bool drawEntities = 7;</code>
-         */
-        public Builder setDrawEntities(boolean value) {
-          bitField0_ |= 0x00000040;
-          drawEntities_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional bool drawEntities = 7;</code>
-         */
-        public Builder clearDrawEntities() {
-          bitField0_ = (bitField0_ & ~0x00000040);
-          drawEntities_ = false;
-          onChanged();
-          return this;
-        }
-
-        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences)
-      }
-
-      static {
-        defaultInstance = new DebugDrawPreferences(true);
-        defaultInstance.initFields();
-      }
-
-      // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences)
-    }
-
-    public interface WorldPreferencesOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
-
-      // optional int32 ptmRatio = 1;
-      /**
-       * <code>optional int32 ptmRatio = 1;</code>
-       */
-      boolean hasPtmRatio();
-      /**
-       * <code>optional int32 ptmRatio = 1;</code>
-       */
-      int getPtmRatio();
-
-      // optional int32 velocityIterations = 2;
-      /**
-       * <code>optional int32 velocityIterations = 2;</code>
-       */
-      boolean hasVelocityIterations();
-      /**
-       * <code>optional int32 velocityIterations = 2;</code>
-       */
-      int getVelocityIterations();
-
-      // optional int32 positionIterations = 3;
-      /**
-       * <code>optional int32 positionIterations = 3;</code>
-       */
-      boolean hasPositionIterations();
-      /**
-       * <code>optional int32 positionIterations = 3;</code>
-       */
-      int getPositionIterations();
-
-      // optional float timeStep = 4;
-      /**
-       * <code>optional float timeStep = 4;</code>
-       */
-      boolean hasTimeStep();
-      /**
-       * <code>optional float timeStep = 4;</code>
-       */
-      float getTimeStep();
-
-      // optional float gravityX = 5;
-      /**
-       * <code>optional float gravityX = 5;</code>
-       */
-      boolean hasGravityX();
-      /**
-       * <code>optional float gravityX = 5;</code>
-       */
-      float getGravityX();
-
-      // optional float gravityY = 6;
-      /**
-       * <code>optional float gravityY = 6;</code>
-       */
-      boolean hasGravityY();
-      /**
-       * <code>optional float gravityY = 6;</code>
-       */
-      float getGravityY();
-    }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences}
-     */
-    public static final class WorldPreferences extends
-        com.google.protobuf.GeneratedMessage
-        implements WorldPreferencesOrBuilder {
-      // Use WorldPreferences.newBuilder() to construct.
-      private WorldPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
-      }
-      private WorldPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-      private static final WorldPreferences defaultInstance;
-      public static WorldPreferences getDefaultInstance() {
-        return defaultInstance;
-      }
-
-      public WorldPreferences getDefaultInstanceForType() {
-        return defaultInstance;
-      }
-
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
-        return this.unknownFields;
-      }
-      private WorldPreferences(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
+          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder(
+              this.getUnknownFields());
+          while (true) {
             int tag = input.readTag();
             switch (tag) {
               case 0:
-                done = true;
-                break;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               default: {
                 if (!parseUnknownField(input, unknownFields,
                                        extensionRegistry, tag)) {
-                  done = true;
+                  this.setUnknownFields(unknownFields.build());
+                  onChanged();
+                  return this;
                 }
                 break;
               }
@@ -20305,314 +15924,401 @@ public final class GameObject {
               }
             }
           }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
         }
+        
+        private int bitField0_;
+        
+        // optional int32 ptmRatio = 1;
+        private int ptmRatio_ ;
+        public boolean hasPtmRatio() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        public int getPtmRatio() {
+          return ptmRatio_;
+        }
+        public Builder setPtmRatio(int value) {
+          bitField0_ |= 0x00000001;
+          ptmRatio_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearPtmRatio() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          ptmRatio_ = 0;
+          onChanged();
+          return this;
+        }
+        
+        // optional int32 velocityIterations = 2;
+        private int velocityIterations_ ;
+        public boolean hasVelocityIterations() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        public int getVelocityIterations() {
+          return velocityIterations_;
+        }
+        public Builder setVelocityIterations(int value) {
+          bitField0_ |= 0x00000002;
+          velocityIterations_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearVelocityIterations() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          velocityIterations_ = 0;
+          onChanged();
+          return this;
+        }
+        
+        // optional int32 positionIterations = 3;
+        private int positionIterations_ ;
+        public boolean hasPositionIterations() {
+          return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+        public int getPositionIterations() {
+          return positionIterations_;
+        }
+        public Builder setPositionIterations(int value) {
+          bitField0_ |= 0x00000004;
+          positionIterations_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearPositionIterations() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          positionIterations_ = 0;
+          onChanged();
+          return this;
+        }
+        
+        // optional float timeStep = 4;
+        private float timeStep_ ;
+        public boolean hasTimeStep() {
+          return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
+        public float getTimeStep() {
+          return timeStep_;
+        }
+        public Builder setTimeStep(float value) {
+          bitField0_ |= 0x00000008;
+          timeStep_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearTimeStep() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          timeStep_ = 0F;
+          onChanged();
+          return this;
+        }
+        
+        // optional float gravityX = 5;
+        private float gravityX_ ;
+        public boolean hasGravityX() {
+          return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
+        public float getGravityX() {
+          return gravityX_;
+        }
+        public Builder setGravityX(float value) {
+          bitField0_ |= 0x00000010;
+          gravityX_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearGravityX() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          gravityX_ = 0F;
+          onChanged();
+          return this;
+        }
+        
+        // optional float gravityY = 6;
+        private float gravityY_ ;
+        public boolean hasGravityY() {
+          return ((bitField0_ & 0x00000020) == 0x00000020);
+        }
+        public float getGravityY() {
+          return gravityY_;
+        }
+        public Builder setGravityY(float value) {
+          bitField0_ |= 0x00000020;
+          gravityY_ = value;
+          onChanged();
+          return this;
+        }
+        public Builder clearGravityY() {
+          bitField0_ = (bitField0_ & ~0x00000020);
+          gravityY_ = 0F;
+          onChanged();
+          return this;
+        }
+        
+        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences)
       }
+      
+      static {
+        defaultInstance = new WorldPreferences(true);
+        defaultInstance.initFields();
+      }
+      
+      // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences)
+    }
+    
+    public interface CardPreferencesOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+      
+      // optional int32 cardNoX = 1;
+      boolean hasCardNoX();
+      int getCardNoX();
+      
+      // optional int32 cardNoY = 2;
+      boolean hasCardNoY();
+      int getCardNoY();
+      
+      // optional int32 cardWidth = 3;
+      boolean hasCardWidth();
+      int getCardWidth();
+      
+      // optional int32 cardHeight = 4;
+      boolean hasCardHeight();
+      int getCardHeight();
+    }
+    public static final class CardPreferences extends
+        com.google.protobuf.GeneratedMessage
+        implements CardPreferencesOrBuilder {
+      // Use CardPreferences.newBuilder() to construct.
+      private CardPreferences(Builder builder) {
+        super(builder);
+      }
+      private CardPreferences(boolean noInit) {}
+      
+      private static final CardPreferences defaultInstance;
+      public static CardPreferences getDefaultInstance() {
+        return defaultInstance;
+      }
+      
+      public CardPreferences getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+      
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.class, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_fieldAccessorTable;
       }
-
-      public static com.google.protobuf.Parser<WorldPreferences> PARSER =
-          new com.google.protobuf.AbstractParser<WorldPreferences>() {
-        public WorldPreferences parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new WorldPreferences(input, extensionRegistry);
-        }
-      };
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<WorldPreferences> getParserForType() {
-        return PARSER;
-      }
-
+      
       private int bitField0_;
-      // optional int32 ptmRatio = 1;
-      public static final int PTMRATIO_FIELD_NUMBER = 1;
-      private int ptmRatio_;
-      /**
-       * <code>optional int32 ptmRatio = 1;</code>
-       */
-      public boolean hasPtmRatio() {
+      // optional int32 cardNoX = 1;
+      public static final int CARDNOX_FIELD_NUMBER = 1;
+      private int cardNoX_;
+      public boolean hasCardNoX() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional int32 ptmRatio = 1;</code>
-       */
-      public int getPtmRatio() {
-        return ptmRatio_;
+      public int getCardNoX() {
+        return cardNoX_;
       }
-
-      // optional int32 velocityIterations = 2;
-      public static final int VELOCITYITERATIONS_FIELD_NUMBER = 2;
-      private int velocityIterations_;
-      /**
-       * <code>optional int32 velocityIterations = 2;</code>
-       */
-      public boolean hasVelocityIterations() {
+      
+      // optional int32 cardNoY = 2;
+      public static final int CARDNOY_FIELD_NUMBER = 2;
+      private int cardNoY_;
+      public boolean hasCardNoY() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional int32 velocityIterations = 2;</code>
-       */
-      public int getVelocityIterations() {
-        return velocityIterations_;
+      public int getCardNoY() {
+        return cardNoY_;
       }
-
-      // optional int32 positionIterations = 3;
-      public static final int POSITIONITERATIONS_FIELD_NUMBER = 3;
-      private int positionIterations_;
-      /**
-       * <code>optional int32 positionIterations = 3;</code>
-       */
-      public boolean hasPositionIterations() {
+      
+      // optional int32 cardWidth = 3;
+      public static final int CARDWIDTH_FIELD_NUMBER = 3;
+      private int cardWidth_;
+      public boolean hasCardWidth() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional int32 positionIterations = 3;</code>
-       */
-      public int getPositionIterations() {
-        return positionIterations_;
+      public int getCardWidth() {
+        return cardWidth_;
       }
-
-      // optional float timeStep = 4;
-      public static final int TIMESTEP_FIELD_NUMBER = 4;
-      private float timeStep_;
-      /**
-       * <code>optional float timeStep = 4;</code>
-       */
-      public boolean hasTimeStep() {
+      
+      // optional int32 cardHeight = 4;
+      public static final int CARDHEIGHT_FIELD_NUMBER = 4;
+      private int cardHeight_;
+      public boolean hasCardHeight() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional float timeStep = 4;</code>
-       */
-      public float getTimeStep() {
-        return timeStep_;
+      public int getCardHeight() {
+        return cardHeight_;
       }
-
-      // optional float gravityX = 5;
-      public static final int GRAVITYX_FIELD_NUMBER = 5;
-      private float gravityX_;
-      /**
-       * <code>optional float gravityX = 5;</code>
-       */
-      public boolean hasGravityX() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional float gravityX = 5;</code>
-       */
-      public float getGravityX() {
-        return gravityX_;
-      }
-
-      // optional float gravityY = 6;
-      public static final int GRAVITYY_FIELD_NUMBER = 6;
-      private float gravityY_;
-      /**
-       * <code>optional float gravityY = 6;</code>
-       */
-      public boolean hasGravityY() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional float gravityY = 6;</code>
-       */
-      public float getGravityY() {
-        return gravityY_;
-      }
-
+      
       private void initFields() {
-        ptmRatio_ = 0;
-        velocityIterations_ = 0;
-        positionIterations_ = 0;
-        timeStep_ = 0F;
-        gravityX_ = 0F;
-        gravityY_ = 0F;
+        cardNoX_ = 0;
+        cardNoY_ = 0;
+        cardWidth_ = 0;
+        cardHeight_ = 0;
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized != -1) return isInitialized == 1;
-
+        
         memoizedIsInitialized = 1;
         return true;
       }
-
+      
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeInt32(1, ptmRatio_);
+          output.writeInt32(1, cardNoX_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeInt32(2, velocityIterations_);
+          output.writeInt32(2, cardNoY_);
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeInt32(3, positionIterations_);
+          output.writeInt32(3, cardWidth_);
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeFloat(4, timeStep_);
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          output.writeFloat(5, gravityX_);
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          output.writeFloat(6, gravityY_);
+          output.writeInt32(4, cardHeight_);
         }
         getUnknownFields().writeTo(output);
       }
-
+      
       private int memoizedSerializedSize = -1;
       public int getSerializedSize() {
         int size = memoizedSerializedSize;
         if (size != -1) return size;
-
+      
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(1, ptmRatio_);
+            .computeInt32Size(1, cardNoX_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(2, velocityIterations_);
+            .computeInt32Size(2, cardNoY_);
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(3, positionIterations_);
+            .computeInt32Size(3, cardWidth_);
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeFloatSize(4, timeStep_);
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeFloatSize(5, gravityX_);
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeFloatSize(6, gravityY_);
+            .computeInt32Size(4, cardHeight_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
         return size;
       }
-
+      
       private static final long serialVersionUID = 0L;
       @java.lang.Override
       protected java.lang.Object writeReplace()
           throws java.io.ObjectStreamException {
         return super.writeReplace();
       }
-
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
+      
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        return newBuilder().mergeFrom(data).buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
+        return newBuilder().mergeFrom(data, extensionRegistry)
+                 .buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(byte[] data)
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        return newBuilder().mergeFrom(data).buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
+        return newBuilder().mergeFrom(data, extensionRegistry)
+                 .buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(java.io.InputStream input)
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return newBuilder().mergeFrom(input).buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return newBuilder().mergeFrom(input, extensionRegistry)
+                 .buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseDelimitedFrom(java.io.InputStream input)
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        Builder builder = newBuilder();
+        if (builder.mergeDelimitedFrom(input)) {
+          return builder.buildParsed();
+        } else {
+          return null;
+        }
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseDelimitedFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        Builder builder = newBuilder();
+        if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+          return builder.buildParsed();
+        } else {
+          return null;
+        }
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return newBuilder().mergeFrom(input).buildParsed();
       }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return newBuilder().mergeFrom(input, extensionRegistry)
+                 .buildParsed();
       }
-
+      
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences prototype) {
+      public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
-
+      
       @java.lang.Override
       protected Builder newBuilderForType(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
-      /**
-       * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences}
-       */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferencesOrBuilder {
+         implements com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferencesOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_descriptor;
+          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_descriptor;
         }
-
+        
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.class, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder.class);
+          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_fieldAccessorTable;
         }
-
-        // Construct using com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.newBuilder()
+        
+        // Construct using com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        
+        private Builder(BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
@@ -20623,434 +16329,127 @@ public final class GameObject {
         private static Builder create() {
           return new Builder();
         }
-
+        
         public Builder clear() {
           super.clear();
-          ptmRatio_ = 0;
+          cardNoX_ = 0;
           bitField0_ = (bitField0_ & ~0x00000001);
-          velocityIterations_ = 0;
+          cardNoY_ = 0;
           bitField0_ = (bitField0_ & ~0x00000002);
-          positionIterations_ = 0;
+          cardWidth_ = 0;
           bitField0_ = (bitField0_ & ~0x00000004);
-          timeStep_ = 0F;
+          cardHeight_ = 0;
           bitField0_ = (bitField0_ & ~0x00000008);
-          gravityX_ = 0F;
-          bitField0_ = (bitField0_ & ~0x00000010);
-          gravityY_ = 0F;
-          bitField0_ = (bitField0_ & ~0x00000020);
           return this;
         }
-
+        
         public Builder clone() {
           return create().mergeFrom(buildPartial());
         }
-
+        
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_descriptor;
+          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.getDescriptor();
         }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences getDefaultInstanceForType() {
-          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.getDefaultInstance();
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences getDefaultInstanceForType() {
+          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.getDefaultInstance();
         }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences build() {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences result = buildPartial();
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences build() {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences buildPartial() {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences result = new com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences(this);
+        
+        private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences buildParsed()
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(
+              result).asInvalidProtocolBufferException();
+          }
+          return result;
+        }
+        
+        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences buildPartial() {
+          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences result = new com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
             to_bitField0_ |= 0x00000001;
           }
-          result.ptmRatio_ = ptmRatio_;
+          result.cardNoX_ = cardNoX_;
           if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
             to_bitField0_ |= 0x00000002;
           }
-          result.velocityIterations_ = velocityIterations_;
+          result.cardNoY_ = cardNoY_;
           if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
             to_bitField0_ |= 0x00000004;
           }
-          result.positionIterations_ = positionIterations_;
+          result.cardWidth_ = cardWidth_;
           if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
             to_bitField0_ |= 0x00000008;
           }
-          result.timeStep_ = timeStep_;
-          if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-            to_bitField0_ |= 0x00000010;
-          }
-          result.gravityX_ = gravityX_;
-          if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-            to_bitField0_ |= 0x00000020;
-          }
-          result.gravityY_ = gravityY_;
+          result.cardHeight_ = cardHeight_;
           result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
         }
-
+        
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences) {
-            return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences)other);
+          if (other instanceof com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences) {
+            return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
-
-        public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences other) {
-          if (other == com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.getDefaultInstance()) return this;
-          if (other.hasPtmRatio()) {
-            setPtmRatio(other.getPtmRatio());
+        
+        public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences other) {
+          if (other == com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.getDefaultInstance()) return this;
+          if (other.hasCardNoX()) {
+            setCardNoX(other.getCardNoX());
           }
-          if (other.hasVelocityIterations()) {
-            setVelocityIterations(other.getVelocityIterations());
+          if (other.hasCardNoY()) {
+            setCardNoY(other.getCardNoY());
           }
-          if (other.hasPositionIterations()) {
-            setPositionIterations(other.getPositionIterations());
+          if (other.hasCardWidth()) {
+            setCardWidth(other.getCardWidth());
           }
-          if (other.hasTimeStep()) {
-            setTimeStep(other.getTimeStep());
-          }
-          if (other.hasGravityX()) {
-            setGravityX(other.getGravityX());
-          }
-          if (other.hasGravityY()) {
-            setGravityY(other.getGravityY());
+          if (other.hasCardHeight()) {
+            setCardHeight(other.getCardHeight());
           }
           this.mergeUnknownFields(other.getUnknownFields());
           return this;
         }
-
+        
         public final boolean isInitialized() {
           return true;
         }
-
+        
         public Builder mergeFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-        private int bitField0_;
-
-        // optional int32 ptmRatio = 1;
-        private int ptmRatio_ ;
-        /**
-         * <code>optional int32 ptmRatio = 1;</code>
-         */
-        public boolean hasPtmRatio() {
-          return ((bitField0_ & 0x00000001) == 0x00000001);
-        }
-        /**
-         * <code>optional int32 ptmRatio = 1;</code>
-         */
-        public int getPtmRatio() {
-          return ptmRatio_;
-        }
-        /**
-         * <code>optional int32 ptmRatio = 1;</code>
-         */
-        public Builder setPtmRatio(int value) {
-          bitField0_ |= 0x00000001;
-          ptmRatio_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional int32 ptmRatio = 1;</code>
-         */
-        public Builder clearPtmRatio() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          ptmRatio_ = 0;
-          onChanged();
-          return this;
-        }
-
-        // optional int32 velocityIterations = 2;
-        private int velocityIterations_ ;
-        /**
-         * <code>optional int32 velocityIterations = 2;</code>
-         */
-        public boolean hasVelocityIterations() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        /**
-         * <code>optional int32 velocityIterations = 2;</code>
-         */
-        public int getVelocityIterations() {
-          return velocityIterations_;
-        }
-        /**
-         * <code>optional int32 velocityIterations = 2;</code>
-         */
-        public Builder setVelocityIterations(int value) {
-          bitField0_ |= 0x00000002;
-          velocityIterations_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional int32 velocityIterations = 2;</code>
-         */
-        public Builder clearVelocityIterations() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          velocityIterations_ = 0;
-          onChanged();
-          return this;
-        }
-
-        // optional int32 positionIterations = 3;
-        private int positionIterations_ ;
-        /**
-         * <code>optional int32 positionIterations = 3;</code>
-         */
-        public boolean hasPositionIterations() {
-          return ((bitField0_ & 0x00000004) == 0x00000004);
-        }
-        /**
-         * <code>optional int32 positionIterations = 3;</code>
-         */
-        public int getPositionIterations() {
-          return positionIterations_;
-        }
-        /**
-         * <code>optional int32 positionIterations = 3;</code>
-         */
-        public Builder setPositionIterations(int value) {
-          bitField0_ |= 0x00000004;
-          positionIterations_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional int32 positionIterations = 3;</code>
-         */
-        public Builder clearPositionIterations() {
-          bitField0_ = (bitField0_ & ~0x00000004);
-          positionIterations_ = 0;
-          onChanged();
-          return this;
-        }
-
-        // optional float timeStep = 4;
-        private float timeStep_ ;
-        /**
-         * <code>optional float timeStep = 4;</code>
-         */
-        public boolean hasTimeStep() {
-          return ((bitField0_ & 0x00000008) == 0x00000008);
-        }
-        /**
-         * <code>optional float timeStep = 4;</code>
-         */
-        public float getTimeStep() {
-          return timeStep_;
-        }
-        /**
-         * <code>optional float timeStep = 4;</code>
-         */
-        public Builder setTimeStep(float value) {
-          bitField0_ |= 0x00000008;
-          timeStep_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional float timeStep = 4;</code>
-         */
-        public Builder clearTimeStep() {
-          bitField0_ = (bitField0_ & ~0x00000008);
-          timeStep_ = 0F;
-          onChanged();
-          return this;
-        }
-
-        // optional float gravityX = 5;
-        private float gravityX_ ;
-        /**
-         * <code>optional float gravityX = 5;</code>
-         */
-        public boolean hasGravityX() {
-          return ((bitField0_ & 0x00000010) == 0x00000010);
-        }
-        /**
-         * <code>optional float gravityX = 5;</code>
-         */
-        public float getGravityX() {
-          return gravityX_;
-        }
-        /**
-         * <code>optional float gravityX = 5;</code>
-         */
-        public Builder setGravityX(float value) {
-          bitField0_ |= 0x00000010;
-          gravityX_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional float gravityX = 5;</code>
-         */
-        public Builder clearGravityX() {
-          bitField0_ = (bitField0_ & ~0x00000010);
-          gravityX_ = 0F;
-          onChanged();
-          return this;
-        }
-
-        // optional float gravityY = 6;
-        private float gravityY_ ;
-        /**
-         * <code>optional float gravityY = 6;</code>
-         */
-        public boolean hasGravityY() {
-          return ((bitField0_ & 0x00000020) == 0x00000020);
-        }
-        /**
-         * <code>optional float gravityY = 6;</code>
-         */
-        public float getGravityY() {
-          return gravityY_;
-        }
-        /**
-         * <code>optional float gravityY = 6;</code>
-         */
-        public Builder setGravityY(float value) {
-          bitField0_ |= 0x00000020;
-          gravityY_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional float gravityY = 6;</code>
-         */
-        public Builder clearGravityY() {
-          bitField0_ = (bitField0_ & ~0x00000020);
-          gravityY_ = 0F;
-          onChanged();
-          return this;
-        }
-
-        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences)
-      }
-
-      static {
-        defaultInstance = new WorldPreferences(true);
-        defaultInstance.initFields();
-      }
-
-      // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences)
-    }
-
-    public interface CardPreferencesOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
-
-      // optional int32 cardNoX = 1;
-      /**
-       * <code>optional int32 cardNoX = 1;</code>
-       */
-      boolean hasCardNoX();
-      /**
-       * <code>optional int32 cardNoX = 1;</code>
-       */
-      int getCardNoX();
-
-      // optional int32 cardNoY = 2;
-      /**
-       * <code>optional int32 cardNoY = 2;</code>
-       */
-      boolean hasCardNoY();
-      /**
-       * <code>optional int32 cardNoY = 2;</code>
-       */
-      int getCardNoY();
-
-      // optional int32 cardWidth = 3;
-      /**
-       * <code>optional int32 cardWidth = 3;</code>
-       */
-      boolean hasCardWidth();
-      /**
-       * <code>optional int32 cardWidth = 3;</code>
-       */
-      int getCardWidth();
-
-      // optional int32 cardHeight = 4;
-      /**
-       * <code>optional int32 cardHeight = 4;</code>
-       */
-      boolean hasCardHeight();
-      /**
-       * <code>optional int32 cardHeight = 4;</code>
-       */
-      int getCardHeight();
-    }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences}
-     */
-    public static final class CardPreferences extends
-        com.google.protobuf.GeneratedMessage
-        implements CardPreferencesOrBuilder {
-      // Use CardPreferences.newBuilder() to construct.
-      private CardPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
-      }
-      private CardPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-      private static final CardPreferences defaultInstance;
-      public static CardPreferences getDefaultInstance() {
-        return defaultInstance;
-      }
-
-      public CardPreferences getDefaultInstanceForType() {
-        return defaultInstance;
-      }
-
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
-        return this.unknownFields;
-      }
-      private CardPreferences(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
+          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder(
+              this.getUnknownFields());
+          while (true) {
             int tag = input.readTag();
             switch (tag) {
               case 0:
-                done = true;
-                break;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               default: {
                 if (!parseUnknownField(input, unknownFields,
                                        extensionRegistry, tag)) {
-                  done = true;
+                  this.setUnknownFields(unknownFields.build());
+                  onChanged();
+                  return this;
                 }
                 break;
               }
@@ -21076,596 +16475,145 @@ public final class GameObject {
               }
             }
           }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
         }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.class, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder.class);
-      }
-
-      public static com.google.protobuf.Parser<CardPreferences> PARSER =
-          new com.google.protobuf.AbstractParser<CardPreferences>() {
-        public CardPreferences parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new CardPreferences(input, extensionRegistry);
-        }
-      };
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<CardPreferences> getParserForType() {
-        return PARSER;
-      }
-
-      private int bitField0_;
-      // optional int32 cardNoX = 1;
-      public static final int CARDNOX_FIELD_NUMBER = 1;
-      private int cardNoX_;
-      /**
-       * <code>optional int32 cardNoX = 1;</code>
-       */
-      public boolean hasCardNoX() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 cardNoX = 1;</code>
-       */
-      public int getCardNoX() {
-        return cardNoX_;
-      }
-
-      // optional int32 cardNoY = 2;
-      public static final int CARDNOY_FIELD_NUMBER = 2;
-      private int cardNoY_;
-      /**
-       * <code>optional int32 cardNoY = 2;</code>
-       */
-      public boolean hasCardNoY() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 cardNoY = 2;</code>
-       */
-      public int getCardNoY() {
-        return cardNoY_;
-      }
-
-      // optional int32 cardWidth = 3;
-      public static final int CARDWIDTH_FIELD_NUMBER = 3;
-      private int cardWidth_;
-      /**
-       * <code>optional int32 cardWidth = 3;</code>
-       */
-      public boolean hasCardWidth() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 cardWidth = 3;</code>
-       */
-      public int getCardWidth() {
-        return cardWidth_;
-      }
-
-      // optional int32 cardHeight = 4;
-      public static final int CARDHEIGHT_FIELD_NUMBER = 4;
-      private int cardHeight_;
-      /**
-       * <code>optional int32 cardHeight = 4;</code>
-       */
-      public boolean hasCardHeight() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 cardHeight = 4;</code>
-       */
-      public int getCardHeight() {
-        return cardHeight_;
-      }
-
-      private void initFields() {
-        cardNoX_ = 0;
-        cardNoY_ = 0;
-        cardWidth_ = 0;
-        cardHeight_ = 0;
-      }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeInt32(1, cardNoX_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeInt32(2, cardNoY_);
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeInt32(3, cardWidth_);
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeInt32(4, cardHeight_);
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(1, cardNoX_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(2, cardNoY_);
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(3, cardWidth_);
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(4, cardHeight_);
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input);
-      }
-      public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
-      }
-
-      public static Builder newBuilder() { return Builder.create(); }
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences prototype) {
-        return newBuilder().mergeFrom(prototype);
-      }
-      public Builder toBuilder() { return newBuilder(this); }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferencesOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_descriptor;
-        }
-
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.class, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder.class);
-        }
-
-        // Construct using com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          }
-        }
-        private static Builder create() {
-          return new Builder();
-        }
-
-        public Builder clear() {
-          super.clear();
-          cardNoX_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000001);
-          cardNoY_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000002);
-          cardWidth_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000004);
-          cardHeight_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000008);
-          return this;
-        }
-
-        public Builder clone() {
-          return create().mergeFrom(buildPartial());
-        }
-
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_descriptor;
-        }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences getDefaultInstanceForType() {
-          return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.getDefaultInstance();
-        }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences build() {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences buildPartial() {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences result = new com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.cardNoX_ = cardNoX_;
-          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-            to_bitField0_ |= 0x00000002;
-          }
-          result.cardNoY_ = cardNoY_;
-          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-            to_bitField0_ |= 0x00000004;
-          }
-          result.cardWidth_ = cardWidth_;
-          if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-            to_bitField0_ |= 0x00000008;
-          }
-          result.cardHeight_ = cardHeight_;
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
-        }
-
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences) {
-            return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences other) {
-          if (other == com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.getDefaultInstance()) return this;
-          if (other.hasCardNoX()) {
-            setCardNoX(other.getCardNoX());
-          }
-          if (other.hasCardNoY()) {
-            setCardNoY(other.getCardNoY());
-          }
-          if (other.hasCardWidth()) {
-            setCardWidth(other.getCardWidth());
-          }
-          if (other.hasCardHeight()) {
-            setCardHeight(other.getCardHeight());
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
+        
         private int bitField0_;
-
+        
         // optional int32 cardNoX = 1;
         private int cardNoX_ ;
-        /**
-         * <code>optional int32 cardNoX = 1;</code>
-         */
         public boolean hasCardNoX() {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        /**
-         * <code>optional int32 cardNoX = 1;</code>
-         */
         public int getCardNoX() {
           return cardNoX_;
         }
-        /**
-         * <code>optional int32 cardNoX = 1;</code>
-         */
         public Builder setCardNoX(int value) {
           bitField0_ |= 0x00000001;
           cardNoX_ = value;
           onChanged();
           return this;
         }
-        /**
-         * <code>optional int32 cardNoX = 1;</code>
-         */
         public Builder clearCardNoX() {
           bitField0_ = (bitField0_ & ~0x00000001);
           cardNoX_ = 0;
           onChanged();
           return this;
         }
-
+        
         // optional int32 cardNoY = 2;
         private int cardNoY_ ;
-        /**
-         * <code>optional int32 cardNoY = 2;</code>
-         */
         public boolean hasCardNoY() {
           return ((bitField0_ & 0x00000002) == 0x00000002);
         }
-        /**
-         * <code>optional int32 cardNoY = 2;</code>
-         */
         public int getCardNoY() {
           return cardNoY_;
         }
-        /**
-         * <code>optional int32 cardNoY = 2;</code>
-         */
         public Builder setCardNoY(int value) {
           bitField0_ |= 0x00000002;
           cardNoY_ = value;
           onChanged();
           return this;
         }
-        /**
-         * <code>optional int32 cardNoY = 2;</code>
-         */
         public Builder clearCardNoY() {
           bitField0_ = (bitField0_ & ~0x00000002);
           cardNoY_ = 0;
           onChanged();
           return this;
         }
-
+        
         // optional int32 cardWidth = 3;
         private int cardWidth_ ;
-        /**
-         * <code>optional int32 cardWidth = 3;</code>
-         */
         public boolean hasCardWidth() {
           return ((bitField0_ & 0x00000004) == 0x00000004);
         }
-        /**
-         * <code>optional int32 cardWidth = 3;</code>
-         */
         public int getCardWidth() {
           return cardWidth_;
         }
-        /**
-         * <code>optional int32 cardWidth = 3;</code>
-         */
         public Builder setCardWidth(int value) {
           bitField0_ |= 0x00000004;
           cardWidth_ = value;
           onChanged();
           return this;
         }
-        /**
-         * <code>optional int32 cardWidth = 3;</code>
-         */
         public Builder clearCardWidth() {
           bitField0_ = (bitField0_ & ~0x00000004);
           cardWidth_ = 0;
           onChanged();
           return this;
         }
-
+        
         // optional int32 cardHeight = 4;
         private int cardHeight_ ;
-        /**
-         * <code>optional int32 cardHeight = 4;</code>
-         */
         public boolean hasCardHeight() {
           return ((bitField0_ & 0x00000008) == 0x00000008);
         }
-        /**
-         * <code>optional int32 cardHeight = 4;</code>
-         */
         public int getCardHeight() {
           return cardHeight_;
         }
-        /**
-         * <code>optional int32 cardHeight = 4;</code>
-         */
         public Builder setCardHeight(int value) {
           bitField0_ |= 0x00000008;
           cardHeight_ = value;
           onChanged();
           return this;
         }
-        /**
-         * <code>optional int32 cardHeight = 4;</code>
-         */
         public Builder clearCardHeight() {
           bitField0_ = (bitField0_ & ~0x00000008);
           cardHeight_ = 0;
           onChanged();
           return this;
         }
-
+        
         // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences)
       }
-
+      
       static {
         defaultInstance = new CardPreferences(true);
         defaultInstance.initFields();
       }
-
+      
       // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences)
     }
-
+    
     private int bitField0_;
     // optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
     public static final int DEBUGDRAWPREFS_FIELD_NUMBER = 1;
     private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-     */
     public boolean hasDebugDrawPrefs() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences getDebugDrawPrefs() {
       return debugDrawPrefs_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder() {
       return debugDrawPrefs_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;
     public static final int WORLDPREFS_FIELD_NUMBER = 2;
     private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences worldPrefs_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-     */
     public boolean hasWorldPrefs() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences getWorldPrefs() {
       return worldPrefs_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferencesOrBuilder getWorldPrefsOrBuilder() {
       return worldPrefs_;
     }
-
+    
     // optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;
     public static final int CARDPREFS_FIELD_NUMBER = 3;
     private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences cardPrefs_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-     */
     public boolean hasCardPrefs() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences getCardPrefs() {
       return cardPrefs_;
     }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-     */
     public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferencesOrBuilder getCardPrefsOrBuilder() {
       return cardPrefs_;
     }
-
+    
     private void initFields() {
       debugDrawPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
       worldPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.getDefaultInstance();
@@ -21675,11 +16623,11 @@ public final class GameObject {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -21694,12 +16642,12 @@ public final class GameObject {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -21717,83 +16665,94 @@ public final class GameObject {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenPreferences}
-     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.laex.cg2d.protobuf.GameObject.CGScreenPreferencesOrBuilder {
@@ -21801,21 +16760,18 @@ public final class GameObject {
           getDescriptor() {
         return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_descriptor;
       }
-
+      
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.class, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder.class);
+        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_fieldAccessorTable;
       }
-
+      
       // Construct using com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -21829,7 +16785,7 @@ public final class GameObject {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         if (debugDrawPrefsBuilder_ == null) {
@@ -21852,20 +16808,20 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.laex.cg2d.protobuf.GameObject.internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_descriptor;
+        return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.getDescriptor();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences getDefaultInstanceForType() {
         return com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.getDefaultInstance();
       }
-
+      
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences build() {
         com.laex.cg2d.protobuf.GameObject.CGScreenPreferences result = buildPartial();
         if (!result.isInitialized()) {
@@ -21873,7 +16829,17 @@ public final class GameObject {
         }
         return result;
       }
-
+      
+      private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.laex.cg2d.protobuf.GameObject.CGScreenPreferences result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences buildPartial() {
         com.laex.cg2d.protobuf.GameObject.CGScreenPreferences result = new com.laex.cg2d.protobuf.GameObject.CGScreenPreferences(this);
         int from_bitField0_ = bitField0_;
@@ -21906,7 +16872,7 @@ public final class GameObject {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.laex.cg2d.protobuf.GameObject.CGScreenPreferences) {
           return mergeFrom((com.laex.cg2d.protobuf.GameObject.CGScreenPreferences)other);
@@ -21915,7 +16881,7 @@ public final class GameObject {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences other) {
         if (other == com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.getDefaultInstance()) return this;
         if (other.hasDebugDrawPrefs()) {
@@ -21930,43 +16896,74 @@ public final class GameObject {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.laex.cg2d.protobuf.GameObject.CGScreenPreferences parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.laex.cg2d.protobuf.GameObject.CGScreenPreferences) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.newBuilder();
+              if (hasDebugDrawPrefs()) {
+                subBuilder.mergeFrom(getDebugDrawPrefs());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setDebugDrawPrefs(subBuilder.buildPartial());
+              break;
+            }
+            case 18: {
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.newBuilder();
+              if (hasWorldPrefs()) {
+                subBuilder.mergeFrom(getWorldPrefs());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setWorldPrefs(subBuilder.buildPartial());
+              break;
+            }
+            case 26: {
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder subBuilder = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.newBuilder();
+              if (hasCardPrefs()) {
+                subBuilder.mergeFrom(getCardPrefs());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setCardPrefs(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
       private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferencesOrBuilder> debugDrawPrefsBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       public boolean hasDebugDrawPrefs() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences getDebugDrawPrefs() {
         if (debugDrawPrefsBuilder_ == null) {
           return debugDrawPrefs_;
@@ -21974,9 +16971,6 @@ public final class GameObject {
           return debugDrawPrefsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       public Builder setDebugDrawPrefs(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences value) {
         if (debugDrawPrefsBuilder_ == null) {
           if (value == null) {
@@ -21990,9 +16984,6 @@ public final class GameObject {
         bitField0_ |= 0x00000001;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       public Builder setDebugDrawPrefs(
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder builderForValue) {
         if (debugDrawPrefsBuilder_ == null) {
@@ -22004,9 +16995,6 @@ public final class GameObject {
         bitField0_ |= 0x00000001;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       public Builder mergeDebugDrawPrefs(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences value) {
         if (debugDrawPrefsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
@@ -22023,9 +17011,6 @@ public final class GameObject {
         bitField0_ |= 0x00000001;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       public Builder clearDebugDrawPrefs() {
         if (debugDrawPrefsBuilder_ == null) {
           debugDrawPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
@@ -22036,17 +17021,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder getDebugDrawPrefsBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getDebugDrawPrefsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder() {
         if (debugDrawPrefsBuilder_ != null) {
           return debugDrawPrefsBuilder_.getMessageOrBuilder();
@@ -22054,9 +17033,6 @@ public final class GameObject {
           return debugDrawPrefs_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferencesOrBuilder> 
           getDebugDrawPrefsFieldBuilder() {
@@ -22070,20 +17046,14 @@ public final class GameObject {
         }
         return debugDrawPrefsBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;
       private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences worldPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferencesOrBuilder> worldPrefsBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       public boolean hasWorldPrefs() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences getWorldPrefs() {
         if (worldPrefsBuilder_ == null) {
           return worldPrefs_;
@@ -22091,9 +17061,6 @@ public final class GameObject {
           return worldPrefsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       public Builder setWorldPrefs(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences value) {
         if (worldPrefsBuilder_ == null) {
           if (value == null) {
@@ -22107,9 +17074,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       public Builder setWorldPrefs(
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder builderForValue) {
         if (worldPrefsBuilder_ == null) {
@@ -22121,9 +17085,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       public Builder mergeWorldPrefs(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences value) {
         if (worldPrefsBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -22140,9 +17101,6 @@ public final class GameObject {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       public Builder clearWorldPrefs() {
         if (worldPrefsBuilder_ == null) {
           worldPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.getDefaultInstance();
@@ -22153,17 +17111,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder getWorldPrefsBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getWorldPrefsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferencesOrBuilder getWorldPrefsOrBuilder() {
         if (worldPrefsBuilder_ != null) {
           return worldPrefsBuilder_.getMessageOrBuilder();
@@ -22171,9 +17123,6 @@ public final class GameObject {
           return worldPrefs_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferencesOrBuilder> 
           getWorldPrefsFieldBuilder() {
@@ -22187,20 +17136,14 @@ public final class GameObject {
         }
         return worldPrefsBuilder_;
       }
-
+      
       // optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;
       private com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences cardPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferencesOrBuilder> cardPrefsBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       public boolean hasCardPrefs() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences getCardPrefs() {
         if (cardPrefsBuilder_ == null) {
           return cardPrefs_;
@@ -22208,9 +17151,6 @@ public final class GameObject {
           return cardPrefsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       public Builder setCardPrefs(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences value) {
         if (cardPrefsBuilder_ == null) {
           if (value == null) {
@@ -22224,9 +17164,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       public Builder setCardPrefs(
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder builderForValue) {
         if (cardPrefsBuilder_ == null) {
@@ -22238,9 +17175,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       public Builder mergeCardPrefs(com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences value) {
         if (cardPrefsBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
@@ -22257,9 +17191,6 @@ public final class GameObject {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       public Builder clearCardPrefs() {
         if (cardPrefsBuilder_ == null) {
           cardPrefs_ = com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.getDefaultInstance();
@@ -22270,17 +17201,11 @@ public final class GameObject {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder getCardPrefsBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getCardPrefsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       public com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferencesOrBuilder getCardPrefsOrBuilder() {
         if (cardPrefsBuilder_ != null) {
           return cardPrefsBuilder_.getMessageOrBuilder();
@@ -22288,9 +17213,6 @@ public final class GameObject {
           return cardPrefs_;
         }
       }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
-       */
       private com.google.protobuf.SingleFieldBuilder<
           com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder, com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferencesOrBuilder> 
           getCardPrefsFieldBuilder() {
@@ -22304,18 +17226,18 @@ public final class GameObject {
         }
         return cardPrefsBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGScreenPreferences)
     }
-
+    
     static {
       defaultInstance = new CGScreenPreferences(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGScreenPreferences)
   }
-
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_laex_cg2d_protobuf_CGGameModel_descriptor;
   private static
@@ -22426,7 +17348,7 @@ public final class GameObject {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_fieldAccessorTable;
-
+  
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -22565,133 +17487,177 @@ public final class GameObject {
           internal_static_com_laex_cg2d_protobuf_CGGameModel_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGGameModel_descriptor,
-              new java.lang.String[] { "Layers", "ScreenPrefs", });
+              new java.lang.String[] { "Layers", "ScreenPrefs", },
+              com.laex.cg2d.protobuf.GameObject.CGGameModel.class,
+              com.laex.cg2d.protobuf.GameObject.CGGameModel.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGJoint_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_laex_cg2d_protobuf_CGJoint_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGJoint_descriptor,
-              new java.lang.String[] { "SourceShapeId", "TargetShapeId", "Type", "DistanceJointDef", "RevoluteJointDef", "PrismaticJointDef", "PulleyJointDef", "FrictionJointDef", "WeldJointDef", });
+              new java.lang.String[] { "SourceShapeId", "TargetShapeId", "Type", "DistanceJointDef", "RevoluteJointDef", "PrismaticJointDef", "PulleyJointDef", "FrictionJointDef", "WeldJointDef", },
+              com.laex.cg2d.protobuf.GameObject.CGJoint.class,
+              com.laex.cg2d.protobuf.GameObject.CGJoint.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGDistanceJointDef_descriptor,
-              new java.lang.String[] { "CollideConnected", "FreqencyHz", "DampingRatio", });
+              new java.lang.String[] { "CollideConnected", "FreqencyHz", "DampingRatio", },
+              com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.class,
+              com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGRevoluteJointDef_descriptor,
-              new java.lang.String[] { "CollideConnected", "ReferenceAngle", "EnableLimit", "LowerAngle", "UpperAngle", "EnableMotor", "MotorSpeed", "MaxMotorTorque", "WorldAnchor", });
+              new java.lang.String[] { "CollideConnected", "ReferenceAngle", "EnableLimit", "LowerAngle", "UpperAngle", "EnableMotor", "MotorSpeed", "MaxMotorTorque", "WorldAnchor", },
+              com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.class,
+              com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGPrismaticJointDef_descriptor,
-              new java.lang.String[] { "CollideConnected", "Anchor", "Axis", "ReferenceAngle", "EnableLimit", "LowerTranslation", "UpperTranslation", "EnableMotor", "MaxMotorForce", "MotorSpeed", });
+              new java.lang.String[] { "CollideConnected", "Anchor", "Axis", "ReferenceAngle", "EnableLimit", "LowerTranslation", "UpperTranslation", "EnableMotor", "MaxMotorForce", "MotorSpeed", },
+              com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.class,
+              com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGPulleyJointDef_descriptor,
-              new java.lang.String[] { "CollideConnected", "GroundAnchorA", "GroundAnchorB", "Ratio", });
+              new java.lang.String[] { "CollideConnected", "GroundAnchorA", "GroundAnchorB", "Ratio", },
+              com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.class,
+              com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGFrictionJointDef_descriptor,
-              new java.lang.String[] { "CollideConnected", "MaxForce", "MaxTorque", });
+              new java.lang.String[] { "CollideConnected", "MaxForce", "MaxTorque", },
+              com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.class,
+              com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGWeldJointDef_descriptor,
-              new java.lang.String[] { "CollideConnected", });
+              new java.lang.String[] { "CollideConnected", },
+              com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.class,
+              com.laex.cg2d.protobuf.GameObject.CGWeldJointDef.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGResourceFile_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_com_laex_cg2d_protobuf_CGResourceFile_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGResourceFile_descriptor,
-              new java.lang.String[] { "ResourceFile", "ResourceFileAbsolute", });
+              new java.lang.String[] { "ResourceFile", "ResourceFileAbsolute", },
+              com.laex.cg2d.protobuf.GameObject.CGResourceFile.class,
+              com.laex.cg2d.protobuf.GameObject.CGResourceFile.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGEntityAnimation_descriptor,
-              new java.lang.String[] { "AnimationName", "AnimationResourceFile", "FixtureFile", "AnimationDuration", "DefaultAnimation", "Cols", "Rows", "CollisionType", "ShpX", "ShpY", "ShpWidth", "ShpHeight", "Vertices", });
+              new java.lang.String[] { "AnimationName", "AnimationResourceFile", "FixtureFile", "AnimationDuration", "DefaultAnimation", "Cols", "Rows", "CollisionType", "ShpX", "ShpY", "ShpWidth", "ShpHeight", "Vertices", },
+              com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.class,
+              com.laex.cg2d.protobuf.GameObject.CGEntityAnimation.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGEntity_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_com_laex_cg2d_protobuf_CGEntity_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGEntity_descriptor,
-              new java.lang.String[] { "InternalName", "Animations", });
+              new java.lang.String[] { "InternalName", "Animations", },
+              com.laex.cg2d.protobuf.GameObject.CGEntity.class,
+              com.laex.cg2d.protobuf.GameObject.CGEntity.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGBounds_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_com_laex_cg2d_protobuf_CGBounds_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGBounds_descriptor,
-              new java.lang.String[] { "X", "Y", "Width", "Height", });
+              new java.lang.String[] { "X", "Y", "Width", "Height", },
+              com.laex.cg2d.protobuf.GameObject.CGBounds.class,
+              com.laex.cg2d.protobuf.GameObject.CGBounds.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGVector2_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_laex_cg2d_protobuf_CGVector2_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGVector2_descriptor,
-              new java.lang.String[] { "X", "Y", });
+              new java.lang.String[] { "X", "Y", },
+              com.laex.cg2d.protobuf.GameObject.CGVector2.class,
+              com.laex.cg2d.protobuf.GameObject.CGVector2.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGBodyDef_descriptor =
             getDescriptor().getMessageTypes().get(13);
           internal_static_com_laex_cg2d_protobuf_CGBodyDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGBodyDef_descriptor,
-              new java.lang.String[] { "Active", "AllowSleep", "Angle", "AngularDamping", "AngularVelocity", "Awake", "Bullet", "FixedRotation", "IntertialScale", "LinearDampitng", "GravityScale", "LinearVelocity", "Type", "Position", });
+              new java.lang.String[] { "Active", "AllowSleep", "Angle", "AngularDamping", "AngularVelocity", "Awake", "Bullet", "FixedRotation", "IntertialScale", "LinearDampitng", "GravityScale", "LinearVelocity", "Type", "Position", },
+              com.laex.cg2d.protobuf.GameObject.CGBodyDef.class,
+              com.laex.cg2d.protobuf.GameObject.CGBodyDef.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGFilter_descriptor =
             getDescriptor().getMessageTypes().get(14);
           internal_static_com_laex_cg2d_protobuf_CGFilter_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGFilter_descriptor,
-              new java.lang.String[] { "CategoryBits", "MaskBits", "GroupIndex", });
+              new java.lang.String[] { "CategoryBits", "MaskBits", "GroupIndex", },
+              com.laex.cg2d.protobuf.GameObject.CGFilter.class,
+              com.laex.cg2d.protobuf.GameObject.CGFilter.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGFixtureDef_descriptor =
             getDescriptor().getMessageTypes().get(15);
           internal_static_com_laex_cg2d_protobuf_CGFixtureDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGFixtureDef_descriptor,
-              new java.lang.String[] { "Density", "Friction", "Restitution", "Sensor", "Filter", });
+              new java.lang.String[] { "Density", "Friction", "Restitution", "Sensor", "Filter", },
+              com.laex.cg2d.protobuf.GameObject.CGFixtureDef.class,
+              com.laex.cg2d.protobuf.GameObject.CGFixtureDef.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGShape_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_com_laex_cg2d_protobuf_CGShape_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGShape_descriptor,
-              new java.lang.String[] { "Id", "Visible", "Locked", "Background", "BackgroundResourceFile", "EditorShapeType", "Bounds", "BodyDef", "FixtureDef", "Joints", "EntityRefFile", });
+              new java.lang.String[] { "Id", "Visible", "Locked", "Background", "BackgroundResourceFile", "EditorShapeType", "Bounds", "BodyDef", "FixtureDef", "Joints", "EntityRefFile", },
+              com.laex.cg2d.protobuf.GameObject.CGShape.class,
+              com.laex.cg2d.protobuf.GameObject.CGShape.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGLayer_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_com_laex_cg2d_protobuf_CGLayer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGLayer_descriptor,
-              new java.lang.String[] { "Id", "Name", "Visible", "Locked", "Shape", });
+              new java.lang.String[] { "Id", "Name", "Visible", "Locked", "Shape", },
+              com.laex.cg2d.protobuf.GameObject.CGLayer.class,
+              com.laex.cg2d.protobuf.GameObject.CGLayer.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_descriptor =
             getDescriptor().getMessageTypes().get(18);
           internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_descriptor,
-              new java.lang.String[] { "DebugDrawPrefs", "WorldPrefs", "CardPrefs", });
+              new java.lang.String[] { "DebugDrawPrefs", "WorldPrefs", "CardPrefs", },
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.class,
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_descriptor =
             internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_descriptor.getNestedTypes().get(0);
           internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_DebugDrawPreferences_descriptor,
-              new java.lang.String[] { "DrawBodies", "DrawJoints", "DrawAABB", "DrawInactiveBodies", "InstallMouseJoint", "DrawDebugData", "DrawEntities", });
+              new java.lang.String[] { "DrawBodies", "DrawJoints", "DrawAABB", "DrawInactiveBodies", "InstallMouseJoint", "DrawDebugData", "DrawEntities", },
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.class,
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_descriptor =
             internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_descriptor.getNestedTypes().get(1);
           internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_WorldPreferences_descriptor,
-              new java.lang.String[] { "PtmRatio", "VelocityIterations", "PositionIterations", "TimeStep", "GravityX", "GravityY", });
+              new java.lang.String[] { "PtmRatio", "VelocityIterations", "PositionIterations", "TimeStep", "GravityX", "GravityY", },
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.class,
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences.Builder.class);
           internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_descriptor =
             internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_descriptor.getNestedTypes().get(2);
           internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGScreenPreferences_CardPreferences_descriptor,
-              new java.lang.String[] { "CardNoX", "CardNoY", "CardWidth", "CardHeight", });
+              new java.lang.String[] { "CardNoX", "CardNoY", "CardWidth", "CardHeight", },
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.class,
+              com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences.Builder.class);
           return null;
         }
       };
@@ -22700,6 +17666,6 @@ public final class GameObject {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-
+  
   // @@protoc_insertion_point(outer_class_scope)
 }
