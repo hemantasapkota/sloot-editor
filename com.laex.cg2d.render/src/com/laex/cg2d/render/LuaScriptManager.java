@@ -62,7 +62,7 @@ public class LuaScriptManager extends AbstractGameComponentManager implements IG
   }
 
   public void render() {
-    if (!scriptFileExists)
+    if (!canExecute())
       return;
 
     Iterator<Body> itr = world().getBodies();
@@ -109,5 +109,10 @@ public class LuaScriptManager extends AbstractGameComponentManager implements IG
     globals.get("keyPressed").invoke(new LuaValue[]
       { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), LuaValue.valueOf(key) });
 
+  }
+
+  @Override
+  public boolean canExecute() {
+    return scriptFileExists;
   }
 }

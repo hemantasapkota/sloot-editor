@@ -140,6 +140,10 @@ public abstract class MyGdxGame extends ApplicationAdapter {
    * @throws IllegalArgumentException
    */
   private void handleInput() {
+    //is it possible to excute the script, if not, then dont even bother to handle input
+    if (!luaScriptManager.canExecute()) {
+      return;
+    }
 
     //go through all the fields defined in gdx input keys
     //check if any of them is pressed. if pressed, exceute the script and forward the key name with it
