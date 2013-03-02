@@ -258,6 +258,11 @@ public class ListExistingScreensDialog extends Dialog {
     }
   }
   
+  /**
+   * Checks if is new layer name valid.
+   *
+   * @return true, if is new layer name valid
+   */
   private boolean isNewLayerNameValid() {
       if (StringUtils.isEmpty(txtNewLayerName.getText())) {
         return false;

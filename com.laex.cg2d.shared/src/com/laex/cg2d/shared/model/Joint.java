@@ -62,6 +62,7 @@ public abstract class Joint extends ModelElement {
   // boolean value.
   // Therefore, an extra booelan had to be created. This correctly persists
   // the value.
+  /** The coolide connected. */
   private boolean coolideConnected = false;
 
   static {
@@ -103,6 +104,11 @@ public abstract class Joint extends ModelElement {
     return jointDef;
   }
   
+  /**
+   * Checks if is collide connected.
+   *
+   * @return true, if is collide connected
+   */
   public boolean isCollideConnected() {
     return coolideConnected;
   }

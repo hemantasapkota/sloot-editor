@@ -71,12 +71,20 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   /** The position iterations. */
   private int positionIterations;
 
+  /** The lua script manager. */
   private LuaScriptManager luaScriptManager;
 
+  /** The screen controller file lua. */
   private String screenControllerFileLua;
 
+  /** The gdx input keys. */
   private static Field[] gdxInputKeys = Input.Keys.class.getFields();
 
+  /**
+   * Instantiates a new my gdx game.
+   *
+   * @param screenControllerFile the screen controller file
+   */
   public MyGdxGame(String screenControllerFile) {
     this.screenControllerFileLua = screenControllerFile;
   }
@@ -135,9 +143,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   /**
    * Handle input.
-   * 
-   * @throws IllegalAccessException
-   * @throws IllegalArgumentException
+   *
    */
   private void handleInput() {
     //is it possible to excute the script, if not, then dont even bother to handle input

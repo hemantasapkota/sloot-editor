@@ -109,6 +109,7 @@ public class AnimationFormPage extends FormPage {
   /** The txt animation duration. */
   private Text txtAnimationDuration;
 
+  /** The anim controller. */
   private AnimationFormPageController animController = new AnimationFormPageController();
 
   /**
@@ -505,9 +506,9 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Adds the new animation.
-   * 
-   * @param alvi
-   *          the alvi
+   *
+   * @param alvi the alvi
+   * @param index the index
    */
   private void updateUIOnNewAnimationAdd(AnimationListViewItem alvi, int index) {
     resetFramesComposite();

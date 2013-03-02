@@ -135,8 +135,10 @@ public class CollisionFormPage extends FormPage {
   /** The freeform layered pane. */
   private FreeformLayeredPane freeformLayeredPane;
 
+  /** The rectangle figure. */
   private RectangleFigure rectangleFigure;
 
+  /** The ellipse figure. */
   private Ellipse ellipseFigure;
 
   /**
@@ -589,6 +591,11 @@ public class CollisionFormPage extends FormPage {
 
   }
 
+  /**
+   * Do preview.
+   *
+   * @param ai the ai
+   */
   private void doPreview(AnimationListViewItem ai) {
     if (ai.getAnimation() != null) {
       if (ai.getFrames() != null && !ai.getFrames().isEmpty()) {
@@ -718,6 +725,9 @@ public class CollisionFormPage extends FormPage {
 
   }
 
+  /**
+   * Clear collision figure.
+   */
   private void clearCollisionFigure() {
     if (rectangleFigure != null) {
       if (freeformLayeredPane.getChildren().contains(rectangleFigure)) {

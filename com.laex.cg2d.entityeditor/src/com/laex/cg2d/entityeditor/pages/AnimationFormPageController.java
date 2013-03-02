@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.entityeditor.pages;
 
 import java.util.ArrayList;
@@ -12,14 +22,29 @@ import com.laex.cg2d.shared.model.EntityCollisionType;
 import com.laex.cg2d.shared.util.FloatUtil;
 
 // Seperates logic from UI code of AnimationFormPage
+/**
+ * The Class AnimationFormPageController.
+ */
 public class AnimationFormPageController {
 
+  /** The animations. */
   private List<AnimationListViewItem> animations = new ArrayList<AnimationListViewItem>();
 
+  /**
+   * Provide new name.
+   *
+   * @return the string
+   */
   private String provideNewName() {
     return "Animation " + (animations.size() + 1);
   }
 
+  /**
+   * Adds the animation.
+   *
+   * @param ea the ea
+   * @return the animation list view item
+   */
   public AnimationListViewItem addAnimation(EntityAnimation ea) {
     AnimationListViewItem alvi = new AnimationListViewItem();
     alvi.setName(ea.getAnimationName());
@@ -32,6 +57,11 @@ public class AnimationFormPageController {
     return alvi;
   }
 
+  /**
+   * Creates the empty animation.
+   *
+   * @return the animation list view item
+   */
   public AnimationListViewItem createEmptyAnimation() {
 
     AnimationListViewItem alvi = new AnimationListViewItem();
@@ -56,6 +86,12 @@ public class AnimationFormPageController {
     return alvi;
   }
 
+  /**
+   * Removes the animation.
+   *
+   * @param alvi the alvi
+   * @return the int
+   */
   public int removeAnimation(AnimationListViewItem alvi) {
     alvi.getFrames().clear();
     int index = animations.indexOf(alvi);
@@ -63,6 +99,12 @@ public class AnimationFormPageController {
     return index;
   }
 
+  /**
+   * Preview animation external.
+   *
+   * @param entAnim the ent anim
+   * @param duration the duration
+   */
   public void previewAnimationExternal(EntityAnimation entAnim, float duration) {
     String animStrip = entAnim.getAnimationResourceFile().getResourceFileAbsolute();
 
@@ -91,10 +133,23 @@ public class AnimationFormPageController {
 //    new LwjglApplication(eap, lac);
   }
 
+  /**
+   * Animation duration changed.
+   *
+   * @param anim the anim
+   * @param duration the duration
+   */
   public void animationDurationChanged(EntityAnimation anim, float duration) {
     anim.setAnimationDelay(duration);
   }
 
+  /**
+   * Animation name change.
+   *
+   * @param alvi the alvi
+   * @param newName the new name
+   * @param animDuration the anim duration
+   */
   public void animationNameChange(AnimationListViewItem alvi, String newName, String animDuration) {
 
     alvi.setName(newName);
@@ -108,6 +163,9 @@ public class AnimationFormPageController {
 
   /**
    * Animation default changed.
+   *
+   * @param alvi the alvi
+   * @param isDefaultAnimation the is default animation
    */
   public void defaultAnimationChanged(AnimationListViewItem alvi, boolean isDefaultAnimation) {
     alvi.getAnimation().setDefaultAnimation(isDefaultAnimation);
@@ -121,14 +179,30 @@ public class AnimationFormPageController {
 
   }
 
+  /**
+   * Gets the animations.
+   *
+   * @return the animations
+   */
   public List<AnimationListViewItem> getAnimations() {
     return animations;
   }
 
+  /**
+   * Animations count.
+   *
+   * @return the int
+   */
   public int animationsCount() {
     return animations.size();
   }
 
+  /**
+   * Index of.
+   *
+   * @param alvi the alvi
+   * @return the int
+   */
   public int indexOf(AnimationListViewItem alvi) {
     return animations.indexOf(alvi);
   }

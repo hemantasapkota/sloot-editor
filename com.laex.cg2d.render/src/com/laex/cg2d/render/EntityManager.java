@@ -67,6 +67,7 @@ public class EntityManager extends AbstractGameComponentManager {
   /** The entity animation origin map. */
   private Map<CGEntityAnimation, Vector3> entityAnimationOriginMap;
 
+  /** The draw entities. */
   private boolean drawEntities;
 
   /**

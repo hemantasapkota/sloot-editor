@@ -245,6 +245,9 @@ public class MouseJointManager extends AbstractGameComponentManager implements I
     return false;
   }
 
+  /* (non-Javadoc)
+   * @see com.badlogic.gdx.InputProcessor#mouseMoved(int, int)
+   */
   @Override
   public boolean mouseMoved(int arg0, int arg1) {
     return false;

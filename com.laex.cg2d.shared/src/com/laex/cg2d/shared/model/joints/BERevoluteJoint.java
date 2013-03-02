@@ -185,6 +185,12 @@ public class BERevoluteJoint extends Joint {
     return super.getPropertyValue(id);
   }
 
+  /**
+   * Checks if is world anchor prop.
+   *
+   * @param id the id
+   * @return true, if is world anchor prop
+   */
   private boolean isWorldAnchorProp(Object id) {
     return WORLD_ANCHOR_PROP.equals(id);
   }

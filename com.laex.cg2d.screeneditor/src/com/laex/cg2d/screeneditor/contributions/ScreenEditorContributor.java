@@ -233,14 +233,12 @@ public class ScreenEditorContributor extends ActionBarContributor {
 
   /**
    * Builds the runner command from properties.
-   * 
-   * @param props
-   *          the props
-   * @param screenFile
-   *          the screen file
+   *
+   * @param props the props
+   * @param screenFile the screen file
+   * @param controllerFile the controller file
    * @return the string
-   * @throws CoreException
-   *           the core exception
+   * @throws CoreException the core exception
    */
   private String buildRunnerCommandFromProperties(Map<String, String> props, String screenFile, String controllerFile) throws CoreException {
     StringBuilder cmd = new StringBuilder("java -jar ");
