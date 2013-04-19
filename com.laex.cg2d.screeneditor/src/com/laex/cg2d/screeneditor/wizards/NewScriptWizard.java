@@ -10,31 +10,18 @@
  */
 package com.laex.cg2d.screeneditor.wizards;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.Scanner;
-
-import javax.xml.soap.Text;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.input.CharSequenceReader;
-import org.eclipse.core.internal.utils.FileUtil;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IEditorInput;
@@ -51,7 +38,6 @@ import org.eclipse.ui.part.FileEditorInput;
 import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.shared.CGCProject;
 import com.laex.cg2d.shared.ICGCProject;
-import com.laex.cg2d.shared.ResourceManager;
 
 /**
  * The Class NewScriptWizard.
