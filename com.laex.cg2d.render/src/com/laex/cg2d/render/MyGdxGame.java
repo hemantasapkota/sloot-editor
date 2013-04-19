@@ -20,9 +20,16 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.laex.cg2d.protobuf.GameObject.CGGameModel;
+import com.laex.cg2d.render.impl.BackgroundManager;
+import com.laex.cg2d.render.impl.EntityManager;
+import com.laex.cg2d.render.impl.EntityQueryManager;
+import com.laex.cg2d.render.impl.LuaScriptManager;
+import com.laex.cg2d.render.impl.MouseJointManager;
+import com.laex.cg2d.render.impl.ShapeManager;
 
 /**
  * The Class MyGdxGame.
@@ -55,6 +62,8 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   /** The mouse joint manager. */
   private MouseJointManager mouseJointManager;
+  
+  private EntityQueryManager entityQueryManager;
 
   /** The gravity x. */
   private float gravityX;
@@ -123,7 +132,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     float w = Gdx.graphics.getWidth();
     float h = Gdx.graphics.getHeight();
 
-    cam = new OrthographicCamera(w / IGameComponentManager.MAGIC_SCALAR, h / IGameComponentManager.MAGIC_SCALAR);
+    cam = new OrthographicCamera(w / IScreenScaffold.MAGIC_SCALAR, h / IScreenScaffold.MAGIC_SCALAR);
     cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
 
     shapeManager = new ShapeManager(model, world, cam);
@@ -131,6 +140,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     bgManager = new BackgroundManager(model, world, cam, batch);
     mouseJointManager = new MouseJointManager(model, world, cam);
     luaScriptManager = new LuaScriptManager(model, world, cam, screenControllerFileLua);
+    entityQueryManager = new EntityQueryManager(world);
 
     mouseJointManager.create();
     shapeManager.create();
@@ -158,7 +168,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
       try {
         
         if (Gdx.input.isKeyPressed(f.getInt(f))) {
-          luaScriptManager.executeKeyPressed(f.getName());
+          luaScriptManager.executeKeyPressed(entityQueryManager, f.getName());
         }
 
       } catch (IllegalArgumentException e) {
