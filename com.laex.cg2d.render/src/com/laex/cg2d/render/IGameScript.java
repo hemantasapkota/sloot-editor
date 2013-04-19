@@ -11,6 +11,7 @@
 package com.laex.cg2d.render;
 
 import com.badlogic.gdx.physics.box2d.Body;
+import com.laex.cg2d.render.impl.EntityQueryManager;
 
 /**
  * The Interface IGameScript.
@@ -50,6 +51,6 @@ public interface IGameScript {
    *
    * @param key the key
    */
-  void executeKeyPressed(String key);
+  void executeKeyPressed(EntityQueryManager queryMgr, String key);
 
 }
