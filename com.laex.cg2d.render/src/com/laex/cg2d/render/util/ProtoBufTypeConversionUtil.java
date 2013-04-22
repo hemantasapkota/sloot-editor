@@ -22,17 +22,17 @@ import com.badlogic.gdx.physics.box2d.joints.PrismaticJointDef;
 import com.badlogic.gdx.physics.box2d.joints.PulleyJointDef;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
-import com.laex.cg2d.protobuf.GameObject.CGBodyDef;
-import com.laex.cg2d.protobuf.GameObject.CGBodyType;
-import com.laex.cg2d.protobuf.GameObject.CGDistanceJointDef;
-import com.laex.cg2d.protobuf.GameObject.CGFixtureDef;
-import com.laex.cg2d.protobuf.GameObject.CGFrictionJointDef;
-import com.laex.cg2d.protobuf.GameObject.CGJointType;
-import com.laex.cg2d.protobuf.GameObject.CGPrismaticJointDef;
-import com.laex.cg2d.protobuf.GameObject.CGPulleyJointDef;
-import com.laex.cg2d.protobuf.GameObject.CGRevoluteJointDef;
-import com.laex.cg2d.protobuf.GameObject.CGVector2;
-import com.laex.cg2d.protobuf.GameObject.CGWeldJointDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGBodyDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGBodyType;
+import com.laex.cg2d.protobuf.ScreenModel.CGDistanceJointDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGFixtureDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGFrictionJointDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGJointType;
+import com.laex.cg2d.protobuf.ScreenModel.CGPrismaticJointDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGPulleyJointDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGRevoluteJointDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGVector2;
+import com.laex.cg2d.protobuf.ScreenModel.CGWeldJointDef;
 
 /**
  * The Class ProtoBufTypeConversionUtil.

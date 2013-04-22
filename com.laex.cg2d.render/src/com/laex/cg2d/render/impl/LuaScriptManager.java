@@ -16,22 +16,21 @@ import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 import org.luaj.vm2.lib.jse.JsePlatform;
-import org.lwjgl.Sys;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
-import com.laex.cg2d.protobuf.GameObject.CGShape;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 import com.laex.cg2d.render.IEntityQueryable;
-import com.laex.cg2d.render.IGameScript;
+import com.laex.cg2d.render.IScreenControllerScript;
 
 /**
  * The Class LuaScriptManager.
  */
-public class LuaScriptManager extends AbstractScreenScaffold implements IGameScript {
+public class LuaScriptManager extends AbstractScreenScaffold implements IScreenControllerScript {
 
   /** The globals. */
   private Globals globals = JsePlatform.standardGlobals();
@@ -49,7 +48,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IGameScr
    * @param world the world
    * @param cam the cam
    */
-  public LuaScriptManager(CGGameModel model, World world, Camera cam) {
+  public LuaScriptManager(CGScreenModel model, World world, Camera cam) {
     super(model, world, cam);
   }
 
@@ -61,7 +60,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IGameScr
    * @param cam the cam
    * @param scriptFileName the script file name
    */
-  public LuaScriptManager(CGGameModel model, World world, Camera cam, String scriptFileName) {
+  public LuaScriptManager(CGScreenModel model, World world, Camera cam, String scriptFileName) {
     super(model, world, cam);
 
     if (!Gdx.files.absolute(scriptFileName).exists()) {
@@ -163,7 +162,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IGameScr
    * @see com.laex.cg2d.render.IGameScript#executeKeyPressed(java.lang.String)
    */
   @Override
-  public void executeKeyPressed(EntityQueryManager queryMgr,String key) {
+  public void executeKeyPressed(IEntityQueryable queryMgr,String key) {
     globals.get("keyPressed").invoke(new LuaValue[]
       { CoerceJavaToLua.coerce(queryMgr), CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), LuaValue.valueOf(key) });
 

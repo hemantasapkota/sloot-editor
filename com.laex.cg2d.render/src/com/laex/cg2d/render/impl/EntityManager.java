@@ -35,14 +35,13 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.GameObject;
-import com.laex.cg2d.protobuf.GameObject.CGEditorShapeType;
-import com.laex.cg2d.protobuf.GameObject.CGEntity;
-import com.laex.cg2d.protobuf.GameObject.CGEntityAnimation;
-import com.laex.cg2d.protobuf.GameObject.CGEntityCollisionType;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
-import com.laex.cg2d.protobuf.GameObject.CGLayer;
-import com.laex.cg2d.protobuf.GameObject.CGShape;
+import com.laex.cg2d.protobuf.ScreenModel.CGEditorShapeType;
+import com.laex.cg2d.protobuf.ScreenModel.CGEntity;
+import com.laex.cg2d.protobuf.ScreenModel.CGEntityAnimation;
+import com.laex.cg2d.protobuf.ScreenModel.CGEntityCollisionType;
+import com.laex.cg2d.protobuf.ScreenModel.CGLayer;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 import com.laex.cg2d.render.util.RunnerUtil;
 
@@ -84,16 +83,16 @@ public class EntityManager extends AbstractScreenScaffold {
    * @param batch
    *          the batch
    */
-  public EntityManager(CGGameModel model, World world, Camera cam, SpriteBatch batch) {
+  public EntityManager(CGScreenModel model, World world, Camera cam, SpriteBatch batch) {
     super(model, world, cam);
     this.batch = batch;
 
     this.drawEntities = model.getScreenPrefs().getDebugDrawPrefs().getDrawEntities();
 
-    this.shapeToSpriteMap = new HashMap<GameObject.CGShape, Sprite>();
-    this.shapeToEntityMap = new HashMap<GameObject.CGShape, GameObject.CGEntity>();
-    this.entityToAnimationMap = new HashMap<GameObject.CGEntity, Animation>();
-    this.entityAnimationOriginMap = new HashMap<GameObject.CGEntityAnimation, Vector3>();
+    this.shapeToSpriteMap = new HashMap<CGShape, Sprite>();
+    this.shapeToEntityMap = new HashMap<CGShape,CGEntity>();
+    this.entityToAnimationMap = new HashMap<CGEntity, Animation>();
+    this.entityAnimationOriginMap = new HashMap<CGEntityAnimation, Vector3>();
   }
 
   /**
@@ -310,8 +309,8 @@ public class EntityManager extends AbstractScreenScaffold {
    * 
    * @see
    * com.laex.cg2d.render.AbstractGameComponentManager#createEntityCollisionShape
-   * (com.laex.cg2d.protobuf.GameObject.CGShape,
-   * com.laex.cg2d.protobuf.GameObject.CGEntity,
+   * (com.laex.cg2d.protobuf.CGScreenModel.CGShape,
+   * com.laex.cg2d.protobuf.CGScreenModel.CGEntity,
    * com.badlogic.gdx.physics.box2d.BodyDef,
    * com.badlogic.gdx.physics.box2d.FixtureDef,
    * com.badlogic.gdx.physics.box2d.Body, com.badlogic.gdx.math.Vector2)

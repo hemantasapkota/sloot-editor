@@ -22,7 +22,7 @@ import com.badlogic.gdx.physics.box2d.QueryCallback;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
 import com.badlogic.gdx.physics.box2d.joints.MouseJointDef;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 
 /**
@@ -79,7 +79,7 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
    * @param cam
    *          the cam
    */
-  public MouseJointManager(CGGameModel model, World world, Camera cam) {
+  public MouseJointManager(CGScreenModel model, World world, Camera cam) {
     super(model, world, cam);
 
     this.mouseJointInstalled = model.getScreenPrefs().getDebugDrawPrefs().getInstallMouseJoint();

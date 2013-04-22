@@ -4,8 +4,8 @@ import java.util.Iterator;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.GameObject.CGEditorShapeType;
-import com.laex.cg2d.protobuf.GameObject.CGShape;
+import com.laex.cg2d.protobuf.ScreenModel.CGEditorShapeType;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.render.IEntityQueryable;
 
 public class EntityQueryManager implements IEntityQueryable {
@@ -34,6 +34,9 @@ public class EntityQueryManager implements IEntityQueryable {
       }
       
       if (shape.getId().equals(id)) {
+        
+//        b.apply
+        
         return b;
       }
       

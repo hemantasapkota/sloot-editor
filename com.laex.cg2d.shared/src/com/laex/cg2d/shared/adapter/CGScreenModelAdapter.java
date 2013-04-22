@@ -17,22 +17,21 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.laex.cg2d.protobuf.GameObject;
-import com.laex.cg2d.protobuf.GameObject.CGBodyDef;
-import com.laex.cg2d.protobuf.GameObject.CGBodyType;
-import com.laex.cg2d.protobuf.GameObject.CGBounds;
-import com.laex.cg2d.protobuf.GameObject.CGEditorShapeType;
-import com.laex.cg2d.protobuf.GameObject.CGFilter;
-import com.laex.cg2d.protobuf.GameObject.CGFixtureDef;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
-import com.laex.cg2d.protobuf.GameObject.CGJoint;
-import com.laex.cg2d.protobuf.GameObject.CGLayer;
-import com.laex.cg2d.protobuf.GameObject.CGScreenPreferences;
-import com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.CardPreferences;
-import com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.DebugDrawPreferences;
-import com.laex.cg2d.protobuf.GameObject.CGScreenPreferences.WorldPreferences;
-import com.laex.cg2d.protobuf.GameObject.CGShape;
-import com.laex.cg2d.protobuf.GameObject.CGVector2;
+import com.laex.cg2d.protobuf.ScreenModel.CGBodyDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGBodyType;
+import com.laex.cg2d.protobuf.ScreenModel.CGBounds;
+import com.laex.cg2d.protobuf.ScreenModel.CGEditorShapeType;
+import com.laex.cg2d.protobuf.ScreenModel.CGFilter;
+import com.laex.cg2d.protobuf.ScreenModel.CGFixtureDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGJoint;
+import com.laex.cg2d.protobuf.ScreenModel.CGLayer;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.CardPreferences;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.DebugDrawPreferences;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.WorldPreferences;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
+import com.laex.cg2d.protobuf.ScreenModel.CGVector2;
 import com.laex.cg2d.shared.model.EditorShapeType;
 import com.laex.cg2d.shared.model.GameModel;
 import com.laex.cg2d.shared.model.Joint;
@@ -46,7 +45,7 @@ import com.laex.cg2d.shared.util.IntegerUtil;
 /**
  * The Class CGGameModelAdapter.
  */
-public class CGGameModelAdapter {
+public class CGScreenModelAdapter {
 
   /** The model. */
   GameModel model;
@@ -62,7 +61,7 @@ public class CGGameModelAdapter {
    * @param prefs
    *          the prefs
    */
-  public CGGameModelAdapter(GameModel model, Map<String, String> prefs) {
+  public CGScreenModelAdapter(GameModel model, Map<String, String> prefs) {
     this.model = model;
     this.prefs = prefs;
   }
@@ -177,10 +176,10 @@ public class CGGameModelAdapter {
    * 
    * @return the cG game model
    */
-  public CGGameModel asCGGameModel() {
-    CGGameModel.Builder cgModelBuilder = CGGameModel.newBuilder();
+  public CGScreenModel asCGGameModel() {
+    CGScreenModel.Builder cgModelBuilder = CGScreenModel.newBuilder();
 
-    Map<Shape, CGShape> shapeToCGShapeMap = new HashMap<Shape, GameObject.CGShape>();
+    Map<Shape, CGShape> shapeToCGShapeMap = new HashMap<Shape, CGShape>();
 
     // Shapes
     for (Layer l : model.getDiagram().getLayers()) {

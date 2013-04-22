@@ -44,11 +44,11 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
 import com.laex.cg2d.shared.ILayerManager;
-import com.laex.cg2d.shared.adapter.GameModelAdapter;
+import com.laex.cg2d.shared.adapter.ScreenModelAdapter;
 import com.laex.cg2d.shared.adapter.RectAdapter;
 import com.laex.cg2d.shared.model.GameModel;
 import com.laex.cg2d.shared.model.Layer;
@@ -313,9 +313,9 @@ public class ListExistingScreensDialog extends Dialog {
       if (res.getName().equals(resFile)) {
         IFile file = (IFile) res;
         try {
-          CGGameModel model = CGGameModel.parseFrom(file.getContents());
+          CGScreenModel model = CGScreenModel.parseFrom(file.getContents());
 
-          GameModel gameModel = GameModelAdapter.asGameModel(model);
+          GameModel gameModel = ScreenModelAdapter.asGameModel(model);
 
           //
           if (EntitiesUtil.visitModelAndInitEntities(gameModel)) {

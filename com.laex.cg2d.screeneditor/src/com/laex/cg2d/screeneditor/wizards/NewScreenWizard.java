@@ -31,11 +31,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.part.FileEditorInput;
 
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.screeneditor.ScreenEditor;
 import com.laex.cg2d.shared.CGCProject;
 import com.laex.cg2d.shared.ICGCProject;
-import com.laex.cg2d.shared.adapter.CGGameModelAdapter;
+import com.laex.cg2d.shared.adapter.CGScreenModelAdapter;
 import com.laex.cg2d.shared.model.GameModel;
 import com.laex.cg2d.shared.model.Layer;
 import com.laex.cg2d.shared.prefs.PreferenceInitializer;
@@ -133,7 +133,7 @@ public class NewScreenWizard extends Wizard implements INewWizard {
         model.getDiagram().getLayers().add(new Layer(0, "Layer1", true, false));
 
         Map<String, String> defaultScreenPrefs = PreferenceInitializer.defaultScreenProperties();
-        CGGameModel cgGameModel = new CGGameModelAdapter(model, defaultScreenPrefs).asCGGameModel();
+        CGScreenModel cgGameModel = new CGScreenModelAdapter(model, defaultScreenPrefs).asCGGameModel();
         
         PlatformUtil.saveProto(monitor, createdFile, new ByteArrayInputStream(cgGameModel.toByteArray()));
         // Set some default properties for this screen file

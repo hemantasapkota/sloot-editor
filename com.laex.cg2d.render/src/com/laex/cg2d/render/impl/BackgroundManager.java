@@ -22,10 +22,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.GameObject.CGEditorShapeType;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
-import com.laex.cg2d.protobuf.GameObject.CGLayer;
-import com.laex.cg2d.protobuf.GameObject.CGShape;
+import com.laex.cg2d.protobuf.ScreenModel.CGEditorShapeType;
+import com.laex.cg2d.protobuf.ScreenModel.CGLayer;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 
 /**
@@ -51,7 +51,7 @@ public class BackgroundManager extends AbstractScreenScaffold {
    * @param batch
    *          the batch
    */
-  public BackgroundManager(CGGameModel model, World world, Camera cam, SpriteBatch batch) {
+  public BackgroundManager(CGScreenModel model, World world, Camera cam, SpriteBatch batch) {
     super(model, world, cam);
     this.batch = batch;
   }

@@ -1,6 +1,6 @@
 package com.laex.cg2d.protobuf;
 
-message CGGameModel {
+message CGScreenModel {
 	repeated CGLayer layers = 1;
 	optional CGScreenPreferences screenPrefs = 2;
 }

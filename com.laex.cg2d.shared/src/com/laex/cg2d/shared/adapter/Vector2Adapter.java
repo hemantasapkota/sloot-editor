@@ -11,7 +11,7 @@
 package com.laex.cg2d.shared.adapter;
 
 import com.badlogic.gdx.math.Vector2;
-import com.laex.cg2d.protobuf.GameObject.CGVector2;
+import com.laex.cg2d.protobuf.ScreenModel.CGVector2;
 
 /**
  * The Class Vector2Adapter.

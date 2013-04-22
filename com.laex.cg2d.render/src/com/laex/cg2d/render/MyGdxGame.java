@@ -20,10 +20,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.GdxRuntimeException;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.impl.BackgroundManager;
 import com.laex.cg2d.render.impl.EntityManager;
 import com.laex.cg2d.render.impl.EntityQueryManager;
@@ -43,7 +42,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   private OrthographicCamera cam;
 
   /** The model. */
-  private CGGameModel model;
+  private CGScreenModel model;
 
   /** The world. */
   private World world;
@@ -105,7 +104,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
    * @throws GdxRuntimeException
    *           the gdx runtime exception
    */
-  public abstract CGGameModel loadGameModel() throws GdxRuntimeException;
+  public abstract CGScreenModel loadGameModel() throws GdxRuntimeException;
 
   /*
    * (non-Javadoc)

@@ -58,7 +58,7 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.screeneditor.EntityResourceChangeListener.EntityChangeListener;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangeOrderCommand;
@@ -73,8 +73,8 @@ import com.laex.cg2d.screeneditor.factory.ShapeCreationInfo;
 import com.laex.cg2d.screeneditor.palette.ScreenEditorPaletteFactory;
 import com.laex.cg2d.shared.ILayerManager;
 import com.laex.cg2d.shared.IScreenPropertyManager;
-import com.laex.cg2d.shared.adapter.CGGameModelAdapter;
-import com.laex.cg2d.shared.adapter.GameModelAdapter;
+import com.laex.cg2d.shared.adapter.CGScreenModelAdapter;
+import com.laex.cg2d.shared.adapter.ScreenModelAdapter;
 import com.laex.cg2d.shared.adapter.ShapeAdapter;
 import com.laex.cg2d.shared.dnd.DNDFileTransfer;
 import com.laex.cg2d.shared.model.EditorShapeType;
@@ -270,7 +270,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    *           the core exception
    */
   private void performSave(IFile file, IProgressMonitor monitor, Map<String, String> screenPrefs) throws CoreException {
-    CGGameModel cgGameModel = new CGGameModelAdapter(model, screenPrefs).asCGGameModel();
+    CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefs).asCGGameModel();
     PlatformUtil.saveProto(monitor, file, new ByteArrayInputStream(cgGameModel.toByteArray()));
     getCommandStack().markSaveLocation();
   }
@@ -495,9 +495,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     try {
       IFile file = ((IFileEditorInput) input).getFile();
 
-      CGGameModel cgGameModel = CGGameModel.parseFrom(file.getContents());
+      CGScreenModel cgGameModel = CGScreenModel.parseFrom(file.getContents());
 
-      model = GameModelAdapter.asGameModel(cgGameModel);
+      model = ScreenModelAdapter.asGameModel(cgGameModel);
       x = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoX();
       y = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoY();
       cardWidthh = cgGameModel.getScreenPrefs().getCardPrefs().getCardWidth();

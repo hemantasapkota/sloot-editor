@@ -26,7 +26,8 @@ import org.apache.commons.cli.ParseException;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
+import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.util.RunnerUtil;
 
 /**
@@ -193,7 +194,7 @@ public class MyGdxGameDesktop {
     if (cmd.hasOption("screenFile")) {
       prefs.put(PreferenceConstants.SCREEN_FILE, cmd.getOptionValue("screenFile"));
     }
-    
+
     // screen controller file
     if (cmd.hasOption("screenController")) {
       prefs.put(PreferenceConstants.SCREEN_CONTROLLER, cmd.getOptionValue("screenController"));
@@ -216,14 +217,14 @@ public class MyGdxGameDesktop {
     Map<String, Object> prefs = parse(options, args);
 
     String screenFile = (String) prefs.get(PreferenceConstants.SCREEN_FILE);
-    String screenControllerFile = (String) prefs.get(PreferenceConstants.SCREEN_CONTROLLER); 
+    String screenControllerFile = (String) prefs.get(PreferenceConstants.SCREEN_CONTROLLER);
 
     InputStream is;
-    CGGameModel model = null;
+    CGScreenModel model = null;
 
     try {
       is = new FileInputStream(screenFile);
-      model = CGGameModel.parseFrom(is);
+      model = CGScreenModel.parseFrom(is);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
       return;
@@ -234,27 +235,27 @@ public class MyGdxGameDesktop {
 
     int cardWidth = model.getScreenPrefs().getCardPrefs().getCardWidth();
     int cardHeight = model.getScreenPrefs().getCardPrefs().getCardHeight();
-    
+
     LwjglApplicationConfiguration lwapp = new LwjglApplicationConfiguration();
     lwapp.width = cardWidth;
     lwapp.height = cardHeight;
     lwapp.title = screenFile;
     lwapp.forceExit = true;
 
-//    JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
-//    jac.width = cardWidth;
-//    jac.height = cardHeight;
-//    jac.title = screenFile;
-
-    final CGGameModel modelMain = model;
+    final CGScreenModel modelMain = model;
     MyGdxGame mgd = new MyGdxGame(screenControllerFile) {
       @Override
-      public CGGameModel loadGameModel() {
+      public CGScreenModel loadGameModel() {
         return modelMain;
       }
     };
 
-//    new JoglApplication(mgd, jac);
-    new LwjglApplication(mgd, lwapp);
+    // new JoglApplication(mgd, jac);
+    try {
+      new LwjglApplication(mgd, lwapp);
+    } catch (GdxRuntimeException re) {
+      re.printStackTrace();
+      System.exit(1);
+    }
   }
 }

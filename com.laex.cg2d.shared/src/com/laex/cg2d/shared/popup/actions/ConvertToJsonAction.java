@@ -25,12 +25,10 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.part.FileEditorInput;
 
 import com.googlecode.protobuf.format.JsonFormat;
-import com.laex.cg2d.protobuf.GameObject.CGEntity;
-import com.laex.cg2d.protobuf.GameObject.CGEntity;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGEntity;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.shared.CGCProject;
 import com.laex.cg2d.shared.ICGCProject;
 
@@ -92,9 +90,9 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
 
       if (cgcPrj.isScreenFile(file)) {
 
-        CGGameModel model = null;
+        CGScreenModel model = null;
         try {
-          model = CGGameModel.parseFrom(file.getContents());
+          model = CGScreenModel.parseFrom(file.getContents());
         } catch (IOException e1) {
           e1.printStackTrace();
         } catch (CoreException e1) {

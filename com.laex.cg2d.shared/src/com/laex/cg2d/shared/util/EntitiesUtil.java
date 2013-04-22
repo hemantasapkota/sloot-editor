@@ -24,7 +24,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 
 import com.badlogic.gdx.math.Vector2;
-import com.laex.cg2d.protobuf.GameObject.CGEntity;
+import com.laex.cg2d.protobuf.ScreenModel.CGEntity;
 import com.laex.cg2d.shared.ICGCProject;
 import com.laex.cg2d.shared.ResourceManager;
 import com.laex.cg2d.shared.adapter.EntityAdapter;

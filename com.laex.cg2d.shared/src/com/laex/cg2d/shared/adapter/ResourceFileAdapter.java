@@ -10,7 +10,7 @@
  */
 package com.laex.cg2d.shared.adapter;
 
-import com.laex.cg2d.protobuf.GameObject.CGResourceFile;
+import com.laex.cg2d.protobuf.ScreenModel.CGResourceFile;
 import com.laex.cg2d.shared.model.ResourceFile;
 
 /**

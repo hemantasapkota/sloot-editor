@@ -23,11 +23,11 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.JointDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.GameObject.CGEntity;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
-import com.laex.cg2d.protobuf.GameObject.CGJoint;
-import com.laex.cg2d.protobuf.GameObject.CGShape;
-import com.laex.cg2d.protobuf.GameObject.CGVector2;
+import com.laex.cg2d.protobuf.ScreenModel.CGEntity;
+import com.laex.cg2d.protobuf.ScreenModel.CGJoint;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
+import com.laex.cg2d.protobuf.ScreenModel.CGVector2;
 import com.laex.cg2d.render.util.ProtoBufTypeConversionUtil;
 
 /**
@@ -43,7 +43,7 @@ public abstract class AbstractScreenScaffold implements IScreenScaffold {
   private World world;
 
   /** The model. */
-  private CGGameModel model;
+  private CGScreenModel model;
 
   /** The cam. */
   private Camera cam;
@@ -67,7 +67,7 @@ public abstract class AbstractScreenScaffold implements IScreenScaffold {
    * @param cam
    *          the cam
    */
-  public AbstractScreenScaffold(CGGameModel model, World world, Camera cam) {
+  public AbstractScreenScaffold(CGScreenModel model, World world, Camera cam) {
     this.world = world;
     this.model = model;
     this.cam = cam;
@@ -379,7 +379,7 @@ public abstract class AbstractScreenScaffold implements IScreenScaffold {
    * 
    * @return the cG game model
    */
-  protected CGGameModel model() {
+  protected CGScreenModel model() {
     return model;
   }
 

@@ -15,17 +15,17 @@ import java.util.Map;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
-import com.laex.cg2d.protobuf.GameObject.CGBodyDef;
-import com.laex.cg2d.protobuf.GameObject.CGBodyType;
-import com.laex.cg2d.protobuf.GameObject.CGBounds;
-import com.laex.cg2d.protobuf.GameObject.CGEditorShapeType;
-import com.laex.cg2d.protobuf.GameObject.CGFixtureDef;
-import com.laex.cg2d.protobuf.GameObject.CGGameModel;
-import com.laex.cg2d.protobuf.GameObject.CGJoint;
-import com.laex.cg2d.protobuf.GameObject.CGLayer;
-import com.laex.cg2d.protobuf.GameObject.CGShape;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGBodyDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGBodyType;
+import com.laex.cg2d.protobuf.ScreenModel.CGBounds;
+import com.laex.cg2d.protobuf.ScreenModel.CGEditorShapeType;
+import com.laex.cg2d.protobuf.ScreenModel.CGFixtureDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGJoint;
+import com.laex.cg2d.protobuf.ScreenModel.CGLayer;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.shared.model.EditorShapeType;
 import com.laex.cg2d.shared.model.GameModel;
 import com.laex.cg2d.shared.model.Joint;
@@ -35,7 +35,7 @@ import com.laex.cg2d.shared.model.Shape;
 /**
  * The Class GameModelAdapter.
  */
-public class GameModelAdapter {
+public class ScreenModelAdapter {
 
   /**
    * As body type.
@@ -161,7 +161,7 @@ public class GameModelAdapter {
    *          the cg model
    * @return the game model
    */
-  public static GameModel asGameModel(CGGameModel cgModel) {
+  public static GameModel asGameModel(CGScreenModel cgModel) {
     GameModel model = new GameModel();
     Map<String, Shape> shapeMap = new HashMap<String, Shape>();
 

@@ -24,7 +24,7 @@ import org.eclipse.ui.part.FileEditorInput;
 
 import com.laex.cg2d.entityeditor.pages.AnimationFormPage;
 import com.laex.cg2d.entityeditor.pages.CollisionFormPage;
-import com.laex.cg2d.protobuf.GameObject.CGEntity;
+import com.laex.cg2d.protobuf.ScreenModel.CGEntity;
 import com.laex.cg2d.shared.adapter.EntityAdapter;
 import com.laex.cg2d.shared.model.Entity;
 import com.laex.cg2d.shared.util.PlatformUtil;
