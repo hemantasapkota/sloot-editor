@@ -118,6 +118,7 @@ public abstract class AbstractScreenScaffold implements IScreenScaffold {
       while (bodyList.hasNext()) {
         Body body = bodyList.next();
         CGShape shp = (CGShape) body.getUserData();
+        
         if (shp != null) {
           String shpId = shp.getId();
 
