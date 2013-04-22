@@ -59,7 +59,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.entityeditor.ui.CollisionShapeSelectionDialog;
 import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.ICGCProject;
 import com.laex.cg2d.shared.ResourceManager;
 import com.laex.cg2d.shared.SharedImages;
 import com.laex.cg2d.shared.model.Entity;
@@ -275,17 +274,17 @@ public class CollisionFormPage extends FormPage {
     sctnFrames = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TITLE_BAR);
     FormData fd_sctnFrames = new FormData();
     fd_sctnFrames.right = new FormAttachment(0, 605);
+    fd_sctnFrames.bottom = new FormAttachment(100, -10);
     sctnFrames.setLayoutData(fd_sctnFrames);
     managedForm.getToolkit().paintBordersFor(sctnFrames);
     sctnFrames.setText("Set Collision Shape");
     sctnFrames.setExpanded(true);
 
     sctnShapes = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TITLE_BAR);
-    fd_sctnFrames.bottom = new FormAttachment(sctnShapes, 0, SWT.BOTTOM);
-    fd_sctnFrames.left = new FormAttachment(sctnShapes, 6);
+    fd_sctnFrames.left = new FormAttachment(0, 297);
     FormData fd_sctnShapes = new FormData();
+    fd_sctnShapes.right = new FormAttachment(sctnFrames, -6);
     fd_sctnShapes.top = new FormAttachment(0, 12);
-    fd_sctnShapes.left = new FormAttachment(0, 176);
     sctnShapes.setLayoutData(fd_sctnShapes);
     managedForm.getToolkit().paintBordersFor(sctnShapes);
     sctnShapes.setText("Shapes");
@@ -451,6 +450,7 @@ public class CollisionFormPage extends FormPage {
     mghprlnkRem.setText("");
 
     Section sctnAnimations = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TITLE_BAR);
+    fd_sctnShapes.left = new FormAttachment(sctnAnimations, 6);
     fd_sctnShapes.bottom = new FormAttachment(sctnAnimations, 0, SWT.BOTTOM);
     FormData fd_sctnAnimations = new FormData();
     fd_sctnAnimations.top = new FormAttachment(0, 12);
