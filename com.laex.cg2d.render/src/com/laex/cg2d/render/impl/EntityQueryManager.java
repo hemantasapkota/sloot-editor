@@ -45,9 +45,4 @@ public class EntityQueryManager implements IEntityQueryable {
     return null;
   }
 
-  @Override
-  public void test() {
-    System.err.println("Test method called");
-  }
-
 }

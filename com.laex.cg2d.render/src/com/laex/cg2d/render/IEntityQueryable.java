@@ -4,8 +4,6 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 public interface IEntityQueryable {
   
-  void test();
-  
   Body getEntityById(String id);
   
 }
