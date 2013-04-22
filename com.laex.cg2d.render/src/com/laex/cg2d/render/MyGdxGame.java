@@ -22,6 +22,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.google.common.base.Throwables;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.impl.BackgroundManager;
 import com.laex.cg2d.render.impl.EntityManager;
@@ -61,7 +62,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   /** The mouse joint manager. */
   private MouseJointManager mouseJointManager;
-  
+
   private EntityQueryManager entityQueryManager;
 
   /** The gravity x. */
@@ -90,8 +91,9 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   /**
    * Instantiates a new my gdx game.
-   *
-   * @param screenControllerFile the screen controller file
+   * 
+   * @param screenControllerFile
+   *          the screen controller file
    */
   public MyGdxGame(String screenControllerFile) {
     this.screenControllerFileLua = screenControllerFile;
@@ -152,30 +154,25 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   /**
    * Handle input.
-   *
+   * 
+   * @throws IllegalAccessException
+   * @throws IllegalArgumentException
+   * 
    */
-  private void handleInput() {
-    //is it possible to excute the script, if not, then dont even bother to handle input
+  private void handleInput() throws IllegalArgumentException, IllegalAccessException {
+    // is it possible to excute the script, if not, then dont even bother to
+    // handle input
     if (!luaScriptManager.canExecute()) {
       return;
     }
 
-    //go through all the fields defined in gdx input keys
-    //check if any of them is pressed. if pressed, exceute the script and forward the key name with it
+    // go through all the fields defined in gdx input keys
+    // check if any of them is pressed. if pressed, exceute the script and
+    // forward the key name with it
     for (Field f : MyGdxGame.gdxInputKeys) {
-
-      try {
-        
-        if (Gdx.input.isKeyPressed(f.getInt(f))) {
-          luaScriptManager.executeKeyPressed(entityQueryManager, f.getName());
-        }
-
-      } catch (IllegalArgumentException e) {
-        e.printStackTrace();
-      } catch (IllegalAccessException e) {
-        e.printStackTrace();
+      if (Gdx.input.isKeyPressed(f.getInt(f))) {
+        luaScriptManager.executeKeyPressed(entityQueryManager, f.getName());
       }
-
     }
 
   }
@@ -203,7 +200,12 @@ public abstract class MyGdxGame extends ApplicationAdapter {
    */
   @Override
   public void render() {
-    handleInput();
+    // Handle input
+    try {
+      handleInput();
+    } catch (Throwable t) {
+      throw Throwables.propagate(t);
+    }
 
     GL10 gl = Gdx.graphics.getGL10();
     stateTime += Gdx.graphics.getDeltaTime();
