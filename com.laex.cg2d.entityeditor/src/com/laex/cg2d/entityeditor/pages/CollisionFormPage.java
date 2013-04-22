@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Queue;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.FreeformLayeredPane;
@@ -56,6 +58,8 @@ import org.eclipse.ui.forms.widgets.Section;
 import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.entityeditor.ui.CollisionShapeSelectionDialog;
+import com.laex.cg2d.shared.CGCProject;
+import com.laex.cg2d.shared.ICGCProject;
 import com.laex.cg2d.shared.ResourceManager;
 import com.laex.cg2d.shared.SharedImages;
 import com.laex.cg2d.shared.model.Entity;
@@ -127,7 +131,7 @@ public class CollisionFormPage extends FormPage {
   private ImageHyperlink mghprlnkRem;
 
   /** The phys ed fixture file. */
-  protected IFile physEdFixtureFile;
+  private IFile physEdFixtureFile;
 
   /** The figure canvas. */
   private FigureCanvas figureCanvas;
@@ -399,6 +403,7 @@ public class CollisionFormPage extends FormPage {
     mghprlnkAdd.setBackground(null);
     mghprlnkAdd.addHyperlinkListener(new HyperlinkAdapter() {
       public void linkActivated(HyperlinkEvent e) {
+        
         CollisionShapeSelectionDialog cssd = new CollisionShapeSelectionDialog(getSite().getShell());
         int resp = cssd.open();
         if (resp == CollisionShapeSelectionDialog.CANCEL) {
@@ -407,7 +412,16 @@ public class CollisionFormPage extends FormPage {
 
         collisionShape = cssd.getTypeSelected();
         physEdFixtureFile = cssd.getPhsEdFixtureFile();
-        addCollisionShape();
+
+        ResourceFile fixtureResFile = null;
+        if (collisionShape.isCustom()) {
+          fixtureResFile = ResourceFile.create(physEdFixtureFile.getFullPath().toOSString(), physEdFixtureFile
+              .getLocation().toOSString());
+          
+          selectedAnimationListItem().getAnimation().setFixtureResourceFile(fixtureResFile);
+        }
+
+        showCollisionShape(collisionShape, fixtureResFile);
 
         dirty = true;
         entityFormEditor.editorDirtyStateChanged();
@@ -564,6 +578,7 @@ public class CollisionFormPage extends FormPage {
       collisionShape = ai.getAnimation().getShapeType();
 
       if (collisionShape.isNone()) {
+
         ai.getAnimation().setShpX(0);
         ai.getAnimation().setShpY(0);
         ai.getAnimation().setShpWidth(0);
@@ -573,9 +588,10 @@ public class CollisionFormPage extends FormPage {
         mghprlnkAdd.setEnabled(true);
         mghprlnkRem.setEnabled(false);
         return;
+
       }
 
-      addCollisionShape();
+      showCollisionShape(collisionShape, ai.getAnimation().getFixtureResourceFile());
       setShapeProperties(ai.getAnimation());
       mghprlnkAdd.setEnabled(false);
       mghprlnkRem.setEnabled(true);
@@ -593,8 +609,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Do preview.
-   *
-   * @param ai the ai
+   * 
+   * @param ai
+   *          the ai
    */
   private void doPreview(AnimationListViewItem ai) {
     if (ai.getAnimation() != null) {
@@ -772,40 +789,44 @@ public class CollisionFormPage extends FormPage {
   /**
    * Adds the collision shape.
    */
-  private void addCollisionShape() {
+  private void showCollisionShape(EntityCollisionType _collisionShape, ResourceFile physicsEditorFile) {
     if (collisionShapeHyperLink == null) {
       collisionShapeHyperLink = CollisionFormPage.this.managedForm.getToolkit().createImageHyperlink(
           sctnShapesComposite, SWT.NONE);
     }
 
-    EntityAnimation ea = selectedAnimationListItem().getAnimation();
-    ea.setShapeType(collisionShape);
+    EntityAnimation entityAnim = selectedAnimationListItem().getAnimation();
+    entityAnim.setShapeType(_collisionShape);
 
     collisionShapeHyperLink.setText(collisionShape.name());
-    switch (collisionShape) {
+    
+    switch (_collisionShape) {
+    
     case BOX:
-      autoFillCollisionSize();
+      autoFillCollisionSize(entityAnim);
       collisionShapeHyperLink.setImage(SharedImages.BOX.createImage());
       break;
 
     case CIRCLE:
-      autoFillCollisionSize();
+      autoFillCollisionSize(entityAnim);
       collisionShapeHyperLink.setImage(SharedImages.CIRCLE.createImage());
       break;
 
     case CUSTOM:
       collisionShapeHyperLink.setImage(SharedImages.PHYSICS_BODY_EDITOR_LOGO_SMALL.createImage());
-
-      if (physEdFixtureFile != null) {
-        ResourceFile fixtureResFile = ResourceFile.create(physEdFixtureFile.getFullPath().toOSString(),
-            physEdFixtureFile.getLocation().toOSString());
-
-        selectedAnimationListItem().getAnimation().setFixtureResourceFile(fixtureResFile);
+      IPath resFilePath = new Path(physicsEditorFile.getResourceFile());
+      boolean resourceFileExists = CGCProject.getInstance().exists(resFilePath, false);
+      
+      if (!resourceFileExists) {
+        collisionShapeHyperLink.setText("File Missing");
+      } else {
+        collisionShapeHyperLink.setText(resFilePath.lastSegment());
       }
-
       break;
+      
     case NONE:
       break;
+      
     default:
       break;
 
@@ -819,9 +840,7 @@ public class CollisionFormPage extends FormPage {
   /**
    * Auto fill collision size.
    */
-  private void autoFillCollisionSize() {
-    EntityAnimation ea = selectedAnimationListItem().getAnimation();
-
+  private void autoFillCollisionSize(EntityAnimation ea) {
     // If all of these are zero, then we auto fill
     if (ea.getShpX() == 0 && ea.getShpY() == 0 && ea.getShpWidth() == 0 && ea.getShpHeight() == 0) {
       Image img = entityFormEditor.getModel().getDefaultFrame();
