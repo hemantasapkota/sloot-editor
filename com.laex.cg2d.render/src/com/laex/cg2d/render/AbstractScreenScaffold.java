@@ -38,6 +38,9 @@ import com.laex.cg2d.render.util.ProtoBufTypeConversionUtil;
  * @author hemantasapkota
  */
 public abstract class AbstractScreenScaffold implements IScreenScaffold {
+  
+  
+  public static float MAGIC_SCALAR = 16f;
 
   /** The world. */
   private World world;

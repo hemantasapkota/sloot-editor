@@ -15,9 +15,6 @@ package com.laex.cg2d.render;
  */
 public interface IScreenScaffold {
 
-  /** The magic scalar. */
-  float MAGIC_SCALAR = 10f;
-
   /**
    * Creates the.
    */
