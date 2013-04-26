@@ -16,6 +16,7 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.swt.graphics.Color;
 
 /**
  * The Class CardEditPart.
@@ -61,10 +62,12 @@ public class CardEditPart extends AbstractGraphicalEditPart {
   @Override
   protected IFigure createFigure() {
     RectangleFigure rf = new RectangleFigure();
-    rf.setAlpha(30);
-    rf.setBorder(new MarginBorder(0));
+    rf.setAlpha(80);
+//    rf.setBorder(new MarginBorder(-1));
+    rf.setBorder(null);
     rf.setAntialias(120);
-    rf.setBackgroundColor(ColorConstants.lightGray);
+    rf.setBackgroundColor(new Color(null, 234, 234, 234)); //mercury color
+    rf.setForegroundColor(ColorConstants.blue);
     rf.setOpaque(true);
 
     int nx = cardWidth * cardNumberX;
