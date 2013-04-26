@@ -11,6 +11,7 @@
 package com.laex.cg2d.render;
 
 import com.badlogic.gdx.physics.box2d.Body;
+import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 
 /**
  * The Interface IGameScript.
@@ -35,21 +36,16 @@ public interface IScreenControllerScript {
    * @param body the body
    * @param bodyId the body id
    */
-  void executeInitBody(Body body, String bodyId);
+  void executeInitBody(CGScreenModel screenModel, IEntityQueryable queryMgr, Body body, String bodyId);
   
-  /**
-   * Execute update.
-   *
-   * @param body the body
-   * @param bodyId the body id
-   */
-  void executeUpdate(Body body, String bodyId);
+  
+  void executeUpdate(CGScreenModel screenModel, IEntityQueryable queryMgr, Body body, String bodyId);
   
   /**
    * Execute key pressed.
    *
    * @param key the key
    */
-  void executeKeyPressed(IEntityQueryable queryMgr, String key);
+  void executeKeyPressed(CGScreenModel screenModel, IEntityQueryable queryMgr, String key);
 
 }
