@@ -26,7 +26,6 @@ import org.apache.commons.cli.ParseException;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.util.RunnerUtil;
 
@@ -36,6 +35,8 @@ import com.laex.cg2d.render.util.RunnerUtil;
  * @author hemantasapkota
  */
 public class MyGdxGameDesktop {
+
+  private static LwjglApplication lapp;
 
   /**
    * Construct.
@@ -240,7 +241,7 @@ public class MyGdxGameDesktop {
     lwapp.width = cardWidth;
     lwapp.height = cardHeight;
     lwapp.title = screenFile;
-    lwapp.forceExit = true;
+    lwapp.forceExit = false;
 
     final CGScreenModel modelMain = model;
     MyGdxGame mgd = new MyGdxGame(screenControllerFile) {
@@ -251,11 +252,16 @@ public class MyGdxGameDesktop {
     };
 
     // new JoglApplication(mgd, jac);
-    try {
-      new LwjglApplication(mgd, lwapp);
-    } catch (GdxRuntimeException re) {
-      re.printStackTrace();
-      System.exit(1);
-    }
+    lapp = new LwjglApplication(mgd, lwapp);
+  }
+  
+  public static void exit() {
+    lapp.error("", "Exiting because of some error");
+    lapp.exit();
+    System.exit(0);
+  }
+  
+  public static LwjglApplication lwjglApp()  {
+    return lapp;
   }
 }
