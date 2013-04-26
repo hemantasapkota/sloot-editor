@@ -122,6 +122,8 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     timeStep = model.getScreenPrefs().getWorldPrefs().getTimeStep();
     velocityIterations = model.getScreenPrefs().getWorldPrefs().getVelocityIterations();
     positionIterations = model.getScreenPrefs().getWorldPrefs().getPositionIterations();
+    
+    AbstractScreenScaffold.MAGIC_SCALAR = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
 
     Texture.setEnforcePotImages(false);
 
@@ -133,15 +135,16 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     float w = Gdx.graphics.getWidth();
     float h = Gdx.graphics.getHeight();
 
-    cam = new OrthographicCamera(w / IScreenScaffold.MAGIC_SCALAR, h / IScreenScaffold.MAGIC_SCALAR);
+    cam = new OrthographicCamera(w / AbstractScreenScaffold.MAGIC_SCALAR, h / AbstractScreenScaffold.MAGIC_SCALAR);
     cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
+    
+    entityQueryManager = new EntityQueryManager(world);
 
     shapeManager = new ShapeManager(model, world, cam);
     entityManager = new EntityManager(model, world, cam, batch);
     bgManager = new BackgroundManager(model, world, cam, batch);
     mouseJointManager = new MouseJointManager(model, world, cam);
-    luaScriptManager = new LuaScriptManager(model, world, cam, screenControllerFileLua);
-    entityQueryManager = new EntityQueryManager(world);
+    luaScriptManager = new LuaScriptManager(model, entityQueryManager, world, cam, screenControllerFileLua);
 
     mouseJointManager.create();
     shapeManager.create();
@@ -171,7 +174,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     // forward the key name with it
     for (Field f : MyGdxGame.gdxInputKeys) {
       if (Gdx.input.isKeyPressed(f.getInt(f))) {
-        luaScriptManager.executeKeyPressed(entityQueryManager, f.getName());
+        luaScriptManager.executeKeyPressed(model, entityQueryManager, f.getName());
       }
     }
 
