@@ -35,14 +35,16 @@ public class EntityQueryManager implements IEntityQueryable {
       
       if (shape.getId().equals(id)) {
         
-//        b.apply
-        
         return b;
       }
       
     }
     
     return null;
+  }
+
+  @Override
+  public void visit(String entityWithId) {
   }
 
 }
