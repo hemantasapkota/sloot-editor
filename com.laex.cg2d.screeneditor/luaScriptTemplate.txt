@@ -1,14 +1,32 @@
 function init(world, cam) 
 end
 
-function initBody(world, cam, body, id)
+function initBody(screenModel, queryMgr, world, cam, body, id)
 end
 
-function update(world, cam, body, id)
+function update(screenModel, queryMgr, world, cam, body, id)
 end
 
-function keyPressed(world, cam, key) 
+function keyPressed(screenModel, queryMgr, world, cam, key)
+
+	local entity = queryMgr:getEntityById("entity0")
+
+    if key == "LEFT" then   
+        entity:applyLinearImpulse(-1, 0, 0.5, 0)
+        cam:translate(-0.1, 0, 0)
+    end
+
 	if key == "RIGHT" then
-		cam:translate(0.5, 0, 0)
+
+		entity:applyLinearImpulse(0.8, 0, -0.5, 0)
+        cam:translate(0.1, 0, 0)
+
 	end
+
+	if key == "SPACE" then
+		local velo = luajava.newInstance("com.badlogic.gdx.math.Vector2")
+		velo.y = 10
+		entity:setLinearVelocity(velo)
+	end
+
 end
