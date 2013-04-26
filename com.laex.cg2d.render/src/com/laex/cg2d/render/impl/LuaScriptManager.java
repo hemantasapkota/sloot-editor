@@ -26,6 +26,7 @@ import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 import com.laex.cg2d.render.IEntityQueryable;
 import com.laex.cg2d.render.IScreenControllerScript;
+import com.laex.cg2d.render.MyGdxGameDesktop;
 
 /**
  * The Class LuaScriptManager.
@@ -34,19 +35,24 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
 
   /** The globals. */
   private Globals globals = JsePlatform.standardGlobals();
-  
+
   /** The chunk. */
   private LuaValue chunk;
-  
+
   /** The script file exists. */
   private boolean scriptFileExists = false;
 
+  private IEntityQueryable queryMgr;
+
   /**
    * Instantiates a new lua script manager.
-   *
-   * @param model the model
-   * @param world the world
-   * @param cam the cam
+   * 
+   * @param model
+   *          the model
+   * @param world
+   *          the world
+   * @param cam
+   *          the cam
    */
   public LuaScriptManager(CGScreenModel model, World world, Camera cam) {
     super(model, world, cam);
@@ -54,14 +60,20 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
 
   /**
    * Instantiates a new lua script manager.
-   *
-   * @param model the model
-   * @param world the world
-   * @param cam the cam
-   * @param scriptFileName the script file name
+   * 
+   * @param model
+   *          the model
+   * @param world
+   *          the world
+   * @param cam
+   *          the cam
+   * @param scriptFileName
+   *          the script file name
    */
-  public LuaScriptManager(CGScreenModel model, World world, Camera cam, String scriptFileName) {
+  public LuaScriptManager(CGScreenModel model, IEntityQueryable queryMgr, World world, Camera cam, String scriptFileName) {
     super(model, world, cam);
+
+    this.queryMgr = queryMgr;
 
     if (!Gdx.files.absolute(scriptFileName).exists()) {
       scriptFileExists = false;
@@ -70,14 +82,32 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
       scriptFileExists = true;
     }
 
-    chunk = globals.loadFile(scriptFileName);
+    try {
+
+      chunk = globals.loadFile(scriptFileName);
+
+    } catch (Throwable t) {
+
+      handleScriptExecptions(t);
+
+    }
     // very important step. subsequent calls to method do not work if the chunk
     // is not called here
     chunk.call();
 
   }
 
-  /* (non-Javadoc)
+  private void handleScriptExecptions(Throwable t) {
+    MyGdxGameDesktop.lwjglApp().error("Error Details", t.getMessage());
+    MyGdxGameDesktop.lwjglApp().error("Script Error", "Error loading script. Some errors exist. Please double check");
+    MyGdxGameDesktop.lwjglApp().exit();
+    System.exit(0); // terrible hack. This is needed because the above call to
+                    // lwjglApp().exit() does not work.
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.IGameComponentManager#create()
    */
   @Override
@@ -94,13 +124,15 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
 
       if (userData instanceof CGShape) {
         CGShape shape = (CGShape) userData;
-        this.executeInitBody(b, shape.getId());
+        this.executeInitBody(model(), queryMgr, b, shape.getId());
       }
 
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.IGameComponentManager#render()
    */
   public void render() {
@@ -114,20 +146,24 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
 
       if (userData instanceof CGShape) {
         CGShape shape = (CGShape) userData;
-        executeUpdate(b, shape.getId());
+        executeUpdate(model(), queryMgr, b, shape.getId());
       }
 
     }
   }
-
-  /* (non-Javadoc)
+ 
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.IGameComponentManager#dispose()
    */
   @Override
   public void dispose() {
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.IGameScript#executeInit()
    */
   @Override
@@ -136,43 +172,100 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
       { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()) });
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.render.IGameScript#executeInitBody(com.badlogic.gdx.physics.box2d.Body, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.render.IGameScript#executeInitBody(com.badlogic.gdx.physics
+   * .box2d.Body, java.lang.String)
    */
   @Override
-  public void executeInitBody(Body body, String bodyId) {
+  public void executeInitBody(CGScreenModel screenModel, IEntityQueryable queryMgr, Body body, String bodyId) {
     LuaValue bodyLua = CoerceJavaToLua.coerce(body);
 
-    globals.get("initBody").invoke(new LuaValue[]
-      { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
+    try {
+
+      globals.get("initBody").invoke(
+          new LuaValue[]
+            {
+                CoerceJavaToLua.coerce(model()),
+                CoerceJavaToLua.coerce(queryMgr),
+                CoerceJavaToLua.coerce(world()),
+                CoerceJavaToLua.coerce(camera()),
+                bodyLua,
+                LuaValue.valueOf(bodyId) });
+
+    } catch (Throwable t) {
+      handleScriptExecptions(t);
+    }
+
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.render.IGameScript#executeUpdate(com.badlogic.gdx.physics.box2d.Body, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.render.IGameScript#executeUpdate(com.badlogic.gdx.physics
+   * .box2d.Body, java.lang.String)
    */
   @Override
-  public void executeUpdate(Body body, String bodyId) {
+  public void executeUpdate(CGScreenModel screenModel, IEntityQueryable queryMgr, Body body, String bodyId) {
     LuaValue bodyLua = CoerceJavaToLua.coerce(body);
 
-    globals.get("update").invoke(new LuaValue[]
-      { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
+    try {
+
+      globals.get("update").invoke(
+          new LuaValue[]
+            {
+                CoerceJavaToLua.coerce(model()),
+                CoerceJavaToLua.coerce(queryMgr),
+                CoerceJavaToLua.coerce(world()),
+                CoerceJavaToLua.coerce(camera()),
+                bodyLua,
+                LuaValue.valueOf(bodyId) });
+
+    } catch (Throwable t) {
+
+      handleScriptExecptions(t);
+
+    }
+
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.IGameScript#executeKeyPressed(java.lang.String)
    */
   @Override
-  public void executeKeyPressed(IEntityQueryable queryMgr,String key) {
-    globals.get("keyPressed").invoke(new LuaValue[]
-      { CoerceJavaToLua.coerce(queryMgr), CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), LuaValue.valueOf(key) });
+  public void executeKeyPressed(CGScreenModel screenModel, IEntityQueryable queryMgr, String key) {
+    try {
+
+      globals.get("keyPressed").invoke(
+          new LuaValue[]
+            {
+                CoerceJavaToLua.coerce(screenModel),
+                CoerceJavaToLua.coerce(queryMgr),
+                CoerceJavaToLua.coerce(world()),
+                CoerceJavaToLua.coerce(camera()),
+                LuaValue.valueOf(key) });
+
+    } catch (Throwable t) {
+
+      handleScriptExecptions(t);
+
+    }
 
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.IGameScript#canExecute()
    */
   @Override
   public boolean canExecute() {
     return scriptFileExists;
   }
+
 }
