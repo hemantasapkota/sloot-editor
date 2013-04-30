@@ -12,6 +12,8 @@ package com.laex.cg2d.render;
 
 import java.lang.reflect.Field;
 
+import javax.management.Query;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -25,6 +27,7 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.google.common.base.Throwables;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.impl.BackgroundManager;
+import com.laex.cg2d.render.impl.CollisionDetectionManager;
 import com.laex.cg2d.render.impl.EntityManager;
 import com.laex.cg2d.render.impl.EntityQueryManager;
 import com.laex.cg2d.render.impl.LuaScriptManager;
@@ -64,6 +67,8 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   private MouseJointManager mouseJointManager;
 
   private EntityQueryManager entityQueryManager;
+
+  private CollisionDetectionManager collisionDetectionMgr;
 
   /** The gravity x. */
   private float gravityX;
@@ -122,7 +127,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     timeStep = model.getScreenPrefs().getWorldPrefs().getTimeStep();
     velocityIterations = model.getScreenPrefs().getWorldPrefs().getVelocityIterations();
     positionIterations = model.getScreenPrefs().getWorldPrefs().getPositionIterations();
-    
+
     AbstractScreenScaffold.MAGIC_SCALAR = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
 
     Texture.setEnforcePotImages(false);
@@ -137,7 +142,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
     cam = new OrthographicCamera(w / AbstractScreenScaffold.MAGIC_SCALAR, h / AbstractScreenScaffold.MAGIC_SCALAR);
     cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
-    
+
     entityQueryManager = new EntityQueryManager(world);
 
     shapeManager = new ShapeManager(model, world, cam);
@@ -145,12 +150,14 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     bgManager = new BackgroundManager(model, world, cam, batch);
     mouseJointManager = new MouseJointManager(model, world, cam);
     luaScriptManager = new LuaScriptManager(model, entityQueryManager, world, cam, screenControllerFileLua);
+    collisionDetectionMgr = new CollisionDetectionManager(luaScriptManager, entityQueryManager, model, world, cam);
 
     mouseJointManager.create();
     shapeManager.create();
     bgManager.create();
     entityManager.create();
     luaScriptManager.create();
+    collisionDetectionMgr.create();
 
     Gdx.input.setInputProcessor(mouseJointManager);
   }
@@ -174,7 +181,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     // forward the key name with it
     for (Field f : MyGdxGame.gdxInputKeys) {
       if (Gdx.input.isKeyPressed(f.getInt(f))) {
-        luaScriptManager.executeKeyPressed(model, entityQueryManager, f.getName());
+        luaScriptManager.executeKeyPressed(f.getName());
       }
     }
 
@@ -192,6 +199,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     shapeManager.dispose();
     entityManager.dispose();
     luaScriptManager.dispose();
+    collisionDetectionMgr.dispose();
     batch.dispose();
     world.dispose();
   }
