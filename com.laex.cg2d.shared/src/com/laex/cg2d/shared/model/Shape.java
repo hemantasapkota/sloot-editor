@@ -32,7 +32,7 @@ import com.laex.cg2d.shared.util.PlatformUtil;
 /**
  * The Class Shape.
  */
-public class Shape extends ModelElement implements Cloneable {
+public class Shape extends ModelElement  {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -3451831120051320417L;
@@ -400,80 +400,6 @@ public class Shape extends ModelElement implements Cloneable {
     }
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see java.lang.Object#clone()
-   */
-  @Override
-  protected Object clone() throws CloneNotSupportedException {
-    // FIXME : Add code to write a clone
-    Shape s = new Shape(this.editorShapeType);
-    s.id = "";
-    s.background = this.background;
-    s.backgroundResourceFile = this.backgroundResourceFile;
-    s.visible = true;
-
-    s.bodyDef = cloneBodyDef();
-    s.bounds = this.bounds;
-    s.fixtureDef = cloneFixtureDef();
-    s.parentLayer = this.parentLayer;
-
-    // Do not clone joints
-    return s;
-  }
-
-  /**
-   * Clone shape.
-   * 
-   * @return the shape
-   */
-  public Shape cloneShape() {
-    try {
-      return (Shape) this.clone();
-    } catch (CloneNotSupportedException e) {
-      e.printStackTrace();
-    }
-    return null;
-  }
-
-  /**
-   * Clone body def.
-   * 
-   * @return the body def
-   */
-  private BodyDef cloneBodyDef() {
-    BodyDef bdef = new BodyDef();
-    bdef.allowSleep = bodyDef.allowSleep;
-    bdef.angle = bodyDef.angle;
-    bdef.angularDamping = bodyDef.angularDamping;
-    bdef.fixedRotation = bodyDef.fixedRotation;
-    bdef.bullet = bodyDef.bullet;
-    bdef.linearDamping = bodyDef.linearDamping;
-    // bdef.position = bodyDef.position.clone();
-    // do not clone user data. will not be used in design time
-    return bdef;
-  }
-
-  /**
-   * Clone fixture def.
-   * 
-   * @return the fixture def
-   */
-  private FixtureDef cloneFixtureDef() {
-    FixtureDef fdef = new FixtureDef();
-    fdef.density = this.fixtureDef.density;
-    fdef.filter.categoryBits = this.fixtureDef.filter.categoryBits;
-    fdef.filter.groupIndex = this.fixtureDef.filter.groupIndex;
-    fdef.filter.maskBits = this.fixtureDef.filter.maskBits;
-    fdef.friction = this.fixtureDef.friction;
-    fdef.isSensor = this.fixtureDef.isSensor;
-    fdef.restitution = this.fixtureDef.restitution;
-    // Do not clone shape and user data.
-    // fdef.shape = this.fixtureDef.shape;
-    // fdef.userData = this.fixtureDef.userData;
-    return fdef;
-  }
 
   /**
    * Sets the id.
