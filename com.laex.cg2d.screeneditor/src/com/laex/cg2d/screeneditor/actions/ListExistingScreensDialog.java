@@ -27,9 +27,6 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -40,16 +37,22 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
+import com.badlogic.gdx.math.Rectangle;
+import com.laex.cg2d.protobuf.ScreenModel.CGBodyDef;
+import com.laex.cg2d.protobuf.ScreenModel.CGFixtureDef;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
 import com.laex.cg2d.shared.ILayerManager;
-import com.laex.cg2d.shared.adapter.ScreenModelAdapter;
+import com.laex.cg2d.shared.adapter.CGScreenModelAdapter;
 import com.laex.cg2d.shared.adapter.RectAdapter;
+import com.laex.cg2d.shared.adapter.ScreenModelAdapter;
 import com.laex.cg2d.shared.model.GameModel;
 import com.laex.cg2d.shared.model.Layer;
 import com.laex.cg2d.shared.model.Shape;
@@ -88,17 +91,14 @@ public class ListExistingScreensDialog extends Dialog {
   /** The new layer name composite. */
   private Composite newLayerNameComposite;
 
-  /** The label. */
-  private Label label;
-
-  /** The label_1. */
-  private Label label_1;
-
   /** The lbl shape prefix. */
   private Label lblShapePrefix;
 
   /** The txt suffix. */
   private Text txtSuffix;
+  private Label lblColumns;
+  private Spinner txtColumnsRepeat;
+  private Label label;
 
   /**
    * Create the dialog.
@@ -123,52 +123,61 @@ public class ListExistingScreensDialog extends Dialog {
   @Override
   protected Control createDialogArea(Composite parent) {
     Composite container = (Composite) super.createDialogArea(parent);
-    container.setLayout(new FormLayout());
+    container.setLayout(new GridLayout(2, false));
+
+    listViewer = new ListViewer(container, SWT.BORDER | SWT.V_SCROLL);
+    list = listViewer.getList();
+    GridData gd_list = new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1);
+    gd_list.widthHint = 176;
+    gd_list.heightHint = 144;
+    list.setLayoutData(gd_list);
+
+    lblShapePrefix = formToolkit.createLabel(container, "Suffix", SWT.NONE);
+    lblShapePrefix.setBackground(null);
+
+    txtSuffix = formToolkit.createText(container, "New Text", SWT.NONE);
+    txtSuffix.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+    txtSuffix.setText("");
+    txtSuffix.addModifyListener(new ModifyListener() {
+      @Override
+      public void modifyText(ModifyEvent e) {
+        validateSuffix();
+      }
+    });
+
+    lblColumns = new Label(container, SWT.NONE);
+    lblColumns.setToolTipText("Repeat Columns");
+    formToolkit.adapt(lblColumns, true, true);
+    lblColumns.setText("Columns");
+    lblColumns.setBackground(null);
+
+    txtColumnsRepeat = new Spinner(container, SWT.BORDER);
+    txtColumnsRepeat.setSelection(1);
+    txtColumnsRepeat.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+    formToolkit.adapt(txtColumnsRepeat);
+    formToolkit.paintBordersFor(txtColumnsRepeat);
+
+    label = new Label(container, SWT.SEPARATOR | SWT.HORIZONTAL);
+    label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
+    formToolkit.adapt(label, true, true);
 
     btnImportInNew = new Button(container, SWT.CHECK);
+    btnImportInNew.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
     btnImportInNew.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
         validateNewLayerNameSelection();
       }
     });
-
-    FormData fd_btnImportInNew = new FormData();
-    fd_btnImportInNew.left = new FormAttachment(0, 5);
-    btnImportInNew.setLayoutData(fd_btnImportInNew);
     formToolkit.adapt(btnImportInNew, true, true);
     btnImportInNew.setText("Import in New Layer");
     btnImportInNew.setBackground(null);
 
-    listViewer = new ListViewer(container, SWT.BORDER | SWT.V_SCROLL);
-    list = listViewer.getList();
-    fd_btnImportInNew.top = new FormAttachment(list, 6);
-    FormData fd_list = new FormData();
-    fd_list.right = new FormAttachment(0, 203);
-    fd_list.bottom = new FormAttachment(0, 146);
-    fd_list.top = new FormAttachment(0, 10);
-    fd_list.left = new FormAttachment(0, 5);
-    list.setLayoutData(fd_list);
-
-    newLayerNameComposite = formToolkit.createComposite(container, SWT.NONE);
-    newLayerNameComposite.setEnabled(false);
-    FormData fd_newLayerNameComposite = new FormData();
-    fd_newLayerNameComposite.bottom = new FormAttachment(btnImportInNew, 35, SWT.BOTTOM);
-    fd_newLayerNameComposite.top = new FormAttachment(btnImportInNew, 6);
-    fd_newLayerNameComposite.left = new FormAttachment(btnImportInNew, 0, SWT.LEFT);
-    fd_newLayerNameComposite.right = new FormAttachment(100, -10);
-    newLayerNameComposite.setLayoutData(fd_newLayerNameComposite);
-    newLayerNameComposite.setBackground(null);
-    formToolkit.paintBordersFor(newLayerNameComposite);
-    newLayerNameComposite.setLayout(new GridLayout(2, false));
-
-    lblNewLabel = formToolkit.createLabel(newLayerNameComposite, "New Layer", SWT.NONE);
+    lblNewLabel = formToolkit.createLabel(container, "New Layer", SWT.NONE);
     lblNewLabel.setBackground(null);
 
-    txtNewLayerName = formToolkit.createText(newLayerNameComposite, "New Text", SWT.NONE);
-    GridData gd_txtNewLayerName = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-    gd_txtNewLayerName.widthHint = 125;
-    txtNewLayerName.setLayoutData(gd_txtNewLayerName);
+    txtNewLayerName = formToolkit.createText(container, "New Text", SWT.NONE);
+    txtNewLayerName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
     txtNewLayerName.setText("");
     txtNewLayerName.addModifyListener(new ModifyListener() {
       @Override
@@ -176,6 +185,13 @@ public class ListExistingScreensDialog extends Dialog {
         validateSuffix();
       }
     });
+
+    newLayerNameComposite = formToolkit.createComposite(container, SWT.NONE);
+    newLayerNameComposite.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
+    newLayerNameComposite.setEnabled(false);
+    newLayerNameComposite.setBackground(null);
+    formToolkit.paintBordersFor(newLayerNameComposite);
+    newLayerNameComposite.setLayout(new GridLayout(1, false));
 
     try {
       resList = PlatformUtil.getListOfScreensInCurrentProject(PlatformUtil.getActiveEditorInput());
@@ -190,49 +206,10 @@ public class ListExistingScreensDialog extends Dialog {
 
       list.select(0);
 
-      label = new Label(container, SWT.SEPARATOR | SWT.HORIZONTAL);
-      FormData fd_label = new FormData();
-      fd_label.right = new FormAttachment(100, -10);
-      fd_label.left = new FormAttachment(0, 5);
-      fd_label.top = new FormAttachment(newLayerNameComposite, 6);
-      label.setLayoutData(fd_label);
-      formToolkit.adapt(label, true, true);
-      fd_label.bottom = new FormAttachment(100, -92);
-
-      label_1 = new Label(container, SWT.SEPARATOR | SWT.HORIZONTAL);
-      FormData fd_label_1 = new FormData();
-      fd_label_1.top = new FormAttachment(newLayerNameComposite, 6);
-      fd_label_1.right = new FormAttachment(list, 0, SWT.RIGHT);
-      fd_label_1.bottom = new FormAttachment(newLayerNameComposite, 8, SWT.BOTTOM);
-      fd_label_1.left = new FormAttachment(0, 10);
-      label_1.setLayoutData(fd_label_1);
-      formToolkit.adapt(label_1, true, true);
-
-      lblShapePrefix = formToolkit.createLabel(container, "Suffix", SWT.NONE);
-      FormData fd_lblShapePrefix = new FormData();
-      fd_lblShapePrefix.top = new FormAttachment(label_1, 7);
-      fd_lblShapePrefix.left = new FormAttachment(0, 10);
-      lblShapePrefix.setLayoutData(fd_lblShapePrefix);
-      lblShapePrefix.setBackground(null);
-
-      txtSuffix = formToolkit.createText(container, "New Text", SWT.NONE);
-      txtSuffix.setText("");
-      FormData fd_txtSuffix = new FormData();
-      fd_txtSuffix.right = new FormAttachment(list, 0, SWT.RIGHT);
-      fd_txtSuffix.top = new FormAttachment(lblShapePrefix, -3, SWT.TOP);
-      fd_txtSuffix.left = new FormAttachment(list, -127);
-      txtSuffix.setLayoutData(fd_txtSuffix);
-      txtSuffix.addModifyListener(new ModifyListener() {
-        @Override
-        public void modifyText(ModifyEvent e) {
-          validateSuffix();
-        }
-      });
-
     } catch (CoreException e) {
       e.printStackTrace();
     }
-    
+
     return container;
   }
 
@@ -257,25 +234,25 @@ public class ListExistingScreensDialog extends Dialog {
       newLayerNameComposite.setEnabled(false);
     }
   }
-  
+
   /**
    * Checks if is new layer name valid.
-   *
+   * 
    * @return true, if is new layer name valid
    */
   private boolean isNewLayerNameValid() {
-      if (StringUtils.isEmpty(txtNewLayerName.getText())) {
-        return false;
-      }
-      return true;
+    if (StringUtils.isEmpty(txtNewLayerName.getText())) {
+      return false;
+    }
+    return true;
   }
 
   /**
-   * Validate suffix. 
+   * Validate suffix.
    */
   private void validateSuffix() {
     boolean isAlphaNumeric = StringUtils.isAlphanumeric(txtSuffix.getText());
-    
+
     // validate suffix
     // for the suffix to be valid
     if (!isAlphaNumeric) {
@@ -328,8 +305,6 @@ public class ListExistingScreensDialog extends Dialog {
 
           GameModel screenModel = PlatformUtil.getScreenModel();
 
-          //
-
           CompoundCommand cc = new CompoundCommand();
 
           boolean createNewLayer = btnImportInNew.getSelection();
@@ -360,14 +335,29 @@ public class ListExistingScreensDialog extends Dialog {
             }
           }
 
-          for (Shape shape : gameModel.getDiagram().getChildren()) {
-            // add suffix to id
-            shape.setId(new StringBuffer(shape.getId()).append(txtSuffix.getText()).toString());
+          for (int i = 0; i < txtColumnsRepeat.getSelection(); i++) {
 
-            ShapeCreateCommand scc = new ShapeCreateCommand(shape, layer, screenModel.getDiagram(),
-                RectAdapter.d2dRect(shape.getBounds()));
-            cc.add(scc);
+            for (Shape shape : gameModel.getDiagram().getChildren()) {
+              // add suffix to id
+              //TODO: Create a shape cloning mechanism
+              CGBodyDef cgBodyDef = CGScreenModelAdapter.makeCGBodyDef(shape.getBodyDef()).build();
+              CGFixtureDef cgFixDef = CGScreenModelAdapter.makeCGFixtureDef(shape.getFixtureDef()).build();
+              CGShape newShape = CGScreenModelAdapter.makeShape(cgFixDef, cgBodyDef , shape).build();
+              
+              Shape newShapeClone = ScreenModelAdapter.asShape(newShape, layer);
+              
+              newShapeClone.setId(new StringBuffer(shape.getId()).append(txtSuffix.getText()).toString());
+
+              Rectangle r = shape.getBounds();
+              r.x = i * model.getScreenPrefs().getCardPrefs().getCardWidth() - 1;
+
+              ShapeCreateCommand scc = new ShapeCreateCommand(newShapeClone, layer, screenModel.getDiagram(),
+                  RectAdapter.d2dRect(r));
+              cc.add(scc);
+            }
+            
           }
+
           commandStack.execute(cc);
           cc.dispose();
 
@@ -390,6 +380,6 @@ public class ListExistingScreensDialog extends Dialog {
    */
   @Override
   protected Point getInitialSize() {
-    return new Point(213, 316);
+    return new Point(213, 337);
   }
 }
