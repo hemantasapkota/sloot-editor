@@ -222,6 +222,7 @@ public class ScreenPropertyPage extends PropertyPage {
     txtGravityX.setText(props.get(PreferenceConstants.GRAVITY_X));
     txtGravityY.setText(props.get(PreferenceConstants.GRAVITY_Y));
     txtTimeStep.setText(props.get(PreferenceConstants.TIMESTEP));
+    txtCardNoX.setMinimum(1);
 
     txtCardNoX.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.CARD_NO_X)));
     txtCardNoY.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.CARD_NO_Y)));
