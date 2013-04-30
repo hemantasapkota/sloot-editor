@@ -86,14 +86,16 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
 
       chunk = globals.loadFile(scriptFileName);
 
+      // very important step. subsequent calls to method do not work if the
+      // chunk
+      // is not called here
+      chunk.call();
+
     } catch (Throwable t) {
 
       handleScriptExecptions(t);
 
     }
-    // very important step. subsequent calls to method do not work if the chunk
-    // is not called here
-    chunk.call();
 
   }
 
@@ -115,7 +117,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
     if (!scriptFileExists)
       return;
 
-    executeInit();
+    executeInit(model(), queryMgr);
 
     Iterator<Body> itr = world().getBodies();
     while (itr.hasNext()) {
@@ -124,7 +126,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
 
       if (userData instanceof CGShape) {
         CGShape shape = (CGShape) userData;
-        this.executeInitBody(model(), queryMgr, b, shape.getId());
+        this.executeInitBody(b, shape.getId());
       }
 
     }
@@ -146,12 +148,12 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
 
       if (userData instanceof CGShape) {
         CGShape shape = (CGShape) userData;
-        executeUpdate(model(), queryMgr, b, shape.getId());
+        executeUpdate(b, shape.getId());
       }
 
     }
   }
- 
+
   /*
    * (non-Javadoc)
    * 
@@ -167,9 +169,22 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    * @see com.laex.cg2d.render.IGameScript#executeInit()
    */
   @Override
-  public void executeInit() {
-    globals.get("init").invoke(new LuaValue[]
-      { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()) });
+  public void executeInit(CGScreenModel screenModel, IEntityQueryable entityMgr) {
+    try {
+
+      globals.get("init").invoke(
+          new LuaValue[]
+            {
+                CoerceJavaToLua.coerce(screenModel),
+                CoerceJavaToLua.coerce(entityMgr),
+                CoerceJavaToLua.coerce(world()),
+                CoerceJavaToLua.coerce(camera()) });
+
+    } catch (Throwable t) {
+
+      handleScriptExecptions(t);
+    }
+
   }
 
   /*
@@ -180,7 +195,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    * .box2d.Body, java.lang.String)
    */
   @Override
-  public void executeInitBody(CGScreenModel screenModel, IEntityQueryable queryMgr, Body body, String bodyId) {
+  public void executeInitBody(Body body, String bodyId) {
     LuaValue bodyLua = CoerceJavaToLua.coerce(body);
 
     try {
@@ -188,8 +203,6 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
       globals.get("initBody").invoke(
           new LuaValue[]
             {
-                CoerceJavaToLua.coerce(model()),
-                CoerceJavaToLua.coerce(queryMgr),
                 CoerceJavaToLua.coerce(world()),
                 CoerceJavaToLua.coerce(camera()),
                 bodyLua,
@@ -209,7 +222,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    * .box2d.Body, java.lang.String)
    */
   @Override
-  public void executeUpdate(CGScreenModel screenModel, IEntityQueryable queryMgr, Body body, String bodyId) {
+  public void executeUpdate(Body body, String bodyId) {
     LuaValue bodyLua = CoerceJavaToLua.coerce(body);
 
     try {
@@ -217,8 +230,6 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
       globals.get("update").invoke(
           new LuaValue[]
             {
-                CoerceJavaToLua.coerce(model()),
-                CoerceJavaToLua.coerce(queryMgr),
                 CoerceJavaToLua.coerce(world()),
                 CoerceJavaToLua.coerce(camera()),
                 bodyLua,
@@ -238,14 +249,12 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    * @see com.laex.cg2d.render.IGameScript#executeKeyPressed(java.lang.String)
    */
   @Override
-  public void executeKeyPressed(CGScreenModel screenModel, IEntityQueryable queryMgr, String key) {
+  public void executeKeyPressed(String key) {
     try {
 
       globals.get("keyPressed").invoke(
           new LuaValue[]
             {
-                CoerceJavaToLua.coerce(screenModel),
-                CoerceJavaToLua.coerce(queryMgr),
                 CoerceJavaToLua.coerce(world()),
                 CoerceJavaToLua.coerce(camera()),
                 LuaValue.valueOf(key) });
@@ -266,6 +275,29 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
   @Override
   public boolean canExecute() {
     return scriptFileExists;
+  }
+
+  @Override
+  public void collisionCallback(String idA, String idB, Body bodyA, Body bodyB) {
+    try {
+
+      globals.get("collisionCallback").invoke(
+          new LuaValue[]
+            {
+               LuaValue.valueOf(idA),
+               LuaValue.valueOf(idB),
+                CoerceJavaToLua.coerce(bodyA),
+                CoerceJavaToLua.coerce(bodyB),
+                CoerceJavaToLua.coerce(world()),
+                CoerceJavaToLua.coerce(camera())
+                });
+
+    } catch (Throwable t) {
+
+      handleScriptExecptions(t);
+
+    }
+
   }
 
 }
