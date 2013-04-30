@@ -6,6 +6,6 @@ public interface IEntityQueryable {
   
   Body getEntityById(String id);
   
-  void visit(String entityWithId);
+  String getEntityIdByBody(Body b);
   
 }
