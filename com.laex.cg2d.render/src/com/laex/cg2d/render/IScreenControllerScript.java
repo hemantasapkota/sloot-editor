@@ -27,25 +27,48 @@ public interface IScreenControllerScript {
   
   /**
    * Execute init.
+   *
+   * @param screenModel the screen model
+   * @param queryMgr the query mgr
    */
-  void executeInit();
+  void executeInit(CGScreenModel screenModel, IEntityQueryable queryMgr);
   
   /**
    * Execute init body.
    *
+   * @param screenModel the screen model
+   * @param queryMgr the query mgr
    * @param body the body
    * @param bodyId the body id
    */
-  void executeInitBody(CGScreenModel screenModel, IEntityQueryable queryMgr, Body body, String bodyId);
+  void executeInitBody(Body body, String bodyId);
   
   
-  void executeUpdate(CGScreenModel screenModel, IEntityQueryable queryMgr, Body body, String bodyId);
+  /**
+   * Execute update.
+   *
+   * @param screenModel the screen model
+   * @param queryMgr the query mgr
+   * @param body the body
+   * @param bodyId the body id
+   */
+  void executeUpdate(Body body, String bodyId);
   
   /**
    * Execute key pressed.
    *
+   * @param screenModel the screen model
+   * @param queryMgr the query mgr
    * @param key the key
    */
-  void executeKeyPressed(CGScreenModel screenModel, IEntityQueryable queryMgr, String key);
+  void executeKeyPressed(String key);
+  
+  /**
+   * Collision callback.
+   *
+   * @param bodyA the body a
+   * @param bodyB the body b
+   */
+  void collisionCallback(String idA, String idB, Body bodyA, Body bodyB);
 
 }
