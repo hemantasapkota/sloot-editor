@@ -115,27 +115,27 @@ public class CloneTool extends MarqueeSelectionTool {
     }
 
     // Clone here
-    Rectangle area = calculateArea();
-    Shape shape = (Shape) ((IAdaptable) getOperationSet().get(0)).getAdapter(Shape.class);
-    ShapesDiagram diagram = (ShapesDiagram) getCurrentViewer().getContents().getModel();
-
-    for (int i = area.y; i < area.y + area.height; i += shape.getBounds().height) {
-      for (int j = area.x; j < area.x + area.width; j += shape.getBounds().width) {
-        Shape newShape = shape.cloneShape();
-
-        Rectangle newBounds = RectAdapter.d2dRect(newShape.getBounds());
-        newBounds.x = j;
-        newBounds.y = i;
-
-        newShape.setBounds(RectAdapter.gdxRect(newBounds));
-        diagram.addChild(newShape);
-        newShape.getParentLayer().add(newShape);
-      }
-    }
-
-    // remove the cloned item
-    diagram.removeChild(shape);
-    shape.getParentLayer().remove(shape);
+//    Rectangle area = calculateArea();
+//    Shape shape = (Shape) ((IAdaptable) getOperationSet().get(0)).getAdapter(Shape.class);
+//    ShapesDiagram diagram = (ShapesDiagram) getCurrentViewer().getContents().getModel();
+//
+//    for (int i = area.y; i < area.y + area.height; i += shape.getBounds().height) {
+//      for (int j = area.x; j < area.x + area.width; j += shape.getBounds().width) {
+//        Shape newShape = shape.cloneShape();
+//
+//        Rectangle newBounds = RectAdapter.d2dRect(newShape.getBounds());
+//        newBounds.x = j;
+//        newBounds.y = i;
+//
+//        newShape.setBounds(RectAdapter.gdxRect(newBounds));
+//        diagram.addChild(newShape);
+//        newShape.getParentLayer().add(newShape);
+//      }
+//    }
+//
+//    // remove the cloned item
+//    diagram.removeChild(shape);
+//    shape.getParentLayer().remove(shape);
 
     return fromSuper;
   }
