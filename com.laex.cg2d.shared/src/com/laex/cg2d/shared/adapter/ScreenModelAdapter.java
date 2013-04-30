@@ -154,6 +154,21 @@ public class ScreenModelAdapter {
     return fdef;
   }
 
+  public static Shape asShape(CGShape cgShape, Layer layer) {
+    Shape shape = new Shape(asEditorShapeType(cgShape.getEditorShapeType()));
+    shape.setId(cgShape.getId());
+    shape.setLocked(cgShape.getLocked());
+    shape.setBackgroundResourceFile(ResourceFileAdapter.asResourceFile(cgShape.getBackgroundResourceFile()));
+    shape.setBounds(asRectangle(cgShape.getBounds()));
+    shape.setEntityResourceFile(ResourceFileAdapter.asResourceFile(cgShape.getEntityRefFile()));
+    shape.setParentLayer(layer);
+
+    // set body def & fixture def
+    shape.setPropertyValue(Shape.BODY_DEF_PROP, asBodyDef(cgShape.getBodyDef()));
+    shape.setPropertyValue(Shape.FIXTURE_DEF_PROP, asFixtureDef(cgShape.getFixtureDef()));
+    return shape;
+  }
+
   /**
    * As game model.
    * 
@@ -169,21 +184,12 @@ public class ScreenModelAdapter {
     for (CGLayer cgLayer : cgModel.getLayersList()) {
       Layer layer = new Layer(cgLayer.getId(), cgLayer.getName(), cgLayer.getVisible(), cgLayer.getLocked());
       for (CGShape cgShape : cgLayer.getShapeList()) {
-        Shape shape = new Shape(asEditorShapeType(cgShape.getEditorShapeType()));
-        shape.setId(cgShape.getId());
-        shape.setLocked(cgShape.getLocked());
-        shape.setBackgroundResourceFile(ResourceFileAdapter.asResourceFile(cgShape.getBackgroundResourceFile()));
-        shape.setBounds(asRectangle(cgShape.getBounds()));
-        shape.setEntityResourceFile(ResourceFileAdapter.asResourceFile(cgShape.getEntityRefFile()));
-        shape.setParentLayer(layer);
-
-        // set body def & fixture def
-        shape.setPropertyValue(Shape.BODY_DEF_PROP, asBodyDef(cgShape.getBodyDef()));
-        shape.setPropertyValue(Shape.FIXTURE_DEF_PROP, asFixtureDef(cgShape.getFixtureDef()));
-
+        
+        Shape shape = ScreenModelAdapter.asShape(cgShape, layer);
         layer.add(shape);
         model.getDiagram().addChild(shape);
         shapeMap.put(cgShape.getId(), shape);
+        
       }
 
       model.getDiagram().getLayers().add(layer);
