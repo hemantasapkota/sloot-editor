@@ -119,7 +119,7 @@ public class CGScreenModelAdapter {
    *          the bdef
    * @return the cG body def. builder
    */
-  private CGBodyDef.Builder makeCGBodyDef(BodyDef bdef) {
+  public static CGBodyDef.Builder makeCGBodyDef(BodyDef bdef) {
     return CGBodyDef.newBuilder().setActive(bdef.active).setAllowSleep(bdef.allowSleep).setAngle(bdef.angle)
         .setAngularDamping(bdef.angularDamping).setAngularVelocity(bdef.angularVelocity).setAwake(bdef.awake)
         .setBullet(bdef.bullet).setFixedRotation(bdef.fixedRotation).setLinearDampitng(bdef.linearDamping)
@@ -136,7 +136,7 @@ public class CGScreenModelAdapter {
    *          the fdef
    * @return the cG fixture def. builder
    */
-  private CGFixtureDef.Builder makeCGFixtureDef(FixtureDef fdef) {
+  public static CGFixtureDef.Builder makeCGFixtureDef(FixtureDef fdef) {
     return CGFixtureDef
         .newBuilder()
         .setDensity(fdef.density)
@@ -159,7 +159,7 @@ public class CGScreenModelAdapter {
    *          the s
    * @return the cG shape. builder
    */
-  private CGShape.Builder makeShape(CGFixtureDef fdef, CGBodyDef bdef, Shape s) {
+  public static CGShape.Builder makeShape(CGFixtureDef fdef, CGBodyDef bdef, Shape s) {
     Rectangle b = s.getBounds();
     CGBounds pBounds = CGBounds.newBuilder().setX(b.x).setY(b.y).setWidth(b.width).setHeight(b.height).build();
 
