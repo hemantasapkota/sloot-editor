@@ -43,6 +43,7 @@ import com.laex.cg2d.protobuf.ScreenModel.CGLayer;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
+import com.laex.cg2d.render.BodyVisitor;
 import com.laex.cg2d.render.util.RunnerUtil;
 
 /**
@@ -90,7 +91,7 @@ public class EntityManager extends AbstractScreenScaffold {
     this.drawEntities = model.getScreenPrefs().getDebugDrawPrefs().getDrawEntities();
 
     this.shapeToSpriteMap = new HashMap<CGShape, Sprite>();
-    this.shapeToEntityMap = new HashMap<CGShape,CGEntity>();
+    this.shapeToEntityMap = new HashMap<CGShape, CGEntity>();
     this.entityToAnimationMap = new HashMap<CGEntity, Animation>();
     this.entityAnimationOriginMap = new HashMap<CGEntityAnimation, Vector3>();
   }
@@ -161,13 +162,14 @@ public class EntityManager extends AbstractScreenScaffold {
         CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(entity);
 
         // Resource file empty indicates this entity might not have
-        // image & collision shape defined. Ignore this and do not create bodies or shape for
+        // image & collision shape defined. Ignore this and do not create bodies
+        // or shape for
         // this kind of object.
         if (ea.getAnimationResourceFile().getResourceFileAbsolute().trim().isEmpty()) {
           world().destroyBody(b);
           continue;
         }
-        
+
         FileHandle handle = Gdx.files.absolute(ea.getAnimationResourceFile().getResourceFileAbsolute());
 
         Texture tex = new Texture(handle);
@@ -238,48 +240,46 @@ public class EntityManager extends AbstractScreenScaffold {
     }
 
     batch.begin();
-    Iterator<Body> itr = world().getBodies();
-    while (itr.hasNext()) {
-      Body b = itr.next();
-      
-      if (!(b.getUserData() instanceof CGShape)) {
-        continue;
-      }
 
-      CGShape shape = (CGShape) b.getUserData();
-      if (!(shape.getEditorShapeType() == CGEditorShapeType.ENTITY_SHAPE)) {
-        continue;
-      }
-      
-      Vector2 pos = b.getPosition();
+    super.acceptBodyVisitor(new BodyVisitor() {
 
-      // position for circle collision shape & box collision shape differ.
-      CGEntity e = shapeToEntityMap.get(shape);
-      CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(e);
-
-      // Position of circle should be adjusted of radius.
-      if (ea.getCollisionType() == CGEntityCollisionType.CIRCLE) {
-        float radius = entityAnimationOriginMap.get(ea).z;
-        pos.x = pos.x - radius;
-        pos.y = pos.y - radius;
-      }
-
-      Sprite spr = shapeToSpriteMap.get(shape);
-      if (spr != null) {
-        spr.setPosition(pos.x * scaleFactor(), pos.y * scaleFactor());
-        // setting origin important for rotations to work properly
-        Vector3 origin = entityAnimationOriginMap.get(ea);
-        spr.setOrigin(origin.x, origin.y);
-        spr.setRotation(b.getAngle() * MathUtils.radiansToDegrees);
-
-        Animation anim = entityToAnimationMap.get(shapeToEntityMap.get(shape));
-        if (anim != null) {
-          TextureRegion tr = anim.getKeyFrame(stateTime, true);
-          spr.setRegion(tr);
+      @Override
+      public void visit(Body b, CGShape shape) {
+        if (!(shape.getEditorShapeType() == CGEditorShapeType.ENTITY_SHAPE)) {
+          return;
         }
-        spr.draw(batch);
+
+        Vector2 pos = b.getPosition();
+
+        // position for circle collision shape & box collision shape differ.
+        CGEntity e = shapeToEntityMap.get(shape);
+        CGEntityAnimation ea = RunnerUtil.getDefaultAnimation(e);
+
+        // Position of circle should be adjusted of radius.
+        if (ea.getCollisionType() == CGEntityCollisionType.CIRCLE) {
+          float radius = entityAnimationOriginMap.get(ea).z;
+          pos.x = pos.x - radius;
+          pos.y = pos.y - radius;
+        }
+
+        Sprite spr = shapeToSpriteMap.get(shape);
+        if (spr != null) {
+          spr.setPosition(pos.x * scaleFactor(), pos.y * scaleFactor());
+          // setting origin important for rotations to work properly
+          Vector3 origin = entityAnimationOriginMap.get(ea);
+          spr.setOrigin(origin.x, origin.y);
+          spr.setRotation(b.getAngle() * MathUtils.radiansToDegrees);
+
+          Animation anim = entityToAnimationMap.get(shapeToEntityMap.get(shape));
+          if (anim != null) {
+            TextureRegion tr = anim.getKeyFrame(stateTime, true);
+            spr.setRegion(tr);
+          }
+          spr.draw(batch);
+        }
       }
-    }
+    });
+
     batch.end();
   }
 
@@ -290,18 +290,20 @@ public class EntityManager extends AbstractScreenScaffold {
    */
   @Override
   public void dispose() {
-    Iterator<Body> itr = world().getBodies();
-    while (itr.hasNext()) {
-      Body b = itr.next();
-      if (!(b.getUserData() instanceof CGShape)) {
-        continue;
+    super.acceptBodyVisitor(new BodyVisitor() {
+      @Override
+      public void visit(Body b, CGShape shape) {
+        
+        Sprite spr = shapeToSpriteMap.get(shape);
+        
+        if (spr != null) {
+          
+          spr.getTexture().dispose();
+          
+        }
       }
-      CGShape shape = (CGShape) b.getUserData();
-      Sprite spr = shapeToSpriteMap.get(shape);
-      if (spr != null) {
-        spr.getTexture().dispose();
-      }
-    }
+    });
+    
   }
 
   /*
@@ -330,7 +332,8 @@ public class EntityManager extends AbstractScreenScaffold {
     // We simple ignore this and do not create any shape collision for this
     // object
     if (shapeType == CGEntityCollisionType.NONE) {
-      ///set empty origin vertex so that other codes do not have to check null pointer exception on its part
+      // /set empty origin vertex so that other codes do not have to check null
+      // pointer exception on its part
       entityAnimationOriginMap.put(ea, new Vector3(0, 0, 0));
       return;
     }

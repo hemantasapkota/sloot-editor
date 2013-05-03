@@ -10,8 +10,6 @@
  */
 package com.laex.cg2d.render.impl;
 
-import java.util.Iterator;
-
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
@@ -24,14 +22,15 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
-import com.laex.cg2d.render.IEntityQueryable;
-import com.laex.cg2d.render.IScreenControllerScript;
+import com.laex.cg2d.render.BodyVisitor;
+import com.laex.cg2d.render.EntityQueryable;
 import com.laex.cg2d.render.MyGdxGameDesktop;
+import com.laex.cg2d.render.ScreenControllerScript;
 
 /**
  * The Class LuaScriptManager.
  */
-public class LuaScriptManager extends AbstractScreenScaffold implements IScreenControllerScript {
+public class LuaScriptManager extends AbstractScreenScaffold implements ScreenControllerScript {
 
   /** The globals. */
   private Globals globals = JsePlatform.standardGlobals();
@@ -42,7 +41,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
   /** The script file exists. */
   private boolean scriptFileExists = false;
 
-  private IEntityQueryable queryMgr;
+  private EntityQueryable queryMgr;
 
   /**
    * Instantiates a new lua script manager.
@@ -70,7 +69,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    * @param scriptFileName
    *          the script file name
    */
-  public LuaScriptManager(CGScreenModel model, IEntityQueryable queryMgr, World world, Camera cam, String scriptFileName) {
+  public LuaScriptManager(CGScreenModel model, EntityQueryable queryMgr, World world, Camera cam, String scriptFileName) {
     super(model, world, cam);
 
     this.queryMgr = queryMgr;
@@ -114,22 +113,21 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    */
   @Override
   public void create() {
-    if (!scriptFileExists)
+    if (!canExecute())
       return;
 
     executeInit(model(), queryMgr);
 
-    Iterator<Body> itr = world().getBodies();
-    while (itr.hasNext()) {
-      Body b = itr.next();
-      Object userData = b.getUserData();
+    super.acceptBodyVisitor(new BodyVisitor() {
 
-      if (userData instanceof CGShape) {
-        CGShape shape = (CGShape) userData;
-        this.executeInitBody(b, shape.getId());
+      @Override
+      public void visit(Body b, CGShape shape) {
+
+        executeInitBody(b, shape.getId());
+
       }
+    });
 
-    }
   }
 
   /*
@@ -141,17 +139,16 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
     if (!canExecute())
       return;
 
-    Iterator<Body> itr = world().getBodies();
-    while (itr.hasNext()) {
-      Body b = itr.next();
-      Object userData = b.getUserData();
+    super.acceptBodyVisitor(new BodyVisitor() {
 
-      if (userData instanceof CGShape) {
-        CGShape shape = (CGShape) userData;
+      @Override
+      public void visit(Body b, CGShape shape) {
+
         executeUpdate(b, shape.getId());
-      }
 
-    }
+      }
+    });
+
   }
 
   /*
@@ -169,7 +166,11 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    * @see com.laex.cg2d.render.IGameScript#executeInit()
    */
   @Override
-  public void executeInit(CGScreenModel screenModel, IEntityQueryable entityMgr) {
+  public void executeInit(CGScreenModel screenModel, EntityQueryable entityMgr) {
+    if (!canExecute()) {
+      return;
+    }
+
     try {
 
       globals.get("init").invoke(
@@ -196,17 +197,16 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    */
   @Override
   public void executeInitBody(Body body, String bodyId) {
+    if (!canExecute()) {
+      return;
+    }
+
     LuaValue bodyLua = CoerceJavaToLua.coerce(body);
 
     try {
 
-      globals.get("initBody").invoke(
-          new LuaValue[]
-            {
-                CoerceJavaToLua.coerce(world()),
-                CoerceJavaToLua.coerce(camera()),
-                bodyLua,
-                LuaValue.valueOf(bodyId) });
+      globals.get("initBody").invoke(new LuaValue[]
+        { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
 
     } catch (Throwable t) {
       handleScriptExecptions(t);
@@ -223,17 +223,16 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    */
   @Override
   public void executeUpdate(Body body, String bodyId) {
+    if (!canExecute()) {
+      return;
+    }
+
     LuaValue bodyLua = CoerceJavaToLua.coerce(body);
 
     try {
 
-      globals.get("update").invoke(
-          new LuaValue[]
-            {
-                CoerceJavaToLua.coerce(world()),
-                CoerceJavaToLua.coerce(camera()),
-                bodyLua,
-                LuaValue.valueOf(bodyId) });
+      globals.get("update").invoke(new LuaValue[]
+        { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
 
     } catch (Throwable t) {
 
@@ -250,14 +249,14 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
    */
   @Override
   public void executeKeyPressed(String key) {
+    if (!canExecute()) {
+      return;
+    }
+
     try {
 
-      globals.get("keyPressed").invoke(
-          new LuaValue[]
-            {
-                CoerceJavaToLua.coerce(world()),
-                CoerceJavaToLua.coerce(camera()),
-                LuaValue.valueOf(key) });
+      globals.get("keyPressed").invoke(new LuaValue[]
+        { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), LuaValue.valueOf(key) });
 
     } catch (Throwable t) {
 
@@ -279,18 +278,21 @@ public class LuaScriptManager extends AbstractScreenScaffold implements IScreenC
 
   @Override
   public void collisionCallback(String idA, String idB, Body bodyA, Body bodyB) {
+    if (!canExecute()) {
+      return;
+    }
+
     try {
 
       globals.get("collisionCallback").invoke(
           new LuaValue[]
             {
-               LuaValue.valueOf(idA),
-               LuaValue.valueOf(idB),
+                LuaValue.valueOf(idA),
+                LuaValue.valueOf(idB),
                 CoerceJavaToLua.coerce(bodyA),
                 CoerceJavaToLua.coerce(bodyB),
                 CoerceJavaToLua.coerce(world()),
-                CoerceJavaToLua.coerce(camera())
-                });
+                CoerceJavaToLua.coerce(camera()) });
 
     } catch (Throwable t) {
 
