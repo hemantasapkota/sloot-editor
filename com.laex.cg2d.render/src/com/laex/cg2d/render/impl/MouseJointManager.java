@@ -23,6 +23,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
 import com.badlogic.gdx.physics.box2d.joints.MouseJointDef;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.protobuf.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 
 /**
@@ -94,6 +95,7 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
   public void create() {
     BodyDef bodyDef = new BodyDef();
     groundBody = world().createBody(bodyDef);
+    groundBody.setUserData(CGShape.newBuilder().setId("groundBody").build());
   }
 
   /*
