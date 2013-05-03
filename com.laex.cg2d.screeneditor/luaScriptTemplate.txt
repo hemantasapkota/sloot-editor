@@ -5,39 +5,50 @@ cardWidth = 0
 maxXVelocity = 10
 onAir = false
 
-local screenModel = nil
-local queryMgr = nil
+screenModel = nil
+queryMgr = nil
+
+destroyBodyList = {}
 
 function init(_screenModel, _queryMgr, world, cam)
 	screenModel = _screenModel
 	queryMgr = _queryMgr
 	
-	ptm = screenModel:getScreenPrefs():getWorldPrefs():getPtmRatio()
-	cardNoX = screenModel:getScreenPrefs():getCardPrefs():getCardNoX()
-	cardNoY = screenModel:getScreenPrefs():getCardPrefs():getCardNoY()
-	cardWidth = screenModel:getScreenPrefs():getCardPrefs():getCardWidth()
+	ptm = _screenModel:getScreenPrefs():getWorldPrefs():getPtmRatio()
+	cardNoX = _screenModel:getScreenPrefs():getCardPrefs():getCardNoX()
+	cardNoY = _screenModel:getScreenPrefs():getCardPrefs():getCardNoY()
+	cardWidth = _screenModel:getScreenPrefs():getCardPrefs():getCardWidth()
 end
 
 function initBody(world, cam, body, id)
 end
 
 function update(world, cam, body, id)
-	local posX = body:getTransform():getPosition().x
 
-	local leftBoundsCondition = posX > (cardWidth/ptm/2)
-	local rightBoundsCondition = posX < ((cardNoX - 0.5) * cardWidth) / ptm
+	if id == "entity0" then
+		local posX = body:getTransform():getPosition().x
 
-	if leftBoundsCondition and rightBoundsCondition then
-		cam.position.x = posX
+		local leftBoundsCondition = posX > (cardWidth/ptm/2)
+		local rightBoundsCondition = posX < ((cardNoX - 0.5) * cardWidth) / ptm
+
+		if leftBoundsCondition and rightBoundsCondition then
+			cam.position.x = posX
+		end
 	end
-	
+
+	--destroy any bodies to be destroyed
+	if id == destroyBodyList[0] then
+		world:destroyBody(body)
+	end
 end
 
 function keyPressed(world, cam, key)
 	local body = queryMgr:getEntityById("entity0")
 
     if key == "LEFT" then   
-        body:applyLinearImpulse(-1, 0, 0.5, 0)
+		if body:getLinearVelocity().x <= maxXVelocity then
+			body:applyLinearImpulse(-1, 0, 0.5, 0)
+    	end
     end
 
 	if key == "RIGHT" then
@@ -60,7 +71,12 @@ function keyPressed(world, cam, key)
 end
 
 function collisionCallback(idA, idB, bodyA, bodyB, world, cam) 
+
 	if string.match(idA, "edge") and idB == "entity0" then
 		onAir = false
+	end
+
+	if idA == "entity0" and string.match(idB, "coin") then
+		destroyBodyList[0] = idB
 	end
 end
