@@ -12,8 +12,6 @@ package com.laex.cg2d.render;
 
 import java.lang.reflect.Field;
 
-import javax.management.Query;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -151,15 +149,16 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     mouseJointManager = new MouseJointManager(model, world, cam);
     luaScriptManager = new LuaScriptManager(model, entityQueryManager, world, cam, screenControllerFileLua);
     collisionDetectionMgr = new CollisionDetectionManager(luaScriptManager, entityQueryManager, model, world, cam);
-
+    
     mouseJointManager.create();
     shapeManager.create();
     bgManager.create();
     entityManager.create();
     luaScriptManager.create();
     collisionDetectionMgr.create();
-
+   
     Gdx.input.setInputProcessor(mouseJointManager);
+    
   }
 
   /**
