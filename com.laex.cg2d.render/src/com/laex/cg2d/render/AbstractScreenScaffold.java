@@ -37,9 +37,8 @@ import com.laex.cg2d.render.util.ProtoBufTypeConversionUtil;
  * 
  * @author hemantasapkota
  */
-public abstract class AbstractScreenScaffold implements IScreenScaffold {
-  
-  
+public abstract class AbstractScreenScaffold implements ScreenScaffold {
+
   public static float MAGIC_SCALAR = 16f;
 
   /** The world. */
@@ -78,6 +77,24 @@ public abstract class AbstractScreenScaffold implements IScreenScaffold {
     this.cardHeight = model.getScreenPrefs().getCardPrefs().getCardHeight();
     this.ptmRatio = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
     this.scaleFactor = ptmRatio / MAGIC_SCALAR;
+  }
+
+  //Standard visitor to box2d world
+  public void acceptBodyVisitor(BodyVisitor bv) {
+    Iterator<Body> bodiesIterator = world().getBodies();
+
+    while (bodiesIterator.hasNext()) {
+
+      Body b = bodiesIterator.next();
+      if (b == null) {
+        continue;
+      }
+
+      CGShape shape = (CGShape) b.getUserData();
+
+      bv.visit(b, shape);
+
+    }
   }
 
   // override
@@ -121,7 +138,7 @@ public abstract class AbstractScreenScaffold implements IScreenScaffold {
       while (bodyList.hasNext()) {
         Body body = bodyList.next();
         CGShape shp = (CGShape) body.getUserData();
-        
+
         if (shp != null) {
           String shpId = shp.getId();
 
