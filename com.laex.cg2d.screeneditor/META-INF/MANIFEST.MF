@@ -17,7 +17,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  com.laex.cg2d.protobuf;bundle-version="1.0.0",
  org.eclipse.ant.core;bundle-version="3.2.400",
- libgdx-0.9.8;bundle-version="0.9.8"
+ libgdx-0.9.8;bundle-version="0.9.8",
+ org.eclipse.ui.editors,
+ org.eclipse.ui.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
