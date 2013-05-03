@@ -19,7 +19,7 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.AbstractScreenScaffold;
-import com.laex.cg2d.render.IEntityQueryable;
+import com.laex.cg2d.render.EntityQueryable;
 
 /**
  * The Class CollisionDetectionManager.
@@ -56,7 +56,7 @@ public class CollisionDetectionManager extends AbstractScreenScaffold {
   }
 
   private LuaScriptManager scriptMgr;
-  private IEntityQueryable queryMgr;
+  private EntityQueryable queryMgr;
 
   /**
    * Instantiates a new collision detection manager.
@@ -68,7 +68,7 @@ public class CollisionDetectionManager extends AbstractScreenScaffold {
    * @param cam
    *          the cam
    */
-  public CollisionDetectionManager(LuaScriptManager scriptMgr, IEntityQueryable queryMgr, CGScreenModel model, World world, Camera cam) {
+  public CollisionDetectionManager(LuaScriptManager scriptMgr, EntityQueryable queryMgr, CGScreenModel model, World world, Camera cam) {
     super(model, world, cam);
     this.scriptMgr = scriptMgr;
     this.queryMgr = queryMgr;
