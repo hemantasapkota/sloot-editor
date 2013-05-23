@@ -121,7 +121,7 @@ public class CGCProject implements ICGCProject {
       throws CoreException {
 
     StringBuffer sb = new StringBuffer();
-    sb.append(inWhichFolder).append("/").append(filename);
+    sb.append(inWhichFolder).append('/').append(filename);
     Path path = new Path(sb.toString());
     final IFile file = project.getFile(path);
 
@@ -308,7 +308,7 @@ public class CGCProject implements ICGCProject {
     }
     return entFolder;
   }
-
+  
   /*
    * (non-Javadoc)
    * 
