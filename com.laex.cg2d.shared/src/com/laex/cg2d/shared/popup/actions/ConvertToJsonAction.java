@@ -21,6 +21,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -127,17 +129,45 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
 
       // Save it
       IPath path = file.getParent().getFullPath().append(file.getName()).addFileExtension("json");
+      IFile file1 = file.getProject().getFile(path);
       ICGCProject prj = CGCProject.getInstance();
-      try {
-        prj.createFile(path, new ByteArrayInputStream(jsonFormat.getBytes("utf-8")));
-      } catch (UnsupportedEncodingException e) {
-        e.printStackTrace();
-      } catch (CoreException e) {
-        e.printStackTrace();
+
+      if (prj.exists(path, false)) {
+
+        MessageBox mb = new MessageBox(shell, SWT.OK | SWT.CANCEL);
+        mb.setText("File exists");
+        mb.setMessage("File already exists. Will be overrridden. Do you want to continue ?");
+        int resp = mb.open();
+        if (resp == SWT.CANCEL) {
+          return;
+        }
+
+        try {
+          file1.delete(true, null);
+        } catch (CoreException e) {
+          e.printStackTrace();
+        }
+
+//        createFile(jsonFormat, path, prj);
+
+      } else {
+
+        createFile(jsonFormat, path, prj);
+
       }
 
     }
 
+  }
+
+  private void createFile(String jsonFormat, IPath path, ICGCProject prj) {
+    try {
+      prj.createFile(path, new ByteArrayInputStream(jsonFormat.getBytes("utf-8")));
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
