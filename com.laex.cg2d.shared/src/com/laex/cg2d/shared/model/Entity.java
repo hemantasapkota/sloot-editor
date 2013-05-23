@@ -28,9 +28,8 @@ public class Entity {
   /** The animation list. */
   private List<EntityAnimation> animationList;
 
-  // transient variables required in runtime
   /** The default frame. */
-  private transient Image defaultFrame;
+  private Image defaultFrame;
 
   /**
    * Instantiates a new entity.
