@@ -156,7 +156,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     // configure the context menu provider
     ContextMenuProvider cmProvider = new ScreenEditorContextMenuProvider(viewer, getActionRegistry());
     viewer.setContextMenu(cmProvider);
-    getSite().registerContextMenu(cmProvider, viewer);
+//    getSite().registerContextMenu(cmProvider, viewer);
   }
 
   /**
