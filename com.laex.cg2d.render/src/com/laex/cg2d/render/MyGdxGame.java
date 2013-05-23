@@ -21,6 +21,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.google.common.base.Throwables;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
@@ -28,6 +29,7 @@ import com.laex.cg2d.render.impl.BackgroundManager;
 import com.laex.cg2d.render.impl.CollisionDetectionManager;
 import com.laex.cg2d.render.impl.EntityManager;
 import com.laex.cg2d.render.impl.EntityQueryManager;
+import com.laex.cg2d.render.impl.FPSCalculator;
 import com.laex.cg2d.render.impl.LuaScriptManager;
 import com.laex.cg2d.render.impl.MouseJointManager;
 import com.laex.cg2d.render.impl.ShapeManager;
@@ -64,9 +66,14 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   /** The mouse joint manager. */
   private MouseJointManager mouseJointManager;
 
+  /** The entity query manager. */
   private EntityQueryManager entityQueryManager;
 
+  /** The collision detection mgr. */
   private CollisionDetectionManager collisionDetectionMgr;
+  
+  /** The fps calculator. */
+  private FPSCalculator fpsCalculator;
 
   /** The gravity x. */
   private float gravityX;
@@ -91,6 +98,8 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   /** The gdx input keys. */
   private static Field[] gdxInputKeys = Input.Keys.class.getFields();
+  
+  private Actor resumeButton;
 
   /**
    * Instantiates a new my gdx game.
@@ -126,8 +135,6 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     velocityIterations = model.getScreenPrefs().getWorldPrefs().getVelocityIterations();
     positionIterations = model.getScreenPrefs().getWorldPrefs().getPositionIterations();
 
-    AbstractScreenScaffold.MAGIC_SCALAR = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
-
     Texture.setEnforcePotImages(false);
 
     // models init
@@ -137,8 +144,10 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     batch = new SpriteBatch();
     float w = Gdx.graphics.getWidth();
     float h = Gdx.graphics.getHeight();
+    
+    int ptmRatio = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
 
-    cam = new OrthographicCamera(w / AbstractScreenScaffold.MAGIC_SCALAR, h / AbstractScreenScaffold.MAGIC_SCALAR);
+    cam = new OrthographicCamera(w / ptmRatio , h / ptmRatio );
     cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
 
     entityQueryManager = new EntityQueryManager(world);
@@ -149,6 +158,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     mouseJointManager = new MouseJointManager(model, world, cam);
     luaScriptManager = new LuaScriptManager(model, entityQueryManager, world, cam, screenControllerFileLua);
     collisionDetectionMgr = new CollisionDetectionManager(luaScriptManager, entityQueryManager, model, world, cam);
+    fpsCalculator = new FPSCalculator();
     
     mouseJointManager.create();
     shapeManager.create();
@@ -156,17 +166,19 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     entityManager.create();
     luaScriptManager.create();
     collisionDetectionMgr.create();
+    fpsCalculator.create();
    
     Gdx.input.setInputProcessor(mouseJointManager);
     
+    //invoke fps update initially
+    fpsCalculator.render();
   }
 
   /**
    * Handle input.
-   * 
-   * @throws IllegalAccessException
-   * @throws IllegalArgumentException
-   * 
+   *
+   * @throws IllegalArgumentException the illegal argument exception
+   * @throws IllegalAccessException the illegal access exception
    */
   private void handleInput() throws IllegalArgumentException, IllegalAccessException {
     // is it possible to excute the script, if not, then dont even bother to
@@ -199,6 +211,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     entityManager.dispose();
     luaScriptManager.dispose();
     collisionDetectionMgr.dispose();
+    fpsCalculator.dispose();
     batch.dispose();
     world.dispose();
   }
@@ -230,6 +243,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     entityManager.render();
     shapeManager.render();
     luaScriptManager.render();
+    fpsCalculator.render();
   }
 
   /**
@@ -261,6 +275,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
    */
   @Override
   public void pause() {
+    world.step(0, 0, 0);
   }
 
   /*
@@ -270,5 +285,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
    */
   @Override
   public void resume() {
+    world.step(1 / timeStep, velocityIterations, positionIterations);
   }
+  
 }
