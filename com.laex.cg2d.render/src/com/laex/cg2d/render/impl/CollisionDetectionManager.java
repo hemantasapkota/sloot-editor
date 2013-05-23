@@ -26,8 +26,22 @@ import com.laex.cg2d.render.EntityQueryable;
  */
 public class CollisionDetectionManager extends AbstractScreenScaffold {
 
+  /**
+   * The listener interface for receiving entityContact events.
+   * The class that is interested in processing a entityContact
+   * event implements this interface, and the object created
+   * with that class is registered with a component using the
+   * component's <code>addEntityContactListener<code> method. When
+   * the entityContact event occurs, that object's appropriate
+   * method is invoked.
+   *
+   * @see EntityContactEvent
+   */
   private class EntityContactListener implements ContactListener {
 
+    /* (non-Javadoc)
+     * @see com.badlogic.gdx.physics.box2d.ContactListener#beginContact(com.badlogic.gdx.physics.box2d.Contact)
+     */
     @Override
     public void beginContact(Contact contact) {
       if (contact.isTouching()) { 
@@ -41,32 +55,43 @@ public class CollisionDetectionManager extends AbstractScreenScaffold {
       }
     }
 
+    /* (non-Javadoc)
+     * @see com.badlogic.gdx.physics.box2d.ContactListener#endContact(com.badlogic.gdx.physics.box2d.Contact)
+     */
     @Override
     public void endContact(Contact contact) {
     }
 
+    /* (non-Javadoc)
+     * @see com.badlogic.gdx.physics.box2d.ContactListener#preSolve(com.badlogic.gdx.physics.box2d.Contact, com.badlogic.gdx.physics.box2d.Manifold)
+     */
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
     }
 
+    /* (non-Javadoc)
+     * @see com.badlogic.gdx.physics.box2d.ContactListener#postSolve(com.badlogic.gdx.physics.box2d.Contact, com.badlogic.gdx.physics.box2d.ContactImpulse)
+     */
     @Override
     public void postSolve(Contact contact, ContactImpulse impulse) {
 
     }
   }
 
+  /** The script mgr. */
   private LuaScriptManager scriptMgr;
+  
+  /** The query mgr. */
   private EntityQueryable queryMgr;
 
   /**
    * Instantiates a new collision detection manager.
-   * 
-   * @param model
-   *          the model
-   * @param world
-   *          the world
-   * @param cam
-   *          the cam
+   *
+   * @param scriptMgr the script mgr
+   * @param queryMgr the query mgr
+   * @param model the model
+   * @param world the world
+   * @param cam the cam
    */
   public CollisionDetectionManager(LuaScriptManager scriptMgr, EntityQueryable queryMgr, CGScreenModel model, World world, Camera cam) {
     super(model, world, cam);
