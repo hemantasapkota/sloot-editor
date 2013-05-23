@@ -85,6 +85,10 @@ public class ImportSpriteDialog extends Dialog {
 
   /** The rows. */
   private int rows;
+  
+  private int width;
+  
+  private int height;
 
   /** The ok button. */
   private Button okButton;
@@ -97,6 +101,10 @@ public class ImportSpriteDialog extends Dialog {
 
   /** The flp. */
   private FreeformLayeredPane flp = new FreeformLayeredPane();
+
+  private Spinner txtWidth;
+
+  private Spinner txtHeight;
 
   /**
    * The listener interface for receiving extractionDataModify events. The class
@@ -182,6 +190,22 @@ public class ImportSpriteDialog extends Dialog {
     txtRows = new Spinner(composite, SWT.BORDER);
     txtRows.setSelection(1);
     txtRows.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+    
+    Label lblWidth = new Label(composite, SWT.NONE);
+    formToolkit.adapt(lblWidth, true, true);
+    lblWidth.setText("Width");
+    
+    txtWidth = new Spinner(composite, SWT.BORDER);
+    formToolkit.adapt(txtWidth);
+    formToolkit.paintBordersFor(txtWidth);
+    
+    Label lblHeight = new Label(composite, SWT.NONE);
+    formToolkit.adapt(lblHeight, true, true);
+    lblHeight.setText("Height");
+    
+    txtHeight = new Spinner(composite, SWT.BORDER);
+    formToolkit.adapt(txtHeight);
+    formToolkit.paintBordersFor(txtHeight);
     txtRows.addModifyListener(edml);
 
     spriteComposite = new ScrolledComposite(frmNewForm.getBody(), SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
@@ -253,14 +277,15 @@ public class ImportSpriteDialog extends Dialog {
    * Sets the image to figure canvas.
    */
   private void setImageToFigureCanvas() {
-    if (selectedImage == null) {
-      selectedImage = ResourceManager.getImageOfRelativePath(resourceFile);
-    }
+    flp.removeAll();
+    selectedImage = ResourceManager.getImageOfRelativePath(resourceFile);
 
     ImageFigure iff = new ImageFigure(selectedImage);
     iff.setBounds(new Rectangle(0, 0, selectedImage.getBounds().width, selectedImage.getBounds().height));
     flp.add(iff);
+    
     figureCanvas.setBounds(0, 0, selectedImage.getBounds().width, selectedImage.getBounds().height);
+    
   }
 
   /**
@@ -271,8 +296,15 @@ public class ImportSpriteDialog extends Dialog {
     int rows = txtRows.getSelection();
     int imgWidth = selectedImage.getBounds().width;
     int imgHeight = selectedImage.getBounds().height;
+    
+    if (cols == 0) cols = 1;
+    if (rows == 0) rows = 1;
+    
     int tileWidth = imgWidth / cols;
     int tileHeight = imgHeight / rows;
+   
+    txtWidth.setSelection(tileWidth);
+    txtHeight.setSelection(tileHeight);
 
     for (int y = 0; y < imgHeight; y += tileHeight) {
       for (int x = 0; x < imgWidth; x += tileWidth) {
@@ -282,7 +314,8 @@ public class ImportSpriteDialog extends Dialog {
         flp.add(rf);
       }
     }
-
+    
+   
     figureCanvas.setContents(flp);
   }
 
