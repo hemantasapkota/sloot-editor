@@ -14,6 +14,10 @@ import java.io.IOException;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.requests.CreationFactory;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.ui.PlatformUI;
 
 import com.laex.cg2d.screeneditor.commands.IDCreationStrategy;
@@ -85,7 +89,8 @@ public class ShapeCreationFactory implements CreationFactory {
       try {
         Entity e = EntitiesUtil.createEntityModelFromFile(creationInfo.getEntityResourceFile());
         if (e != null) {
-          e.setDefaultFrame(EntitiesUtil.getDefaultFrame(e));
+          Image defaultFrame = EntitiesUtil.getDefaultFrame(e);
+          e.setDefaultFrame(defaultFrame);
           shape.setEntity(e);
         }
       } catch (CoreException e1) {
