@@ -28,6 +28,6 @@ public class TexturedBoxFigure extends ImageFigure {
   public TexturedBoxFigure(Image texture) {
     setSize(texture.getBounds().width, texture.getBounds().height);
     setImage(texture);
-    setAlignment(PositionConstants.ALWAYS_LEFT);
+    setAlignment(PositionConstants.CENTER);
   }
 }
