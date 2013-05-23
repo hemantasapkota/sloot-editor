@@ -402,7 +402,7 @@ public class CollisionFormPage extends FormPage {
     mghprlnkAdd.setBackground(null);
     mghprlnkAdd.addHyperlinkListener(new HyperlinkAdapter() {
       public void linkActivated(HyperlinkEvent e) {
-        
+
         CollisionShapeSelectionDialog cssd = new CollisionShapeSelectionDialog(getSite().getShell());
         int resp = cssd.open();
         if (resp == CollisionShapeSelectionDialog.CANCEL) {
@@ -416,7 +416,7 @@ public class CollisionFormPage extends FormPage {
         if (collisionShape.isCustom()) {
           fixtureResFile = ResourceFile.create(physEdFixtureFile.getFullPath().toOSString(), physEdFixtureFile
               .getLocation().toOSString());
-          
+
           selectedAnimationListItem().getAnimation().setFixtureResourceFile(fixtureResFile);
         }
 
@@ -697,7 +697,8 @@ public class CollisionFormPage extends FormPage {
    *          the alvi
    */
   private void createFramesFromStrip(Image selectedImage, AnimationListViewItem alvi) {
-    Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage);
+    Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage, alvi.getAnimation().getCols(), alvi
+        .getAnimation().getRows());
     alvi.setFrames(strip);
   }
 
@@ -799,9 +800,9 @@ public class CollisionFormPage extends FormPage {
     entityAnim.setShapeType(_collisionShape);
 
     collisionShapeHyperLink.setText(collisionShape.name());
-    
+
     switch (_collisionShape) {
-    
+
     case BOX:
       autoFillCollisionSize(entityAnim);
       collisionShapeHyperLink.setImage(SharedImages.BOX.createImage());
@@ -816,17 +817,17 @@ public class CollisionFormPage extends FormPage {
       collisionShapeHyperLink.setImage(SharedImages.PHYSICS_BODY_EDITOR_LOGO_SMALL.createImage());
       IPath resFilePath = new Path(physicsEditorFile.getResourceFile());
       boolean resourceFileExists = CGCProject.getInstance().exists(resFilePath, false);
-      
+
       if (!resourceFileExists) {
         collisionShapeHyperLink.setText("File Missing");
       } else {
         collisionShapeHyperLink.setText(resFilePath.lastSegment());
       }
       break;
-      
+
     case NONE:
       break;
-      
+
     default:
       break;
 
