@@ -1,8 +1,8 @@
 package com.laex.cg2d.protobuf;
 
 message CGScreenModel {
-	repeated CGLayer layers = 1;
-	optional CGScreenPreferences screenPrefs = 2;
+	optional CGScreenPreferences screenPrefs = 1;
+	repeated CGLayer layers = 2;
 }
 
 enum CGJointType {
@@ -150,7 +150,7 @@ message CGBodyDef {
 	optional bool bullet = 7;
 	optional bool fixedRotation = 8;
 	optional float intertialScale = 9;
-	optional float linearDampitng = 10;
+	optional float linearDamping = 10;
 	optional float gravityScale = 11;
 	optional CGVector2 linearVelocity = 12;
 	optional CGBodyType type = 13;
