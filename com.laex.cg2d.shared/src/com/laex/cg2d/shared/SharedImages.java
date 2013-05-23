@@ -54,10 +54,12 @@ public final class SharedImages {
 
   /** The Constant RENDER_PROTO. */
   public static final ImageDescriptor RENDER_PROTO = get("/resources/images/renderProto.png");
+  
+  public static final ImageDescriptor PNG_EXPORT = get("/resources/images/png_14.png");
 
   /** The Constant ADD_ITEM_SMALL. */
   public static final ImageDescriptor ADD_ITEM_SMALL = get("/resources/images/112_14.png");
-
+  
   /** The Constant ADD_ITEM_2_SMALL. */
   public static final ImageDescriptor ADD_ITEM_2_SMALL = get("/resources/images/Add_20.png");
 
