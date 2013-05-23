@@ -214,7 +214,7 @@ public class DoubleFieldEditor extends StringFieldEditor {
    *           if the <code>String</code> does not contain a parsable double
    */
   public double getDoubleValue() throws NumberFormatException {
-    return new Double(getStringValue()).doubleValue();
+    return Double.parseDouble(getStringValue());
   }
 
   /**
