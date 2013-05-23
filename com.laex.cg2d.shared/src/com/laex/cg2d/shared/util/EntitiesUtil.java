@@ -201,19 +201,22 @@ public class EntitiesUtil {
    *          the strip
    * @return the queue
    */
-  public static Queue<Image> createImageStrip(Image strip) {
+  public static Queue<Image> createImageStrip(Image strip, int cols, int rows) {
     int imgWidth = strip.getBounds().width;
     int imgHeight = strip.getBounds().height;
-    int noFrames = imgWidth / imgHeight;
-
+    
+    int tileWidth = imgWidth / cols;
+    int tileHeight = imgHeight / rows;
+ 
     Queue<Image> imgStip = new LinkedList<Image>();
-
-    Rectangle bnd = new Rectangle(0, 0, imgHeight, imgHeight);
-    for (int i = 0; i < noFrames; i++) {
-      final ImageData id = extractSprite2(strip.getImageData(), bnd);
-      Image extractImage = PlatformUtil.createImage(id);
-      imgStip.add(extractImage);
-      bnd.x = (i + 1) * imgHeight;
+    
+    for (int y = 0; y < imgHeight; y += tileHeight) {
+      for (int x = 0; x < imgWidth; x += tileWidth) {
+        Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);      
+        final ImageData id = extractSprite2(strip.getImageData(), r);
+        Image extractImage = PlatformUtil.createImage(id);
+        imgStip.add(extractImage);
+      }
     }
 
     return imgStip;
@@ -265,8 +268,11 @@ public class EntitiesUtil {
     }
 
     Image img = ResourceManager.getImageOfRelativePath(eaim.getAnimationResourceFile().getResourceFile());
-    ImageData id = extractSprite2(img.getImageData(), new Rectangle(0, 0, img.getBounds().height,
-        img.getBounds().height));
+    
+    int tileWidth = img.getBounds().width / eaim.getCols();
+    int tileHeight = img.getBounds().height / eaim.getRows();
+    
+    ImageData id = extractSprite2(img.getImageData(), new Rectangle(0, 0, tileWidth, tileHeight));
     return PlatformUtil.createImage(id);
   }
 }
