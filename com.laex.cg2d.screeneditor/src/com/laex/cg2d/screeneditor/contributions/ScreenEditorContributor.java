@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
@@ -95,16 +96,19 @@ public class ScreenEditorContributor extends ActionBarContributor {
 
               monitor.beginTask("Building rendering command", 5);
               ILog log = Activator.getDefault().getLog();
-              
+
               String mapFile = file.getLocation().makeAbsolute().toOSString();
-              String controllerFile = file.getLocation().removeFileExtension().addFileExtension("lua").makeAbsolute().toOSString();
-              
-              String command = buildRunnerCommandFromProperties(props, mapFile, controllerFile);
-              log.log(new Status(IStatus.INFO, Activator.PLUGIN_ID, command));
+              String controllerFile = file.getLocation().removeFileExtension().addFileExtension("lua").makeAbsolute()
+                  .toOSString();
+
+              String[] command = buildRunnerCommandFromProperties(props, mapFile, controllerFile);
               monitor.worked(5);
 
               monitor.beginTask("Rendering external", 5);
-              Process p = Runtime.getRuntime().exec(command);
+
+              ProcessBuilder pb = new ProcessBuilder(command);
+              Process p = pb.start();
+
               monitor.worked(4);
               Scanner scn = new Scanner(p.getErrorStream());
               while (scn.hasNext()) {
@@ -233,64 +237,29 @@ public class ScreenEditorContributor extends ActionBarContributor {
 
   /**
    * Builds the runner command from properties.
-   *
-   * @param props the props
-   * @param screenFile the screen file
-   * @param controllerFile the controller file
+   * 
+   * @param props
+   *          the props
+   * @param screenFile
+   *          the screen file
+   * @param controllerFile
+   *          the controller file
    * @return the string
-   * @throws CoreException the core exception
+   * @throws CoreException
+   *           the core exception
    */
-  private String buildRunnerCommandFromProperties(Map<String, String> props, String screenFile, String controllerFile) throws CoreException {
+  private String[] buildRunnerCommandFromProperties(Map<String, String> props, String screenFile, String controllerFile)
+      throws CoreException {
     StringBuilder cmd = new StringBuilder("java -jar ");
 
     cmd.append(InternalPrefs.gameRunner());
     cmd.append(" -screenFile ").append(screenFile);
     cmd.append(" -screenController ").append(controllerFile);
 
-    // cmd.append(" -cw ").append(props.get(PreferenceConstants.CARD_WIDTH));
-    // cmd.append(" -ch ").append(props.get(PreferenceConstants.CARD_HEIGHT));
-    //
-    // cmd.append(" -cx ").append(props.get(PreferenceConstants.CARD_NO_X));
-    // cmd.append(" -cy ").append(props.get(PreferenceConstants.CARD_NO_Y));
-    //
-    // boolean drawAabb =
-    // BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_AABB));
-    // boolean drawJoint =
-    // BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_JOINT));
-    // boolean drawBodies =
-    // BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_BODIES));
-    // boolean drawInactiveBodies =
-    // BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_INACTIVE_BODIES));
-    // boolean drawDebugData =
-    // BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_DEBUG_DATA));
-    // boolean drawEntities =
-    // BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_ENTITIES));
-    // boolean installMouseJoint =
-    // BooleanUtil.toBool(props.get(PreferenceConstants.INSTALL_MOUSE_JOINT));
-    //
-    // if (drawAabb)
-    // cmd.append(" -abbb ");
-    // if (drawJoint)
-    // cmd.append(" -joint ");
-    // if (drawBodies)
-    // cmd.append(" -body ");
-    // if (drawInactiveBodies)
-    // cmd.append(" -inactive ");
-    // if (drawDebugData)
-    // cmd.append(" -debugData ");
-    // if (drawEntities)
-    // cmd.append(" -entities ");
-    // if (installMouseJoint)
-    // cmd.append(" -mouseJoint ");
-    //
-    // cmd.append(" -ptmRatio ").append(props.get(PreferenceConstants.PTM_RATIO));
-    // cmd.append(" -gravityX ").append(props.get(PreferenceConstants.GRAVITY_X));
-    // cmd.append(" -gravityY ").append(props.get(PreferenceConstants.GRAVITY_Y));
-    // cmd.append(" -timeStep ").append(props.get(PreferenceConstants.TIMESTEP));
-    // cmd.append(" -velItr ").append(props.get(PreferenceConstants.VELOCITY_ITERATIONS));
-    // cmd.append(" -posItr ").append(props.get(PreferenceConstants.POSITION_ITERATIONS));
+    Activator.getDefault().getLog().log(new Status(IStatus.INFO, Activator.PLUGIN_ID, cmd.toString()));
 
-    return cmd.toString();
+    return new String[]
+      { "java", "-jar", InternalPrefs.gameRunner(), "-screenFile", screenFile, "-screenController", controllerFile };
   }
 
   /*
