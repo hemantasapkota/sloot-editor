@@ -122,7 +122,7 @@ public class CGScreenModelAdapter {
   public static CGBodyDef.Builder makeCGBodyDef(BodyDef bdef) {
     return CGBodyDef.newBuilder().setActive(bdef.active).setAllowSleep(bdef.allowSleep).setAngle(bdef.angle)
         .setAngularDamping(bdef.angularDamping).setAngularVelocity(bdef.angularVelocity).setAwake(bdef.awake)
-        .setBullet(bdef.bullet).setFixedRotation(bdef.fixedRotation).setLinearDampitng(bdef.linearDamping)
+        .setBullet(bdef.bullet).setFixedRotation(bdef.fixedRotation).setLinearDamping(bdef.linearDamping)
         .setGravityScale(bdef.gravityScale)
         .setLinearVelocity(CGVector2.newBuilder().setX(bdef.linearVelocity.x).setY(bdef.linearVelocity.y).build())
         .setType(asCGBodyType(bdef.type))
