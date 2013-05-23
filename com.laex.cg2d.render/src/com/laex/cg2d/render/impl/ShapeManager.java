@@ -122,7 +122,7 @@ public class ShapeManager extends AbstractScreenScaffold {
   @Override
   public void render() {
     if (drawDebugData) {
-      debugDraw.render(world(), camera().combined.scl(scaleFactor()));
+      debugDraw.render(world(), camera().combined);
     }
   }
 
