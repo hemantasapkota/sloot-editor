@@ -10,6 +10,7 @@
  */
 package com.laex.cg2d.screeneditor.actions;
 
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.widgets.Shell;
@@ -21,7 +22,7 @@ import org.eclipse.ui.PlatformUI;
 public class ImportScreenContentsAction extends Action {
 
   /** The command stak. */
-  private CommandStack commandStak;
+  private EditPartViewer viewer;
 
   /**
    * Instantiates a new import screen contents action.
@@ -29,9 +30,14 @@ public class ImportScreenContentsAction extends Action {
    * @param cmdStack
    *          the cmd stack
    */
-  public ImportScreenContentsAction(CommandStack cmdStack) {
+  public ImportScreenContentsAction(EditPartViewer viewer) {
     setText("Import Screen Contents");
-    this.commandStak = cmdStack;
+    this.viewer = viewer;
+  }
+  
+  @Override
+  public boolean isEnabled() {
+    return viewer.getSelectedEditParts().size() == 0;
   }
 
   /*
@@ -47,7 +53,7 @@ public class ImportScreenContentsAction extends Action {
     shell.getDisplay().asyncExec(new Runnable() {
       @Override
       public void run() {
-        ListExistingScreensDialog screensDialog = new ListExistingScreensDialog(shell, commandStak);
+        ListExistingScreensDialog screensDialog = new ListExistingScreensDialog(shell, viewer.getEditDomain().getCommandStack());
         int responseCode = screensDialog.open();
         if (responseCode == ListExistingScreensDialog.CANCEL) {
           return;
