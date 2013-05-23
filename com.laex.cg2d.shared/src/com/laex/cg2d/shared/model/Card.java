@@ -152,16 +152,5 @@ public class Card extends ModelElement {
     return super.getPropertyValue(id);
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.laex.cg2d.shared.model.ModelElement#setPropertyValue(java.lang.Object,
-   * java.lang.Object)
-   */
-  @Override
-  public void setPropertyValue(Object id, Object value) {
-    super.setPropertyValue(id, value);
-  }
 
 }
