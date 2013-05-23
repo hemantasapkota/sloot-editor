@@ -41,6 +41,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
   /** The script file exists. */
   private boolean scriptFileExists = false;
 
+  /** The query mgr. */
   private EntityQueryable queryMgr;
 
   /**
@@ -62,6 +63,8 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
    * 
    * @param model
    *          the model
+   * @param queryMgr
+   *          the query mgr
    * @param world
    *          the world
    * @param cam
@@ -74,7 +77,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
 
     this.queryMgr = queryMgr;
 
-    if (!Gdx.files.absolute(scriptFileName).exists()) {
+    if (scriptFileName == null || !Gdx.files.absolute(scriptFileName).exists()) {
       scriptFileExists = false;
       return;
     } else {
@@ -98,6 +101,12 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
 
   }
 
+  /**
+   * Handle script execptions.
+   * 
+   * @param t
+   *          the t
+   */
   private void handleScriptExecptions(Throwable t) {
     MyGdxGameDesktop.lwjglApp().error("Error Details", t.getMessage());
     MyGdxGameDesktop.lwjglApp().error("Script Error", "Error loading script. Some errors exist. Please double check");
@@ -142,10 +151,10 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
     super.acceptBodyVisitor(new BodyVisitor() {
 
       @Override
-      public void visit(Body b, CGShape shape) {
+      public void visit(final Body b, final CGShape shape) {
 
         executeUpdate(b, shape.getId());
-
+        
       }
     });
 
@@ -276,6 +285,14 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
     return scriptFileExists;
   }
 
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.render.ScreenControllerScript#collisionCallback(java.lang
+   * .String, java.lang.String, com.badlogic.gdx.physics.box2d.Body,
+   * com.badlogic.gdx.physics.box2d.Body)
+   */
   @Override
   public void collisionCallback(String idA, String idB, Body bodyA, Body bodyB) {
     if (!canExecute()) {
