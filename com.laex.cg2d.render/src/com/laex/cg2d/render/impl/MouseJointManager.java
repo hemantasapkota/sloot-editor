@@ -33,6 +33,8 @@ import com.laex.cg2d.render.AbstractScreenScaffold;
  * applied. Since we multiply the camera by a scaleFactor, for unprojecting, we
  * multiply the vector points by the inverse: 1/scaleFactor
  * 
+ * Note: this is no longer true. All scaling code has been removed.
+ * 
  * @author hemantasapkota
  * 
  */
@@ -164,7 +166,6 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
 
     // translate the mouse coordinates to world coordinates
     camera().unproject(testPoint.set(x, y, 0));
-    testPoint = testPoint.mul(1 / scaleFactor());
     // ask the world which bodies are within the given
     // bounding box around the mouse pointer
     hitBody = null;
@@ -232,7 +233,6 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
     // mouse coordinates
     if (mouseJoint != null) {
       camera().unproject(testPoint.set(x, y, 0));
-      testPoint.mul(1 / scaleFactor());
       mouseJoint.setTarget(target.set(testPoint.x, testPoint.y));
     }
     return false;
