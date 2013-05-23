@@ -118,7 +118,7 @@ public class ScreenModelAdapter {
     bdef.bullet = cgBodyDef.getBullet();
     bdef.fixedRotation = cgBodyDef.getFixedRotation();
     bdef.gravityScale = cgBodyDef.getGravityScale();
-    bdef.linearDamping = cgBodyDef.getLinearDampitng();
+    bdef.linearDamping = cgBodyDef.getLinearDamping();
 
     bdef.linearVelocity.x = cgBodyDef.getLinearVelocity().getX();
     bdef.linearVelocity.y = cgBodyDef.getLinearVelocity().getY();
