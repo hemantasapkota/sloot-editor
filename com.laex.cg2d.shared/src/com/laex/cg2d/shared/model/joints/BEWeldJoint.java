@@ -16,7 +16,6 @@ import com.badlogic.gdx.physics.box2d.JointDef.JointType;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.laex.cg2d.shared.model.Joint;
 import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.util.FloatUtil;
 
 /**
  * The Class BEWeldJoint.
@@ -64,17 +63,6 @@ public class BEWeldJoint extends Joint {
     return super.getPropertyDescriptors();
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.laex.cg2d.shared.model.Joint#setPropertyValue(java.lang.Object,
-   * java.lang.Object)
-   */
-  @Override
-  public void setPropertyValue(Object id, Object value) {
-    // set ref angle: todo
-    super.setPropertyValue(id, value);
-  }
 
   /*
    * (non-Javadoc)
