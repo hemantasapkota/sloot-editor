@@ -84,15 +84,15 @@ public class BackgroundManager extends AbstractScreenScaffold {
         float height = shape.getBounds().getHeight();
 
         Vector2 scrPos = new Vector2(x, y);
-        Vector2 worldPos = screenToWorldFlipped(scrPos, height).mul(scaleFactor());
+        Vector2 worldPos = screenToWorldFlipped(scrPos, height);
         sprite.setPosition(worldPos.x, worldPos.y);
 
         // Note: we cast width to float to make the division.
         // If we dont do that, then decimals from division would
         // be ignored. This will result in the size of sprite
         // being slightly off.
-        float w = ((float) width / ptmRatio()) * scaleFactor();
-        float h = ((float) height / ptmRatio()) * scaleFactor();
+        float w = (width / ptmRatio());
+        float h = (height / ptmRatio());
 
         sprite.setSize(w, h);
 
