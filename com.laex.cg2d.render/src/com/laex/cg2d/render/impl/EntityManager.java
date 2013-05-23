@@ -12,7 +12,6 @@ package com.laex.cg2d.render.impl;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import aurelienribon.bodyeditor.BodyEditorLoader;
@@ -206,7 +205,7 @@ public class EntityManager extends AbstractScreenScaffold {
 
         Vector2 scrPos = new Vector2(x, y);
         Vector2 worldPos = screenToWorldFlipped(scrPos, height);
-        spr.setPosition(worldPos.x * scaleFactor(), worldPos.y * scaleFactor());
+        spr.setPosition(worldPos.x, worldPos.y);
 
         // the position circle (collision shape) will vary with that of
         // a box. so
@@ -215,11 +214,11 @@ public class EntityManager extends AbstractScreenScaffold {
           float radius = entityAnimationOriginMap.get(ea).z;
           float x1 = (worldPos.x - radius);
           float y1 = (worldPos.y - radius);
-          spr.setPosition(x1 * scaleFactor(), y1 * scaleFactor());
+          spr.setPosition(x1, y1);
         }
 
-        float w = ((float) width / ptmRatio()) * scaleFactor();
-        float h = ((float) height / ptmRatio()) * scaleFactor();
+        float w = ((float) width / ptmRatio());
+        float h = ((float) height / ptmRatio());
 
         spr.setSize(w, h);
 
@@ -264,7 +263,7 @@ public class EntityManager extends AbstractScreenScaffold {
 
         Sprite spr = shapeToSpriteMap.get(shape);
         if (spr != null) {
-          spr.setPosition(pos.x * scaleFactor(), pos.y * scaleFactor());
+          spr.setPosition(pos.x, pos.y);
           // setting origin important for rotations to work properly
           Vector3 origin = entityAnimationOriginMap.get(ea);
           spr.setOrigin(origin.x, origin.y);
@@ -293,17 +292,17 @@ public class EntityManager extends AbstractScreenScaffold {
     super.acceptBodyVisitor(new BodyVisitor() {
       @Override
       public void visit(Body b, CGShape shape) {
-        
+
         Sprite spr = shapeToSpriteMap.get(shape);
-        
+
         if (spr != null) {
-          
+
           spr.getTexture().dispose();
-          
+
         }
       }
     });
-    
+
   }
 
   /*
@@ -367,19 +366,16 @@ public class EntityManager extends AbstractScreenScaffold {
 
       // this formula is too arcane. explain why it is needed and where
       // did it arise from.
-      // float ox = ((((ea.getShpX() + ea.getShpWidth()) / ptmRatio()) /
-      // scaleFactor()) / 2)
-      // + (scaleFactor() * radius);
-      // float oy = ((((ea.getShpY() + ea.getShpHeight()) / ptmRatio()) /
-      // scaleFactor()) / 2)
-      // + (scaleFactor() * radius);
+
+//      float ox = ((((ea.getShpX() + ea.getShpWidth()) / ptmRatio()) / scaleFactor()) / 2) + (scaleFactor() * radius);
+//      float oy = ((((ea.getShpY() + ea.getShpHeight()) / ptmRatio()) / scaleFactor()) / 2) + (scaleFactor() * radius);
 
       // the formulate below was reduced from the above one
-      float radiusScaled = scaleFactor() * radius;
+//      float radiusScaled = scaleFactor() * radius;
 
-      float ox = ((5 * (ea.getShpX() + ea.getShpWidth())) / (ptmRatio() * ptmRatio())) + radiusScaled;
+      float ox = ( (5 * (ea.getShpX() + ea.getShpWidth())) / (ptmRatio() * ptmRatio())) + radius;
 
-      float oy = ((5 * (ea.getShpY() + ea.getShpHeight())) / (ptmRatio() * ptmRatio())) + radiusScaled;
+      float oy = ( (5 * (ea.getShpY() + ea.getShpHeight())) / (ptmRatio() * ptmRatio())) + radius;
 
       bodyDef.position.set(pos.add(radius, radius));
       b = world().createBody(bodyDef);
