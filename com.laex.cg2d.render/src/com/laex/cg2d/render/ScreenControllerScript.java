@@ -36,8 +36,6 @@ public interface ScreenControllerScript {
   /**
    * Execute init body.
    *
-   * @param screenModel the screen model
-   * @param queryMgr the query mgr
    * @param body the body
    * @param bodyId the body id
    */
@@ -47,8 +45,6 @@ public interface ScreenControllerScript {
   /**
    * Execute update.
    *
-   * @param screenModel the screen model
-   * @param queryMgr the query mgr
    * @param body the body
    * @param bodyId the body id
    */
@@ -57,8 +53,6 @@ public interface ScreenControllerScript {
   /**
    * Execute key pressed.
    *
-   * @param screenModel the screen model
-   * @param queryMgr the query mgr
    * @param key the key
    */
   void executeKeyPressed(String key);
@@ -66,6 +60,8 @@ public interface ScreenControllerScript {
   /**
    * Collision callback.
    *
+   * @param idA the id a
+   * @param idB the id b
    * @param bodyA the body a
    * @param bodyB the body b
    */
