@@ -27,7 +27,6 @@ import org.apache.commons.cli.ParseException;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
-import com.laex.cg2d.render.util.RunnerUtil;
 
 /**
  * The Class MyGdxGameDesktop.
@@ -36,6 +35,7 @@ import com.laex.cg2d.render.util.RunnerUtil;
  */
 public class MyGdxGameDesktop {
 
+  /** The lapp. */
   private static LwjglApplication lapp;
 
   /**
@@ -111,85 +111,85 @@ public class MyGdxGameDesktop {
     CommandLineParser parse = new GnuParser();
     CommandLine cmd = parse.parse(options, args);
 
-    prefs.put(PreferenceConstants.DRAW_AABB, false);
-    prefs.put(PreferenceConstants.DRAW_BODIES, false);
-    prefs.put(PreferenceConstants.DRAW_JOINT, false);
-    prefs.put(PreferenceConstants.DRAW_DEBUG_DATA, false);
-    prefs.put(PreferenceConstants.DRAW_ENTITIES, false);
-    prefs.put(PreferenceConstants.INSTALL_MOUSE_JOINT, false);
-    prefs.put(PreferenceConstants.DRAW_INACTIVE_BODIES, false);
-
-    // Card Prefernces
-    if (cmd.hasOption("cw")) {
-      prefs.put(PreferenceConstants.CARD_WIDTH, RunnerUtil.toInt(cmd.getOptionValue("cw")));
-    }
-
-    if (cmd.hasOption("ch")) {
-      prefs.put(PreferenceConstants.CARD_HEIGHT, RunnerUtil.toInt(cmd.getOptionValue("ch")));
-    }
-
-    if (cmd.hasOption("cx")) {
-      prefs.put(PreferenceConstants.CARD_NO_X, RunnerUtil.toInt(cmd.getOptionValue("cx")));
-    }
-
-    if (cmd.hasOption("cy")) {
-      prefs.put(PreferenceConstants.CARD_NO_Y, RunnerUtil.toInt(cmd.getOptionValue("cy")));
-    }
-
-    // Debug Draw Flags
-    if (cmd.hasOption("body")) {
-      prefs.put(PreferenceConstants.DRAW_BODIES, true);
-    }
-
-    if (cmd.hasOption("joint")) {
-      prefs.put(PreferenceConstants.DRAW_JOINT, true);
-    }
-
-    if (cmd.hasOption("aabb")) {
-      prefs.put(PreferenceConstants.DRAW_AABB, true);
-    }
-
-    if (cmd.hasOption("inactive")) {
-      prefs.put(PreferenceConstants.DRAW_INACTIVE_BODIES, true);
-    }
-
-    if (cmd.hasOption("debugData")) {
-      prefs.put(PreferenceConstants.DRAW_DEBUG_DATA, true);
-    }
-
-    // Entites & Mouse Joint
-    if (cmd.hasOption("entities")) {
-      prefs.put(PreferenceConstants.DRAW_ENTITIES, true);
-    }
-
-    if (cmd.hasOption("mouseJoint")) {
-      prefs.put(PreferenceConstants.INSTALL_MOUSE_JOINT, true);
-    }
-
-    // Box2d Prefs
-    if (cmd.hasOption("ptmRatio")) {
-      prefs.put(PreferenceConstants.PTM_RATIO, RunnerUtil.toInt(cmd.getOptionValue("ptmRatio")));
-    }
-
-    if (cmd.hasOption("gravityX")) {
-      prefs.put(PreferenceConstants.GRAVITY_X, RunnerUtil.toFloat(cmd.getOptionValue("gravityX")));
-    }
-
-    if (cmd.hasOption("gravityY")) {
-      prefs.put(PreferenceConstants.GRAVITY_Y, RunnerUtil.toFloat(cmd.getOptionValue("gravityY")));
-    }
-
-    if (cmd.hasOption("timeStep")) {
-      prefs.put(PreferenceConstants.TIMESTEP, RunnerUtil.toFloat(cmd.getOptionValue("timeStep")));
-    }
-
-    if (cmd.hasOption("velItr")) {
-      prefs.put(PreferenceConstants.VELOCITY_ITERATIONS, RunnerUtil.toInt(cmd.getOptionValue("velItr")));
-    }
-
-    if (cmd.hasOption("posItr")) {
-      prefs.put(PreferenceConstants.POSITION_ITERATIONS, RunnerUtil.toInt(cmd.getOptionValue("posItr")));
-    }
+//    prefs.put(PreferenceConstants.DRAW_AABB, false);
+//    prefs.put(PreferenceConstants.DRAW_BODIES, false);
+//    prefs.put(PreferenceConstants.DRAW_JOINT, false);
+//    prefs.put(PreferenceConstants.DRAW_DEBUG_DATA, false);
+//    prefs.put(PreferenceConstants.DRAW_ENTITIES, false);
+//    prefs.put(PreferenceConstants.INSTALL_MOUSE_JOINT, false);
+//    prefs.put(PreferenceConstants.DRAW_INACTIVE_BODIES, false);
+//
+//    // Card Prefernces
+//    if (cmd.hasOption("cw")) {
+//      prefs.put(PreferenceConstants.CARD_WIDTH, RunnerUtil.toInt(cmd.getOptionValue("cw")));
+//    }
+//
+//    if (cmd.hasOption("ch")) {
+//      prefs.put(PreferenceConstants.CARD_HEIGHT, RunnerUtil.toInt(cmd.getOptionValue("ch")));
+//    }
+//
+//    if (cmd.hasOption("cx")) {
+//      prefs.put(PreferenceConstants.CARD_NO_X, RunnerUtil.toInt(cmd.getOptionValue("cx")));
+//    }
+//
+//    if (cmd.hasOption("cy")) {
+//      prefs.put(PreferenceConstants.CARD_NO_Y, RunnerUtil.toInt(cmd.getOptionValue("cy")));
+//    }
+//
+//    // Debug Draw Flags
+//    if (cmd.hasOption("body")) {
+//      prefs.put(PreferenceConstants.DRAW_BODIES, true);
+//    }
+//
+//    if (cmd.hasOption("joint")) {
+//      prefs.put(PreferenceConstants.DRAW_JOINT, true);
+//    }
+//
+//    if (cmd.hasOption("aabb")) {
+//      prefs.put(PreferenceConstants.DRAW_AABB, true);
+//    }
+//
+//    if (cmd.hasOption("inactive")) {
+//      prefs.put(PreferenceConstants.DRAW_INACTIVE_BODIES, true);
+//    }
+//
+//    if (cmd.hasOption("debugData")) {
+//      prefs.put(PreferenceConstants.DRAW_DEBUG_DATA, true);
+//    }
+//
+//    // Entites & Mouse Joint
+//    if (cmd.hasOption("entities")) {
+//      prefs.put(PreferenceConstants.DRAW_ENTITIES, true);
+//    }
+//
+//    if (cmd.hasOption("mouseJoint")) {
+//      prefs.put(PreferenceConstants.INSTALL_MOUSE_JOINT, true);
+//    }
+//
+//    // Box2d Prefs
+//    if (cmd.hasOption("ptmRatio")) {
+//      prefs.put(PreferenceConstants.PTM_RATIO, RunnerUtil.toInt(cmd.getOptionValue("ptmRatio")));
+//    }
+//
+//    if (cmd.hasOption("gravityX")) {
+//      prefs.put(PreferenceConstants.GRAVITY_X, RunnerUtil.toFloat(cmd.getOptionValue("gravityX")));
+//    }
+//
+//    if (cmd.hasOption("gravityY")) {
+//      prefs.put(PreferenceConstants.GRAVITY_Y, RunnerUtil.toFloat(cmd.getOptionValue("gravityY")));
+//    }
+//
+//    if (cmd.hasOption("timeStep")) {
+//      prefs.put(PreferenceConstants.TIMESTEP, RunnerUtil.toFloat(cmd.getOptionValue("timeStep")));
+//    }
+//
+//    if (cmd.hasOption("velItr")) {
+//      prefs.put(PreferenceConstants.VELOCITY_ITERATIONS, RunnerUtil.toInt(cmd.getOptionValue("velItr")));
+//    }
+//
+//    if (cmd.hasOption("posItr")) {
+//      prefs.put(PreferenceConstants.POSITION_ITERATIONS, RunnerUtil.toInt(cmd.getOptionValue("posItr")));
+//    }
 
     // CG2D File
     if (cmd.hasOption("screenFile")) {
@@ -216,7 +216,6 @@ public class MyGdxGameDesktop {
     Options options = construct();
 
     Map<String, Object> prefs = parse(options, args);
-
     String screenFile = (String) prefs.get(PreferenceConstants.SCREEN_FILE);
     String screenControllerFile = (String) prefs.get(PreferenceConstants.SCREEN_CONTROLLER);
 
@@ -240,7 +239,7 @@ public class MyGdxGameDesktop {
     LwjglApplicationConfiguration lwapp = new LwjglApplicationConfiguration();
     lwapp.width = cardWidth;
     lwapp.height = cardHeight;
-    lwapp.title = screenFile;
+    // lwapp.title = screenFile;
     lwapp.forceExit = false;
 
     final CGScreenModel modelMain = model;
@@ -254,14 +253,22 @@ public class MyGdxGameDesktop {
     // new JoglApplication(mgd, jac);
     lapp = new LwjglApplication(mgd, lwapp);
   }
-  
+
+  /**
+   * Exit.
+   */
   public static void exit() {
     lapp.error("", "Exiting because of some error");
     lapp.exit();
     System.exit(0);
   }
-  
-  public static LwjglApplication lwjglApp()  {
+
+  /**
+   * Lwjgl app.
+   * 
+   * @return the lwjgl application
+   */
+  public static LwjglApplication lwjglApp() {
     return lapp;
   }
 }
