@@ -39,8 +39,6 @@ import com.laex.cg2d.render.util.ProtoBufTypeConversionUtil;
  */
 public abstract class AbstractScreenScaffold implements ScreenScaffold {
 
-  public static float MAGIC_SCALAR = 16f;
-
   /** The world. */
   private World world;
 
@@ -49,9 +47,6 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
 
   /** The cam. */
   private Camera cam;
-
-  /** The scale factor. */
-  private float scaleFactor;
 
   /** The ptm ratio. */
   private int ptmRatio;
@@ -76,10 +71,15 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
 
     this.cardHeight = model.getScreenPrefs().getCardPrefs().getCardHeight();
     this.ptmRatio = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
-    this.scaleFactor = ptmRatio / MAGIC_SCALAR;
   }
 
-  //Standard visitor to box2d world
+  // Standard visitor to box2d world
+  /**
+   * Accept body visitor.
+   * 
+   * @param bv
+   *          the bv
+   */
   public void acceptBodyVisitor(BodyVisitor bv) {
     Iterator<Body> bodiesIterator = world().getBodies();
 
@@ -252,8 +252,9 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
       PolygonShape polyShape = new PolygonShape();
       float hx = (width / ptmRatio);
       float hy = (height / ptmRatio);
-      hx /= 2;
-      hy /= 2;
+      
+      hx = hx / 2;
+      hy = hy / 2;
 
       polyShape.setAsBox(hx, hy, new Vector2(hx, hy), 0);
 
@@ -368,10 +369,10 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
    * @return the vector2
    */
   protected Vector2 screenToWorldFlipped(Vector2 argScreen, float height) {
-    float x = argScreen.x / ptmRatio;
-    float y = (cardHeight - height - argScreen.y) / ptmRatio;
+    float x = argScreen.x;
+    float y = (cardHeight - height - argScreen.y);
 
-    return new Vector2(x, y);
+    return new Vector2(x / ptmRatio, y / ptmRatio);
   }
 
   /**
@@ -382,8 +383,7 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
    * @return the vector2
    */
   protected Vector2 worldToScreen(Vector2 argWorld) {
-    Vector2 v2 = new Vector2(argWorld.x * ptmRatio, argWorld.y * ptmRatio);
-    return v2;
+    return new Vector2(argWorld.x * ptmRatio, argWorld.y * ptmRatio);
   }
 
   /**
@@ -411,15 +411,6 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
    */
   protected Camera camera() {
     return cam;
-  }
-
-  /**
-   * Scale factor.
-   * 
-   * @return the float
-   */
-  protected float scaleFactor() {
-    return scaleFactor;
   }
 
   /**
