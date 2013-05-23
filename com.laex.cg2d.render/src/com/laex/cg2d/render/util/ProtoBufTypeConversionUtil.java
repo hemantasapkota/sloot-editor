@@ -267,7 +267,7 @@ public class ProtoBufTypeConversionUtil {
     bdef.bullet = _bdef.getBullet();
     bdef.fixedRotation = _bdef.getFixedRotation();
     bdef.gravityScale = _bdef.getGravityScale();
-    bdef.linearDamping = _bdef.getLinearDampitng();
+    bdef.linearDamping = _bdef.getLinearDamping();
     bdef.linearVelocity.x = _bdef.getLinearVelocity().getX();
     bdef.linearVelocity.y = _bdef.getLinearVelocity().getY();
     bdef.position.x = _bdef.getPosition().getX();
