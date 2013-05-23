@@ -47,11 +47,7 @@ public class BooleanUtil {
    */
   private static Boolean parseInteger(Object value) {
     int v = IntegerUtil.toInt(value);
-    if (v == 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return (v == 0);
   }
 
   /**
