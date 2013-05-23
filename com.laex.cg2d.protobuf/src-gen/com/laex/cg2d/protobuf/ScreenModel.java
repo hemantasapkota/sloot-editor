@@ -483,44 +483,44 @@ public final class ScreenModel {
   public interface CGScreenModelOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
+    // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+     */
+    boolean hasScreenPrefs();
+    /**
+     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+     */
+    com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences getScreenPrefs();
+    /**
+     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+     */
+    com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder();
+
+    // repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
+    /**
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     java.util.List<com.laex.cg2d.protobuf.ScreenModel.CGLayer> 
         getLayersList();
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     com.laex.cg2d.protobuf.ScreenModel.CGLayer getLayers(int index);
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     int getLayersCount();
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     java.util.List<? extends com.laex.cg2d.protobuf.ScreenModel.CGLayerOrBuilder> 
         getLayersOrBuilderList();
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     com.laex.cg2d.protobuf.ScreenModel.CGLayerOrBuilder getLayersOrBuilder(
         int index);
-
-    // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
-    boolean hasScreenPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
-    com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences getScreenPrefs();
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
-    com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder();
   }
   /**
    * Protobuf type {@code com.laex.cg2d.protobuf.CGScreenModel}
@@ -574,14 +574,6 @@ public final class ScreenModel {
               break;
             }
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                layers_ = new java.util.ArrayList<com.laex.cg2d.protobuf.ScreenModel.CGLayer>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              layers_.add(input.readMessage(com.laex.cg2d.protobuf.ScreenModel.CGLayer.PARSER, extensionRegistry));
-              break;
-            }
-            case 18: {
               com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = screenPrefs_.toBuilder();
@@ -594,6 +586,14 @@ public final class ScreenModel {
               bitField0_ |= 0x00000001;
               break;
             }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                layers_ = new java.util.ArrayList<com.laex.cg2d.protobuf.ScreenModel.CGLayer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              layers_.add(input.readMessage(com.laex.cg2d.protobuf.ScreenModel.CGLayer.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -602,7 +602,7 @@ public final class ScreenModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           layers_ = java.util.Collections.unmodifiableList(layers_);
         }
         this.unknownFields = unknownFields.build();
@@ -637,67 +637,67 @@ public final class ScreenModel {
     }
 
     private int bitField0_;
-    // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
-    public static final int LAYERS_FIELD_NUMBER = 1;
+    // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
+    public static final int SCREENPREFS_FIELD_NUMBER = 1;
+    private com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences screenPrefs_;
+    /**
+     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+     */
+    public boolean hasScreenPrefs() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+     */
+    public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences getScreenPrefs() {
+      return screenPrefs_;
+    }
+    /**
+     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+     */
+    public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder() {
+      return screenPrefs_;
+    }
+
+    // repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
+    public static final int LAYERS_FIELD_NUMBER = 2;
     private java.util.List<com.laex.cg2d.protobuf.ScreenModel.CGLayer> layers_;
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     public java.util.List<com.laex.cg2d.protobuf.ScreenModel.CGLayer> getLayersList() {
       return layers_;
     }
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     public java.util.List<? extends com.laex.cg2d.protobuf.ScreenModel.CGLayerOrBuilder> 
         getLayersOrBuilderList() {
       return layers_;
     }
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     public int getLayersCount() {
       return layers_.size();
     }
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     public com.laex.cg2d.protobuf.ScreenModel.CGLayer getLayers(int index) {
       return layers_.get(index);
     }
     /**
-     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+     * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
      */
     public com.laex.cg2d.protobuf.ScreenModel.CGLayerOrBuilder getLayersOrBuilder(
         int index) {
       return layers_.get(index);
     }
 
-    // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
-    public static final int SCREENPREFS_FIELD_NUMBER = 2;
-    private com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences screenPrefs_;
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
-    public boolean hasScreenPrefs() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
-    public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences getScreenPrefs() {
-      return screenPrefs_;
-    }
-    /**
-     * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-     */
-    public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder() {
-      return screenPrefs_;
-    }
-
     private void initFields() {
-      layers_ = java.util.Collections.emptyList();
       screenPrefs_ = com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.getDefaultInstance();
+      layers_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -717,11 +717,11 @@ public final class ScreenModel {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < layers_.size(); i++) {
-        output.writeMessage(1, layers_.get(i));
-      }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(2, screenPrefs_);
+        output.writeMessage(1, screenPrefs_);
+      }
+      for (int i = 0; i < layers_.size(); i++) {
+        output.writeMessage(2, layers_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -732,13 +732,13 @@ public final class ScreenModel {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < layers_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, layers_.get(i));
-      }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, screenPrefs_);
+          .computeMessageSize(1, screenPrefs_);
+      }
+      for (int i = 0; i < layers_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, layers_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -848,8 +848,8 @@ public final class ScreenModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getLayersFieldBuilder();
           getScreenPrefsFieldBuilder();
+          getLayersFieldBuilder();
         }
       }
       private static Builder create() {
@@ -858,18 +858,18 @@ public final class ScreenModel {
 
       public Builder clear() {
         super.clear();
-        if (layersBuilder_ == null) {
-          layers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          layersBuilder_.clear();
-        }
         if (screenPrefsBuilder_ == null) {
           screenPrefs_ = com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.getDefaultInstance();
         } else {
           screenPrefsBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (layersBuilder_ == null) {
+          layers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          layersBuilder_.clear();
+        }
         return this;
       }
 
@@ -898,22 +898,22 @@ public final class ScreenModel {
         com.laex.cg2d.protobuf.ScreenModel.CGScreenModel result = new com.laex.cg2d.protobuf.ScreenModel.CGScreenModel(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (layersBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            layers_ = java.util.Collections.unmodifiableList(layers_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.layers_ = layers_;
-        } else {
-          result.layers_ = layersBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
         if (screenPrefsBuilder_ == null) {
           result.screenPrefs_ = screenPrefs_;
         } else {
           result.screenPrefs_ = screenPrefsBuilder_.build();
+        }
+        if (layersBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            layers_ = java.util.Collections.unmodifiableList(layers_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.layers_ = layers_;
+        } else {
+          result.layers_ = layersBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -931,11 +931,14 @@ public final class ScreenModel {
 
       public Builder mergeFrom(com.laex.cg2d.protobuf.ScreenModel.CGScreenModel other) {
         if (other == com.laex.cg2d.protobuf.ScreenModel.CGScreenModel.getDefaultInstance()) return this;
+        if (other.hasScreenPrefs()) {
+          mergeScreenPrefs(other.getScreenPrefs());
+        }
         if (layersBuilder_ == null) {
           if (!other.layers_.isEmpty()) {
             if (layers_.isEmpty()) {
               layers_ = other.layers_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureLayersIsMutable();
               layers_.addAll(other.layers_);
@@ -948,7 +951,7 @@ public final class ScreenModel {
               layersBuilder_.dispose();
               layersBuilder_ = null;
               layers_ = other.layers_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000002);
               layersBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getLayersFieldBuilder() : null;
@@ -956,9 +959,6 @@ public final class ScreenModel {
               layersBuilder_.addAllMessages(other.layers_);
             }
           }
-        }
-        if (other.hasScreenPrefs()) {
-          mergeScreenPrefs(other.getScreenPrefs());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -993,13 +993,130 @@ public final class ScreenModel {
       }
       private int bitField0_;
 
-      // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
+      // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
+      private com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences screenPrefs_ = com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder> screenPrefsBuilder_;
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      public boolean hasScreenPrefs() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences getScreenPrefs() {
+        if (screenPrefsBuilder_ == null) {
+          return screenPrefs_;
+        } else {
+          return screenPrefsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      public Builder setScreenPrefs(com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences value) {
+        if (screenPrefsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          screenPrefs_ = value;
+          onChanged();
+        } else {
+          screenPrefsBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      public Builder setScreenPrefs(
+          com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder builderForValue) {
+        if (screenPrefsBuilder_ == null) {
+          screenPrefs_ = builderForValue.build();
+          onChanged();
+        } else {
+          screenPrefsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      public Builder mergeScreenPrefs(com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences value) {
+        if (screenPrefsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              screenPrefs_ != com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.getDefaultInstance()) {
+            screenPrefs_ =
+              com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.newBuilder(screenPrefs_).mergeFrom(value).buildPartial();
+          } else {
+            screenPrefs_ = value;
+          }
+          onChanged();
+        } else {
+          screenPrefsBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      public Builder clearScreenPrefs() {
+        if (screenPrefsBuilder_ == null) {
+          screenPrefs_ = com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.getDefaultInstance();
+          onChanged();
+        } else {
+          screenPrefsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder getScreenPrefsBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getScreenPrefsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder() {
+        if (screenPrefsBuilder_ != null) {
+          return screenPrefsBuilder_.getMessageOrBuilder();
+        } else {
+          return screenPrefs_;
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder> 
+          getScreenPrefsFieldBuilder() {
+        if (screenPrefsBuilder_ == null) {
+          screenPrefsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder>(
+                  screenPrefs_,
+                  getParentForChildren(),
+                  isClean());
+          screenPrefs_ = null;
+        }
+        return screenPrefsBuilder_;
+      }
+
+      // repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
       private java.util.List<com.laex.cg2d.protobuf.ScreenModel.CGLayer> layers_ =
         java.util.Collections.emptyList();
       private void ensureLayersIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           layers_ = new java.util.ArrayList<com.laex.cg2d.protobuf.ScreenModel.CGLayer>(layers_);
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -1007,7 +1124,7 @@ public final class ScreenModel {
           com.laex.cg2d.protobuf.ScreenModel.CGLayer, com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder, com.laex.cg2d.protobuf.ScreenModel.CGLayerOrBuilder> layersBuilder_;
 
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public java.util.List<com.laex.cg2d.protobuf.ScreenModel.CGLayer> getLayersList() {
         if (layersBuilder_ == null) {
@@ -1017,7 +1134,7 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public int getLayersCount() {
         if (layersBuilder_ == null) {
@@ -1027,7 +1144,7 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public com.laex.cg2d.protobuf.ScreenModel.CGLayer getLayers(int index) {
         if (layersBuilder_ == null) {
@@ -1037,7 +1154,7 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder setLayers(
           int index, com.laex.cg2d.protobuf.ScreenModel.CGLayer value) {
@@ -1054,7 +1171,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder setLayers(
           int index, com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder builderForValue) {
@@ -1068,7 +1185,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder addLayers(com.laex.cg2d.protobuf.ScreenModel.CGLayer value) {
         if (layersBuilder_ == null) {
@@ -1084,7 +1201,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder addLayers(
           int index, com.laex.cg2d.protobuf.ScreenModel.CGLayer value) {
@@ -1101,7 +1218,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder addLayers(
           com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder builderForValue) {
@@ -1115,7 +1232,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder addLayers(
           int index, com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder builderForValue) {
@@ -1129,7 +1246,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder addAllLayers(
           java.lang.Iterable<? extends com.laex.cg2d.protobuf.ScreenModel.CGLayer> values) {
@@ -1143,12 +1260,12 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder clearLayers() {
         if (layersBuilder_ == null) {
           layers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           layersBuilder_.clear();
@@ -1156,7 +1273,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public Builder removeLayers(int index) {
         if (layersBuilder_ == null) {
@@ -1169,14 +1286,14 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder getLayersBuilder(
           int index) {
         return getLayersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public com.laex.cg2d.protobuf.ScreenModel.CGLayerOrBuilder getLayersOrBuilder(
           int index) {
@@ -1186,7 +1303,7 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public java.util.List<? extends com.laex.cg2d.protobuf.ScreenModel.CGLayerOrBuilder> 
            getLayersOrBuilderList() {
@@ -1197,14 +1314,14 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder addLayersBuilder() {
         return getLayersFieldBuilder().addBuilder(
             com.laex.cg2d.protobuf.ScreenModel.CGLayer.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder addLayersBuilder(
           int index) {
@@ -1212,7 +1329,7 @@ public final class ScreenModel {
             index, com.laex.cg2d.protobuf.ScreenModel.CGLayer.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;</code>
+       * <code>repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;</code>
        */
       public java.util.List<com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder> 
            getLayersBuilderList() {
@@ -1225,129 +1342,12 @@ public final class ScreenModel {
           layersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.laex.cg2d.protobuf.ScreenModel.CGLayer, com.laex.cg2d.protobuf.ScreenModel.CGLayer.Builder, com.laex.cg2d.protobuf.ScreenModel.CGLayerOrBuilder>(
                   layers_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           layers_ = null;
         }
         return layersBuilder_;
-      }
-
-      // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
-      private com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences screenPrefs_ = com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder> screenPrefsBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      public boolean hasScreenPrefs() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences getScreenPrefs() {
-        if (screenPrefsBuilder_ == null) {
-          return screenPrefs_;
-        } else {
-          return screenPrefsBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      public Builder setScreenPrefs(com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences value) {
-        if (screenPrefsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          screenPrefs_ = value;
-          onChanged();
-        } else {
-          screenPrefsBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      public Builder setScreenPrefs(
-          com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder builderForValue) {
-        if (screenPrefsBuilder_ == null) {
-          screenPrefs_ = builderForValue.build();
-          onChanged();
-        } else {
-          screenPrefsBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      public Builder mergeScreenPrefs(com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences value) {
-        if (screenPrefsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              screenPrefs_ != com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.getDefaultInstance()) {
-            screenPrefs_ =
-              com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.newBuilder(screenPrefs_).mergeFrom(value).buildPartial();
-          } else {
-            screenPrefs_ = value;
-          }
-          onChanged();
-        } else {
-          screenPrefsBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      public Builder clearScreenPrefs() {
-        if (screenPrefsBuilder_ == null) {
-          screenPrefs_ = com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.getDefaultInstance();
-          onChanged();
-        } else {
-          screenPrefsBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder getScreenPrefsBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getScreenPrefsFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      public com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder getScreenPrefsOrBuilder() {
-        if (screenPrefsBuilder_ != null) {
-          return screenPrefsBuilder_.getMessageOrBuilder();
-        } else {
-          return screenPrefs_;
-        }
-      }
-      /**
-       * <code>optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder> 
-          getScreenPrefsFieldBuilder() {
-        if (screenPrefsBuilder_ == null) {
-          screenPrefsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferences.Builder, com.laex.cg2d.protobuf.ScreenModel.CGScreenPreferencesOrBuilder>(
-                  screenPrefs_,
-                  getParentForChildren(),
-                  isClean());
-          screenPrefs_ = null;
-        }
-        return screenPrefsBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.protobuf.CGScreenModel)
@@ -12865,15 +12865,15 @@ public final class ScreenModel {
      */
     float getIntertialScale();
 
-    // optional float linearDampitng = 10;
+    // optional float linearDamping = 10;
     /**
-     * <code>optional float linearDampitng = 10;</code>
+     * <code>optional float linearDamping = 10;</code>
      */
-    boolean hasLinearDampitng();
+    boolean hasLinearDamping();
     /**
-     * <code>optional float linearDampitng = 10;</code>
+     * <code>optional float linearDamping = 10;</code>
      */
-    float getLinearDampitng();
+    float getLinearDamping();
 
     // optional float gravityScale = 11;
     /**
@@ -13021,7 +13021,7 @@ public final class ScreenModel {
             }
             case 85: {
               bitField0_ |= 0x00000200;
-              linearDampitng_ = input.readFloat();
+              linearDamping_ = input.readFloat();
               break;
             }
             case 93: {
@@ -13250,20 +13250,20 @@ public final class ScreenModel {
       return intertialScale_;
     }
 
-    // optional float linearDampitng = 10;
-    public static final int LINEARDAMPITNG_FIELD_NUMBER = 10;
-    private float linearDampitng_;
+    // optional float linearDamping = 10;
+    public static final int LINEARDAMPING_FIELD_NUMBER = 10;
+    private float linearDamping_;
     /**
-     * <code>optional float linearDampitng = 10;</code>
+     * <code>optional float linearDamping = 10;</code>
      */
-    public boolean hasLinearDampitng() {
+    public boolean hasLinearDamping() {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>optional float linearDampitng = 10;</code>
+     * <code>optional float linearDamping = 10;</code>
      */
-    public float getLinearDampitng() {
-      return linearDampitng_;
+    public float getLinearDamping() {
+      return linearDamping_;
     }
 
     // optional float gravityScale = 11;
@@ -13352,7 +13352,7 @@ public final class ScreenModel {
       bullet_ = false;
       fixedRotation_ = false;
       intertialScale_ = 0F;
-      linearDampitng_ = 0F;
+      linearDamping_ = 0F;
       gravityScale_ = 0F;
       linearVelocity_ = com.laex.cg2d.protobuf.ScreenModel.CGVector2.getDefaultInstance();
       type_ = com.laex.cg2d.protobuf.ScreenModel.CGBodyType.STATIC;
@@ -13410,7 +13410,7 @@ public final class ScreenModel {
         output.writeFloat(9, intertialScale_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeFloat(10, linearDampitng_);
+        output.writeFloat(10, linearDamping_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeFloat(11, gravityScale_);
@@ -13471,7 +13471,7 @@ public final class ScreenModel {
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(10, linearDampitng_);
+          .computeFloatSize(10, linearDamping_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
@@ -13625,7 +13625,7 @@ public final class ScreenModel {
         bitField0_ = (bitField0_ & ~0x00000080);
         intertialScale_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000100);
-        linearDampitng_ = 0F;
+        linearDamping_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000200);
         gravityScale_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000400);
@@ -13710,7 +13710,7 @@ public final class ScreenModel {
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.linearDampitng_ = linearDampitng_;
+        result.linearDamping_ = linearDamping_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000400;
         }
@@ -13778,8 +13778,8 @@ public final class ScreenModel {
         if (other.hasIntertialScale()) {
           setIntertialScale(other.getIntertialScale());
         }
-        if (other.hasLinearDampitng()) {
-          setLinearDampitng(other.getLinearDampitng());
+        if (other.hasLinearDamping()) {
+          setLinearDamping(other.getLinearDamping());
         }
         if (other.hasGravityScale()) {
           setGravityScale(other.getGravityScale());
@@ -14129,35 +14129,35 @@ public final class ScreenModel {
         return this;
       }
 
-      // optional float linearDampitng = 10;
-      private float linearDampitng_ ;
+      // optional float linearDamping = 10;
+      private float linearDamping_ ;
       /**
-       * <code>optional float linearDampitng = 10;</code>
+       * <code>optional float linearDamping = 10;</code>
        */
-      public boolean hasLinearDampitng() {
+      public boolean hasLinearDamping() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>optional float linearDampitng = 10;</code>
+       * <code>optional float linearDamping = 10;</code>
        */
-      public float getLinearDampitng() {
-        return linearDampitng_;
+      public float getLinearDamping() {
+        return linearDamping_;
       }
       /**
-       * <code>optional float linearDampitng = 10;</code>
+       * <code>optional float linearDamping = 10;</code>
        */
-      public Builder setLinearDampitng(float value) {
+      public Builder setLinearDamping(float value) {
         bitField0_ |= 0x00000200;
-        linearDampitng_ = value;
+        linearDamping_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional float linearDampitng = 10;</code>
+       * <code>optional float linearDamping = 10;</code>
        */
-      public Builder clearLinearDampitng() {
+      public Builder clearLinearDamping() {
         bitField0_ = (bitField0_ & ~0x00000200);
-        linearDampitng_ = 0F;
+        linearDamping_ = 0F;
         onChanged();
         return this;
       }
@@ -22437,9 +22437,9 @@ public final class ScreenModel {
     java.lang.String[] descriptorData = {
       "\n(com/laex/cg2d/protobuf/ScreenModel.pro" +
       "to\022\026com.laex.cg2d.protobuf\"\202\001\n\rCGScreenM" +
-      "odel\022/\n\006layers\030\001 \003(\0132\037.com.laex.cg2d.pro" +
-      "tobuf.CGLayer\022@\n\013screenPrefs\030\002 \001(\0132+.com" +
-      ".laex.cg2d.protobuf.CGScreenPreferences\"" +
+      "odel\022@\n\013screenPrefs\030\001 \001(\0132+.com.laex.cg2" +
+      "d.protobuf.CGScreenPreferences\022/\n\006layers" +
+      "\030\002 \003(\0132\037.com.laex.cg2d.protobuf.CGLayer\"" +
       "\204\004\n\007CGJoint\022\025\n\rsourceShapeId\030\001 \001(\t\022\025\n\rta" +
       "rgetShapeId\030\002 \001(\t\0221\n\004type\030\003 \001(\0162#.com.la" +
       "ex.cg2d.protobuf.CGJointType\022D\n\020distance" +
@@ -22494,66 +22494,66 @@ public final class ScreenModel {
       "tions\030\002 \003(\0132).com.laex.cg2d.protobuf.CGE" +
       "ntityAnimation\"?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n" +
       "\001y\030\002 \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"" +
-      "!\n\tCGVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\215\003\n\tC",
+      "!\n\tCGVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\214\003\n\tC",
       "GBodyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002" +
       " \001(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 " +
       "\001(\002\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 " +
       "\001(\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001" +
-      "(\010\022\026\n\016intertialScale\030\t \001(\002\022\026\n\016linearDamp" +
-      "itng\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0229\n\016line" +
-      "arVelocity\030\014 \001(\0132!.com.laex.cg2d.protobu" +
-      "f.CGVector2\0220\n\004type\030\r \001(\0162\".com.laex.cg2" +
-      "d.protobuf.CGBodyType\0223\n\010position\030\016 \001(\0132" +
-      "!.com.laex.cg2d.protobuf.CGVector2\"F\n\010CG",
-      "Filter\022\024\n\014categoryBits\030\001 \001(\005\022\020\n\010maskBits" +
-      "\030\002 \001(\005\022\022\n\ngroupIndex\030\003 \001(\005\"\210\001\n\014CGFixture" +
-      "Def\022\017\n\007density\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023" +
-      "\n\013restitution\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\0220\n\006f" +
-      "ilter\030\005 \001(\0132 .com.laex.cg2d.protobuf.CGF" +
-      "ilter\"\346\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007visible" +
-      "\030\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackground\030\004 \001" +
-      "(\010\022F\n\026backgroundResourceFile\030\005 \001(\0132&.com" +
-      ".laex.cg2d.protobuf.CGResourceFile\022B\n\017ed" +
-      "itorShapeType\030\006 \001(\0162).com.laex.cg2d.prot",
-      "obuf.CGEditorShapeType\0220\n\006bounds\030\007 \001(\0132 " +
-      ".com.laex.cg2d.protobuf.CGBounds\0222\n\007body" +
-      "Def\030\010 \001(\0132!.com.laex.cg2d.protobuf.CGBod" +
-      "yDef\0228\n\nfixtureDef\030\t \001(\0132$.com.laex.cg2d" +
-      ".protobuf.CGFixtureDef\022/\n\006joints\030\n \003(\0132\037" +
-      ".com.laex.cg2d.protobuf.CGJoint\022=\n\rentit" +
-      "yRefFile\030\013 \001(\0132&.com.laex.cg2d.protobuf." +
-      "CGResourceFile\"t\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n" +
-      "\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004" +
-      " \001(\010\022.\n\005shape\030\005 \003(\0132\037.com.laex.cg2d.prot",
-      "obuf.CGShape\"\271\005\n\023CGScreenPreferences\022X\n\016" +
-      "debugDrawPrefs\030\001 \001(\0132@.com.laex.cg2d.pro" +
-      "tobuf.CGScreenPreferences.DebugDrawPrefe" +
-      "rences\022P\n\nworldPrefs\030\002 \001(\0132<.com.laex.cg" +
-      "2d.protobuf.CGScreenPreferences.WorldPre" +
-      "ferences\022N\n\tcardPrefs\030\003 \001(\0132;.com.laex.c" +
-      "g2d.protobuf.CGScreenPreferences.CardPre" +
-      "ferences\032\264\001\n\024DebugDrawPreferences\022\022\n\ndra" +
-      "wBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010dra" +
-      "wAABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022",
-      "\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugD" +
-      "ata\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\222\001\n\020Worl" +
-      "dPreferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022veloci" +
-      "tyIterations\030\002 \001(\005\022\032\n\022positionIterations" +
-      "\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001" +
-      "(\002\022\020\n\010gravityY\030\006 \001(\002\032Z\n\017CardPreferences\022" +
-      "\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcar" +
-      "dWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJ" +
-      "ointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tP" +
-      "RISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005",
-      "MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014" +
-      "\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollis" +
-      "ionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n" +
-      "\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\t" +
-      "KINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorSha" +
-      "peType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPL" +
-      "E_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n" +
-      "\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAP" +
-      "E\020\005\022\020\n\014ENTITY_SHAPE\020\006"
+      "(\010\022\026\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDamp" +
+      "ing\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0229\n\016linea" +
+      "rVelocity\030\014 \001(\0132!.com.laex.cg2d.protobuf" +
+      ".CGVector2\0220\n\004type\030\r \001(\0162\".com.laex.cg2d" +
+      ".protobuf.CGBodyType\0223\n\010position\030\016 \001(\0132!" +
+      ".com.laex.cg2d.protobuf.CGVector2\"F\n\010CGF",
+      "ilter\022\024\n\014categoryBits\030\001 \001(\005\022\020\n\010maskBits\030" +
+      "\002 \001(\005\022\022\n\ngroupIndex\030\003 \001(\005\"\210\001\n\014CGFixtureD" +
+      "ef\022\017\n\007density\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n" +
+      "\013restitution\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\0220\n\006fi" +
+      "lter\030\005 \001(\0132 .com.laex.cg2d.protobuf.CGFi" +
+      "lter\"\346\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030" +
+      "\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackground\030\004 \001(" +
+      "\010\022F\n\026backgroundResourceFile\030\005 \001(\0132&.com." +
+      "laex.cg2d.protobuf.CGResourceFile\022B\n\017edi" +
+      "torShapeType\030\006 \001(\0162).com.laex.cg2d.proto",
+      "buf.CGEditorShapeType\0220\n\006bounds\030\007 \001(\0132 ." +
+      "com.laex.cg2d.protobuf.CGBounds\0222\n\007bodyD" +
+      "ef\030\010 \001(\0132!.com.laex.cg2d.protobuf.CGBody" +
+      "Def\0228\n\nfixtureDef\030\t \001(\0132$.com.laex.cg2d." +
+      "protobuf.CGFixtureDef\022/\n\006joints\030\n \003(\0132\037." +
+      "com.laex.cg2d.protobuf.CGJoint\022=\n\rentity" +
+      "RefFile\030\013 \001(\0132&.com.laex.cg2d.protobuf.C" +
+      "GResourceFile\"t\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004" +
+      "name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004 " +
+      "\001(\010\022.\n\005shape\030\005 \003(\0132\037.com.laex.cg2d.proto",
+      "buf.CGShape\"\271\005\n\023CGScreenPreferences\022X\n\016d" +
+      "ebugDrawPrefs\030\001 \001(\0132@.com.laex.cg2d.prot" +
+      "obuf.CGScreenPreferences.DebugDrawPrefer" +
+      "ences\022P\n\nworldPrefs\030\002 \001(\0132<.com.laex.cg2" +
+      "d.protobuf.CGScreenPreferences.WorldPref" +
+      "erences\022N\n\tcardPrefs\030\003 \001(\0132;.com.laex.cg" +
+      "2d.protobuf.CGScreenPreferences.CardPref" +
+      "erences\032\264\001\n\024DebugDrawPreferences\022\022\n\ndraw" +
+      "Bodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010draw" +
+      "AABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031",
+      "\n\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugDa" +
+      "ta\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\222\001\n\020World" +
+      "Preferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velocit" +
+      "yIterations\030\002 \001(\005\022\032\n\022positionIterations\030" +
+      "\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001(" +
+      "\002\022\020\n\010gravityY\030\006 \001(\002\032Z\n\017CardPreferences\022\017" +
+      "\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcard" +
+      "Width\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJo" +
+      "intType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPR" +
+      "ISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005M",
+      "OUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n" +
+      "\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollisi" +
+      "onType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n" +
+      "\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\tK" +
+      "INEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorShap" +
+      "eType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPLE" +
+      "_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n\022" +
+      "SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAPE" +
+      "\020\005\022\020\n\014ENTITY_SHAPE\020\006"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -22565,7 +22565,7 @@ public final class ScreenModel {
           internal_static_com_laex_cg2d_protobuf_CGScreenModel_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGScreenModel_descriptor,
-              new java.lang.String[] { "Layers", "ScreenPrefs", });
+              new java.lang.String[] { "ScreenPrefs", "Layers", });
           internal_static_com_laex_cg2d_protobuf_CGJoint_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_laex_cg2d_protobuf_CGJoint_fieldAccessorTable = new
@@ -22643,7 +22643,7 @@ public final class ScreenModel {
           internal_static_com_laex_cg2d_protobuf_CGBodyDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_protobuf_CGBodyDef_descriptor,
-              new java.lang.String[] { "Active", "AllowSleep", "Angle", "AngularDamping", "AngularVelocity", "Awake", "Bullet", "FixedRotation", "IntertialScale", "LinearDampitng", "GravityScale", "LinearVelocity", "Type", "Position", });
+              new java.lang.String[] { "Active", "AllowSleep", "Angle", "AngularDamping", "AngularVelocity", "Awake", "Bullet", "FixedRotation", "IntertialScale", "LinearDamping", "GravityScale", "LinearVelocity", "Type", "Position", });
           internal_static_com_laex_cg2d_protobuf_CGFilter_descriptor =
             getDescriptor().getMessageTypes().get(14);
           internal_static_com_laex_cg2d_protobuf_CGFilter_fieldAccessorTable = new

@@ -208,10 +208,19 @@ class CGScreenModel : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
+  // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
+  inline bool has_screenprefs() const;
+  inline void clear_screenprefs();
+  static const int kScreenPrefsFieldNumber = 1;
+  inline const ::com::laex::cg2d::protobuf::CGScreenPreferences& screenprefs() const;
+  inline ::com::laex::cg2d::protobuf::CGScreenPreferences* mutable_screenprefs();
+  inline ::com::laex::cg2d::protobuf::CGScreenPreferences* release_screenprefs();
+  inline void set_allocated_screenprefs(::com::laex::cg2d::protobuf::CGScreenPreferences* screenprefs);
+
+  // repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
   inline int layers_size() const;
   inline void clear_layers();
-  static const int kLayersFieldNumber = 1;
+  static const int kLayersFieldNumber = 2;
   inline const ::com::laex::cg2d::protobuf::CGLayer& layers(int index) const;
   inline ::com::laex::cg2d::protobuf::CGLayer* mutable_layers(int index);
   inline ::com::laex::cg2d::protobuf::CGLayer* add_layers();
@@ -220,15 +229,6 @@ class CGScreenModel : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::protobuf::CGLayer >*
       mutable_layers();
 
-  // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
-  inline bool has_screenprefs() const;
-  inline void clear_screenprefs();
-  static const int kScreenPrefsFieldNumber = 2;
-  inline const ::com::laex::cg2d::protobuf::CGScreenPreferences& screenprefs() const;
-  inline ::com::laex::cg2d::protobuf::CGScreenPreferences* mutable_screenprefs();
-  inline ::com::laex::cg2d::protobuf::CGScreenPreferences* release_screenprefs();
-  inline void set_allocated_screenprefs(::com::laex::cg2d::protobuf::CGScreenPreferences* screenprefs);
-
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.protobuf.CGScreenModel)
  private:
   inline void set_has_screenprefs();
@@ -236,8 +236,8 @@ class CGScreenModel : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::protobuf::CGLayer > layers_;
   ::com::laex::cg2d::protobuf::CGScreenPreferences* screenprefs_;
+  ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::protobuf::CGLayer > layers_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -1914,12 +1914,12 @@ class CGBodyDef : public ::google::protobuf::Message {
   inline float intertialscale() const;
   inline void set_intertialscale(float value);
 
-  // optional float linearDampitng = 10;
-  inline bool has_lineardampitng() const;
-  inline void clear_lineardampitng();
-  static const int kLinearDampitngFieldNumber = 10;
-  inline float lineardampitng() const;
-  inline void set_lineardampitng(float value);
+  // optional float linearDamping = 10;
+  inline bool has_lineardamping() const;
+  inline void clear_lineardamping();
+  static const int kLinearDampingFieldNumber = 10;
+  inline float lineardamping() const;
+  inline void set_lineardamping(float value);
 
   // optional float gravityScale = 11;
   inline bool has_gravityscale() const;
@@ -1973,8 +1973,8 @@ class CGBodyDef : public ::google::protobuf::Message {
   inline void clear_has_fixedrotation();
   inline void set_has_intertialscale();
   inline void clear_has_intertialscale();
-  inline void set_has_lineardampitng();
-  inline void clear_has_lineardampitng();
+  inline void set_has_lineardamping();
+  inline void clear_has_lineardamping();
   inline void set_has_gravityscale();
   inline void clear_has_gravityscale();
   inline void set_has_linearvelocity();
@@ -1995,7 +1995,7 @@ class CGBodyDef : public ::google::protobuf::Message {
   float angularvelocity_;
   bool fixedrotation_;
   float intertialscale_;
-  float lineardampitng_;
+  float lineardamping_;
   float gravityscale_;
   ::com::laex::cg2d::protobuf::CGVector2* linearvelocity_;
   ::com::laex::cg2d::protobuf::CGVector2* position_;
@@ -3072,40 +3072,15 @@ class CGScreenPreferences : public ::google::protobuf::Message {
 
 // CGScreenModel
 
-// repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
-inline int CGScreenModel::layers_size() const {
-  return layers_.size();
-}
-inline void CGScreenModel::clear_layers() {
-  layers_.Clear();
-}
-inline const ::com::laex::cg2d::protobuf::CGLayer& CGScreenModel::layers(int index) const {
-  return layers_.Get(index);
-}
-inline ::com::laex::cg2d::protobuf::CGLayer* CGScreenModel::mutable_layers(int index) {
-  return layers_.Mutable(index);
-}
-inline ::com::laex::cg2d::protobuf::CGLayer* CGScreenModel::add_layers() {
-  return layers_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::protobuf::CGLayer >&
-CGScreenModel::layers() const {
-  return layers_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::protobuf::CGLayer >*
-CGScreenModel::mutable_layers() {
-  return &layers_;
-}
-
-// optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
+// optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
 inline bool CGScreenModel::has_screenprefs() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void CGScreenModel::set_has_screenprefs() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 inline void CGScreenModel::clear_has_screenprefs() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void CGScreenModel::clear_screenprefs() {
   if (screenprefs_ != NULL) screenprefs_->::com::laex::cg2d::protobuf::CGScreenPreferences::Clear();
@@ -3133,6 +3108,31 @@ inline void CGScreenModel::set_allocated_screenprefs(::com::laex::cg2d::protobuf
   } else {
     clear_has_screenprefs();
   }
+}
+
+// repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
+inline int CGScreenModel::layers_size() const {
+  return layers_.size();
+}
+inline void CGScreenModel::clear_layers() {
+  layers_.Clear();
+}
+inline const ::com::laex::cg2d::protobuf::CGLayer& CGScreenModel::layers(int index) const {
+  return layers_.Get(index);
+}
+inline ::com::laex::cg2d::protobuf::CGLayer* CGScreenModel::mutable_layers(int index) {
+  return layers_.Mutable(index);
+}
+inline ::com::laex::cg2d::protobuf::CGLayer* CGScreenModel::add_layers() {
+  return layers_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::protobuf::CGLayer >&
+CGScreenModel::layers() const {
+  return layers_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::protobuf::CGLayer >*
+CGScreenModel::mutable_layers() {
+  return &layers_;
 }
 
 // -------------------------------------------------------------------
@@ -5253,26 +5253,26 @@ inline void CGBodyDef::set_intertialscale(float value) {
   intertialscale_ = value;
 }
 
-// optional float linearDampitng = 10;
-inline bool CGBodyDef::has_lineardampitng() const {
+// optional float linearDamping = 10;
+inline bool CGBodyDef::has_lineardamping() const {
   return (_has_bits_[0] & 0x00000200u) != 0;
 }
-inline void CGBodyDef::set_has_lineardampitng() {
+inline void CGBodyDef::set_has_lineardamping() {
   _has_bits_[0] |= 0x00000200u;
 }
-inline void CGBodyDef::clear_has_lineardampitng() {
+inline void CGBodyDef::clear_has_lineardamping() {
   _has_bits_[0] &= ~0x00000200u;
 }
-inline void CGBodyDef::clear_lineardampitng() {
-  lineardampitng_ = 0;
-  clear_has_lineardampitng();
+inline void CGBodyDef::clear_lineardamping() {
+  lineardamping_ = 0;
+  clear_has_lineardamping();
 }
-inline float CGBodyDef::lineardampitng() const {
-  return lineardampitng_;
+inline float CGBodyDef::lineardamping() const {
+  return lineardamping_;
 }
-inline void CGBodyDef::set_lineardampitng(float value) {
-  set_has_lineardampitng();
-  lineardampitng_ = value;
+inline void CGBodyDef::set_lineardamping(float value) {
+  set_has_lineardamping();
+  lineardamping_ = value;
 }
 
 // optional float gravityScale = 11;

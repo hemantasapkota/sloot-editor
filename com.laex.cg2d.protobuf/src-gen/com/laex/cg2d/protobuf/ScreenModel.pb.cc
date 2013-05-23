@@ -105,8 +105,8 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fprotobuf_2fScreenModel_2eproto() {
   GOOGLE_CHECK(file != NULL);
   CGScreenModel_descriptor_ = file->message_type(0);
   static const int CGScreenModel_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenModel, layers_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenModel, screenprefs_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenModel, layers_),
   };
   CGScreenModel_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -360,7 +360,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fprotobuf_2fScreenModel_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, bullet_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, fixedrotation_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, intertialscale_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, lineardampitng_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, lineardamping_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, gravityscale_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, linearvelocity_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, type_),
@@ -653,9 +653,9 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fprotobuf_2fScreenModel_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n(com/laex/cg2d/protobuf/ScreenModel.pro"
     "to\022\026com.laex.cg2d.protobuf\"\202\001\n\rCGScreenM"
-    "odel\022/\n\006layers\030\001 \003(\0132\037.com.laex.cg2d.pro"
-    "tobuf.CGLayer\022@\n\013screenPrefs\030\002 \001(\0132+.com"
-    ".laex.cg2d.protobuf.CGScreenPreferences\""
+    "odel\022@\n\013screenPrefs\030\001 \001(\0132+.com.laex.cg2"
+    "d.protobuf.CGScreenPreferences\022/\n\006layers"
+    "\030\002 \003(\0132\037.com.laex.cg2d.protobuf.CGLayer\""
     "\204\004\n\007CGJoint\022\025\n\rsourceShapeId\030\001 \001(\t\022\025\n\rta"
     "rgetShapeId\030\002 \001(\t\0221\n\004type\030\003 \001(\0162#.com.la"
     "ex.cg2d.protobuf.CGJointType\022D\n\020distance"
@@ -710,66 +710,66 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fprotobuf_2fScreenModel_2eproto() {
     "tions\030\002 \003(\0132).com.laex.cg2d.protobuf.CGE"
     "ntityAnimation\"\?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n"
     "\001y\030\002 \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\""
-    "!\n\tCGVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\215\003\n\tC"
+    "!\n\tCGVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\214\003\n\tC"
     "GBodyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002"
     " \001(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 "
     "\001(\002\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 "
     "\001(\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001"
-    "(\010\022\026\n\016intertialScale\030\t \001(\002\022\026\n\016linearDamp"
-    "itng\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0229\n\016line"
-    "arVelocity\030\014 \001(\0132!.com.laex.cg2d.protobu"
-    "f.CGVector2\0220\n\004type\030\r \001(\0162\".com.laex.cg2"
-    "d.protobuf.CGBodyType\0223\n\010position\030\016 \001(\0132"
-    "!.com.laex.cg2d.protobuf.CGVector2\"F\n\010CG"
-    "Filter\022\024\n\014categoryBits\030\001 \001(\005\022\020\n\010maskBits"
-    "\030\002 \001(\005\022\022\n\ngroupIndex\030\003 \001(\005\"\210\001\n\014CGFixture"
-    "Def\022\017\n\007density\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023"
-    "\n\013restitution\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\0220\n\006f"
-    "ilter\030\005 \001(\0132 .com.laex.cg2d.protobuf.CGF"
-    "ilter\"\346\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007visible"
-    "\030\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackground\030\004 \001"
-    "(\010\022F\n\026backgroundResourceFile\030\005 \001(\0132&.com"
-    ".laex.cg2d.protobuf.CGResourceFile\022B\n\017ed"
-    "itorShapeType\030\006 \001(\0162).com.laex.cg2d.prot"
-    "obuf.CGEditorShapeType\0220\n\006bounds\030\007 \001(\0132 "
-    ".com.laex.cg2d.protobuf.CGBounds\0222\n\007body"
-    "Def\030\010 \001(\0132!.com.laex.cg2d.protobuf.CGBod"
-    "yDef\0228\n\nfixtureDef\030\t \001(\0132$.com.laex.cg2d"
-    ".protobuf.CGFixtureDef\022/\n\006joints\030\n \003(\0132\037"
-    ".com.laex.cg2d.protobuf.CGJoint\022=\n\rentit"
-    "yRefFile\030\013 \001(\0132&.com.laex.cg2d.protobuf."
-    "CGResourceFile\"t\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n"
-    "\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004"
-    " \001(\010\022.\n\005shape\030\005 \003(\0132\037.com.laex.cg2d.prot"
-    "obuf.CGShape\"\271\005\n\023CGScreenPreferences\022X\n\016"
-    "debugDrawPrefs\030\001 \001(\0132@.com.laex.cg2d.pro"
-    "tobuf.CGScreenPreferences.DebugDrawPrefe"
-    "rences\022P\n\nworldPrefs\030\002 \001(\0132<.com.laex.cg"
-    "2d.protobuf.CGScreenPreferences.WorldPre"
-    "ferences\022N\n\tcardPrefs\030\003 \001(\0132;.com.laex.c"
-    "g2d.protobuf.CGScreenPreferences.CardPre"
-    "ferences\032\264\001\n\024DebugDrawPreferences\022\022\n\ndra"
-    "wBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010dra"
-    "wAABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022"
-    "\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugD"
-    "ata\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\222\001\n\020Worl"
-    "dPreferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022veloci"
-    "tyIterations\030\002 \001(\005\022\032\n\022positionIterations"
-    "\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001"
-    "(\002\022\020\n\010gravityY\030\006 \001(\002\032Z\n\017CardPreferences\022"
-    "\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcar"
-    "dWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJ"
-    "ointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tP"
-    "RISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005"
-    "MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014"
-    "\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollis"
-    "ionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n"
-    "\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\t"
-    "KINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorSha"
-    "peType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPL"
-    "E_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n"
-    "\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAP"
-    "E\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4741);
+    "(\010\022\026\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDamp"
+    "ing\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0229\n\016linea"
+    "rVelocity\030\014 \001(\0132!.com.laex.cg2d.protobuf"
+    ".CGVector2\0220\n\004type\030\r \001(\0162\".com.laex.cg2d"
+    ".protobuf.CGBodyType\0223\n\010position\030\016 \001(\0132!"
+    ".com.laex.cg2d.protobuf.CGVector2\"F\n\010CGF"
+    "ilter\022\024\n\014categoryBits\030\001 \001(\005\022\020\n\010maskBits\030"
+    "\002 \001(\005\022\022\n\ngroupIndex\030\003 \001(\005\"\210\001\n\014CGFixtureD"
+    "ef\022\017\n\007density\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n"
+    "\013restitution\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\0220\n\006fi"
+    "lter\030\005 \001(\0132 .com.laex.cg2d.protobuf.CGFi"
+    "lter\"\346\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030"
+    "\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackground\030\004 \001("
+    "\010\022F\n\026backgroundResourceFile\030\005 \001(\0132&.com."
+    "laex.cg2d.protobuf.CGResourceFile\022B\n\017edi"
+    "torShapeType\030\006 \001(\0162).com.laex.cg2d.proto"
+    "buf.CGEditorShapeType\0220\n\006bounds\030\007 \001(\0132 ."
+    "com.laex.cg2d.protobuf.CGBounds\0222\n\007bodyD"
+    "ef\030\010 \001(\0132!.com.laex.cg2d.protobuf.CGBody"
+    "Def\0228\n\nfixtureDef\030\t \001(\0132$.com.laex.cg2d."
+    "protobuf.CGFixtureDef\022/\n\006joints\030\n \003(\0132\037."
+    "com.laex.cg2d.protobuf.CGJoint\022=\n\rentity"
+    "RefFile\030\013 \001(\0132&.com.laex.cg2d.protobuf.C"
+    "GResourceFile\"t\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004"
+    "name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004 "
+    "\001(\010\022.\n\005shape\030\005 \003(\0132\037.com.laex.cg2d.proto"
+    "buf.CGShape\"\271\005\n\023CGScreenPreferences\022X\n\016d"
+    "ebugDrawPrefs\030\001 \001(\0132@.com.laex.cg2d.prot"
+    "obuf.CGScreenPreferences.DebugDrawPrefer"
+    "ences\022P\n\nworldPrefs\030\002 \001(\0132<.com.laex.cg2"
+    "d.protobuf.CGScreenPreferences.WorldPref"
+    "erences\022N\n\tcardPrefs\030\003 \001(\0132;.com.laex.cg"
+    "2d.protobuf.CGScreenPreferences.CardPref"
+    "erences\032\264\001\n\024DebugDrawPreferences\022\022\n\ndraw"
+    "Bodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010draw"
+    "AABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031"
+    "\n\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugDa"
+    "ta\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\222\001\n\020World"
+    "Preferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velocit"
+    "yIterations\030\002 \001(\005\022\032\n\022positionIterations\030"
+    "\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001("
+    "\002\022\020\n\010gravityY\030\006 \001(\002\032Z\n\017CardPreferences\022\017"
+    "\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcard"
+    "Width\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJo"
+    "intType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPR"
+    "ISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005M"
+    "OUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n"
+    "\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollisi"
+    "onType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n"
+    "\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\tK"
+    "INEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorShap"
+    "eType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPLE"
+    "_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n\022"
+    "SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAPE"
+    "\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4740);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/protobuf/ScreenModel.proto", &protobuf_RegisterTypes);
   CGScreenModel::default_instance_ = new CGScreenModel();
@@ -901,8 +901,8 @@ bool CGEditorShapeType_IsValid(int value) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int CGScreenModel::kLayersFieldNumber;
 const int CGScreenModel::kScreenPrefsFieldNumber;
+const int CGScreenModel::kLayersFieldNumber;
 #endif  // !_MSC_VER
 
 CGScreenModel::CGScreenModel()
@@ -958,7 +958,7 @@ CGScreenModel* CGScreenModel::New() const {
 }
 
 void CGScreenModel::Clear() {
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_screenprefs()) {
       if (screenprefs_ != NULL) screenprefs_->::com::laex::cg2d::protobuf::CGScreenPreferences::Clear();
     }
@@ -974,8 +974,21 @@ bool CGScreenModel::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
+      // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
       case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_screenprefs()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_layers;
+        break;
+      }
+
+      // repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
+      case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_layers:
@@ -984,21 +997,7 @@ bool CGScreenModel::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(10)) goto parse_layers;
-        if (input->ExpectTag(18)) goto parse_screenPrefs;
-        break;
-      }
-
-      // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_screenPrefs:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_screenprefs()));
-        } else {
-          goto handle_uninterpreted;
-        }
+        if (input->ExpectTag(18)) goto parse_layers;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1021,16 +1020,16 @@ bool CGScreenModel::MergePartialFromCodedStream(
 
 void CGScreenModel::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
-  for (int i = 0; i < this->layers_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->layers(i), output);
-  }
-
-  // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
+  // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
   if (has_screenprefs()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->screenprefs(), output);
+      1, this->screenprefs(), output);
+  }
+
+  // repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
+  for (int i = 0; i < this->layers_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->layers(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1041,18 +1040,18 @@ void CGScreenModel::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* CGScreenModel::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
-  for (int i = 0; i < this->layers_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->layers(i), target);
-  }
-
-  // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
+  // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
   if (has_screenprefs()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->screenprefs(), target);
+        1, this->screenprefs(), target);
+  }
+
+  // repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
+  for (int i = 0; i < this->layers_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->layers(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1065,8 +1064,8 @@ void CGScreenModel::SerializeWithCachedSizes(
 int CGScreenModel::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 2;
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .com.laex.cg2d.protobuf.CGScreenPreferences screenPrefs = 1;
     if (has_screenprefs()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1074,7 +1073,7 @@ int CGScreenModel::ByteSize() const {
     }
 
   }
-  // repeated .com.laex.cg2d.protobuf.CGLayer layers = 1;
+  // repeated .com.laex.cg2d.protobuf.CGLayer layers = 2;
   total_size += 1 * this->layers_size();
   for (int i = 0; i < this->layers_size(); i++) {
     total_size +=
@@ -1108,7 +1107,7 @@ void CGScreenModel::MergeFrom(const ::google::protobuf::Message& from) {
 void CGScreenModel::MergeFrom(const CGScreenModel& from) {
   GOOGLE_CHECK_NE(&from, this);
   layers_.MergeFrom(from.layers_);
-  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_screenprefs()) {
       mutable_screenprefs()->::com::laex::cg2d::protobuf::CGScreenPreferences::MergeFrom(from.screenprefs());
     }
@@ -1138,8 +1137,8 @@ bool CGScreenModel::IsInitialized() const {
 
 void CGScreenModel::Swap(CGScreenModel* other) {
   if (other != this) {
-    layers_.Swap(&other->layers_);
     std::swap(screenprefs_, other->screenprefs_);
+    layers_.Swap(&other->layers_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -5831,7 +5830,7 @@ const int CGBodyDef::kAwakeFieldNumber;
 const int CGBodyDef::kBulletFieldNumber;
 const int CGBodyDef::kFixedRotationFieldNumber;
 const int CGBodyDef::kIntertialScaleFieldNumber;
-const int CGBodyDef::kLinearDampitngFieldNumber;
+const int CGBodyDef::kLinearDampingFieldNumber;
 const int CGBodyDef::kGravityScaleFieldNumber;
 const int CGBodyDef::kLinearVelocityFieldNumber;
 const int CGBodyDef::kTypeFieldNumber;
@@ -5865,7 +5864,7 @@ void CGBodyDef::SharedCtor() {
   bullet_ = false;
   fixedrotation_ = false;
   intertialscale_ = 0;
-  lineardampitng_ = 0;
+  lineardamping_ = 0;
   gravityscale_ = 0;
   linearvelocity_ = NULL;
   type_ = 1;
@@ -5918,7 +5917,7 @@ void CGBodyDef::Clear() {
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     intertialscale_ = 0;
-    lineardampitng_ = 0;
+    lineardamping_ = 0;
     gravityscale_ = 0;
     if (has_linearvelocity()) {
       if (linearvelocity_ != NULL) linearvelocity_->::com::laex::cg2d::protobuf::CGVector2::Clear();
@@ -6077,19 +6076,19 @@ bool CGBodyDef::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(85)) goto parse_linearDampitng;
+        if (input->ExpectTag(85)) goto parse_linearDamping;
         break;
       }
 
-      // optional float linearDampitng = 10;
+      // optional float linearDamping = 10;
       case 10: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-         parse_linearDampitng:
+         parse_linearDamping:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &lineardampitng_)));
-          set_has_lineardampitng();
+                 input, &lineardamping_)));
+          set_has_lineardamping();
         } else {
           goto handle_uninterpreted;
         }
@@ -6225,9 +6224,9 @@ void CGBodyDef::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteFloat(9, this->intertialscale(), output);
   }
 
-  // optional float linearDampitng = 10;
-  if (has_lineardampitng()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(10, this->lineardampitng(), output);
+  // optional float linearDamping = 10;
+  if (has_lineardamping()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(10, this->lineardamping(), output);
   }
 
   // optional float gravityScale = 11;
@@ -6306,9 +6305,9 @@ void CGBodyDef::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(9, this->intertialscale(), target);
   }
 
-  // optional float linearDampitng = 10;
-  if (has_lineardampitng()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(10, this->lineardampitng(), target);
+  // optional float linearDamping = 10;
+  if (has_lineardamping()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(10, this->lineardamping(), target);
   }
 
   // optional float gravityScale = 11;
@@ -6394,8 +6393,8 @@ int CGBodyDef::ByteSize() const {
       total_size += 1 + 4;
     }
 
-    // optional float linearDampitng = 10;
-    if (has_lineardampitng()) {
+    // optional float linearDamping = 10;
+    if (has_lineardamping()) {
       total_size += 1 + 4;
     }
 
@@ -6480,8 +6479,8 @@ void CGBodyDef::MergeFrom(const CGBodyDef& from) {
     if (from.has_intertialscale()) {
       set_intertialscale(from.intertialscale());
     }
-    if (from.has_lineardampitng()) {
-      set_lineardampitng(from.lineardampitng());
+    if (from.has_lineardamping()) {
+      set_lineardamping(from.lineardamping());
     }
     if (from.has_gravityscale()) {
       set_gravityscale(from.gravityscale());
@@ -6533,7 +6532,7 @@ void CGBodyDef::Swap(CGBodyDef* other) {
     std::swap(bullet_, other->bullet_);
     std::swap(fixedrotation_, other->fixedrotation_);
     std::swap(intertialscale_, other->intertialscale_);
-    std::swap(lineardampitng_, other->lineardampitng_);
+    std::swap(lineardamping_, other->lineardamping_);
     std::swap(gravityscale_, other->gravityscale_);
     std::swap(linearvelocity_, other->linearvelocity_);
     std::swap(type_, other->type_);

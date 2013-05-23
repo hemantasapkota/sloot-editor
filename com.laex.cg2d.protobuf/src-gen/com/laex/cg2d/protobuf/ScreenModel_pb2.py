@@ -14,7 +14,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='com/laex/cg2d/protobuf/ScreenModel.proto',
   package='com.laex.cg2d.protobuf',
-  serialized_pb='\n(com/laex/cg2d/protobuf/ScreenModel.proto\x12\x16\x63om.laex.cg2d.protobuf\"\x82\x01\n\rCGScreenModel\x12/\n\x06layers\x18\x01 \x03(\x0b\x32\x1f.com.laex.cg2d.protobuf.CGLayer\x12@\n\x0bscreenPrefs\x18\x02 \x01(\x0b\x32+.com.laex.cg2d.protobuf.CGScreenPreferences\"\x84\x04\n\x07\x43GJoint\x12\x15\n\rsourceShapeId\x18\x01 \x01(\t\x12\x15\n\rtargetShapeId\x18\x02 \x01(\t\x12\x31\n\x04type\x18\x03 \x01(\x0e\x32#.com.laex.cg2d.protobuf.CGJointType\x12\x44\n\x10\x64istanceJointDef\x18\x05 \x01(\x0b\x32*.com.laex.cg2d.protobuf.CGDistanceJointDef\x12\x44\n\x10revoluteJointDef\x18\x06 \x01(\x0b\x32*.com.laex.cg2d.protobuf.CGRevoluteJointDef\x12\x46\n\x11prismaticJointDef\x18\x07 \x01(\x0b\x32+.com.laex.cg2d.protobuf.CGPrismaticJointDef\x12@\n\x0epulleyJointDef\x18\x08 \x01(\x0b\x32(.com.laex.cg2d.protobuf.CGPulleyJointDef\x12\x44\n\x10\x66rictionJointDef\x18\t \x01(\x0b\x32*.com.laex.cg2d.protobuf.CGFrictionJointDef\x12<\n\x0cweldJointDef\x18\n \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGWeldJointDef\"X\n\x12\x43GDistanceJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x12\n\nfreqencyHz\x18\x02 \x01(\x02\x12\x14\n\x0c\x64\x61mpingRatio\x18\x03 \x01(\x02\"\xfc\x01\n\x12\x43GRevoluteJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x16\n\x0ereferenceAngle\x18\x02 \x01(\x02\x12\x13\n\x0b\x65nableLimit\x18\x03 \x01(\x08\x12\x12\n\nlowerAngle\x18\x04 \x01(\x02\x12\x12\n\nupperAngle\x18\x05 \x01(\x02\x12\x13\n\x0b\x65nableMotor\x18\x06 \x01(\x08\x12\x12\n\nmotorSpeed\x18\x07 \x01(\x02\x12\x16\n\x0emaxMotorTorque\x18\x08 \x01(\x02\x12\x36\n\x0bworldAnchor\x18\t \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\"\xb4\x02\n\x13\x43GPrismaticJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x31\n\x06\x61nchor\x18\x02 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12/\n\x04\x61xis\x18\x03 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12\x16\n\x0ereferenceAngle\x18\x05 \x01(\x02\x12\x13\n\x0b\x65nableLimit\x18\x06 \x01(\x08\x12\x18\n\x10lowerTranslation\x18\x07 \x01(\x02\x12\x18\n\x10upperTranslation\x18\x08 \x01(\x02\x12\x13\n\x0b\x65nableMotor\x18\t \x01(\x08\x12\x15\n\rmaxMotorForce\x18\n \x01(\x02\x12\x12\n\nmotorSpeed\x18\x0b \x01(\x02\"\xaf\x01\n\x10\x43GPulleyJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x38\n\rgroundAnchorA\x18\x02 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12\x38\n\rgroundAnchorB\x18\x03 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12\r\n\x05ratio\x18\x04 \x01(\x02\"S\n\x12\x43GFrictionJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x10\n\x08maxForce\x18\x02 \x01(\x02\x12\x11\n\tmaxTorque\x18\x03 \x01(\x02\"*\n\x0e\x43GWeldJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\"D\n\x0e\x43GResourceFile\x12\x14\n\x0cresourceFile\x18\x01 \x01(\t\x12\x1c\n\x14resourceFileAbsolute\x18\x02 \x01(\t\"\xbb\x03\n\x11\x43GEntityAnimation\x12\x15\n\ranimationName\x18\x01 \x01(\t\x12\x45\n\x15\x61nimationResourceFile\x18\x02 \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGResourceFile\x12;\n\x0b\x66ixtureFile\x18\x03 \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGResourceFile\x12\x19\n\x11\x61nimationDuration\x18\x04 \x01(\x02\x12\x18\n\x10\x64\x65\x66\x61ultAnimation\x18\x05 \x01(\x08\x12\x0c\n\x04\x63ols\x18\x06 \x01(\x05\x12\x0c\n\x04rows\x18\x07 \x01(\x05\x12\x44\n\rcollisionType\x18\x08 \x01(\x0e\x32-.com.laex.cg2d.protobuf.CGEntityCollisionType\x12\x0c\n\x04shpX\x18\t \x01(\x05\x12\x0c\n\x04shpY\x18\n \x01(\x05\x12\x10\n\x08shpWidth\x18\x0b \x01(\x05\x12\x11\n\tshpHeight\x18\x0c \x01(\x05\x12\x33\n\x08vertices\x18\r \x03(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\"_\n\x08\x43GEntity\x12\x14\n\x0cinternalName\x18\x01 \x01(\t\x12=\n\nanimations\x18\x02 \x03(\x0b\x32).com.laex.cg2d.protobuf.CGEntityAnimation\"?\n\x08\x43GBounds\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\r\n\x05width\x18\x03 \x01(\x02\x12\x0e\n\x06height\x18\x04 \x01(\x02\"!\n\tCGVector2\x12\t\n\x01x\x18\x01 \x02(\x02\x12\t\n\x01y\x18\x02 \x02(\x02\"\x8d\x03\n\tCGBodyDef\x12\x0e\n\x06\x61\x63tive\x18\x01 \x01(\x08\x12\x12\n\nallowSleep\x18\x02 \x01(\x08\x12\r\n\x05\x61ngle\x18\x03 \x01(\x02\x12\x16\n\x0e\x61ngularDamping\x18\x04 \x01(\x02\x12\x17\n\x0f\x61ngularVelocity\x18\x05 \x01(\x02\x12\r\n\x05\x61wake\x18\x06 \x01(\x08\x12\x0e\n\x06\x62ullet\x18\x07 \x01(\x08\x12\x15\n\rfixedRotation\x18\x08 \x01(\x08\x12\x16\n\x0eintertialScale\x18\t \x01(\x02\x12\x16\n\x0elinearDampitng\x18\n \x01(\x02\x12\x14\n\x0cgravityScale\x18\x0b \x01(\x02\x12\x39\n\x0elinearVelocity\x18\x0c \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12\x30\n\x04type\x18\r \x01(\x0e\x32\".com.laex.cg2d.protobuf.CGBodyType\x12\x33\n\x08position\x18\x0e \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\"F\n\x08\x43GFilter\x12\x14\n\x0c\x63\x61tegoryBits\x18\x01 \x01(\x05\x12\x10\n\x08maskBits\x18\x02 \x01(\x05\x12\x12\n\ngroupIndex\x18\x03 \x01(\x05\"\x88\x01\n\x0c\x43GFixtureDef\x12\x0f\n\x07\x64\x65nsity\x18\x01 \x01(\x02\x12\x10\n\x08\x66riction\x18\x02 \x01(\x02\x12\x13\n\x0brestitution\x18\x03 \x01(\x02\x12\x0e\n\x06sensor\x18\x04 \x01(\x08\x12\x30\n\x06\x66ilter\x18\x05 \x01(\x0b\x32 .com.laex.cg2d.protobuf.CGFilter\"\xe6\x03\n\x07\x43GShape\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07visible\x18\x02 \x01(\x08\x12\x0e\n\x06locked\x18\x03 \x01(\x08\x12\x12\n\nbackground\x18\x04 \x01(\x08\x12\x46\n\x16\x62\x61\x63kgroundResourceFile\x18\x05 \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGResourceFile\x12\x42\n\x0f\x65\x64itorShapeType\x18\x06 \x01(\x0e\x32).com.laex.cg2d.protobuf.CGEditorShapeType\x12\x30\n\x06\x62ounds\x18\x07 \x01(\x0b\x32 .com.laex.cg2d.protobuf.CGBounds\x12\x32\n\x07\x62odyDef\x18\x08 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGBodyDef\x12\x38\n\nfixtureDef\x18\t \x01(\x0b\x32$.com.laex.cg2d.protobuf.CGFixtureDef\x12/\n\x06joints\x18\n \x03(\x0b\x32\x1f.com.laex.cg2d.protobuf.CGJoint\x12=\n\rentityRefFile\x18\x0b \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGResourceFile\"t\n\x07\x43GLayer\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07visible\x18\x03 \x01(\x08\x12\x0e\n\x06locked\x18\x04 \x01(\x08\x12.\n\x05shape\x18\x05 \x03(\x0b\x32\x1f.com.laex.cg2d.protobuf.CGShape\"\xb9\x05\n\x13\x43GScreenPreferences\x12X\n\x0e\x64\x65\x62ugDrawPrefs\x18\x01 \x01(\x0b\x32@.com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences\x12P\n\nworldPrefs\x18\x02 \x01(\x0b\x32<.com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences\x12N\n\tcardPrefs\x18\x03 \x01(\x0b\x32;.com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences\x1a\xb4\x01\n\x14\x44\x65\x62ugDrawPreferences\x12\x12\n\ndrawBodies\x18\x01 \x01(\x08\x12\x12\n\ndrawJoints\x18\x02 \x01(\x08\x12\x10\n\x08\x64rawAABB\x18\x03 \x01(\x08\x12\x1a\n\x12\x64rawInactiveBodies\x18\x04 \x01(\x08\x12\x19\n\x11installMouseJoint\x18\x05 \x01(\x08\x12\x15\n\rdrawDebugData\x18\x06 \x01(\x08\x12\x14\n\x0c\x64rawEntities\x18\x07 \x01(\x08\x1a\x92\x01\n\x10WorldPreferences\x12\x10\n\x08ptmRatio\x18\x01 \x01(\x05\x12\x1a\n\x12velocityIterations\x18\x02 \x01(\x05\x12\x1a\n\x12positionIterations\x18\x03 \x01(\x05\x12\x10\n\x08timeStep\x18\x04 \x01(\x02\x12\x10\n\x08gravityX\x18\x05 \x01(\x02\x12\x10\n\x08gravityY\x18\x06 \x01(\x02\x1aZ\n\x0f\x43\x61rdPreferences\x12\x0f\n\x07\x63\x61rdNoX\x18\x01 \x01(\x05\x12\x0f\n\x07\x63\x61rdNoY\x18\x02 \x01(\x05\x12\x11\n\tcardWidth\x18\x03 \x01(\x05\x12\x12\n\ncardHeight\x18\x04 \x01(\x05*\x93\x01\n\x0b\x43GJointType\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x0c\n\x08REVOLUTE\x10\x02\x12\r\n\tPRISMATIC\x10\x03\x12\x0c\n\x08\x44ISTANCE\x10\x04\x12\n\n\x06PULLEY\x10\x05\x12\t\n\x05MOUSE\x10\x06\x12\x08\n\x04GEAR\x10\x07\x12\t\n\x05WHEEL\x10\x08\x12\x08\n\x04WELD\x10\t\x12\x0c\n\x08\x46RICTION\x10\n\x12\x08\n\x04ROPE\x10\x0b*B\n\x15\x43GEntityCollisionType\x12\x08\n\x04NONE\x10\x00\x12\x07\n\x03\x42OX\x10\x01\x12\n\n\x06\x43IRCLE\x10\x02\x12\n\n\x06\x43USTOM\x10\x03*4\n\nCGBodyType\x12\n\n\x06STATIC\x10\x01\x12\r\n\tKINEMATIC\x10\x02\x12\x0b\n\x07\x44YNAMIC\x10\x03*\x9a\x01\n\x11\x43GEditorShapeType\x12\x17\n\x13SIMPLE_SHAPE_CIRCLE\x10\x01\x12\x14\n\x10SIMPLE_SHAPE_BOX\x10\x02\x12\x16\n\x12SIMPLE_SHAPE_HEDGE\x10\x03\x12\x16\n\x12SIMPLE_SHAPE_VEDGE\x10\x04\x12\x14\n\x10\x42\x41\x43KGROUND_SHAPE\x10\x05\x12\x10\n\x0c\x45NTITY_SHAPE\x10\x06')
+  serialized_pb='\n(com/laex/cg2d/protobuf/ScreenModel.proto\x12\x16\x63om.laex.cg2d.protobuf\"\x82\x01\n\rCGScreenModel\x12@\n\x0bscreenPrefs\x18\x01 \x01(\x0b\x32+.com.laex.cg2d.protobuf.CGScreenPreferences\x12/\n\x06layers\x18\x02 \x03(\x0b\x32\x1f.com.laex.cg2d.protobuf.CGLayer\"\x84\x04\n\x07\x43GJoint\x12\x15\n\rsourceShapeId\x18\x01 \x01(\t\x12\x15\n\rtargetShapeId\x18\x02 \x01(\t\x12\x31\n\x04type\x18\x03 \x01(\x0e\x32#.com.laex.cg2d.protobuf.CGJointType\x12\x44\n\x10\x64istanceJointDef\x18\x05 \x01(\x0b\x32*.com.laex.cg2d.protobuf.CGDistanceJointDef\x12\x44\n\x10revoluteJointDef\x18\x06 \x01(\x0b\x32*.com.laex.cg2d.protobuf.CGRevoluteJointDef\x12\x46\n\x11prismaticJointDef\x18\x07 \x01(\x0b\x32+.com.laex.cg2d.protobuf.CGPrismaticJointDef\x12@\n\x0epulleyJointDef\x18\x08 \x01(\x0b\x32(.com.laex.cg2d.protobuf.CGPulleyJointDef\x12\x44\n\x10\x66rictionJointDef\x18\t \x01(\x0b\x32*.com.laex.cg2d.protobuf.CGFrictionJointDef\x12<\n\x0cweldJointDef\x18\n \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGWeldJointDef\"X\n\x12\x43GDistanceJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x12\n\nfreqencyHz\x18\x02 \x01(\x02\x12\x14\n\x0c\x64\x61mpingRatio\x18\x03 \x01(\x02\"\xfc\x01\n\x12\x43GRevoluteJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x16\n\x0ereferenceAngle\x18\x02 \x01(\x02\x12\x13\n\x0b\x65nableLimit\x18\x03 \x01(\x08\x12\x12\n\nlowerAngle\x18\x04 \x01(\x02\x12\x12\n\nupperAngle\x18\x05 \x01(\x02\x12\x13\n\x0b\x65nableMotor\x18\x06 \x01(\x08\x12\x12\n\nmotorSpeed\x18\x07 \x01(\x02\x12\x16\n\x0emaxMotorTorque\x18\x08 \x01(\x02\x12\x36\n\x0bworldAnchor\x18\t \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\"\xb4\x02\n\x13\x43GPrismaticJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x31\n\x06\x61nchor\x18\x02 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12/\n\x04\x61xis\x18\x03 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12\x16\n\x0ereferenceAngle\x18\x05 \x01(\x02\x12\x13\n\x0b\x65nableLimit\x18\x06 \x01(\x08\x12\x18\n\x10lowerTranslation\x18\x07 \x01(\x02\x12\x18\n\x10upperTranslation\x18\x08 \x01(\x02\x12\x13\n\x0b\x65nableMotor\x18\t \x01(\x08\x12\x15\n\rmaxMotorForce\x18\n \x01(\x02\x12\x12\n\nmotorSpeed\x18\x0b \x01(\x02\"\xaf\x01\n\x10\x43GPulleyJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x38\n\rgroundAnchorA\x18\x02 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12\x38\n\rgroundAnchorB\x18\x03 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12\r\n\x05ratio\x18\x04 \x01(\x02\"S\n\x12\x43GFrictionJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x10\n\x08maxForce\x18\x02 \x01(\x02\x12\x11\n\tmaxTorque\x18\x03 \x01(\x02\"*\n\x0e\x43GWeldJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\"D\n\x0e\x43GResourceFile\x12\x14\n\x0cresourceFile\x18\x01 \x01(\t\x12\x1c\n\x14resourceFileAbsolute\x18\x02 \x01(\t\"\xbb\x03\n\x11\x43GEntityAnimation\x12\x15\n\ranimationName\x18\x01 \x01(\t\x12\x45\n\x15\x61nimationResourceFile\x18\x02 \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGResourceFile\x12;\n\x0b\x66ixtureFile\x18\x03 \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGResourceFile\x12\x19\n\x11\x61nimationDuration\x18\x04 \x01(\x02\x12\x18\n\x10\x64\x65\x66\x61ultAnimation\x18\x05 \x01(\x08\x12\x0c\n\x04\x63ols\x18\x06 \x01(\x05\x12\x0c\n\x04rows\x18\x07 \x01(\x05\x12\x44\n\rcollisionType\x18\x08 \x01(\x0e\x32-.com.laex.cg2d.protobuf.CGEntityCollisionType\x12\x0c\n\x04shpX\x18\t \x01(\x05\x12\x0c\n\x04shpY\x18\n \x01(\x05\x12\x10\n\x08shpWidth\x18\x0b \x01(\x05\x12\x11\n\tshpHeight\x18\x0c \x01(\x05\x12\x33\n\x08vertices\x18\r \x03(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\"_\n\x08\x43GEntity\x12\x14\n\x0cinternalName\x18\x01 \x01(\t\x12=\n\nanimations\x18\x02 \x03(\x0b\x32).com.laex.cg2d.protobuf.CGEntityAnimation\"?\n\x08\x43GBounds\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\r\n\x05width\x18\x03 \x01(\x02\x12\x0e\n\x06height\x18\x04 \x01(\x02\"!\n\tCGVector2\x12\t\n\x01x\x18\x01 \x02(\x02\x12\t\n\x01y\x18\x02 \x02(\x02\"\x8c\x03\n\tCGBodyDef\x12\x0e\n\x06\x61\x63tive\x18\x01 \x01(\x08\x12\x12\n\nallowSleep\x18\x02 \x01(\x08\x12\r\n\x05\x61ngle\x18\x03 \x01(\x02\x12\x16\n\x0e\x61ngularDamping\x18\x04 \x01(\x02\x12\x17\n\x0f\x61ngularVelocity\x18\x05 \x01(\x02\x12\r\n\x05\x61wake\x18\x06 \x01(\x08\x12\x0e\n\x06\x62ullet\x18\x07 \x01(\x08\x12\x15\n\rfixedRotation\x18\x08 \x01(\x08\x12\x16\n\x0eintertialScale\x18\t \x01(\x02\x12\x15\n\rlinearDamping\x18\n \x01(\x02\x12\x14\n\x0cgravityScale\x18\x0b \x01(\x02\x12\x39\n\x0elinearVelocity\x18\x0c \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\x12\x30\n\x04type\x18\r \x01(\x0e\x32\".com.laex.cg2d.protobuf.CGBodyType\x12\x33\n\x08position\x18\x0e \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGVector2\"F\n\x08\x43GFilter\x12\x14\n\x0c\x63\x61tegoryBits\x18\x01 \x01(\x05\x12\x10\n\x08maskBits\x18\x02 \x01(\x05\x12\x12\n\ngroupIndex\x18\x03 \x01(\x05\"\x88\x01\n\x0c\x43GFixtureDef\x12\x0f\n\x07\x64\x65nsity\x18\x01 \x01(\x02\x12\x10\n\x08\x66riction\x18\x02 \x01(\x02\x12\x13\n\x0brestitution\x18\x03 \x01(\x02\x12\x0e\n\x06sensor\x18\x04 \x01(\x08\x12\x30\n\x06\x66ilter\x18\x05 \x01(\x0b\x32 .com.laex.cg2d.protobuf.CGFilter\"\xe6\x03\n\x07\x43GShape\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07visible\x18\x02 \x01(\x08\x12\x0e\n\x06locked\x18\x03 \x01(\x08\x12\x12\n\nbackground\x18\x04 \x01(\x08\x12\x46\n\x16\x62\x61\x63kgroundResourceFile\x18\x05 \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGResourceFile\x12\x42\n\x0f\x65\x64itorShapeType\x18\x06 \x01(\x0e\x32).com.laex.cg2d.protobuf.CGEditorShapeType\x12\x30\n\x06\x62ounds\x18\x07 \x01(\x0b\x32 .com.laex.cg2d.protobuf.CGBounds\x12\x32\n\x07\x62odyDef\x18\x08 \x01(\x0b\x32!.com.laex.cg2d.protobuf.CGBodyDef\x12\x38\n\nfixtureDef\x18\t \x01(\x0b\x32$.com.laex.cg2d.protobuf.CGFixtureDef\x12/\n\x06joints\x18\n \x03(\x0b\x32\x1f.com.laex.cg2d.protobuf.CGJoint\x12=\n\rentityRefFile\x18\x0b \x01(\x0b\x32&.com.laex.cg2d.protobuf.CGResourceFile\"t\n\x07\x43GLayer\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07visible\x18\x03 \x01(\x08\x12\x0e\n\x06locked\x18\x04 \x01(\x08\x12.\n\x05shape\x18\x05 \x03(\x0b\x32\x1f.com.laex.cg2d.protobuf.CGShape\"\xb9\x05\n\x13\x43GScreenPreferences\x12X\n\x0e\x64\x65\x62ugDrawPrefs\x18\x01 \x01(\x0b\x32@.com.laex.cg2d.protobuf.CGScreenPreferences.DebugDrawPreferences\x12P\n\nworldPrefs\x18\x02 \x01(\x0b\x32<.com.laex.cg2d.protobuf.CGScreenPreferences.WorldPreferences\x12N\n\tcardPrefs\x18\x03 \x01(\x0b\x32;.com.laex.cg2d.protobuf.CGScreenPreferences.CardPreferences\x1a\xb4\x01\n\x14\x44\x65\x62ugDrawPreferences\x12\x12\n\ndrawBodies\x18\x01 \x01(\x08\x12\x12\n\ndrawJoints\x18\x02 \x01(\x08\x12\x10\n\x08\x64rawAABB\x18\x03 \x01(\x08\x12\x1a\n\x12\x64rawInactiveBodies\x18\x04 \x01(\x08\x12\x19\n\x11installMouseJoint\x18\x05 \x01(\x08\x12\x15\n\rdrawDebugData\x18\x06 \x01(\x08\x12\x14\n\x0c\x64rawEntities\x18\x07 \x01(\x08\x1a\x92\x01\n\x10WorldPreferences\x12\x10\n\x08ptmRatio\x18\x01 \x01(\x05\x12\x1a\n\x12velocityIterations\x18\x02 \x01(\x05\x12\x1a\n\x12positionIterations\x18\x03 \x01(\x05\x12\x10\n\x08timeStep\x18\x04 \x01(\x02\x12\x10\n\x08gravityX\x18\x05 \x01(\x02\x12\x10\n\x08gravityY\x18\x06 \x01(\x02\x1aZ\n\x0f\x43\x61rdPreferences\x12\x0f\n\x07\x63\x61rdNoX\x18\x01 \x01(\x05\x12\x0f\n\x07\x63\x61rdNoY\x18\x02 \x01(\x05\x12\x11\n\tcardWidth\x18\x03 \x01(\x05\x12\x12\n\ncardHeight\x18\x04 \x01(\x05*\x93\x01\n\x0b\x43GJointType\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x0c\n\x08REVOLUTE\x10\x02\x12\r\n\tPRISMATIC\x10\x03\x12\x0c\n\x08\x44ISTANCE\x10\x04\x12\n\n\x06PULLEY\x10\x05\x12\t\n\x05MOUSE\x10\x06\x12\x08\n\x04GEAR\x10\x07\x12\t\n\x05WHEEL\x10\x08\x12\x08\n\x04WELD\x10\t\x12\x0c\n\x08\x46RICTION\x10\n\x12\x08\n\x04ROPE\x10\x0b*B\n\x15\x43GEntityCollisionType\x12\x08\n\x04NONE\x10\x00\x12\x07\n\x03\x42OX\x10\x01\x12\n\n\x06\x43IRCLE\x10\x02\x12\n\n\x06\x43USTOM\x10\x03*4\n\nCGBodyType\x12\n\n\x06STATIC\x10\x01\x12\r\n\tKINEMATIC\x10\x02\x12\x0b\n\x07\x44YNAMIC\x10\x03*\x9a\x01\n\x11\x43GEditorShapeType\x12\x17\n\x13SIMPLE_SHAPE_CIRCLE\x10\x01\x12\x14\n\x10SIMPLE_SHAPE_BOX\x10\x02\x12\x16\n\x12SIMPLE_SHAPE_HEDGE\x10\x03\x12\x16\n\x12SIMPLE_SHAPE_VEDGE\x10\x04\x12\x14\n\x10\x42\x41\x43KGROUND_SHAPE\x10\x05\x12\x10\n\x0c\x45NTITY_SHAPE\x10\x06')
 
 _CGJOINTTYPE = _descriptor.EnumDescriptor(
   name='CGJointType',
@@ -69,8 +69,8 @@ _CGJOINTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4315,
-  serialized_end=4462,
+  serialized_start=4314,
+  serialized_end=4461,
 )
 
 CGJointType = enum_type_wrapper.EnumTypeWrapper(_CGJOINTTYPE)
@@ -99,8 +99,8 @@ _CGENTITYCOLLISIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4464,
-  serialized_end=4530,
+  serialized_start=4463,
+  serialized_end=4529,
 )
 
 CGEntityCollisionType = enum_type_wrapper.EnumTypeWrapper(_CGENTITYCOLLISIONTYPE)
@@ -125,8 +125,8 @@ _CGBODYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4532,
-  serialized_end=4584,
+  serialized_start=4531,
+  serialized_end=4583,
 )
 
 CGBodyType = enum_type_wrapper.EnumTypeWrapper(_CGBODYTYPE)
@@ -163,8 +163,8 @@ _CGEDITORSHAPETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4587,
-  serialized_end=4741,
+  serialized_start=4586,
+  serialized_end=4740,
 )
 
 CGEditorShapeType = enum_type_wrapper.EnumTypeWrapper(_CGEDITORSHAPETYPE)
@@ -203,16 +203,16 @@ _CGSCREENMODEL = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='layers', full_name='com.laex.cg2d.protobuf.CGScreenModel.layers', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='screenPrefs', full_name='com.laex.cg2d.protobuf.CGScreenModel.screenPrefs', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='screenPrefs', full_name='com.laex.cg2d.protobuf.CGScreenModel.screenPrefs', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='layers', full_name='com.laex.cg2d.protobuf.CGScreenModel.layers', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -987,7 +987,7 @@ _CGBODYDEF = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='linearDampitng', full_name='com.laex.cg2d.protobuf.CGBodyDef.linearDampitng', index=9,
+      name='linearDamping', full_name='com.laex.cg2d.protobuf.CGBodyDef.linearDamping', index=9,
       number=10, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -1031,7 +1031,7 @@ _CGBODYDEF = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=2397,
-  serialized_end=2794,
+  serialized_end=2793,
 )
 
 
@@ -1072,8 +1072,8 @@ _CGFILTER = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2796,
-  serialized_end=2866,
+  serialized_start=2795,
+  serialized_end=2865,
 )
 
 
@@ -1128,8 +1128,8 @@ _CGFIXTUREDEF = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2869,
-  serialized_end=3005,
+  serialized_start=2868,
+  serialized_end=3004,
 )
 
 
@@ -1226,8 +1226,8 @@ _CGSHAPE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3008,
-  serialized_end=3494,
+  serialized_start=3007,
+  serialized_end=3493,
 )
 
 
@@ -1282,8 +1282,8 @@ _CGLAYER = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3496,
-  serialized_end=3612,
+  serialized_start=3495,
+  serialized_end=3611,
 )
 
 
@@ -1352,8 +1352,8 @@ _CGSCREENPREFERENCES_DEBUGDRAWPREFERENCES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3891,
-  serialized_end=4071,
+  serialized_start=3890,
+  serialized_end=4070,
 )
 
 _CGSCREENPREFERENCES_WORLDPREFERENCES = _descriptor.Descriptor(
@@ -1414,8 +1414,8 @@ _CGSCREENPREFERENCES_WORLDPREFERENCES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4074,
-  serialized_end=4220,
+  serialized_start=4073,
+  serialized_end=4219,
 )
 
 _CGSCREENPREFERENCES_CARDPREFERENCES = _descriptor.Descriptor(
@@ -1462,8 +1462,8 @@ _CGSCREENPREFERENCES_CARDPREFERENCES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4222,
-  serialized_end=4312,
+  serialized_start=4221,
+  serialized_end=4311,
 )
 
 _CGSCREENPREFERENCES = _descriptor.Descriptor(
@@ -1503,12 +1503,12 @@ _CGSCREENPREFERENCES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3615,
-  serialized_end=4312,
+  serialized_start=3614,
+  serialized_end=4311,
 )
 
-_CGSCREENMODEL.fields_by_name['layers'].message_type = _CGLAYER
 _CGSCREENMODEL.fields_by_name['screenPrefs'].message_type = _CGSCREENPREFERENCES
+_CGSCREENMODEL.fields_by_name['layers'].message_type = _CGLAYER
 _CGJOINT.fields_by_name['type'].enum_type = _CGJOINTTYPE
 _CGJOINT.fields_by_name['distanceJointDef'].message_type = _CGDISTANCEJOINTDEF
 _CGJOINT.fields_by_name['revoluteJointDef'].message_type = _CGREVOLUTEJOINTDEF
