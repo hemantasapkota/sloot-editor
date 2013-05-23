@@ -10,12 +10,20 @@
  */
 package com.laex.cg2d.entityeditor.pages;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.draw2d.ImageUtilities;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
 
+import com.laex.cg2d.shared.ResourceManager;
 import com.laex.cg2d.shared.SharedImages;
 import com.laex.cg2d.shared.model.EntityAnimation;
 import com.laex.cg2d.shared.model.EntityCollisionType;
@@ -32,7 +40,7 @@ public class AnimationFormPageController {
 
   /**
    * Provide new name.
-   *
+   * 
    * @return the string
    */
   private String provideNewName() {
@@ -41,8 +49,9 @@ public class AnimationFormPageController {
 
   /**
    * Adds the animation.
-   *
-   * @param ea the ea
+   * 
+   * @param ea
+   *          the ea
    * @return the animation list view item
    */
   public AnimationListViewItem addAnimation(EntityAnimation ea) {
@@ -53,13 +62,13 @@ public class AnimationFormPageController {
     alvi.setAnimation(ea);
 
     animations.add(alvi);
-    
+
     return alvi;
   }
 
   /**
    * Creates the empty animation.
-   *
+   * 
    * @return the animation list view item
    */
   public AnimationListViewItem createEmptyAnimation() {
@@ -75,8 +84,11 @@ public class AnimationFormPageController {
     // empty
     // vertices
 
-    alvi.getAnimation().setShapeType(EntityCollisionType.NONE); // NONE indicates no collision parameters
-    
+    alvi.getAnimation().setShapeType(EntityCollisionType.NONE); // NONE
+                                                                // indicates no
+                                                                // collision
+                                                                // parameters
+
     if (animations.size() == 0) {
       alvi.getAnimation().setDefaultAnimation(true);
     }
@@ -88,8 +100,9 @@ public class AnimationFormPageController {
 
   /**
    * Removes the animation.
-   *
-   * @param alvi the alvi
+   * 
+   * @param alvi
+   *          the alvi
    * @return the int
    */
   public int removeAnimation(AnimationListViewItem alvi) {
@@ -101,9 +114,11 @@ public class AnimationFormPageController {
 
   /**
    * Preview animation external.
-   *
-   * @param entAnim the ent anim
-   * @param duration the duration
+   * 
+   * @param entAnim
+   *          the ent anim
+   * @param duration
+   *          the duration
    */
   public void previewAnimationExternal(EntityAnimation entAnim, float duration) {
     String animStrip = entAnim.getAnimationResourceFile().getResourceFileAbsolute();
@@ -115,29 +130,33 @@ public class AnimationFormPageController {
     int cols = entAnim.getCols();
 
     // Use JOGL Application
-//    JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
-//    jac.width = 200;
-//    jac.height = 200;
-//    jac.title = entAnim.getAnimationName();
-//
-//    ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip, rows, cols, duration);
-//    new JoglApplication(eap, jac);
-    
-//    LwjglApplicationConfiguration lac = new LwjglApplicationConfiguration();
-//    lac.width = 200;
-//    lac.height = 200;
-//    lac.title = entAnim.getAnimationName();
-//    
-//    
-//    ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip, rows, cols, duration);
-//    new LwjglApplication(eap, lac);
+    // JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
+    // jac.width = 200;
+    // jac.height = 200;
+    // jac.title = entAnim.getAnimationName();
+    //
+    // ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip,
+    // rows, cols, duration);
+    // new JoglApplication(eap, jac);
+
+    // LwjglApplicationConfiguration lac = new LwjglApplicationConfiguration();
+    // lac.width = 200;
+    // lac.height = 200;
+    // lac.title = entAnim.getAnimationName();
+    //
+    //
+    // ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip,
+    // rows, cols, duration);
+    // new LwjglApplication(eap, lac);
   }
 
   /**
    * Animation duration changed.
-   *
-   * @param anim the anim
-   * @param duration the duration
+   * 
+   * @param anim
+   *          the anim
+   * @param duration
+   *          the duration
    */
   public void animationDurationChanged(EntityAnimation anim, float duration) {
     anim.setAnimationDelay(duration);
@@ -145,10 +164,13 @@ public class AnimationFormPageController {
 
   /**
    * Animation name change.
-   *
-   * @param alvi the alvi
-   * @param newName the new name
-   * @param animDuration the anim duration
+   * 
+   * @param alvi
+   *          the alvi
+   * @param newName
+   *          the new name
+   * @param animDuration
+   *          the anim duration
    */
   public void animationNameChange(AnimationListViewItem alvi, String newName, String animDuration) {
 
@@ -161,11 +183,28 @@ public class AnimationFormPageController {
 
   }
 
+  public void exportFrames(AnimationListViewItem alvi, IPath destination, IProgressMonitor monitor) {
+      int work = alvi.getFrames().size();
+      int done = 0;
+      monitor.beginTask("Export Frames", work);
+      for (Image i : alvi.getFrames()) {
+           ImageLoader loader = new ImageLoader();
+           loader.data = new ImageData[] { i.getImageData() };
+           int imgIndex = done + 1;
+           String filename = destination.append("img" + imgIndex).addFileExtension("png").toOSString();
+           loader.save(filename, SWT.IMAGE_PNG);
+           monitor.worked(done++);
+      }
+      monitor.done();
+  }
+
   /**
    * Animation default changed.
-   *
-   * @param alvi the alvi
-   * @param isDefaultAnimation the is default animation
+   * 
+   * @param alvi
+   *          the alvi
+   * @param isDefaultAnimation
+   *          the is default animation
    */
   public void defaultAnimationChanged(AnimationListViewItem alvi, boolean isDefaultAnimation) {
     alvi.getAnimation().setDefaultAnimation(isDefaultAnimation);
@@ -181,7 +220,7 @@ public class AnimationFormPageController {
 
   /**
    * Gets the animations.
-   *
+   * 
    * @return the animations
    */
   public List<AnimationListViewItem> getAnimations() {
@@ -190,7 +229,7 @@ public class AnimationFormPageController {
 
   /**
    * Animations count.
-   *
+   * 
    * @return the int
    */
   public int animationsCount() {
@@ -199,8 +238,9 @@ public class AnimationFormPageController {
 
   /**
    * Index of.
-   *
-   * @param alvi the alvi
+   * 
+   * @param alvi
+   *          the alvi
    * @return the int
    */
   public int indexOf(AnimationListViewItem alvi) {
