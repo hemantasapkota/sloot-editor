@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Queue;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -32,6 +37,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Table;
@@ -106,6 +113,8 @@ public class AnimationFormPage extends FormPage {
   /** The preview external. */
   private ImageHyperlink previewExternal;
 
+  private ImageHyperlink exportFrames;
+
   /** The txt animation duration. */
   private Text txtAnimationDuration;
 
@@ -151,17 +160,19 @@ public class AnimationFormPage extends FormPage {
     for (EntityAnimation ea : model.getAnimationList()) {
       if (ea == null)
         continue;
-      
+
       AnimationListViewItem alvi = animController.addAnimation(ea);
 
       if (!ea.getAnimationResourceFile().isEmpty()) {
         Image frameImage = ResourceManager.getImageOfRelativePath(ea.getAnimationResourceFile().getResourceFile());
+        // TODO: Fix this, method is using rows and cols values as parameters,
+        // which it takes out from alvi itself.
         createAnimationFromStrip(frameImage, alvi);
         previewExternal.setEnabled(true);
       } else {
         previewExternal.setEnabled(false);
       }
-      
+
       updateUIOnNewAnimationAdd(alvi, animController.indexOf(alvi));
     }
 
@@ -354,6 +365,34 @@ public class AnimationFormPage extends FormPage {
       }
     });
 
+    exportFrames = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
+    managedForm.getToolkit().paintBordersFor(previewExternal);
+    exportFrames.setBackground(null);
+    exportFrames.setImage(SharedImages.PNG_EXPORT.createImage());
+    exportFrames.addHyperlinkListener(new HyperlinkAdapter() {
+      @Override
+      public void linkActivated(HyperlinkEvent e) {
+        DirectoryDialog dd = new DirectoryDialog(getSite().getShell());
+        final String dirc = dd.open();
+        if (dirc == null) {
+          return;
+        }
+        
+        final AnimationListViewItem alvi = selectedAnimationListItem();
+
+        Job job = new Job("Export frames") {
+          @Override
+          protected IStatus run(IProgressMonitor monitor) {
+            animController.exportFrames(alvi, new Path(dirc), monitor);
+            return Status.OK_STATUS;
+          }
+        };
+        job.setSystem(false);
+        job.schedule();
+
+      }
+    });
+
     Section sctnAnimations = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TITLE_BAR);
     FormData fd_sctnAnimations = new FormData();
     fd_sctnAnimations.right = new FormAttachment(0, 170);
@@ -506,9 +545,11 @@ public class AnimationFormPage extends FormPage {
 
   /**
    * Adds the new animation.
-   *
-   * @param alvi the alvi
-   * @param index the index
+   * 
+   * @param alvi
+   *          the alvi
+   * @param index
+   *          the index
    */
   private void updateUIOnNewAnimationAdd(AnimationListViewItem alvi, int index) {
     resetFramesComposite();
@@ -537,7 +578,8 @@ public class AnimationFormPage extends FormPage {
   private void createAnimationFromStrip(Image selectedImage, AnimationListViewItem alvi) {
     resetFramesComposite();
 
-    Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage);
+    Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage, alvi.getAnimation().getCols(), alvi
+        .getAnimation().getRows());
     for (Image i : strip) {
       addGroupFrameToFramesComposite(i);
     }
