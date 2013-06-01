@@ -33,13 +33,13 @@ import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PropertyPage;
 
-import com.laex.cg2d.shared.prefs.PreferenceConstants;
-import com.laex.cg2d.shared.prefs.PreferenceInitializer;
-import com.laex.cg2d.shared.util.BooleanUtil;
-import com.laex.cg2d.shared.util.FloatUtil;
-import com.laex.cg2d.shared.util.IntegerUtil;
-import com.laex.cg2d.shared.util.PlatformUtil;
-import com.laex.cg2d.shared.util.ScreenPropertiesUtil;
+import com.laex.cg2d.model.adapter.PreferenceConstants;
+import com.laex.cg2d.model.adapter.ScreenPropertiesUtil;
+import com.laex.cg2d.model.util.BooleanUtil;
+import com.laex.cg2d.model.util.FloatUtil;
+import com.laex.cg2d.model.util.IntegerUtil;
+import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
 
 /**
  * The Class ScreenPropertyPage.

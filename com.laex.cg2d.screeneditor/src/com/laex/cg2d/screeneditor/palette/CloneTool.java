@@ -20,9 +20,9 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.widgets.Control;
 
-import com.laex.cg2d.shared.adapter.RectAdapter;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.model.ShapesDiagram;
+import com.laex.cg2d.model.adapter.RectAdapter;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.model.ShapesDiagram;
 
 /***
  * Class has to be public.

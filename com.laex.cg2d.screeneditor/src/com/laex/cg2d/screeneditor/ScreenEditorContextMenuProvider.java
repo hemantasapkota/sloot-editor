@@ -21,6 +21,8 @@ import org.eclipse.ui.actions.ActionFactory;
 
 import com.laex.cg2d.screeneditor.actions.ChangeShapeIDAction;
 import com.laex.cg2d.screeneditor.actions.ImportScreenContentsAction;
+import com.laex.cg2d.screeneditor.actions.ShapeCopyAction;
+import com.laex.cg2d.screeneditor.actions.ShapePasteAction;
 
 /**
  * The Class ScreenEditorContextMenuProvider.
@@ -61,15 +63,16 @@ class ScreenEditorContextMenuProvider extends ContextMenuProvider {
     // Add standard action groups to the menu
     GEFActionConstants.addStandardActionGroups(menu);
 
-//     menu.appendToGroup(GEFActionConstants.GROUP_COPY, new CopyRetargetAction());
-    // menu.appendToGroup(GEFActionConstants.GROUP_COPY,
-    // getAction(ActionFactory.PASTE.getId()));
-
     menu.add(new ImportScreenContentsAction(editPartViewer));
     menu.add(new ChangeShapeIDAction(editPartViewer));
+    
+    actionRegistry.registerAction(new ShapeCopyAction(editPartViewer));
+    actionRegistry.registerAction(new ShapePasteAction(editPartViewer));
 
-    // Add actions to the menu
-    menu.appendToGroup(GEFActionConstants.GROUP_UNDO, getAction(ActionFactory.UNDO.getId())); // action to add
+    menu.appendToGroup(GEFActionConstants.GROUP_COPY, getAction(ActionFactory.COPY.getId()));
+    menu.appendToGroup(GEFActionConstants.GROUP_COPY, getAction(ActionFactory.PASTE.getId()));
+
+    menu.appendToGroup(GEFActionConstants.GROUP_UNDO, getAction(ActionFactory.UNDO.getId()));
     menu.appendToGroup(GEFActionConstants.GROUP_UNDO, getAction(ActionFactory.REDO.getId()));
     menu.appendToGroup(GEFActionConstants.GROUP_EDIT, getAction(ActionFactory.DELETE.getId()));
   }

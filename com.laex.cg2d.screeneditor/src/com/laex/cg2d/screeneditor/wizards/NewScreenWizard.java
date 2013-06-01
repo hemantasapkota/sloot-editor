@@ -31,16 +31,16 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.part.FileEditorInput;
 
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.ICGCProject;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
+import com.laex.cg2d.model.adapter.ScreenPropertiesUtil;
+import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.ScreenEditor;
-import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.ICGCProject;
-import com.laex.cg2d.shared.adapter.CGScreenModelAdapter;
-import com.laex.cg2d.shared.model.GameModel;
-import com.laex.cg2d.shared.model.Layer;
-import com.laex.cg2d.shared.prefs.PreferenceInitializer;
-import com.laex.cg2d.shared.util.PlatformUtil;
-import com.laex.cg2d.shared.util.ScreenPropertiesUtil;
+import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
 
 /**
  * The Class NewScreenWizard.

@@ -17,7 +17,7 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 import com.laex.cg2d.render.EntityQueryable;
 

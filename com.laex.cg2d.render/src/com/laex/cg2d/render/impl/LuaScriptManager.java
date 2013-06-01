@@ -19,8 +19,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
-import com.laex.cg2d.protobuf.ScreenModel.CGShape;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 import com.laex.cg2d.render.BodyVisitor;
 import com.laex.cg2d.render.EntityQueryable;
@@ -151,8 +151,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
     super.acceptBodyVisitor(new BodyVisitor() {
 
       @Override
-      public void visit(final Body b, final CGShape shape) {
-
+      public void visit(Body b, CGShape shape) {
         executeUpdate(b, shape.getId());
         
       }

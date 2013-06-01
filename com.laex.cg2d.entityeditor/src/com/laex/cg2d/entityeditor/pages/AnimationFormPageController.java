@@ -23,11 +23,11 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 
-import com.laex.cg2d.shared.ResourceManager;
-import com.laex.cg2d.shared.SharedImages;
-import com.laex.cg2d.shared.model.EntityAnimation;
-import com.laex.cg2d.shared.model.EntityCollisionType;
-import com.laex.cg2d.shared.util.FloatUtil;
+import com.laex.cg2d.model.ResourceManager;
+import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.model.EntityAnimation;
+import com.laex.cg2d.model.model.EntityCollisionType;
+import com.laex.cg2d.model.util.FloatUtil;
 
 // Seperates logic from UI code of AnimationFormPage
 /**

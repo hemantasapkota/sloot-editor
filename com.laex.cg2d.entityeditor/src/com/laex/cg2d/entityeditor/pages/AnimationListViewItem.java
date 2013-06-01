@@ -14,7 +14,7 @@ import java.util.Queue;
 
 import org.eclipse.swt.graphics.Image;
 
-import com.laex.cg2d.shared.model.EntityAnimation;
+import com.laex.cg2d.model.model.EntityAnimation;
 
 /**
  * The Class AnimationListViewItem.

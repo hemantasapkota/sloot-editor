@@ -14,10 +14,10 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.ScreenModel.CGEditorShapeType;
-import com.laex.cg2d.protobuf.ScreenModel.CGLayer;
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
-import com.laex.cg2d.protobuf.ScreenModel.CGShape;
+import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
+import com.laex.cg2d.model.ScreenModel.CGLayer;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 
 /**

@@ -12,7 +12,7 @@ package com.laex.cg2d.screeneditor.palette;
 
 import org.eclipse.gef.palette.SelectionToolEntry;
 
-import com.laex.cg2d.shared.SharedImages;
+import com.laex.cg2d.model.SharedImages;
 
 /***
  * Class has to be public.

@@ -6,8 +6,8 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.jface.action.Action;
 
+import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.screeneditor.commands.ShapeChangeIDCommand;
-import com.laex.cg2d.shared.model.Shape;
 
 public class ChangeShapeIDAction extends Action {
   

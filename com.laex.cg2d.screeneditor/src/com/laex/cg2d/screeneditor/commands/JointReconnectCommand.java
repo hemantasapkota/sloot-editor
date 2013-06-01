@@ -14,8 +14,8 @@ import java.util.Iterator;
 
 import org.eclipse.gef.commands.Command;
 
-import com.laex.cg2d.shared.model.Joint;
-import com.laex.cg2d.shared.model.Shape;
+import com.laex.cg2d.model.model.Joint;
+import com.laex.cg2d.model.model.Shape;
 
 /**
  * The Class JointReconnectCommand.

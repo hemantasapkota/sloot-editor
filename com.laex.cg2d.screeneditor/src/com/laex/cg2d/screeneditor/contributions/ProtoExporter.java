@@ -21,8 +21,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 
-import com.laex.cg2d.shared.model.GameModel;
-import com.laex.cg2d.shared.util.PlatformUtil;
+import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.util.PlatformUtil;
 
 /**
  * The Class ProtoExporter.

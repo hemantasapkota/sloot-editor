@@ -12,15 +12,12 @@ package com.laex.cg2d.screeneditor.commands;
 
 import java.util.List;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.gef.commands.Command;
 
-import com.laex.cg2d.screeneditor.Activator;
-import com.laex.cg2d.shared.model.Joint;
-import com.laex.cg2d.shared.model.Layer;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.model.ShapesDiagram;
+import com.laex.cg2d.model.model.Joint;
+import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.model.ShapesDiagram;
 
 /**
  * The Class ShapeDeleteCommand.

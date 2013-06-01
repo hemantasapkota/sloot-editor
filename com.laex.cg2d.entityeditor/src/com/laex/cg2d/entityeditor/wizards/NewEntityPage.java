@@ -27,10 +27,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
-import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.ICGCProject;
-import com.laex.cg2d.shared.SWTResourceManager;
-import com.laex.cg2d.shared.util.PlatformUtil;
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.ICGCProject;
+import com.laex.cg2d.model.SWTResourceManager;
+import com.laex.cg2d.model.util.PlatformUtil;
 
 /**
  * The Class NewEntityPage.

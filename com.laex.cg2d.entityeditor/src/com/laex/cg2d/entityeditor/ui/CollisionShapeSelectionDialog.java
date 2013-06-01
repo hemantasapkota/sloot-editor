@@ -33,9 +33,9 @@ import org.eclipse.ui.forms.widgets.ImageHyperlink;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.laex.cg2d.entityeditor.Activator;
-import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.SharedImages;
-import com.laex.cg2d.shared.model.EntityCollisionType;
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.model.EntityCollisionType;
 
 /**
  * The Class CollisionShapeSelectionDialog.

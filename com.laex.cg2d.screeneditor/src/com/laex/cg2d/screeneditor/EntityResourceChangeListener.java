@@ -18,7 +18,7 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 
-import com.laex.cg2d.shared.ICGCProject;
+import com.laex.cg2d.model.ICGCProject;
 
 /**
  * The listener interface for receiving entityResourceChange events. The class
@@ -117,13 +117,11 @@ public class EntityResourceChangeListener implements IResourceChangeListener {
           break;
 
         case IResourceDelta.MOVED_FROM:
-          System.err.println("shit moved from");
           break;
 
         // TODO: Add logic for the case when entity files are copied from
         // different projects
         case IResourceDelta.COPIED_FROM:
-          System.err.println("shit copied from");
           break;
 
         case IResourceDelta.CHANGED:

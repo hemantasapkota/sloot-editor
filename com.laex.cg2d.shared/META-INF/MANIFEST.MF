@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Shared
-Bundle-SymbolicName: com.laex.cg2d.shared;singleton:=true
+Bundle-SymbolicName: com.laex.cg2d.model;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: com.laex.cg2d.shared.activator.Activator
+Bundle-Activator: com.laex.cg2d.model.activator.Activator
 Bundle-Vendor: Hemanta Sapkota
 Require-Bundle: org.eclipse.ui.ide;bundle-version="3.6.1",
  org.apache.commons.lang;bundle-version="2.4.0",
@@ -11,21 +11,24 @@ Require-Bundle: org.eclipse.ui.ide;bundle-version="3.6.1",
  org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.draw2d;bundle-version="3.8.0",
  org.eclipse.ui;bundle-version="3.103.0",
- com.laex.cg2d.protobuf;bundle-version="1.0.0",
  libgdx-0.9.8
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: protobuf-java-2.4.1.jar,.
+Bundle-ClassPath: .,
+ protobuf-java-2.5.0rc1.jar,
+ protobuf-java-format-1.2.jar
 Export-Package: 
- com.laex.cg2d.shared,
- com.laex.cg2d.shared.adapter,
- com.laex.cg2d.shared.dnd,
- com.laex.cg2d.shared.figures,
- com.laex.cg2d.shared.model,
- com.laex.cg2d.shared.model.joints,
- com.laex.cg2d.shared.prefs,
- com.laex.cg2d.shared.properties.descs,
- com.laex.cg2d.shared.util,
+ com.google.protobuf,
+ com.googlecode.protobuf.format,
+ com.googlecode.protobuf.format.util,
+ com.laex.cg2d.model,
+ com.laex.cg2d.model.activator,
+ com.laex.cg2d.model.adapter,
+ com.laex.cg2d.model.model,
+ com.laex.cg2d.model.model.descs,
+ com.laex.cg2d.model.model.joints,
+ com.laex.cg2d.model.model.validator,
+ com.laex.cg2d.model.util,
  org.eclipse.wb.swt
 Import-Package: com.badlogic.gdx.math,
  com.badlogic.gdx.physics.box2d

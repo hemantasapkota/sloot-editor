@@ -2,7 +2,7 @@ package com.laex.cg2d.screeneditor.commands;
 
 import org.eclipse.gef.commands.Command;
 
-import com.laex.cg2d.shared.model.Shape;
+import com.laex.cg2d.model.model.Shape;
 
 public class ShapeChangeIDCommand extends Command {
   

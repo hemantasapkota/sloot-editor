@@ -35,9 +35,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.part.FileEditorInput;
 
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.screeneditor.Activator;
-import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.ICGCProject;
 
 /**
  * The Class NewScriptWizard.

@@ -26,7 +26,7 @@ import org.apache.commons.cli.ParseException;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 
 /**
  * The Class MyGdxGameDesktop.

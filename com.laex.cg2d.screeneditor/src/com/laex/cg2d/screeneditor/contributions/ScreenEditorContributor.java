@@ -14,14 +14,15 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.ui.actions.ActionBarContributor;
 import org.eclipse.gef.ui.actions.ZoomComboContributionItem;
@@ -34,11 +35,11 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchActionConstants;
 
+import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.adapter.ScreenPropertiesUtil;
 import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditor;
-import com.laex.cg2d.shared.SharedImages;
-import com.laex.cg2d.shared.prefs.InternalPrefs;
-import com.laex.cg2d.shared.util.ScreenPropertiesUtil;
+import com.laex.cg2d.screeneditor.prefs.InternalPrefs;
 
 /**
  * The Class ScreenEditorContributor.
@@ -87,6 +88,10 @@ public class ScreenEditorContributor extends ActionBarContributor {
         final Job job = new Job("Render Game") {
           @Override
           protected IStatus run(IProgressMonitor monitor) {
+            
+            if (monitor.isCanceled()) {
+              return Status.CANCEL_STATUS;
+            }
 
             try {
               renderAction.setEnabled(false);

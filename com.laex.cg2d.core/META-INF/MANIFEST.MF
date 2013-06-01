@@ -4,13 +4,12 @@ Bundle-Name: Laexian Box2D Editor Core
 Bundle-SymbolicName: com.laex.cg2d.core;singleton:=true
 Bundle-Version: 2.0.0
 Require-Bundle: org.apache.commons.lang;bundle-version="2.3.0",
- com.laex.cg2d.shared;bundle-version="1.0.0",
+ com.laex.cg2d.model;bundle-version="1.0.0",
  com.laex.cg2d.entityeditor;bundle-version="1.0.0",
  com.laex.cg2d.screeneditor;bundle-version="1.0.0",
  org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.ui;bundle-version="3.103.0",
- org.eclipse.core.resources,
- com.laex.cg2d.protobuf;bundle-version="1.0.0"
+ org.eclipse.core.resources
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
 Bundle-Vendor: Hemanta Sapkota

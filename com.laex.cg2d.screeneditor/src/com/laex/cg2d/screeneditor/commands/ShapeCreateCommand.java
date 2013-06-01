@@ -10,14 +10,10 @@
  */
 package com.laex.cg2d.screeneditor.commands;
 
-import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 
-import com.laex.cg2d.shared.ResourceManager;
-import com.laex.cg2d.shared.adapter.RectAdapter;
-import com.laex.cg2d.shared.model.Layer;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.model.ShapesDiagram;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.model.ShapesDiagram;
 
 /**
  * ShapeCreateCommand should only make changes relating to shape's bounds and
@@ -29,17 +25,12 @@ import com.laex.cg2d.shared.model.ShapesDiagram;
  */
 public class ShapeCreateCommand extends Command {
 
-  /** The layer. */
-  private Layer layer;
-
   /** The new shape. */
   private Shape newShape;
 
   /** The parent. */
   private final ShapesDiagram parent;
 
-  /** The bounds. */
-  private Rectangle bounds;
 
   /**
    * Instantiates a new shape create command.
@@ -53,12 +44,10 @@ public class ShapeCreateCommand extends Command {
    * @param bounds
    *          the bounds
    */
-  public ShapeCreateCommand(Shape newShape, Layer layer, ShapesDiagram parent, Rectangle bounds) {
-    this.layer = layer;
+  public ShapeCreateCommand(Shape newShape, ShapesDiagram parent) {
     this.newShape = newShape;
     this.parent = parent;
-    this.bounds = bounds;
-    setLabel("shape creation");
+    setLabel("Create Shape");
   }
 
   /*
@@ -67,7 +56,7 @@ public class ShapeCreateCommand extends Command {
    * @see org.eclipse.gef.commands.Command#canExecute()
    */
   public boolean canExecute() {
-    return layer != null && newShape != null && parent != null && bounds != null;
+    return newShape != null && newShape.getParentLayer() != null && parent != null;
   }
 
   /*
@@ -85,42 +74,10 @@ public class ShapeCreateCommand extends Command {
    * @see org.eclipse.gef.commands.Command#redo()
    */
   public void redo() {
-    switch (newShape.getEditorShapeType()) {
-
-    case BACKGROUND_SHAPE:
-      org.eclipse.swt.graphics.Rectangle b = ResourceManager.getImageOfRelativePath(
-          newShape.getBackgroundResourceFile().getResourceFile()).getBounds();
-      bounds.width = b.width;
-      bounds.height = b.height;
-      break;
-
-    case ENTITY_SHAPE:
-      bounds.width = newShape.getEntity().getDefaultFrame().getBounds().width;
-      bounds.height = newShape.getEntity().getDefaultFrame().getBounds().height;
-      break;
-
-    case SIMPLE_SHAPE_BOX:
-      break;
-
-    case SIMPLE_SHAPE_CIRCLE:
-      break;
-
-    case SIMPLE_SHAPE_HEDGE:
-      break;
-
-    default:
-      break;
+    if (newShape.getParentLayer() != null) {
+      newShape.getParentLayer().add(newShape);
     }
-
-    if (bounds.width <= 0 && bounds.height <= 0) {
-      bounds.width = 16;
-      bounds.height = 16;
-    }
-
-    newShape.setBounds(RectAdapter.gdxRect(bounds));
     parent.addChild(newShape);
-    layer.add(newShape);
-    newShape.setParentLayer(layer);
   }
 
   /*
@@ -129,8 +86,10 @@ public class ShapeCreateCommand extends Command {
    * @see org.eclipse.gef.commands.Command#undo()
    */
   public void undo() {
+    if (newShape.getParentLayer() != null) {
+      newShape.getParentLayer().remove(newShape);
+    }
     parent.removeChild(newShape);
-    layer.remove(newShape);
   }
 
 }

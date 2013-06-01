@@ -43,21 +43,20 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 import com.badlogic.gdx.math.Rectangle;
-import com.laex.cg2d.protobuf.ScreenModel.CGBodyDef;
-import com.laex.cg2d.protobuf.ScreenModel.CGFixtureDef;
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
-import com.laex.cg2d.protobuf.ScreenModel.CGShape;
+import com.laex.cg2d.model.ILayerManager;
+import com.laex.cg2d.model.ScreenModel.CGBodyDef;
+import com.laex.cg2d.model.ScreenModel.CGFixtureDef;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGShape;
+import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
+import com.laex.cg2d.model.adapter.ScreenModelAdapter;
+import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.util.EntitiesUtil;
+import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
-import com.laex.cg2d.shared.ILayerManager;
-import com.laex.cg2d.shared.adapter.CGScreenModelAdapter;
-import com.laex.cg2d.shared.adapter.RectAdapter;
-import com.laex.cg2d.shared.adapter.ScreenModelAdapter;
-import com.laex.cg2d.shared.model.GameModel;
-import com.laex.cg2d.shared.model.Layer;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.util.EntitiesUtil;
-import com.laex.cg2d.shared.util.PlatformUtil;
 
 /**
  * The Class ListExistingScreensDialog.
@@ -350,9 +349,10 @@ public class ListExistingScreensDialog extends Dialog {
 
               Rectangle r = shape.getBounds();
               r.x = i * model.getScreenPrefs().getCardPrefs().getCardWidth() - 1;
+              
+              newShapeClone.setBounds(r);
 
-              ShapeCreateCommand scc = new ShapeCreateCommand(newShapeClone, layer, screenModel.getDiagram(),
-                  RectAdapter.d2dRect(r));
+              ShapeCreateCommand scc = new ShapeCreateCommand(newShapeClone, screenModel.getDiagram());
               cc.add(scc);
             }
             

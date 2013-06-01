@@ -24,10 +24,10 @@ import org.eclipse.ui.part.FileEditorInput;
 
 import com.laex.cg2d.entityeditor.pages.AnimationFormPage;
 import com.laex.cg2d.entityeditor.pages.CollisionFormPage;
-import com.laex.cg2d.protobuf.ScreenModel.CGEntity;
-import com.laex.cg2d.shared.adapter.EntityAdapter;
-import com.laex.cg2d.shared.model.Entity;
-import com.laex.cg2d.shared.util.PlatformUtil;
+import com.laex.cg2d.model.ScreenModel.CGEntity;
+import com.laex.cg2d.model.adapter.EntityAdapter;
+import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.util.PlatformUtil;
 
 /**
  * The Class EntityFormEditor.

@@ -10,10 +10,10 @@
  */
 package com.laex.cg2d.screeneditor.commands;
 
-import com.laex.cg2d.shared.model.EditorShapeType;
-import com.laex.cg2d.shared.model.GameModel;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.util.PlatformUtil;
+import com.laex.cg2d.model.model.EditorShapeType;
+import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.util.PlatformUtil;
 
 /**
  * The Class IDCreationStrategy.
@@ -45,6 +45,35 @@ public class IDCreationStrategy {
     return ics;
   }
 
+  public String newId(EditorShapeType type) {
+    
+    switch (type) {
+    
+    case BACKGROUND_SHAPE:
+      return newBackgroundId(type);
+
+    case ENTITY_SHAPE:
+      return newEntityId(type);
+
+    case SIMPLE_SHAPE_BOX:
+      return newBoxId(type);
+
+    case SIMPLE_SHAPE_CIRCLE:
+      return newCirlceId(type);
+
+    case SIMPLE_SHAPE_HEDGE:
+      return newEdgeId(type);
+
+    case SIMPLE_SHAPE_VEDGE:
+      return newEdgeId(type);
+
+    default:
+
+    }
+
+    return "otherId";
+  }
+
   /**
    * New box id.
    * 
@@ -52,7 +81,7 @@ public class IDCreationStrategy {
    *          the type
    * @return the string
    */
-  public String newBoxId(EditorShapeType type) {
+  private String newBoxId(EditorShapeType type) {
     return String.format(BOX_FORMAT, getAvailableId(type));
   }
 
@@ -63,7 +92,7 @@ public class IDCreationStrategy {
    *          the type
    * @return the string
    */
-  public String newCirlceId(EditorShapeType type) {
+  private String newCirlceId(EditorShapeType type) {
     return String.format(CIRCLE_FORMAT, getAvailableId(type));
   }
 
@@ -74,7 +103,7 @@ public class IDCreationStrategy {
    *          the type
    * @return the string
    */
-  public String newEntityId(EditorShapeType type) {
+  private String newEntityId(EditorShapeType type) {
     return String.format(ENTITY_FORMAT, getAvailableId(type));
   }
 
@@ -85,7 +114,7 @@ public class IDCreationStrategy {
    *          the type
    * @return the string
    */
-  public String newEdgeId(EditorShapeType type) {
+  private String newEdgeId(EditorShapeType type) {
     return String.format(EDGE_FORMAT, getAvailableId(type));
   }
 
@@ -96,7 +125,7 @@ public class IDCreationStrategy {
    *          the type
    * @return the string
    */
-  public String newBackgroundId(EditorShapeType type) {
+  private String newBackgroundId(EditorShapeType type) {
     return String.format(BACKGROUND_FORMAT, getAvailableId(type));
   }
 

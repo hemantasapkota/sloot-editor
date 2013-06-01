@@ -27,7 +27,10 @@ import org.eclipse.draw2d.ScalableFreeformLayeredPane;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.ContextMenuProvider;
 import org.eclipse.gef.DefaultEditDomain;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gef.KeyHandler;
+import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gef.MouseWheelZoomHandler;
@@ -44,21 +47,40 @@ import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gef.ui.palette.PaletteViewerProvider;
+import org.eclipse.gef.ui.parts.ContentOutlinePage;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
 import org.eclipse.gef.ui.parts.GraphicalViewerKeyHandler;
+import org.eclipse.gef.ui.parts.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ILayerManager;
+import com.laex.cg2d.model.IScreenPropertyManager;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
+import com.laex.cg2d.model.adapter.ScreenModelAdapter;
+import com.laex.cg2d.model.adapter.ScreenPropertiesUtil;
+import com.laex.cg2d.model.adapter.ShapeAdapter;
+import com.laex.cg2d.model.model.EditorShapeType;
+import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.model.validator.EntityValidator;
+import com.laex.cg2d.model.util.EntitiesUtil;
+import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.EntityResourceChangeListener.EntityChangeListener;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangeOrderCommand;
@@ -66,25 +88,12 @@ import com.laex.cg2d.screeneditor.commands.LayerChangePropertiesCommand;
 import com.laex.cg2d.screeneditor.commands.LayerRemoveCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeDeleteCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeDeleteCommand.DeleteCommandType;
-import com.laex.cg2d.screeneditor.edit.CardEditPart;
-import com.laex.cg2d.screeneditor.edit.ShapesEditPartFactory;
-import com.laex.cg2d.screeneditor.factory.ShapeCreationFactory;
-import com.laex.cg2d.screeneditor.factory.ShapeCreationInfo;
+import com.laex.cg2d.screeneditor.editparts.CardEditPart;
+import com.laex.cg2d.screeneditor.editparts.ShapesEditPartFactory;
+import com.laex.cg2d.screeneditor.editparts.tree.TreeEditPartFactory;
 import com.laex.cg2d.screeneditor.palette.ScreenEditorPaletteFactory;
-import com.laex.cg2d.shared.ILayerManager;
-import com.laex.cg2d.shared.IScreenPropertyManager;
-import com.laex.cg2d.shared.adapter.CGScreenModelAdapter;
-import com.laex.cg2d.shared.adapter.ScreenModelAdapter;
-import com.laex.cg2d.shared.adapter.ShapeAdapter;
-import com.laex.cg2d.shared.dnd.DNDFileTransfer;
-import com.laex.cg2d.shared.model.EditorShapeType;
-import com.laex.cg2d.shared.model.Entity;
-import com.laex.cg2d.shared.model.GameModel;
-import com.laex.cg2d.shared.model.Layer;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.util.EntitiesUtil;
-import com.laex.cg2d.shared.util.PlatformUtil;
-import com.laex.cg2d.shared.util.ScreenPropertiesUtil;
+import com.laex.cg2d.screeneditor.palette.ShapeCreationFactory;
+import com.laex.cg2d.screeneditor.palette.ShapeCreationInfo;
 
 /**
  * The Class ScreenEditor.
@@ -115,6 +124,37 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   /** The card height. */
   int x, y, cardWidthh, cardHeight;
 
+  class OutlineView extends ContentOutlinePage {
+
+    public OutlineView(EditPartViewer viewer) {
+      super(viewer);
+    }
+
+    @Override
+    public void createControl(Composite parent) {
+      getViewer().createControl(parent);
+      getViewer().setEditDomain(getEditDomain());
+      getViewer().setEditPartFactory(new TreeEditPartFactory());
+      getSelectionSynchronizer().addViewer(getViewer());
+      getViewer().setContents(getModel());
+      ScreenEditorContextMenuProvider scm = new ScreenEditorContextMenuProvider(getViewer(), getActionRegistry());
+      getViewer().setContextMenu(scm);
+      getSite().registerContextMenu("com.laex.cg2d.screeneditor.outline.contextmenu", scm,
+          getSite().getSelectionProvider());
+    }
+
+    @Override
+    public void dispose() {
+      getSelectionSynchronizer().removeViewer(getViewer());
+    }
+
+    @Override
+    public Control getControl() {
+      return getViewer().getControl();
+    }
+
+  }
+
   /**
    * Instantiates a new screen editor.
    */
@@ -132,7 +172,13 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
     GraphicalViewer viewer = getGraphicalViewer();
     viewer.setEditPartFactory(new ShapesEditPartFactory());
-    viewer.setKeyHandler(new GraphicalViewerKeyHandler(viewer));
+
+    KeyHandler keyHandler = new KeyHandler();
+    keyHandler.setParent(new GraphicalViewerKeyHandler(viewer));
+
+    keyHandler.put(KeyStroke.getPressed(SWT.SPACE, 32, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
+
+    viewer.setKeyHandler(keyHandler);
 
     scalableRootEditPart = getScalableFreeFormRootEditPart();
     getGraphicalViewer().setRootEditPart(scalableRootEditPart);
@@ -156,7 +202,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     // configure the context menu provider
     ContextMenuProvider cmProvider = new ScreenEditorContextMenuProvider(viewer, getActionRegistry());
     viewer.setContextMenu(cmProvider);
-//    getSite().registerContextMenu(cmProvider, viewer);
+    // getSite().registerContextMenu(cmProvider, viewer);
   }
 
   /**
@@ -307,6 +353,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     }
 
     if (type == IContentOutlinePage.class) {
+      OutlineView ov = new OutlineView(new TreeViewer());
+      return ov;
     }
 
     return super.getAdapter(type);
@@ -447,7 +495,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
               ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
               // Check if the resource is valid entity or not. If not remove the
               // entity and log it
-              if (!EntitiesUtil.isValid(EntitiesUtil.createEntityModelFromFile((IFile) resource))) {
+            
+              Entity e = Entity.createFromFile((IFile) resource);
+              EntityValidator ev = new EntityValidator(e);
+              
+              if (!ev.isValid()) {
                 removeDeletedOrInvalidEntities(resource);
               }
             } catch (IOException e) {
@@ -520,8 +572,10 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
               Shape shape = model.getDiagram().getChildren().get(i);
               if (shape.getEditorShapeType().isEntity()) {
                 try {
-                  Entity e = EntitiesUtil.createEntityModelFromFile(shape.getEntityResourceFile().getResourceFile());
-                  if (!EntitiesUtil.isValid(e)) {
+                  Entity e = Entity.createFromFile(shape.getEntityResourceFile().getResourceFile());
+                  EntityValidator ev = new EntityValidator(e);
+                  
+                  if (!ev.isValid()) {
                     ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), shape,
                         DeleteCommandType.NON_UNDOABLE);
                     cc.add(sdc);

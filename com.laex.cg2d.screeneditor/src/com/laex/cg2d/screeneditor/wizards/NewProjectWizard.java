@@ -21,8 +21,8 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
-import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.ICGCProject;
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.ICGCProject;
 
 /**
  * The Class NewProjectWizard.

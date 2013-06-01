@@ -1,0 +1,227 @@
+package com.laex.cg2d.model;
+
+message CGScreenModel {
+	optional CGScreenPreferences screenPrefs = 1;
+	repeated CGLayer layers = 2;
+}
+
+enum CGJointType {
+
+	UNKNOWN = 1;
+	REVOLUTE = 2;
+	PRISMATIC = 3;
+	DISTANCE = 4;
+	PULLEY = 5;
+	MOUSE = 6;
+	GEAR = 7;
+	WHEEL = 8;
+	WELD = 9;
+	FRICTION = 10;
+	ROPE = 11;
+}
+
+message CGJoint {
+	optional string sourceShapeId = 1;
+	optional string targetShapeId = 2;
+	optional CGJointType type = 3;
+	optional CGDistanceJointDef distanceJointDef = 5;
+	optional CGRevoluteJointDef revoluteJointDef = 6;
+	optional CGPrismaticJointDef prismaticJointDef = 7;
+	optional CGPulleyJointDef pulleyJointDef = 8;
+	optional CGFrictionJointDef frictionJointDef = 9;
+	optional CGWeldJointDef weldJointDef = 10;
+}
+
+message CGDistanceJointDef {
+	optional bool collideConnected = 1;
+	optional float freqencyHz = 2;
+	optional float dampingRatio = 3;
+}
+
+message CGRevoluteJointDef {
+	optional bool collideConnected = 1;
+	optional float referenceAngle = 2;
+	optional bool enableLimit = 3;
+	optional float lowerAngle = 4;
+	optional float upperAngle = 5;
+	optional bool enableMotor = 6;
+	optional float motorSpeed = 7;
+	optional float maxMotorTorque = 8;
+	optional CGVector2 worldAnchor = 9;
+}
+
+message CGPrismaticJointDef {
+	optional bool collideConnected = 1;
+	optional CGVector2 anchor = 2;
+	optional CGVector2 axis = 3;
+	optional float referenceAngle = 5;
+	optional bool enableLimit = 6;
+	optional float lowerTranslation = 7;
+	optional float upperTranslation = 8;
+	optional bool enableMotor = 9;
+	optional float maxMotorForce = 10;
+	optional float motorSpeed = 11;
+}
+
+message CGPulleyJointDef {
+	optional bool collideConnected = 1;
+	optional CGVector2 groundAnchorA = 2;
+	optional CGVector2 groundAnchorB = 3;
+	optional float ratio = 4;
+}
+
+message CGFrictionJointDef {
+	optional bool collideConnected = 1;
+	optional float maxForce = 2;
+	optional float maxTorque = 3;
+}
+
+message CGWeldJointDef {
+	optional bool collideConnected = 1;
+}
+
+enum CGEntityCollisionType {
+	NONE = 0;
+	BOX = 1;
+	CIRCLE = 2;
+	CUSTOM = 3;
+}
+
+message CGResourceFile {
+	optional string resourceFile = 1;
+	optional string resourceFileAbsolute = 2;
+}
+
+message CGEntityAnimation {
+	optional string animationName = 1;
+	optional CGResourceFile animationResourceFile = 2;
+	optional CGResourceFile fixtureFile = 3;
+	optional float animationDuration = 4;
+	optional bool defaultAnimation = 5;
+	optional int32 cols = 6;
+	optional int32 rows = 7;
+	optional CGEntityCollisionType collisionType = 8;
+	optional int32 shpX = 9;
+	optional int32 shpY = 10;
+	optional int32 shpWidth = 11;
+	optional int32 shpHeight = 12;
+	repeated CGVector2 vertices = 13;
+}
+
+message CGEntity {
+	optional string internalName = 1;
+	repeated CGEntityAnimation animations = 2;
+}
+
+message CGBounds {
+	optional float x = 1;
+	optional float y = 2;
+	optional float width = 3;
+	optional float height = 4;
+}
+
+message CGVector2 {
+	required float x = 1;
+	required float y = 2;
+}
+
+enum CGBodyType {
+	STATIC = 1;
+	KINEMATIC = 2;
+	DYNAMIC = 3;
+}
+
+enum CGEditorShapeType {
+	SIMPLE_SHAPE_CIRCLE = 1;
+	SIMPLE_SHAPE_BOX = 2;
+	SIMPLE_SHAPE_HEDGE = 3;
+	SIMPLE_SHAPE_VEDGE = 4;
+	BACKGROUND_SHAPE = 5;
+	ENTITY_SHAPE = 6;
+}
+
+message CGBodyDef {
+	optional bool active = 1;
+	optional bool allowSleep = 2;
+	optional float angle = 3;
+	optional float angularDamping = 4;
+	optional float angularVelocity = 5;
+	optional bool awake = 6;
+	optional bool bullet = 7;
+	optional bool fixedRotation = 8;
+	optional float intertialScale = 9;
+	optional float linearDamping = 10;
+	optional float gravityScale = 11;
+	optional CGVector2 linearVelocity = 12;
+	optional CGBodyType type = 13;
+	optional CGVector2 position = 14;
+}
+
+message CGFilter {
+	optional int32 categoryBits = 1;
+	optional int32 maskBits = 2;
+	optional int32 groupIndex = 3;
+}
+
+message CGFixtureDef {
+	optional float density = 1;
+	optional float friction = 2;
+	optional float restitution = 3;
+	optional bool sensor = 4;
+	optional CGFilter filter = 5;
+}
+
+message CGShape {
+	optional string id = 1;
+	optional bool visible = 2;
+	optional bool locked = 3;
+	optional bool background = 4;
+	optional CGResourceFile backgroundResourceFile = 5;
+	optional CGEditorShapeType editorShapeType = 6;
+	optional CGBounds bounds = 7;
+	optional CGBodyDef bodyDef = 8;
+	optional CGFixtureDef fixtureDef = 9;
+	repeated CGJoint joints = 10;
+	optional CGResourceFile entityRefFile = 11;
+}
+
+message CGLayer {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional bool visible = 3;
+	optional bool locked = 4;
+	repeated CGShape shape = 5;
+}
+
+message CGScreenPreferences {
+	message DebugDrawPreferences {
+		optional bool drawBodies = 1;
+		optional bool drawJoints = 2;
+		optional bool drawAABB = 3;
+		optional bool drawInactiveBodies = 4;
+		optional bool installMouseJoint = 5;
+		optional bool drawDebugData = 6;
+		optional bool drawEntities = 7;
+	}
+
+	message WorldPreferences {
+		optional int32 ptmRatio = 1;
+		optional int32 velocityIterations = 2;
+		optional int32 positionIterations = 3;
+		optional float timeStep = 4;
+		optional float gravityX = 5;
+		optional float gravityY = 6;
+	}
+
+	message CardPreferences {
+		optional int32 cardNoX = 1;
+		optional int32 cardNoY = 2;
+		optional int32 cardWidth = 3;
+		optional int32 cardHeight = 4;
+	}
+
+	optional DebugDrawPreferences debugDrawPrefs = 1;
+	optional WorldPreferences worldPrefs = 2;
+	optional CardPreferences cardPrefs = 3;
+}
+

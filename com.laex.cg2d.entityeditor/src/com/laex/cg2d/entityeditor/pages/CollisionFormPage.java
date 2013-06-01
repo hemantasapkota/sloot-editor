@@ -58,14 +58,14 @@ import org.eclipse.ui.forms.widgets.Section;
 import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.entityeditor.ui.CollisionShapeSelectionDialog;
-import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.ResourceManager;
-import com.laex.cg2d.shared.SharedImages;
-import com.laex.cg2d.shared.model.Entity;
-import com.laex.cg2d.shared.model.EntityAnimation;
-import com.laex.cg2d.shared.model.EntityCollisionType;
-import com.laex.cg2d.shared.model.ResourceFile;
-import com.laex.cg2d.shared.util.EntitiesUtil;
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.ResourceManager;
+import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.model.EntityAnimation;
+import com.laex.cg2d.model.model.EntityCollisionType;
+import com.laex.cg2d.model.model.ResourceFile;
+import com.laex.cg2d.model.util.EntitiesUtil;
 
 /**
  * The Class CollisionFormPage.

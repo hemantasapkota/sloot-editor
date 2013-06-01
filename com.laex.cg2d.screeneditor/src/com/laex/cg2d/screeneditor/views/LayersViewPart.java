@@ -49,13 +49,13 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.adapter.ShapesDiagramAdapter;
+import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.model.ShapesDiagram;
+import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.ScreenEditor;
-import com.laex.cg2d.shared.SharedImages;
-import com.laex.cg2d.shared.adapter.ShapesDiagramAdapter;
-import com.laex.cg2d.shared.model.Layer;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.model.ShapesDiagram;
-import com.laex.cg2d.shared.util.PlatformUtil;
 
 /***
  * LayersViewPart.
@@ -420,6 +420,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
     // selection gets reset. This causes inconvinience for the user.
     tableViewer = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION | SWT.SINGLE);
     table = tableViewer.getTable();
+    table.setHeaderVisible(true);
 
     //
     tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -452,9 +453,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
         changeLayerName();
       }
     });
-    table.setLinesVisible(true);
     addCustomSelectionRenderer(table);
-    table.setHeaderVisible(true);
     {
       TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
       TableColumn tblclmnVisible = tableViewerColumn.getColumn();

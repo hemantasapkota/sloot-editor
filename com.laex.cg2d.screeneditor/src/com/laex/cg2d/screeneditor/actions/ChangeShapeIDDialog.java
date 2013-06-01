@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.CellEditor;
@@ -17,11 +18,13 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -30,9 +33,12 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
-import com.laex.cg2d.screeneditor.edit.ShapeEditPart;
-import com.laex.cg2d.shared.model.Shape;
-import org.eclipse.jface.viewers.ViewerSorter;
+import com.laex.cg2d.model.ResourceManager;
+import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
+import com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEditPart;
 
 public class ChangeShapeIDDialog extends TitleAreaDialog {
 
@@ -54,6 +60,31 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
   private class TableLabelProvider extends LabelProvider implements ITableLabelProvider {
 
     public Image getColumnImage(Object element, int columnIndex) {
+      if (columnIndex != 0)
+        return null;
+
+      ShapeIdMgr shp = (ShapeIdMgr) element;
+
+      switch (shp.shape.getEditorShapeType()) {
+      case BACKGROUND_SHAPE:
+        return ResourceManager.getImage(shp.shape.getBackgroundResourceFile().getResourceFile());
+        
+      case ENTITY_SHAPE:
+        Rectangle r = shp.shape.getEntity().getDefaultFrame().getBounds();
+        Image i = shp.shape.getEntity().getDefaultFrame();
+        return PlatformUtil.getImageDescriptor(i, r.width/2, (r.width/r.height)*(r.height/2)).createImage();
+
+      case SIMPLE_SHAPE_BOX:
+        return SharedImages.BOX.createImage();
+
+      case SIMPLE_SHAPE_CIRCLE:
+        return SharedImages.CIRCLE.createImage();
+
+      case SIMPLE_SHAPE_HEDGE:
+      case SIMPLE_SHAPE_VEDGE:
+        return SharedImages.BOX.createImage();
+      }
+
       return null;
     }
 
@@ -96,12 +127,14 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
     super(parentShell);
 
     for (Object o : selectedEditParts) {
-
-      if (!(o instanceof ShapeEditPart)) {
+      
+      boolean isShapeEP = (o instanceof ShapeEditPart) || (o instanceof ShapeTreeEditPart);
+      
+      if (!isShapeEP) {
         continue;
       }
 
-      ShapeEditPart shpEp = (ShapeEditPart) o;
+      EditPart shpEp = (EditPart) o;
       Shape shp = (Shape) shpEp.getModel();
 
       ShapeIdMgr sim = new ShapeIdMgr();
@@ -147,7 +180,7 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
     tblclmnNewId.setWidth(100);
     tblclmnNewId.setText("New ID");
     tableViewerColumn_2.setEditingSupport(new EditingSupport(tableViewer) {
-
+      
       @Override
       protected void setValue(Object element, Object value) {
         ((ShapeIdMgr) element).newId = value.toString();
@@ -186,13 +219,13 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
 
     for (ShapeIdMgr s : shapeIdList) {
       if (!StringUtils.isEmpty(s.newId)) {
-          updateIdMap.put(s.shape, s.newId);
+        updateIdMap.put(s.shape, s.newId);
       }
     }
 
     super.okPressed();
   }
-  
+
   public Map<Shape, String> getUpdateIdMap() {
     return updateIdMap;
   }

@@ -23,11 +23,11 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.JointDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.protobuf.ScreenModel.CGEntity;
-import com.laex.cg2d.protobuf.ScreenModel.CGJoint;
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
-import com.laex.cg2d.protobuf.ScreenModel.CGShape;
-import com.laex.cg2d.protobuf.ScreenModel.CGVector2;
+import com.laex.cg2d.model.ScreenModel.CGEntity;
+import com.laex.cg2d.model.ScreenModel.CGJoint;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGShape;
+import com.laex.cg2d.model.ScreenModel.CGVector2;
 import com.laex.cg2d.render.util.ProtoBufTypeConversionUtil;
 
 /**

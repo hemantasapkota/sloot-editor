@@ -22,8 +22,8 @@ import com.badlogic.gdx.physics.box2d.QueryCallback;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
 import com.badlogic.gdx.physics.box2d.joints.MouseJointDef;
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
-import com.laex.cg2d.protobuf.ScreenModel.CGShape;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.render.AbstractScreenScaffold;
 
 /**

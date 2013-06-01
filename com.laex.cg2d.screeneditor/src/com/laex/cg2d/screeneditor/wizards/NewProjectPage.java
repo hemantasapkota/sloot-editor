@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import com.laex.cg2d.shared.CGCProject;
+import com.laex.cg2d.model.CGCProject;
 
 /**
  * The Class NewProjectPage.

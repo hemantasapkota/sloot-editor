@@ -17,11 +17,11 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 
+import com.laex.cg2d.model.adapter.RectAdapter;
+import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.model.ShapesDiagram;
 import com.laex.cg2d.screeneditor.commands.ShapeDeleteCommand.DeleteCommandType;
-import com.laex.cg2d.shared.adapter.RectAdapter;
-import com.laex.cg2d.shared.model.Layer;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.model.ShapesDiagram;
 
 /**
  * The Class LayerRemoveCommand.
@@ -86,8 +86,7 @@ public class LayerRemoveCommand extends Command {
   private void buildAddShapeCommands(Layer layer, ShapesDiagram parent) {
     CompoundCommand cc = new CompoundCommand("Add shapes in layer");
     for (int i = 0; i < deletedChildren.size(); i++) {
-      Rectangle bounds = RectAdapter.d2dRect(deletedChildren.get(i).getBounds());
-      cc.add(new ShapeCreateCommand(deletedChildren.get(i), layer, parent, bounds));
+      cc.add(new ShapeCreateCommand(deletedChildren.get(i), parent));
     }
     cc.execute();
   }

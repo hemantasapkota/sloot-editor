@@ -51,8 +51,8 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 
 import com.laex.cg2d.entityeditor.Activator;
-import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.ResourceManager;
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.ResourceManager;
 
 /**
  * The Class ImportSpriteDialog.

@@ -12,8 +12,8 @@ package com.laex.cg2d.screeneditor.commands;
 
 import org.eclipse.gef.commands.Command;
 
-import com.laex.cg2d.shared.model.Layer;
-import com.laex.cg2d.shared.model.ShapesDiagram;
+import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.ShapesDiagram;
 
 /**
  * The Class LayerChangeOrderCommand.

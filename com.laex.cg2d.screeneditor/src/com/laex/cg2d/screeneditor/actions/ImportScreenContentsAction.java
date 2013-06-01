@@ -11,7 +11,6 @@
 package com.laex.cg2d.screeneditor.actions;
 
 import org.eclipse.gef.EditPartViewer;
-import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -34,7 +33,7 @@ public class ImportScreenContentsAction extends Action {
     setText("Import Screen Contents");
     this.viewer = viewer;
   }
-  
+
   @Override
   public boolean isEnabled() {
     return viewer.getSelectedEditParts().size() == 0;
@@ -49,16 +48,19 @@ public class ImportScreenContentsAction extends Action {
   public void run() {
     final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor()
         .getSite().getShell();
+    
+    ListExistingScreensDialog screensDialog = new ListExistingScreensDialog(shell, viewer.getEditDomain()
+        .getCommandStack());
+    int responseCode = screensDialog.open();
+    if (responseCode == ListExistingScreensDialog.CANCEL) {
+      return;
+    }
 
-    shell.getDisplay().asyncExec(new Runnable() {
-      @Override
-      public void run() {
-        ListExistingScreensDialog screensDialog = new ListExistingScreensDialog(shell, viewer.getEditDomain().getCommandStack());
-        int responseCode = screensDialog.open();
-        if (responseCode == ListExistingScreensDialog.CANCEL) {
-          return;
-        }
-      }
-    });
+//    shell.getDisplay().asyncExec(new Runnable() {
+//      @Override
+//      public void run() {
+//
+//      }
+//    });
   }
 }

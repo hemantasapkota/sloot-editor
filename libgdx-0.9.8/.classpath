@@ -9,7 +9,7 @@
 	<classpathentry exported="true" kind="lib" path="gdx-openal.jar"/>
 	<classpathentry exported="true" kind="lib" path="gdx.jar" sourcepath="gdx-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="bodyeditor-loader-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="bodyeditor-loader.jar"/>
+	<classpathentry exported="true" kind="lib" path="bodyeditor-loader.jar" sourcepath="bodyeditor-loader-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="tween-engine-api-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="tween-engine-api.jar"/>
 	<classpathentry exported="true" kind="lib" path="gdx-backend-lwjgl-sources.jar"/>

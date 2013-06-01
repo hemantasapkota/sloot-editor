@@ -17,7 +17,6 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
 import org.eclipse.gef.palette.MarqueeToolEntry;
@@ -34,15 +33,14 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorInput;
 
 import com.badlogic.gdx.physics.box2d.JointDef.JointType;
-import com.laex.cg2d.screeneditor.factory.ShapeCreationFactory;
-import com.laex.cg2d.screeneditor.factory.ShapeCreationInfo;
-import com.laex.cg2d.shared.CGCProject;
-import com.laex.cg2d.shared.ICGCProject;
-import com.laex.cg2d.shared.SharedImages;
-import com.laex.cg2d.shared.model.EditorShapeType;
-import com.laex.cg2d.shared.model.Entity;
-import com.laex.cg2d.shared.util.EntitiesUtil;
-import com.laex.cg2d.shared.util.PlatformUtil;
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.ICGCProject;
+import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.model.EditorShapeType;
+import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.model.validator.EntityValidator;
+import com.laex.cg2d.model.util.EntitiesUtil;
+import com.laex.cg2d.model.util.PlatformUtil;
 
 /**
  * A factory for creating ScreenEditorPalette objects.
@@ -90,14 +88,16 @@ public final class ScreenEditorPaletteFactory {
    *           Signals that an I/O exception has occurred.
    */
   private static void loadNewEntity(IResource res) throws CoreException, IOException {
-    Entity e = EntitiesUtil.createEntityModelFromFile((IFile) res);
-    if (!EntitiesUtil.isValid(e)) {
+    Entity e = Entity.createFromFile((IFile) res);
+    EntityValidator ev = new EntityValidator(e);
+    if (!ev.isValid()) {
       return;
     }
 
     String name = EntitiesUtil.getInternalName(res.getName());
     final Image i = EntitiesUtil.getDefaultFrame(e);
-    ImageDescriptor id = PlatformUtil.getImageDescriptor(i, new Point(32, 32));
+    float ratio = i.getBounds().width / i.getBounds().height;
+    ImageDescriptor id = PlatformUtil.getImageDescriptor(i, i.getBounds().width / 2, (int)ratio * (i.getBounds().height/2));
     e.setDefaultFrame(i);
     e.setInternalName(name);
 
@@ -153,11 +153,13 @@ public final class ScreenEditorPaletteFactory {
       public boolean visit(IResource re) throws CoreException {
 
         if (re.getName().endsWith(ICGCProject.ENTITIES_EXTENSION)) {
+          
           try {
             loadNewEntity(re);
           } catch (IOException e) {
             e.printStackTrace();
           }
+          
         }
 
         return true;

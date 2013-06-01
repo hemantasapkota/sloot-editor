@@ -13,8 +13,8 @@ package com.laex.cg2d.render.util;
 import java.io.IOException;
 
 import com.badlogic.gdx.Gdx;
-import com.laex.cg2d.protobuf.ScreenModel.CGEntity;
-import com.laex.cg2d.protobuf.ScreenModel.CGEntityAnimation;
+import com.laex.cg2d.model.ScreenModel.CGEntity;
+import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
 
 /**
  * The Class RunnerUtil.

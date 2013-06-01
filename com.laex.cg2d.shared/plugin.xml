@@ -7,36 +7,6 @@
             class="com.laex.cg2d.shared.prefs.PreferenceInitializer">
       </initializer>
    </extension>
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="com.laex.cg2d.shared.prefs.SharedPreferencePage"
-            id="com.laex.cg2d.shared.PreferencePage"
-            name="Casual Games">
-      </page>
-   </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="false"
-            id="com.laex.cg2d.shared.objectContribution1"
-            nameFilter="*cg*"
-            objectClass="org.eclipse.core.resources.IFile">
-         <menu
-               id="com.laex.cg2d.shared.menu1"
-               label="Box2D Editor">
-            <groupMarker
-                  name="group1">
-            </groupMarker>
-         </menu>
-         <action
-               class="com.laex.cg2d.shared.popup.actions.ConvertToJsonAction"
-               id="com.laex.cg2d.shared.action1"
-               label="To JSON"
-               menubarPath="com.laex.cg2d.shared.menu1/group1"
-               style="push">
-         </action>
-      </objectContribution>
-   </extension>
+
 
 </plugin>

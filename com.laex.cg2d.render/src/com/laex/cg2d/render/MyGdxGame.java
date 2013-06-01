@@ -24,7 +24,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.google.common.base.Throwables;
-import com.laex.cg2d.protobuf.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.render.impl.BackgroundManager;
 import com.laex.cg2d.render.impl.CollisionDetectionManager;
 import com.laex.cg2d.render.impl.EntityManager;

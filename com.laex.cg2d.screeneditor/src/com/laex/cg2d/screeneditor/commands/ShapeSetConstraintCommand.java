@@ -17,10 +17,10 @@ import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 
-import com.laex.cg2d.shared.adapter.RectAdapter;
-import com.laex.cg2d.shared.model.Joint;
-import com.laex.cg2d.shared.model.Shape;
-import com.laex.cg2d.shared.model.joints.BEDistanceJoint;
+import com.laex.cg2d.model.adapter.RectAdapter;
+import com.laex.cg2d.model.model.Joint;
+import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.model.joints.BEDistanceJoint;
 
 /**
  * The Class ShapeSetConstraintCommand.
