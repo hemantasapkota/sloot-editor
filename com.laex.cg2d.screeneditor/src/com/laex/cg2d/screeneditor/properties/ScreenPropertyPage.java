@@ -10,10 +10,10 @@
  */
 package com.laex.cg2d.screeneditor.properties;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
-import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.dialogs.DialogPage;
 import org.eclipse.jface.preference.PreferencePage;
@@ -33,11 +33,12 @@ import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PropertyPage;
 
-import com.laex.cg2d.model.adapter.PreferenceConstants;
-import com.laex.cg2d.model.adapter.ScreenPropertiesUtil;
-import com.laex.cg2d.model.util.BooleanUtil;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences;
 import com.laex.cg2d.model.util.FloatUtil;
-import com.laex.cg2d.model.util.IntegerUtil;
 import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
 
@@ -195,39 +196,36 @@ public class ScreenPropertyPage extends PropertyPage {
     super();
   }
 
-  /**
-   * Populate properties.
-   * 
-   * @throws CoreException
-   *           the core exception
-   */
-  private void populateProperties() throws CoreException {
-    // Populate owner text field
-    IResource res = (IResource) getElement();
+  private void populateProperties() throws IOException, CoreException {
+    IFile res = (IFile) getElement();
 
-    Map<String, String> props = ScreenPropertiesUtil.getScreenProperties(res);
+    CGScreenModel screenModel = CGScreenModel.parseFrom(res.getContents());
 
-    btnAabb.setSelection(BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_AABB)));
-    btnBodies.setSelection(BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_BODIES)));
-    btnJoints.setSelection(BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_JOINT)));
-    btnDrawDebugData.setSelection(BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_DEBUG_DATA)));
-    btnDrawEntities.setSelection(BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_ENTITIES)));
-    btnInactiveModies.setSelection(BooleanUtil.toBool(props.get(PreferenceConstants.DRAW_INACTIVE_BODIES)));
-    btnInstallMouseJoint.setSelection(BooleanUtil.toBool(props.get(PreferenceConstants.INSTALL_MOUSE_JOINT)));
+    CGCardPreferences cf = screenModel.getScreenPrefs().getCardPrefs();
+    CGWorldPreferences wf = screenModel.getScreenPrefs().getWorldPrefs();
+    CGDebugDrawPreferences df = screenModel.getScreenPrefs().getDebugDrawPrefs();
 
-    txtPTM.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.PTM_RATIO)));
-    txtVelocityItr.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.VELOCITY_ITERATIONS)));
-    txtPosItr.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.VELOCITY_ITERATIONS)));
+    btnAabb.setSelection(df.getDrawAABB());
+    btnBodies.setSelection(df.getDrawBodies());
+    btnJoints.setSelection(df.getDrawJoints());
+    btnDrawDebugData.setSelection(df.getDrawDebugData());
+    btnDrawEntities.setSelection(df.getDrawEntities());
+    btnInactiveModies.setSelection(df.getDrawInactiveBodies());
+    btnInstallMouseJoint.setSelection(df.getInstallMouseJoint());
 
-    txtGravityX.setText(props.get(PreferenceConstants.GRAVITY_X));
-    txtGravityY.setText(props.get(PreferenceConstants.GRAVITY_Y));
-    txtTimeStep.setText(props.get(PreferenceConstants.TIMESTEP));
+    txtPTM.setSelection(wf.getPtmRatio());
+    txtVelocityItr.setSelection(wf.getVelocityIterations());
+    txtPosItr.setSelection(wf.getPositionIterations());
+
+    txtGravityX.setText(FloatUtil.toString(wf.getGravityX()));
+    txtGravityY.setText(FloatUtil.toString(wf.getGravityY()));
+    txtTimeStep.setText(FloatUtil.toString(wf.getTimeStep()));
     txtCardNoX.setMinimum(1);
 
-    txtCardNoX.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.CARD_NO_X)));
-    txtCardNoY.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.CARD_NO_Y)));
-    txtCardWidth.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.CARD_WIDTH)));
-    txtCardHeight.setSelection(IntegerUtil.toInt(props.get(PreferenceConstants.CARD_HEIGHT)));
+    txtCardNoX.setSelection(cf.getCardNoX());
+    txtCardNoY.setSelection(cf.getCardNoY());
+    txtCardWidth.setSelection(cf.getCardWidth());
+    txtCardHeight.setSelection(cf.getCardHeight());
   }
 
   /**
@@ -369,9 +367,10 @@ public class ScreenPropertyPage extends PropertyPage {
     txtCardHeight.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
     txtCardHeight.addModifyListener(intChecker);
 
-    //
     try {
       populateProperties();
+    } catch (IOException e) {
+      e.printStackTrace();
     } catch (CoreException e) {
       e.printStackTrace();
     }
@@ -404,7 +403,13 @@ public class ScreenPropertyPage extends PropertyPage {
     txtCardHeight.setSelection(PreferenceInitializer.defaultCardHeight());
 
     //
-    applyChanges(constructMap());
+    try {
+      applyChanges(constructPrefs());
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
 
     super.performDefaults();
   }
@@ -414,15 +419,26 @@ public class ScreenPropertyPage extends PropertyPage {
    * 
    * @param props
    *          the props
+   * @throws CoreException 
+   * @throws IOException 
    */
-  private void applyChanges(Map<String, String> props) {
+  private void applyChanges(CGScreenPreferences prefs) throws IOException, CoreException {
     // Update changes to the active screen editor
     if (PlatformUtil.isScreenEditorActive()) {
       PlatformUtil.getScreenLayerManager().updateCardLayer(txtCardNoX.getSelection(), txtCardNoY.getSelection(),
           txtCardWidth.getSelection(), txtCardHeight.getSelection());
 
-      PlatformUtil.getScreenPropertyManager().updateScreenProperties(props);
+      PlatformUtil.getScreenPropertyManager().updateScreenProperties(prefs);
+    } else {
+      //Editor is not active. Persist the properties, by loading the model and saving it again.
+      IFile file = (IFile) getElement();
+      CGScreenModel model = CGScreenModel.parseFrom(file.getContents());
+      
+      CGScreenModel updatedModel = CGScreenModel.newBuilder(model).setScreenPrefs(constructPrefs()).build();
+      PlatformUtil.saveProto(null, file, new ByteArrayInputStream(updatedModel.toByteArray()));
     }
+    
+    
   }
 
   /*
@@ -432,66 +448,52 @@ public class ScreenPropertyPage extends PropertyPage {
    */
   public boolean performOk() {
     // store the value in the owner text field
-    IResource res = (IResource) getElement();
-    Map<String, String> props = constructMap();
-
     try {
-      ScreenPropertiesUtil.persistScreenProperties(res, props);
-      applyChanges(props);
+      applyChanges(constructPrefs());
+    } catch (IOException e) {
+      e.printStackTrace();
     } catch (CoreException e) {
       e.printStackTrace();
     }
-
     return true;
   }
 
-  /**
-   * Construct map.
-   * 
-   * @return the map
-   */
-  private Map<String, String> constructMap() {
-    String bodies = BooleanUtil.toString(btnBodies.getSelection());
-    String joints = BooleanUtil.toString(btnJoints.getSelection());
-    String aabb = BooleanUtil.toString(btnAabb.getSelection());
-    String debugData = BooleanUtil.toString(btnDrawDebugData.getSelection());
-    String entiites = BooleanUtil.toString(btnDrawEntities.getSelection());
-    String inactiveBodies = BooleanUtil.toString(btnInactiveModies.getSelection());
-    String mouseJoint = BooleanUtil.toString(btnInstallMouseJoint.getSelection());
+  private CGScreenPreferences constructPrefs() {
+    boolean bodies = btnBodies.getSelection();
+    boolean joints = btnJoints.getSelection();
+    boolean aabb = btnAabb.getSelection();
+    boolean debugData = btnDrawDebugData.getSelection();
+    boolean entiites = btnDrawEntities.getSelection();
+    boolean inactiveBodies = btnInactiveModies.getSelection();
+    boolean mouseJoint = btnInstallMouseJoint.getSelection();
 
-    String ptmRatio = txtPTM.getText();
-    String timeStep = txtTimeStep.getText();
-    String gravityX = txtGravityX.getText();
-    String gravityY = txtGravityY.getText();
-    String velocityItr = txtVelocityItr.getText();
-    String posItr = txtPosItr.getText();
+    int ptmRatio = txtPTM.getSelection();
+    float timeStep = FloatUtil.toFloat(txtTimeStep.getText());
+    float gravityX = FloatUtil.toFloat(txtGravityX.getText());
+    float gravityY = FloatUtil.toFloat(txtGravityY.getText());
+    int velocityItr = txtVelocityItr.getSelection();
+    int posItr = txtPosItr.getSelection();
 
-    String cardNoX = txtCardNoX.getText();
-    String cardNoY = txtCardNoY.getText();
-    String cardWidth = txtCardWidth.getText();
-    String cardHeight = txtCardHeight.getText();
+    int cardNoX = txtCardNoX.getSelection();
+    int cardNoY = txtCardNoY.getSelection();
+    int cardWidth = txtCardWidth.getSelection();
+    int cardHeight = txtCardHeight.getSelection();
 
-    Map<String, String> props = new HashMap<String, String>();
+    CGCardPreferences.Builder cardBuildr = CGCardPreferences.newBuilder().setCardHeight(cardHeight)
+        .setCardWidth(cardWidth).setCardNoX(cardNoX).setCardNoY(cardNoY);
 
-    props.put(PreferenceConstants.DRAW_BODIES, bodies);
-    props.put(PreferenceConstants.DRAW_JOINT, joints);
-    props.put(PreferenceConstants.DRAW_AABB, aabb);
-    props.put(PreferenceConstants.DRAW_DEBUG_DATA, debugData);
-    props.put(PreferenceConstants.DRAW_INACTIVE_BODIES, inactiveBodies);
-    props.put(PreferenceConstants.INSTALL_MOUSE_JOINT, mouseJoint);
-    props.put(PreferenceConstants.DRAW_ENTITIES, entiites);
+    CGWorldPreferences.Builder worldBuildr = CGWorldPreferences.newBuilder().setGravityX(gravityX)
+        .setGravityY(gravityY).setPtmRatio(ptmRatio)
+        .setPositionIterations(posItr).setTimeStep(timeStep)
+        .setVelocityIterations(velocityItr);
 
-    props.put(PreferenceConstants.PTM_RATIO, ptmRatio);
-    props.put(PreferenceConstants.TIMESTEP, timeStep);
-    props.put(PreferenceConstants.GRAVITY_X, gravityX);
-    props.put(PreferenceConstants.GRAVITY_Y, gravityY);
-    props.put(PreferenceConstants.POSITION_ITERATIONS, velocityItr);
-    props.put(PreferenceConstants.VELOCITY_ITERATIONS, posItr);
+    CGDebugDrawPreferences.Builder dbgBuildr = CGDebugDrawPreferences.newBuilder().setDrawAABB(aabb)
+        .setDrawBodies(bodies).setDrawDebugData(debugData)
+        .setDrawEntities(entiites).setDrawInactiveBodies(inactiveBodies)
+        .setDrawJoints(joints).setInstallMouseJoint(mouseJoint);
 
-    props.put(PreferenceConstants.CARD_NO_X, cardNoX);
-    props.put(PreferenceConstants.CARD_NO_Y, cardNoY);
-    props.put(PreferenceConstants.CARD_WIDTH, cardWidth);
-    props.put(PreferenceConstants.CARD_HEIGHT, cardHeight);
-    return props;
+    return CGScreenPreferences.newBuilder().setCardPrefs(cardBuildr.build()).setDebugDrawPrefs(dbgBuildr.build())
+        .setWorldPrefs(worldBuildr.build()).build();
   }
+
 }
