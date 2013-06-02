@@ -19,7 +19,6 @@ import com.laex.cg2d.model.adapter.ScreenModelAdapter;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.ShapesDiagram;
-import com.laex.cg2d.model.util.EntitiesUtil;
 import com.laex.cg2d.screeneditor.commands.IDCreationStrategy;
 import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
 
@@ -82,8 +81,7 @@ public class ShapePasteAction extends Action {
         Entity ent = Entity.createFromFile(newShape.getEntityResourceFile().getResourceFile());
         newShape.setEntity(ent);
       }
-
-      newShape.getParentLayer().add(newShape);
+      
       ShapeCreateCommand scmd = new ShapeCreateCommand(newShape, diagram);
       cc.add(scmd);
     }
