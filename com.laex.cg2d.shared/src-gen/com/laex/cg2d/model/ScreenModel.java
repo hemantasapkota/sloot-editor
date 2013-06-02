@@ -19106,47 +19106,47 @@ public final class ScreenModel {
   public interface CGScreenPreferencesOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
      */
     boolean hasDebugDrawPrefs();
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
      */
-    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences getDebugDrawPrefs();
+    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences getDebugDrawPrefs();
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
      */
-    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder();
+    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder();
 
-    // optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
      */
     boolean hasWorldPrefs();
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
      */
-    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences getWorldPrefs();
+    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences getWorldPrefs();
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
      */
-    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferencesOrBuilder getWorldPrefsOrBuilder();
+    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferencesOrBuilder getWorldPrefsOrBuilder();
 
-    // optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
      */
     boolean hasCardPrefs();
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
      */
-    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences getCardPrefs();
+    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences getCardPrefs();
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
      */
-    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferencesOrBuilder getCardPrefsOrBuilder();
+    com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferencesOrBuilder getCardPrefsOrBuilder();
   }
   /**
    * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences}
@@ -19200,11 +19200,11 @@ public final class ScreenModel {
               break;
             }
             case 10: {
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.Builder subBuilder = null;
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = debugDrawPrefs_.toBuilder();
               }
-              debugDrawPrefs_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.PARSER, extensionRegistry);
+              debugDrawPrefs_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(debugDrawPrefs_);
                 debugDrawPrefs_ = subBuilder.buildPartial();
@@ -19213,11 +19213,11 @@ public final class ScreenModel {
               break;
             }
             case 18: {
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.Builder subBuilder = null;
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = worldPrefs_.toBuilder();
               }
-              worldPrefs_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.PARSER, extensionRegistry);
+              worldPrefs_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(worldPrefs_);
                 worldPrefs_ = subBuilder.buildPartial();
@@ -19226,11 +19226,11 @@ public final class ScreenModel {
               break;
             }
             case 26: {
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.Builder subBuilder = null;
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = cardPrefs_.toBuilder();
               }
-              cardPrefs_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.PARSER, extensionRegistry);
+              cardPrefs_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(cardPrefs_);
                 cardPrefs_ = subBuilder.buildPartial();
@@ -19277,7 +19277,7 @@ public final class ScreenModel {
       return PARSER;
     }
 
-    public interface DebugDrawPreferencesOrBuilder
+    public interface CGDebugDrawPreferencesOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
       // optional bool drawBodies = 1;
@@ -19351,24 +19351,24 @@ public final class ScreenModel {
       boolean getDrawEntities();
     }
     /**
-     * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences}
+     * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences}
      */
-    public static final class DebugDrawPreferences extends
+    public static final class CGDebugDrawPreferences extends
         com.google.protobuf.GeneratedMessage
-        implements DebugDrawPreferencesOrBuilder {
-      // Use DebugDrawPreferences.newBuilder() to construct.
-      private DebugDrawPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        implements CGDebugDrawPreferencesOrBuilder {
+      // Use CGDebugDrawPreferences.newBuilder() to construct.
+      private CGDebugDrawPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
         this.unknownFields = builder.getUnknownFields();
       }
-      private DebugDrawPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+      private CGDebugDrawPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-      private static final DebugDrawPreferences defaultInstance;
-      public static DebugDrawPreferences getDefaultInstance() {
+      private static final CGDebugDrawPreferences defaultInstance;
+      public static CGDebugDrawPreferences getDefaultInstance() {
         return defaultInstance;
       }
 
-      public DebugDrawPreferences getDefaultInstanceForType() {
+      public CGDebugDrawPreferences getDefaultInstanceForType() {
         return defaultInstance;
       }
 
@@ -19378,7 +19378,7 @@ public final class ScreenModel {
           getUnknownFields() {
         return this.unknownFields;
       }
-      private DebugDrawPreferences(
+      private CGDebugDrawPreferences(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -19450,28 +19450,28 @@ public final class ScreenModel {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_descriptor;
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.Builder.class);
+                com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.Builder.class);
       }
 
-      public static com.google.protobuf.Parser<DebugDrawPreferences> PARSER =
-          new com.google.protobuf.AbstractParser<DebugDrawPreferences>() {
-        public DebugDrawPreferences parsePartialFrom(
+      public static com.google.protobuf.Parser<CGDebugDrawPreferences> PARSER =
+          new com.google.protobuf.AbstractParser<CGDebugDrawPreferences>() {
+        public CGDebugDrawPreferences parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new DebugDrawPreferences(input, extensionRegistry);
+          return new CGDebugDrawPreferences(input, extensionRegistry);
         }
       };
 
       @java.lang.Override
-      public com.google.protobuf.Parser<DebugDrawPreferences> getParserForType() {
+      public com.google.protobuf.Parser<CGDebugDrawPreferences> getParserForType() {
         return PARSER;
       }
 
@@ -19679,53 +19679,53 @@ public final class ScreenModel {
         return super.writeReplace();
       }
 
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseFrom(byte[] data)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseFrom(java.io.InputStream input)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseDelimitedFrom(java.io.InputStream input)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseDelimitedFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -19734,7 +19734,7 @@ public final class ScreenModel {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences prototype) {
+      public static Builder newBuilder(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -19746,24 +19746,24 @@ public final class ScreenModel {
         return builder;
       }
       /**
-       * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences}
+       * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferencesOrBuilder {
+         implements com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferencesOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_descriptor;
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.Builder.class);
+                  com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.Builder.class);
         }
 
-        // Construct using com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.newBuilder()
+        // Construct using com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -19806,23 +19806,23 @@ public final class ScreenModel {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_descriptor;
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_descriptor;
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences getDefaultInstanceForType() {
-          return com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences getDefaultInstanceForType() {
+          return com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.getDefaultInstance();
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences build() {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences result = buildPartial();
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences build() {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences buildPartial() {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences result = new com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences(this);
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences buildPartial() {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences result = new com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -19859,16 +19859,16 @@ public final class ScreenModel {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences) {
-            return mergeFrom((com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences)other);
+          if (other instanceof com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences) {
+            return mergeFrom((com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences other) {
-          if (other == com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences other) {
+          if (other == com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.getDefaultInstance()) return this;
           if (other.hasDrawBodies()) {
             setDrawBodies(other.getDrawBodies());
           }
@@ -19902,11 +19902,11 @@ public final class ScreenModel {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences parsedMessage = null;
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences) e.getUnfinishedMessage();
+            parsedMessage = (com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -20148,18 +20148,18 @@ public final class ScreenModel {
           return this;
         }
 
-        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences)
+        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences)
       }
 
       static {
-        defaultInstance = new DebugDrawPreferences(true);
+        defaultInstance = new CGDebugDrawPreferences(true);
         defaultInstance.initFields();
       }
 
-      // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences)
+      // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences)
     }
 
-    public interface WorldPreferencesOrBuilder
+    public interface CGWorldPreferencesOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
       // optional int32 ptmRatio = 1;
@@ -20223,24 +20223,24 @@ public final class ScreenModel {
       float getGravityY();
     }
     /**
-     * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.WorldPreferences}
+     * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences}
      */
-    public static final class WorldPreferences extends
+    public static final class CGWorldPreferences extends
         com.google.protobuf.GeneratedMessage
-        implements WorldPreferencesOrBuilder {
-      // Use WorldPreferences.newBuilder() to construct.
-      private WorldPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        implements CGWorldPreferencesOrBuilder {
+      // Use CGWorldPreferences.newBuilder() to construct.
+      private CGWorldPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
         this.unknownFields = builder.getUnknownFields();
       }
-      private WorldPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+      private CGWorldPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-      private static final WorldPreferences defaultInstance;
-      public static WorldPreferences getDefaultInstance() {
+      private static final CGWorldPreferences defaultInstance;
+      public static CGWorldPreferences getDefaultInstance() {
         return defaultInstance;
       }
 
-      public WorldPreferences getDefaultInstanceForType() {
+      public CGWorldPreferences getDefaultInstanceForType() {
         return defaultInstance;
       }
 
@@ -20250,7 +20250,7 @@ public final class ScreenModel {
           getUnknownFields() {
         return this.unknownFields;
       }
-      private WorldPreferences(
+      private CGWorldPreferences(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20317,28 +20317,28 @@ public final class ScreenModel {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_descriptor;
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_fieldAccessorTable
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.Builder.class);
+                com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.Builder.class);
       }
 
-      public static com.google.protobuf.Parser<WorldPreferences> PARSER =
-          new com.google.protobuf.AbstractParser<WorldPreferences>() {
-        public WorldPreferences parsePartialFrom(
+      public static com.google.protobuf.Parser<CGWorldPreferences> PARSER =
+          new com.google.protobuf.AbstractParser<CGWorldPreferences>() {
+        public CGWorldPreferences parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new WorldPreferences(input, extensionRegistry);
+          return new CGWorldPreferences(input, extensionRegistry);
         }
       };
 
       @java.lang.Override
-      public com.google.protobuf.Parser<WorldPreferences> getParserForType() {
+      public com.google.protobuf.Parser<CGWorldPreferences> getParserForType() {
         return PARSER;
       }
 
@@ -20522,53 +20522,53 @@ public final class ScreenModel {
         return super.writeReplace();
       }
 
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseFrom(byte[] data)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseFrom(java.io.InputStream input)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseDelimitedFrom(java.io.InputStream input)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseDelimitedFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -20577,7 +20577,7 @@ public final class ScreenModel {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences prototype) {
+      public static Builder newBuilder(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -20589,24 +20589,24 @@ public final class ScreenModel {
         return builder;
       }
       /**
-       * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.WorldPreferences}
+       * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferencesOrBuilder {
+         implements com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferencesOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_descriptor;
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_fieldAccessorTable
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.Builder.class);
+                  com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.Builder.class);
         }
 
-        // Construct using com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.newBuilder()
+        // Construct using com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -20647,23 +20647,23 @@ public final class ScreenModel {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_descriptor;
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_descriptor;
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences getDefaultInstanceForType() {
-          return com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.getDefaultInstance();
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences getDefaultInstanceForType() {
+          return com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.getDefaultInstance();
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences build() {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences result = buildPartial();
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences build() {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences buildPartial() {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences result = new com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences(this);
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences buildPartial() {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences result = new com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -20696,16 +20696,16 @@ public final class ScreenModel {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences) {
-            return mergeFrom((com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences)other);
+          if (other instanceof com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences) {
+            return mergeFrom((com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences other) {
-          if (other == com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences other) {
+          if (other == com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.getDefaultInstance()) return this;
           if (other.hasPtmRatio()) {
             setPtmRatio(other.getPtmRatio());
           }
@@ -20736,11 +20736,11 @@ public final class ScreenModel {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences parsedMessage = null;
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences) e.getUnfinishedMessage();
+            parsedMessage = (com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -20949,18 +20949,18 @@ public final class ScreenModel {
           return this;
         }
 
-        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGScreenPreferences.WorldPreferences)
+        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences)
       }
 
       static {
-        defaultInstance = new WorldPreferences(true);
+        defaultInstance = new CGWorldPreferences(true);
         defaultInstance.initFields();
       }
 
-      // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.WorldPreferences)
+      // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences)
     }
 
-    public interface CardPreferencesOrBuilder
+    public interface CGCardPreferencesOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
       // optional int32 cardNoX = 1;
@@ -21004,24 +21004,24 @@ public final class ScreenModel {
       int getCardHeight();
     }
     /**
-     * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.CardPreferences}
+     * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences}
      */
-    public static final class CardPreferences extends
+    public static final class CGCardPreferences extends
         com.google.protobuf.GeneratedMessage
-        implements CardPreferencesOrBuilder {
-      // Use CardPreferences.newBuilder() to construct.
-      private CardPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        implements CGCardPreferencesOrBuilder {
+      // Use CGCardPreferences.newBuilder() to construct.
+      private CGCardPreferences(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
         this.unknownFields = builder.getUnknownFields();
       }
-      private CardPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+      private CGCardPreferences(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-      private static final CardPreferences defaultInstance;
-      public static CardPreferences getDefaultInstance() {
+      private static final CGCardPreferences defaultInstance;
+      public static CGCardPreferences getDefaultInstance() {
         return defaultInstance;
       }
 
-      public CardPreferences getDefaultInstanceForType() {
+      public CGCardPreferences getDefaultInstanceForType() {
         return defaultInstance;
       }
 
@@ -21031,7 +21031,7 @@ public final class ScreenModel {
           getUnknownFields() {
         return this.unknownFields;
       }
-      private CardPreferences(
+      private CGCardPreferences(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -21088,28 +21088,28 @@ public final class ScreenModel {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_descriptor;
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_fieldAccessorTable
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.Builder.class);
+                com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.Builder.class);
       }
 
-      public static com.google.protobuf.Parser<CardPreferences> PARSER =
-          new com.google.protobuf.AbstractParser<CardPreferences>() {
-        public CardPreferences parsePartialFrom(
+      public static com.google.protobuf.Parser<CGCardPreferences> PARSER =
+          new com.google.protobuf.AbstractParser<CGCardPreferences>() {
+        public CGCardPreferences parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new CardPreferences(input, extensionRegistry);
+          return new CGCardPreferences(input, extensionRegistry);
         }
       };
 
       @java.lang.Override
-      public com.google.protobuf.Parser<CardPreferences> getParserForType() {
+      public com.google.protobuf.Parser<CGCardPreferences> getParserForType() {
         return PARSER;
       }
 
@@ -21245,53 +21245,53 @@ public final class ScreenModel {
         return super.writeReplace();
       }
 
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseFrom(byte[] data)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseFrom(java.io.InputStream input)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseDelimitedFrom(java.io.InputStream input)
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseDelimitedFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parseFrom(
+      public static com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -21300,7 +21300,7 @@ public final class ScreenModel {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences prototype) {
+      public static Builder newBuilder(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -21312,24 +21312,24 @@ public final class ScreenModel {
         return builder;
       }
       /**
-       * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.CardPreferences}
+       * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferencesOrBuilder {
+         implements com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferencesOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_descriptor;
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_fieldAccessorTable
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.Builder.class);
+                  com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.class, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.Builder.class);
         }
 
-        // Construct using com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.newBuilder()
+        // Construct using com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -21366,23 +21366,23 @@ public final class ScreenModel {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_descriptor;
+          return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_descriptor;
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences getDefaultInstanceForType() {
-          return com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.getDefaultInstance();
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences getDefaultInstanceForType() {
+          return com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.getDefaultInstance();
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences build() {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences result = buildPartial();
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences build() {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences buildPartial() {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences result = new com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences(this);
+        public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences buildPartial() {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences result = new com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -21407,16 +21407,16 @@ public final class ScreenModel {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences) {
-            return mergeFrom((com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences)other);
+          if (other instanceof com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences) {
+            return mergeFrom((com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences other) {
-          if (other == com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences other) {
+          if (other == com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.getDefaultInstance()) return this;
           if (other.hasCardNoX()) {
             setCardNoX(other.getCardNoX());
           }
@@ -21441,11 +21441,11 @@ public final class ScreenModel {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences parsedMessage = null;
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences) e.getUnfinishedMessage();
+            parsedMessage = (com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -21588,88 +21588,88 @@ public final class ScreenModel {
           return this;
         }
 
-        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGScreenPreferences.CardPreferences)
+        // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences)
       }
 
       static {
-        defaultInstance = new CardPreferences(true);
+        defaultInstance = new CGCardPreferences(true);
         defaultInstance.initFields();
       }
 
-      // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.CardPreferences)
+      // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences)
     }
 
     private int bitField0_;
-    // optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
     public static final int DEBUGDRAWPREFS_FIELD_NUMBER = 1;
-    private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs_;
+    private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs_;
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
      */
     public boolean hasDebugDrawPrefs() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
      */
-    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences getDebugDrawPrefs() {
+    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences getDebugDrawPrefs() {
       return debugDrawPrefs_;
     }
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
      */
-    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder() {
+    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder() {
       return debugDrawPrefs_;
     }
 
-    // optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
     public static final int WORLDPREFS_FIELD_NUMBER = 2;
-    private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences worldPrefs_;
+    private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences worldPrefs_;
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
      */
     public boolean hasWorldPrefs() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
      */
-    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences getWorldPrefs() {
+    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences getWorldPrefs() {
       return worldPrefs_;
     }
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
      */
-    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferencesOrBuilder getWorldPrefsOrBuilder() {
+    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferencesOrBuilder getWorldPrefsOrBuilder() {
       return worldPrefs_;
     }
 
-    // optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
     public static final int CARDPREFS_FIELD_NUMBER = 3;
-    private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences cardPrefs_;
+    private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences cardPrefs_;
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
      */
     public boolean hasCardPrefs() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
      */
-    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences getCardPrefs() {
+    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences getCardPrefs() {
       return cardPrefs_;
     }
     /**
-     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+     * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
      */
-    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferencesOrBuilder getCardPrefsOrBuilder() {
+    public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferencesOrBuilder getCardPrefsOrBuilder() {
       return cardPrefs_;
     }
 
     private void initFields() {
-      debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
-      worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.getDefaultInstance();
-      cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.getDefaultInstance();
+      debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.getDefaultInstance();
+      worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.getDefaultInstance();
+      cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -21833,19 +21833,19 @@ public final class ScreenModel {
       public Builder clear() {
         super.clear();
         if (debugDrawPrefsBuilder_ == null) {
-          debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
+          debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.getDefaultInstance();
         } else {
           debugDrawPrefsBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         if (worldPrefsBuilder_ == null) {
-          worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.getDefaultInstance();
+          worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.getDefaultInstance();
         } else {
           worldPrefsBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         if (cardPrefsBuilder_ == null) {
-          cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.getDefaultInstance();
+          cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.getDefaultInstance();
         } else {
           cardPrefsBuilder_.clear();
         }
@@ -21954,20 +21954,20 @@ public final class ScreenModel {
       }
       private int bitField0_;
 
-      // optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
-      private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
+      // optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
+      private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferencesOrBuilder> debugDrawPrefsBuilder_;
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferencesOrBuilder> debugDrawPrefsBuilder_;
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
       public boolean hasDebugDrawPrefs() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences getDebugDrawPrefs() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences getDebugDrawPrefs() {
         if (debugDrawPrefsBuilder_ == null) {
           return debugDrawPrefs_;
         } else {
@@ -21975,9 +21975,9 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
-      public Builder setDebugDrawPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences value) {
+      public Builder setDebugDrawPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences value) {
         if (debugDrawPrefsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -21991,10 +21991,10 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
       public Builder setDebugDrawPrefs(
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.Builder builderForValue) {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.Builder builderForValue) {
         if (debugDrawPrefsBuilder_ == null) {
           debugDrawPrefs_ = builderForValue.build();
           onChanged();
@@ -22005,14 +22005,14 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
-      public Builder mergeDebugDrawPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences value) {
+      public Builder mergeDebugDrawPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences value) {
         if (debugDrawPrefsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              debugDrawPrefs_ != com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance()) {
+              debugDrawPrefs_ != com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.getDefaultInstance()) {
             debugDrawPrefs_ =
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.newBuilder(debugDrawPrefs_).mergeFrom(value).buildPartial();
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.newBuilder(debugDrawPrefs_).mergeFrom(value).buildPartial();
           } else {
             debugDrawPrefs_ = value;
           }
@@ -22024,11 +22024,11 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
       public Builder clearDebugDrawPrefs() {
         if (debugDrawPrefsBuilder_ == null) {
-          debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.getDefaultInstance();
+          debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.getDefaultInstance();
           onChanged();
         } else {
           debugDrawPrefsBuilder_.clear();
@@ -22037,17 +22037,17 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.Builder getDebugDrawPrefsBuilder() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.Builder getDebugDrawPrefsBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getDebugDrawPrefsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferencesOrBuilder getDebugDrawPrefsOrBuilder() {
         if (debugDrawPrefsBuilder_ != null) {
           return debugDrawPrefsBuilder_.getMessageOrBuilder();
         } else {
@@ -22055,14 +22055,14 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferencesOrBuilder> 
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferencesOrBuilder> 
           getDebugDrawPrefsFieldBuilder() {
         if (debugDrawPrefsBuilder_ == null) {
           debugDrawPrefsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferencesOrBuilder>(
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferencesOrBuilder>(
                   debugDrawPrefs_,
                   getParentForChildren(),
                   isClean());
@@ -22071,20 +22071,20 @@ public final class ScreenModel {
         return debugDrawPrefsBuilder_;
       }
 
-      // optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
-      private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.getDefaultInstance();
+      // optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
+      private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferencesOrBuilder> worldPrefsBuilder_;
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferencesOrBuilder> worldPrefsBuilder_;
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
       public boolean hasWorldPrefs() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences getWorldPrefs() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences getWorldPrefs() {
         if (worldPrefsBuilder_ == null) {
           return worldPrefs_;
         } else {
@@ -22092,9 +22092,9 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
-      public Builder setWorldPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences value) {
+      public Builder setWorldPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences value) {
         if (worldPrefsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -22108,10 +22108,10 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
       public Builder setWorldPrefs(
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.Builder builderForValue) {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.Builder builderForValue) {
         if (worldPrefsBuilder_ == null) {
           worldPrefs_ = builderForValue.build();
           onChanged();
@@ -22122,14 +22122,14 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
-      public Builder mergeWorldPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences value) {
+      public Builder mergeWorldPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences value) {
         if (worldPrefsBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              worldPrefs_ != com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.getDefaultInstance()) {
+              worldPrefs_ != com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.getDefaultInstance()) {
             worldPrefs_ =
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.newBuilder(worldPrefs_).mergeFrom(value).buildPartial();
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.newBuilder(worldPrefs_).mergeFrom(value).buildPartial();
           } else {
             worldPrefs_ = value;
           }
@@ -22141,11 +22141,11 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
       public Builder clearWorldPrefs() {
         if (worldPrefsBuilder_ == null) {
-          worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.getDefaultInstance();
+          worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.getDefaultInstance();
           onChanged();
         } else {
           worldPrefsBuilder_.clear();
@@ -22154,17 +22154,17 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.Builder getWorldPrefsBuilder() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.Builder getWorldPrefsBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getWorldPrefsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferencesOrBuilder getWorldPrefsOrBuilder() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferencesOrBuilder getWorldPrefsOrBuilder() {
         if (worldPrefsBuilder_ != null) {
           return worldPrefsBuilder_.getMessageOrBuilder();
         } else {
@@ -22172,14 +22172,14 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferencesOrBuilder> 
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferencesOrBuilder> 
           getWorldPrefsFieldBuilder() {
         if (worldPrefsBuilder_ == null) {
           worldPrefsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferencesOrBuilder>(
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferencesOrBuilder>(
                   worldPrefs_,
                   getParentForChildren(),
                   isClean());
@@ -22188,20 +22188,20 @@ public final class ScreenModel {
         return worldPrefsBuilder_;
       }
 
-      // optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
-      private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.getDefaultInstance();
+      // optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
+      private com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferencesOrBuilder> cardPrefsBuilder_;
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferencesOrBuilder> cardPrefsBuilder_;
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
       public boolean hasCardPrefs() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences getCardPrefs() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences getCardPrefs() {
         if (cardPrefsBuilder_ == null) {
           return cardPrefs_;
         } else {
@@ -22209,9 +22209,9 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
-      public Builder setCardPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences value) {
+      public Builder setCardPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences value) {
         if (cardPrefsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -22225,10 +22225,10 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
       public Builder setCardPrefs(
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.Builder builderForValue) {
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.Builder builderForValue) {
         if (cardPrefsBuilder_ == null) {
           cardPrefs_ = builderForValue.build();
           onChanged();
@@ -22239,14 +22239,14 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
-      public Builder mergeCardPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences value) {
+      public Builder mergeCardPrefs(com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences value) {
         if (cardPrefsBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              cardPrefs_ != com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.getDefaultInstance()) {
+              cardPrefs_ != com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.getDefaultInstance()) {
             cardPrefs_ =
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.newBuilder(cardPrefs_).mergeFrom(value).buildPartial();
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.newBuilder(cardPrefs_).mergeFrom(value).buildPartial();
           } else {
             cardPrefs_ = value;
           }
@@ -22258,11 +22258,11 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
       public Builder clearCardPrefs() {
         if (cardPrefsBuilder_ == null) {
-          cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.getDefaultInstance();
+          cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.getDefaultInstance();
           onChanged();
         } else {
           cardPrefsBuilder_.clear();
@@ -22271,17 +22271,17 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.Builder getCardPrefsBuilder() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.Builder getCardPrefsBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getCardPrefsFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
-      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferencesOrBuilder getCardPrefsOrBuilder() {
+      public com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferencesOrBuilder getCardPrefsOrBuilder() {
         if (cardPrefsBuilder_ != null) {
           return cardPrefsBuilder_.getMessageOrBuilder();
         } else {
@@ -22289,14 +22289,14 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;</code>
+       * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferencesOrBuilder> 
+          com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferencesOrBuilder> 
           getCardPrefsFieldBuilder() {
         if (cardPrefsBuilder_ == null) {
           cardPrefsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferencesOrBuilder>(
+              com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.Builder, com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferencesOrBuilder>(
                   cardPrefs_,
                   getParentForChildren(),
                   isClean());
@@ -22412,20 +22412,20 @@ public final class ScreenModel {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_laex_cg2d_model_CGScreenPreferences_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_descriptor;
+    internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable;
+      internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_descriptor;
+    internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_fieldAccessorTable;
+      internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_descriptor;
+    internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_fieldAccessorTable;
+      internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -22522,35 +22522,36 @@ public final class ScreenModel {
       "#.com.laex.cg2d.model.CGResourceFile\"q\n\007" +
       "CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007vis" +
       "ible\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022+\n\005shape\030\005 \003(" +
-      "\0132\034.com.laex.cg2d.model.CGShape\"\260\005\n\023CGSc" +
-      "reenPreferences\022U\n\016debugDrawPrefs\030\001 \001(\0132" +
-      "=.com.laex.cg2d.model.CGScreenPreference",
-      "s.DebugDrawPreferences\022M\n\nworldPrefs\030\002 \001" +
-      "(\01329.com.laex.cg2d.model.CGScreenPrefere" +
-      "nces.WorldPreferences\022K\n\tcardPrefs\030\003 \001(\013" +
-      "28.com.laex.cg2d.model.CGScreenPreferenc" +
-      "es.CardPreferences\032\264\001\n\024DebugDrawPreferen" +
-      "ces\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 " +
-      "\001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawInactiveBod" +
-      "ies\030\004 \001(\010\022\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\r" +
-      "drawDebugData\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(" +
-      "\010\032\222\001\n\020WorldPreferences\022\020\n\010ptmRatio\030\001 \001(\005",
-      "\022\032\n\022velocityIterations\030\002 \001(\005\022\032\n\022position" +
-      "Iterations\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gr" +
-      "avityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002\032Z\n\017CardPr" +
-      "eferences\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 " +
-      "\001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001" +
-      "(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOL" +
-      "UTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PU" +
-      "LLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010" +
-      "\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEn" +
-      "tityCollisionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006",
-      "CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006ST" +
-      "ATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021C" +
-      "GEditorShapeType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020" +
-      "\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_" +
-      "HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKG" +
-      "ROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAPE\020\006"
+      "\0132\034.com.laex.cg2d.model.CGShape\"\274\005\n\023CGSc" +
+      "reenPreferences\022W\n\016debugDrawPrefs\030\001 \001(\0132" +
+      "?.com.laex.cg2d.model.CGScreenPreference",
+      "s.CGDebugDrawPreferences\022O\n\nworldPrefs\030\002" +
+      " \001(\0132;.com.laex.cg2d.model.CGScreenPrefe" +
+      "rences.CGWorldPreferences\022M\n\tcardPrefs\030\003" +
+      " \001(\0132:.com.laex.cg2d.model.CGScreenPrefe" +
+      "rences.CGCardPreferences\032\266\001\n\026CGDebugDraw" +
+      "Preferences\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJ" +
+      "oints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawIna" +
+      "ctiveBodies\030\004 \001(\010\022\031\n\021installMouseJoint\030\005" +
+      " \001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n\014drawEntit" +
+      "ies\030\007 \001(\010\032\224\001\n\022CGWorldPreferences\022\020\n\010ptmR",
+      "atio\030\001 \001(\005\022\032\n\022velocityIterations\030\002 \001(\005\022\032" +
+      "\n\022positionIterations\030\003 \001(\005\022\020\n\010timeStep\030\004" +
+      " \001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002" +
+      "\032\\\n\021CGCardPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017" +
+      "\n\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\nca" +
+      "rdHeight\030\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOW" +
+      "N\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DIST" +
+      "ANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022" +
+      "\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004RO" +
+      "PE\020\013*B\n\025CGEntityCollisionType\022\010\n\004NONE\020\000\022",
+      "\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBo" +
+      "dyType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYN" +
+      "AMIC\020\003*\232\001\n\021CGEditorShapeType\022\027\n\023SIMPLE_S" +
+      "HAPE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022S" +
+      "IMPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDG" +
+      "E\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAP" +
+      "E\020\006"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -22671,23 +22672,23 @@ public final class ScreenModel {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGScreenPreferences_descriptor,
               new java.lang.String[] { "DebugDrawPrefs", "WorldPrefs", "CardPrefs", });
-          internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_descriptor =
+          internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_descriptor =
             internal_static_com_laex_cg2d_model_CGScreenPreferences_descriptor.getNestedTypes().get(0);
-          internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_fieldAccessorTable = new
+          internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_laex_cg2d_model_CGScreenPreferences_DebugDrawPreferences_descriptor,
+              internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_descriptor,
               new java.lang.String[] { "DrawBodies", "DrawJoints", "DrawAABB", "DrawInactiveBodies", "InstallMouseJoint", "DrawDebugData", "DrawEntities", });
-          internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_descriptor =
+          internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_descriptor =
             internal_static_com_laex_cg2d_model_CGScreenPreferences_descriptor.getNestedTypes().get(1);
-          internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_fieldAccessorTable = new
+          internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_laex_cg2d_model_CGScreenPreferences_WorldPreferences_descriptor,
+              internal_static_com_laex_cg2d_model_CGScreenPreferences_CGWorldPreferences_descriptor,
               new java.lang.String[] { "PtmRatio", "VelocityIterations", "PositionIterations", "TimeStep", "GravityX", "GravityY", });
-          internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_descriptor =
+          internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_descriptor =
             internal_static_com_laex_cg2d_model_CGScreenPreferences_descriptor.getNestedTypes().get(2);
-          internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_fieldAccessorTable = new
+          internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_laex_cg2d_model_CGScreenPreferences_CardPreferences_descriptor,
+              internal_static_com_laex_cg2d_model_CGScreenPreferences_CGCardPreferences_descriptor,
               new java.lang.String[] { "CardNoX", "CardNoY", "CardWidth", "CardHeight", });
           return null;
         }

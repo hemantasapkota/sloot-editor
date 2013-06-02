@@ -56,9 +56,9 @@ class CGFixtureDef;
 class CGShape;
 class CGLayer;
 class CGScreenPreferences;
-class CGScreenPreferences_DebugDrawPreferences;
-class CGScreenPreferences_WorldPreferences;
-class CGScreenPreferences_CardPreferences;
+class CGScreenPreferences_CGDebugDrawPreferences;
+class CGScreenPreferences_CGWorldPreferences;
+class CGScreenPreferences_CGCardPreferences;
 
 enum CGJointType {
   UNKNOWN = 1,
@@ -2569,14 +2569,14 @@ class CGLayer : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class CGScreenPreferences_DebugDrawPreferences : public ::google::protobuf::Message {
+class CGScreenPreferences_CGDebugDrawPreferences : public ::google::protobuf::Message {
  public:
-  CGScreenPreferences_DebugDrawPreferences();
-  virtual ~CGScreenPreferences_DebugDrawPreferences();
+  CGScreenPreferences_CGDebugDrawPreferences();
+  virtual ~CGScreenPreferences_CGDebugDrawPreferences();
 
-  CGScreenPreferences_DebugDrawPreferences(const CGScreenPreferences_DebugDrawPreferences& from);
+  CGScreenPreferences_CGDebugDrawPreferences(const CGScreenPreferences_CGDebugDrawPreferences& from);
 
-  inline CGScreenPreferences_DebugDrawPreferences& operator=(const CGScreenPreferences_DebugDrawPreferences& from) {
+  inline CGScreenPreferences_CGDebugDrawPreferences& operator=(const CGScreenPreferences_CGDebugDrawPreferences& from) {
     CopyFrom(from);
     return *this;
   }
@@ -2590,17 +2590,17 @@ class CGScreenPreferences_DebugDrawPreferences : public ::google::protobuf::Mess
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const CGScreenPreferences_DebugDrawPreferences& default_instance();
+  static const CGScreenPreferences_CGDebugDrawPreferences& default_instance();
 
-  void Swap(CGScreenPreferences_DebugDrawPreferences* other);
+  void Swap(CGScreenPreferences_CGDebugDrawPreferences* other);
 
   // implements Message ----------------------------------------------
 
-  CGScreenPreferences_DebugDrawPreferences* New() const;
+  CGScreenPreferences_CGDebugDrawPreferences* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const CGScreenPreferences_DebugDrawPreferences& from);
-  void MergeFrom(const CGScreenPreferences_DebugDrawPreferences& from);
+  void CopyFrom(const CGScreenPreferences_CGDebugDrawPreferences& from);
+  void MergeFrom(const CGScreenPreferences_CGDebugDrawPreferences& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -2672,7 +2672,7 @@ class CGScreenPreferences_DebugDrawPreferences : public ::google::protobuf::Mess
   inline bool drawentities() const;
   inline void set_drawentities(bool value);
 
-  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences)
+  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences)
  private:
   inline void set_has_drawbodies();
   inline void clear_has_drawbodies();
@@ -2707,18 +2707,18 @@ class CGScreenPreferences_DebugDrawPreferences : public ::google::protobuf::Mess
   friend void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
 
   void InitAsDefaultInstance();
-  static CGScreenPreferences_DebugDrawPreferences* default_instance_;
+  static CGScreenPreferences_CGDebugDrawPreferences* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class CGScreenPreferences_WorldPreferences : public ::google::protobuf::Message {
+class CGScreenPreferences_CGWorldPreferences : public ::google::protobuf::Message {
  public:
-  CGScreenPreferences_WorldPreferences();
-  virtual ~CGScreenPreferences_WorldPreferences();
+  CGScreenPreferences_CGWorldPreferences();
+  virtual ~CGScreenPreferences_CGWorldPreferences();
 
-  CGScreenPreferences_WorldPreferences(const CGScreenPreferences_WorldPreferences& from);
+  CGScreenPreferences_CGWorldPreferences(const CGScreenPreferences_CGWorldPreferences& from);
 
-  inline CGScreenPreferences_WorldPreferences& operator=(const CGScreenPreferences_WorldPreferences& from) {
+  inline CGScreenPreferences_CGWorldPreferences& operator=(const CGScreenPreferences_CGWorldPreferences& from) {
     CopyFrom(from);
     return *this;
   }
@@ -2732,17 +2732,17 @@ class CGScreenPreferences_WorldPreferences : public ::google::protobuf::Message 
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const CGScreenPreferences_WorldPreferences& default_instance();
+  static const CGScreenPreferences_CGWorldPreferences& default_instance();
 
-  void Swap(CGScreenPreferences_WorldPreferences* other);
+  void Swap(CGScreenPreferences_CGWorldPreferences* other);
 
   // implements Message ----------------------------------------------
 
-  CGScreenPreferences_WorldPreferences* New() const;
+  CGScreenPreferences_CGWorldPreferences* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const CGScreenPreferences_WorldPreferences& from);
-  void MergeFrom(const CGScreenPreferences_WorldPreferences& from);
+  void CopyFrom(const CGScreenPreferences_CGWorldPreferences& from);
+  void MergeFrom(const CGScreenPreferences_CGWorldPreferences& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -2807,7 +2807,7 @@ class CGScreenPreferences_WorldPreferences : public ::google::protobuf::Message 
   inline float gravityy() const;
   inline void set_gravityy(float value);
 
-  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.WorldPreferences)
+  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences)
  private:
   inline void set_has_ptmratio();
   inline void clear_has_ptmratio();
@@ -2839,18 +2839,18 @@ class CGScreenPreferences_WorldPreferences : public ::google::protobuf::Message 
   friend void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
 
   void InitAsDefaultInstance();
-  static CGScreenPreferences_WorldPreferences* default_instance_;
+  static CGScreenPreferences_CGWorldPreferences* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class CGScreenPreferences_CardPreferences : public ::google::protobuf::Message {
+class CGScreenPreferences_CGCardPreferences : public ::google::protobuf::Message {
  public:
-  CGScreenPreferences_CardPreferences();
-  virtual ~CGScreenPreferences_CardPreferences();
+  CGScreenPreferences_CGCardPreferences();
+  virtual ~CGScreenPreferences_CGCardPreferences();
 
-  CGScreenPreferences_CardPreferences(const CGScreenPreferences_CardPreferences& from);
+  CGScreenPreferences_CGCardPreferences(const CGScreenPreferences_CGCardPreferences& from);
 
-  inline CGScreenPreferences_CardPreferences& operator=(const CGScreenPreferences_CardPreferences& from) {
+  inline CGScreenPreferences_CGCardPreferences& operator=(const CGScreenPreferences_CGCardPreferences& from) {
     CopyFrom(from);
     return *this;
   }
@@ -2864,17 +2864,17 @@ class CGScreenPreferences_CardPreferences : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const CGScreenPreferences_CardPreferences& default_instance();
+  static const CGScreenPreferences_CGCardPreferences& default_instance();
 
-  void Swap(CGScreenPreferences_CardPreferences* other);
+  void Swap(CGScreenPreferences_CGCardPreferences* other);
 
   // implements Message ----------------------------------------------
 
-  CGScreenPreferences_CardPreferences* New() const;
+  CGScreenPreferences_CGCardPreferences* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const CGScreenPreferences_CardPreferences& from);
-  void MergeFrom(const CGScreenPreferences_CardPreferences& from);
+  void CopyFrom(const CGScreenPreferences_CGCardPreferences& from);
+  void MergeFrom(const CGScreenPreferences_CGCardPreferences& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -2925,7 +2925,7 @@ class CGScreenPreferences_CardPreferences : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 cardheight() const;
   inline void set_cardheight(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.CardPreferences)
+  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences)
  private:
   inline void set_has_cardnox();
   inline void clear_has_cardnox();
@@ -2951,7 +2951,7 @@ class CGScreenPreferences_CardPreferences : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
 
   void InitAsDefaultInstance();
-  static CGScreenPreferences_CardPreferences* default_instance_;
+  static CGScreenPreferences_CGCardPreferences* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -3007,38 +3007,38 @@ class CGScreenPreferences : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef CGScreenPreferences_DebugDrawPreferences DebugDrawPreferences;
-  typedef CGScreenPreferences_WorldPreferences WorldPreferences;
-  typedef CGScreenPreferences_CardPreferences CardPreferences;
+  typedef CGScreenPreferences_CGDebugDrawPreferences CGDebugDrawPreferences;
+  typedef CGScreenPreferences_CGWorldPreferences CGWorldPreferences;
+  typedef CGScreenPreferences_CGCardPreferences CGCardPreferences;
 
   // accessors -------------------------------------------------------
 
-  // optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
   inline bool has_debugdrawprefs() const;
   inline void clear_debugdrawprefs();
   static const int kDebugDrawPrefsFieldNumber = 1;
-  inline const ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences& debugdrawprefs() const;
-  inline ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences* mutable_debugdrawprefs();
-  inline ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences* release_debugdrawprefs();
-  inline void set_allocated_debugdrawprefs(::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences* debugdrawprefs);
+  inline const ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences& debugdrawprefs() const;
+  inline ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* mutable_debugdrawprefs();
+  inline ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* release_debugdrawprefs();
+  inline void set_allocated_debugdrawprefs(::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* debugdrawprefs);
 
-  // optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
   inline bool has_worldprefs() const;
   inline void clear_worldprefs();
   static const int kWorldPrefsFieldNumber = 2;
-  inline const ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences& worldprefs() const;
-  inline ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences* mutable_worldprefs();
-  inline ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences* release_worldprefs();
-  inline void set_allocated_worldprefs(::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences* worldprefs);
+  inline const ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences& worldprefs() const;
+  inline ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* mutable_worldprefs();
+  inline ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* release_worldprefs();
+  inline void set_allocated_worldprefs(::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* worldprefs);
 
-  // optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
   inline bool has_cardprefs() const;
   inline void clear_cardprefs();
   static const int kCardPrefsFieldNumber = 3;
-  inline const ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences& cardprefs() const;
-  inline ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences* mutable_cardprefs();
-  inline ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences* release_cardprefs();
-  inline void set_allocated_cardprefs(::com::laex::cg2d::model::CGScreenPreferences_CardPreferences* cardprefs);
+  inline const ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences& cardprefs() const;
+  inline ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* mutable_cardprefs();
+  inline ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* release_cardprefs();
+  inline void set_allocated_cardprefs(::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* cardprefs);
 
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences)
  private:
@@ -3051,9 +3051,9 @@ class CGScreenPreferences : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences* debugdrawprefs_;
-  ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences* worldprefs_;
-  ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences* cardprefs_;
+  ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* debugdrawprefs_;
+  ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* worldprefs_;
+  ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* cardprefs_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
@@ -6141,386 +6141,386 @@ CGLayer::mutable_shape() {
 
 // -------------------------------------------------------------------
 
-// CGScreenPreferences_DebugDrawPreferences
+// CGScreenPreferences_CGDebugDrawPreferences
 
 // optional bool drawBodies = 1;
-inline bool CGScreenPreferences_DebugDrawPreferences::has_drawbodies() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::has_drawbodies() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_has_drawbodies() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_has_drawbodies() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_has_drawbodies() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_has_drawbodies() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_drawbodies() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_drawbodies() {
   drawbodies_ = false;
   clear_has_drawbodies();
 }
-inline bool CGScreenPreferences_DebugDrawPreferences::drawbodies() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::drawbodies() const {
   return drawbodies_;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_drawbodies(bool value) {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_drawbodies(bool value) {
   set_has_drawbodies();
   drawbodies_ = value;
 }
 
 // optional bool drawJoints = 2;
-inline bool CGScreenPreferences_DebugDrawPreferences::has_drawjoints() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::has_drawjoints() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_has_drawjoints() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_has_drawjoints() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_has_drawjoints() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_has_drawjoints() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_drawjoints() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_drawjoints() {
   drawjoints_ = false;
   clear_has_drawjoints();
 }
-inline bool CGScreenPreferences_DebugDrawPreferences::drawjoints() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::drawjoints() const {
   return drawjoints_;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_drawjoints(bool value) {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_drawjoints(bool value) {
   set_has_drawjoints();
   drawjoints_ = value;
 }
 
 // optional bool drawAABB = 3;
-inline bool CGScreenPreferences_DebugDrawPreferences::has_drawaabb() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::has_drawaabb() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_has_drawaabb() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_has_drawaabb() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_has_drawaabb() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_has_drawaabb() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_drawaabb() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_drawaabb() {
   drawaabb_ = false;
   clear_has_drawaabb();
 }
-inline bool CGScreenPreferences_DebugDrawPreferences::drawaabb() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::drawaabb() const {
   return drawaabb_;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_drawaabb(bool value) {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_drawaabb(bool value) {
   set_has_drawaabb();
   drawaabb_ = value;
 }
 
 // optional bool drawInactiveBodies = 4;
-inline bool CGScreenPreferences_DebugDrawPreferences::has_drawinactivebodies() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::has_drawinactivebodies() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_has_drawinactivebodies() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_has_drawinactivebodies() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_has_drawinactivebodies() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_has_drawinactivebodies() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_drawinactivebodies() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_drawinactivebodies() {
   drawinactivebodies_ = false;
   clear_has_drawinactivebodies();
 }
-inline bool CGScreenPreferences_DebugDrawPreferences::drawinactivebodies() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::drawinactivebodies() const {
   return drawinactivebodies_;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_drawinactivebodies(bool value) {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_drawinactivebodies(bool value) {
   set_has_drawinactivebodies();
   drawinactivebodies_ = value;
 }
 
 // optional bool installMouseJoint = 5;
-inline bool CGScreenPreferences_DebugDrawPreferences::has_installmousejoint() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::has_installmousejoint() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_has_installmousejoint() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_has_installmousejoint() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_has_installmousejoint() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_has_installmousejoint() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_installmousejoint() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_installmousejoint() {
   installmousejoint_ = false;
   clear_has_installmousejoint();
 }
-inline bool CGScreenPreferences_DebugDrawPreferences::installmousejoint() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::installmousejoint() const {
   return installmousejoint_;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_installmousejoint(bool value) {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_installmousejoint(bool value) {
   set_has_installmousejoint();
   installmousejoint_ = value;
 }
 
 // optional bool drawDebugData = 6;
-inline bool CGScreenPreferences_DebugDrawPreferences::has_drawdebugdata() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::has_drawdebugdata() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_has_drawdebugdata() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_has_drawdebugdata() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_has_drawdebugdata() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_has_drawdebugdata() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_drawdebugdata() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_drawdebugdata() {
   drawdebugdata_ = false;
   clear_has_drawdebugdata();
 }
-inline bool CGScreenPreferences_DebugDrawPreferences::drawdebugdata() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::drawdebugdata() const {
   return drawdebugdata_;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_drawdebugdata(bool value) {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_drawdebugdata(bool value) {
   set_has_drawdebugdata();
   drawdebugdata_ = value;
 }
 
 // optional bool drawEntities = 7;
-inline bool CGScreenPreferences_DebugDrawPreferences::has_drawentities() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::has_drawentities() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_has_drawentities() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_has_drawentities() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_has_drawentities() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_has_drawentities() {
   _has_bits_[0] &= ~0x00000040u;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::clear_drawentities() {
+inline void CGScreenPreferences_CGDebugDrawPreferences::clear_drawentities() {
   drawentities_ = false;
   clear_has_drawentities();
 }
-inline bool CGScreenPreferences_DebugDrawPreferences::drawentities() const {
+inline bool CGScreenPreferences_CGDebugDrawPreferences::drawentities() const {
   return drawentities_;
 }
-inline void CGScreenPreferences_DebugDrawPreferences::set_drawentities(bool value) {
+inline void CGScreenPreferences_CGDebugDrawPreferences::set_drawentities(bool value) {
   set_has_drawentities();
   drawentities_ = value;
 }
 
 // -------------------------------------------------------------------
 
-// CGScreenPreferences_WorldPreferences
+// CGScreenPreferences_CGWorldPreferences
 
 // optional int32 ptmRatio = 1;
-inline bool CGScreenPreferences_WorldPreferences::has_ptmratio() const {
+inline bool CGScreenPreferences_CGWorldPreferences::has_ptmratio() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void CGScreenPreferences_WorldPreferences::set_has_ptmratio() {
+inline void CGScreenPreferences_CGWorldPreferences::set_has_ptmratio() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_has_ptmratio() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_has_ptmratio() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_ptmratio() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_ptmratio() {
   ptmratio_ = 0;
   clear_has_ptmratio();
 }
-inline ::google::protobuf::int32 CGScreenPreferences_WorldPreferences::ptmratio() const {
+inline ::google::protobuf::int32 CGScreenPreferences_CGWorldPreferences::ptmratio() const {
   return ptmratio_;
 }
-inline void CGScreenPreferences_WorldPreferences::set_ptmratio(::google::protobuf::int32 value) {
+inline void CGScreenPreferences_CGWorldPreferences::set_ptmratio(::google::protobuf::int32 value) {
   set_has_ptmratio();
   ptmratio_ = value;
 }
 
 // optional int32 velocityIterations = 2;
-inline bool CGScreenPreferences_WorldPreferences::has_velocityiterations() const {
+inline bool CGScreenPreferences_CGWorldPreferences::has_velocityiterations() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CGScreenPreferences_WorldPreferences::set_has_velocityiterations() {
+inline void CGScreenPreferences_CGWorldPreferences::set_has_velocityiterations() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_has_velocityiterations() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_has_velocityiterations() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_velocityiterations() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_velocityiterations() {
   velocityiterations_ = 0;
   clear_has_velocityiterations();
 }
-inline ::google::protobuf::int32 CGScreenPreferences_WorldPreferences::velocityiterations() const {
+inline ::google::protobuf::int32 CGScreenPreferences_CGWorldPreferences::velocityiterations() const {
   return velocityiterations_;
 }
-inline void CGScreenPreferences_WorldPreferences::set_velocityiterations(::google::protobuf::int32 value) {
+inline void CGScreenPreferences_CGWorldPreferences::set_velocityiterations(::google::protobuf::int32 value) {
   set_has_velocityiterations();
   velocityiterations_ = value;
 }
 
 // optional int32 positionIterations = 3;
-inline bool CGScreenPreferences_WorldPreferences::has_positioniterations() const {
+inline bool CGScreenPreferences_CGWorldPreferences::has_positioniterations() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void CGScreenPreferences_WorldPreferences::set_has_positioniterations() {
+inline void CGScreenPreferences_CGWorldPreferences::set_has_positioniterations() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_has_positioniterations() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_has_positioniterations() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_positioniterations() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_positioniterations() {
   positioniterations_ = 0;
   clear_has_positioniterations();
 }
-inline ::google::protobuf::int32 CGScreenPreferences_WorldPreferences::positioniterations() const {
+inline ::google::protobuf::int32 CGScreenPreferences_CGWorldPreferences::positioniterations() const {
   return positioniterations_;
 }
-inline void CGScreenPreferences_WorldPreferences::set_positioniterations(::google::protobuf::int32 value) {
+inline void CGScreenPreferences_CGWorldPreferences::set_positioniterations(::google::protobuf::int32 value) {
   set_has_positioniterations();
   positioniterations_ = value;
 }
 
 // optional float timeStep = 4;
-inline bool CGScreenPreferences_WorldPreferences::has_timestep() const {
+inline bool CGScreenPreferences_CGWorldPreferences::has_timestep() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void CGScreenPreferences_WorldPreferences::set_has_timestep() {
+inline void CGScreenPreferences_CGWorldPreferences::set_has_timestep() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_has_timestep() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_has_timestep() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_timestep() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_timestep() {
   timestep_ = 0;
   clear_has_timestep();
 }
-inline float CGScreenPreferences_WorldPreferences::timestep() const {
+inline float CGScreenPreferences_CGWorldPreferences::timestep() const {
   return timestep_;
 }
-inline void CGScreenPreferences_WorldPreferences::set_timestep(float value) {
+inline void CGScreenPreferences_CGWorldPreferences::set_timestep(float value) {
   set_has_timestep();
   timestep_ = value;
 }
 
 // optional float gravityX = 5;
-inline bool CGScreenPreferences_WorldPreferences::has_gravityx() const {
+inline bool CGScreenPreferences_CGWorldPreferences::has_gravityx() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void CGScreenPreferences_WorldPreferences::set_has_gravityx() {
+inline void CGScreenPreferences_CGWorldPreferences::set_has_gravityx() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_has_gravityx() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_has_gravityx() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_gravityx() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_gravityx() {
   gravityx_ = 0;
   clear_has_gravityx();
 }
-inline float CGScreenPreferences_WorldPreferences::gravityx() const {
+inline float CGScreenPreferences_CGWorldPreferences::gravityx() const {
   return gravityx_;
 }
-inline void CGScreenPreferences_WorldPreferences::set_gravityx(float value) {
+inline void CGScreenPreferences_CGWorldPreferences::set_gravityx(float value) {
   set_has_gravityx();
   gravityx_ = value;
 }
 
 // optional float gravityY = 6;
-inline bool CGScreenPreferences_WorldPreferences::has_gravityy() const {
+inline bool CGScreenPreferences_CGWorldPreferences::has_gravityy() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void CGScreenPreferences_WorldPreferences::set_has_gravityy() {
+inline void CGScreenPreferences_CGWorldPreferences::set_has_gravityy() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_has_gravityy() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_has_gravityy() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void CGScreenPreferences_WorldPreferences::clear_gravityy() {
+inline void CGScreenPreferences_CGWorldPreferences::clear_gravityy() {
   gravityy_ = 0;
   clear_has_gravityy();
 }
-inline float CGScreenPreferences_WorldPreferences::gravityy() const {
+inline float CGScreenPreferences_CGWorldPreferences::gravityy() const {
   return gravityy_;
 }
-inline void CGScreenPreferences_WorldPreferences::set_gravityy(float value) {
+inline void CGScreenPreferences_CGWorldPreferences::set_gravityy(float value) {
   set_has_gravityy();
   gravityy_ = value;
 }
 
 // -------------------------------------------------------------------
 
-// CGScreenPreferences_CardPreferences
+// CGScreenPreferences_CGCardPreferences
 
 // optional int32 cardNoX = 1;
-inline bool CGScreenPreferences_CardPreferences::has_cardnox() const {
+inline bool CGScreenPreferences_CGCardPreferences::has_cardnox() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void CGScreenPreferences_CardPreferences::set_has_cardnox() {
+inline void CGScreenPreferences_CGCardPreferences::set_has_cardnox() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void CGScreenPreferences_CardPreferences::clear_has_cardnox() {
+inline void CGScreenPreferences_CGCardPreferences::clear_has_cardnox() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void CGScreenPreferences_CardPreferences::clear_cardnox() {
+inline void CGScreenPreferences_CGCardPreferences::clear_cardnox() {
   cardnox_ = 0;
   clear_has_cardnox();
 }
-inline ::google::protobuf::int32 CGScreenPreferences_CardPreferences::cardnox() const {
+inline ::google::protobuf::int32 CGScreenPreferences_CGCardPreferences::cardnox() const {
   return cardnox_;
 }
-inline void CGScreenPreferences_CardPreferences::set_cardnox(::google::protobuf::int32 value) {
+inline void CGScreenPreferences_CGCardPreferences::set_cardnox(::google::protobuf::int32 value) {
   set_has_cardnox();
   cardnox_ = value;
 }
 
 // optional int32 cardNoY = 2;
-inline bool CGScreenPreferences_CardPreferences::has_cardnoy() const {
+inline bool CGScreenPreferences_CGCardPreferences::has_cardnoy() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CGScreenPreferences_CardPreferences::set_has_cardnoy() {
+inline void CGScreenPreferences_CGCardPreferences::set_has_cardnoy() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CGScreenPreferences_CardPreferences::clear_has_cardnoy() {
+inline void CGScreenPreferences_CGCardPreferences::clear_has_cardnoy() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void CGScreenPreferences_CardPreferences::clear_cardnoy() {
+inline void CGScreenPreferences_CGCardPreferences::clear_cardnoy() {
   cardnoy_ = 0;
   clear_has_cardnoy();
 }
-inline ::google::protobuf::int32 CGScreenPreferences_CardPreferences::cardnoy() const {
+inline ::google::protobuf::int32 CGScreenPreferences_CGCardPreferences::cardnoy() const {
   return cardnoy_;
 }
-inline void CGScreenPreferences_CardPreferences::set_cardnoy(::google::protobuf::int32 value) {
+inline void CGScreenPreferences_CGCardPreferences::set_cardnoy(::google::protobuf::int32 value) {
   set_has_cardnoy();
   cardnoy_ = value;
 }
 
 // optional int32 cardWidth = 3;
-inline bool CGScreenPreferences_CardPreferences::has_cardwidth() const {
+inline bool CGScreenPreferences_CGCardPreferences::has_cardwidth() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void CGScreenPreferences_CardPreferences::set_has_cardwidth() {
+inline void CGScreenPreferences_CGCardPreferences::set_has_cardwidth() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void CGScreenPreferences_CardPreferences::clear_has_cardwidth() {
+inline void CGScreenPreferences_CGCardPreferences::clear_has_cardwidth() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void CGScreenPreferences_CardPreferences::clear_cardwidth() {
+inline void CGScreenPreferences_CGCardPreferences::clear_cardwidth() {
   cardwidth_ = 0;
   clear_has_cardwidth();
 }
-inline ::google::protobuf::int32 CGScreenPreferences_CardPreferences::cardwidth() const {
+inline ::google::protobuf::int32 CGScreenPreferences_CGCardPreferences::cardwidth() const {
   return cardwidth_;
 }
-inline void CGScreenPreferences_CardPreferences::set_cardwidth(::google::protobuf::int32 value) {
+inline void CGScreenPreferences_CGCardPreferences::set_cardwidth(::google::protobuf::int32 value) {
   set_has_cardwidth();
   cardwidth_ = value;
 }
 
 // optional int32 cardHeight = 4;
-inline bool CGScreenPreferences_CardPreferences::has_cardheight() const {
+inline bool CGScreenPreferences_CGCardPreferences::has_cardheight() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void CGScreenPreferences_CardPreferences::set_has_cardheight() {
+inline void CGScreenPreferences_CGCardPreferences::set_has_cardheight() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void CGScreenPreferences_CardPreferences::clear_has_cardheight() {
+inline void CGScreenPreferences_CGCardPreferences::clear_has_cardheight() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void CGScreenPreferences_CardPreferences::clear_cardheight() {
+inline void CGScreenPreferences_CGCardPreferences::clear_cardheight() {
   cardheight_ = 0;
   clear_has_cardheight();
 }
-inline ::google::protobuf::int32 CGScreenPreferences_CardPreferences::cardheight() const {
+inline ::google::protobuf::int32 CGScreenPreferences_CGCardPreferences::cardheight() const {
   return cardheight_;
 }
-inline void CGScreenPreferences_CardPreferences::set_cardheight(::google::protobuf::int32 value) {
+inline void CGScreenPreferences_CGCardPreferences::set_cardheight(::google::protobuf::int32 value) {
   set_has_cardheight();
   cardheight_ = value;
 }
@@ -6529,7 +6529,7 @@ inline void CGScreenPreferences_CardPreferences::set_cardheight(::google::protob
 
 // CGScreenPreferences
 
-// optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
+// optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
 inline bool CGScreenPreferences::has_debugdrawprefs() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -6540,24 +6540,24 @@ inline void CGScreenPreferences::clear_has_debugdrawprefs() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void CGScreenPreferences::clear_debugdrawprefs() {
-  if (debugdrawprefs_ != NULL) debugdrawprefs_->::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences::Clear();
+  if (debugdrawprefs_ != NULL) debugdrawprefs_->::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences::Clear();
   clear_has_debugdrawprefs();
 }
-inline const ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences& CGScreenPreferences::debugdrawprefs() const {
+inline const ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences& CGScreenPreferences::debugdrawprefs() const {
   return debugdrawprefs_ != NULL ? *debugdrawprefs_ : *default_instance_->debugdrawprefs_;
 }
-inline ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences* CGScreenPreferences::mutable_debugdrawprefs() {
+inline ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* CGScreenPreferences::mutable_debugdrawprefs() {
   set_has_debugdrawprefs();
-  if (debugdrawprefs_ == NULL) debugdrawprefs_ = new ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences;
+  if (debugdrawprefs_ == NULL) debugdrawprefs_ = new ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences;
   return debugdrawprefs_;
 }
-inline ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences* CGScreenPreferences::release_debugdrawprefs() {
+inline ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* CGScreenPreferences::release_debugdrawprefs() {
   clear_has_debugdrawprefs();
-  ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences* temp = debugdrawprefs_;
+  ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* temp = debugdrawprefs_;
   debugdrawprefs_ = NULL;
   return temp;
 }
-inline void CGScreenPreferences::set_allocated_debugdrawprefs(::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences* debugdrawprefs) {
+inline void CGScreenPreferences::set_allocated_debugdrawprefs(::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* debugdrawprefs) {
   delete debugdrawprefs_;
   debugdrawprefs_ = debugdrawprefs;
   if (debugdrawprefs) {
@@ -6567,7 +6567,7 @@ inline void CGScreenPreferences::set_allocated_debugdrawprefs(::com::laex::cg2d:
   }
 }
 
-// optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
+// optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
 inline bool CGScreenPreferences::has_worldprefs() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -6578,24 +6578,24 @@ inline void CGScreenPreferences::clear_has_worldprefs() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void CGScreenPreferences::clear_worldprefs() {
-  if (worldprefs_ != NULL) worldprefs_->::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences::Clear();
+  if (worldprefs_ != NULL) worldprefs_->::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences::Clear();
   clear_has_worldprefs();
 }
-inline const ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences& CGScreenPreferences::worldprefs() const {
+inline const ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences& CGScreenPreferences::worldprefs() const {
   return worldprefs_ != NULL ? *worldprefs_ : *default_instance_->worldprefs_;
 }
-inline ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences* CGScreenPreferences::mutable_worldprefs() {
+inline ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* CGScreenPreferences::mutable_worldprefs() {
   set_has_worldprefs();
-  if (worldprefs_ == NULL) worldprefs_ = new ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences;
+  if (worldprefs_ == NULL) worldprefs_ = new ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences;
   return worldprefs_;
 }
-inline ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences* CGScreenPreferences::release_worldprefs() {
+inline ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* CGScreenPreferences::release_worldprefs() {
   clear_has_worldprefs();
-  ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences* temp = worldprefs_;
+  ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* temp = worldprefs_;
   worldprefs_ = NULL;
   return temp;
 }
-inline void CGScreenPreferences::set_allocated_worldprefs(::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences* worldprefs) {
+inline void CGScreenPreferences::set_allocated_worldprefs(::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* worldprefs) {
   delete worldprefs_;
   worldprefs_ = worldprefs;
   if (worldprefs) {
@@ -6605,7 +6605,7 @@ inline void CGScreenPreferences::set_allocated_worldprefs(::com::laex::cg2d::mod
   }
 }
 
-// optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
+// optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
 inline bool CGScreenPreferences::has_cardprefs() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -6616,24 +6616,24 @@ inline void CGScreenPreferences::clear_has_cardprefs() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void CGScreenPreferences::clear_cardprefs() {
-  if (cardprefs_ != NULL) cardprefs_->::com::laex::cg2d::model::CGScreenPreferences_CardPreferences::Clear();
+  if (cardprefs_ != NULL) cardprefs_->::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences::Clear();
   clear_has_cardprefs();
 }
-inline const ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences& CGScreenPreferences::cardprefs() const {
+inline const ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences& CGScreenPreferences::cardprefs() const {
   return cardprefs_ != NULL ? *cardprefs_ : *default_instance_->cardprefs_;
 }
-inline ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences* CGScreenPreferences::mutable_cardprefs() {
+inline ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* CGScreenPreferences::mutable_cardprefs() {
   set_has_cardprefs();
-  if (cardprefs_ == NULL) cardprefs_ = new ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences;
+  if (cardprefs_ == NULL) cardprefs_ = new ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences;
   return cardprefs_;
 }
-inline ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences* CGScreenPreferences::release_cardprefs() {
+inline ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* CGScreenPreferences::release_cardprefs() {
   clear_has_cardprefs();
-  ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences* temp = cardprefs_;
+  ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* temp = cardprefs_;
   cardprefs_ = NULL;
   return temp;
 }
-inline void CGScreenPreferences::set_allocated_cardprefs(::com::laex::cg2d::model::CGScreenPreferences_CardPreferences* cardprefs) {
+inline void CGScreenPreferences::set_allocated_cardprefs(::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* cardprefs) {
   delete cardprefs_;
   cardprefs_ = cardprefs;
   if (cardprefs) {

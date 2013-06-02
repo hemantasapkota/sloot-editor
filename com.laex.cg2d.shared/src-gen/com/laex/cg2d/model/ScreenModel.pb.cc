@@ -80,15 +80,15 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CGScreenPreferences_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGScreenPreferences_reflection_ = NULL;
-const ::google::protobuf::Descriptor* CGScreenPreferences_DebugDrawPreferences_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* CGScreenPreferences_CGDebugDrawPreferences_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  CGScreenPreferences_DebugDrawPreferences_reflection_ = NULL;
-const ::google::protobuf::Descriptor* CGScreenPreferences_WorldPreferences_descriptor_ = NULL;
+  CGScreenPreferences_CGDebugDrawPreferences_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CGScreenPreferences_CGWorldPreferences_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  CGScreenPreferences_WorldPreferences_reflection_ = NULL;
-const ::google::protobuf::Descriptor* CGScreenPreferences_CardPreferences_descriptor_ = NULL;
+  CGScreenPreferences_CGWorldPreferences_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CGScreenPreferences_CGCardPreferences_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  CGScreenPreferences_CardPreferences_reflection_ = NULL;
+  CGScreenPreferences_CGCardPreferences_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* CGJointType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* CGEntityCollisionType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* CGBodyType_descriptor_ = NULL;
@@ -474,65 +474,65 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGScreenPreferences));
-  CGScreenPreferences_DebugDrawPreferences_descriptor_ = CGScreenPreferences_descriptor_->nested_type(0);
-  static const int CGScreenPreferences_DebugDrawPreferences_offsets_[7] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, drawbodies_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, drawjoints_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, drawaabb_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, drawinactivebodies_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, installmousejoint_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, drawdebugdata_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, drawentities_),
+  CGScreenPreferences_CGDebugDrawPreferences_descriptor_ = CGScreenPreferences_descriptor_->nested_type(0);
+  static const int CGScreenPreferences_CGDebugDrawPreferences_offsets_[7] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, drawbodies_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, drawjoints_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, drawaabb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, drawinactivebodies_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, installmousejoint_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, drawdebugdata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, drawentities_),
   };
-  CGScreenPreferences_DebugDrawPreferences_reflection_ =
+  CGScreenPreferences_CGDebugDrawPreferences_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      CGScreenPreferences_DebugDrawPreferences_descriptor_,
-      CGScreenPreferences_DebugDrawPreferences::default_instance_,
-      CGScreenPreferences_DebugDrawPreferences_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_DebugDrawPreferences, _unknown_fields_),
+      CGScreenPreferences_CGDebugDrawPreferences_descriptor_,
+      CGScreenPreferences_CGDebugDrawPreferences::default_instance_,
+      CGScreenPreferences_CGDebugDrawPreferences_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGDebugDrawPreferences, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(CGScreenPreferences_DebugDrawPreferences));
-  CGScreenPreferences_WorldPreferences_descriptor_ = CGScreenPreferences_descriptor_->nested_type(1);
-  static const int CGScreenPreferences_WorldPreferences_offsets_[6] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_WorldPreferences, ptmratio_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_WorldPreferences, velocityiterations_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_WorldPreferences, positioniterations_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_WorldPreferences, timestep_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_WorldPreferences, gravityx_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_WorldPreferences, gravityy_),
+      sizeof(CGScreenPreferences_CGDebugDrawPreferences));
+  CGScreenPreferences_CGWorldPreferences_descriptor_ = CGScreenPreferences_descriptor_->nested_type(1);
+  static const int CGScreenPreferences_CGWorldPreferences_offsets_[6] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGWorldPreferences, ptmratio_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGWorldPreferences, velocityiterations_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGWorldPreferences, positioniterations_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGWorldPreferences, timestep_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGWorldPreferences, gravityx_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGWorldPreferences, gravityy_),
   };
-  CGScreenPreferences_WorldPreferences_reflection_ =
+  CGScreenPreferences_CGWorldPreferences_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      CGScreenPreferences_WorldPreferences_descriptor_,
-      CGScreenPreferences_WorldPreferences::default_instance_,
-      CGScreenPreferences_WorldPreferences_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_WorldPreferences, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_WorldPreferences, _unknown_fields_),
+      CGScreenPreferences_CGWorldPreferences_descriptor_,
+      CGScreenPreferences_CGWorldPreferences::default_instance_,
+      CGScreenPreferences_CGWorldPreferences_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGWorldPreferences, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGWorldPreferences, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(CGScreenPreferences_WorldPreferences));
-  CGScreenPreferences_CardPreferences_descriptor_ = CGScreenPreferences_descriptor_->nested_type(2);
-  static const int CGScreenPreferences_CardPreferences_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CardPreferences, cardnox_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CardPreferences, cardnoy_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CardPreferences, cardwidth_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CardPreferences, cardheight_),
+      sizeof(CGScreenPreferences_CGWorldPreferences));
+  CGScreenPreferences_CGCardPreferences_descriptor_ = CGScreenPreferences_descriptor_->nested_type(2);
+  static const int CGScreenPreferences_CGCardPreferences_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGCardPreferences, cardnox_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGCardPreferences, cardnoy_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGCardPreferences, cardwidth_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGCardPreferences, cardheight_),
   };
-  CGScreenPreferences_CardPreferences_reflection_ =
+  CGScreenPreferences_CGCardPreferences_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      CGScreenPreferences_CardPreferences_descriptor_,
-      CGScreenPreferences_CardPreferences::default_instance_,
-      CGScreenPreferences_CardPreferences_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CardPreferences, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CardPreferences, _unknown_fields_),
+      CGScreenPreferences_CGCardPreferences_descriptor_,
+      CGScreenPreferences_CGCardPreferences::default_instance_,
+      CGScreenPreferences_CGCardPreferences_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGCardPreferences, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences_CGCardPreferences, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(CGScreenPreferences_CardPreferences));
+      sizeof(CGScreenPreferences_CGCardPreferences));
   CGJointType_descriptor_ = file->enum_type(0);
   CGEntityCollisionType_descriptor_ = file->enum_type(1);
   CGBodyType_descriptor_ = file->enum_type(2);
@@ -588,11 +588,11 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CGScreenPreferences_descriptor_, &CGScreenPreferences::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    CGScreenPreferences_DebugDrawPreferences_descriptor_, &CGScreenPreferences_DebugDrawPreferences::default_instance());
+    CGScreenPreferences_CGDebugDrawPreferences_descriptor_, &CGScreenPreferences_CGDebugDrawPreferences::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    CGScreenPreferences_WorldPreferences_descriptor_, &CGScreenPreferences_WorldPreferences::default_instance());
+    CGScreenPreferences_CGWorldPreferences_descriptor_, &CGScreenPreferences_CGWorldPreferences::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    CGScreenPreferences_CardPreferences_descriptor_, &CGScreenPreferences_CardPreferences::default_instance());
+    CGScreenPreferences_CGCardPreferences_descriptor_, &CGScreenPreferences_CGCardPreferences::default_instance());
 }
 
 }  // namespace
@@ -636,12 +636,12 @@ void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   delete CGLayer_reflection_;
   delete CGScreenPreferences::default_instance_;
   delete CGScreenPreferences_reflection_;
-  delete CGScreenPreferences_DebugDrawPreferences::default_instance_;
-  delete CGScreenPreferences_DebugDrawPreferences_reflection_;
-  delete CGScreenPreferences_WorldPreferences::default_instance_;
-  delete CGScreenPreferences_WorldPreferences_reflection_;
-  delete CGScreenPreferences_CardPreferences::default_instance_;
-  delete CGScreenPreferences_CardPreferences_reflection_;
+  delete CGScreenPreferences_CGDebugDrawPreferences::default_instance_;
+  delete CGScreenPreferences_CGDebugDrawPreferences_reflection_;
+  delete CGScreenPreferences_CGWorldPreferences::default_instance_;
+  delete CGScreenPreferences_CGWorldPreferences_reflection_;
+  delete CGScreenPreferences_CGCardPreferences::default_instance_;
+  delete CGScreenPreferences_CGCardPreferences_reflection_;
 }
 
 void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
@@ -738,35 +738,36 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "#.com.laex.cg2d.model.CGResourceFile\"q\n\007"
     "CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007vis"
     "ible\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022+\n\005shape\030\005 \003("
-    "\0132\034.com.laex.cg2d.model.CGShape\"\260\005\n\023CGSc"
-    "reenPreferences\022U\n\016debugDrawPrefs\030\001 \001(\0132"
-    "=.com.laex.cg2d.model.CGScreenPreference"
-    "s.DebugDrawPreferences\022M\n\nworldPrefs\030\002 \001"
-    "(\01329.com.laex.cg2d.model.CGScreenPrefere"
-    "nces.WorldPreferences\022K\n\tcardPrefs\030\003 \001(\013"
-    "28.com.laex.cg2d.model.CGScreenPreferenc"
-    "es.CardPreferences\032\264\001\n\024DebugDrawPreferen"
-    "ces\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 "
-    "\001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawInactiveBod"
-    "ies\030\004 \001(\010\022\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\r"
-    "drawDebugData\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001("
-    "\010\032\222\001\n\020WorldPreferences\022\020\n\010ptmRatio\030\001 \001(\005"
-    "\022\032\n\022velocityIterations\030\002 \001(\005\022\032\n\022position"
-    "Iterations\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gr"
-    "avityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002\032Z\n\017CardPr"
-    "eferences\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 "
-    "\001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001"
-    "(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOL"
-    "UTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PU"
-    "LLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010"
-    "\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEn"
-    "tityCollisionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006"
-    "CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006ST"
-    "ATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021C"
-    "GEditorShapeType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020"
-    "\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_"
-    "HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKG"
-    "ROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4631);
+    "\0132\034.com.laex.cg2d.model.CGShape\"\274\005\n\023CGSc"
+    "reenPreferences\022W\n\016debugDrawPrefs\030\001 \001(\0132"
+    "\?.com.laex.cg2d.model.CGScreenPreference"
+    "s.CGDebugDrawPreferences\022O\n\nworldPrefs\030\002"
+    " \001(\0132;.com.laex.cg2d.model.CGScreenPrefe"
+    "rences.CGWorldPreferences\022M\n\tcardPrefs\030\003"
+    " \001(\0132:.com.laex.cg2d.model.CGScreenPrefe"
+    "rences.CGCardPreferences\032\266\001\n\026CGDebugDraw"
+    "Preferences\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJ"
+    "oints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawIna"
+    "ctiveBodies\030\004 \001(\010\022\031\n\021installMouseJoint\030\005"
+    " \001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n\014drawEntit"
+    "ies\030\007 \001(\010\032\224\001\n\022CGWorldPreferences\022\020\n\010ptmR"
+    "atio\030\001 \001(\005\022\032\n\022velocityIterations\030\002 \001(\005\022\032"
+    "\n\022positionIterations\030\003 \001(\005\022\020\n\010timeStep\030\004"
+    " \001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002"
+    "\032\\\n\021CGCardPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017"
+    "\n\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\nca"
+    "rdHeight\030\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOW"
+    "N\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DIST"
+    "ANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022"
+    "\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004RO"
+    "PE\020\013*B\n\025CGEntityCollisionType\022\010\n\004NONE\020\000\022"
+    "\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBo"
+    "dyType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYN"
+    "AMIC\020\003*\232\001\n\021CGEditorShapeType\022\027\n\023SIMPLE_S"
+    "HAPE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022S"
+    "IMPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDG"
+    "E\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAP"
+    "E\020\006", 4643);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/model/ScreenModel.proto", &protobuf_RegisterTypes);
   CGScreenModel::default_instance_ = new CGScreenModel();
@@ -788,9 +789,9 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   CGShape::default_instance_ = new CGShape();
   CGLayer::default_instance_ = new CGLayer();
   CGScreenPreferences::default_instance_ = new CGScreenPreferences();
-  CGScreenPreferences_DebugDrawPreferences::default_instance_ = new CGScreenPreferences_DebugDrawPreferences();
-  CGScreenPreferences_WorldPreferences::default_instance_ = new CGScreenPreferences_WorldPreferences();
-  CGScreenPreferences_CardPreferences::default_instance_ = new CGScreenPreferences_CardPreferences();
+  CGScreenPreferences_CGDebugDrawPreferences::default_instance_ = new CGScreenPreferences_CGDebugDrawPreferences();
+  CGScreenPreferences_CGWorldPreferences::default_instance_ = new CGScreenPreferences_CGWorldPreferences();
+  CGScreenPreferences_CGCardPreferences::default_instance_ = new CGScreenPreferences_CGCardPreferences();
   CGScreenModel::default_instance_->InitAsDefaultInstance();
   CGJoint::default_instance_->InitAsDefaultInstance();
   CGDistanceJointDef::default_instance_->InitAsDefaultInstance();
@@ -810,9 +811,9 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   CGShape::default_instance_->InitAsDefaultInstance();
   CGLayer::default_instance_->InitAsDefaultInstance();
   CGScreenPreferences::default_instance_->InitAsDefaultInstance();
-  CGScreenPreferences_DebugDrawPreferences::default_instance_->InitAsDefaultInstance();
-  CGScreenPreferences_WorldPreferences::default_instance_->InitAsDefaultInstance();
-  CGScreenPreferences_CardPreferences::default_instance_->InitAsDefaultInstance();
+  CGScreenPreferences_CGDebugDrawPreferences::default_instance_->InitAsDefaultInstance();
+  CGScreenPreferences_CGWorldPreferences::default_instance_->InitAsDefaultInstance();
+  CGScreenPreferences_CGCardPreferences::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto);
 }
 
@@ -8251,30 +8252,30 @@ void CGLayer::Swap(CGLayer* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int CGScreenPreferences_DebugDrawPreferences::kDrawBodiesFieldNumber;
-const int CGScreenPreferences_DebugDrawPreferences::kDrawJointsFieldNumber;
-const int CGScreenPreferences_DebugDrawPreferences::kDrawAABBFieldNumber;
-const int CGScreenPreferences_DebugDrawPreferences::kDrawInactiveBodiesFieldNumber;
-const int CGScreenPreferences_DebugDrawPreferences::kInstallMouseJointFieldNumber;
-const int CGScreenPreferences_DebugDrawPreferences::kDrawDebugDataFieldNumber;
-const int CGScreenPreferences_DebugDrawPreferences::kDrawEntitiesFieldNumber;
+const int CGScreenPreferences_CGDebugDrawPreferences::kDrawBodiesFieldNumber;
+const int CGScreenPreferences_CGDebugDrawPreferences::kDrawJointsFieldNumber;
+const int CGScreenPreferences_CGDebugDrawPreferences::kDrawAABBFieldNumber;
+const int CGScreenPreferences_CGDebugDrawPreferences::kDrawInactiveBodiesFieldNumber;
+const int CGScreenPreferences_CGDebugDrawPreferences::kInstallMouseJointFieldNumber;
+const int CGScreenPreferences_CGDebugDrawPreferences::kDrawDebugDataFieldNumber;
+const int CGScreenPreferences_CGDebugDrawPreferences::kDrawEntitiesFieldNumber;
 #endif  // !_MSC_VER
 
-CGScreenPreferences_DebugDrawPreferences::CGScreenPreferences_DebugDrawPreferences()
+CGScreenPreferences_CGDebugDrawPreferences::CGScreenPreferences_CGDebugDrawPreferences()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void CGScreenPreferences_DebugDrawPreferences::InitAsDefaultInstance() {
+void CGScreenPreferences_CGDebugDrawPreferences::InitAsDefaultInstance() {
 }
 
-CGScreenPreferences_DebugDrawPreferences::CGScreenPreferences_DebugDrawPreferences(const CGScreenPreferences_DebugDrawPreferences& from)
+CGScreenPreferences_CGDebugDrawPreferences::CGScreenPreferences_CGDebugDrawPreferences(const CGScreenPreferences_CGDebugDrawPreferences& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void CGScreenPreferences_DebugDrawPreferences::SharedCtor() {
+void CGScreenPreferences_CGDebugDrawPreferences::SharedCtor() {
   _cached_size_ = 0;
   drawbodies_ = false;
   drawjoints_ = false;
@@ -8286,37 +8287,37 @@ void CGScreenPreferences_DebugDrawPreferences::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-CGScreenPreferences_DebugDrawPreferences::~CGScreenPreferences_DebugDrawPreferences() {
+CGScreenPreferences_CGDebugDrawPreferences::~CGScreenPreferences_CGDebugDrawPreferences() {
   SharedDtor();
 }
 
-void CGScreenPreferences_DebugDrawPreferences::SharedDtor() {
+void CGScreenPreferences_CGDebugDrawPreferences::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void CGScreenPreferences_DebugDrawPreferences::SetCachedSize(int size) const {
+void CGScreenPreferences_CGDebugDrawPreferences::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* CGScreenPreferences_DebugDrawPreferences::descriptor() {
+const ::google::protobuf::Descriptor* CGScreenPreferences_CGDebugDrawPreferences::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return CGScreenPreferences_DebugDrawPreferences_descriptor_;
+  return CGScreenPreferences_CGDebugDrawPreferences_descriptor_;
 }
 
-const CGScreenPreferences_DebugDrawPreferences& CGScreenPreferences_DebugDrawPreferences::default_instance() {
+const CGScreenPreferences_CGDebugDrawPreferences& CGScreenPreferences_CGDebugDrawPreferences::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   return *default_instance_;
 }
 
-CGScreenPreferences_DebugDrawPreferences* CGScreenPreferences_DebugDrawPreferences::default_instance_ = NULL;
+CGScreenPreferences_CGDebugDrawPreferences* CGScreenPreferences_CGDebugDrawPreferences::default_instance_ = NULL;
 
-CGScreenPreferences_DebugDrawPreferences* CGScreenPreferences_DebugDrawPreferences::New() const {
-  return new CGScreenPreferences_DebugDrawPreferences;
+CGScreenPreferences_CGDebugDrawPreferences* CGScreenPreferences_CGDebugDrawPreferences::New() const {
+  return new CGScreenPreferences_CGDebugDrawPreferences;
 }
 
-void CGScreenPreferences_DebugDrawPreferences::Clear() {
+void CGScreenPreferences_CGDebugDrawPreferences::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     drawbodies_ = false;
     drawjoints_ = false;
@@ -8330,7 +8331,7 @@ void CGScreenPreferences_DebugDrawPreferences::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool CGScreenPreferences_DebugDrawPreferences::MergePartialFromCodedStream(
+bool CGScreenPreferences_CGDebugDrawPreferences::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -8463,7 +8464,7 @@ bool CGScreenPreferences_DebugDrawPreferences::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void CGScreenPreferences_DebugDrawPreferences::SerializeWithCachedSizes(
+void CGScreenPreferences_CGDebugDrawPreferences::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional bool drawBodies = 1;
   if (has_drawbodies()) {
@@ -8506,7 +8507,7 @@ void CGScreenPreferences_DebugDrawPreferences::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* CGScreenPreferences_DebugDrawPreferences::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* CGScreenPreferences_CGDebugDrawPreferences::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional bool drawBodies = 1;
   if (has_drawbodies()) {
@@ -8550,7 +8551,7 @@ void CGScreenPreferences_DebugDrawPreferences::SerializeWithCachedSizes(
   return target;
 }
 
-int CGScreenPreferences_DebugDrawPreferences::ByteSize() const {
+int CGScreenPreferences_CGDebugDrawPreferences::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -8601,10 +8602,10 @@ int CGScreenPreferences_DebugDrawPreferences::ByteSize() const {
   return total_size;
 }
 
-void CGScreenPreferences_DebugDrawPreferences::MergeFrom(const ::google::protobuf::Message& from) {
+void CGScreenPreferences_CGDebugDrawPreferences::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const CGScreenPreferences_DebugDrawPreferences* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const CGScreenPreferences_DebugDrawPreferences*>(
+  const CGScreenPreferences_CGDebugDrawPreferences* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const CGScreenPreferences_CGDebugDrawPreferences*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -8613,7 +8614,7 @@ void CGScreenPreferences_DebugDrawPreferences::MergeFrom(const ::google::protobu
   }
 }
 
-void CGScreenPreferences_DebugDrawPreferences::MergeFrom(const CGScreenPreferences_DebugDrawPreferences& from) {
+void CGScreenPreferences_CGDebugDrawPreferences::MergeFrom(const CGScreenPreferences_CGDebugDrawPreferences& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_drawbodies()) {
@@ -8641,24 +8642,24 @@ void CGScreenPreferences_DebugDrawPreferences::MergeFrom(const CGScreenPreferenc
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void CGScreenPreferences_DebugDrawPreferences::CopyFrom(const ::google::protobuf::Message& from) {
+void CGScreenPreferences_CGDebugDrawPreferences::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void CGScreenPreferences_DebugDrawPreferences::CopyFrom(const CGScreenPreferences_DebugDrawPreferences& from) {
+void CGScreenPreferences_CGDebugDrawPreferences::CopyFrom(const CGScreenPreferences_CGDebugDrawPreferences& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CGScreenPreferences_DebugDrawPreferences::IsInitialized() const {
+bool CGScreenPreferences_CGDebugDrawPreferences::IsInitialized() const {
 
   return true;
 }
 
-void CGScreenPreferences_DebugDrawPreferences::Swap(CGScreenPreferences_DebugDrawPreferences* other) {
+void CGScreenPreferences_CGDebugDrawPreferences::Swap(CGScreenPreferences_CGDebugDrawPreferences* other) {
   if (other != this) {
     std::swap(drawbodies_, other->drawbodies_);
     std::swap(drawjoints_, other->drawjoints_);
@@ -8673,11 +8674,11 @@ void CGScreenPreferences_DebugDrawPreferences::Swap(CGScreenPreferences_DebugDra
   }
 }
 
-::google::protobuf::Metadata CGScreenPreferences_DebugDrawPreferences::GetMetadata() const {
+::google::protobuf::Metadata CGScreenPreferences_CGDebugDrawPreferences::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = CGScreenPreferences_DebugDrawPreferences_descriptor_;
-  metadata.reflection = CGScreenPreferences_DebugDrawPreferences_reflection_;
+  metadata.descriptor = CGScreenPreferences_CGDebugDrawPreferences_descriptor_;
+  metadata.reflection = CGScreenPreferences_CGDebugDrawPreferences_reflection_;
   return metadata;
 }
 
@@ -8685,29 +8686,29 @@ void CGScreenPreferences_DebugDrawPreferences::Swap(CGScreenPreferences_DebugDra
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int CGScreenPreferences_WorldPreferences::kPtmRatioFieldNumber;
-const int CGScreenPreferences_WorldPreferences::kVelocityIterationsFieldNumber;
-const int CGScreenPreferences_WorldPreferences::kPositionIterationsFieldNumber;
-const int CGScreenPreferences_WorldPreferences::kTimeStepFieldNumber;
-const int CGScreenPreferences_WorldPreferences::kGravityXFieldNumber;
-const int CGScreenPreferences_WorldPreferences::kGravityYFieldNumber;
+const int CGScreenPreferences_CGWorldPreferences::kPtmRatioFieldNumber;
+const int CGScreenPreferences_CGWorldPreferences::kVelocityIterationsFieldNumber;
+const int CGScreenPreferences_CGWorldPreferences::kPositionIterationsFieldNumber;
+const int CGScreenPreferences_CGWorldPreferences::kTimeStepFieldNumber;
+const int CGScreenPreferences_CGWorldPreferences::kGravityXFieldNumber;
+const int CGScreenPreferences_CGWorldPreferences::kGravityYFieldNumber;
 #endif  // !_MSC_VER
 
-CGScreenPreferences_WorldPreferences::CGScreenPreferences_WorldPreferences()
+CGScreenPreferences_CGWorldPreferences::CGScreenPreferences_CGWorldPreferences()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void CGScreenPreferences_WorldPreferences::InitAsDefaultInstance() {
+void CGScreenPreferences_CGWorldPreferences::InitAsDefaultInstance() {
 }
 
-CGScreenPreferences_WorldPreferences::CGScreenPreferences_WorldPreferences(const CGScreenPreferences_WorldPreferences& from)
+CGScreenPreferences_CGWorldPreferences::CGScreenPreferences_CGWorldPreferences(const CGScreenPreferences_CGWorldPreferences& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void CGScreenPreferences_WorldPreferences::SharedCtor() {
+void CGScreenPreferences_CGWorldPreferences::SharedCtor() {
   _cached_size_ = 0;
   ptmratio_ = 0;
   velocityiterations_ = 0;
@@ -8718,37 +8719,37 @@ void CGScreenPreferences_WorldPreferences::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-CGScreenPreferences_WorldPreferences::~CGScreenPreferences_WorldPreferences() {
+CGScreenPreferences_CGWorldPreferences::~CGScreenPreferences_CGWorldPreferences() {
   SharedDtor();
 }
 
-void CGScreenPreferences_WorldPreferences::SharedDtor() {
+void CGScreenPreferences_CGWorldPreferences::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void CGScreenPreferences_WorldPreferences::SetCachedSize(int size) const {
+void CGScreenPreferences_CGWorldPreferences::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* CGScreenPreferences_WorldPreferences::descriptor() {
+const ::google::protobuf::Descriptor* CGScreenPreferences_CGWorldPreferences::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return CGScreenPreferences_WorldPreferences_descriptor_;
+  return CGScreenPreferences_CGWorldPreferences_descriptor_;
 }
 
-const CGScreenPreferences_WorldPreferences& CGScreenPreferences_WorldPreferences::default_instance() {
+const CGScreenPreferences_CGWorldPreferences& CGScreenPreferences_CGWorldPreferences::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   return *default_instance_;
 }
 
-CGScreenPreferences_WorldPreferences* CGScreenPreferences_WorldPreferences::default_instance_ = NULL;
+CGScreenPreferences_CGWorldPreferences* CGScreenPreferences_CGWorldPreferences::default_instance_ = NULL;
 
-CGScreenPreferences_WorldPreferences* CGScreenPreferences_WorldPreferences::New() const {
-  return new CGScreenPreferences_WorldPreferences;
+CGScreenPreferences_CGWorldPreferences* CGScreenPreferences_CGWorldPreferences::New() const {
+  return new CGScreenPreferences_CGWorldPreferences;
 }
 
-void CGScreenPreferences_WorldPreferences::Clear() {
+void CGScreenPreferences_CGWorldPreferences::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     ptmratio_ = 0;
     velocityiterations_ = 0;
@@ -8761,7 +8762,7 @@ void CGScreenPreferences_WorldPreferences::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool CGScreenPreferences_WorldPreferences::MergePartialFromCodedStream(
+bool CGScreenPreferences_CGWorldPreferences::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -8878,7 +8879,7 @@ bool CGScreenPreferences_WorldPreferences::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void CGScreenPreferences_WorldPreferences::SerializeWithCachedSizes(
+void CGScreenPreferences_CGWorldPreferences::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional int32 ptmRatio = 1;
   if (has_ptmratio()) {
@@ -8916,7 +8917,7 @@ void CGScreenPreferences_WorldPreferences::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* CGScreenPreferences_WorldPreferences::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* CGScreenPreferences_CGWorldPreferences::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional int32 ptmRatio = 1;
   if (has_ptmratio()) {
@@ -8955,7 +8956,7 @@ void CGScreenPreferences_WorldPreferences::SerializeWithCachedSizes(
   return target;
 }
 
-int CGScreenPreferences_WorldPreferences::ByteSize() const {
+int CGScreenPreferences_CGWorldPreferences::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -9007,10 +9008,10 @@ int CGScreenPreferences_WorldPreferences::ByteSize() const {
   return total_size;
 }
 
-void CGScreenPreferences_WorldPreferences::MergeFrom(const ::google::protobuf::Message& from) {
+void CGScreenPreferences_CGWorldPreferences::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const CGScreenPreferences_WorldPreferences* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const CGScreenPreferences_WorldPreferences*>(
+  const CGScreenPreferences_CGWorldPreferences* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const CGScreenPreferences_CGWorldPreferences*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -9019,7 +9020,7 @@ void CGScreenPreferences_WorldPreferences::MergeFrom(const ::google::protobuf::M
   }
 }
 
-void CGScreenPreferences_WorldPreferences::MergeFrom(const CGScreenPreferences_WorldPreferences& from) {
+void CGScreenPreferences_CGWorldPreferences::MergeFrom(const CGScreenPreferences_CGWorldPreferences& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_ptmratio()) {
@@ -9044,24 +9045,24 @@ void CGScreenPreferences_WorldPreferences::MergeFrom(const CGScreenPreferences_W
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void CGScreenPreferences_WorldPreferences::CopyFrom(const ::google::protobuf::Message& from) {
+void CGScreenPreferences_CGWorldPreferences::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void CGScreenPreferences_WorldPreferences::CopyFrom(const CGScreenPreferences_WorldPreferences& from) {
+void CGScreenPreferences_CGWorldPreferences::CopyFrom(const CGScreenPreferences_CGWorldPreferences& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CGScreenPreferences_WorldPreferences::IsInitialized() const {
+bool CGScreenPreferences_CGWorldPreferences::IsInitialized() const {
 
   return true;
 }
 
-void CGScreenPreferences_WorldPreferences::Swap(CGScreenPreferences_WorldPreferences* other) {
+void CGScreenPreferences_CGWorldPreferences::Swap(CGScreenPreferences_CGWorldPreferences* other) {
   if (other != this) {
     std::swap(ptmratio_, other->ptmratio_);
     std::swap(velocityiterations_, other->velocityiterations_);
@@ -9075,11 +9076,11 @@ void CGScreenPreferences_WorldPreferences::Swap(CGScreenPreferences_WorldPrefere
   }
 }
 
-::google::protobuf::Metadata CGScreenPreferences_WorldPreferences::GetMetadata() const {
+::google::protobuf::Metadata CGScreenPreferences_CGWorldPreferences::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = CGScreenPreferences_WorldPreferences_descriptor_;
-  metadata.reflection = CGScreenPreferences_WorldPreferences_reflection_;
+  metadata.descriptor = CGScreenPreferences_CGWorldPreferences_descriptor_;
+  metadata.reflection = CGScreenPreferences_CGWorldPreferences_reflection_;
   return metadata;
 }
 
@@ -9087,27 +9088,27 @@ void CGScreenPreferences_WorldPreferences::Swap(CGScreenPreferences_WorldPrefere
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int CGScreenPreferences_CardPreferences::kCardNoXFieldNumber;
-const int CGScreenPreferences_CardPreferences::kCardNoYFieldNumber;
-const int CGScreenPreferences_CardPreferences::kCardWidthFieldNumber;
-const int CGScreenPreferences_CardPreferences::kCardHeightFieldNumber;
+const int CGScreenPreferences_CGCardPreferences::kCardNoXFieldNumber;
+const int CGScreenPreferences_CGCardPreferences::kCardNoYFieldNumber;
+const int CGScreenPreferences_CGCardPreferences::kCardWidthFieldNumber;
+const int CGScreenPreferences_CGCardPreferences::kCardHeightFieldNumber;
 #endif  // !_MSC_VER
 
-CGScreenPreferences_CardPreferences::CGScreenPreferences_CardPreferences()
+CGScreenPreferences_CGCardPreferences::CGScreenPreferences_CGCardPreferences()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void CGScreenPreferences_CardPreferences::InitAsDefaultInstance() {
+void CGScreenPreferences_CGCardPreferences::InitAsDefaultInstance() {
 }
 
-CGScreenPreferences_CardPreferences::CGScreenPreferences_CardPreferences(const CGScreenPreferences_CardPreferences& from)
+CGScreenPreferences_CGCardPreferences::CGScreenPreferences_CGCardPreferences(const CGScreenPreferences_CGCardPreferences& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void CGScreenPreferences_CardPreferences::SharedCtor() {
+void CGScreenPreferences_CGCardPreferences::SharedCtor() {
   _cached_size_ = 0;
   cardnox_ = 0;
   cardnoy_ = 0;
@@ -9116,37 +9117,37 @@ void CGScreenPreferences_CardPreferences::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-CGScreenPreferences_CardPreferences::~CGScreenPreferences_CardPreferences() {
+CGScreenPreferences_CGCardPreferences::~CGScreenPreferences_CGCardPreferences() {
   SharedDtor();
 }
 
-void CGScreenPreferences_CardPreferences::SharedDtor() {
+void CGScreenPreferences_CGCardPreferences::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void CGScreenPreferences_CardPreferences::SetCachedSize(int size) const {
+void CGScreenPreferences_CGCardPreferences::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* CGScreenPreferences_CardPreferences::descriptor() {
+const ::google::protobuf::Descriptor* CGScreenPreferences_CGCardPreferences::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return CGScreenPreferences_CardPreferences_descriptor_;
+  return CGScreenPreferences_CGCardPreferences_descriptor_;
 }
 
-const CGScreenPreferences_CardPreferences& CGScreenPreferences_CardPreferences::default_instance() {
+const CGScreenPreferences_CGCardPreferences& CGScreenPreferences_CGCardPreferences::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   return *default_instance_;
 }
 
-CGScreenPreferences_CardPreferences* CGScreenPreferences_CardPreferences::default_instance_ = NULL;
+CGScreenPreferences_CGCardPreferences* CGScreenPreferences_CGCardPreferences::default_instance_ = NULL;
 
-CGScreenPreferences_CardPreferences* CGScreenPreferences_CardPreferences::New() const {
-  return new CGScreenPreferences_CardPreferences;
+CGScreenPreferences_CGCardPreferences* CGScreenPreferences_CGCardPreferences::New() const {
+  return new CGScreenPreferences_CGCardPreferences;
 }
 
-void CGScreenPreferences_CardPreferences::Clear() {
+void CGScreenPreferences_CGCardPreferences::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     cardnox_ = 0;
     cardnoy_ = 0;
@@ -9157,7 +9158,7 @@ void CGScreenPreferences_CardPreferences::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool CGScreenPreferences_CardPreferences::MergePartialFromCodedStream(
+bool CGScreenPreferences_CGCardPreferences::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -9242,7 +9243,7 @@ bool CGScreenPreferences_CardPreferences::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void CGScreenPreferences_CardPreferences::SerializeWithCachedSizes(
+void CGScreenPreferences_CGCardPreferences::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional int32 cardNoX = 1;
   if (has_cardnox()) {
@@ -9270,7 +9271,7 @@ void CGScreenPreferences_CardPreferences::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* CGScreenPreferences_CardPreferences::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* CGScreenPreferences_CGCardPreferences::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional int32 cardNoX = 1;
   if (has_cardnox()) {
@@ -9299,7 +9300,7 @@ void CGScreenPreferences_CardPreferences::SerializeWithCachedSizes(
   return target;
 }
 
-int CGScreenPreferences_CardPreferences::ByteSize() const {
+int CGScreenPreferences_CGCardPreferences::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -9343,10 +9344,10 @@ int CGScreenPreferences_CardPreferences::ByteSize() const {
   return total_size;
 }
 
-void CGScreenPreferences_CardPreferences::MergeFrom(const ::google::protobuf::Message& from) {
+void CGScreenPreferences_CGCardPreferences::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const CGScreenPreferences_CardPreferences* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const CGScreenPreferences_CardPreferences*>(
+  const CGScreenPreferences_CGCardPreferences* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const CGScreenPreferences_CGCardPreferences*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -9355,7 +9356,7 @@ void CGScreenPreferences_CardPreferences::MergeFrom(const ::google::protobuf::Me
   }
 }
 
-void CGScreenPreferences_CardPreferences::MergeFrom(const CGScreenPreferences_CardPreferences& from) {
+void CGScreenPreferences_CGCardPreferences::MergeFrom(const CGScreenPreferences_CGCardPreferences& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_cardnox()) {
@@ -9374,24 +9375,24 @@ void CGScreenPreferences_CardPreferences::MergeFrom(const CGScreenPreferences_Ca
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void CGScreenPreferences_CardPreferences::CopyFrom(const ::google::protobuf::Message& from) {
+void CGScreenPreferences_CGCardPreferences::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void CGScreenPreferences_CardPreferences::CopyFrom(const CGScreenPreferences_CardPreferences& from) {
+void CGScreenPreferences_CGCardPreferences::CopyFrom(const CGScreenPreferences_CGCardPreferences& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CGScreenPreferences_CardPreferences::IsInitialized() const {
+bool CGScreenPreferences_CGCardPreferences::IsInitialized() const {
 
   return true;
 }
 
-void CGScreenPreferences_CardPreferences::Swap(CGScreenPreferences_CardPreferences* other) {
+void CGScreenPreferences_CGCardPreferences::Swap(CGScreenPreferences_CGCardPreferences* other) {
   if (other != this) {
     std::swap(cardnox_, other->cardnox_);
     std::swap(cardnoy_, other->cardnoy_);
@@ -9403,11 +9404,11 @@ void CGScreenPreferences_CardPreferences::Swap(CGScreenPreferences_CardPreferenc
   }
 }
 
-::google::protobuf::Metadata CGScreenPreferences_CardPreferences::GetMetadata() const {
+::google::protobuf::Metadata CGScreenPreferences_CGCardPreferences::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = CGScreenPreferences_CardPreferences_descriptor_;
-  metadata.reflection = CGScreenPreferences_CardPreferences_reflection_;
+  metadata.descriptor = CGScreenPreferences_CGCardPreferences_descriptor_;
+  metadata.reflection = CGScreenPreferences_CGCardPreferences_reflection_;
   return metadata;
 }
 
@@ -9426,9 +9427,9 @@ CGScreenPreferences::CGScreenPreferences()
 }
 
 void CGScreenPreferences::InitAsDefaultInstance() {
-  debugdrawprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences::default_instance());
-  worldprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences::default_instance());
-  cardprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_CardPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_CardPreferences::default_instance());
+  debugdrawprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences::default_instance());
+  worldprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences::default_instance());
+  cardprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences::default_instance());
 }
 
 CGScreenPreferences::CGScreenPreferences(const CGScreenPreferences& from)
@@ -9481,13 +9482,13 @@ CGScreenPreferences* CGScreenPreferences::New() const {
 void CGScreenPreferences::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_debugdrawprefs()) {
-      if (debugdrawprefs_ != NULL) debugdrawprefs_->::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences::Clear();
+      if (debugdrawprefs_ != NULL) debugdrawprefs_->::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences::Clear();
     }
     if (has_worldprefs()) {
-      if (worldprefs_ != NULL) worldprefs_->::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences::Clear();
+      if (worldprefs_ != NULL) worldprefs_->::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences::Clear();
     }
     if (has_cardprefs()) {
-      if (cardprefs_ != NULL) cardprefs_->::com::laex::cg2d::model::CGScreenPreferences_CardPreferences::Clear();
+      if (cardprefs_ != NULL) cardprefs_->::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -9500,7 +9501,7 @@ bool CGScreenPreferences::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
+      // optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -9513,7 +9514,7 @@ bool CGScreenPreferences::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
+      // optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -9527,7 +9528,7 @@ bool CGScreenPreferences::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
+      // optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -9559,19 +9560,19 @@ bool CGScreenPreferences::MergePartialFromCodedStream(
 
 void CGScreenPreferences::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
   if (has_debugdrawprefs()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->debugdrawprefs(), output);
   }
 
-  // optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
   if (has_worldprefs()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->worldprefs(), output);
   }
 
-  // optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
   if (has_cardprefs()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->cardprefs(), output);
@@ -9585,21 +9586,21 @@ void CGScreenPreferences::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* CGScreenPreferences::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
   if (has_debugdrawprefs()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->debugdrawprefs(), target);
   }
 
-  // optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
   if (has_worldprefs()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->worldprefs(), target);
   }
 
-  // optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
+  // optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
   if (has_cardprefs()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -9617,21 +9618,21 @@ int CGScreenPreferences::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .com.laex.cg2d.model.CGScreenPreferences.DebugDrawPreferences debugDrawPrefs = 1;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences debugDrawPrefs = 1;
     if (has_debugdrawprefs()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->debugdrawprefs());
     }
 
-    // optional .com.laex.cg2d.model.CGScreenPreferences.WorldPreferences worldPrefs = 2;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences worldPrefs = 2;
     if (has_worldprefs()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->worldprefs());
     }
 
-    // optional .com.laex.cg2d.model.CGScreenPreferences.CardPreferences cardPrefs = 3;
+    // optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;
     if (has_cardprefs()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -9666,13 +9667,13 @@ void CGScreenPreferences::MergeFrom(const CGScreenPreferences& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_debugdrawprefs()) {
-      mutable_debugdrawprefs()->::com::laex::cg2d::model::CGScreenPreferences_DebugDrawPreferences::MergeFrom(from.debugdrawprefs());
+      mutable_debugdrawprefs()->::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences::MergeFrom(from.debugdrawprefs());
     }
     if (from.has_worldprefs()) {
-      mutable_worldprefs()->::com::laex::cg2d::model::CGScreenPreferences_WorldPreferences::MergeFrom(from.worldprefs());
+      mutable_worldprefs()->::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences::MergeFrom(from.worldprefs());
     }
     if (from.has_cardprefs()) {
-      mutable_cardprefs()->::com::laex::cg2d::model::CGScreenPreferences_CardPreferences::MergeFrom(from.cardprefs());
+      mutable_cardprefs()->::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences::MergeFrom(from.cardprefs());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
