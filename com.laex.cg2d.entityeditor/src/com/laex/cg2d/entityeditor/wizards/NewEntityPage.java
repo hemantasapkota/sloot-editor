@@ -30,7 +30,6 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.SWTResourceManager;
-import com.laex.cg2d.model.util.PlatformUtil;
 
 /**
  * The Class NewEntityPage.
@@ -104,9 +103,11 @@ public class NewEntityPage extends WizardPage {
     btnBrowse.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
-        ContainerSelectionDialog csd = PlatformUtil.openContainerResourceDialog(getShell(), ResourcesPlugin
-            .getWorkspace().getRoot(), "Select a project");
-
+        ContainerSelectionDialog csd = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false, "Select a project");
+        int response = csd.open();
+        if (response == ContainerSelectionDialog.CANCEL) {
+          return;
+        }
         if (csd == null) {
           return;
         }
