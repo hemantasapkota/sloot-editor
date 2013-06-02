@@ -12,7 +12,6 @@ package com.laex.cg2d.screeneditor.wizards;
 
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -34,8 +33,8 @@ import org.eclipse.ui.part.FileEditorInput;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
 import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
-import com.laex.cg2d.model.adapter.ScreenPropertiesUtil;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.util.PlatformUtil;
@@ -129,15 +128,14 @@ public class NewScreenWizard extends Wizard implements INewWizard {
         final IFile createdFile = b2dMgr.createFile(npath, bios);
 
         // create a simple model with a layer and save it to the file
-        GameModel model = new GameModel();
+        GameModel model = new GameModel(PreferenceInitializer.defaultScreenPrefs());
         model.getDiagram().getLayers().add(new Layer(0, "Layer1", true, false));
+        
+        CGScreenPreferences screenPrefs = PreferenceInitializer.defaultScreenPrefs();
 
-        Map<String, String> defaultScreenPrefs = PreferenceInitializer.defaultScreenProperties();
-        CGScreenModel cgGameModel = new CGScreenModelAdapter(model, defaultScreenPrefs).asCGGameModel();
+        CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefs).asCGGameModel();
         
         PlatformUtil.saveProto(monitor, createdFile, new ByteArrayInputStream(cgGameModel.toByteArray()));
-        // Set some default properties for this screen file
-        ScreenPropertiesUtil.persistScreenProperties(createdFile, defaultScreenPrefs);
 
         // Open the file in the editor
         getShell().getDisplay().asyncExec(new Runnable() {
