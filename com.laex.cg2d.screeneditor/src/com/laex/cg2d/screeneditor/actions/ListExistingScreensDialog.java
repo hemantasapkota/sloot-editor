@@ -15,7 +15,9 @@ import java.io.IOException;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.jface.dialogs.Dialog;
@@ -45,16 +47,19 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import com.badlogic.gdx.math.Rectangle;
 import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.ScreenModel.CGBodyDef;
+import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGFixtureDef;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
+import com.laex.cg2d.model.adapter.EntityAdapter;
 import com.laex.cg2d.model.adapter.ScreenModelAdapter;
+import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.util.EntitiesUtil;
-import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
 
@@ -193,10 +198,10 @@ public class ListExistingScreensDialog extends Dialog {
     newLayerNameComposite.setLayout(new GridLayout(1, false));
 
     try {
-      resList = PlatformUtil.getListOfScreensInCurrentProject(PlatformUtil.getActiveEditorInput());
+      resList = ScreenEditorUtil.getListOfScreensInCurrentProject(ScreenEditorUtil.getActiveEditorInput());
       for (IResource res : resList) {
 
-        if (res.getName().equals(((IFileEditorInput) PlatformUtil.getActiveEditorInput()).getFile().getName())) {
+        if (res.getName().equals(((IFileEditorInput) ScreenEditorUtil.getActiveEditorInput()).getFile().getName())) {
           continue;
         }
 
@@ -302,13 +307,13 @@ public class ListExistingScreensDialog extends Dialog {
             return;
           }
 
-          GameModel screenModel = PlatformUtil.getScreenModel();
+          GameModel screenModel = ScreenEditorUtil.getScreenModel();
 
           CompoundCommand cc = new CompoundCommand();
 
           boolean createNewLayer = btnImportInNew.getSelection();
 
-          ILayerManager layerMgr = PlatformUtil.getScreenLayerManager();
+          ILayerManager layerMgr = ScreenEditorUtil.getScreenLayerManager();
           Layer layer = null;
 
           if (createNewLayer) {
@@ -338,24 +343,32 @@ public class ListExistingScreensDialog extends Dialog {
 
             for (Shape shape : gameModel.getDiagram().getChildren()) {
               // add suffix to id
-              //TODO: Create a shape cloning mechanism
+              // TODO: Create a shape cloning mechanism
               CGBodyDef cgBodyDef = CGScreenModelAdapter.makeCGBodyDef(shape.getBodyDef()).build();
               CGFixtureDef cgFixDef = CGScreenModelAdapter.makeCGFixtureDef(shape.getFixtureDef()).build();
-              CGShape newShape = CGScreenModelAdapter.makeShape(cgFixDef, cgBodyDef , shape).build();
-              
+              CGShape newShape = CGScreenModelAdapter.makeShape(cgFixDef, cgBodyDef, shape).build();
+
               Shape newShapeClone = ScreenModelAdapter.asShape(newShape, layer);
-              
+
+              if (newShapeClone.getEditorShapeType().isEntity()) {
+                Entity e = Entity.createFromFile(newShape.getEntityRefFile().getResourceFile());
+                newShapeClone.setEntity(e);
+              }
+
               newShapeClone.setId(new StringBuffer(shape.getId()).append(txtSuffix.getText()).toString());
 
               Rectangle r = shape.getBounds();
-              r.x = i * model.getScreenPrefs().getCardPrefs().getCardWidth() - 1;
-              
+
+              if (newShapeClone.getEditorShapeType().isBackground()) {
+                r.x = i * model.getScreenPrefs().getCardPrefs().getCardWidth() - 1;
+              }
+
               newShapeClone.setBounds(r);
 
               ShapeCreateCommand scc = new ShapeCreateCommand(newShapeClone, screenModel.getDiagram());
               cc.add(scc);
             }
-            
+
           }
 
           commandStack.execute(cc);
