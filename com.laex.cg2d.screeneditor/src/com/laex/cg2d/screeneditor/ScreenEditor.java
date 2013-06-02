@@ -55,12 +55,16 @@ import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
@@ -79,7 +83,6 @@ import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.validator.EntityValidator;
 import com.laex.cg2d.model.util.EntitiesUtil;
-import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.EntityResourceChangeListener.EntityChangeListener;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangeOrderCommand;
@@ -95,7 +98,9 @@ import com.laex.cg2d.screeneditor.palette.ScreenEditorPaletteFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationInfo;
 import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
+import com.laex.cg2d.screeneditor.views.IScreenDisposeListener;
 import com.laex.cg2d.screeneditor.views.LayerOutlineViewPart;
+import com.laex.cg2d.screeneditor.views.LayersViewPart;
 
 /**
  * The Class ScreenEditor.
@@ -246,6 +251,16 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     ContextMenuProvider cmProvider = new ScreenEditorContextMenuProvider(viewer, getActionRegistry());
     viewer.setContextMenu(cmProvider);
     // getSite().registerContextMenu(cmProvider, viewer);
+
+    // Notify other views of this viewer's disposal
+    getGraphicalViewer().getControl().addDisposeListener(new DisposeListener() {
+      @Override
+      public void widgetDisposed(DisposeEvent e) {
+        IViewPart vp = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(LayersViewPart.ID);
+        IScreenDisposeListener isdp = (IScreenDisposeListener) vp;
+        isdp.screenDisposed();
+      }
+    });
   }
 
   /**
@@ -339,10 +354,10 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    */
   public void doSave(IProgressMonitor monitor) {
     try {
-      
+
       IFile file = ((FileEditorInput) getEditorInput()).getFile();
       performSave(file, monitor);
-      
+
     } catch (CoreException ce) {
       ce.printStackTrace();
     } catch (IOException e) {
@@ -361,13 +376,13 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    *          the screen prefs
    * @throws CoreException
    *           the core exception
-   * @throws IOException 
+   * @throws IOException
    */
   private void performSave(IFile file, IProgressMonitor monitor) throws CoreException, IOException {
-    //Use existing preferences
+    // Use existing preferences
     CGScreenPreferences screenPrefsExisting = CGScreenModel.parseFrom(file.getContents()).getScreenPrefs();
     CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefsExisting).asCGGameModel();
-    PlatformUtil.saveProto(monitor, file, new ByteArrayInputStream(cgGameModel.toByteArray()));
+    file.setContents(new ByteArrayInputStream(cgGameModel.toByteArray()), true, false, monitor);
     getCommandStack().markSaveLocation();
   }
 
@@ -778,11 +793,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     IFile file = ((FileEditorInput) getEditorInput()).getFile();
 
     try {
-      
+
       CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefs).asCGGameModel();
-      PlatformUtil.saveProto(null, file, new ByteArrayInputStream(cgGameModel.toByteArray()));
+      file.setContents(new ByteArrayInputStream(cgGameModel.toByteArray()), true, false, null);
       getCommandStack().markSaveLocation();
-      
+
     } catch (CoreException e) {
       e.printStackTrace();
     }
