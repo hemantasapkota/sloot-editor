@@ -27,9 +27,6 @@ import com.laex.cg2d.model.ScreenModel.CGJoint;
 import com.laex.cg2d.model.ScreenModel.CGLayer;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
-import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences;
-import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences;
-import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences;
 import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.model.ScreenModel.CGVector2;
 import com.laex.cg2d.model.model.EditorShapeType;
@@ -37,9 +34,6 @@ import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.util.BooleanUtil;
-import com.laex.cg2d.model.util.FloatUtil;
-import com.laex.cg2d.model.util.IntegerUtil;
 
 /**
  * The Class CGGameModelAdapter.
@@ -164,12 +158,18 @@ public class CGScreenModelAdapter {
     Rectangle b = s.getBounds();
     CGBounds pBounds = CGBounds.newBuilder().setX(b.x).setY(b.y).setWidth(b.width).setHeight(b.height).build();
 
-    return CGShape.newBuilder().setId(s.getId()).setVisible(s.isVisible()).setLocked(s.isLocked())
+    CGShape.Builder buildr = CGShape.newBuilder().setId(s.getId()).setVisible(s.isVisible()).setLocked(s.isLocked())
         .setBackground(s.isBackground())
         .setBackgroundResourceFile(ResourceFileAdapter.asCGResourceFile(s.getBackgroundResourceFile()))
         .setEditorShapeType(asCGEditorType(s.getEditorShapeType())).setBounds(pBounds).setBodyDef(bdef)
         .setFixtureDef(fdef);
-
+    
+        // create entity
+    if (s.getEditorShapeType().isEntity()) {
+      buildr.setEntityRefFile(ResourceFileAdapter.asCGResourceFile(s.getEntityResourceFile()));
+    }
+    
+    return buildr;
   }
 
   /**
@@ -223,10 +223,6 @@ public class CGScreenModelAdapter {
     CGFixtureDef pFixtureDef = makeCGFixtureDef(fdef).build();
     CGShape.Builder shapeBuilder = makeShape(pFixtureDef, pBodyDef, s);
 
-    // create entity
-    if (s.getEditorShapeType().isEntity()) {
-      shapeBuilder.setEntityRefFile(ResourceFileAdapter.asCGResourceFile(s.getEntityResourceFile()));
-    }
 
     CGShape cgShape = shapeBuilder.build();
     return cgShape;
