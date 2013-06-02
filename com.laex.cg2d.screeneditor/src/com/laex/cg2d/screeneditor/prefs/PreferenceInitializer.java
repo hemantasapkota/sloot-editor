@@ -16,6 +16,10 @@ import java.util.Map;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences;
 import com.laex.cg2d.model.adapter.PreferenceConstants;
 import com.laex.cg2d.screeneditor.Activator;
 
@@ -56,35 +60,23 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     store.setDefault(PreferenceConstants.CARD_NO_Y, defaultCardNoY());
   }
 
-  /**
-   * Default screen properties.
-   * 
-   * @return the map
-   */
-  public static Map<String, String> defaultScreenProperties() {
-    Map<String, String> props = new HashMap<String, String>();
+  public static CGScreenPreferences defaultScreenPrefs() {
+    CGCardPreferences.Builder cardBuildr = CGCardPreferences.newBuilder().setCardHeight(defaultCardHeight())
+        .setCardWidth(defaultCardWidth()).setCardNoX(defaultCardNoX()).setCardNoY(defaultCardNoY());
 
-    props.put(PreferenceConstants.DRAW_BODIES, defaultBodiesFlag().toString());
-    props.put(PreferenceConstants.DRAW_JOINT, defaultJointsFlag().toString());
-    props.put(PreferenceConstants.DRAW_AABB, defaultAABBFlag().toString());
-    props.put(PreferenceConstants.DRAW_DEBUG_DATA, defaultDebugDataFlag().toString());
-    props.put(PreferenceConstants.DRAW_INACTIVE_BODIES, defaultInactiveBodiesFlag().toString());
-    props.put(PreferenceConstants.INSTALL_MOUSE_JOINT, defaultMouseJoint().toString());
-    props.put(PreferenceConstants.DRAW_ENTITIES, defaultEntitiesFlag().toString());
+    CGWorldPreferences.Builder worldBuildr = CGWorldPreferences.newBuilder().setGravityX(defaultGravityX())
+        .setGravityY(defaultGravityY()).setPtmRatio(defaultPTMRatio())
+        .setPositionIterations(defaultPositionIterations()).setTimeStep(defaultTimeStep())
+        .setVelocityIterations(defaultVelocityIterations());
 
-    props.put(PreferenceConstants.PTM_RATIO, defaultPTMRatio().toString());
-    props.put(PreferenceConstants.TIMESTEP, defaultTimeStep().toString());
-    props.put(PreferenceConstants.GRAVITY_X, defaultGravityX().toString());
-    props.put(PreferenceConstants.GRAVITY_Y, defaultGravityY().toString());
-    props.put(PreferenceConstants.POSITION_ITERATIONS, defaultPositionIterations().toString());
-    props.put(PreferenceConstants.VELOCITY_ITERATIONS, defaultVelocityIterations().toString());
+    CGDebugDrawPreferences.Builder dbgBuildr = CGDebugDrawPreferences.newBuilder().setDrawAABB(defaultAABBFlag())
+        .setDrawBodies(defaultBodiesFlag()).setDrawDebugData(defaultDebugDataFlag())
+        .setDrawEntities(defaultEntitiesFlag()).setDrawInactiveBodies(defaultInactiveBodiesFlag())
+        .setDrawJoints(defaultJointsFlag()).setInstallMouseJoint(defaultMouseJoint());
 
-    props.put(PreferenceConstants.CARD_NO_X, defaultCardNoX().toString());
-    props.put(PreferenceConstants.CARD_NO_Y, defaultCardNoY().toString());
-    props.put(PreferenceConstants.CARD_WIDTH, defaultCardWidth().toString());
-    props.put(PreferenceConstants.CARD_HEIGHT, defaultCardHeight().toString());
+    return CGScreenPreferences.newBuilder().setCardPrefs(cardBuildr.build()).setDebugDrawPrefs(dbgBuildr.build())
+        .setWorldPrefs(worldBuildr.build()).build();
 
-    return props;
   }
 
   /**
