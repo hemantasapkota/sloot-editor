@@ -10,15 +10,21 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.ColumnViewerEditor;
+import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
+import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
 import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.jface.viewers.TableViewerEditor;
+import org.eclipse.jface.viewers.TableViewerFocusCellManager;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -36,20 +42,22 @@ import org.eclipse.swt.widgets.TableColumn;
 import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 import com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEP;
 
 public class ChangeShapeIDDialog extends TitleAreaDialog {
 
-  private static class Sorter extends ViewerSorter {
+  private static class Comparator extends ViewerComparator {
 
+    @Override
     public int compare(Viewer viewer, Object e1, Object e2) {
       String item1 = ((ShapeIdMgr) e1).newId;
       String item2 = ((ShapeIdMgr) e2).newId;
 
-      return item1.compareTo(item2);
+      return item2.compareTo(item1);
     }
+
   }
 
   class ShapeIdMgr {
@@ -68,11 +76,11 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
       switch (shp.shape.getEditorShapeType()) {
       case BACKGROUND_SHAPE:
         return ResourceManager.getImage(shp.shape.getBackgroundResourceFile().getResourceFile());
-        
+
       case ENTITY_SHAPE:
         Rectangle r = shp.shape.getEntity().getDefaultFrame().getBounds();
         Image i = shp.shape.getEntity().getDefaultFrame();
-        return PlatformUtil.getImageDescriptor(i, r.width/2, (r.width/r.height)*(r.height/2)).createImage();
+        return ScreenEditorUtil.getImageDescriptor(i, r.width / 2, (r.width / r.height) * (r.height / 2)).createImage();
 
       case SIMPLE_SHAPE_BOX:
         return SharedImages.BOX.createImage();
@@ -127,9 +135,9 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
     super(parentShell);
 
     for (Object o : selectedEditParts) {
-      
+
       boolean isShapeEP = (o instanceof ShapeEditPart) || (o instanceof ShapeTreeEP);
-      
+
       if (!isShapeEP) {
         continue;
       }
@@ -164,23 +172,40 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
     table.setHeaderVisible(true);
     table.setLinesVisible(true);
 
-    TableViewerColumn tableViewerColumn_1 = new TableViewerColumn(tableViewer, SWT.NONE);
-    TableColumn tblclmnOldId = tableViewerColumn_1.getColumn();
+    // Tab Editing of Cells.
+    TableViewerFocusCellManager focusCellManager = new TableViewerFocusCellManager(tableViewer,
+        new FocusCellOwnerDrawHighlighter(tableViewer));
+    ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(tableViewer) {
+      protected boolean isEditorActivationEvent(ColumnViewerEditorActivationEvent event) {
+        return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
+            || event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
+            || (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == SWT.CR)
+            || event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC;
+      }
+    };
+
+    TableViewerEditor.create(tableViewer, focusCellManager, actSupport, ColumnViewerEditor.TABBING_HORIZONTAL
+        | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL
+        | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+
+    TableViewerColumn colOldID = new TableViewerColumn(tableViewer, SWT.NONE);
+    final TableColumn tblclmnOldId = colOldID.getColumn();
     tblclmnOldId.setWidth(100);
     tblclmnOldId.setText("Old ID");
     tblclmnOldId.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
-        tableViewer.setSorter(new Sorter());
+        tableViewer.getTable().setSortColumn(tblclmnOldId);
+        tableViewer.refresh();
       }
     });
 
-    TableViewerColumn tableViewerColumn_2 = new TableViewerColumn(tableViewer, SWT.NONE);
-    TableColumn tblclmnNewId = tableViewerColumn_2.getColumn();
+    TableViewerColumn colNewID = new TableViewerColumn(tableViewer, SWT.NONE);
+    TableColumn tblclmnNewId = colNewID.getColumn();
     tblclmnNewId.setWidth(100);
     tblclmnNewId.setText("New ID");
-    tableViewerColumn_2.setEditingSupport(new EditingSupport(tableViewer) {
-      
+    colNewID.setEditingSupport(new EditingSupport(tableViewer) {
+
       @Override
       protected void setValue(Object element, Object value) {
         ((ShapeIdMgr) element).newId = value.toString();
@@ -194,7 +219,8 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
 
       @Override
       protected CellEditor getCellEditor(Object element) {
-        return new TextCellEditor(tableViewer.getTable());
+        TextCellEditor tce = new TextCellEditor(tableViewer.getTable());
+        return tce;
       }
 
       @Override
@@ -205,7 +231,7 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
 
     tableViewer.setLabelProvider(new TableLabelProvider());
     tableViewer.setContentProvider(new ContentProvider());
-    tableViewer.setSorter(new Sorter());
+    tableViewer.setComparator(new Comparator());
 
     tableViewer.setInput(shapeIdList);
     tableViewer.refresh();
@@ -237,7 +263,7 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
-    createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+    createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, false);
     createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
   }
 
