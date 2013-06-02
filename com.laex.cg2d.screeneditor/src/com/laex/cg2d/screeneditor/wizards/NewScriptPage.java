@@ -30,7 +30,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.SWTResourceManager;
-import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**
  * The Class NewScreenPage.
@@ -104,7 +104,7 @@ public class NewScriptPage extends WizardPage {
     btnBrowse.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
-        ContainerSelectionDialog csd = PlatformUtil.openContainerResourceDialog(getShell(), ResourcesPlugin
+        ContainerSelectionDialog csd = ScreenEditorUtil.openContainerResourceDialog(getShell(), ResourcesPlugin
             .getWorkspace().getRoot(), "Select a project");
 
         if (csd == null) {
