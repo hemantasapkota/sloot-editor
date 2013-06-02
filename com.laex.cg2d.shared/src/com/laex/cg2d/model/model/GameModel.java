@@ -10,6 +10,8 @@
  */
 package com.laex.cg2d.model.model;
 
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
+
 /**
  * The Class GameModel.
  */
@@ -17,11 +19,14 @@ public class GameModel {
 
   /** The shapes. */
   ShapesDiagram shapes = new ShapesDiagram();
+  
+  CGScreenPreferences screenPrefs;
 
   /**
    * Instantiates a new game model.
    */
-  public GameModel() {
+  public GameModel(CGScreenPreferences screenPrefs) {
+    this.screenPrefs = screenPrefs;
   }
 
   /**
@@ -32,5 +37,6 @@ public class GameModel {
   public ShapesDiagram getDiagram() {
     return shapes;
   }
+  
 
 }
