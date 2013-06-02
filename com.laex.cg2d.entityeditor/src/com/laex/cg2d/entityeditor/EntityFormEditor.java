@@ -27,7 +27,6 @@ import com.laex.cg2d.entityeditor.pages.CollisionFormPage;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.adapter.EntityAdapter;
 import com.laex.cg2d.model.model.Entity;
-import com.laex.cg2d.model.util.PlatformUtil;
 
 /**
  * The Class EntityFormEditor.
@@ -158,7 +157,7 @@ public class EntityFormEditor extends FormEditor {
     IFile file = ((FileEditorInput) getEditorInput()).getFile();
     CGEntity e = EntityAdapter.asCGEntity(entityModel);
     ByteArrayInputStream bais = new ByteArrayInputStream(e.toByteArray());
-    PlatformUtil.saveProto(monitor, file, bais);
+    file.setContents(bais, true, false, monitor);
   }
 
   /*
