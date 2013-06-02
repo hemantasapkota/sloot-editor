@@ -194,7 +194,7 @@ message CGLayer {
 }
 
 message CGScreenPreferences {
-	message DebugDrawPreferences {
+	message CGDebugDrawPreferences {
 		optional bool drawBodies = 1;
 		optional bool drawJoints = 2;
 		optional bool drawAABB = 3;
@@ -204,7 +204,7 @@ message CGScreenPreferences {
 		optional bool drawEntities = 7;
 	}
 
-	message WorldPreferences {
+	message CGWorldPreferences {
 		optional int32 ptmRatio = 1;
 		optional int32 velocityIterations = 2;
 		optional int32 positionIterations = 3;
@@ -213,15 +213,15 @@ message CGScreenPreferences {
 		optional float gravityY = 6;
 	}
 
-	message CardPreferences {
+	message CGCardPreferences {
 		optional int32 cardNoX = 1;
 		optional int32 cardNoY = 2;
 		optional int32 cardWidth = 3;
 		optional int32 cardHeight = 4;
 	}
 
-	optional DebugDrawPreferences debugDrawPrefs = 1;
-	optional WorldPreferences worldPrefs = 2;
-	optional CardPreferences cardPrefs = 3;
+	optional CGDebugDrawPreferences debugDrawPrefs = 1;
+	optional CGWorldPreferences worldPrefs = 2;
+	optional CGCardPreferences cardPrefs = 3;
 }
 
