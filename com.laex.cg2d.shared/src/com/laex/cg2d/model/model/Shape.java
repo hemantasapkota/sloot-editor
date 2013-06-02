@@ -32,7 +32,7 @@ import com.laex.cg2d.model.util.PlatformUtil;
 /**
  * The Class Shape.
  */
-public class Shape extends ModelElement  {
+public class Shape extends ModelElement {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -3451831120051320417L;
@@ -63,7 +63,7 @@ public class Shape extends ModelElement  {
 
   /** The Constant TARGET_JOINT_PROP. */
   public static final String TARGET_JOINT_PROP = "Shape.TargetJoint";
-
+  
   /** The descriptors. */
   private static IPropertyDescriptor[] descriptors;
 
@@ -400,7 +400,6 @@ public class Shape extends ModelElement  {
     }
   }
 
-
   /**
    * Sets the id.
    * 
@@ -424,6 +423,13 @@ public class Shape extends ModelElement  {
     if (value != null) {
       this.bodyDef = value;
       firePropertyChange(BODY_DEF_PROP, null, this.bodyDef);
+    }
+  }
+
+  private void setFixtureDef(FixtureDef value) {
+    if (value != null) {
+      this.fixtureDef = value;
+      firePropertyChange(FIXTURE_DEF_PROP, null, this.bodyDef);
     }
   }
 
@@ -517,6 +523,8 @@ public class Shape extends ModelElement  {
 
     } else if (isBodyDefProp(propertyId)) {
       setBodyDef((BodyDef) value);
+    } else if (isFixtureDefProp(propertyId)) {
+      setFixtureDef((FixtureDef) value);
     } else if (isBoundsProp(propertyId)) {
       setBounds((Rectangle) value);
     } else {
