@@ -14,6 +14,7 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
+import com.laex.cg2d.screeneditor.views.LayerOutlineViewPart;
 import com.laex.cg2d.screeneditor.views.LayersViewPart;
 import com.laex.cg2d.screeneditor.views.TexturesViewPart;
 
