@@ -27,7 +27,6 @@ import com.laex.cg2d.model.activator.Activator;
 import com.laex.cg2d.model.model.descs.BodyDefPropertySource;
 import com.laex.cg2d.model.model.descs.FixtureDefPropertySource;
 import com.laex.cg2d.model.model.descs.RectanglePropertySource;
-import com.laex.cg2d.model.util.PlatformUtil;
 
 /**
  * The Class Shape.
@@ -135,7 +134,7 @@ public class Shape extends ModelElement {
    *          the shape type
    */
   public Shape(EditorShapeType shapeType) {
-    id = PlatformUtil.STRING_EMPTY;
+    id = StringUtils.EMPTY;
     backgroundResourceFile = ResourceFile.create(StringUtils.EMPTY, StringUtils.EMPTY);
     this.editorShapeType = shapeType;
     this.visible = true;
