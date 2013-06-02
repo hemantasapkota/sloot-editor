@@ -13,7 +13,7 @@ package com.laex.cg2d.screeneditor.commands;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**
  * The Class IDCreationStrategy.
@@ -161,7 +161,7 @@ public class IDCreationStrategy {
    * @return the available id
    */
   private synchronized int getAvailableId(EditorShapeType type) {
-    GameModel model = PlatformUtil.getScreenModel();
+    GameModel model = ScreenEditorUtil.getScreenModel();
     int id = 0;
     for (Shape shp : model.getDiagram().getChildren()) {
       if (shp.getEditorShapeType() == type) {
