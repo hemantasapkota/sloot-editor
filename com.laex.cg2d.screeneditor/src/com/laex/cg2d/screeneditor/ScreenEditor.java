@@ -13,7 +13,6 @@ package com.laex.cg2d.screeneditor;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.EventObject;
-import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -69,9 +68,9 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.IScreenPropertyManager;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
 import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
 import com.laex.cg2d.model.adapter.ScreenModelAdapter;
-import com.laex.cg2d.model.adapter.ScreenPropertiesUtil;
 import com.laex.cg2d.model.adapter.ShapeAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
@@ -89,11 +88,14 @@ import com.laex.cg2d.screeneditor.commands.LayerRemoveCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeDeleteCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeDeleteCommand.DeleteCommandType;
 import com.laex.cg2d.screeneditor.editparts.CardEditPart;
-import com.laex.cg2d.screeneditor.editparts.ShapesEditPartFactory;
-import com.laex.cg2d.screeneditor.editparts.tree.TreeEditPartFactory;
+import com.laex.cg2d.screeneditor.editparts.ScreenEditPartFactory;
+import com.laex.cg2d.screeneditor.editparts.tree.LayerOutlineTreeEPFactory;
+import com.laex.cg2d.screeneditor.editparts.tree.ScreenTreeEPFactory;
 import com.laex.cg2d.screeneditor.palette.ScreenEditorPaletteFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationInfo;
+import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
+import com.laex.cg2d.screeneditor.views.LayerOutlineViewPart;
 
 /**
  * The Class ScreenEditor.
@@ -124,9 +126,16 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   /** The card height. */
   int x, y, cardWidthh, cardHeight;
 
-  class OutlineView extends ContentOutlinePage {
+  /**
+   * ScreenOutineView. General outline view that shows all the editparts in the
+   * screen viewer.
+   * 
+   * @author hemantasapkota
+   * 
+   */
+  class ScreenOutlineView extends ContentOutlinePage {
 
-    public OutlineView(EditPartViewer viewer) {
+    public ScreenOutlineView(EditPartViewer viewer) {
       super(viewer);
     }
 
@@ -134,13 +143,47 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     public void createControl(Composite parent) {
       getViewer().createControl(parent);
       getViewer().setEditDomain(getEditDomain());
-      getViewer().setEditPartFactory(new TreeEditPartFactory());
+      getViewer().setEditPartFactory(new ScreenTreeEPFactory());
       getSelectionSynchronizer().addViewer(getViewer());
       getViewer().setContents(getModel());
       ScreenEditorContextMenuProvider scm = new ScreenEditorContextMenuProvider(getViewer(), getActionRegistry());
       getViewer().setContextMenu(scm);
       getSite().registerContextMenu("com.laex.cg2d.screeneditor.outline.contextmenu", scm,
           getSite().getSelectionProvider());
+    }
+
+    @Override
+    public void dispose() {
+      getSelectionSynchronizer().removeViewer(getViewer());
+    }
+
+    @Override
+    public Control getControl() {
+      return getViewer().getControl();
+    }
+
+  }
+
+  /**
+   * LayerOutlineView. Shows the list of layers.Auto selects the appropriate
+   * layer when an edit part is selected.
+   * 
+   * @author hemantasapkota
+   * 
+   */
+  public class LayerOutlineView extends ScreenOutlineView {
+
+    public LayerOutlineView(EditPartViewer viewer) {
+      super(viewer);
+    }
+
+    @Override
+    public void createControl(Composite parent) {
+      getViewer().createControl(parent);
+      getViewer().setEditDomain(getEditDomain());
+      getViewer().setEditPartFactory(new LayerOutlineTreeEPFactory());
+      getSelectionSynchronizer().addViewer(getViewer());
+      getViewer().setContents(getModel());
     }
 
     @Override
@@ -171,7 +214,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     super.configureGraphicalViewer();
 
     GraphicalViewer viewer = getGraphicalViewer();
-    viewer.setEditPartFactory(new ShapesEditPartFactory());
+    viewer.setEditPartFactory(new ScreenEditPartFactory());
 
     KeyHandler keyHandler = new KeyHandler();
     keyHandler.setParent(new GraphicalViewerKeyHandler(viewer));
@@ -296,10 +339,14 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    */
   public void doSave(IProgressMonitor monitor) {
     try {
+      
       IFile file = ((FileEditorInput) getEditorInput()).getFile();
-      performSave(file, monitor, ScreenPropertiesUtil.getScreenProperties(file));
+      performSave(file, monitor);
+      
     } catch (CoreException ce) {
       ce.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 
@@ -314,9 +361,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    *          the screen prefs
    * @throws CoreException
    *           the core exception
+   * @throws IOException 
    */
-  private void performSave(IFile file, IProgressMonitor monitor, Map<String, String> screenPrefs) throws CoreException {
-    CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefs).asCGGameModel();
+  private void performSave(IFile file, IProgressMonitor monitor) throws CoreException, IOException {
+    //Use existing preferences
+    CGScreenPreferences screenPrefsExisting = CGScreenModel.parseFrom(file.getContents()).getScreenPrefs();
+    CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefsExisting).asCGGameModel();
     PlatformUtil.saveProto(monitor, file, new ByteArrayInputStream(cgGameModel.toByteArray()));
     getCommandStack().markSaveLocation();
   }
@@ -353,8 +403,13 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     }
 
     if (type == IContentOutlinePage.class) {
-      OutlineView ov = new OutlineView(new TreeViewer());
+      // Screen Outline View
+      ScreenOutlineView ov = new ScreenOutlineView(new TreeViewer());
       return ov;
+    }
+
+    if (type == LayerOutlineViewPart.class) {
+      return new LayerOutlineView(new TreeViewer());
     }
 
     return super.getAdapter(type);
@@ -388,7 +443,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    *          the e
    */
   private void handleLoadException(Exception e) {
-    model = new GameModel();
+    model = new GameModel(PreferenceInitializer.defaultScreenPrefs());
     Layer firstLayer = new Layer(0, "Layer1", true, false);
     model.getDiagram().getLayers().add(firstLayer);
   }
@@ -495,10 +550,10 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
               ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
               // Check if the resource is valid entity or not. If not remove the
               // entity and log it
-            
+
               Entity e = Entity.createFromFile((IFile) resource);
               EntityValidator ev = new EntityValidator(e);
-              
+
               if (!ev.isValid()) {
                 removeDeletedOrInvalidEntities(resource);
               }
@@ -574,7 +629,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
                 try {
                   Entity e = Entity.createFromFile(shape.getEntityResourceFile().getResourceFile());
                   EntityValidator ev = new EntityValidator(e);
-                  
+
                   if (!ev.isValid()) {
                     ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), shape,
                         DeleteCommandType.NON_UNDOABLE);
@@ -719,10 +774,15 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    * .util.Map)
    */
   @Override
-  public void updateScreenProperties(Map<String, String> props) {
+  public void updateScreenProperties(CGScreenPreferences screenPrefs) {
     IFile file = ((FileEditorInput) getEditorInput()).getFile();
+
     try {
-      performSave(file, null, props);
+      
+      CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefs).asCGGameModel();
+      PlatformUtil.saveProto(null, file, new ByteArrayInputStream(cgGameModel.toByteArray()));
+      getCommandStack().markSaveLocation();
+      
     } catch (CoreException e) {
       e.printStackTrace();
     }
