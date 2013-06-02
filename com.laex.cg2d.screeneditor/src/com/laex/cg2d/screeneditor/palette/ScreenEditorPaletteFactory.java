@@ -40,7 +40,7 @@ import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.validator.EntityValidator;
 import com.laex.cg2d.model.util.EntitiesUtil;
-import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**
  * A factory for creating ScreenEditorPalette objects.
@@ -97,7 +97,7 @@ public final class ScreenEditorPaletteFactory {
     String name = EntitiesUtil.getInternalName(res.getName());
     final Image i = EntitiesUtil.getDefaultFrame(e);
     float ratio = i.getBounds().width / i.getBounds().height;
-    ImageDescriptor id = PlatformUtil.getImageDescriptor(i, i.getBounds().width / 2, (int)ratio * (i.getBounds().height/2));
+    ImageDescriptor id = ScreenEditorUtil.getImageDescriptor(i, i.getBounds().width / 2, (int)ratio * (i.getBounds().height/2));
     e.setDefaultFrame(i);
     e.setInternalName(name);
 
