@@ -294,8 +294,8 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     } else if (Shape.SHAPE_LOCKED.equals(prop)) {
       boolean locked = (Boolean) evt.getNewValue();
       this.selectable = !locked;
-      refreshVisuals();
     }
+    refreshVisuals();
   }
 
   /*
