@@ -39,7 +39,7 @@ import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences;
 import com.laex.cg2d.model.util.FloatUtil;
-import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
 
 /**
@@ -424,18 +424,18 @@ public class ScreenPropertyPage extends PropertyPage {
    */
   private void applyChanges(CGScreenPreferences prefs) throws IOException, CoreException {
     // Update changes to the active screen editor
-    if (PlatformUtil.isScreenEditorActive()) {
-      PlatformUtil.getScreenLayerManager().updateCardLayer(txtCardNoX.getSelection(), txtCardNoY.getSelection(),
+    if (ScreenEditorUtil.isScreenEditorActive()) {
+      ScreenEditorUtil.getScreenLayerManager().updateCardLayer(txtCardNoX.getSelection(), txtCardNoY.getSelection(),
           txtCardWidth.getSelection(), txtCardHeight.getSelection());
 
-      PlatformUtil.getScreenPropertyManager().updateScreenProperties(prefs);
+      ScreenEditorUtil.getScreenPropertyManager().updateScreenProperties(prefs);
     } else {
       //Editor is not active. Persist the properties, by loading the model and saving it again.
       IFile file = (IFile) getElement();
       CGScreenModel model = CGScreenModel.parseFrom(file.getContents());
       
       CGScreenModel updatedModel = CGScreenModel.newBuilder(model).setScreenPrefs(constructPrefs()).build();
-      PlatformUtil.saveProto(null, file, new ByteArrayInputStream(updatedModel.toByteArray()));
+      file.setContents(new ByteArrayInputStream(updatedModel.toByteArray()), true, false, null);
     }
     
     
