@@ -101,7 +101,7 @@ public final class PlatformUtil {
     return (IScreenPropertyManager) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
         .getActiveEditor();
   }
-
+  
   /**
    * Gets the screen model.
    * 
