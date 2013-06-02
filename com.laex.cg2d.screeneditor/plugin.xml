@@ -59,13 +59,18 @@
             name="Textures"
             restorable="true">
       </view>
-      <view
+       <view
             allowMultiple="false"
             class="com.laex.cg2d.screeneditor.views.LayersViewPart"
-            id="com.laex.cg2d.screeneditor.LayersView"
-            name="Layers"
-            restorable="true">
-      </view>
+            id="com.laex.cg2d.screeneditor.views.LayersViewPart"
+            name="Layers">
+      </view>     
+      <view
+            allowMultiple="false"
+            class="com.laex.cg2d.screeneditor.views.LayerOutlineViewPart"
+            id="com.laex.cg2d.screeneditor.views.LayerOutlineViewPart"
+            name="Layers2">
+      </view>          
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
