@@ -28,5 +28,4 @@ Import-Package: org.apache.commons.io,
  org.apache.commons.io.input,
  org.eclipse.ui,
  org.eclipse.ui.actions,
- org.eclipse.ui.dialogs,
- org.eclipse.ui.part
+ org.eclipse.ui.dialogs
