@@ -11,7 +11,6 @@
 package com.laex.cg2d.screeneditor.contributions;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.Scanner;
 
 import org.eclipse.core.resources.IFile;
@@ -20,9 +19,7 @@ import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.ui.actions.ActionBarContributor;
 import org.eclipse.gef.ui.actions.ZoomComboContributionItem;
@@ -36,7 +33,6 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchActionConstants;
 
 import com.laex.cg2d.model.SharedImages;
-import com.laex.cg2d.model.adapter.ScreenPropertiesUtil;
 import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditor;
 import com.laex.cg2d.screeneditor.prefs.InternalPrefs;
@@ -97,7 +93,6 @@ public class ScreenEditorContributor extends ActionBarContributor {
               renderAction.setEnabled(false);
 
               IFile file = ((IFileEditorInput) shapesEditor.getEditorInput()).getFile();
-              Map<String, String> props = ScreenPropertiesUtil.getScreenProperties(file);
 
               monitor.beginTask("Building rendering command", 5);
               ILog log = Activator.getDefault().getLog();
@@ -106,7 +101,7 @@ public class ScreenEditorContributor extends ActionBarContributor {
               String controllerFile = file.getLocation().removeFileExtension().addFileExtension("lua").makeAbsolute()
                   .toOSString();
 
-              String[] command = buildRunnerCommandFromProperties(props, mapFile, controllerFile);
+              String[] command = buildRunnerCommandFromProperties(mapFile, controllerFile);
               monitor.worked(5);
 
               monitor.beginTask("Rendering external", 5);
@@ -253,7 +248,7 @@ public class ScreenEditorContributor extends ActionBarContributor {
    * @throws CoreException
    *           the core exception
    */
-  private String[] buildRunnerCommandFromProperties(Map<String, String> props, String screenFile, String controllerFile)
+  private String[] buildRunnerCommandFromProperties(String screenFile, String controllerFile)
       throws CoreException {
     StringBuilder cmd = new StringBuilder("java -jar ");
 
