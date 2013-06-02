@@ -27,7 +27,7 @@ import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.util.EntitiesUtil;
-import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.commands.IDCreationStrategy;
 import com.laex.cg2d.screeneditor.views.LayersViewPart;
 
@@ -86,8 +86,8 @@ public class ShapeCreationFactory implements CreationFactory {
     case BACKGROUND_SHAPE:
       shape.setBackground(true);
 
-      String bgResFile = PlatformUtil.resourceString(creationInfo.getBackgroundResourceFile());
-      String bgResFileAbs = PlatformUtil.resourceStringAbsolute(creationInfo.getBackgroundResourceFile());
+      String bgResFile = ScreenEditorUtil.resourceString(creationInfo.getBackgroundResourceFile());
+      String bgResFileAbs = ScreenEditorUtil.resourceStringAbsolute(creationInfo.getBackgroundResourceFile());
       shape.setBackgroundResourceFile(ResourceFile.create(bgResFile, bgResFileAbs));
 
       Rectangle bounds = RectAdapter.gdxRect(ResourceManager.getImageOfRelativePath(bgResFile).getBounds());
@@ -110,8 +110,8 @@ public class ShapeCreationFactory implements CreationFactory {
         e1.printStackTrace();
       }
 
-      String rs1 = PlatformUtil.resourceString(creationInfo.getEntityResourceFile());
-      String rsAbs = PlatformUtil.resourceStringAbsolute(creationInfo.getEntityResourceFile());
+      String rs1 = ScreenEditorUtil.resourceString(creationInfo.getEntityResourceFile());
+      String rsAbs = ScreenEditorUtil.resourceStringAbsolute(creationInfo.getEntityResourceFile());
       ResourceFile eRf = ResourceFile.create(rs1, rsAbs);
       shape.setEntityResourceFile(eRf);
       break;
