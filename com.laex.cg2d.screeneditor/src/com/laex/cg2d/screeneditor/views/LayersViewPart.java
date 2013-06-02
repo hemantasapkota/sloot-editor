@@ -68,7 +68,7 @@ import com.laex.cg2d.screeneditor.ScreenEditor;
 public class LayersViewPart extends ViewPart implements IAdaptable {
 
   /** The Constant ID. */
-  public static final String ID = "com.laex.cg2d.screeneditor.LayersView"; //$NON-NLS-1$
+  public static final String ID = "com.laex.cg2d.screeneditor.views.LayersViewPart"; //$NON-NLS-1$
 
   /** The Constant VISIBLE_PROP. */
   public static final String VISIBLE_PROP = "Visible";
@@ -368,6 +368,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
             model = (ShapesDiagram) element.getAdapter(ShapesDiagramAdapter.class);
             showSelectionForMainModel(model);
           }
+          
           showSelectionForShapeEditPart(shapeModel);
           return;
         }
