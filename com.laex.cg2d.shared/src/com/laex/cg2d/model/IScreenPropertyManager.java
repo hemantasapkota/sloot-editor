@@ -10,7 +10,7 @@
  */
 package com.laex.cg2d.model;
 
-import java.util.Map;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
 
 /**
  * The Interface IScreenPropertyManager.
@@ -23,6 +23,6 @@ public interface IScreenPropertyManager {
    * @param props
    *          the props
    */
-  void updateScreenProperties(Map<String, String> props);
+  void updateScreenProperties(CGScreenPreferences screenPrefs);
 
 }
