@@ -54,8 +54,8 @@ import com.laex.cg2d.model.adapter.ShapesDiagramAdapter;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.ShapesDiagram;
-import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.ScreenEditor;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /***
  * LayersViewPart.
@@ -65,7 +65,7 @@ import com.laex.cg2d.screeneditor.ScreenEditor;
  *         TODO: Add resource listener which removes the content of this view
  *         when the active editor is closed.
  */
-public class LayersViewPart extends ViewPart implements IAdaptable {
+public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionListener, IScreenDisposeListener {
 
   /** The Constant ID. */
   public static final String ID = "com.laex.cg2d.screeneditor.views.LayersViewPart"; //$NON-NLS-1$
@@ -314,98 +314,6 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
     downAction.setEnabled(true);
   }
 
-  /**
-   * Adds the workbench selection listener.
-   */
-  private void addWorkbenchSelectionListener() {
-    getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
-      @Override
-      public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-        // Shape editor gets deactivated when switching between editors
-        if (!PlatformUtil.isScreenEditorActive()) {
-          disableState();
-          return;
-        }
-
-        // Do nothing on empty selection or an incompatible tree selection.
-        boolean notStructuredSelection = !(selection instanceof IStructuredSelection);
-        if (selection.isEmpty() || notStructuredSelection) {
-          enableState();
-          return;
-        }
-
-        IStructuredSelection sel = (IStructuredSelection) selection;
-        if (!(sel.getFirstElement() instanceof IAdaptable)) {
-          enableState();
-          return;
-        }
-
-        Object firstElement = sel.getFirstElement();
-        if (firstElement instanceof LayerItem) {
-          enableState();
-          return; // do nothing
-        }
-
-        enableState();
-        /*
-         * If the selection is ShapesDiagramEditPart, we get the model and
-         * populate the layers. If the selection is not ShapesDiagramEditPart
-         * and is ShapesEditPart, we get the diagram model, populate the layers,
-         * and show selection for the selected shapes edit part.
-         */
-        IAdaptable element = (IAdaptable) firstElement;
-        ShapesDiagram model = (ShapesDiagram) element.getAdapter(ShapesDiagram.class);
-        if (model == null) {
-          Shape shapeModel = (Shape) element.getAdapter(Shape.class);
-          // shapeModel null means this selection is definitely not
-          // ShapeEditPart but some other part in the system
-          if (shapeModel == null) {
-            return;
-          }
-          // if layers have not been populated yet, populate them and show
-          // selection for edit part
-          if (layerItems.isEmpty()) {
-            model = (ShapesDiagram) element.getAdapter(ShapesDiagramAdapter.class);
-            showSelectionForMainModel(model);
-          }
-          
-          showSelectionForShapeEditPart(shapeModel);
-          return;
-        }
-
-        showSelectionForMainModel(model);
-      }
-
-      private void showSelectionForShapeEditPart(Shape shapeModel) {
-        Layer parentLayer = shapeModel.getParentLayer();
-        int index = 0;
-        for (LayerItem li : layerItems) {
-          if (li.referenceLayer == parentLayer) {
-            table.setSelection(index);
-            li.referenceLayer.setCurrent(true);
-          }
-          index++;
-        }
-      }
-
-      private void showSelectionForMainModel(ShapesDiagram model) {
-        TableItem[] selections = table.getSelection();
-        layerItems.clear();
-        for (Layer l : model.getLayers()) {
-          LayerItem li = new LayerItem();
-          li.id = l.getId();
-          li.name = l.getName();
-          li.locked = l.isLocked();
-          li.visible = l.isVisible();
-          li.referenceLayer = l;
-          layerItems.add(li);
-        }
-        getTableViewer().refresh();
-        table.setSelection(selections);
-      }
-
-    });
-  }
 
   /**
    * Create contents of the view part.
@@ -487,7 +395,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
     initializeToolBar();
     initializeMenu();
 
-    addWorkbenchSelectionListener();
+    getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(this);
   }
 
   /**
@@ -565,7 +473,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
           String layerName = addLayerDailog.getLayerName();
           LayerItem li = new LayerItem();
 
-          li.id = PlatformUtil.getScreenLayerManager().getNewLayerId();
+          li.id = ScreenEditorUtil.getScreenLayerManager().getNewLayerId();
           li.name = layerName;
           li.locked = false;
           li.visible = true;
@@ -718,8 +626,8 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
     }
 
     //
-    if (PlatformUtil.isScreenEditorActive()) {
-      PlatformUtil.getScreenLayerManager().changeLayerOrder(larr);
+    if (ScreenEditorUtil.isScreenEditorActive()) {
+      ScreenEditorUtil.getScreenLayerManager().changeLayerOrder(larr);
     }
   }
 
@@ -805,4 +713,95 @@ public class LayersViewPart extends ViewPart implements IAdaptable {
     List<LayerItem> selected = selection.toList();
     return selected;
   }
+
+  @Override
+  public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+    // Shape editor gets deactivated when switching between editors
+    if (!ScreenEditorUtil.isScreenEditorActive()) {
+      disableState();
+      return;
+    }
+
+    // Do nothing on empty selection or an incompatible tree selection.
+    boolean notStructuredSelection = !(selection instanceof IStructuredSelection);
+    if (selection.isEmpty() || notStructuredSelection) {
+      enableState();
+      return;
+    }
+
+    IStructuredSelection sel = (IStructuredSelection) selection;
+    if (!(sel.getFirstElement() instanceof IAdaptable)) {
+      enableState();
+      return;
+    }
+
+    Object firstElement = sel.getFirstElement();
+    if (firstElement instanceof LayerItem) {
+      enableState();
+      return; // do nothing
+    }
+
+    enableState();
+    /*
+     * If the selection is ShapesDiagramEditPart, we get the model and
+     * populate the layers. If the selection is not ShapesDiagramEditPart
+     * and is ShapesEditPart, we get the diagram model, populate the layers,
+     * and show selection for the selected shapes edit part.
+     */
+    IAdaptable element = (IAdaptable) firstElement;
+    ShapesDiagram model = (ShapesDiagram) element.getAdapter(ShapesDiagram.class);
+    if (model == null) {
+      Shape shapeModel = (Shape) element.getAdapter(Shape.class);
+      // shapeModel null means this selection is definitely not
+      // ShapeEditPart but some other part in the system
+      if (shapeModel == null) {
+        return;
+      }
+      // if layers have not been populated yet, populate them and show
+      // selection for edit part
+      if (layerItems.isEmpty()) {
+        model = (ShapesDiagram) element.getAdapter(ShapesDiagramAdapter.class);
+        showSelectionForMainModel(model);
+      }
+      
+      showSelectionForShapeEditPart(shapeModel);
+      return;
+    }
+
+    showSelectionForMainModel(model);
+  }
+  
+  private void showSelectionForShapeEditPart(Shape shapeModel) {
+    Layer parentLayer = shapeModel.getParentLayer();
+    int index = 0;
+    for (LayerItem li : layerItems) {
+      if (li.referenceLayer == parentLayer) {
+        table.setSelection(index);
+        li.referenceLayer.setCurrent(true);
+      }
+      index++;
+    }
+  }
+
+  private void showSelectionForMainModel(ShapesDiagram model) {
+    TableItem[] selections = table.getSelection();
+    layerItems.clear();
+    for (Layer l : model.getLayers()) {
+      LayerItem li = new LayerItem();
+      li.id = l.getId();
+      li.name = l.getName();
+      li.locked = l.isLocked();
+      li.visible = l.isVisible();
+      li.referenceLayer = l;
+      layerItems.add(li);
+    }
+    getTableViewer().refresh();
+    table.setSelection(selections);
+  }
+
+  @Override
+  public void screenDisposed() {
+    disableState();
+  }
+  
 }
