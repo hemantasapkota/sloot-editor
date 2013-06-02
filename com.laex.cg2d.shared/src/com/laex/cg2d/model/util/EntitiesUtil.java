@@ -16,6 +16,7 @@ import java.util.Queue;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 
@@ -101,6 +102,17 @@ public class EntitiesUtil {
     }
     return id;
   }
+  
+  public static Image createImage(final ImageData id) {
+    ImageDescriptor idd = new ImageDescriptor() {
+      @Override
+      public ImageData getImageData() {
+        return id;
+      }
+    };
+    return idd.createImage();
+  }
+
 
   /**
    * Creates the image strip.
@@ -122,7 +134,7 @@ public class EntitiesUtil {
       for (int x = 0; x < imgWidth; x += tileWidth) {
         Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);      
         final ImageData id = extractSprite2(strip.getImageData(), r);
-        Image extractImage = PlatformUtil.createImage(id);
+        Image extractImage = EntitiesUtil.createImage(id);
         imgStip.add(extractImage);
       }
     }
@@ -181,6 +193,6 @@ public class EntitiesUtil {
     int tileHeight = img.getBounds().height / eaim.getRows();
     
     ImageData id = extractSprite2(img.getImageData(), new Rectangle(0, 0, tileWidth, tileHeight));
-    return PlatformUtil.createImage(id);
+    return EntitiesUtil.createImage(id);
   }
 }
