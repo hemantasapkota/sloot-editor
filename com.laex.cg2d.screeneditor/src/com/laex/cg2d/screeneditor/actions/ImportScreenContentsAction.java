@@ -48,7 +48,7 @@ public class ImportScreenContentsAction extends Action {
   public void run() {
     final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor()
         .getSite().getShell();
-    
+
     ListExistingScreensDialog screensDialog = new ListExistingScreensDialog(shell, viewer.getEditDomain()
         .getCommandStack());
     int responseCode = screensDialog.open();
@@ -56,11 +56,5 @@ public class ImportScreenContentsAction extends Action {
       return;
     }
 
-//    shell.getDisplay().asyncExec(new Runnable() {
-//      @Override
-//      public void run() {
-//
-//      }
-//    });
   }
 }
