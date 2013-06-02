@@ -31,7 +31,6 @@ public class ShapeCreateCommand extends Command {
   /** The parent. */
   private final ShapesDiagram parent;
 
-
   /**
    * Instantiates a new shape create command.
    * 
@@ -75,7 +74,9 @@ public class ShapeCreateCommand extends Command {
    */
   public void redo() {
     if (newShape.getParentLayer() != null) {
-      newShape.getParentLayer().add(newShape);
+      if (!newShape.getParentLayer().getChildren().contains(newShape)) {
+        newShape.getParentLayer().add(newShape);
+      }
     }
     parent.addChild(newShape);
   }
