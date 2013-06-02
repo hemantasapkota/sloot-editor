@@ -16,7 +16,7 @@ import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.util.PlatformUtil;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**
  * The Class ShapeCreationInfo.
@@ -180,7 +180,7 @@ public class ShapeCreationInfo {
      */
     public Builder setBackgroundResourceFile(IFile bfile) {
       creationInfo.backgroundResourceFile = bfile;
-      creationInfo.backgroundResourceFileAbsolute = PlatformUtil.resourceStringAbsolute(bfile);
+      creationInfo.backgroundResourceFileAbsolute = ScreenEditorUtil.resourceStringAbsolute(bfile);
       return this;
     }
 
