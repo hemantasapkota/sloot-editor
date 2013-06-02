@@ -27,9 +27,9 @@ import com.laex.cg2d.model.ScreenModel.CGJoint;
 import com.laex.cg2d.model.ScreenModel.CGLayer;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
-import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CardPreferences;
-import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.DebugDrawPreferences;
-import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.WorldPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences;
 import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.model.ScreenModel.CGVector2;
 import com.laex.cg2d.model.model.EditorShapeType;
@@ -48,9 +48,7 @@ public class CGScreenModelAdapter {
 
   /** The model. */
   GameModel model;
-
-  /** The prefs. */
-  private Map<String, String> prefs;
+  private CGScreenPreferences screenPrefs;
 
   /**
    * Instantiates a new cG game model adapter.
@@ -60,9 +58,13 @@ public class CGScreenModelAdapter {
    * @param prefs
    *          the prefs
    */
-  public CGScreenModelAdapter(GameModel model, Map<String, String> prefs) {
+  public CGScreenModelAdapter(GameModel model, CGScreenPreferences screenPrefs) {
     this.model = model;
-    this.prefs = prefs;
+    this.screenPrefs = screenPrefs;
+  }
+  
+  public CGScreenModelAdapter(GameModel model) {
+    this.model = model;
   }
 
   /**
@@ -206,35 +208,12 @@ public class CGScreenModelAdapter {
 
       cgModelBuilder.addLayers(layerBuilder.build());
     }
+    
+    if (screenPrefs != null) {
+      cgModelBuilder.setScreenPrefs(screenPrefs);
+    }
 
-    // add preferences
-    CardPreferences cf = CardPreferences.newBuilder()
-        .setCardHeight(IntegerUtil.toInt((prefs.get(PreferenceConstants.CARD_HEIGHT))))
-        .setCardWidth(IntegerUtil.toInt(prefs.get(PreferenceConstants.CARD_WIDTH)))
-        .setCardNoX(IntegerUtil.toInt(prefs.get(PreferenceConstants.CARD_NO_X)))
-        .setCardNoY(IntegerUtil.toInt(prefs.get(PreferenceConstants.CARD_NO_Y))).build();
-
-    DebugDrawPreferences ddp = DebugDrawPreferences.newBuilder()
-        .setDrawAABB(BooleanUtil.toBool(prefs.get(PreferenceConstants.DRAW_AABB)))
-        .setDrawBodies(BooleanUtil.toBool(prefs.get(PreferenceConstants.DRAW_BODIES)))
-        .setDrawDebugData(BooleanUtil.toBool(prefs.get(PreferenceConstants.DRAW_DEBUG_DATA)))
-        .setDrawEntities(BooleanUtil.toBool(prefs.get(PreferenceConstants.DRAW_ENTITIES)))
-        .setInstallMouseJoint(BooleanUtil.toBool(prefs.get(PreferenceConstants.INSTALL_MOUSE_JOINT)))
-        .setDrawJoints(BooleanUtil.toBool(prefs.get(PreferenceConstants.DRAW_JOINT)))
-        .setDrawInactiveBodies(BooleanUtil.toBool(prefs.get(PreferenceConstants.DRAW_INACTIVE_BODIES))).build();
-
-    WorldPreferences wp = WorldPreferences.newBuilder()
-        .setGravityX(FloatUtil.toFloat(prefs.get(PreferenceConstants.GRAVITY_X)))
-        .setGravityY(FloatUtil.toFloat(prefs.get(PreferenceConstants.GRAVITY_Y)))
-        .setPositionIterations(IntegerUtil.toInt(prefs.get(PreferenceConstants.POSITION_ITERATIONS)))
-        .setVelocityIterations(IntegerUtil.toInt(prefs.get(PreferenceConstants.VELOCITY_ITERATIONS)))
-        .setPtmRatio(IntegerUtil.toInt(prefs.get(PreferenceConstants.PTM_RATIO)))
-        .setTimeStep(FloatUtil.toFloat(prefs.get(PreferenceConstants.TIMESTEP))).build();
-
-    CGScreenPreferences screenPrefs = CGScreenPreferences.newBuilder().setCardPrefs(cf).setDebugDrawPrefs(ddp)
-        .setWorldPrefs(wp).build();
-
-    return cgModelBuilder.setScreenPrefs(screenPrefs).build();
+    return cgModelBuilder.build();
   }
 
   public static CGShape asCGShape(Shape s) {
