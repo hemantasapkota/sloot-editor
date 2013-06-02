@@ -38,7 +38,7 @@ import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
-import com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEditPart;
+import com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEP;
 
 public class ChangeShapeIDDialog extends TitleAreaDialog {
 
@@ -128,7 +128,7 @@ public class ChangeShapeIDDialog extends TitleAreaDialog {
 
     for (Object o : selectedEditParts) {
       
-      boolean isShapeEP = (o instanceof ShapeEditPart) || (o instanceof ShapeTreeEditPart);
+      boolean isShapeEP = (o instanceof ShapeEditPart) || (o instanceof ShapeTreeEP);
       
       if (!isShapeEP) {
         continue;
