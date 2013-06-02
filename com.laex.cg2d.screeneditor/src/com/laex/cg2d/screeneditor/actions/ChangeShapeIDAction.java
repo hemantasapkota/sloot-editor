@@ -2,12 +2,16 @@ package com.laex.cg2d.screeneditor.actions;
 
 import java.util.Map;
 
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.screeneditor.commands.ShapeChangeIDCommand;
+import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
+import com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEP;
 
 public class ChangeShapeIDAction extends Action {
   
@@ -20,7 +24,9 @@ public class ChangeShapeIDAction extends Action {
   
   @Override
   public boolean isEnabled() {
-    return editPartViewer.getSelectedEditParts().size() != 0;
+    boolean moreThanOneSelection = editPartViewer.getSelectedEditParts().size() != 0;
+    Object firstEl = ((IStructuredSelection) editPartViewer.getSelection()).getFirstElement();
+    return moreThanOneSelection && (firstEl instanceof ShapeEditPart || firstEl instanceof ShapeTreeEP);
   }
   
   @Override
