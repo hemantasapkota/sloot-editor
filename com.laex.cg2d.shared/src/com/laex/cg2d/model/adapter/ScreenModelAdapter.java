@@ -177,7 +177,7 @@ public class ScreenModelAdapter {
    * @return the game model
    */
   public static GameModel asGameModel(CGScreenModel cgModel) {
-    GameModel model = new GameModel();
+    GameModel model = new GameModel(cgModel.getScreenPrefs());
     Map<String, Shape> shapeMap = new HashMap<String, Shape>();
 
     // First step: make all the shapes
@@ -194,7 +194,8 @@ public class ScreenModelAdapter {
 
       model.getDiagram().getLayers().add(layer);
     }
-
+    
+    // Second Step: make all the joints
     for (CGLayer cgLayer : cgModel.getLayersList()) {
 
       for (CGShape cgShape : cgLayer.getShapeList()) {
@@ -209,7 +210,6 @@ public class ScreenModelAdapter {
       }
     }
 
-    // Second Step: make all the joints
     return model;
   }
 }
