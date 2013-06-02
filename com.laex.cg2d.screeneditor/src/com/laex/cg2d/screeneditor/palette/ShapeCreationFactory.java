@@ -15,6 +15,7 @@ import java.io.IOException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.requests.CreationFactory;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
 import com.badlogic.gdx.math.Rectangle;
@@ -57,9 +58,11 @@ public class ShapeCreationFactory implements CreationFactory {
    * @return the selected layer
    */
   private Layer getSelectedLayer() {
-    Layer layer = (Layer) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-        .findView(LayersViewPart.ID).getAdapter(Layer.class);
-    return layer;
+    // Layer layer = (Layer)
+    // PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+    // .findView(LayersViewPart.ID).getAdapter(Layer.class);
+    IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(LayersViewPart.ID);
+    return (Layer) view.getAdapter(Layer.class);
   }
 
   /*
@@ -74,7 +77,7 @@ public class ShapeCreationFactory implements CreationFactory {
     Shape shape = createShape();
     shape.setParentLayer(layer);
     shape.setId(idCreator.newId(shape.getEditorShapeType()));
-    
+
     if (layer != null) {
       layer.add(shape);
     }
