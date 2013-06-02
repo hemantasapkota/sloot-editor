@@ -37,8 +37,8 @@ import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
 import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Layer;
-import com.laex.cg2d.model.util.PlatformUtil;
 import com.laex.cg2d.screeneditor.ScreenEditor;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
 
 /**
@@ -135,7 +135,7 @@ public class NewScreenWizard extends Wizard implements INewWizard {
 
         CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefs).asCGGameModel();
         
-        PlatformUtil.saveProto(monitor, createdFile, new ByteArrayInputStream(cgGameModel.toByteArray()));
+        createdFile.setContents(new ByteArrayInputStream(cgGameModel.toByteArray()), true, false, monitor);
 
         // Open the file in the editor
         getShell().getDisplay().asyncExec(new Runnable() {
