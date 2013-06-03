@@ -19,4 +19,4 @@ Outline View
 
 Lua Scripting
 
-![Screen Outline Laexian Box2D Editor](https://raw.github.com/hemantasapkota/Laexian_Box2D_Editor/master/screenshots/EdRender.png)
+![Screen Outline Laexian Box2D Editor](https://raw.github.com/hemantasapkota/Laexian_Box2D_Editor/master/screenshots/EdLuaScript.png)
