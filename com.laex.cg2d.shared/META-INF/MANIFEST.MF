@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Shared
+Bundle-Name: Models
 Bundle-SymbolicName: com.laex.cg2d.model;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.laex.cg2d.model.activator.Activator
