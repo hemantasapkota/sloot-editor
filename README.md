@@ -10,6 +10,7 @@ Clone the repository.
 Set up, Eclipse.
 In Eclipse, Right click com.laex.cg2d.core project, Run As Eclipse Application.
 
+Plenty of bugs.
 
 Screenshots
 ===========
