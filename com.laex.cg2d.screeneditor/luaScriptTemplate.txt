@@ -25,7 +25,7 @@ end
 
 function update(world, cam, body, id)
 
-	if id == "entity0" then
+	if id == "runner" then
 		local posX = body:getTransform():getPosition().x
 
 		local leftBoundsCondition = posX > (cardWidth/ptm/2)
@@ -34,6 +34,7 @@ function update(world, cam, body, id)
 		if leftBoundsCondition and rightBoundsCondition then
 			cam.position.x = posX
 		end
+
 	end
 
 	--destroy any bodies to be destroyed
@@ -43,17 +44,27 @@ function update(world, cam, body, id)
 end
 
 function keyPressed(world, cam, key)
-	local body = queryMgr:getEntityById("entity0")
+	local body = queryMgr:getEntityById("runner")
 
     if key == "LEFT" then   
+    	
+    	if onAir then
+    		return
+    	end
+
 		if body:getLinearVelocity().x <= maxXVelocity then
 			body:applyLinearImpulse(-1, 0, 0.5, 0)
     	end
     end
 
 	if key == "RIGHT" then
+
+		if onAir then
+			return	
+		end
+
 		if body:getLinearVelocity().x <= maxXVelocity then
-			body:applyLinearImpulse(0.8, 0, -0.5, 0)
+			body:applyLinearImpulse(0.8, 0, 0, 0)
 		end
 	end
 
@@ -72,11 +83,16 @@ end
 
 function collisionCallback(idA, idB, bodyA, bodyB, world, cam) 
 
-	if string.match(idA, "edge") and idB == "entity0" then
+	if string.match(idA, "edge") and idB == "runner" then
 		onAir = false
 	end
 
-	if idA == "entity0" and string.match(idB, "coin") then
+	if idA == "runner" and string.match(idB, "coin") then
 		destroyBodyList[0] = idB
 	end
+
+	if idA == "runner" and string.match(idB, "jumpBase") then
+        bodyA:applyLinearImpulse(0, 20, 0, 0)
+	end
+
 end
