@@ -62,8 +62,12 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     if (shp.getEditorShapeType().isBackground()) {
       return SharedImages.HEXAGON.createImage();
     }
+    
+    if (shp.getEditorShapeType().isEntity()) {
+      return getCastedModel().getEntity().getDefaultFrame();
+    }
 
-    return super.getImage();
+    return SharedImages.HEXAGON.createImage();
   }
 
   @Override
