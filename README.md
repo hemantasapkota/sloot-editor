@@ -1,4 +1,4 @@
-Laexian_Box2D_Editor
+LB2D - Laexian_Box2D_Editor
 ====================
 
 Box2D Editor Eclipse RCP based
