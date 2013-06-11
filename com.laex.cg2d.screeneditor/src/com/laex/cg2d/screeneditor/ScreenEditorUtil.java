@@ -10,17 +10,15 @@
  */
 package com.laex.cg2d.screeneditor;
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -89,6 +87,14 @@ public final class ScreenEditorUtil {
     return (ILayerManager) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
   }
 
+  public static GraphicalViewer getGraphicalViewer() {
+    IEditorPart ed = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+    if (ed == null)
+      return null;
+    
+    return (GraphicalViewer) ed.getAdapter(GraphicalViewer.class);
+  }
+
   /**
    * Gets the screen property manager.
    * 
@@ -98,7 +104,7 @@ public final class ScreenEditorUtil {
     return (IScreenPropertyManager) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
         .getActiveEditor();
   }
-  
+
   /**
    * Gets the screen model.
    * 
