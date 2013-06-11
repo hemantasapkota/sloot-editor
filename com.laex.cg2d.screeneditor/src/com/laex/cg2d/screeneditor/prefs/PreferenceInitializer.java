@@ -10,9 +10,6 @@
  */
 package com.laex.cg2d.screeneditor.prefs;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
