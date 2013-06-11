@@ -28,8 +28,6 @@ import org.eclipse.gef.ContextMenuProvider;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.gef.KeyHandler;
-import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gef.MouseWheelZoomHandler;
@@ -65,11 +63,11 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
 import com.laex.cg2d.model.ILayerManager;
+import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
@@ -105,10 +103,11 @@ import com.laex.cg2d.screeneditor.views.LayersViewPart;
 /**
  * The Class ScreenEditor.
  */
-public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements ILayerManager, IScreenPropertyManager {
+public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements ILayerManager, IScreenPropertyManager,
+    IScreenEditorState {
 
   /** The Constant ID. */
-  public static final String ID = "com.laex.cg2d.leveleditor";
+  public static final String ID = "com.laex.cg2d.screeneditor.ScreenEditor";
 
   /** The palette model. */
   private static PaletteRoot PALETTE_MODEL;
@@ -127,6 +126,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /** The model. */
   private GameModel model;
+  
+  private boolean gridState = false;
 
   /** The card height. */
   int x, y, cardWidthh, cardHeight;
@@ -210,28 +211,25 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     setEditDomain(new DefaultEditDomain(this));
   }
 
+  @Override
+  protected void createActions() {
+    super.createActions();
+  }
+
   /*
    * (non-Javadoc)
    * 
    * @see org.eclipse.gef.ui.parts.GraphicalEditor#configureGraphicalViewer()
    */
   protected void configureGraphicalViewer() {
-    super.configureGraphicalViewer();
-
     GraphicalViewer viewer = getGraphicalViewer();
     viewer.setEditPartFactory(new ScreenEditPartFactory());
-
-    KeyHandler keyHandler = new KeyHandler();
-    keyHandler.setParent(new GraphicalViewerKeyHandler(viewer));
-
-    keyHandler.put(KeyStroke.getPressed(SWT.SPACE, 32, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
-
-    viewer.setKeyHandler(keyHandler);
+    viewer.setEditDomain(getEditDomain());
 
     scalableRootEditPart = getScalableFreeFormRootEditPart();
     getGraphicalViewer().setRootEditPart(scalableRootEditPart);
 
-    setGridState(false);
+    toggleGrid();
     setGridDimension(16, 16);
 
     // Zoom manager for now
@@ -250,17 +248,24 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     // configure the context menu provider
     ContextMenuProvider cmProvider = new ScreenEditorContextMenuProvider(viewer, getActionRegistry());
     viewer.setContextMenu(cmProvider);
-    // getSite().registerContextMenu(cmProvider, viewer);
+    getSite().registerContextMenu(cmProvider, viewer);
+
+    GraphicalViewerKeyHandler keyHandler = new GraphicalViewerKeyHandler(viewer);
+    viewer.setKeyHandler(keyHandler);
 
     // Notify other views of this viewer's disposal
     getGraphicalViewer().getControl().addDisposeListener(new DisposeListener() {
       @Override
       public void widgetDisposed(DisposeEvent e) {
         IViewPart vp = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(LayersViewPart.ID);
-        IScreenDisposeListener isdp = (IScreenDisposeListener) vp;
-        isdp.screenDisposed();
+        if (vp != null) {
+          IScreenDisposeListener isdp = (IScreenDisposeListener) vp;
+          isdp.screenDisposed();
+        }
       }
     });
+
+    super.configureGraphicalViewer();
   }
 
   /**
@@ -282,20 +287,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
     };
 
+    super.configureGraphicalViewer();
+
     return rep;
   }
 
-  /**
-   * Sets the grid state.
-   * 
-   * @param state
-   *          the new grid state
-   */
-  public void setGridState(boolean state) {
-    getGraphicalViewer().setProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED, true);
-    getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, state);
-    getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_VISIBLE, state);
-  }
 
   /**
    * Sets the grid dimension.
@@ -850,5 +846,15 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   @Override
   public Layer getLayerAt(int index) {
     return (Layer) getModel().getDiagram().getLayers().toArray()[index];
+  }
+
+  @Override
+  public void toggleGrid() {
+    gridState = !gridState;
+    
+    getGraphicalViewer().setProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED, true);
+    getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, gridState);
+    getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_VISIBLE, gridState);
+
   }
 }
