@@ -158,6 +158,7 @@ public class ScreenModelAdapter {
     Shape shape = new Shape(asEditorShapeType(cgShape.getEditorShapeType()));
     shape.setId(cgShape.getId());
     shape.setLocked(cgShape.getLocked());
+    shape.setBackground(cgShape.getBackground());
     shape.setBackgroundResourceFile(ResourceFileAdapter.asResourceFile(cgShape.getBackgroundResourceFile()));
     shape.setBounds(asRectangle(cgShape.getBounds()));
     shape.setEntityResourceFile(ResourceFileAdapter.asResourceFile(cgShape.getEntityRefFile()));
