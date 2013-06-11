@@ -18,7 +18,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ant.core;bundle-version="3.2.400",
  libgdx-0.9.8;bundle-version="0.9.8",
  org.eclipse.ui.editors,
- org.eclipse.ui.ide
+ org.eclipse.ui.ide,
+ org.eclipse.ui.navigator,
+ org.eclipse.core.expressions,
+ org.eclipse.e4.ui.css.swt.theme
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
