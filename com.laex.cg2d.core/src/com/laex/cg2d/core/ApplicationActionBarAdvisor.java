@@ -58,6 +58,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
   /** The show layers view action. */
   private IAction showLayersViewAction;
+  
+  private IAction renderAction;
 
   /**
    * Instantiates a new application action bar advisor.
@@ -77,12 +79,20 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
    * IWorkbenchWindow)
    */
   protected void makeActions(final IWorkbenchWindow window) {
+    super.makeActions(window);
+    
     exitAction = ActionFactory.QUIT.create(window);
+//    register(exitAction);
+    
     aboutAction = ActionFactory.ABOUT.create(window);
-    saveAction = ActionFactory.SAVE.create(window);
+//    register(aboutAction);
+    
+//    saveAction = ActionFactory.SAVE.create(window);
+//    
     preferncesAction = ActionFactory.PREFERENCES.create(window);
+//    
     showViewsListAction = ContributionItemFactory.VIEWS_SHORTLIST.create(window);
-
+//
     showTextureViewAction = new Action("&Textures") {
       @Override
       public void run() {
@@ -104,7 +114,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
         }
       }
     };
-
+    
   }
 
   /*
@@ -137,7 +147,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     menuBar.add(helpMenu);
 
     // File
-    fileMenu.add(saveAction);
+//    fileMenu.add(saveAction);
     fileMenu.add(new Separator());
     fileMenu.add(exitAction);
 
