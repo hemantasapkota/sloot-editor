@@ -11,8 +11,8 @@
              default="true"
              extensions="cgs"
              icon="main.png"
-             id="com.laex.cg2d.leveleditor"
-             name="CGC Screen Editor">
+             id="com.laex.cg2d.screeneditor.ScreenEditor"
+             name="LB2D Screen Editor">
         </editor>
    </extension>
    
@@ -21,7 +21,7 @@
       <page
             class="com.laex.cg2d.screeneditor.prefs.SharedPreferencePage"
             id="com.laex.cg2d.shared.PreferencePage"
-            name="Casual Games">
+            name="Laexian Box2D Editor">
       </page>
    </extension>   
    
@@ -34,7 +34,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="com.laex.cg2d.shared.menu1"
-               label="Box2D Editor">
+               label="LB2D">
             <groupMarker
                   name="group1">
             </groupMarker>
@@ -78,7 +78,7 @@
             adaptable="true"
             class="com.laex.cg2d.screeneditor.properties.ScreenPropertyPage"
             id="com.laex.cg2d.leveleditor.properties.Box2DPropertyPage"
-            name="CG2D Screen"
+            name="LB2D Screen"
             nameFilter="*.cgs"
             objectClass="org.eclipse.core.resources.IFile">
          <enabledWhen>
@@ -93,6 +93,7 @@
       <wizard
             category="com.laex.cg2d.core.wizards.CGWizard"
             class="com.laex.cg2d.screeneditor.wizards.NewScreenWizard"
+            finalPerspective="com.laex.cg2d.core.perspective"
             hasPages="true"
             icon="main.png"
             id="com.laex.cg2d.screeneditor.wizards.NewScreenWizard"
@@ -102,15 +103,17 @@
       <wizard
             category="com.laex.cg2d.core.wizards.CGWizard"
             class="com.laex.cg2d.screeneditor.wizards.NewProjectWizard"
+            finalPerspective="com.laex.cg2d.core.perspective"
             hasPages="true"
             icon="main.png"
             id="com.laex.cg2d.screeneditor.wizards.NewCGProjectWizard"
-            name="Box2D Editor Project"
+            name="LB2D Project"
             project="true">
       </wizard>
       <wizard
             category="com.laex.cg2d.core.wizards.CGWizard"
             class="com.laex.cg2d.screeneditor.wizards.NewScriptWizard"
+            finalPerspective="com.laex.cg2d.core.perspective"
             hasPages="true"
             icon="main.png"
             id="com.laex.cg2d.screeneditor.wizard1"
@@ -119,10 +122,375 @@
       </wizard>
    </extension>
    <extension
-         point="org.eclipse.ui.menus">
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.laex.cg2d.screeneditor.commands.lb2d"
+            name="Laexian Bod2D Editor">
+      </category>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.commands.renderCommand"
+            name="Render Command">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.ImportScreenContentsCommand"
+            name="Import Screen Contents">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.EditShapeIDCommand"
+            name="Edit Shape ID">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.toggleGridCommand"
+            name="Toogle Grid">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="org.eclipse.ui.edit.copy"
+            name="Copy">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="org.eclipse.ui.edit.paste"
+            name="Paste">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="org.eclipse.ui.edit.delete"
+            name="Delete">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.EditShapeIDCommand"
+            name="Edit Shape ID">
+      </command>
    </extension>
    <extension
-         point="org.eclipse.ui.commands">
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.RenderHandler"
+            commandId="com.laex.cg2d.screeneditor.commands.renderCommand">
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.ToggleGridHandler"
+            commandId="com.laex.cg2d.screeneditor.toggleGridCommand">
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.ImportScreenContentsHandler"
+            commandId="com.laex.cg2d.screeneditor.ImportScreenContentsCommand">
+         <enabledWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.screenEditPartSelected">
+            </reference>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.EditShapeIDHandler"
+            commandId="com.laex.cg2d.screeneditor.EditShapeIDCommand">
+         <enabledWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.ShapeCopyHandler"
+            commandId="org.eclipse.ui.edit.copy">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+            </reference>
+         </activeWhen>
+         <enabledWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference></enabledWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.ShapePasteHandler"
+            commandId="org.eclipse.ui.edit.paste">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.ShapeDeleteHandler"
+            commandId="org.eclipse.ui.edit.delete">
+         <enabledWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.UndoHandler"
+            commandId="org.eclipse.ui.edit.undo">
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.RedoHandler"
+            commandId="org.eclipse.ui.edit.redo">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.laex.cg2d.screeneditor.commands.renderCommand"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+R">
+      </key>
+      <key
+            commandId="com.laex.cg2d.screeneditor.toggleGridCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+G">
+      </key>
+      <key
+            commandId="com.laex.cg2d.screeneditor.ImportScreenContentsCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+F1">
+      </key>
+      <key
+            commandId="com.laex.cg2d.screeneditor.EditShapeIDCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="RETURN">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.copy"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+C">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.paste"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+V">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.delete"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+X">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.undo"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+Z">
+      </key>
+      <key
+            commandId="org.eclipse.ui.edit.redo"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+Z">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.laex.cg2d.screeneditor.toolbars.renderToolbar"
+               label="Render">
+            <command
+                  commandId="com.laex.cg2d.screeneditor.commands.renderCommand"
+                  icon="icons/render.png"
+                  id="com.laex.cg2d.screeneditor.toolbars.renderCommand"
+                  label="Render Command"
+                  tooltip="Render screen">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.laex.cg2d.screeneditor.toggleGridCommand"
+                  icon="icons/togglegrid.png"
+                  id="com.laex.cg2d.screeneditor.toggleGridCommand"
+                  label="Toggle Grid"
+                  style="push"
+                  tooltip="Toggle Grid">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.laex.cg2d.screeneditor.ImportScreenContentsCommand"
+                  icon="icons/import-screen-contents.png"
+                  label="Import Screen Contents"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.laex.cg2d.screeneditor.EditShapeIDCommand"
+                  icon="icons/edit-shape-id.png"
+                  label="Edit Shape ID"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+         </toolbar>
+         <toolbar
+               id="com.laex.cg2d.screeneditor.toolbars.editToolbar"
+               label="Edit">
+            <command
+                  commandId="org.eclipse.ui.edit.copy"
+                  label="Copy"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.ui.edit.paste"
+                  label="Paste"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.ui.edit.delete"
+                  label="Delete"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.ui.edit.undo"
+                  label="Undo"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.ui.edit.redo"
+                  label="Redo"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+                  </reference>
+               </visibleWhen>
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:com.laex.cg2d.screeneditor.ScreenEditor?after=additions">
+         <command
+               commandId="com.laex.cg2d.screeneditor.ImportScreenContentsCommand"
+               icon="icons/import-screen-contents.png"
+               label="Import Screen Contents"
+               style="push">
+         </command>
+         <command
+               commandId="com.laex.cg2d.screeneditor.EditShapeIDCommand"
+               icon="icons/edit-shape-id.png"
+               label="Edit Shape ID"
+               style="push">
+         </command>
+         <separator
+               name="com.laex.cg2d.screeneditor.separator2"
+               visible="true">
+         </separator>
+         <command
+               commandId="org.eclipse.ui.edit.copy"
+               label="Copy"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.paste"
+               label="Paste"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.delete"
+               label="Delete"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.undo"
+               label="Undo"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.redo"
+               label="Redo"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="com.laex.cg2d.screeneditor.screenEditorActive">
+         <with
+               variable="activeEditorId">
+            <equals
+                  value="com.laex.cg2d.screeneditor.ScreenEditor">
+            </equals>
+         </with>
+      </definition>
+      <definition
+            id="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+         <with
+               variable="selection">
+            <iterate>
+               <instanceof
+                     value="com.laex.cg2d.screeneditor.editparts.ShapeEditPart">
+               </instanceof>
+            </iterate>
+         </with>
+      </definition>
+      <definition
+            id="com.laex.cg2d.screeneditor.screenEditPartSelected">
+         <with
+               variable="selection">
+            <iterate>
+               <instanceof
+                     value="com.laex.cg2d.screeneditor.editparts.ScreenEditPart">
+               </instanceof>
+            </iterate>
+         </with>
+      </definition>
    </extension>
 
 </plugin>
