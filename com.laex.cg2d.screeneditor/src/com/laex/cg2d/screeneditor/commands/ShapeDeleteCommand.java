@@ -129,8 +129,6 @@ public class ShapeDeleteCommand extends Command {
     sourceConnections = child.getSourceJoints();
     targetConnections = child.getTargetJoints();
     redo();
-
-//    Activator.getDefault().getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Shape remove from screen"));
   }
 
   /*
