@@ -103,6 +103,10 @@ public class Layer extends ModelElement implements Comparable<Layer> {
   public List<Shape> getChildren() {
     return children;
   }
+  
+  public void setChildren(List<Shape> children) {
+    this.children = children;
+  }
 
   /**
    * Gets the name.
