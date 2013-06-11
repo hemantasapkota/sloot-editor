@@ -61,9 +61,6 @@ import com.laex.cg2d.screeneditor.ScreenEditorUtil;
  * LayersViewPart.
  * 
  * @author hemantasapkota
- * 
- *         TODO: Add resource listener which removes the content of this view
- *         when the active editor is closed.
  */
 public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionListener, IScreenDisposeListener {
 
@@ -248,7 +245,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
      * @return the layer
      */
     public Layer toLayer() {
-      return new Layer(id, name, visible, locked);
+      Layer l = new Layer(id, name, visible, locked);
+      l.setChildren(referenceLayer.getChildren());
+      return l;
     }
   }
 
