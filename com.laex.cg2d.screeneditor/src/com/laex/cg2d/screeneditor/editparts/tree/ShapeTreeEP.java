@@ -7,6 +7,7 @@ import org.eclipse.gef.editparts.AbstractTreeEditPart;
 import org.eclipse.swt.graphics.Image;
 
 import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.adapter.ShapesDiagramAdapter;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
 
@@ -37,6 +38,19 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
   @Override
   protected String getText() {
     return getCastedModel().getId();
+  }
+  
+  @Override
+  public Object getAdapter(Class key) {
+    if (key == Shape.class) {
+      return getModel();
+    }
+
+    if (key == ShapesDiagramAdapter.class) {
+      return getParent().getModel();
+    }
+
+    return super.getAdapter(key);
   }
 
   @Override
