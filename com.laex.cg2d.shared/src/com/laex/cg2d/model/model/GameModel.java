@@ -38,5 +38,9 @@ public class GameModel {
     return shapes;
   }
   
+  public CGScreenPreferences getScreenPrefs() {
+    return screenPrefs;
+  }
+  
 
 }
