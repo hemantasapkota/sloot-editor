@@ -19,9 +19,6 @@ public class ShapeDeleteHandler extends AbstractHandler {
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     //Copy before deleting
-    ShapeCopyHandler sch = new ShapeCopyHandler();
-    sch.execute(event);
-    
     IEditorPart ep = HandlerUtil.getActiveEditor(event);
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
     GameModel model = (GameModel) ep.getAdapter(GameModel.class);
