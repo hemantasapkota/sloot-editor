@@ -46,16 +46,16 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.adapter.ShapesDiagramAdapter;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.ShapesDiagram;
-import com.laex.cg2d.screeneditor.ScreenEditor;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
+import com.laex.cg2d.screeneditor.editparts.tree.LayerTreeEP;
 
 /***
  * LayersViewPart.
@@ -313,7 +313,6 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     downAction.setEnabled(true);
   }
 
-
   /**
    * Create contents of the view part.
    * 
@@ -340,7 +339,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
         }
 
         //
-        for (Layer l : getShapesEditor().getModel().getDiagram().getLayers()) {
+        for (Layer l : ScreenEditorUtil.getScreenModel().getDiagram().getLayers()) {
           if (l.isCurrent()) {
             l.setCurrent(false);
           }
@@ -415,8 +414,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
 
     li.name = stcd.getName();
 
-    ScreenEditor se = getShapesEditor();
-    se.changeLayerProperties(Layer.create(li.id, li.name, li.visible, li.locked));
+    ScreenEditorUtil.getScreenLayerManager().changeLayerProperties(Layer.create(li.id, li.name, li.visible, li.locked));
 
     tableViewer.refresh();
   }
@@ -478,8 +476,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
           li.visible = true;
           int index = addLayer(li);
           Layer layer = new Layer(li.id, li.name, li.visible, li.locked);
-          // TODO: Use ILayerManager to update the changes
-          getShapesEditor().addLayer(layer);
+          ScreenEditorUtil.getScreenLayerManager().addLayer(layer);
           li.referenceLayer = layer;
 
           getTableViewer().refresh();
@@ -497,6 +494,8 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
       addAction.setDescription("Add a new Layer");
       addAction.setImageDescriptor(SharedImages.ADD_ITEM_SMALL);
     }
+    
+    
     {
       removeAction = new Action("") {
         @Override
@@ -513,16 +512,19 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
             return;
           }
 
-          ScreenEditor se = getShapesEditor();
+          ILayerManager mgr = ScreenEditorUtil.getScreenLayerManager();
           for (LayerItem li : selected) {
-            se.removeLayer(li.referenceLayer);
+            mgr.removeLayer(li.referenceLayer);
             layerItems.remove(li);
           }
 
           tableViewer.refresh();
+          
+          table.select(layerItems.size() - 1);
 
         }
       };
+      
       removeAction.setDescription("Remove a selected layer");
       removeAction.setImageDescriptor(SharedImages.REMOVE_ITEM_SMALL);
     }
@@ -532,10 +534,11 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
         @Override
         public void run() {
           List<LayerItem> selected = selectedLayers();
-          ScreenEditor se = getShapesEditor();
+          ILayerManager layerMgr = ScreenEditorUtil.getScreenLayerManager();
           for (LayerItem li : selected) {
             li.locked = !li.locked;
-            se.changeLayerProperties(Layer.create(li.id, li.name, li.visible, li.locked));
+            layerMgr.changeLayerProperties(
+                Layer.create(li.id, li.name, li.visible, li.locked));
           }
 
           tableViewer.refresh();
@@ -549,10 +552,10 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
         @Override
         public void run() {
           List<LayerItem> selected = selectedLayers();
-          ScreenEditor se = getShapesEditor();
+          ILayerManager mgr = ScreenEditorUtil.getScreenLayerManager();
           for (LayerItem li : selected) {
             li.visible = !li.visible;
-            se.changeLayerProperties(Layer.create(li.id, li.name, li.visible, li.locked));
+            mgr.changeLayerProperties(Layer.create(li.id, li.name, li.visible, li.locked));
           }
 
           tableViewer.refresh();
@@ -628,15 +631,6 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     if (ScreenEditorUtil.isScreenEditorActive()) {
       ScreenEditorUtil.getScreenLayerManager().changeLayerOrder(larr);
     }
-  }
-
-  /**
-   * Gets the shapes editor.
-   * 
-   * @return the shapes editor
-   */
-  private ScreenEditor getShapesEditor() {
-    return (ScreenEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
   }
 
   /**
@@ -739,13 +733,19 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
       enableState();
       return; // do nothing
     }
+    
+    if (firstElement instanceof LayerTreeEP) {
+      enableState();
+      Layer l = (Layer) ((LayerTreeEP) firstElement).getModel();
+      showSelectionForLayerEditPart(l);
+    }
 
     enableState();
     /*
-     * If the selection is ShapesDiagramEditPart, we get the model and
-     * populate the layers. If the selection is not ShapesDiagramEditPart
-     * and is ShapesEditPart, we get the diagram model, populate the layers,
-     * and show selection for the selected shapes edit part.
+     * If the selection is ShapesDiagramEditPart, we get the model and populate
+     * the layers. If the selection is not ShapesDiagramEditPart and is
+     * ShapesEditPart, we get the diagram model, populate the layers, and show
+     * selection for the selected shapes edit part.
      */
     IAdaptable element = (IAdaptable) firstElement;
     ShapesDiagram model = (ShapesDiagram) element.getAdapter(ShapesDiagram.class);
@@ -762,19 +762,30 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
         model = (ShapesDiagram) element.getAdapter(ShapesDiagramAdapter.class);
         showSelectionForMainModel(model);
       }
-      
+
       showSelectionForShapeEditPart(shapeModel);
       return;
     }
 
     showSelectionForMainModel(model);
   }
-  
+
   private void showSelectionForShapeEditPart(Shape shapeModel) {
     Layer parentLayer = shapeModel.getParentLayer();
     int index = 0;
     for (LayerItem li : layerItems) {
       if (li.referenceLayer == parentLayer) {
+        table.setSelection(index);
+        li.referenceLayer.setCurrent(true);
+      }
+      index++;
+    }
+  }
+ 
+  private void showSelectionForLayerEditPart(Layer layerModel) {
+    int index = 0;
+    for (LayerItem li : layerItems) {
+      if (li.referenceLayer == layerModel) {
         table.setSelection(index);
         li.referenceLayer.setCurrent(true);
       }
@@ -802,5 +813,5 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
   public void screenDisposed() {
     disableState();
   }
-  
+
 }
