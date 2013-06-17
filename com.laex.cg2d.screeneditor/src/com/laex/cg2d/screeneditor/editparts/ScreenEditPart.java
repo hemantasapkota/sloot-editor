@@ -189,16 +189,6 @@ public class ScreenEditPart extends AbstractGraphicalEditPart implements Propert
   /*
    * (non-Javadoc)
    * 
-   * @see org.eclipse.gef.editparts.AbstractEditPart#refreshChildren()
-   */
-  @Override
-  protected void refreshChildren() {
-    super.refreshChildren();
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
    * @see
    * org.eclipse.gef.editparts.AbstractGraphicalEditPart#getLayer(java.lang.
    * Object)
