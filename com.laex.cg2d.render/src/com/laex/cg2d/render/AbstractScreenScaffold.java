@@ -28,6 +28,7 @@ import com.laex.cg2d.model.ScreenModel.CGJoint;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.model.ScreenModel.CGVector2;
+import com.laex.cg2d.render.util.AppExceptionUtil;
 import com.laex.cg2d.render.util.ProtoBufTypeConversionUtil;
 
 /**
@@ -252,7 +253,7 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
       PolygonShape polyShape = new PolygonShape();
       float hx = (width / ptmRatio);
       float hy = (height / ptmRatio);
-      
+
       hx = hx / 2;
       hy = hy / 2;
 
@@ -420,6 +421,10 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
    */
   protected int ptmRatio() {
     return ptmRatio;
+  }
+
+  protected void handleException(Throwable t) {
+    AppExceptionUtil.handle(t);
   }
 
 }
