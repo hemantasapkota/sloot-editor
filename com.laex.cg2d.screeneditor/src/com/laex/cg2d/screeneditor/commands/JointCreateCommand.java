@@ -16,16 +16,16 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.gef.commands.Command;
 
 import com.badlogic.gdx.physics.box2d.JointDef.JointType;
+import com.laex.cg2d.model.joints.BEDistanceJoint;
+import com.laex.cg2d.model.joints.BEFrictionJoint;
+import com.laex.cg2d.model.joints.BEMouseJoint;
+import com.laex.cg2d.model.joints.BEPrismaticJoint;
+import com.laex.cg2d.model.joints.BEPulleyJoint;
+import com.laex.cg2d.model.joints.BERevoluteJoint;
+import com.laex.cg2d.model.joints.BERopeJoint;
+import com.laex.cg2d.model.joints.BEWeldJoint;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.model.joints.BEDistanceJoint;
-import com.laex.cg2d.model.model.joints.BEFrictionJoint;
-import com.laex.cg2d.model.model.joints.BEMouseJoint;
-import com.laex.cg2d.model.model.joints.BEPrismaticJoint;
-import com.laex.cg2d.model.model.joints.BEPulleyJoint;
-import com.laex.cg2d.model.model.joints.BERevoluteJoint;
-import com.laex.cg2d.model.model.joints.BERopeJoint;
-import com.laex.cg2d.model.model.joints.BEWeldJoint;
 
 /**
  * The Class JointCreateCommand.
