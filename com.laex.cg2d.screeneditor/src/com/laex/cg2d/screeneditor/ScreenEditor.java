@@ -78,8 +78,8 @@ import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.model.validator.EntityValidator;
 import com.laex.cg2d.model.util.EntitiesUtil;
 import com.laex.cg2d.screeneditor.EntityResourceChangeListener.EntityChangeListener;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
@@ -152,6 +152,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       getViewer().setEditPartFactory(new ScreenTreeEPFactory());
       getSelectionSynchronizer().addViewer(getViewer());
       getViewer().setContents(getModel());
+      //Set context menu
       ScreenEditorContextMenuProvider scm = new ScreenEditorContextMenuProvider(getViewer(), getActionRegistry());
       getViewer().setContextMenu(scm);
       getSite().registerContextMenu("com.laex.cg2d.screeneditor.outline.contextmenu", scm,
@@ -563,9 +564,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
               // entity and log it
 
               Entity e = Entity.createFromFile((IFile) resource);
-              EntityValidator ev = new EntityValidator(e);
-
-              if (!ev.isValid()) {
+              boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
+              if (!isValid) {
                 removeDeletedOrInvalidEntities(resource);
               }
             } catch (IOException e) {
@@ -639,9 +639,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
               if (shape.getEditorShapeType().isEntity()) {
                 try {
                   Entity e = Entity.createFromFile(shape.getEntityResourceFile().getResourceFile());
-                  EntityValidator ev = new EntityValidator(e);
+                  boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
 
-                  if (!ev.isValid()) {
+                  if (!isValid) {
                     ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), shape,
                         DeleteCommandType.NON_UNDOABLE);
                     cc.add(sdc);
