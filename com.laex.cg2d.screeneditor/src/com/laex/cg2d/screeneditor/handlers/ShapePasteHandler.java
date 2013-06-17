@@ -12,33 +12,48 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.model.IDCreationStrategy;
+import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.ShapesDiagram;
 import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
 
 public class ShapePasteHandler extends AbstractHandler {
+  
+  IDCreationStrategy idCreator;
+  
+  public ShapePasteHandler() {
+  }
 
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IEditorPart ep = HandlerUtil.getActiveEditor(event);
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
     GameModel model = (GameModel) ep.getAdapter(GameModel.class);
-
+    
     if (Clipboard.getDefault().getContents() == null) {
       return null;
     }
+    
+    idCreator = IDCreationStrategyFactory.getIDCreator(model);
 
-    List<Shape> list = (List<Shape>) Clipboard.getDefault().getContents();
-    CompoundCommand cc = new CompoundCommand();
-
+    Object contents = Clipboard.getDefault().getContents();
+    if (!(contents instanceof List<?>)) {
+      return null;
+    }
+    
+    List<Shape> list = (List<Shape>) contents;
     for (Shape s : list) {
       ShapesDiagram diagram = model.getDiagram();
+      
+      s.setId(idCreator.newId(s.getEditorShapeType()));
 
       ShapeCreateCommand scmd = new ShapeCreateCommand(s, diagram);
-      cc.add(scmd);
+      gv.getEditDomain().getCommandStack().execute(scmd);
     }
 
-    gv.getEditDomain().getCommandStack().execute(cc);
+    
+    Clipboard.getDefault().setContents(new Object());
 
     return null;
   }
