@@ -13,22 +13,27 @@ import org.eclipse.gef.ui.actions.Clipboard;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import com.laex.cg2d.model.ScreenModel.CGShape;
-import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
-import com.laex.cg2d.model.adapter.ScreenModelAdapter;
-import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.model.ModelCopier;
+import com.laex.cg2d.model.model.ModelCopierFactory;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 
 public class ShapeCopyHandler extends AbstractHandler {
+  
+  ModelCopier copier;
 
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IEditorPart ep = HandlerUtil.getActiveEditor(event);
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
+    GameModel gameModel = ScreenEditorUtil.getScreenModel();
+    
+    copier = ModelCopierFactory.getModelCopier(Shape.class, gameModel);
     
     try {
-      doCopy(gv);
+      doCopy(gv, gameModel);
     } catch (CoreException e) {
       e.printStackTrace();
     } catch (IOException e) {
@@ -38,30 +43,16 @@ public class ShapeCopyHandler extends AbstractHandler {
     return null;
   }
 
-  private void doCopy(GraphicalViewer gv) throws CoreException, IOException {
+  private void doCopy(GraphicalViewer gv, GameModel model) throws CoreException, IOException {
     List<Shape> toCopy = new ArrayList<Shape>();
-
+    
     for (Object o : gv.getSelectedEditParts()) {
+      
       if (o instanceof ShapeEditPart) {
-        ShapeEditPart sep = (ShapeEditPart) o;
-        Shape model = (Shape) sep.getModel();
-
-        //How to copy a shape:
-        //1. Convert shape model to CGShape
-        //2. Create a new CGShape builder and modify properties
-        //3. Convert back the CGShape to Shape
-        //4. Create entities if the model is of type entity.
-        CGShape cgModelPrototype = CGScreenModelAdapter.asCGShape(model);
-        CGShape cgModelToCopy = CGShape.newBuilder(cgModelPrototype).build();
-
-        Shape finalModelToCopy = ScreenModelAdapter.asShape(cgModelToCopy, model.getParentLayer());
-
-        if (finalModelToCopy.getEditorShapeType().isEntity()) {
-          Entity ent = Entity.createFromFile(finalModelToCopy.getEntityResourceFile().getResourceFile());
-          finalModelToCopy.setEntity(ent);
-        }
-
-        toCopy.add(finalModelToCopy);
+    
+        Shape modelToCopy = (Shape) ((ShapeEditPart) o).getModel();
+        
+        toCopy.add((Shape) copier.copy(modelToCopy));
       }
     }
 
