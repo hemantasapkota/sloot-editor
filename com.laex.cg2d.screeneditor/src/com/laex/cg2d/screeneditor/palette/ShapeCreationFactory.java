@@ -23,12 +23,13 @@ import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.model.IDCreationStrategy;
+import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.util.EntitiesUtil;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
-import com.laex.cg2d.screeneditor.commands.IDCreationStrategy;
 import com.laex.cg2d.screeneditor.views.LayersViewPart;
 
 /**
@@ -38,9 +39,6 @@ public class ShapeCreationFactory implements CreationFactory {
 
   /** The creation info. */
   ShapeCreationInfo creationInfo = null;
-
-  /** The id creator. */
-  IDCreationStrategy idCreator = IDCreationStrategy.create();
 
   /**
    * Instantiates a new shape creation factory.
@@ -73,10 +71,12 @@ public class ShapeCreationFactory implements CreationFactory {
   @Override
   public Object getNewObject() {
     Layer layer = getSelectedLayer();
+    
+    IDCreationStrategy creator = IDCreationStrategyFactory.getIDCreator(ScreenEditorUtil.getScreenModel());
 
     Shape shape = createShape();
     shape.setParentLayer(layer);
-    shape.setId(idCreator.newId(shape.getEditorShapeType()));
+    shape.setId(creator.newId(shape.getEditorShapeType()));
 
     if (layer != null) {
       layer.add(shape);
