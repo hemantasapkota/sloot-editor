@@ -145,8 +145,6 @@ public class ShapeDeleteCommand extends Command {
       child.setParentLayer(null);
       removeConnections(sourceConnections);
       removeConnections(targetConnections);
-      //
-      // IDCreationStrategy.decrement(child.getEditorShapeType());
     }
   }
 
