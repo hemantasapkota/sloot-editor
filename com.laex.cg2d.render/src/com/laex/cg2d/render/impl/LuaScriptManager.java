@@ -94,26 +94,13 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
       chunk.call();
 
     } catch (Throwable t) {
-
-      handleScriptExecptions(t);
+      
+      handleException(t);
 
     }
 
   }
 
-  /**
-   * Handle script execptions.
-   * 
-   * @param t
-   *          the t
-   */
-  private void handleScriptExecptions(Throwable t) {
-    MyGdxGameDesktop.lwjglApp().error("Error Details", t.getMessage());
-    MyGdxGameDesktop.lwjglApp().error("Script Error", "Error loading script. Some errors exist. Please double check");
-    MyGdxGameDesktop.lwjglApp().exit();
-    System.exit(0); // terrible hack. This is needed because the above call to
-                    // lwjglApp().exit() does not work.
-  }
 
   /*
    * (non-Javadoc)
@@ -191,7 +178,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
 
     } catch (Throwable t) {
 
-      handleScriptExecptions(t);
+      handleException(t);
     }
 
   }
@@ -217,7 +204,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
         { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
 
     } catch (Throwable t) {
-      handleScriptExecptions(t);
+      handleException(t);
     }
 
   }
@@ -244,7 +231,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
 
     } catch (Throwable t) {
 
-      handleScriptExecptions(t);
+      handleException(t);
 
     }
 
@@ -267,8 +254,8 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
         { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), LuaValue.valueOf(key) });
 
     } catch (Throwable t) {
-
-      handleScriptExecptions(t);
+      
+      handleException(t);
 
     }
 
@@ -311,8 +298,8 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
                 CoerceJavaToLua.coerce(camera()) });
 
     } catch (Throwable t) {
-
-      handleScriptExecptions(t);
+      
+      handleException(t);
 
     }
 
