@@ -13,11 +13,9 @@ package com.laex.cg2d.screeneditor.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 
-import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.ShapesDiagram;
@@ -108,8 +106,11 @@ public class LayerRemoveCommand extends Command {
    */
   @Override
   public void execute() {
-    redo();
+    //First remove all the shapes
     buildRemoveShapeCommands(layer, parent);
+    
+    //then remove the layer
+    redo();
   }
 
   /*
@@ -119,7 +120,7 @@ public class LayerRemoveCommand extends Command {
    */
   @Override
   public void redo() {
-    parent.getLayers().remove(layer);
+    parent.removeLayer(layer);
   }
 
   /*
@@ -129,7 +130,7 @@ public class LayerRemoveCommand extends Command {
    */
   @Override
   public void undo() {
-    parent.getLayers().add(layer);
+    parent.addLayer(layer);
     buildAddShapeCommands(layer, parent);
   }
 
