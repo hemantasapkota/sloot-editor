@@ -26,14 +26,14 @@ import com.laex.cg2d.model.ScreenModel.CGPulleyJointDef;
 import com.laex.cg2d.model.ScreenModel.CGRevoluteJointDef;
 import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.model.ScreenModel.CGWeldJointDef;
+import com.laex.cg2d.model.joints.BEDistanceJoint;
+import com.laex.cg2d.model.joints.BEFrictionJoint;
+import com.laex.cg2d.model.joints.BEPrismaticJoint;
+import com.laex.cg2d.model.joints.BEPulleyJoint;
+import com.laex.cg2d.model.joints.BERevoluteJoint;
+import com.laex.cg2d.model.joints.BEWeldJoint;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.model.joints.BEDistanceJoint;
-import com.laex.cg2d.model.model.joints.BEFrictionJoint;
-import com.laex.cg2d.model.model.joints.BEPrismaticJoint;
-import com.laex.cg2d.model.model.joints.BEPulleyJoint;
-import com.laex.cg2d.model.model.joints.BERevoluteJoint;
-import com.laex.cg2d.model.model.joints.BEWeldJoint;
 import com.laex.cg2d.model.util.BooleanUtil;
 
 /**
