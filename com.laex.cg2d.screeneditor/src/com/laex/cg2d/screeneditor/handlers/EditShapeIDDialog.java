@@ -41,6 +41,8 @@ import org.eclipse.swt.widgets.TableColumn;
 
 import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.model.IDCreationStrategy;
+import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
@@ -52,15 +54,15 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
     @Override
     public int compare(Viewer viewer, Object e1, Object e2) {
-      String item1 = ((ShapeIdMgr) e1).newId;
-      String item2 = ((ShapeIdMgr) e2).newId;
+      String item1 = ((InternalShapeId) e1).newId;
+      String item2 = ((InternalShapeId) e2).newId;
 
       return item2.compareTo(item1);
     }
 
   }
 
-  class ShapeIdMgr {
+  class InternalShapeId {
     Shape shape;
     String newId;
   }
@@ -71,7 +73,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
       if (columnIndex != 0)
         return null;
 
-      ShapeIdMgr shp = (ShapeIdMgr) element;
+      InternalShapeId shp = (InternalShapeId) element;
 
       switch (shp.shape.getEditorShapeType()) {
       case BACKGROUND_SHAPE:
@@ -97,7 +99,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
     }
 
     public String getColumnText(Object element, int columnIndex) {
-      ShapeIdMgr shp = (ShapeIdMgr) element;
+      InternalShapeId shp = (InternalShapeId) element;
 
       if (columnIndex == 0) {
         return shp.shape.getId();
@@ -121,7 +123,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
     }
   }
 
-  private List<ShapeIdMgr> shapeIdList = new ArrayList<ShapeIdMgr>();
+  private List<InternalShapeId> shapeIdList = new ArrayList<InternalShapeId>();
   private Table table;
   private TableViewer tableViewer;
   private Map<Shape, String> updateIdMap = new HashMap<Shape, String>();
@@ -145,7 +147,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
       EditPart shpEp = (EditPart) o;
       Shape shp = (Shape) shpEp.getModel();
 
-      ShapeIdMgr sim = new ShapeIdMgr();
+      InternalShapeId sim = new InternalShapeId();
       sim.shape = shp;
       sim.newId = "";
 
@@ -206,15 +208,35 @@ public class EditShapeIDDialog extends TitleAreaDialog {
     tblclmnNewId.setText("New ID");
     colNewID.setEditingSupport(new EditingSupport(tableViewer) {
 
+      IDCreationStrategy ics = IDCreationStrategyFactory.getIDCreator(ScreenEditorUtil.getScreenModel());
+
+      private void validate() {
+        
+        for (InternalShapeId isi : shapeIdList) {
+          
+          if (ics.isIdUsed(isi.shape.getEditorShapeType(), isi.newId)) {
+            setErrorMessage("ID already exists");
+            getButton(OK).setEnabled(false);
+            return;
+          }
+          
+        }
+
+        setErrorMessage(null);
+        getButton(OK).setEnabled(true);
+      }
+
       @Override
       protected void setValue(Object element, Object value) {
-        ((ShapeIdMgr) element).newId = value.toString();
+        ((InternalShapeId) element).newId = value.toString();
         tableViewer.refresh();
+
+        validate();
       }
 
       @Override
       protected Object getValue(Object element) {
-        return ((ShapeIdMgr) element).newId;
+        return ((InternalShapeId) element).newId;
       }
 
       @Override
@@ -243,7 +265,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
   protected void okPressed() {
     updateIdMap.clear();
 
-    for (ShapeIdMgr s : shapeIdList) {
+    for (InternalShapeId s : shapeIdList) {
       if (!StringUtils.isEmpty(s.newId)) {
         updateIdMap.put(s.shape, s.newId);
       }
@@ -265,6 +287,8 @@ public class EditShapeIDDialog extends TitleAreaDialog {
   protected void createButtonsForButtonBar(Composite parent) {
     createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, false);
     createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+
+    getButton(OK).setEnabled(false);
   }
 
   /**
