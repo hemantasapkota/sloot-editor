@@ -23,6 +23,10 @@ public class ShapesDiagram extends ModelElement {
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -5281704420611797268L;
 
+  public static final String LAYER_ADDED = "ShapesDiagram.LayerAdded";
+
+  public static final String LAYER_REMOVED = "ShapesDiagram.LayerRemoved";
+
   /** The Constant CHILD_ADDED_PROP. */
   public static final String CHILD_ADDED_PROP = "ShapesDiagram.ChildAdded";
 
@@ -47,6 +51,29 @@ public class ShapesDiagram extends ModelElement {
           return true;
         }
       }
+    }
+    return false;
+  }
+
+  public boolean addLayer(Layer l) {
+    if (l != null && layers.add(l)) {
+      firePropertyChange(LAYER_ADDED, null, l);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean removeLayer(Layer l) {
+    if (l != null && layers.remove(l)) {
+
+      for (Shape shape : l.getChildren()) {
+        //We first remove the child from the screen
+        firePropertyChange(CHILD_ADDED_PROP, null, shape);
+        shapes.remove(shape);
+      }
+
+      firePropertyChange(LAYER_REMOVED, null, l);
+      return true;
     }
     return false;
   }
