@@ -38,7 +38,8 @@ import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
-import com.laex.cg2d.model.model.validator.EntityValidator;
+import com.laex.cg2d.model.model.ModelValidator;
+import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.util.EntitiesUtil;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
@@ -89,8 +90,8 @@ public final class ScreenEditorPaletteFactory {
    */
   private static void loadNewEntity(IResource res) throws CoreException, IOException {
     Entity e = Entity.createFromFile((IFile) res);
-    EntityValidator ev = new EntityValidator(e);
-    if (!ev.isValid()) {
+    ModelValidator entityValidator = ModelValidatorFactory.getValidator(Entity.class, e);
+    if (!entityValidator.isValid()) {
       return;
     }
 
