@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
@@ -46,7 +47,7 @@ public class RenderHandler extends AbstractHandler {
         @Override
         public void run() {
           MessageBox mb = new MessageBox(shell, SWT.ERROR);
-          mb.setMessage("It looks like the runner JAR file has not been specified. Check Laexian Box2D Editor from the Preferences menu.");
+          mb.setMessage("The runner JAR file has not been specified. Check Laexian Box2D Editor from the Preferences menu.");
           mb.setText("Runner file not specified");
           mb.open();
         }
@@ -93,7 +94,12 @@ public class RenderHandler extends AbstractHandler {
 
           monitor.worked(4);
           Scanner scn = new Scanner(p.getErrorStream());
-          while (scn.hasNext()) {
+          while (scn.hasNext() && !monitor.isCanceled()) {
+            
+            if (monitor.isCanceled()) {
+              throw new InterruptedException("Cancelled");
+            }
+            
             log.log(new Status(IStatus.INFO, Activator.PLUGIN_ID, scn.nextLine()));
           }
           monitor.worked(5);
@@ -107,6 +113,8 @@ public class RenderHandler extends AbstractHandler {
         } catch (IOException e) {
           return handleException(e);
         } catch (CoreException e) {
+          return handleException(e);
+        } catch (InterruptedException e) {
           return handleException(e);
         }
       }
