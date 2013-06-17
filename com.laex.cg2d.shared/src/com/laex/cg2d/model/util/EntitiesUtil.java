@@ -27,7 +27,7 @@ import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.model.validator.EntityValidator;
+import com.laex.cg2d.model.model.impl.EntityValidator;
 
 /**
  * The Class EntitiesUtil.
