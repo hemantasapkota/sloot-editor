@@ -67,7 +67,7 @@ public class LayerAddCommand extends Command {
    */
   @Override
   public void redo() {
-    diagram.getLayers().add(newLayer);
+    diagram.addLayer(newLayer);
   }
 
   /*
@@ -77,7 +77,7 @@ public class LayerAddCommand extends Command {
    */
   @Override
   public void undo() {
-    diagram.getLayers().remove(newLayer);
+    diagram.removeLayer(newLayer);
   }
 
 }
