@@ -77,7 +77,7 @@
       <page
             adaptable="true"
             class="com.laex.cg2d.screeneditor.properties.ScreenPropertyPage"
-            id="com.laex.cg2d.leveleditor.properties.Box2DPropertyPage"
+            id="com.laex.cg2d.leveleditor.properties.ScreenPropertyPage"
             name="LB2D Screen"
             nameFilter="*.cgs"
             objectClass="org.eclipse.core.resources.IFile">
@@ -173,10 +173,25 @@
       <handler
             class="com.laex.cg2d.screeneditor.handlers.RenderHandler"
             commandId="com.laex.cg2d.screeneditor.commands.renderCommand">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+            </reference>
+         </activeWhen>
+         <enabledWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+            </reference>
+         </enabledWhen>
       </handler>
       <handler
             class="com.laex.cg2d.screeneditor.handlers.ToggleGridHandler"
             commandId="com.laex.cg2d.screeneditor.toggleGridCommand">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.screenEditorActive">
+            </reference>
+         </activeWhen>
       </handler>
       <handler
             class="com.laex.cg2d.screeneditor.handlers.ImportScreenContentsHandler"
@@ -193,6 +208,20 @@
          <enabledWhen>
             <reference
                   definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </enabledWhen>
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.ScreenPropertiesHandler"
+            commandId="com.laex.cg2d.screeneditor.ScreenPropertiesCommand">
+         <enabledWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.screenEditPartSelected">
             </reference>
          </enabledWhen>
       </handler>
@@ -260,7 +289,7 @@
             commandId="com.laex.cg2d.screeneditor.EditShapeIDCommand"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="RETURN">
+            sequence="A">
       </key>
       <key
             commandId="org.eclipse.ui.edit.copy"
