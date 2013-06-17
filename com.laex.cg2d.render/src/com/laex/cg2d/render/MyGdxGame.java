@@ -21,7 +21,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.google.common.base.Throwables;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
@@ -33,6 +32,7 @@ import com.laex.cg2d.render.impl.FPSCalculator;
 import com.laex.cg2d.render.impl.LuaScriptManager;
 import com.laex.cg2d.render.impl.MouseJointManager;
 import com.laex.cg2d.render.impl.ShapeManager;
+import com.laex.cg2d.render.util.AppExceptionUtil;
 
 /**
  * The Class MyGdxGame.
@@ -71,7 +71,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   /** The collision detection mgr. */
   private CollisionDetectionManager collisionDetectionMgr;
-  
+
   /** The fps calculator. */
   private FPSCalculator fpsCalculator;
 
@@ -98,8 +98,6 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
   /** The gdx input keys. */
   private static Field[] gdxInputKeys = Input.Keys.class.getFields();
-  
-  private Actor resumeButton;
 
   /**
    * Instantiates a new my gdx game.
@@ -144,10 +142,10 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     batch = new SpriteBatch();
     float w = Gdx.graphics.getWidth();
     float h = Gdx.graphics.getHeight();
-    
+
     int ptmRatio = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
 
-    cam = new OrthographicCamera(w / ptmRatio , h / ptmRatio );
+    cam = new OrthographicCamera(w / ptmRatio, h / ptmRatio);
     cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
 
     entityQueryManager = new EntityQueryManager(world);
@@ -159,29 +157,35 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     luaScriptManager = new LuaScriptManager(model, entityQueryManager, world, cam, screenControllerFileLua);
     collisionDetectionMgr = new CollisionDetectionManager(luaScriptManager, entityQueryManager, model, world, cam);
     fpsCalculator = new FPSCalculator();
-    
-    mouseJointManager.create();
-    shapeManager.create();
-    bgManager.create();
-    entityManager.create();
-    luaScriptManager.create();
-    collisionDetectionMgr.create();
-    fpsCalculator.create();
-   
+
+    try {
+      mouseJointManager.create();
+      shapeManager.create();
+      bgManager.create();
+      entityManager.create();
+      luaScriptManager.create();
+      collisionDetectionMgr.create();
+      fpsCalculator.create();
+    } catch (Throwable t) {
+      AppExceptionUtil.handle(t);
+    }
+
     Gdx.input.setInputProcessor(mouseJointManager);
-    
-    //invoke fps update initially
+
+    // invoke fps update initially
     fpsCalculator.render();
   }
 
   /**
    * Handle input.
-   *
-   * @throws IllegalArgumentException the illegal argument exception
-   * @throws IllegalAccessException the illegal access exception
+   * 
+   * @throws IllegalArgumentException
+   *           the illegal argument exception
+   * @throws IllegalAccessException
+   *           the illegal access exception
    */
   private void handleInput() throws IllegalArgumentException, IllegalAccessException {
-    // is it possible to excute the script, if not, then dont even bother to
+    // is it possible to exceute the script, if not, then dont even bother to
     // handle input
     if (!luaScriptManager.canExecute()) {
       return;
@@ -287,5 +291,5 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   public void resume() {
     world.step(1 / timeStep, velocityIterations, positionIterations);
   }
-  
+
 }
