@@ -24,9 +24,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.laex.cg2d.model.activator.Activator;
-import com.laex.cg2d.model.model.descs.BodyDefPropertySource;
-import com.laex.cg2d.model.model.descs.FixtureDefPropertySource;
-import com.laex.cg2d.model.model.descs.RectanglePropertySource;
+import com.laex.cg2d.model.descs.BodyDefPropertySource;
+import com.laex.cg2d.model.descs.FixtureDefPropertySource;
+import com.laex.cg2d.model.descs.RectanglePropertySource;
 
 /**
  * The Class Shape.
