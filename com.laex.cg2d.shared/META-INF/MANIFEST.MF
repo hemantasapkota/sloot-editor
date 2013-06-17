@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.ui.ide;bundle-version="3.6.1",
  org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.draw2d;bundle-version="3.8.0",
  org.eclipse.ui;bundle-version="3.103.0",
- libgdx-0.9.8
+ libgdx-0.9.8,
+ guava-14.0.1;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
@@ -24,10 +25,8 @@ Export-Package:
  com.laex.cg2d.model,
  com.laex.cg2d.model.activator,
  com.laex.cg2d.model.adapter,
+ com.laex.cg2d.model.joints,
  com.laex.cg2d.model.model,
- com.laex.cg2d.model.model.descs,
- com.laex.cg2d.model.model.joints,
- com.laex.cg2d.model.model.validator,
  com.laex.cg2d.model.util,
  org.eclipse.wb.swt
 Import-Package: com.badlogic.gdx.math,
