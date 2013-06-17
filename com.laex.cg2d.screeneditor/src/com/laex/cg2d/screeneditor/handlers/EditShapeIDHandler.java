@@ -20,6 +20,7 @@ public class EditShapeIDHandler extends AbstractHandler {
     IEditorPart ep = (IEditorPart) HandlerUtil.getActiveEditor(event);
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
     
+    
     EditShapeIDDialog dlg = new EditShapeIDDialog(ep.getSite().getShell(), gv.getSelectedEditParts());
     int resp = dlg.open(); 
     if (resp == EditShapeIDDialog.CANCEL) {
