@@ -65,6 +65,8 @@ public final class SharedImages {
 
   /** The Constant REMOVE_ITEM_SMALL. */
   public static final ImageDescriptor REMOVE_ITEM_SMALL = get("/resources/images/115_14.png");
+  
+  public static final ImageDescriptor REMOVE_ALL_SMALL = get("/resources/images/116_14.png");
 
   /** The Constant CHANGE_ITEM_SMALL. */
   public static final ImageDescriptor CHANGE_ITEM_SMALL = get("/resources/images/2_16.png");
