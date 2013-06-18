@@ -84,6 +84,7 @@ public class LayerRemoveCommand extends Command {
   private void buildAddShapeCommands(Layer layer, ShapesDiagram parent) {
     CompoundCommand cc = new CompoundCommand("Add shapes in layer");
     for (int i = 0; i < deletedChildren.size(); i++) {
+      deletedChildren.get(i).setParentLayer(layer);
       cc.add(new ShapeCreateCommand(deletedChildren.get(i), parent));
     }
     cc.execute();
