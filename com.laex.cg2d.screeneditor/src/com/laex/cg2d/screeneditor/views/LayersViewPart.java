@@ -266,6 +266,8 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
 
   /** The remove action. */
   private Action removeAction;
+  
+  private Action removeAllAction;
 
   /** The lock action. */
   private Action lockAction;
@@ -297,6 +299,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     lockAction.setEnabled(false);
     visibilityAction.setEnabled(false);
     removeAction.setEnabled(false);
+    removeAllAction.setEnabled(false);
     upAction.setEnabled(false);
     downAction.setEnabled(false);
   }
@@ -309,6 +312,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     lockAction.setEnabled(true);
     visibilityAction.setEnabled(true);
     removeAction.setEnabled(true);
+    removeAllAction.setEnabled(true);
     upAction.setEnabled(true);
     downAction.setEnabled(true);
   }
@@ -461,17 +465,10 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
       addAction = new Action("") {
         @Override
         public void run() {
-          AddLayerDialog addLayerDailog = new AddLayerDialog(getSite().getShell());
-          int response = addLayerDailog.open();
-          if (response == AddLayerDialog.CANCEL) {
-            return;
-          }
-
-          String layerName = addLayerDailog.getLayerName();
           LayerItem li = new LayerItem();
 
           li.id = ScreenEditorUtil.getScreenLayerManager().getNewLayerId();
-          li.name = layerName;
+          li.name = "Layer" + li.id;
           li.locked = false;
           li.visible = true;
           int index = addLayer(li);
@@ -528,6 +525,31 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
       removeAction.setDescription("Remove a selected layer");
       removeAction.setImageDescriptor(SharedImages.REMOVE_ITEM_SMALL);
     }
+    
+     {
+      removeAllAction = new Action("") {
+        @Override
+        public void run() {
+          MessageBox mb = new MessageBox(getSite().getShell(), SWT.YES | SWT.NO);
+          mb.setMessage("Are you sure you want to remove all the layers ?");
+          int resp = mb.open();
+          if (resp == SWT.NO) {
+            return;
+          }
+
+          ILayerManager mgr = ScreenEditorUtil.getScreenLayerManager();
+          mgr.removeAll();
+          
+          tableViewer.refresh();
+          
+          table.select(layerItems.size() - 1);
+
+        }
+      };
+      
+      removeAllAction.setDescription("Remove all layers");
+      removeAllAction.setImageDescriptor(SharedImages.REMOVE_ALL_SMALL);
+    }   
 
     {
       lockAction = new Action("") {
@@ -643,6 +665,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     toolbarManager.add(lockAction);
     toolbarManager.add(addAction);
     toolbarManager.add(removeAction);
+    toolbarManager.add(removeAllAction);
     toolbarManager.add(upAction);
     toolbarManager.add(downAction);
     toolbarManager.update(true);
