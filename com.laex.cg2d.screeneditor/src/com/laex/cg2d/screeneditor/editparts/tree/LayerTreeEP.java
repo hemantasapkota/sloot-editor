@@ -9,12 +9,28 @@ import org.eclipse.swt.graphics.Image;
 
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.ModelElement;
 
 public class LayerTreeEP extends AbstractTreeEditPart implements PropertyChangeListener {
+
 
   public LayerTreeEP(Layer layer) {
     super(layer);
   }
+  
+  public void activate() {
+    if (!isActive()) {
+      super.activate();
+      ((ModelElement) getModel()).addPropertyChangeListener(this);
+    }
+  }
+  
+  public void deactivate() {
+    if (isActive()) {
+      super.deactivate();
+      ((ModelElement) getModel()).removePropertyChangeListener(this);
+    }
+  }  
 
   @Override
   protected List getModelChildren() {
@@ -37,7 +53,9 @@ public class LayerTreeEP extends AbstractTreeEditPart implements PropertyChangeL
 
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
-    refreshVisuals();
+    if (evt.getPropertyName().equals(Layer.LAYER_NAME_CHANGED)) {
+      refreshVisuals();
+    }
   }
 
 }
