@@ -510,6 +510,17 @@
          </with>
       </definition>
       <definition
+            id="com.laex.cg2d.screeneditor.jointEditPartSelected">
+         <with
+               variable="selection">
+            <iterate>
+               <instanceof
+                     value="com.laex.cg2d.screeneditor.editparts.JointEditPart">
+               </instanceof>
+            </iterate>
+         </with>
+      </definition>
+      <definition
             id="com.laex.cg2d.screeneditor.screenEditPartSelected">
          <with
                variable="selection">
