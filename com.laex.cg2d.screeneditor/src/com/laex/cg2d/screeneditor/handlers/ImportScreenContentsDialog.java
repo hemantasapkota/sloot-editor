@@ -18,8 +18,8 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CompoundCommand;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -62,7 +62,7 @@ import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
 /**
  * The Class ListExistingScreensDialog.
  */
-public class ImportScreenContentsDialog extends Dialog {
+public class ImportScreenContentsDialog extends TitleAreaDialog {
 
   /** The list. */
   private List list;
@@ -84,9 +84,6 @@ public class ImportScreenContentsDialog extends Dialog {
 
   /** The txt new layer name. */
   private Text txtNewLayerName;
-
-  /** The lbl new label. */
-  private Label lblNewLabel;
 
   /** The new layer name composite. */
   private Composite newLayerNameComposite;
@@ -122,18 +119,22 @@ public class ImportScreenContentsDialog extends Dialog {
    */
   @Override
   protected Control createDialogArea(Composite parent) {
+    setTitle("Import Screen Contents Dialog");
+    setMessage("Import contents from other screens");
     Composite container = (Composite) super.createDialogArea(parent);
     container.setLayout(new GridLayout(2, false));
+    new Label(container, SWT.NONE);
 
     listViewer = new ListViewer(container, SWT.BORDER | SWT.V_SCROLL);
     list = listViewer.getList();
-    GridData gd_list = new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1);
+    GridData gd_list = new GridData(SWT.FILL, SWT.FILL, false, false, 2, 1);
     gd_list.widthHint = 176;
     gd_list.heightHint = 144;
     list.setLayoutData(gd_list);
 
-    lblShapePrefix = formToolkit.createLabel(container, "Suffix", SWT.NONE);
+    lblShapePrefix = formToolkit.createLabel(container, "Suffix (Required)", SWT.NONE);
     lblShapePrefix.setBackground(null);
+    new Label(container, SWT.NONE);
 
     txtSuffix = formToolkit.createText(container, "New Text", SWT.NONE);
     txtSuffix.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -141,40 +142,36 @@ public class ImportScreenContentsDialog extends Dialog {
     txtSuffix.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(ModifyEvent e) {
-        validateSuffix();
+        validateAll();
       }
     });
+    new Label(container, SWT.NONE);
 
     lblColumns = new Label(container, SWT.NONE);
     lblColumns.setToolTipText("Repeat Columns");
     formToolkit.adapt(lblColumns, true, true);
     lblColumns.setText("Columns");
     lblColumns.setBackground(null);
+    new Label(container, SWT.NONE);
 
     txtColumnsRepeat = new Spinner(container, SWT.BORDER);
     txtColumnsRepeat.setSelection(1);
     txtColumnsRepeat.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
     formToolkit.adapt(txtColumnsRepeat);
     formToolkit.paintBordersFor(txtColumnsRepeat);
-
-    label = new Label(container, SWT.SEPARATOR | SWT.HORIZONTAL);
-    label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
-    formToolkit.adapt(label, true, true);
+    new Label(container, SWT.NONE);
 
     btnImportInNew = new Button(container, SWT.CHECK);
     btnImportInNew.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
     btnImportInNew.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
-        validateNewLayerNameSelection();
+        validateAll();
       }
     });
     formToolkit.adapt(btnImportInNew, true, true);
     btnImportInNew.setText("Import in New Layer");
     btnImportInNew.setBackground(null);
-
-    lblNewLabel = formToolkit.createLabel(container, "New Layer", SWT.NONE);
-    lblNewLabel.setBackground(null);
 
     txtNewLayerName = formToolkit.createText(container, "New Text", SWT.NONE);
     txtNewLayerName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -182,9 +179,10 @@ public class ImportScreenContentsDialog extends Dialog {
     txtNewLayerName.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(ModifyEvent e) {
-        validateSuffix();
+        validateAll();
       }
     });
+    new Label(container, SWT.NONE);
 
     newLayerNameComposite = formToolkit.createComposite(container, SWT.NONE);
     newLayerNameComposite.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
@@ -194,23 +192,37 @@ public class ImportScreenContentsDialog extends Dialog {
     newLayerNameComposite.setLayout(new GridLayout(1, false));
 
     try {
-      resList = ScreenEditorUtil.getListOfScreensInCurrentProject(ScreenEditorUtil.getActiveEditorInput());
-      for (IResource res : resList) {
-
-        if (res.getName().equals(((IFileEditorInput) ScreenEditorUtil.getActiveEditorInput()).getFile().getName())) {
-          continue;
-        }
-
-        list.add(res.getName());
-      }
-
-      list.select(0);
-
+      loadScreens();
     } catch (CoreException e) {
       e.printStackTrace();
     }
 
     return container;
+  }
+
+  private void loadScreens() throws CoreException {
+    resList = ScreenEditorUtil.getListOfScreensInCurrentProject(ScreenEditorUtil.getActiveEditorInput());
+    for (IResource res : resList) {
+
+      if (res.getName().equals(((IFileEditorInput) ScreenEditorUtil.getActiveEditorInput()).getFile().getName())) {
+        continue;
+      }
+
+      list.add(res.getName());
+    }
+
+    list.select(0);
+
+  }
+
+  private void validateAll() {
+    validateNewLayerNameSelection();
+    validateSuffix();
+    validateScreens();
+
+    if (StringUtils.isEmpty(txtNewLayerName.getText()) && btnImportInNew.getSelection()) {
+      getButton(OK).setEnabled(false);
+    }
   }
 
   /**
@@ -252,13 +264,31 @@ public class ImportScreenContentsDialog extends Dialog {
    */
   private void validateSuffix() {
     boolean isAlphaNumeric = StringUtils.isAlphanumeric(txtSuffix.getText());
+    boolean isEmpty = StringUtils.isEmpty(txtSuffix.getText());
+
+    if (isEmpty) {
+      getButton(OK).setEnabled(false);
+      setErrorMessage("Please provide a suffix");
+      return;
+    }
 
     // validate suffix
     // for the suffix to be valid
-    if (!isAlphaNumeric) {
+    if (!isAlphaNumeric || isEmpty) {
       getButton(OK).setEnabled(false);
-    } else {
-      getButton(OK).setEnabled(true);
+      setErrorMessage("Suffix should be alphanumeric");
+      return;
+    }
+
+    getButton(OK).setEnabled(true);
+    setErrorMessage(null);
+  }
+
+  private void validateScreens() {
+    // The resource list has at least one screen file i.e. itself, which is not
+    // displayed on the list
+    if (resList.size() <= 1) {
+      setErrorMessage("You must have at least one other screen for import.");
     }
 
   }
@@ -274,7 +304,7 @@ public class ImportScreenContentsDialog extends Dialog {
     createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
     createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
 
-    getButton(OK).setEnabled(true);
+    validateAll();
   }
 
   /*
@@ -314,7 +344,7 @@ public class ImportScreenContentsDialog extends Dialog {
 
           if (createNewLayer) {
             int newLayerId = layerMgr.getNewLayerId();
-            layer = new Layer(newLayerId, txtNewLayerName.getText(), true, false);
+            layer = new Layer(newLayerId, txtNewLayerName.getText() + newLayerId, true, false);
             LayerAddCommand layerAddCmd = new LayerAddCommand(layer, thisScreenModel.getDiagram());
             cc.add(layerAddCmd);
           } else {
@@ -352,14 +382,18 @@ public class ImportScreenContentsDialog extends Dialog {
                 newShapeClone.setEntity(e);
               }
 
-              Rectangle r = new Rectangle(shape.getBounds()); //make sure to make a copy of the bounds and then modify its coords
-              
+              Rectangle r = new Rectangle(shape.getBounds()); // make sure to
+                                                              // make a copy of
+                                                              // the bounds and
+                                                              // then modify its
+                                                              // coords
+
               if (shape.getEditorShapeType().isBackground()) {
-                r.x = i * shape.getBounds().getWidth()  - 1;
+                r.x = i * shape.getBounds().getWidth() - 1;
               } else {
-                r.x += i  * thisScreenModel.getScreenPrefs().getCardPrefs().getCardWidth();
+                r.x += i * thisScreenModel.getScreenPrefs().getCardPrefs().getCardWidth();
               }
-              
+
               newShapeClone.setBounds(r);
 
               ShapeCreateCommand scc = new ShapeCreateCommand(newShapeClone, thisScreenModel.getDiagram());
@@ -389,6 +423,6 @@ public class ImportScreenContentsDialog extends Dialog {
    */
   @Override
   protected Point getInitialSize() {
-    return new Point(213, 337);
+    return new Point(303, 450);
   }
 }
