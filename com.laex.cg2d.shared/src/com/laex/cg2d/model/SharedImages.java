@@ -55,6 +55,7 @@ public final class SharedImages {
   /** The Constant RENDER_PROTO. */
   public static final ImageDescriptor RENDER_PROTO = get("/resources/images/renderProto.png");
   
+  /** The Constant PNG_EXPORT. */
   public static final ImageDescriptor PNG_EXPORT = get("/resources/images/png_14.png");
 
   /** The Constant ADD_ITEM_SMALL. */
@@ -66,6 +67,7 @@ public final class SharedImages {
   /** The Constant REMOVE_ITEM_SMALL. */
   public static final ImageDescriptor REMOVE_ITEM_SMALL = get("/resources/images/115_14.png");
   
+  /** The Constant REMOVE_ALL_SMALL. */
   public static final ImageDescriptor REMOVE_ALL_SMALL = get("/resources/images/116_14.png");
 
   /** The Constant CHANGE_ITEM_SMALL. */

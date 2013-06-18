@@ -154,6 +154,13 @@ public class ScreenModelAdapter {
     return fdef;
   }
 
+  /**
+   * As shape.
+   *
+   * @param cgShape the cg shape
+   * @param layer the layer
+   * @return the shape
+   */
   public static Shape asShape(CGShape cgShape, Layer layer) {
     Shape shape = new Shape(asEditorShapeType(cgShape.getEditorShapeType()));
     shape.setId(cgShape.getId());

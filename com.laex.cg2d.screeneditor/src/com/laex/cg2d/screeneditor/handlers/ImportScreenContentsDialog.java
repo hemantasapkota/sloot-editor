@@ -93,8 +93,14 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
 
   /** The txt suffix. */
   private Text txtSuffix;
+  
+  /** The lbl columns. */
   private Label lblColumns;
+  
+  /** The txt columns repeat. */
   private Spinner txtColumnsRepeat;
+  
+  /** The label. */
   private Label label;
 
   /**
@@ -200,6 +206,11 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
     return container;
   }
 
+  /**
+   * Load screens.
+   *
+   * @throws CoreException the core exception
+   */
   private void loadScreens() throws CoreException {
     resList = ScreenEditorUtil.getListOfScreensInCurrentProject(ScreenEditorUtil.getActiveEditorInput());
     for (IResource res : resList) {
@@ -215,6 +226,9 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
 
   }
 
+  /**
+   * Validate all.
+   */
   private void validateAll() {
     validateNewLayerNameSelection();
     validateSuffix();
@@ -284,6 +298,9 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
     setErrorMessage(null);
   }
 
+  /**
+   * Validate screens.
+   */
   private void validateScreens() {
     // The resource list has at least one screen file i.e. itself, which is not
     // displayed on the list

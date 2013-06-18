@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.model.model.impl;
 
 import com.google.common.base.Throwables;
@@ -9,14 +19,26 @@ import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.ModelCopier;
 import com.laex.cg2d.model.model.Shape;
 
+/**
+ * The Class ShapeCopier.
+ */
 public class ShapeCopier implements ModelCopier {
 
+  /** The game model. */
   private GameModel gameModel;
 
+  /**
+   * Instantiates a new shape copier.
+   *
+   * @param gameModel the game model
+   */
   public ShapeCopier(GameModel gameModel) {
     this.gameModel = gameModel;
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.model.ModelCopier#copy(java.lang.Object)
+   */
   @Override
   public Object copy(Object element) {
     if (!(element instanceof Shape)) {

@@ -789,6 +789,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Adds the collision shape.
+   *
+   * @param _collisionShape the _collision shape
+   * @param physicsEditorFile the physics editor file
    */
   private void showCollisionShape(EntityCollisionType _collisionShape, ResourceFile physicsEditorFile) {
     if (collisionShapeHyperLink == null) {
@@ -840,6 +843,8 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Auto fill collision size.
+   *
+   * @param ea the ea
    */
   private void autoFillCollisionSize(EntityAnimation ea) {
     // If all of these are zero, then we auto fill

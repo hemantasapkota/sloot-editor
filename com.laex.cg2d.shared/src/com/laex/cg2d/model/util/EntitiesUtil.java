@@ -103,6 +103,12 @@ public class EntitiesUtil {
     return id;
   }
   
+  /**
+   * Creates the image.
+   *
+   * @param id the id
+   * @return the image
+   */
   public static Image createImage(final ImageData id) {
     ImageDescriptor idd = new ImageDescriptor() {
       @Override
@@ -116,9 +122,10 @@ public class EntitiesUtil {
 
   /**
    * Creates the image strip.
-   * 
-   * @param strip
-   *          the strip
+   *
+   * @param strip the strip
+   * @param cols the cols
+   * @param rows the rows
    * @return the queue
    */
   public static Queue<Image> createImageStrip(Image strip, int cols, int rows) {

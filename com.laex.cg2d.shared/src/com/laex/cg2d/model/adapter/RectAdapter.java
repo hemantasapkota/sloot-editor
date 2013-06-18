@@ -48,6 +48,12 @@ public class RectAdapter {
     return new com.badlogic.gdx.math.Rectangle(x, y, w, h);
   }
   
+  /**
+   * Gdx rect.
+   *
+   * @param r the r
+   * @return the com.badlogic.gdx.math. rectangle
+   */
   public static com.badlogic.gdx.math.Rectangle gdxRect(org.eclipse.swt.graphics.Rectangle r) {
     float x = r.x;
     float y = r.y;

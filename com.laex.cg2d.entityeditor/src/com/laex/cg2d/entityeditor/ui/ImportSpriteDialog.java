@@ -86,8 +86,10 @@ public class ImportSpriteDialog extends Dialog {
   /** The rows. */
   private int rows;
   
+  /** The width. */
   private int width;
   
+  /** The height. */
   private int height;
 
   /** The ok button. */
@@ -102,8 +104,10 @@ public class ImportSpriteDialog extends Dialog {
   /** The flp. */
   private FreeformLayeredPane flp = new FreeformLayeredPane();
 
+  /** The txt width. */
   private Spinner txtWidth;
 
+  /** The txt height. */
   private Spinner txtHeight;
 
   /**

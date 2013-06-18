@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.screeneditor.handlers;
 
 import java.io.IOException;
@@ -40,6 +50,11 @@ public class RenderHandler extends AbstractHandler {
   public RenderHandler() {
   }
   
+  /**
+   * Validate.
+   *
+   * @param shell the shell
+   */
   private void validate(final Shell shell) {
     String runnerFile = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.RUNNER);
     if (StringUtils.isEmpty(runnerFile)) {
@@ -58,6 +73,10 @@ public class RenderHandler extends AbstractHandler {
   /**
    * the command has been executed, so extract extract the needed information
    * from the application context.
+   *
+   * @param event the event
+   * @return the object
+   * @throws ExecutionException the execution exception
    */
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
@@ -132,6 +151,14 @@ public class RenderHandler extends AbstractHandler {
     return null;
   };
 
+  /**
+   * Builds the runner command from properties.
+   *
+   * @param screenFile the screen file
+   * @param controllerFile the controller file
+   * @return the string[]
+   * @throws CoreException the core exception
+   */
   private String[] buildRunnerCommandFromProperties(String screenFile, String controllerFile) throws CoreException {
     StringBuilder cmd = new StringBuilder("java -jar ");
 

@@ -59,6 +59,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
   /** The show layers view action. */
   private IAction showLayersViewAction;
   
+  /** The render action. */
   private IAction renderAction;
 
   /**

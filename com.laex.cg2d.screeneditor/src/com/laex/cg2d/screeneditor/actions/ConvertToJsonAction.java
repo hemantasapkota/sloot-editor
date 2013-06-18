@@ -160,6 +160,13 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
 
   }
 
+  /**
+   * Creates the file.
+   *
+   * @param jsonFormat the json format
+   * @param path the path
+   * @param prj the prj
+   */
   private void createFile(String jsonFormat, IPath path, ICGCProject prj) {
     try {
       prj.createFile(path, new ByteArrayInputStream(jsonFormat.getBytes("utf-8")));

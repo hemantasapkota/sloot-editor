@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.screeneditor.editparts.tree;
 
 import java.beans.PropertyChangeEvent;
@@ -11,12 +21,23 @@ import com.laex.cg2d.model.adapter.ShapesDiagramAdapter;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
 
+/**
+ * The Class ShapeTreeEP.
+ */
 public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeListener {
 
+  /**
+   * Instantiates a new shape tree ep.
+   *
+   * @param shape the shape
+   */
   public ShapeTreeEP(Shape shape) {
     super(shape);
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.editparts.AbstractEditPart#activate()
+   */
   public void activate() {
     if (!isActive()) {
       super.activate();
@@ -24,6 +45,9 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     }
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.editparts.AbstractEditPart#deactivate()
+   */
   public void deactivate() {
     if (isActive()) {
       super.deactivate();
@@ -31,15 +55,26 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     }
   }
 
+  /**
+   * Gets the casted model.
+   *
+   * @return the casted model
+   */
   private Shape getCastedModel() {
     return (Shape) getModel();
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.editparts.AbstractTreeEditPart#getText()
+   */
   @Override
   protected String getText() {
     return getCastedModel().getId();
   }
   
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.editparts.AbstractEditPart#getAdapter(java.lang.Class)
+   */
   @Override
   public Object getAdapter(Class key) {
     if (key == Shape.class) {
@@ -53,6 +88,9 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     return super.getAdapter(key);
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.editparts.AbstractTreeEditPart#getImage()
+   */
   @Override
   protected Image getImage() {
     Shape shp = getCastedModel();
@@ -84,6 +122,9 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     return SharedImages.HEXAGON.createImage();
   }
 
+  /* (non-Javadoc)
+   * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
+   */
   @Override
   public void propertyChange(PropertyChangeEvent arg0) {
     refreshVisuals();

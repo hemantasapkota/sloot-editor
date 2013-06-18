@@ -20,10 +20,13 @@ public class GameModel {
   /** The shapes. */
   ShapesDiagram shapes = new ShapesDiagram();
   
+  /** The screen prefs. */
   CGScreenPreferences screenPrefs;
 
   /**
    * Instantiates a new game model.
+   *
+   * @param screenPrefs the screen prefs
    */
   public GameModel(CGScreenPreferences screenPrefs) {
     this.screenPrefs = screenPrefs;
@@ -38,6 +41,11 @@ public class GameModel {
     return shapes;
   }
   
+  /**
+   * Gets the screen prefs.
+   *
+   * @return the screen prefs
+   */
   public CGScreenPreferences getScreenPrefs() {
     return screenPrefs;
   }

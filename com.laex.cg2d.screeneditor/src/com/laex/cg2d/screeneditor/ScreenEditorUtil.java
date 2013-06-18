@@ -87,6 +87,11 @@ public final class ScreenEditorUtil {
     return (ILayerManager) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
   }
 
+  /**
+   * Gets the graphical viewer.
+   *
+   * @return the graphical viewer
+   */
   public static GraphicalViewer getGraphicalViewer() {
     IEditorPart ed = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
     if (ed == null)
@@ -230,11 +235,10 @@ public final class ScreenEditorUtil {
 
   /**
    * Gets the image descriptor.
-   * 
-   * @param i
-   *          the i
-   * @param maximumSize
-   *          the maximum size
+   *
+   * @param i the i
+   * @param width the width
+   * @param height the height
    * @return the image descriptor
    */
   public static ImageDescriptor getImageDescriptor(final Image i, final int width, final int height) {

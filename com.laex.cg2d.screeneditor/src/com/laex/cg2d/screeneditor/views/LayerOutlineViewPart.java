@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.screeneditor.views;
 
 import org.eclipse.jface.action.IMenuManager;
@@ -19,20 +29,33 @@ import org.eclipse.ui.part.ViewPart;
 import com.laex.cg2d.screeneditor.ScreenEditor.LayerOutlineView;
 import com.laex.cg2d.screeneditor.editparts.ScreenEditPart;
 
+/**
+ * The Class LayerOutlineViewPart.
+ */
 public class LayerOutlineViewPart extends ViewPart implements ISelectionListener {
 
+  /** The Constant ID. */
   public static final String ID = "com.laex.cg2d.screeneditor.views.LayerOutlineViewPart"; //$NON-NLS-1$
+  
+  /** The toolkit. */
   private final FormToolkit toolkit = new FormToolkit(Display.getCurrent());
+  
+  /** The tree composite. */
   private Composite treeComposite;
+  
+  /** The lov. */
   private LayerOutlineView lov;
   
+  /**
+   * Instantiates a new layer outline view part.
+   */
   public LayerOutlineViewPart() {
   }
 
   /**
    * Create contents of the view part.
-   * 
-   * @param parent
+   *
+   * @param parent the parent
    */
   @Override
   public void createPartControl(Composite parent) {
@@ -58,6 +81,9 @@ public class LayerOutlineViewPart extends ViewPart implements ISelectionListener
     getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(this);
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.part.WorkbenchPart#dispose()
+   */
   public void dispose() {
     toolkit.dispose();
     super.dispose();
@@ -84,10 +110,16 @@ public class LayerOutlineViewPart extends ViewPart implements ISelectionListener
     IMenuManager manager = getViewSite().getActionBars().getMenuManager();
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
+   */
   @Override
   public void setFocus() {
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+   */
   @Override
   public void selectionChanged(IWorkbenchPart part, ISelection selection) {
     IStructuredSelection ss = (IStructuredSelection) selection;

@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.screeneditor.handlers;
 
 import java.io.IOException;
@@ -20,10 +30,17 @@ import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 
+/**
+ * The Class ShapeCopyHandler.
+ */
 public class ShapeCopyHandler extends AbstractHandler {
   
+  /** The copier. */
   ModelCopier copier;
 
+  /* (non-Javadoc)
+   * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+   */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IEditorPart ep = HandlerUtil.getActiveEditor(event);
@@ -43,6 +60,14 @@ public class ShapeCopyHandler extends AbstractHandler {
     return null;
   }
 
+  /**
+   * Do copy.
+   *
+   * @param gv the gv
+   * @param model the model
+   * @throws CoreException the core exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   private void doCopy(GraphicalViewer gv, GameModel model) throws CoreException, IOException {
     List<Shape> toCopy = new ArrayList<Shape>();
     

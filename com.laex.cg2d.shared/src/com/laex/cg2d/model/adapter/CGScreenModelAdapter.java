@@ -42,21 +42,26 @@ public class CGScreenModelAdapter {
 
   /** The model. */
   GameModel model;
+  
+  /** The screen prefs. */
   private CGScreenPreferences screenPrefs;
 
   /**
    * Instantiates a new cG game model adapter.
-   * 
-   * @param model
-   *          the model
-   * @param prefs
-   *          the prefs
+   *
+   * @param model the model
+   * @param screenPrefs the screen prefs
    */
   public CGScreenModelAdapter(GameModel model, CGScreenPreferences screenPrefs) {
     this.model = model;
     this.screenPrefs = screenPrefs;
   }
   
+  /**
+   * Instantiates a new cG screen model adapter.
+   *
+   * @param model the model
+   */
   public CGScreenModelAdapter(GameModel model) {
     this.model = model;
   }
@@ -216,6 +221,12 @@ public class CGScreenModelAdapter {
     return cgModelBuilder.build();
   }
 
+  /**
+   * As cg shape.
+   *
+   * @param s the s
+   * @return the cG shape
+   */
   public static CGShape asCGShape(Shape s) {
     BodyDef bdef = s.getBodyDef();
     FixtureDef fdef = s.getFixtureDef();

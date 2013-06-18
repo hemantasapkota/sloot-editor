@@ -423,6 +423,11 @@ public abstract class AbstractScreenScaffold implements ScreenScaffold {
     return ptmRatio;
   }
 
+  /**
+   * Handle exception.
+   *
+   * @param t the t
+   */
   protected void handleException(Throwable t) {
     AppExceptionUtil.handle(t);
   }

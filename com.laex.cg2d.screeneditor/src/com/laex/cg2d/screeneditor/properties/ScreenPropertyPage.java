@@ -196,6 +196,12 @@ public class ScreenPropertyPage extends PropertyPage {
     super();
   }
 
+  /**
+   * Populate properties.
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException the core exception
+   */
   private void populateProperties() throws IOException, CoreException {
     IFile res = (IFile) getElement();
 
@@ -416,11 +422,10 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /**
    * Apply changes.
-   * 
-   * @param props
-   *          the props
-   * @throws CoreException 
-   * @throws IOException 
+   *
+   * @param prefs the prefs
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException the core exception
    */
   private void applyChanges(CGScreenPreferences prefs) throws IOException, CoreException {
     // Update changes to the active screen editor
@@ -458,6 +463,11 @@ public class ScreenPropertyPage extends PropertyPage {
     return true;
   }
 
+  /**
+   * Construct prefs.
+   *
+   * @return the cG screen preferences
+   */
   private CGScreenPreferences constructPrefs() {
     boolean bodies = btnBodies.getSelection();
     boolean joints = btnJoints.getSelection();

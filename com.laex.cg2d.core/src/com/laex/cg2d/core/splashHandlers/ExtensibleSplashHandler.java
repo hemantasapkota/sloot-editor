@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 
 package com.laex.cg2d.core.splashHandlers;
 
@@ -19,33 +29,44 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.splash.AbstractSplashHandler;
 
 /**
- * @since 3.3
+ * The Class ExtensibleSplashHandler.
  *
+ * @since 3.3
  */
 public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	
+	/** The image list. */
 	private ArrayList fImageList;
 	
+	/** The tooltip list. */
 	private ArrayList fTooltipList;
 
+	/** The Constant F_SPLASH_EXTENSION_ID. */
 	private final static String F_SPLASH_EXTENSION_ID = "com.laex.cg2d.core.splashExtension"; //NON-NLS-1
 	
+	/** The Constant F_ELEMENT_ICON. */
 	private final static String F_ELEMENT_ICON = "icon"; //NON-NLS-1
 	
+	/** The Constant F_ELEMENT_TOOLTIP. */
 	private final static String F_ELEMENT_TOOLTIP = "tooltip"; //NON-NLS-1
 	
+	/** The Constant F_DEFAULT_TOOLTIP. */
 	private final static String F_DEFAULT_TOOLTIP = "Image"; //NON-NLS-1
 	
+	/** The Constant F_IMAGE_WIDTH. */
 	private final static int F_IMAGE_WIDTH = 50;
 	
+	/** The Constant F_IMAGE_HEIGHT. */
 	private final static int F_IMAGE_HEIGHT = 50;
 	
+	/** The Constant F_SPLASH_SCREEN_BEVEL. */
 	private final static int F_SPLASH_SCREEN_BEVEL = 5;
 	
+	/** The icon panel. */
 	private Composite fIconPanel;
 	
 	/**
-	 * 
+	 * Instantiates a new extensible splash handler.
 	 */
 	public ExtensibleSplashHandler() {
 		fImageList = new ArrayList();
@@ -77,7 +98,9 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * @return
+	 * Checks for splash extensions.
+	 *
+	 * @return true, if successful
 	 */
 	private boolean hasSplashExtensions() {
 		if (fImageList.isEmpty()) {
@@ -88,7 +111,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 	
 	/**
-	 * 
+	 * Creates the ui.
 	 */
 	private void createUI() {
 		// Create the icon panel
@@ -98,7 +121,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}	
 	
 	/**
-	 * 
+	 * Creates the ui images.
 	 */
 	private void createUIImages() {
 		Iterator imageIterator = fImageList.iterator();
@@ -119,8 +142,10 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 	
 	/**
-	 * @param image
-	 * @param tooltip
+	 * Creates the ui label.
+	 *
+	 * @param image the image
+	 * @param tooltip the tooltip
 	 */
 	private void createUILabel(Image image, String tooltip) {
 		// Create the label (no text)
@@ -130,7 +155,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * 
+	 * Creates the ui composite icon panel.
 	 */
 	private void createUICompositeIconPanel() {
 		Shell splash = getSplash();
@@ -153,7 +178,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * 
+	 * Configure ui composite icon panel bounds.
 	 */
 	private void configureUICompositeIconPanelBounds() {
 		// Determine the size of the panel and position it at the bottom-right
@@ -169,7 +194,9 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 	
 	/**
-	 * @return
+	 * Gets the usable splash screen width.
+	 *
+	 * @return the usable splash screen width
 	 */
 	private int getUsableSplashScreenWidth() {
 		// Splash screen width minus two graphic border bevel widths
@@ -177,7 +204,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 	
 	/**
-	 * 
+	 * Load splash extensions.
 	 */
 	private void loadSplashExtensions() {
 		// Get all splash handler extensions
@@ -191,7 +218,9 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * @param extension
+	 * Process splash extension.
+	 *
+	 * @param extension the extension
 	 */
 	private void processSplashExtension(IExtension extension) {
 		// Get all splash handler configuration elements
@@ -203,7 +232,9 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * @param configurationElement
+	 * Process splash elements.
+	 *
+	 * @param configurationElement the configuration element
 	 */
 	private void processSplashElements(
 			IConfigurationElement configurationElement) {
@@ -214,7 +245,9 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * @param configurationElement
+	 * Process splash element tooltip.
+	 *
+	 * @param configurationElement the configuration element
 	 */
 	private void processSplashElementTooltip(
 			IConfigurationElement configurationElement) {
@@ -230,7 +263,9 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * @param configurationElement
+	 * Process splash element icon.
+	 *
+	 * @param configurationElement the configuration element
 	 */
 	private void processSplashElementIcon(
 			IConfigurationElement configurationElement) {
@@ -268,7 +303,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}
 
 	/**
-	 * 
+	 * Configure ui splash.
 	 */
 	private void configureUISplash() {
 		// Configure layout
@@ -279,7 +314,7 @@ public class ExtensibleSplashHandler extends AbstractSplashHandler {
 	}	
 	
 	/**
-	 * 
+	 * Do event loop.
 	 */
 	private void doEventLoop() {
 		Shell splash = getSplash();

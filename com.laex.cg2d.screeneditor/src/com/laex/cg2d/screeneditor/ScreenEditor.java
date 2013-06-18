@@ -128,6 +128,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   /** The model. */
   private GameModel model;
   
+  /** The grid state. */
   private boolean gridState = false;
 
   /** The card height. */
@@ -142,10 +143,18 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    */
   class ScreenOutlineView extends ContentOutlinePage {
 
+    /**
+     * Instantiates a new screen outline view.
+     *
+     * @param viewer the viewer
+     */
     public ScreenOutlineView(EditPartViewer viewer) {
       super(viewer);
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.gef.ui.parts.ContentOutlinePage#createControl(org.eclipse.swt.widgets.Composite)
+     */
     @Override
     public void createControl(Composite parent) {
       getViewer().createControl(parent);
@@ -160,11 +169,17 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
           getSite().getSelectionProvider());
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.ui.part.Page#dispose()
+     */
     @Override
     public void dispose() {
       getSelectionSynchronizer().removeViewer(getViewer());
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.gef.ui.parts.ContentOutlinePage#getControl()
+     */
     @Override
     public Control getControl() {
       return getViewer().getControl();
@@ -181,10 +196,18 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    */
   public class LayerOutlineView extends ScreenOutlineView {
 
+    /**
+     * Instantiates a new layer outline view.
+     *
+     * @param viewer the viewer
+     */
     public LayerOutlineView(EditPartViewer viewer) {
       super(viewer);
     }
 
+    /* (non-Javadoc)
+     * @see com.laex.cg2d.screeneditor.ScreenEditor.ScreenOutlineView#createControl(org.eclipse.swt.widgets.Composite)
+     */
     @Override
     public void createControl(Composite parent) {
       getViewer().createControl(parent);
@@ -194,11 +217,17 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       getViewer().setContents(getModel());
     }
 
+    /* (non-Javadoc)
+     * @see com.laex.cg2d.screeneditor.ScreenEditor.ScreenOutlineView#dispose()
+     */
     @Override
     public void dispose() {
       getSelectionSynchronizer().removeViewer(getViewer());
     }
 
+    /* (non-Javadoc)
+     * @see com.laex.cg2d.screeneditor.ScreenEditor.ScreenOutlineView#getControl()
+     */
     @Override
     public Control getControl() {
       return getViewer().getControl();
@@ -213,6 +242,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     setEditDomain(new DefaultEditDomain(this));
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.ui.parts.GraphicalEditor#createActions()
+   */
   @Override
   protected void createActions() {
     super.createActions();
@@ -365,16 +397,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Perform save.
-   * 
-   * @param file
-   *          the file
-   * @param monitor
-   *          the monitor
-   * @param screenPrefs
-   *          the screen prefs
-   * @throws CoreException
-   *           the core exception
-   * @throws IOException
+   *
+   * @param file the file
+   * @param monitor the monitor
+   * @throws CoreException the core exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   private void performSave(IFile file, IProgressMonitor monitor) throws CoreException, IOException {
     // Use existing preferences
@@ -727,6 +754,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     getEditDomain().getCommandStack().execute(new LayerRemoveCommand(layer, getModel().getDiagram()));
   }
   
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.ILayerManager#removeAll()
+   */
   @Override
   public void removeAll() {
     CompoundCommand cc = new CompoundCommand();
@@ -859,6 +889,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return (Layer) getModel().getDiagram().getLayers().toArray()[index];
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.IScreenEditorState#toggleGrid()
+   */
   @Override
   public void toggleGrid() {
     gridState = !gridState;

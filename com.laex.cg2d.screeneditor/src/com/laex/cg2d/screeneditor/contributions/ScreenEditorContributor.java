@@ -33,6 +33,7 @@ public class ScreenEditorContributor extends ActionBarContributor {
   /** The shapes editor. */
   private ScreenEditor shapesEditor;
 
+  /** The grid16x16 action. */
   private Action grid16x16Action;
 
   /** The grid32x32 action. */

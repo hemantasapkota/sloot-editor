@@ -267,6 +267,7 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
   /** The remove action. */
   private Action removeAction;
   
+  /** The remove all action. */
   private Action removeAllAction;
 
   /** The lock action. */
@@ -730,6 +731,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     return selected;
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+   */
   @Override
   public void selectionChanged(IWorkbenchPart part, ISelection selection) {
     // Shape editor gets deactivated when switching between editors
@@ -793,6 +797,11 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     showSelectionForMainModel(model);
   }
 
+  /**
+   * Show selection for shape edit part.
+   *
+   * @param shapeModel the shape model
+   */
   private void showSelectionForShapeEditPart(Shape shapeModel) {
     Layer parentLayer = shapeModel.getParentLayer();
     int index = 0;
@@ -805,6 +814,11 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     }
   }
  
+  /**
+   * Show selection for layer edit part.
+   *
+   * @param layerModel the layer model
+   */
   private void showSelectionForLayerEditPart(Layer layerModel) {
     int index = 0;
     for (LayerItem li : layerItems) {
@@ -816,6 +830,11 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     }
   }
 
+  /**
+   * Show selection for main model.
+   *
+   * @param model the model
+   */
   private void showSelectionForMainModel(ShapesDiagram model) {
     TableItem[] selections = table.getSelection();
     layerItems.clear();
@@ -832,6 +851,9 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
     table.setSelection(selections);
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.screeneditor.views.IScreenDisposeListener#screenDisposed()
+   */
   @Override
   public void screenDisposed() {
     disableState();

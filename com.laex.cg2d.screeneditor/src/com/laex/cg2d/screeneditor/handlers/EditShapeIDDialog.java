@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.screeneditor.handlers;
 
 import java.util.ArrayList;
@@ -48,10 +58,19 @@ import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 import com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEP;
 
+/**
+ * The Class EditShapeIDDialog.
+ */
 public class EditShapeIDDialog extends TitleAreaDialog {
 
+  /**
+   * The Class Comparator.
+   */
   private static class Comparator extends ViewerComparator {
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+     */
     @Override
     public int compare(Viewer viewer, Object e1, Object e2) {
       String item1 = ((InternalShapeId) e1).newId;
@@ -62,13 +81,26 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   }
 
+  /**
+   * The Class InternalShapeId.
+   */
   class InternalShapeId {
+    
+    /** The shape. */
     Shape shape;
+    
+    /** The new id. */
     String newId;
   }
 
+  /**
+   * The Class TableLabelProvider.
+   */
   private class TableLabelProvider extends LabelProvider implements ITableLabelProvider {
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object, int)
+     */
     public Image getColumnImage(Object element, int columnIndex) {
       if (columnIndex != 0)
         return null;
@@ -98,6 +130,9 @@ public class EditShapeIDDialog extends TitleAreaDialog {
       return null;
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object, int)
+     */
     public String getColumnText(Object element, int columnIndex) {
       InternalShapeId shp = (InternalShapeId) element;
 
@@ -110,28 +145,48 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   }
 
+  /**
+   * The Class ContentProvider.
+   */
   private static class ContentProvider implements IStructuredContentProvider {
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+     */
     public Object[] getElements(Object inputElement) {
       return ((List<Shape>) inputElement).toArray();
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.viewers.IContentProvider#dispose()
+     */
     public void dispose() {
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+     */
     public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
     }
   }
 
+  /** The shape id list. */
   private List<InternalShapeId> shapeIdList = new ArrayList<InternalShapeId>();
+  
+  /** The table. */
   private Table table;
+  
+  /** The table viewer. */
   private TableViewer tableViewer;
+  
+  /** The update id map. */
   private Map<Shape, String> updateIdMap = new HashMap<Shape, String>();
 
   /**
    * Create the dialog.
-   * 
-   * @param parentShell
+   *
+   * @param parentShell the parent shell
+   * @param selectedEditParts the selected edit parts
    */
   public EditShapeIDDialog(Shell parentShell, List selectedEditParts) {
     super(parentShell);
@@ -157,8 +212,9 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the dialog.
-   * 
-   * @param parent
+   *
+   * @param parent the parent
+   * @return the control
    */
   @Override
   protected Control createDialogArea(Composite parent) {
@@ -261,6 +317,9 @@ public class EditShapeIDDialog extends TitleAreaDialog {
     return area;
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.jface.dialogs.Dialog#okPressed()
+   */
   @Override
   protected void okPressed() {
     updateIdMap.clear();
@@ -274,14 +333,19 @@ public class EditShapeIDDialog extends TitleAreaDialog {
     super.okPressed();
   }
 
+  /**
+   * Gets the update id map.
+   *
+   * @return the update id map
+   */
   public Map<Shape, String> getUpdateIdMap() {
     return updateIdMap;
   }
 
   /**
    * Create contents of the button bar.
-   * 
-   * @param parent
+   *
+   * @param parent the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -293,6 +357,8 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   /**
    * Return the initial size of the dialog.
+   *
+   * @return the initial size
    */
   @Override
   protected Point getInitialSize() {

@@ -183,6 +183,13 @@ public class AnimationFormPageController {
 
   }
 
+  /**
+   * Export frames.
+   *
+   * @param alvi the alvi
+   * @param destination the destination
+   * @param monitor the monitor
+   */
   public void exportFrames(AnimationListViewItem alvi, IPath destination, IProgressMonitor monitor) {
       int work = alvi.getFrames().size();
       int done = 0;

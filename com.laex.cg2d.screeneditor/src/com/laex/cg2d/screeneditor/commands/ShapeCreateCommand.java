@@ -33,15 +33,9 @@ public class ShapeCreateCommand extends Command {
 
   /**
    * Instantiates a new shape create command.
-   * 
-   * @param newShape
-   *          the new shape
-   * @param layer
-   *          the layer
-   * @param parent
-   *          the parent
-   * @param bounds
-   *          the bounds
+   *
+   * @param newShape the new shape
+   * @param parent the parent
    */
   public ShapeCreateCommand(Shape newShape, ShapesDiagram parent) {
     this.newShape = newShape;

@@ -425,6 +425,11 @@ public class Shape extends ModelElement {
     }
   }
 
+  /**
+   * Sets the fixture def.
+   *
+   * @param value the new fixture def
+   */
   private void setFixtureDef(FixtureDef value) {
     if (value != null) {
       this.fixtureDef = value;

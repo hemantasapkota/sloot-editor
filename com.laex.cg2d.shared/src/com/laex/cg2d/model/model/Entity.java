@@ -40,6 +40,14 @@ public class Entity {
   private Image defaultFrame;
 
   //Factory methods
+  /**
+   * Creates the from file.
+   *
+   * @param filename the filename
+   * @return the entity
+   * @throws CoreException the core exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public static Entity createFromFile(String filename) throws CoreException, IOException {
     IFile f = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(filename));
     if (!f.exists())
@@ -47,6 +55,14 @@ public class Entity {
     return Entity.createFromFile(f);
   }
 
+  /**
+   * Creates the from file.
+   *
+   * @param res the res
+   * @return the entity
+   * @throws CoreException the core exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
   public static Entity createFromFile(IFile res) throws CoreException, IOException {
     if (res == null || res.getContents() == null) {
       return null;

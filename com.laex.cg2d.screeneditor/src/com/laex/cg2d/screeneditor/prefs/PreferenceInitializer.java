@@ -57,6 +57,11 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     store.setDefault(PreferenceConstants.CARD_NO_Y, defaultCardNoY());
   }
 
+  /**
+   * Default screen prefs.
+   *
+   * @return the cG screen preferences
+   */
   public static CGScreenPreferences defaultScreenPrefs() {
     CGCardPreferences.Builder cardBuildr = CGCardPreferences.newBuilder().setCardHeight(defaultCardHeight())
         .setCardWidth(defaultCardWidth()).setCardNoX(defaultCardNoX()).setCardNoY(defaultCardNoY());

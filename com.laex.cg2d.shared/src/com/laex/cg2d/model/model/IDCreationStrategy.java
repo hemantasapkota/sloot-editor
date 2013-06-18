@@ -17,9 +17,22 @@ package com.laex.cg2d.model.model;
 public interface IDCreationStrategy {
 
   
+  /**
+   * New id.
+   *
+   * @param type the type
+   * @return the string
+   */
   String newId(EditorShapeType type);
     
   
+  /**
+   * Checks if is id used.
+   *
+   * @param type the type
+   * @param id the id
+   * @return true, if is id used
+   */
   boolean isIdUsed(EditorShapeType type, String id);
 
 
