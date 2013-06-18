@@ -78,7 +78,7 @@ public class LayerChangePropertiesCommand extends Command {
         li.setName(this.layer.getName());
         li.setLocked(this.layer.isLocked());
         li.setVisible(this.layer.isVisible());
-
+        
         // Communicate with EditParts of all the shapes
         for (Shape s : li.getChildren()) {
           s.setVisible(this.layer.isVisible());
