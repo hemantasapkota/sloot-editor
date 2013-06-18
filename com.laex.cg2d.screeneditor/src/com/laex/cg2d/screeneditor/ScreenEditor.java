@@ -48,6 +48,7 @@ import org.eclipse.gef.ui.parts.ContentOutlinePage;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
 import org.eclipse.gef.ui.parts.GraphicalViewerKeyHandler;
 import org.eclipse.gef.ui.parts.TreeViewer;
+import org.eclipse.osgi.internal.resolver.ComputeNodeOrder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTargetEvent;
@@ -725,6 +726,16 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   public void removeLayer(Layer layer) {
     getEditDomain().getCommandStack().execute(new LayerRemoveCommand(layer, getModel().getDiagram()));
   }
+  
+  @Override
+  public void removeAll() {
+    CompoundCommand cc = new CompoundCommand();
+    for (Layer l : getModel().getDiagram().getLayers()) {
+      LayerRemoveCommand lrc = new LayerRemoveCommand(l, getModel().getDiagram());
+      cc.add(lrc);
+    }
+    getEditDomain().getCommandStack().execute(cc);
+  }
 
   /*
    * (non-Javadoc)
@@ -857,4 +868,6 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_VISIBLE, gridState);
 
   }
+
+
 }
