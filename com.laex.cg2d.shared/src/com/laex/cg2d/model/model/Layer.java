@@ -18,6 +18,8 @@ import java.util.List;
  */
 public class Layer extends ModelElement implements Comparable<Layer> {
 
+  public static final String LAYER_NAME_CHANGED = "LayerNameChanged";
+
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 5186818065007054067L;
 
@@ -103,7 +105,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
   public List<Shape> getChildren() {
     return children;
   }
-  
+
   public void setChildren(List<Shape> children) {
     this.children = children;
   }
@@ -191,6 +193,8 @@ public class Layer extends ModelElement implements Comparable<Layer> {
    */
   public void setName(String name) {
     this.name = name;
+    
+    firePropertyChange(LAYER_NAME_CHANGED, null, name);
   }
 
   /*
