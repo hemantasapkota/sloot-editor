@@ -32,6 +32,13 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
     }
   }
 
+  public void deactivate() {
+    if (isActive()) {
+      super.deactivate();
+      ((ModelElement) getModel()).removePropertyChangeListener(this);
+    }
+  }
+
   @Override
   protected List getModelChildren() {
     return (List) getCastedModel().getLayers();
@@ -54,32 +61,40 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
     } else if (ShapesDiagram.CHILD_REMOVED_PROP.equals(prop) || ShapesDiagram.LAYER_REMOVED.equals(prop)) {
       // remove a child from this edit part
       EditPart ep = getEditPartForChild(evt.getNewValue());
-      removeChild(ep);
+      if (ep != null)
+        removeChild(ep);
     } else {
       refreshVisuals();
     }
-    
+
     refreshVisuals();
   }
 
   @Override
   protected void addChildVisual(EditPart childEditPart, int index) {
-    //Oveeride from abstract class.
+    // Oveeride from abstract class.
     Widget widget = getWidget();
-    TreeItem item;
+    TreeItem item = null;
 
-    if (widget instanceof Tree)
-      item = new TreeItem((Tree) widget, 0, index);
-    else
-      item = new TreeItem((TreeItem) widget, 0, index);
+    if (childEditPart.getModel() instanceof Layer) {
+      Tree t = (Tree) widget;
+      int trueIndex = index;
 
-    //If it is shape model, then we put it inside its layer
+      if (trueIndex >= t.getItemCount()) {
+        trueIndex = (t.getItemCount() == 0) ? 0 : t.getItemCount() - 1;
+
+      }
+
+      item = new TreeItem(t, 0, trueIndex);
+    }
+
+    // If it is shape model, then we put it inside its layer
     if (childEditPart.getModel() instanceof Shape) {
       Shape shpM = (Shape) childEditPart.getModel();
       Layer layer = shpM.getParentLayer();
       LayerTreeEP ltep = (LayerTreeEP) getEditPartForChild(layer);
 
-      int trueIndex = ltep.getChildren().size() - 1;
+      int trueIndex = (ltep.getChildren().size() == 0) ? 0 : ltep.getChildren().size() - 1;
       item = new TreeItem((TreeItem) ltep.getWidget(), 0, (trueIndex <= 0) ? 0 : trueIndex);
     }
 
