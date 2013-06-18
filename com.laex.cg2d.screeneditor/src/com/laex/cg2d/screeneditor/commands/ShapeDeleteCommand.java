@@ -168,9 +168,15 @@ public class ShapeDeleteCommand extends Command {
    */
   public void undo() {
     // add the child and reconnect its connections
+
+    /*
+     * First add the layers.
+     * When we add the shape, the shape tree edit part requires a layer to add the child to.
+     */
+    parentLayer.add(child);
+    child.setParentLayer(parentLayer);
+    
     if (parent.addChild(child)) {
-      parentLayer.add(child);
-      child.setParentLayer(parentLayer);
       addConnections(sourceConnections);
       addConnections(targetConnections);
     }
