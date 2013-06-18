@@ -57,6 +57,11 @@ public interface ILayerManager {
   void removeLayer(Layer layer);
 
   /**
+   * Removes the all.
+   */
+  void removeAll();
+
+  /**
    * Change layer properties.
    * 
    * @param changedLayer
