@@ -15,7 +15,6 @@ import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
 import com.laex.cg2d.model.adapter.ScreenModelAdapter;
 import com.laex.cg2d.model.model.Entity;
-import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.ModelCopier;
 import com.laex.cg2d.model.model.Shape;
 
@@ -24,16 +23,12 @@ import com.laex.cg2d.model.model.Shape;
  */
 public class ShapeCopier implements ModelCopier {
 
-  /** The game model. */
-  private GameModel gameModel;
-
   /**
    * Instantiates a new shape copier.
    *
    * @param gameModel the game model
    */
-  public ShapeCopier(GameModel gameModel) {
-    this.gameModel = gameModel;
+  public ShapeCopier() {
   }
 
   /* (non-Javadoc)
@@ -55,6 +50,7 @@ public class ShapeCopier implements ModelCopier {
     CGShape cgModelPrototype = CGScreenModelAdapter.asCGShape(model);
     CGShape cgModelToCopy = CGShape.newBuilder(cgModelPrototype).build();
 
+    //args[0] should be the layer to copy this shape into
     Shape finalModelToCopy = ScreenModelAdapter.asShape(cgModelToCopy, model.getParentLayer());
 
     if (finalModelToCopy.getEditorShapeType().isEntity()) {
