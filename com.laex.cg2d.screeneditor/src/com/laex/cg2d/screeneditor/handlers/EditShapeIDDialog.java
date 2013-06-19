@@ -266,28 +266,32 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
       IDCreationStrategy ics = IDCreationStrategyFactory.getIDCreator(ScreenEditorUtil.getScreenModel());
 
-      private void validate() {
+      private boolean validate(String idToCheck) {
         
-        for (InternalShapeId isi : shapeIdList) {
+        //Make a copy of list to check, otherwise we will perpetually be validating false
+        for (InternalShapeId isi: shapeIdList) {
           
-          if (ics.isIdUsed(isi.shape.getEditorShapeType(), isi.newId)) {
+          boolean idUsed = ics.isIdUsed(isi.shape.getEditorShapeType(), isi.newId);
+          
+          if (idUsed) {
             setErrorMessage("ID already exists");
             getButton(OK).setEnabled(false);
-            return;
+            return false;
           }
           
         }
 
         setErrorMessage(null);
         getButton(OK).setEnabled(true);
+        return true;
       }
 
       @Override
       protected void setValue(Object element, Object value) {
         ((InternalShapeId) element).newId = value.toString();
         tableViewer.refresh();
-
-        validate();
+        
+        validate(value.toString());
       }
 
       @Override
@@ -309,7 +313,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
     tableViewer.setLabelProvider(new TableLabelProvider());
     tableViewer.setContentProvider(new ContentProvider());
-    tableViewer.setComparator(new Comparator());
+//    tableViewer.setComparator(new Comparator());
 
     tableViewer.setInput(shapeIdList);
     tableViewer.refresh();
