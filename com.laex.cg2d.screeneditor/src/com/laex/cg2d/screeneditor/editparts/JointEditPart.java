@@ -30,7 +30,7 @@ import com.laex.cg2d.screeneditor.commands.JointDeleteCommand;
 /**
  * The Class JointEditPart.
  */
-class JointEditPart extends AbstractConnectionEditPart implements PropertyChangeListener {
+public class JointEditPart extends AbstractConnectionEditPart implements PropertyChangeListener {
 
   /*
    * (non-Javadoc)
