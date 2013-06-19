@@ -24,9 +24,9 @@ public class ModelCopierFactory {
    * @param model the model
    * @return the model copier
    */
-  public static ModelCopier getModelCopier(Class<?> modelType, GameModel model) {
+  public static ModelCopier getModelCopier(Class<?> modelType) {
     if (modelType == Shape.class) {
-      return new ShapeCopier(model);
+      return new ShapeCopier();
     }
     
     return null;
