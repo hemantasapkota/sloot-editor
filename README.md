@@ -6,7 +6,7 @@ Box2D Editor Eclipse RCP based
 Build/Install/Run
 ====================
 
-See wiki page ![How to Build](https://github.com/hemantasapkota/Laexian_Box2D_Editor/wiki/How-to-Build)
+See wiki page [How to Build](https://github.com/hemantasapkota/Laexian_Box2D_Editor/wiki/How-to-Build)
 
 Screenshots
 ===========
