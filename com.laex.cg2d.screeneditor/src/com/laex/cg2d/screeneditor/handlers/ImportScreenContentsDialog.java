@@ -15,11 +15,14 @@ import java.io.IOException;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -40,19 +43,20 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IPersistableElement;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.laex.cg2d.model.ILayerManager;
-import com.laex.cg2d.model.ScreenModel.CGBodyDef;
-import com.laex.cg2d.model.ScreenModel.CGFixtureDef;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
-import com.laex.cg2d.model.ScreenModel.CGShape;
-import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
 import com.laex.cg2d.model.adapter.ScreenModelAdapter;
-import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.model.IDCreationStrategy;
+import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.model.model.ModelCopier;
+import com.laex.cg2d.model.model.ModelCopierFactory;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.util.EntitiesUtil;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
@@ -93,13 +97,13 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
 
   /** The txt suffix. */
   private Text txtSuffix;
-  
+
   /** The lbl columns. */
   private Label lblColumns;
-  
+
   /** The txt columns repeat. */
   private Spinner txtColumnsRepeat;
-  
+
   /** The label. */
   private Label label;
 
@@ -185,6 +189,12 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
     txtNewLayerName.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(ModifyEvent e) {
+        if (!StringUtils.isEmpty(txtNewLayerName.getText())) {
+          btnImportInNew.setSelection(true);
+        } else {
+          btnImportInNew.setSelection(false);
+        }
+
         validateAll();
       }
     });
@@ -208,8 +218,9 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
 
   /**
    * Load screens.
-   *
-   * @throws CoreException the core exception
+   * 
+   * @throws CoreException
+   *           the core exception
    */
   private void loadScreens() throws CoreException {
     resList = ScreenEditorUtil.getListOfScreensInCurrentProject(ScreenEditorUtil.getActiveEditorInput());
@@ -331,6 +342,10 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
    */
   @Override
   protected void okPressed() {
+    // Before we proceed, we ask the user to save the file
+    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor()
+        .doSave(new NullProgressMonitor());
+
     String resFile = list.getSelection()[0];
 
     for (IResource res : resList) {
@@ -382,21 +397,31 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
             }
           }
 
+          /*
+           * We need an id creator for model we're currently working on. not of
+           * the file were trying to import from.
+           */
+          IDCreationStrategy idCreator = IDCreationStrategyFactory.getIDCreator(ScreenEditorUtil.getScreenModel());
+          
+          int index = 0;
+
           for (int i = 0; i < txtColumnsRepeat.getSelection(); i++) {
 
             for (Shape shape : gameModel.getDiagram().getChildren()) {
               // add suffix to id
               // TODO: Create a shape cloning mechanism
-              CGBodyDef cgBodyDef = CGScreenModelAdapter.makeCGBodyDef(shape.getBodyDef()).build();
-              CGFixtureDef cgFixDef = CGScreenModelAdapter.makeCGFixtureDef(shape.getFixtureDef()).build();
-              CGShape newShape = CGScreenModelAdapter.makeShape(cgFixDef, cgBodyDef, shape).build();
+              ModelCopier shapeCopier = ModelCopierFactory.getModelCopier(Shape.class);
 
-              Shape newShapeClone = ScreenModelAdapter.asShape(newShape, layer);
-              newShapeClone.setId(new StringBuffer(shape.getId()).append(txtSuffix.getText()).toString());
+              Shape newShape = (Shape) shapeCopier.copy(shape);
+              newShape.setParentLayer(layer);
 
-              if (shape.getEditorShapeType().isEntity()) {
-                Entity e = Entity.createFromFile(newShape.getEntityRefFile().getResourceFile());
-                newShapeClone.setEntity(e);
+              // make sure our items are really unique
+              StringBuffer sb = new StringBuffer(shape.getId()).append(txtSuffix.getText()).append(index++);
+              boolean isIdUsed = idCreator.isIdUsed(newShape.getEditorShapeType(), sb.toString());
+              if (isIdUsed) {
+                newShape.setId(idCreator.newId(newShape.getEditorShapeType()));
+              } else {
+                newShape.setId(sb.toString());
               }
 
               Rectangle r = new Rectangle(shape.getBounds()); // make sure to
@@ -411,9 +436,9 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
                 r.x += i * thisScreenModel.getScreenPrefs().getCardPrefs().getCardWidth();
               }
 
-              newShapeClone.setBounds(r);
+              newShape.setBounds(r);
 
-              ShapeCreateCommand scc = new ShapeCreateCommand(newShapeClone, thisScreenModel.getDiagram());
+              ShapeCreateCommand scc = new ShapeCreateCommand(newShape, thisScreenModel.getDiagram());
               cc.add(scc);
             }
 
