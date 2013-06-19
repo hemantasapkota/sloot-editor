@@ -514,17 +514,7 @@ public class Shape extends ModelElement {
    */
   public void setPropertyValue(Object propertyId, Object value) {
     if (isShapeIdProp(propertyId)) {
-
-      String newShapeId = String.valueOf(value);
-      if (!newShapeId.trim().isEmpty()) {
-        if (StringUtils.isAlphanumeric(newShapeId)) {
-          setId(newShapeId);
-        } else {
-          Activator.getDefault().getLog()
-              .log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Attempt to set non-alphanumeric id to shape"));
-        }
-      }
-
+      //we dont set shape id here.
     } else if (isBodyDefProp(propertyId)) {
       setBodyDef((BodyDef) value);
     } else if (isFixtureDefProp(propertyId)) {
