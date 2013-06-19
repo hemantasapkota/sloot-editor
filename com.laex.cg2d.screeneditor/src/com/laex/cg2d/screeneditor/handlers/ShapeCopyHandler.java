@@ -47,7 +47,7 @@ public class ShapeCopyHandler extends AbstractHandler {
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
     GameModel gameModel = ScreenEditorUtil.getScreenModel();
     
-    copier = ModelCopierFactory.getModelCopier(Shape.class, gameModel);
+    copier = ModelCopierFactory.getModelCopier(Shape.class);
     
     try {
       doCopy(gv, gameModel);
