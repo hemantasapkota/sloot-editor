@@ -10,6 +10,8 @@
  */
 package com.laex.cg2d.model.model.impl;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.IDCreationStrategy;
@@ -87,7 +89,7 @@ public class IDCreationStrategyImpl implements IDCreationStrategy {
     boolean used = false;
     for (Shape shp : model.getDiagram().getChildren()) {
       if (shp.getEditorShapeType() == type) {
-        if (shp.getId().endsWith(id)) {
+        if (shp.getId().endsWith(id) && !StringUtils.isEmpty(id)) {
           used = true;
           break;
         }
