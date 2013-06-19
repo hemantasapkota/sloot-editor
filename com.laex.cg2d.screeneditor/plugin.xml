@@ -289,7 +289,7 @@
             commandId="com.laex.cg2d.screeneditor.EditShapeIDCommand"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="A">
+            sequence="M1+A">
       </key>
       <key
             commandId="org.eclipse.ui.edit.copy"
@@ -503,20 +503,17 @@
          <with
                variable="selection">
             <iterate>
-               <instanceof
-                     value="com.laex.cg2d.screeneditor.editparts.ShapeEditPart">
-               </instanceof>
-            </iterate>
-         </with>
-      </definition>
-      <definition
-            id="com.laex.cg2d.screeneditor.jointEditPartSelected">
-         <with
-               variable="selection">
-            <iterate>
-               <instanceof
-                     value="com.laex.cg2d.screeneditor.editparts.JointEditPart">
-               </instanceof>
+               <or>
+                  <instanceof
+                        value="com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEP">
+                  </instanceof>
+                  <instanceof
+                        value="com.laex.cg2d.screeneditor.editparts.ShapeEditPart">
+                  </instanceof>
+                  <instanceof
+                        value="com.laex.cg2d.screeneditor.editparts.JointEditPart">
+                  </instanceof>
+               </or>
             </iterate>
          </with>
       </definition>
