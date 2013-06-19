@@ -6,11 +6,7 @@ Box2D Editor Eclipse RCP based
 Build/Install/Run
 ====================
 
-Clone the repository.
-Set up, Eclipse.
-In Eclipse, Right click com.laex.cg2d.core project, Run As Eclipse Application.
-
-Plenty of bugs.
+See wiki page ![How to Build](https://github.com/hemantasapkota/Laexian_Box2D_Editor/wiki/How-to-Build)
 
 Screenshots
 ===========
