@@ -120,10 +120,6 @@
             class="com.laex.cg2d.core.splashHandlers.ExtensibleSplashHandler"
             id="com.laex.cg2d.core.splashHandlers.extensible">
       </splashHandler>
-      <splashHandlerProductBinding
-            productId="com.laex.cg2d.core.product"
-            splashId="com.laex.cg2d.core.splashHandlers.extensible">
-      </splashHandlerProductBinding>
    </extension>
    <extension
          point="com.laex.cg2d.core.splashExtension">
