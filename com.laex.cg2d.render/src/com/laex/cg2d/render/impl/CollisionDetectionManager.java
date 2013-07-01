@@ -10,67 +10,81 @@
  */
 package com.laex.cg2d.render.impl;
 
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.model.ScreenModel.CGScreenModel;
-import com.laex.cg2d.render.AbstractScreenScaffold;
-import com.laex.cg2d.render.EntityQueryable;
+import com.laex.cg2d.render.ScreenScaffold;
 
 /**
  * The Class CollisionDetectionManager.
  */
-public class CollisionDetectionManager extends AbstractScreenScaffold {
+public class CollisionDetectionManager implements ScreenScaffold {
 
   /**
-   * The listener interface for receiving entityContact events.
-   * The class that is interested in processing a entityContact
-   * event implements this interface, and the object created
-   * with that class is registered with a component using the
-   * component's <code>addEntityContactListener<code> method. When
+   * The listener interface for receiving entityContact events. The class that
+   * is interested in processing a entityContact event implements this
+   * interface, and the object created with that class is registered with a
+   * component using the component's
+   * <code>addEntityContactListener<code> method. When
    * the entityContact event occurs, that object's appropriate
    * method is invoked.
-   *
+   * 
    * @see EntityContactEvent
    */
   private class EntityContactListener implements ContactListener {
 
-    /* (non-Javadoc)
-     * @see com.badlogic.gdx.physics.box2d.ContactListener#beginContact(com.badlogic.gdx.physics.box2d.Contact)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.badlogic.gdx.physics.box2d.ContactListener#beginContact(com.badlogic
+     * .gdx.physics.box2d.Contact)
      */
     @Override
     public void beginContact(Contact contact) {
-      if (contact.isTouching()) { 
+      if (contact.isTouching()) {
         Body bodyA = contact.getFixtureA().getBody();
         Body bodyB = contact.getFixtureB().getBody();
         
-        String shapeIdA = queryMgr.getEntityIdByBody(bodyA);
-        String shapeIdB = queryMgr.getEntityIdByBody(bodyB);
-        
-        scriptMgr.collisionCallback(shapeIdA, shapeIdB, contact.getFixtureA().getBody(), contact.getFixtureB().getBody());
+        String shapeIdA = manipulator.getEntityId(bodyA);
+        String shapeIdB = manipulator.getEntityId(bodyB);
+       
+        scriptMgr.collisionCallback(shapeIdA, shapeIdB, contact.getFixtureA().getBody(), contact.getFixtureB()
+            .getBody(), contact.getFixtureA(), contact.getFixtureB());
       }
     }
 
-    /* (non-Javadoc)
-     * @see com.badlogic.gdx.physics.box2d.ContactListener#endContact(com.badlogic.gdx.physics.box2d.Contact)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.badlogic.gdx.physics.box2d.ContactListener#endContact(com.badlogic
+     * .gdx.physics.box2d.Contact)
      */
     @Override
     public void endContact(Contact contact) {
     }
 
-    /* (non-Javadoc)
-     * @see com.badlogic.gdx.physics.box2d.ContactListener#preSolve(com.badlogic.gdx.physics.box2d.Contact, com.badlogic.gdx.physics.box2d.Manifold)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.badlogic.gdx.physics.box2d.ContactListener#preSolve(com.badlogic.
+     * gdx.physics.box2d.Contact, com.badlogic.gdx.physics.box2d.Manifold)
      */
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
     }
 
-    /* (non-Javadoc)
-     * @see com.badlogic.gdx.physics.box2d.ContactListener#postSolve(com.badlogic.gdx.physics.box2d.Contact, com.badlogic.gdx.physics.box2d.ContactImpulse)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.badlogic.gdx.physics.box2d.ContactListener#postSolve(com.badlogic
+     * .gdx.physics.box2d.Contact,
+     * com.badlogic.gdx.physics.box2d.ContactImpulse)
      */
     @Override
     public void postSolve(Contact contact, ContactImpulse impulse) {
@@ -80,23 +94,19 @@ public class CollisionDetectionManager extends AbstractScreenScaffold {
 
   /** The script mgr. */
   private LuaScriptManager scriptMgr;
-  
-  /** The query mgr. */
-  private EntityQueryable queryMgr;
+
+  /** The manipulator. */
+  private ScreenManagerImpl manipulator;
 
   /**
    * Instantiates a new collision detection manager.
    *
+   * @param manipulator the manipulator
    * @param scriptMgr the script mgr
-   * @param queryMgr the query mgr
-   * @param model the model
-   * @param world the world
-   * @param cam the cam
    */
-  public CollisionDetectionManager(LuaScriptManager scriptMgr, EntityQueryable queryMgr, CGScreenModel model, World world, Camera cam) {
-    super(model, world, cam);
+  public CollisionDetectionManager(ScreenManagerImpl manipulator, LuaScriptManager scriptMgr) {
+    this.manipulator = manipulator;
     this.scriptMgr = scriptMgr;
-    this.queryMgr = queryMgr;
   }
 
   /*
@@ -106,7 +116,7 @@ public class CollisionDetectionManager extends AbstractScreenScaffold {
    */
   @Override
   public void create() {
-    world().setContactListener(new EntityContactListener());
+    manipulator.world().setContactListener(new EntityContactListener());
   }
 
   /*

@@ -10,9 +10,10 @@ queryMgr = nil
 
 destroyBodyList = {}
 
-function init(_screenModel, _queryMgr, world, cam)
+
+function init(_screenModel, _screenMgr, world, cam)
 	screenModel = _screenModel
-	queryMgr = _queryMgr
+	screenMgr = _screenMgr
 	
 	ptm = _screenModel:getScreenPrefs():getWorldPrefs():getPtmRatio()
 	cardNoX = _screenModel:getScreenPrefs():getCardPrefs():getCardNoX()
@@ -37,32 +38,25 @@ function update(world, cam, body, id)
 
 	end
 
-	--destroy any bodies to be destroyed
-	if id == destroyBodyList[0] then
+	if destroyBodyList[id] then
 		world:destroyBody(body)
+
+		destroyBodyList[id] = false
 	end
+
+
 end
 
-function keyPressed(world, cam, key)
-	local body = queryMgr:getEntityById("runner")
+function handleRunner(world, cam, key)
+	local body = screenMgr:getEntityById("runner")
 
     if key == "LEFT" then   
-    	
-    	if onAir then
-    		return
-    	end
-
 		if body:getLinearVelocity().x <= maxXVelocity then
 			body:applyLinearImpulse(-1, 0, 0.5, 0)
     	end
     end
 
 	if key == "RIGHT" then
-
-		if onAir then
-			return	
-		end
-
 		if body:getLinearVelocity().x <= maxXVelocity then
 			body:applyLinearImpulse(0.8, 0, 0, 0)
 		end
@@ -70,29 +64,27 @@ function keyPressed(world, cam, key)
 
 	if key == "SPACE" then
 		if not onAir then
-			local velo = luajava.newInstance("com.badlogic.gdx.math.Vector2")
-			velo.y = 9
-			velo.x = body:getLinearVelocity().x
-		
-			body:setLinearVelocity(velo)
+			body:setLinearVelocity(screenMgr:newVector(body:getLinearVelocity().x, 9))
 			onAir = true
 		end
 	end
 
 end
 
-function collisionCallback(idA, idB, bodyA, bodyB, world, cam) 
+function keyPressed(world, cam, key)
+	handleRunner(world, cam, key)
+end
 
-	if string.match(idA, "edge") and idB == "runner" then
+function collisionCallback(idA, idB, bodyA, bodyB, fixA, fixB, world, cam) 
+    
+    local runnerAndEdge = string.match(idA, "edge") and idB == "runner";
+
+	if  runnerAndEdge  then
 		onAir = false
-	end
+    end
 
 	if idA == "runner" and string.match(idB, "coin") then
 		destroyBodyList[0] = idB
-	end
-
-	if idA == "runner" and string.match(idB, "jumpBase") then
-        bodyA:applyLinearImpulse(0, 20, 0, 0)
 	end
 
 end

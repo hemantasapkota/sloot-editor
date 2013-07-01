@@ -89,14 +89,14 @@ public final class ScreenEditorUtil {
 
   /**
    * Gets the graphical viewer.
-   *
+   * 
    * @return the graphical viewer
    */
   public static GraphicalViewer getGraphicalViewer() {
     IEditorPart ed = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
     if (ed == null)
       return null;
-    
+
     return (GraphicalViewer) ed.getAdapter(GraphicalViewer.class);
   }
 
@@ -233,23 +233,18 @@ public final class ScreenEditorUtil {
     };
   }
 
-  /**
-   * Gets the image descriptor.
-   *
-   * @param i the i
-   * @param width the width
-   * @param height the height
-   * @return the image descriptor
-   */
-  public static ImageDescriptor getImageDescriptor(final Image i, final int width, final int height) {
+  public static ImageDescriptor getImageDescriptor(final Image i, float scaleFactor) {
+    final int w = (int) (i.getBounds().width * scaleFactor);
+    final int h = (int) (i.getBounds().height * scaleFactor);
+
     return new ImageDescriptor() {
       @Override
       public ImageData getImageData() {
-        if (i.getBounds().width >= width && i.getBounds().height >= height) {
-          return i.getImageData().scaledTo(width, height);
-        }
 
-        return i.getImageData();
+        if (w == 0 || h == 0) 
+          return i.getImageData();
+
+        return i.getImageData().scaledTo(w, h);
       }
     };
 

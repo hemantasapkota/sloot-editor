@@ -11,7 +11,6 @@
 package com.laex.cg2d.render.impl;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -19,12 +18,10 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.QueryCallback;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
 import com.badlogic.gdx.physics.box2d.joints.MouseJointDef;
-import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGShape;
-import com.laex.cg2d.render.AbstractScreenScaffold;
+import com.laex.cg2d.render.ScreenScaffold;
 
 /**
  * MouseJointManager. Most of the code is from the LibGDX Box2d Tests. One
@@ -38,7 +35,7 @@ import com.laex.cg2d.render.AbstractScreenScaffold;
  * @author hemantasapkota
  * 
  */
-public class MouseJointManager extends AbstractScreenScaffold implements InputProcessor {
+public class MouseJointManager implements ScreenScaffold, InputProcessor {
 
   /** The mouse joint installed. */
   private boolean mouseJointInstalled;
@@ -58,6 +55,9 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
   /** The target. */
   Vector2 target = new Vector2();
 
+  /** The manipulator. */
+  private ScreenManagerImpl manipulator;
+
   /** The callback. */
   QueryCallback callback = new QueryCallback() {
     @Override
@@ -72,20 +72,16 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
     }
   };
 
+
   /**
    * Instantiates a new mouse joint manager.
-   * 
-   * @param model
-   *          the model
-   * @param world
-   *          the world
-   * @param cam
-   *          the cam
+   *
+   * @param manipulator the manipulator
    */
-  public MouseJointManager(CGScreenModel model, World world, Camera cam) {
-    super(model, world, cam);
+  public MouseJointManager(ScreenManagerImpl manipulator) {
+    this.manipulator = manipulator;
 
-    this.mouseJointInstalled = model.getScreenPrefs().getDebugDrawPrefs().getInstallMouseJoint();
+    this.mouseJointInstalled = manipulator.model().getScreenPrefs().getDebugDrawPrefs().getInstallMouseJoint();
   }
 
   /*
@@ -96,7 +92,7 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
   @Override
   public void create() {
     BodyDef bodyDef = new BodyDef();
-    groundBody = world().createBody(bodyDef);
+    groundBody = manipulator.world().createBody(bodyDef);
     groundBody.setUserData(CGShape.newBuilder().setId("groundBody").build());
   }
 
@@ -118,7 +114,7 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
   public void dispose() {
     hitBody = null;
     mouseJoint = null;
-    world().destroyBody(groundBody);
+    manipulator.world().destroyBody(groundBody);
     groundBody = null;
     callback = null;
   }
@@ -165,11 +161,11 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
     }
 
     // translate the mouse coordinates to world coordinates
-    camera().unproject(testPoint.set(x, y, 0));
+    manipulator.camera().unproject(testPoint.set(x, y, 0));
     // ask the world which bodies are within the given
     // bounding box around the mouse pointer
     hitBody = null;
-    world().QueryAABB(callback, testPoint.x - 0.0001f, testPoint.y - 0.0001f, testPoint.x + 0.0001f,
+    manipulator.world().QueryAABB(callback, testPoint.x - 0.0001f, testPoint.y - 0.0001f, testPoint.x + 0.0001f,
         testPoint.y + 0.0001f);
 
     if (hitBody == groundBody) {
@@ -191,7 +187,7 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
       def.target.set(testPoint.x, testPoint.y);
       def.maxForce = 1000.0f * hitBody.getMass();
 
-      mouseJoint = (MouseJoint) world().createJoint(def);
+      mouseJoint = (MouseJoint) manipulator.world().createJoint(def);
       hitBody.setAwake(true);
     }
 
@@ -211,7 +207,7 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
 
     // if a mouse joint exists we simply destroy it
     if (mouseJoint != null) {
-      world().destroyJoint(mouseJoint);
+      manipulator.world().destroyJoint(mouseJoint);
       mouseJoint = null;
     }
     return false;
@@ -232,7 +228,7 @@ public class MouseJointManager extends AbstractScreenScaffold implements InputPr
     // the target of the joint based on the new
     // mouse coordinates
     if (mouseJoint != null) {
-      camera().unproject(testPoint.set(x, y, 0));
+      manipulator.camera().unproject(testPoint.set(x, y, 0));
       mouseJoint.setTarget(target.set(testPoint.x, testPoint.y));
     }
     return false;

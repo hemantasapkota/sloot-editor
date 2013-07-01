@@ -24,14 +24,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.google.common.base.Throwables;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
-import com.laex.cg2d.render.impl.BackgroundManager;
 import com.laex.cg2d.render.impl.CollisionDetectionManager;
-import com.laex.cg2d.render.impl.EntityManager;
-import com.laex.cg2d.render.impl.EntityQueryManager;
 import com.laex.cg2d.render.impl.FPSCalculator;
 import com.laex.cg2d.render.impl.LuaScriptManager;
 import com.laex.cg2d.render.impl.MouseJointManager;
-import com.laex.cg2d.render.impl.ShapeManager;
+import com.laex.cg2d.render.impl.ScreenManagerImpl;
 import com.laex.cg2d.render.util.AppExceptionUtil;
 
 /**
@@ -43,7 +40,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   private SpriteBatch batch;
 
   /** The cam. */
-  private OrthographicCamera cam;
+  private OrthographicCamera camera;
 
   /** The model. */
   private CGScreenModel model;
@@ -54,20 +51,11 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   /** The state time. */
   float stateTime;
 
-  /** The shape manager. */
-  private ShapeManager shapeManager;
-
-  /** The bg manager. */
-  private BackgroundManager bgManager;
-
-  /** The entity manager. */
-  private EntityManager entityManager;
+  /** The screen manager. */
+  private ScreenManagerImpl screenManager;
 
   /** The mouse joint manager. */
   private MouseJointManager mouseJointManager;
-
-  /** The entity query manager. */
-  private EntityQueryManager entityQueryManager;
 
   /** The collision detection mgr. */
   private CollisionDetectionManager collisionDetectionMgr;
@@ -145,27 +133,23 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
     int ptmRatio = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
 
-    cam = new OrthographicCamera(w / ptmRatio, h / ptmRatio);
-    cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
+    camera = new OrthographicCamera(w / ptmRatio, h / ptmRatio);
+    camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
 
-    entityQueryManager = new EntityQueryManager(world);
-
-    shapeManager = new ShapeManager(model, world, cam);
-    entityManager = new EntityManager(model, world, cam, batch);
-    bgManager = new BackgroundManager(model, world, cam, batch);
-    mouseJointManager = new MouseJointManager(model, world, cam);
-    luaScriptManager = new LuaScriptManager(model, entityQueryManager, world, cam, screenControllerFileLua);
-    collisionDetectionMgr = new CollisionDetectionManager(luaScriptManager, entityQueryManager, model, world, cam);
+    screenManager = new ScreenManagerImpl(model, world, camera, batch);
+    mouseJointManager = new MouseJointManager(screenManager);
+    luaScriptManager = new LuaScriptManager(screenManager, screenControllerFileLua);
+    collisionDetectionMgr = new CollisionDetectionManager(screenManager, luaScriptManager);
     fpsCalculator = new FPSCalculator();
 
     try {
+
+      screenManager.create();
       mouseJointManager.create();
-      shapeManager.create();
-      bgManager.create();
-      entityManager.create();
       luaScriptManager.create();
       collisionDetectionMgr.create();
       fpsCalculator.create();
+
     } catch (Throwable t) {
       AppExceptionUtil.handle(t);
     }
@@ -210,12 +194,11 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   @Override
   public void dispose() {
     mouseJointManager.dispose();
-    bgManager.dispose();
-    shapeManager.dispose();
-    entityManager.dispose();
     luaScriptManager.dispose();
     collisionDetectionMgr.dispose();
     fpsCalculator.dispose();
+
+    screenManager.dispose();
     batch.dispose();
     world.dispose();
   }
@@ -236,16 +219,15 @@ public abstract class MyGdxGame extends ApplicationAdapter {
 
     GL10 gl = Gdx.graphics.getGL10();
     stateTime += Gdx.graphics.getDeltaTime();
-    entityManager.updateStateTime(stateTime);
+
+    screenManager.updateStateTime(stateTime);
 
     world.step(1 / timeStep, velocityIterations, positionIterations);
     updateCamera(gl);
 
-    batch.setProjectionMatrix(cam.combined);
+    batch.setProjectionMatrix(camera.combined);
 
-    bgManager.render();
-    entityManager.render();
-    shapeManager.render();
+    screenManager.render();
     luaScriptManager.render();
     fpsCalculator.render();
   }
@@ -259,8 +241,8 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   private void updateCamera(GL10 gl) {
     gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-    cam.update();
-    cam.apply(gl);
+    camera.update();
+    camera.apply(gl);
   }
 
   /*

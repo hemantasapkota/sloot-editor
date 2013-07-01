@@ -114,7 +114,8 @@ public class EditShapeIDDialog extends TitleAreaDialog {
       case ENTITY_SHAPE:
         Rectangle r = shp.shape.getEntity().getDefaultFrame().getBounds();
         Image i = shp.shape.getEntity().getDefaultFrame();
-        return ScreenEditorUtil.getImageDescriptor(i, r.width / 2, (r.width / r.height) * (r.height / 2)).createImage();
+//        return ScreenEditorUtil.getImageDescriptor(i, r.width / 2, (r.width / r.height) * (r.height / 2)).createImage();
+        return ScreenEditorUtil.getImageDescriptor(i, 0.5f).createImage();
 
       case SIMPLE_SHAPE_BOX:
         return SharedImages.BOX.createImage();

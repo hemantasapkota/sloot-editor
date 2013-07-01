@@ -97,8 +97,9 @@ public final class ScreenEditorPaletteFactory {
 
     String name = EntitiesUtil.getInternalName(res.getName());
     final Image i = EntitiesUtil.getDefaultFrame(e);
-    float ratio = i.getBounds().width / i.getBounds().height;
-    ImageDescriptor id = ScreenEditorUtil.getImageDescriptor(i, i.getBounds().width / 2, (int)ratio * (i.getBounds().height/2));
+
+    ImageDescriptor id = ScreenEditorUtil.getImageDescriptor(i, 0.5f);
+
     e.setDefaultFrame(i);
     e.setInternalName(name);
 
@@ -154,13 +155,13 @@ public final class ScreenEditorPaletteFactory {
       public boolean visit(IResource re) throws CoreException {
 
         if (re.getName().endsWith(ICGCProject.ENTITIES_EXTENSION)) {
-          
+
           try {
             loadNewEntity(re);
           } catch (IOException e) {
             e.printStackTrace();
           }
-          
+
         }
 
         return true;

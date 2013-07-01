@@ -10,7 +10,7 @@
              contributorClass="com.laex.cg2d.screeneditor.contributions.ScreenEditorContributor"
              default="true"
              extensions="cgs"
-             icon="main.png"
+             icon="lb2dIcon.png"
              id="com.laex.cg2d.screeneditor.ScreenEditor"
              name="LB2D Screen Editor">
         </editor>
@@ -55,22 +55,18 @@
       <view
             allowMultiple="false"
             class="com.laex.cg2d.screeneditor.views.TexturesViewPart"
+            icon="lb2dIcon.png"
             id="com.laex.cg2d.screeneditor.TexturesView"
             name="Textures"
             restorable="true">
       </view>
        <view
-            allowMultiple="false"
-            class="com.laex.cg2d.screeneditor.views.LayersViewPart"
-            id="com.laex.cg2d.screeneditor.views.LayersViewPart"
-            name="Layers">
+             allowMultiple="false"
+             class="com.laex.cg2d.screeneditor.views.LayersViewPart"
+             icon="lb2dIcon.png"
+             id="com.laex.cg2d.screeneditor.views.LayersViewPart"
+             name="Layers">
       </view>     
-      <view
-            allowMultiple="false"
-            class="com.laex.cg2d.screeneditor.views.LayerOutlineViewPart"
-            id="com.laex.cg2d.screeneditor.views.LayerOutlineViewPart"
-            name="Layers2">
-      </view>          
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
@@ -95,7 +91,7 @@
             class="com.laex.cg2d.screeneditor.wizards.NewScreenWizard"
             finalPerspective="com.laex.cg2d.core.perspective"
             hasPages="true"
-            icon="main.png"
+            icon="lb2dIcon.png"
             id="com.laex.cg2d.screeneditor.wizards.NewScreenWizard"
             name="Screen"
             project="false">
@@ -105,7 +101,7 @@
             class="com.laex.cg2d.screeneditor.wizards.NewProjectWizard"
             finalPerspective="com.laex.cg2d.core.perspective"
             hasPages="true"
-            icon="main.png"
+            icon="lb2dIcon.png"
             id="com.laex.cg2d.screeneditor.wizards.NewCGProjectWizard"
             name="LB2D Project"
             project="true">
@@ -115,7 +111,7 @@
             class="com.laex.cg2d.screeneditor.wizards.NewScriptWizard"
             finalPerspective="com.laex.cg2d.core.perspective"
             hasPages="true"
-            icon="main.png"
+            icon="lb2dIcon.png"
             id="com.laex.cg2d.screeneditor.wizard1"
             name="Script"
             project="false">

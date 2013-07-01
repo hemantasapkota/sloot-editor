@@ -11,6 +11,7 @@
 package com.laex.cg2d.render;
 
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 
 /**
@@ -29,9 +30,9 @@ public interface ScreenControllerScript {
    * Execute init.
    *
    * @param screenModel the screen model
-   * @param queryMgr the query mgr
+   * @param screenMgr the screen mgr
    */
-  void executeInit(CGScreenModel screenModel, EntityQueryable queryMgr);
+  void executeInit(CGScreenModel screenModel, ScreenManager screenMgr);
   
   /**
    * Execute init body.
@@ -50,6 +51,7 @@ public interface ScreenControllerScript {
    */
   void executeUpdate(Body body, String bodyId);
   
+  
   /**
    * Execute key pressed.
    *
@@ -64,7 +66,9 @@ public interface ScreenControllerScript {
    * @param idB the id b
    * @param bodyA the body a
    * @param bodyB the body b
+   * @param fixA the fix a
+   * @param fixB the fix b
    */
-  void collisionCallback(String idA, String idB, Body bodyA, Body bodyB);
+  void collisionCallback(String idA, String idB, Body bodyA, Body bodyB, Fixture fixA, Fixture fixB);
 
 }

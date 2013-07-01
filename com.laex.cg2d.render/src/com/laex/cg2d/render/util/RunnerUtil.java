@@ -39,6 +39,15 @@ public class RunnerUtil {
     return null;
   }
 
+  public static CGEntityAnimation getAnimationFrom(CGEntity e, String animationName) {
+    for (CGEntityAnimation ea : e.getAnimationsList()) {
+      if (ea.getAnimationName().equals(animationName)) {
+        return ea;
+      }
+    }
+    return null;
+  }
+
   /**
    * To int.
    * 

@@ -16,21 +16,19 @@ import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 import org.luaj.vm2.lib.jse.JsePlatform;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGShape;
-import com.laex.cg2d.render.AbstractScreenScaffold;
 import com.laex.cg2d.render.BodyVisitor;
-import com.laex.cg2d.render.EntityQueryable;
-import com.laex.cg2d.render.MyGdxGameDesktop;
 import com.laex.cg2d.render.ScreenControllerScript;
+import com.laex.cg2d.render.ScreenManager;
+import com.laex.cg2d.render.ScreenScaffold;
 
 /**
  * The Class LuaScriptManager.
  */
-public class LuaScriptManager extends AbstractScreenScaffold implements ScreenControllerScript {
+public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript {
 
   /** The globals. */
   private Globals globals = JsePlatform.standardGlobals();
@@ -41,41 +39,19 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
   /** The script file exists. */
   private boolean scriptFileExists = false;
 
-  /** The query mgr. */
-  private EntityQueryable queryMgr;
+  /** The manipulator. */
+  private ScreenManagerImpl manipulator;
+
 
   /**
    * Instantiates a new lua script manager.
-   * 
-   * @param model
-   *          the model
-   * @param world
-   *          the world
-   * @param cam
-   *          the cam
+   *
+   * @param manipulator the manipulator
+   * @param scriptFileName the script file name
    */
-  public LuaScriptManager(CGScreenModel model, World world, Camera cam) {
-    super(model, world, cam);
-  }
+  public LuaScriptManager(ScreenManagerImpl manipulator, String scriptFileName) {
 
-  /**
-   * Instantiates a new lua script manager.
-   * 
-   * @param model
-   *          the model
-   * @param queryMgr
-   *          the query mgr
-   * @param world
-   *          the world
-   * @param cam
-   *          the cam
-   * @param scriptFileName
-   *          the script file name
-   */
-  public LuaScriptManager(CGScreenModel model, EntityQueryable queryMgr, World world, Camera cam, String scriptFileName) {
-    super(model, world, cam);
-
-    this.queryMgr = queryMgr;
+    this.manipulator = manipulator;
 
     if (scriptFileName == null || !Gdx.files.absolute(scriptFileName).exists()) {
       scriptFileExists = false;
@@ -94,9 +70,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
       chunk.call();
 
     } catch (Throwable t) {
-      
-      handleException(t);
-
+      manipulator.handleException(t);
     }
 
   }
@@ -112,9 +86,9 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
     if (!canExecute())
       return;
 
-    executeInit(model(), queryMgr);
+    executeInit(manipulator.model(), manipulator);
 
-    super.acceptBodyVisitor(new BodyVisitor() {
+    manipulator.acceptBodyVisitor(new BodyVisitor() {
 
       @Override
       public void visit(Body b, CGShape shape) {
@@ -135,7 +109,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
     if (!canExecute())
       return;
 
-    super.acceptBodyVisitor(new BodyVisitor() {
+    manipulator.acceptBodyVisitor(new BodyVisitor() {
 
       @Override
       public void visit(Body b, CGShape shape) {
@@ -161,7 +135,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
    * @see com.laex.cg2d.render.IGameScript#executeInit()
    */
   @Override
-  public void executeInit(CGScreenModel screenModel, EntityQueryable entityMgr) {
+  public void executeInit(CGScreenModel screenModel, ScreenManager screenMgr) {
     if (!canExecute()) {
       return;
     }
@@ -172,13 +146,13 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
           new LuaValue[]
             {
                 CoerceJavaToLua.coerce(screenModel),
-                CoerceJavaToLua.coerce(entityMgr),
-                CoerceJavaToLua.coerce(world()),
-                CoerceJavaToLua.coerce(camera()) });
+                CoerceJavaToLua.coerce(screenMgr),
+                CoerceJavaToLua.coerce(manipulator.world()),
+                CoerceJavaToLua.coerce(manipulator.camera()) });
 
     } catch (Throwable t) {
 
-      handleException(t);
+      manipulator.handleException(t);
     }
 
   }
@@ -201,10 +175,10 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
     try {
 
       globals.get("initBody").invoke(new LuaValue[]
-        { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
+        { CoerceJavaToLua.coerce(manipulator.world()), CoerceJavaToLua.coerce(manipulator.camera()), bodyLua, LuaValue.valueOf(bodyId) });
 
     } catch (Throwable t) {
-      handleException(t);
+      manipulator.handleException(t);
     }
 
   }
@@ -227,16 +201,16 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
     try {
 
       globals.get("update").invoke(new LuaValue[]
-        { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), bodyLua, LuaValue.valueOf(bodyId) });
+        { CoerceJavaToLua.coerce(manipulator.world()), CoerceJavaToLua.coerce(manipulator.camera()), bodyLua, LuaValue.valueOf(bodyId) });
 
     } catch (Throwable t) {
 
-      handleException(t);
+      manipulator.handleException(t);
 
     }
 
   }
-
+  
   /*
    * (non-Javadoc)
    * 
@@ -251,11 +225,11 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
     try {
 
       globals.get("keyPressed").invoke(new LuaValue[]
-        { CoerceJavaToLua.coerce(world()), CoerceJavaToLua.coerce(camera()), LuaValue.valueOf(key) });
+        { CoerceJavaToLua.coerce(manipulator.world()), CoerceJavaToLua.coerce(manipulator.camera()), LuaValue.valueOf(key) });
 
     } catch (Throwable t) {
       
-      handleException(t);
+      manipulator.handleException(t);
 
     }
 
@@ -280,7 +254,7 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
    * com.badlogic.gdx.physics.box2d.Body)
    */
   @Override
-  public void collisionCallback(String idA, String idB, Body bodyA, Body bodyB) {
+  public void collisionCallback(String idA, String idB, Body bodyA, Body bodyB, Fixture fixA, Fixture fixB) {
     if (!canExecute()) {
       return;
     }
@@ -294,12 +268,14 @@ public class LuaScriptManager extends AbstractScreenScaffold implements ScreenCo
                 LuaValue.valueOf(idB),
                 CoerceJavaToLua.coerce(bodyA),
                 CoerceJavaToLua.coerce(bodyB),
-                CoerceJavaToLua.coerce(world()),
-                CoerceJavaToLua.coerce(camera()) });
+                CoerceJavaToLua.coerce(fixA),
+                CoerceJavaToLua.coerce(fixB),
+                CoerceJavaToLua.coerce(manipulator.world()),
+                CoerceJavaToLua.coerce(manipulator.camera()) });
 
     } catch (Throwable t) {
       
-      handleException(t);
+      manipulator.handleException(t);
 
     }
 

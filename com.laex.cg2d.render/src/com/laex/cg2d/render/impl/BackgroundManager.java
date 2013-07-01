@@ -15,23 +15,20 @@ import java.util.Queue;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
 import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGLayer;
-import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGShape;
-import com.laex.cg2d.render.AbstractScreenScaffold;
+import com.laex.cg2d.render.ScreenScaffold;
 
 /**
  * The Class BackgroundManager.
  */
-public class BackgroundManager extends AbstractScreenScaffold {
+public class BackgroundManager implements ScreenScaffold {
 
   /** The batch. */
   private SpriteBatch batch;
@@ -39,20 +36,17 @@ public class BackgroundManager extends AbstractScreenScaffold {
   /** The background textures. */
   private Queue<Sprite> backgroundTextures;
 
+  /** The manipulator. */
+  private ScreenManagerImpl manipulator;
+
   /**
    * Instantiates a new background manager.
-   * 
-   * @param model
-   *          the model
-   * @param world
-   *          the world
-   * @param cam
-   *          the cam
-   * @param batch
-   *          the batch
+   *
+   * @param manipulator the manipulator
+   * @param batch the batch
    */
-  public BackgroundManager(CGScreenModel model, World world, Camera cam, SpriteBatch batch) {
-    super(model, world, cam);
+  public BackgroundManager(ScreenManagerImpl manipulator, SpriteBatch batch) {
+    this.manipulator = manipulator;
     this.batch = batch;
   }
 
@@ -64,7 +58,7 @@ public class BackgroundManager extends AbstractScreenScaffold {
   @Override
   public void create() {
     backgroundTextures = new LinkedList<Sprite>();
-    for (CGLayer layer : model().getLayersList()) {
+    for (CGLayer layer : manipulator.model().getLayersList()) {
       for (CGShape shape : layer.getShapeList()) {
 
         if (!(shape.getEditorShapeType() == CGEditorShapeType.BACKGROUND_SHAPE)) {
@@ -77,22 +71,22 @@ public class BackgroundManager extends AbstractScreenScaffold {
         tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
         Sprite sprite = new Sprite(tex);
-
+        
         float x = shape.getBounds().getX();
         float y = shape.getBounds().getY();
         float width = shape.getBounds().getWidth();
         float height = shape.getBounds().getHeight();
 
         Vector2 scrPos = new Vector2(x, y);
-        Vector2 worldPos = screenToWorldFlipped(scrPos, height);
+        Vector2 worldPos = manipulator.screenToWorldFlipped(scrPos, height);
         sprite.setPosition(worldPos.x, worldPos.y);
 
         // Note: we cast width to float to make the division.
         // If we dont do that, then decimals from division would
         // be ignored. This will result in the size of sprite
         // being slightly off.
-        float w = (width / ptmRatio());
-        float h = (height / ptmRatio());
+        float w = (width / manipulator.ptmRatio());
+        float h = (height / manipulator.ptmRatio());
 
         sprite.setSize(w, h);
 
