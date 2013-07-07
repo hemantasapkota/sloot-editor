@@ -47,6 +47,8 @@ public class EntityAnimation {
   /** The shp height. */
   int shpX, shpY, shpWidth, shpHeight;
 
+  private List<Integer> frameIndices = new ArrayList<Integer>();
+
   /** The vertices. */
   private List<Vector2> vertices = new ArrayList<Vector2>();
 
@@ -305,5 +307,19 @@ public class EntityAnimation {
   public void setRows(int rows) {
     this.rows = rows;
   }
+
+
+  public void setAnimationDuration(float animationDuration) {
+    this.animationDuration = animationDuration;
+  }
+
+  public List<Integer> getFrameIndices() {
+    return frameIndices;
+  }
+
+  public void setFrameIndices(List<Integer> frameIndices) {
+    this.frameIndices = frameIndices;
+  }
+
 
 }
