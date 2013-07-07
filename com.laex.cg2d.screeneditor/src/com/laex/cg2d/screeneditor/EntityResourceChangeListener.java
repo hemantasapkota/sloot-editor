@@ -16,7 +16,6 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 
 import com.laex.cg2d.model.ICGCProject;
 
@@ -52,16 +51,6 @@ public class EntityResourceChangeListener implements IResourceChangeListener {
      *          the resource
      */
     void entityChanged(IResource resource);
-
-    /**
-     * Entity copied.
-     * 
-     * @param entityResource
-     *          the entity resource
-     * @param copiedPathFrom
-     *          the copied path from
-     */
-    void entityCopied(IResource entityResource, IPath copiedPathFrom);
 
     /**
      * Entity removed.
@@ -114,14 +103,6 @@ public class EntityResourceChangeListener implements IResourceChangeListener {
 
         case IResourceDelta.REMOVED:
           chgList.entityRemoved(res);
-          break;
-
-        case IResourceDelta.MOVED_FROM:
-          break;
-
-        // TODO: Add logic for the case when entity files are copied from
-        // different projects
-        case IResourceDelta.COPIED_FROM:
           break;
 
         case IResourceDelta.CHANGED:
