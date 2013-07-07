@@ -16,7 +16,9 @@ package com.laex.cg2d.model.adapter;
 public class PreferenceConstants {
 
   /** The Constant RUNNER. */
-  public static final String RUNNER = "";
+  public static final String RUNNER = "RUNNER";
+
+  public static final String ANIMATION_PREVIEWER = "ANIMATION_PREVIEWER";
 
   /** The Constant SCREEN_FILE. */
   public static final String SCREEN_FILE = "ScreenFile";
