@@ -273,7 +273,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGResourceFile));
   CGEntityAnimation_descriptor_ = file->message_type(9);
-  static const int CGEntityAnimation_offsets_[13] = {
+  static const int CGEntityAnimation_offsets_[14] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, animationname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, animationresourcefile_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, fixturefile_),
@@ -287,6 +287,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, shpwidth_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, shpheight_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, vertices_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, frameindices_),
   };
   CGEntityAnimation_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -693,7 +694,7 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "rce\030\002 \001(\002\022\021\n\tmaxTorque\030\003 \001(\002\"*\n\016CGWeldJo"
     "intDef\022\030\n\020collideConnected\030\001 \001(\010\"D\n\016CGRe"
     "sourceFile\022\024\n\014resourceFile\030\001 \001(\t\022\034\n\024reso"
-    "urceFileAbsolute\030\002 \001(\t\"\257\003\n\021CGEntityAnima"
+    "urceFileAbsolute\030\002 \001(\t\"\305\003\n\021CGEntityAnima"
     "tion\022\025\n\ranimationName\030\001 \001(\t\022B\n\025animation"
     "ResourceFile\030\002 \001(\0132#.com.laex.cg2d.model"
     ".CGResourceFile\0228\n\013fixtureFile\030\003 \001(\0132#.c"
@@ -704,70 +705,70 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "CGEntityCollisionType\022\014\n\004shpX\030\t \001(\005\022\014\n\004s"
     "hpY\030\n \001(\005\022\020\n\010shpWidth\030\013 \001(\005\022\021\n\tshpHeight"
     "\030\014 \001(\005\0220\n\010vertices\030\r \003(\0132\036.com.laex.cg2d"
-    ".model.CGVector2\"\\\n\010CGEntity\022\024\n\014internal"
-    "Name\030\001 \001(\t\022:\n\nanimations\030\002 \003(\0132&.com.lae"
-    "x.cg2d.model.CGEntityAnimation\"\?\n\010CGBoun"
-    "ds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\r\n\005width\030\003 \001(\002\022"
-    "\016\n\006height\030\004 \001(\002\"!\n\tCGVector2\022\t\n\001x\030\001 \002(\002\022"
-    "\t\n\001y\030\002 \002(\002\"\203\003\n\tCGBodyDef\022\016\n\006active\030\001 \001(\010"
-    "\022\022\n\nallowSleep\030\002 \001(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016a"
-    "ngularDamping\030\004 \001(\002\022\027\n\017angularVelocity\030\005"
-    " \001(\002\022\r\n\005awake\030\006 \001(\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rf"
-    "ixedRotation\030\010 \001(\010\022\026\n\016intertialScale\030\t \001"
-    "(\002\022\025\n\rlinearDamping\030\n \001(\002\022\024\n\014gravityScal"
-    "e\030\013 \001(\002\0226\n\016linearVelocity\030\014 \001(\0132\036.com.la"
-    "ex.cg2d.model.CGVector2\022-\n\004type\030\r \001(\0162\037."
-    "com.laex.cg2d.model.CGBodyType\0220\n\010positi"
-    "on\030\016 \001(\0132\036.com.laex.cg2d.model.CGVector2"
-    "\"F\n\010CGFilter\022\024\n\014categoryBits\030\001 \001(\005\022\020\n\010ma"
-    "skBits\030\002 \001(\005\022\022\n\ngroupIndex\030\003 \001(\005\"\205\001\n\014CGF"
-    "ixtureDef\022\017\n\007density\030\001 \001(\002\022\020\n\010friction\030\002"
-    " \001(\002\022\023\n\013restitution\030\003 \001(\002\022\016\n\006sensor\030\004 \001("
-    "\010\022-\n\006filter\030\005 \001(\0132\035.com.laex.cg2d.model."
-    "CGFilter\"\321\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007visi"
-    "ble\030\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackground\030"
-    "\004 \001(\010\022C\n\026backgroundResourceFile\030\005 \001(\0132#."
-    "com.laex.cg2d.model.CGResourceFile\022\?\n\017ed"
-    "itorShapeType\030\006 \001(\0162&.com.laex.cg2d.mode"
-    "l.CGEditorShapeType\022-\n\006bounds\030\007 \001(\0132\035.co"
-    "m.laex.cg2d.model.CGBounds\022/\n\007bodyDef\030\010 "
-    "\001(\0132\036.com.laex.cg2d.model.CGBodyDef\0225\n\nf"
-    "ixtureDef\030\t \001(\0132!.com.laex.cg2d.model.CG"
-    "FixtureDef\022,\n\006joints\030\n \003(\0132\034.com.laex.cg"
-    "2d.model.CGJoint\022:\n\rentityRefFile\030\013 \001(\0132"
-    "#.com.laex.cg2d.model.CGResourceFile\"q\n\007"
-    "CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007vis"
-    "ible\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022+\n\005shape\030\005 \003("
-    "\0132\034.com.laex.cg2d.model.CGShape\"\274\005\n\023CGSc"
-    "reenPreferences\022W\n\016debugDrawPrefs\030\001 \001(\0132"
-    "\?.com.laex.cg2d.model.CGScreenPreference"
-    "s.CGDebugDrawPreferences\022O\n\nworldPrefs\030\002"
-    " \001(\0132;.com.laex.cg2d.model.CGScreenPrefe"
-    "rences.CGWorldPreferences\022M\n\tcardPrefs\030\003"
-    " \001(\0132:.com.laex.cg2d.model.CGScreenPrefe"
-    "rences.CGCardPreferences\032\266\001\n\026CGDebugDraw"
-    "Preferences\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJ"
-    "oints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawIna"
-    "ctiveBodies\030\004 \001(\010\022\031\n\021installMouseJoint\030\005"
-    " \001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n\014drawEntit"
-    "ies\030\007 \001(\010\032\224\001\n\022CGWorldPreferences\022\020\n\010ptmR"
-    "atio\030\001 \001(\005\022\032\n\022velocityIterations\030\002 \001(\005\022\032"
-    "\n\022positionIterations\030\003 \001(\005\022\020\n\010timeStep\030\004"
-    " \001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002"
-    "\032\\\n\021CGCardPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017"
-    "\n\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\nca"
-    "rdHeight\030\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOW"
-    "N\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DIST"
-    "ANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022"
-    "\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004RO"
-    "PE\020\013*B\n\025CGEntityCollisionType\022\010\n\004NONE\020\000\022"
-    "\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBo"
-    "dyType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYN"
-    "AMIC\020\003*\232\001\n\021CGEditorShapeType\022\027\n\023SIMPLE_S"
-    "HAPE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022S"
-    "IMPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDG"
-    "E\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAP"
-    "E\020\006", 4643);
+    ".model.CGVector2\022\024\n\014frameIndices\030\016 \003(\005\"\\"
+    "\n\010CGEntity\022\024\n\014internalName\030\001 \001(\t\022:\n\nanim"
+    "ations\030\002 \003(\0132&.com.laex.cg2d.model.CGEnt"
+    "ityAnimation\"\?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y"
+    "\030\002 \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n"
+    "\tCGVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\203\003\n\tCGB"
+    "odyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001"
+    "(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 \001("
+    "\002\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 \001("
+    "\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010"
+    "\022\026\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDampin"
+    "g\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linearV"
+    "elocity\030\014 \001(\0132\036.com.laex.cg2d.model.CGVe"
+    "ctor2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.mode"
+    "l.CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.lae"
+    "x.cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014ca"
+    "tegoryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngr"
+    "oupIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007densi"
+    "ty\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitutio"
+    "n\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001(\0132"
+    "\035.com.laex.cg2d.model.CGFilter\"\321\003\n\007CGSha"
+    "pe\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locke"
+    "d\030\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgroun"
+    "dResourceFile\030\005 \001(\0132#.com.laex.cg2d.mode"
+    "l.CGResourceFile\022\?\n\017editorShapeType\030\006 \001("
+    "\0162&.com.laex.cg2d.model.CGEditorShapeTyp"
+    "e\022-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.model."
+    "CGBounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.cg2"
+    "d.model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132!."
+    "com.laex.cg2d.model.CGFixtureDef\022,\n\006join"
+    "ts\030\n \003(\0132\034.com.laex.cg2d.model.CGJoint\022:"
+    "\n\rentityRefFile\030\013 \001(\0132#.com.laex.cg2d.mo"
+    "del.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 \001("
+    "\005\022\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006lock"
+    "ed\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d."
+    "model.CGShape\"\274\005\n\023CGScreenPreferences\022W\n"
+    "\016debugDrawPrefs\030\001 \001(\0132\?.com.laex.cg2d.mo"
+    "del.CGScreenPreferences.CGDebugDrawPrefe"
+    "rences\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex.cg"
+    "2d.model.CGScreenPreferences.CGWorldPref"
+    "erences\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.cg"
+    "2d.model.CGScreenPreferences.CGCardPrefe"
+    "rences\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndra"
+    "wBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010dra"
+    "wAABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022"
+    "\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugD"
+    "ata\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWo"
+    "rldPreferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velo"
+    "cityIterations\030\002 \001(\005\022\032\n\022positionIteratio"
+    "ns\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005"
+    " \001(\002\022\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCardPreferen"
+    "ces\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n"
+    "\tcardWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n"
+    "\013CGJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022"
+    "\r\n\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005"
+    "\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD"
+    "\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCo"
+    "llisionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE"
+    "\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001"
+    "\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEdito"
+    "rShapeType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020S"
+    "IMPLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020"
+    "\003\022\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_"
+    "SHAPE\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4665);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/model/ScreenModel.proto", &protobuf_RegisterTypes);
   CGScreenModel::default_instance_ = new CGScreenModel();
@@ -4273,6 +4274,7 @@ const int CGEntityAnimation::kShpYFieldNumber;
 const int CGEntityAnimation::kShpWidthFieldNumber;
 const int CGEntityAnimation::kShpHeightFieldNumber;
 const int CGEntityAnimation::kVerticesFieldNumber;
+const int CGEntityAnimation::kFrameIndicesFieldNumber;
 #endif  // !_MSC_VER
 
 CGEntityAnimation::CGEntityAnimation()
@@ -4369,6 +4371,7 @@ void CGEntityAnimation::Clear() {
     shpheight_ = 0;
   }
   vertices_.Clear();
+  frameindices_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -4583,6 +4586,28 @@ bool CGEntityAnimation::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(106)) goto parse_vertices;
+        if (input->ExpectTag(112)) goto parse_frameIndices;
+        break;
+      }
+
+      // repeated int32 frameIndices = 14;
+      case 14: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_frameIndices:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 112, input, this->mutable_frameindices())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_frameindices())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(112)) goto parse_frameIndices;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -4678,6 +4703,12 @@ void CGEntityAnimation::SerializeWithCachedSizes(
       13, this->vertices(i), output);
   }
 
+  // repeated int32 frameIndices = 14;
+  for (int i = 0; i < this->frameindices_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+      14, this->frameindices(i), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -4761,6 +4792,12 @@ void CGEntityAnimation::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         13, this->vertices(i), target);
+  }
+
+  // repeated int32 frameIndices = 14;
+  for (int i = 0; i < this->frameindices_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt32ToArray(14, this->frameindices(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4864,6 +4901,16 @@ int CGEntityAnimation::ByteSize() const {
         this->vertices(i));
   }
 
+  // repeated int32 frameIndices = 14;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->frameindices_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        Int32Size(this->frameindices(i));
+    }
+    total_size += 1 * this->frameindices_size() + data_size;
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -4890,6 +4937,7 @@ void CGEntityAnimation::MergeFrom(const ::google::protobuf::Message& from) {
 void CGEntityAnimation::MergeFrom(const CGEntityAnimation& from) {
   GOOGLE_CHECK_NE(&from, this);
   vertices_.MergeFrom(from.vertices_);
+  frameindices_.MergeFrom(from.frameindices_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_animationname()) {
       set_animationname(from.animationname());
@@ -4968,6 +5016,7 @@ void CGEntityAnimation::Swap(CGEntityAnimation* other) {
     std::swap(shpwidth_, other->shpwidth_);
     std::swap(shpheight_, other->shpheight_);
     vertices_.Swap(&other->vertices_);
+    frameindices_.Swap(&other->frameindices_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

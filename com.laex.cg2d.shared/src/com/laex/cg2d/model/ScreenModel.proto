@@ -106,6 +106,7 @@ message CGEntityAnimation {
 	optional int32 shpWidth = 11;
 	optional int32 shpHeight = 12;
 	repeated CGVector2 vertices = 13;
+	repeated int32 frameIndices = 14;
 }
 
 message CGEntity {

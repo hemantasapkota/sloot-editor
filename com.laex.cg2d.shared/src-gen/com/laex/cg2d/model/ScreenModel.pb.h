@@ -1438,6 +1438,18 @@ class CGEntityAnimation : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGVector2 >*
       mutable_vertices();
 
+  // repeated int32 frameIndices = 14;
+  inline int frameindices_size() const;
+  inline void clear_frameindices();
+  static const int kFrameIndicesFieldNumber = 14;
+  inline ::google::protobuf::int32 frameindices(int index) const;
+  inline void set_frameindices(int index, ::google::protobuf::int32 value);
+  inline void add_frameindices(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      frameindices() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_frameindices();
+
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGEntityAnimation)
  private:
   inline void set_has_animationname();
@@ -1479,10 +1491,11 @@ class CGEntityAnimation : public ::google::protobuf::Message {
   ::google::protobuf::int32 shpy_;
   ::google::protobuf::int32 shpwidth_;
   ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGVector2 > vertices_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > frameindices_;
   ::google::protobuf::int32 shpheight_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(13 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
@@ -4810,6 +4823,31 @@ CGEntityAnimation::vertices() const {
 inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGVector2 >*
 CGEntityAnimation::mutable_vertices() {
   return &vertices_;
+}
+
+// repeated int32 frameIndices = 14;
+inline int CGEntityAnimation::frameindices_size() const {
+  return frameindices_.size();
+}
+inline void CGEntityAnimation::clear_frameindices() {
+  frameindices_.Clear();
+}
+inline ::google::protobuf::int32 CGEntityAnimation::frameindices(int index) const {
+  return frameindices_.Get(index);
+}
+inline void CGEntityAnimation::set_frameindices(int index, ::google::protobuf::int32 value) {
+  frameindices_.Set(index, value);
+}
+inline void CGEntityAnimation::add_frameindices(::google::protobuf::int32 value) {
+  frameindices_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+CGEntityAnimation::frameindices() const {
+  return frameindices_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+CGEntityAnimation::mutable_frameindices() {
+  return &frameindices_;
 }
 
 // -------------------------------------------------------------------
