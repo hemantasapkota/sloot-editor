@@ -10,8 +10,15 @@
  */
 package com.laex.cg2d.entityeditor.pages;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.swt.graphics.Image;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
@@ -24,6 +31,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.utils.Array;
+import com.laex.cg2d.model.ResourceManager;
 
 /**
  * The Class ExternalAnimationPreview.
@@ -63,6 +72,8 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
   /** The h. */
   float w, h;
 
+  private List<Integer> frameIndices;
+
   /**
    * Instantiates a new external animation preview.
    * 
@@ -75,11 +86,12 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
    * @param duration
    *          the duration
    */
-  public ExternalAnimationPreview(String animationStrip, int rows, int cols, float duration) {
+  public ExternalAnimationPreview(String animationStrip, int rows, int cols, float duration, List<Integer> frameIndices) {
     this.animationStrip = animationStrip;
     this.rows = rows;
     this.cols = cols;
     this.duration = duration;
+    this.frameIndices = frameIndices;
   }
 
   /*
@@ -92,7 +104,7 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     super.create();
 
     this.shapeRenderer = new ShapeRenderer();
-    
+
     Texture.setEnforcePotImages(false);
 
     batch = new SpriteBatch();
@@ -109,6 +121,7 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
 
     if (cols / rows >= 1) {
       // create sprite sheet animation
+
       TextureRegion[][] tmp = TextureRegion.split(tex, tex.getWidth() / cols, tex.getHeight() / rows);
       TextureRegion[] walkFrames = new TextureRegion[cols * rows];
       int index = 0;
@@ -117,7 +130,13 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
           walkFrames[index++] = tmp[i][j];
         }
       }
-      spriteAnimation = new Animation(duration, walkFrames);
+
+      Array<TextureRegion> indexedFrames = new Array<TextureRegion>();
+      for (int i : frameIndices) {
+        indexedFrames.add(walkFrames[i - 1]);
+      }
+
+      spriteAnimation = new Animation(duration, indexedFrames);
     }
 
     spr = new Sprite(spriteAnimation.getKeyFrame(stateTime, true));
@@ -161,6 +180,35 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     shapeRenderer.line(0, h / 2, w, h / 2);
     shapeRenderer.line(w / 2, 0, w / 2, h);
     shapeRenderer.end();
+  }
+
+  public static void main(String[] args) {
+
+    String animationName = args[0];
+
+    String spriteSheetFile = args[1];
+
+    float duration = Float.parseFloat(args[2]);
+
+    int cols = Integer.parseInt(args[3]);
+
+    int rows = Integer.parseInt(args[4]);
+
+    String[] tmpIndices = args[5].split(",");
+
+    List<Integer> frameIndices = new ArrayList<Integer>();
+    for (String index : tmpIndices) {
+      frameIndices.add(Integer.parseInt(index));
+    }
+    
+    LwjglApplicationConfiguration lac = new LwjglApplicationConfiguration();
+    lac.width = 200;
+    lac.height = 200;
+    lac.title = animationName;
+
+    ExternalAnimationPreview eap = new ExternalAnimationPreview(spriteSheetFile, rows, cols, duration, frameIndices);
+    new LwjglApplication(eap, lac);
+
   }
 
 }
