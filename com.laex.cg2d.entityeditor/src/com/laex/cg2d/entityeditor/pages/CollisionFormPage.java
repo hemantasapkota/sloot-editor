@@ -360,6 +360,7 @@ public class CollisionFormPage extends FormPage {
     Label lblWidth = managedForm.getToolkit().createLabel(composite, "Width", SWT.NONE);
 
     txtWidth = new Spinner(composite, SWT.BORDER);
+    txtWidth.setMaximum(800);
     txtWidth.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
     txtWidth.addFocusListener(new FocusAdapter() {
       @Override
@@ -378,6 +379,7 @@ public class CollisionFormPage extends FormPage {
     lblHeight.setText("Height");
 
     txtHeight = new Spinner(composite, SWT.BORDER);
+    txtHeight.setMaximum(800);
     txtHeight.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
     txtHeight.addFocusListener(new FocusAdapter() {
       @Override
@@ -616,7 +618,9 @@ public class CollisionFormPage extends FormPage {
   private void doPreview(AnimationListViewItem ai) {
     if (ai.getAnimation() != null) {
       if (ai.getFrames() != null && !ai.getFrames().isEmpty()) {
-        animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+          animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+      } else {
+        freeformLayeredPane.removeAll();
       }
     }
   }
@@ -784,6 +788,7 @@ public class CollisionFormPage extends FormPage {
       alvi.getAnimation().setShpWidth(txtWidth.getSelection());
       alvi.getAnimation().setShpHeight(txtHeight.getSelection());
       alvi.getAnimation().setVertices(new ArrayList<Vector2>());
+      alvi.getAnimation().setFixtureResourceFile(ResourceFile.create("", ""));
     }
   }
 
