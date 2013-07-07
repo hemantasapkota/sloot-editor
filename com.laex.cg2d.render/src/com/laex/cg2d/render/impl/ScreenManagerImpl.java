@@ -28,6 +28,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.JointDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.google.common.util.concurrent.CycleDetectingLockFactory.WithExplicitOrdering;
 import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
@@ -540,9 +541,18 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
 
       if (id.equals(shape.getId())) {
         try {
+          
+          Vector2 positionToCopy = new Vector2(bod.getTransform().getPosition());
+          float rotation = bod.getTransform().getRotation();
+          
           world.destroyBody(bod);
           entityManager.removeEntity(shape);
           switchedBody = entityManager.createEntity(shape, animationName);
+          
+          if (switchedBody != null) {
+            switchedBody.setTransform(positionToCopy, rotation);
+          }
+          
         } catch (IOException e) {
           AppExceptionUtil.handle(e);
         }
