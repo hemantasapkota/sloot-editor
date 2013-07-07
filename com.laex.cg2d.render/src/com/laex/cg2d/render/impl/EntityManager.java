@@ -32,6 +32,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.utils.Array;
 import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
@@ -185,8 +186,9 @@ public class EntityManager implements ScreenScaffold {
     tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
     Animation spriteAnimation = null;
-    if (ea.getCols() / ea.getRows() > 1) {
+    if (ea.getCols() / ea.getRows() >= 1) {
       // create sprite sheet animation
+
       TextureRegion[][] tmp = TextureRegion.split(tex, tex.getWidth() / ea.getCols(), tex.getHeight() / ea.getRows());
       TextureRegion[] walkFrames = new TextureRegion[ea.getCols() * ea.getRows()];
       int index = 0;
@@ -195,7 +197,14 @@ public class EntityManager implements ScreenScaffold {
           walkFrames[index++] = tmp[i][j];
         }
       }
-      spriteAnimation = new Animation(ea.getAnimationDuration(), walkFrames);
+
+      Array<TextureRegion> indexedFrames = new Array<TextureRegion>();
+      for (int i : ea.getFrameIndicesList()) {
+        indexedFrames.add(walkFrames[i - 1]);
+      }
+
+
+      spriteAnimation = new Animation(ea.getAnimationDuration(), indexedFrames);
       entityToAnimationMap.put(entity, spriteAnimation);
     }
 
