@@ -21,7 +21,7 @@
       <page
             class="com.laex.cg2d.screeneditor.prefs.SharedPreferencePage"
             id="com.laex.cg2d.shared.PreferencePage"
-            name="Laexian Box2D Editor">
+            name="LB2D Screen Editor">
       </page>
    </extension>   
    
@@ -33,17 +33,17 @@
             nameFilter="*cg*"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               id="com.laex.cg2d.shared.menu1"
+               id="com.laex.cg2d.navigatorContextMenu"
                label="LB2D">
             <groupMarker
-                  name="group1">
+                  name="navigationContextMenuGroup1">
             </groupMarker>
          </menu>
          <action
                class="com.laex.cg2d.screeneditor.actions.ConvertToJsonAction"
                id="com.laex.cg2d.shared.action1"
                label="To JSON"
-               menubarPath="com.laex.cg2d.shared.menu1/group1"
+               menubarPath="com.laex.cg2d.navigatorContextMenu/navigationContextMenuGroup1"
                style="push">
          </action>
       </objectContribution>
