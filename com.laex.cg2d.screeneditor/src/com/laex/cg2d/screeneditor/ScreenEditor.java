@@ -17,10 +17,13 @@ import java.util.EventObject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.draw2d.LayeredPane;
 import org.eclipse.draw2d.ScalableFreeformLayeredPane;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -37,6 +40,7 @@ import org.eclipse.gef.SnapToGrid;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.dnd.AbstractTransferDropTargetListener;
 import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
+import org.eclipse.gef.editparts.RootTreeEditPart;
 import org.eclipse.gef.editparts.ScalableFreeformRootEditPart;
 import org.eclipse.gef.editparts.ZoomListener;
 import org.eclipse.gef.editparts.ZoomManager;
@@ -48,7 +52,7 @@ import org.eclipse.gef.ui.parts.ContentOutlinePage;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
 import org.eclipse.gef.ui.parts.GraphicalViewerKeyHandler;
 import org.eclipse.gef.ui.parts.TreeViewer;
-import org.eclipse.osgi.internal.resolver.ComputeNodeOrder;
+import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTargetEvent;
@@ -96,7 +100,6 @@ import com.laex.cg2d.screeneditor.editparts.tree.ScreenTreeEPFactory;
 import com.laex.cg2d.screeneditor.palette.ScreenEditorPaletteFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationInfo;
-import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
 import com.laex.cg2d.screeneditor.views.IScreenDisposeListener;
 import com.laex.cg2d.screeneditor.views.LayerOutlineViewPart;
 import com.laex.cg2d.screeneditor.views.LayersViewPart;
@@ -127,7 +130,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /** The model. */
   private GameModel model;
-  
+
   /** The grid state. */
   private boolean gridState = false;
 
@@ -145,15 +148,20 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
     /**
      * Instantiates a new screen outline view.
-     *
-     * @param viewer the viewer
+     * 
+     * @param viewer
+     *          the viewer
      */
     public ScreenOutlineView(EditPartViewer viewer) {
       super(viewer);
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.gef.ui.parts.ContentOutlinePage#createControl(org.eclipse.swt.widgets.Composite)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.gef.ui.parts.ContentOutlinePage#createControl(org.eclipse
+     * .swt.widgets.Composite)
      */
     @Override
     public void createControl(Composite parent) {
@@ -162,14 +170,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       getViewer().setEditPartFactory(new ScreenTreeEPFactory());
       getSelectionSynchronizer().addViewer(getViewer());
       getViewer().setContents(getModel());
-      //Set context menu
-      ScreenEditorContextMenuProvider scm = new ScreenEditorContextMenuProvider(getViewer(), getActionRegistry());
-      getViewer().setContextMenu(scm);
-      getSite().registerContextMenu("com.laex.cg2d.screeneditor.outline.contextmenu", scm,
-          getSite().getSelectionProvider());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.eclipse.ui.part.Page#dispose()
      */
     @Override
@@ -177,7 +182,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       getSelectionSynchronizer().removeViewer(getViewer());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.eclipse.gef.ui.parts.ContentOutlinePage#getControl()
      */
     @Override
@@ -198,15 +205,20 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
     /**
      * Instantiates a new layer outline view.
-     *
-     * @param viewer the viewer
+     * 
+     * @param viewer
+     *          the viewer
      */
     public LayerOutlineView(EditPartViewer viewer) {
       super(viewer);
     }
 
-    /* (non-Javadoc)
-     * @see com.laex.cg2d.screeneditor.ScreenEditor.ScreenOutlineView#createControl(org.eclipse.swt.widgets.Composite)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.laex.cg2d.screeneditor.ScreenEditor.ScreenOutlineView#createControl
+     * (org.eclipse.swt.widgets.Composite)
      */
     @Override
     public void createControl(Composite parent) {
@@ -217,7 +229,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       getViewer().setContents(getModel());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.laex.cg2d.screeneditor.ScreenEditor.ScreenOutlineView#dispose()
      */
     @Override
@@ -225,8 +239,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       getSelectionSynchronizer().removeViewer(getViewer());
     }
 
-    /* (non-Javadoc)
-     * @see com.laex.cg2d.screeneditor.ScreenEditor.ScreenOutlineView#getControl()
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.laex.cg2d.screeneditor.ScreenEditor.ScreenOutlineView#getControl()
      */
     @Override
     public Control getControl() {
@@ -242,7 +259,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     setEditDomain(new DefaultEditDomain(this));
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.ui.parts.GraphicalEditor#createActions()
    */
   @Override
@@ -326,7 +345,6 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return rep;
   }
 
-
   /**
    * Sets the grid dimension.
    * 
@@ -397,11 +415,15 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /**
    * Perform save.
-   *
-   * @param file the file
-   * @param monitor the monitor
-   * @throws CoreException the core exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * 
+   * @param file
+   *          the file
+   * @param monitor
+   *          the monitor
+   * @throws CoreException
+   *           the core exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   private void performSave(IFile file, IProgressMonitor monitor) throws CoreException, IOException {
     // Use existing preferences
@@ -476,18 +498,6 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return PALETTE_MODEL;
   }
 
-  /**
-   * Handle load exception.
-   * 
-   * @param e
-   *          the e
-   */
-  private void handleLoadException(Exception e) {
-    model = new GameModel(PreferenceInitializer.defaultScreenPrefs());
-    Layer firstLayer = new Layer(0, "Layer1", true, false);
-    model.getDiagram().getLayers().add(firstLayer);
-  }
-
   /*
    * (non-Javadoc)
    * 
@@ -497,8 +507,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   protected void initializeGraphicalViewer() {
     super.initializeGraphicalViewer();
     GraphicalViewer viewer = getGraphicalViewer();
-    viewer.setContents(getModel().getDiagram()); // set the contents of this
-                                                 // editor
+    viewer.setContents(getModel().getDiagram()); 
+    
     // listen for dropped parts
     viewer.addDropTargetListener(new AbstractTransferDropTargetListener(viewer) {
 
@@ -564,44 +574,156 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return false;
   }
 
+  private void closeEditor() {
+    getSite().getShell().getDisplay().asyncExec(new Runnable() {
+      @Override
+      public void run() {
+        getSite().getPage().closeEditor(ScreenEditor.this, false);
+      }
+    });
+  }
+
   /*
    * (non-Javadoc)
    * 
    * @see org.eclipse.ui.part.EditorPart#setInput(org.eclipse.ui.IEditorInput)
    */
   protected void setInput(final IEditorInput input) {
-    super.setInput(input);
+    setupResChangeListenerForDelete(input.getName());
+    setupEntityResourceListener(input);
 
+    try {
+
+      loadScreenModel(input);
+
+    } catch (CoreException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    super.setInput(input);
+  }
+
+  private void loadScreenModel(final IEditorInput input) throws CoreException, IOException {
+    IFile file = ((IFileEditorInput) input).getFile();
+
+    CGScreenModel cgGameModel = CGScreenModel.parseFrom(file.getContents());
+
+    model = ScreenModelAdapter.asGameModel(cgGameModel);
+    x = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoX();
+    y = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoY();
+    cardWidthh = cgGameModel.getScreenPrefs().getCardPrefs().getCardWidth();
+    cardHeight = cgGameModel.getScreenPrefs().getCardPrefs().getCardHeight();
+
+    /* Go ahead and init entities. If some entities are invalid or have been
+     deleted, remove them from this model as well. */
+    if (EntitiesUtil.visitModelAndInitEntities(model)) {
+
+      SafeRunnable.run(new ISafeRunnable() {
+
+        @Override
+        public void run() throws Exception {
+
+          MessageBox mb = new MessageBox(getSite().getShell(), SWT.OK);
+          mb.setMessage("Some of the entities refereneced in this file are no longer valid. They will be removed.");
+          mb.setText("Screen file inconsistent");
+          mb.open();
+
+          // remove inconsistent entities
+          CompoundCommand cc = new CompoundCommand();
+          for (int i = 0; i < model.getDiagram().getChildren().size(); i++) {
+            Shape shape = model.getDiagram().getChildren().get(i);
+            if (shape.getEditorShapeType().isEntity()) {
+              Entity e = Entity.createFromFile(shape.getEntityResourceFile().getResourceFile());
+              boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
+
+              if (!isValid) {
+                ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), shape,
+                    DeleteCommandType.NON_UNDOABLE);
+                cc.add(sdc);
+              }
+            }
+          }
+
+          if (!cc.isEmpty())
+            getCommandStack().execute(cc);
+
+        }
+
+        @Override
+        public void handleException(Throwable exception) {
+        }
+      });
+
+    }
+    
+    /* Go Ahead and activate the edit parts. */
+    
+
+    setPartName(file.getProject().getName() + "/" + file.getName());
+
+    // Load entities in the palette
+    ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
+  }
+
+  private void setupResChangeListenerForDelete(final String resName) {
+
+    ResourcesPlugin.getWorkspace().addResourceChangeListener(new IResourceChangeListener() {
+      @Override
+      public void resourceChanged(IResourceChangeEvent event) {
+        if (event.getType() == IResourceChangeEvent.POST_CHANGE) {
+          try {
+            event.getDelta().accept(new IResourceDeltaVisitor() {
+              @Override
+              public boolean visit(IResourceDelta delta) throws CoreException {
+                if (delta.getKind() == IResourceDelta.REMOVED) {
+                  if (resName.equals(delta.getResource().getName())) {
+                    closeEditor();
+                  }
+                }
+                return true;
+              }
+            });
+          } catch (CoreException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    }, IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE);
+  }
+
+  private void setupEntityResourceListener(final IEditorInput input) {
     ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceListener,
         IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE);
     // if there are any changes in the entities, load em up in the editor
+
     resourceListener.addEntityChangeListener(new EntityChangeListener() {
       @Override
       public void entityChanged(final IResource resource) {
-        // reload the newly created entities. Refresh all entities
         /*
-         * It is important to execute pallete creation via asyncExec because it
+         * It is important to execute pallete creation safely because it
          * accesses GEF UI thread
          */
-        getSite().getShell().getDisplay().asyncExec(new Runnable() {
-          @Override
-          public void run() {
-            try {
-              ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
-              // Check if the resource is valid entity or not. If not remove the
-              // entity and log it
+        SafeRunnable.run(new ISafeRunnable() {
 
-              Entity e = Entity.createFromFile((IFile) resource);
-              boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
-              if (!isValid) {
-                removeDeletedOrInvalidEntities(resource);
-              }
-            } catch (IOException e) {
-              e.printStackTrace();
-            } catch (CoreException e) {
-              e.printStackTrace();
+          @Override
+          public void run() throws Exception {
+            ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
+            // Check if the resource is valid entity or not. If not remove the
+            // entity and log it
+            Entity e = Entity.createFromFile((IFile) resource);
+            boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
+            if (!isValid) {
+              removeDeletedOrInvalidEntities(resource);
             }
           }
+
+          @Override
+          public void handleException(Throwable exception) {
+            exception.printStackTrace();
+          }
+
         });
       }
 
@@ -621,89 +743,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
           }
         });
       }
-
-      @Override
-      public void entityCopied(IResource entityResource, IPath copiedPathFrom) {
-        getSite().getShell().getDisplay().asyncExec(new Runnable() {
-
-          @Override
-          public void run() {
-            MessageBox mb = new MessageBox(getSite().getShell());
-            mb.setMessage("You are trying to copy an entity from one project to another. Do you want to copy the associated textures as well ?");
-            mb.setText("Entity Copy Confirmation");
-            mb.open();
-          }
-        });
-
-      }
     });
-
-    try {
-      IFile file = ((IFileEditorInput) input).getFile();
-
-      CGScreenModel cgGameModel = CGScreenModel.parseFrom(file.getContents());
-
-      model = ScreenModelAdapter.asGameModel(cgGameModel);
-      x = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoX();
-      y = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoY();
-      cardWidthh = cgGameModel.getScreenPrefs().getCardPrefs().getCardWidth();
-      cardHeight = cgGameModel.getScreenPrefs().getCardPrefs().getCardHeight();
-
-      // go ahead and init entities. if some entities are invalid or have been
-      // deleted, remove them from this model as well.
-      if (EntitiesUtil.visitModelAndInitEntities(model)) {
-        getSite().getShell().getDisplay().syncExec(new Runnable() {
-          @Override
-          public void run() {
-            MessageBox mb = new MessageBox(getSite().getShell(), SWT.OK);
-            mb.setMessage("Some of the entities refereneced in this file are no longer valid. They will be removed.");
-            mb.setText("Screen file inconsistent");
-            mb.open();
-
-            // remove inconsistent entities
-            CompoundCommand cc = new CompoundCommand();
-            for (int i = 0; i < model.getDiagram().getChildren().size(); i++) {
-              Shape shape = model.getDiagram().getChildren().get(i);
-              if (shape.getEditorShapeType().isEntity()) {
-                try {
-                  Entity e = Entity.createFromFile(shape.getEntityResourceFile().getResourceFile());
-                  boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
-
-                  if (!isValid) {
-                    ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), shape,
-                        DeleteCommandType.NON_UNDOABLE);
-                    cc.add(sdc);
-                  }
-                } catch (CoreException e) {
-                  e.printStackTrace();
-                } catch (IOException e) {
-                  e.printStackTrace();
-                }
-              }
-            }
-            if (!cc.isEmpty())
-              getCommandStack().execute(cc);
-
-          }
-        });
-
-      }
-
-      setPartName(file.getProject().getName() + "/" + file.getName());
-    } catch (CoreException e) {
-      handleLoadException(e);
-    } catch (IOException e) {
-      handleLoadException(e);
-    }
-
-    // Load entities in the palette
-    try {
-      ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (CoreException e) {
-      e.printStackTrace();
-    }
   }
 
   /*
@@ -753,8 +793,10 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   public void removeLayer(Layer layer) {
     getEditDomain().getCommandStack().execute(new LayerRemoveCommand(layer, getModel().getDiagram()));
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.model.ILayerManager#removeAll()
    */
   @Override
@@ -889,18 +931,19 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return (Layer) getModel().getDiagram().getLayers().toArray()[index];
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.model.IScreenEditorState#toggleGrid()
    */
   @Override
   public void toggleGrid() {
     gridState = !gridState;
-    
+
     getGraphicalViewer().setProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED, true);
     getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, gridState);
     getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_VISIBLE, gridState);
 
   }
-
 
 }
