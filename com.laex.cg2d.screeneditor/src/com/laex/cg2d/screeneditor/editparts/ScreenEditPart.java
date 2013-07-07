@@ -153,7 +153,7 @@ public class ScreenEditPart extends AbstractGraphicalEditPart implements Propert
    * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren()
    */
-  protected List getModelChildren() {
+  protected List<?> getModelChildren() {
     return getCastedModel().getChildren();
   }
 
