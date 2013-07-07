@@ -28,6 +28,7 @@ import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.ShapesDiagram;
+import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 
 /**
  * The Class ScreenTreeEP.
@@ -36,14 +37,17 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
 
   /**
    * Instantiates a new screen tree ep.
-   *
-   * @param model the model
+   * 
+   * @param model
+   *          the model
    */
   public ScreenTreeEP(ShapesDiagram model) {
     super(model);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#activate()
    */
   public void activate() {
@@ -53,7 +57,9 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#deactivate()
    */
   public void deactivate() {
@@ -63,17 +69,19 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren()
    */
   @Override
-  protected List getModelChildren() {
-    return (List) getCastedModel().getLayers();
+  protected List<?> getModelChildren() {
+    return (List<?>) getCastedModel().getLayers();
   }
 
   /**
    * Gets the casted model.
-   *
+   * 
    * @return the casted model
    */
   private ShapesDiagram getCastedModel() {
@@ -82,16 +90,21 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
 
   /**
    * Gets the edits the part for child.
-   *
-   * @param child the child
+   * 
+   * @param child
+   *          the child
    * @return the edits the part for child
    */
   private EditPart getEditPartForChild(Object child) {
     return (EditPart) getViewer().getEditPartRegistry().get(child);
   }
 
-  /* (non-Javadoc)
-   * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent
+   * )
    */
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
@@ -102,21 +115,45 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
     } else if (ShapesDiagram.CHILD_REMOVED_PROP.equals(prop) || ShapesDiagram.LAYER_REMOVED.equals(prop)) {
       // remove a child from this edit part
       EditPart ep = getEditPartForChild(evt.getNewValue());
-      if (ep != null)
+      if (ep != null) {
         removeChild(ep);
+      }
     } else {
       refreshVisuals();
     }
 
-    refreshVisuals();
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editparts.AbstractTreeEditPart#addChildVisual(org.eclipse.gef.EditPart, int)
+  @Override
+  protected void removeChild(EditPart child) {
+
+    /* Special treatment for removing ShapeTreeEP */
+    if (child instanceof ShapeTreeEP) {
+      
+      int index = child.getParent().getChildren().indexOf(child);
+      fireRemovingChild(child, index);
+      if (isActive())
+        child.deactivate();
+      child.removeNotify();
+      removeChildVisual(child);
+      child.getParent().getChildren().remove(child);
+      child.setParent(null);
+      
+    }
+
+    super.removeChild(child);
+
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editparts.AbstractTreeEditPart#addChildVisual(org.eclipse
+   * .gef.EditPart, int)
    */
   @Override
   protected void addChildVisual(EditPart childEditPart, int index) {
-    // Oveeride from abstract class.
     Widget widget = getWidget();
     TreeItem item = null;
 
@@ -126,7 +163,6 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
 
       if (trueIndex >= t.getItemCount()) {
         trueIndex = (t.getItemCount() == 0) ? 0 : t.getItemCount() - 1;
-
       }
 
       item = new TreeItem(t, 0, trueIndex);
@@ -136,16 +172,19 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
     if (childEditPart.getModel() instanceof Shape) {
       Shape shpM = (Shape) childEditPart.getModel();
       Layer layer = shpM.getParentLayer();
-      LayerTreeEP ltep = (LayerTreeEP) getEditPartForChild(layer);
+      LayerTreeEP ltep = (LayerTreeEP) getViewer().getEditPartRegistry().get(layer);
 
       int trueIndex = (ltep.getChildren().size() == 0) ? 0 : ltep.getChildren().size() - 1;
       item = new TreeItem((TreeItem) ltep.getWidget(), 0, (trueIndex <= 0) ? 0 : trueIndex);
     }
 
     ((TreeEditPart) childEditPart).setWidget(item);
+
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractTreeEditPart#createEditPolicies()
    */
   @Override
