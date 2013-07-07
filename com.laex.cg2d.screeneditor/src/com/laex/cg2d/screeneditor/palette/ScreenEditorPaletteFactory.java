@@ -96,8 +96,8 @@ public final class ScreenEditorPaletteFactory {
     }
 
     String name = EntitiesUtil.getInternalName(res.getName());
-    final Image i = EntitiesUtil.getDefaultFrame(e);
 
+    final Image i = EntitiesUtil.getDefaultFrame(e);
     ImageDescriptor id = ScreenEditorUtil.getImageDescriptor(i, 0.5f);
 
     e.setDefaultFrame(i);
