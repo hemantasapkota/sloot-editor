@@ -12,6 +12,7 @@ package com.laex.cg2d.model.util;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import org.eclipse.core.runtime.CoreException;
@@ -33,7 +34,6 @@ import com.laex.cg2d.model.model.impl.EntityValidator;
  * The Class EntitiesUtil.
  */
 public class EntitiesUtil {
-
 
   /**
    * Visit model and init entities.
@@ -75,7 +75,6 @@ public class EntitiesUtil {
     return toRemove;
   }
 
-
   /**
    * Extract sprite2.
    * 
@@ -102,11 +101,12 @@ public class EntitiesUtil {
     }
     return id;
   }
-  
+
   /**
    * Creates the image.
-   *
-   * @param id the id
+   * 
+   * @param id
+   *          the id
    * @return the image
    */
   public static Image createImage(final ImageData id) {
@@ -119,27 +119,29 @@ public class EntitiesUtil {
     return idd.createImage();
   }
 
-
   /**
    * Creates the image strip.
-   *
-   * @param strip the strip
-   * @param cols the cols
-   * @param rows the rows
+   * 
+   * @param strip
+   *          the strip
+   * @param cols
+   *          the cols
+   * @param rows
+   *          the rows
    * @return the queue
    */
   public static Queue<Image> createImageStrip(Image strip, int cols, int rows) {
     int imgWidth = strip.getBounds().width;
     int imgHeight = strip.getBounds().height;
-    
+
     int tileWidth = imgWidth / cols;
     int tileHeight = imgHeight / rows;
- 
+
     Queue<Image> imgStip = new LinkedList<Image>();
-    
+
     for (int y = 0; y < imgHeight; y += tileHeight) {
       for (int x = 0; x < imgWidth; x += tileWidth) {
-        Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);      
+        Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);
         final ImageData id = extractSprite2(strip.getImageData(), r);
         Image extractImage = EntitiesUtil.createImage(id);
         imgStip.add(extractImage);
@@ -195,11 +197,39 @@ public class EntitiesUtil {
     }
 
     Image img = ResourceManager.getImageOfRelativePath(eaim.getAnimationResourceFile().getResourceFile());
-    
+
     int tileWidth = img.getBounds().width / eaim.getCols();
     int tileHeight = img.getBounds().height / eaim.getRows();
-    
+
     ImageData id = extractSprite2(img.getImageData(), new Rectangle(0, 0, tileWidth, tileHeight));
-    return EntitiesUtil.createImage(id);
+    Image i = EntitiesUtil.createImage(id);
+
+    return i;
+  }
+
+  public static Queue<Image> extract(Image spriteSheet, int cols, int rows, List<Integer> frameIndices) {
+    Queue<Image> extracted = EntitiesUtil.createImageStrip(spriteSheet, cols, rows);
+
+    Queue<Image> includeList = new LinkedList<Image>();
+
+    Object[] explodeExtraced = extracted.toArray();
+
+    int indexToCheck = 1;
+
+    while (indexToCheck <= frameIndices.size()) {
+
+      boolean shouldInclude = frameIndices.contains(indexToCheck);
+
+      if (shouldInclude) {
+
+        includeList.add((Image) explodeExtraced[indexToCheck]);
+
+      }
+
+      indexToCheck++;
+    }
+
+    return includeList;
+
   }
 }
