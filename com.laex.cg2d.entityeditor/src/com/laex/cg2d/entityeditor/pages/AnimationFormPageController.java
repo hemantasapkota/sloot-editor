@@ -10,20 +10,25 @@
  */
 package com.laex.cg2d.entityeditor.pages;
 
-import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.draw2d.ImageUtilities;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
+import org.eclipse.swt.widgets.Button;
 
-import com.laex.cg2d.model.ResourceManager;
+import com.laex.cg2d.entityeditor.Activator;
+import com.laex.cg2d.entityeditor.preferences.PreferenceConstants;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.EntityCollisionType;
@@ -120,34 +125,80 @@ public class AnimationFormPageController {
    * @param duration
    *          the duration
    */
-  public void previewAnimationExternal(EntityAnimation entAnim, float duration) {
-    String animStrip = entAnim.getAnimationResourceFile().getResourceFileAbsolute();
+  public void previewAnimationExternal(final EntityAnimation entAnim, final float duration) {
 
-    if (animStrip == null)
-      return;
+    Job job = new Job("Preview Animation") {
 
-    int rows = entAnim.getRows();
-    int cols = entAnim.getCols();
+      @Override
+      protected IStatus run(IProgressMonitor monitor) {
 
-    // Use JOGL Application
-    // JoglApplicationConfiguration jac = new JoglApplicationConfiguration();
-    // jac.width = 200;
-    // jac.height = 200;
-    // jac.title = entAnim.getAnimationName();
-    //
-    // ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip,
-    // rows, cols, duration);
-    // new JoglApplication(eap, jac);
+        String animStrip = entAnim.getAnimationResourceFile().getResourceFileAbsolute();
 
-    // LwjglApplicationConfiguration lac = new LwjglApplicationConfiguration();
-    // lac.width = 200;
-    // lac.height = 200;
-    // lac.title = entAnim.getAnimationName();
-    //
-    //
-    // ExternalAnimationPreview eap = new ExternalAnimationPreview(animStrip,
-    // rows, cols, duration);
-    // new LwjglApplication(eap, lac);
+        if (animStrip == null)
+          return Status.CANCEL_STATUS;
+
+        int rows = entAnim.getRows();
+        int cols = entAnim.getCols();
+
+        /*
+         * Structure of animation preview arguments "Animation1" -- animation
+         * name
+         * "/Volumes/MyFiles/Projects/WS/runtime-com.laex.cg2d.core.product/Mario/textures/coin-sprite-animation-sprite-sheet.png"
+         * --spritesheet file 0.05 --animation dration 10 --no of cols 1 --no of
+         * rows "1,2,3,4,5,6,7,8,9,10" --frame indices
+         */
+
+        String pathToPreviewer = Activator.getDefault().getPreferenceStore()
+            .getString(PreferenceConstants.ANIMATION_PREVIEW);
+
+        StringBuilder indices = new StringBuilder();
+        for (int i : entAnim.getFrameIndices()) {
+          indices.append(i);
+
+          if (i != entAnim.getFrameIndices().size()) {
+            indices.append(",");
+          }
+
+        }
+
+        String[] commands =
+          {
+              "java",
+              "-jar",
+              pathToPreviewer,
+              entAnim.getAnimationName(),
+              animStrip,
+              String.valueOf(duration),
+              String.valueOf(cols),
+              String.valueOf(rows),
+              indices.toString() };
+
+        StringBuilder printCmd = new StringBuilder("java -jar ").append(pathToPreviewer).append(" ")
+            .append(entAnim.getAnimationName()).append(" ").append(animStrip).append(" ").append(duration).append(" ")
+            .append(cols).append(" ").append(rows).append(" ").append(indices.toString());
+
+        Activator.getDefault().getLog().log(new Status(Status.OK, Activator.PLUGIN_ID, printCmd.toString()));
+
+        ProcessBuilder pb = new ProcessBuilder(commands);
+        try {
+
+          Process p = pb.start();
+
+          Scanner scnr = new Scanner(p.getErrorStream());
+          while (scnr.hasNext()) {
+            Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, scnr.nextLine()));
+          }
+
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+
+        return Status.OK_STATUS;
+      }
+    };
+
+    job.schedule();
+
   }
 
   /**
@@ -183,26 +234,34 @@ public class AnimationFormPageController {
 
   }
 
+  public void frameIndicesChanged(AnimationListViewItem alvi, List<Integer> frameIndices) {
+    alvi.getAnimation().setFrameIndices(frameIndices);
+  }
+
   /**
    * Export frames.
-   *
-   * @param alvi the alvi
-   * @param destination the destination
-   * @param monitor the monitor
+   * 
+   * @param alvi
+   *          the alvi
+   * @param destination
+   *          the destination
+   * @param monitor
+   *          the monitor
    */
-  public void exportFrames(AnimationListViewItem alvi, IPath destination, IProgressMonitor monitor) {
-      int work = alvi.getFrames().size();
-      int done = 0;
-      monitor.beginTask("Export Frames", work);
-      for (Image i : alvi.getFrames()) {
-           ImageLoader loader = new ImageLoader();
-           loader.data = new ImageData[] { i.getImageData() };
-           int imgIndex = done + 1;
-           String filename = destination.append("img" + imgIndex).addFileExtension("png").toOSString();
-           loader.save(filename, SWT.IMAGE_PNG);
-           monitor.worked(done++);
-      }
-      monitor.done();
+  public void exportFrames(List<Image> images, IPath destination, IProgressMonitor monitor) {
+    int work = images.size();
+    int done = 0;
+    monitor.beginTask("Export Frames", work);
+    for (Image i : images) {
+      ImageLoader loader = new ImageLoader();
+      loader.data = new ImageData[]
+        { i.getImageData() };
+      int imgIndex = done + 1;
+      String filename = destination.append("img" + imgIndex).addFileExtension("png").toOSString();
+      loader.save(filename, SWT.IMAGE_PNG);
+      monitor.worked(done++);
+    }
+    monitor.done();
   }
 
   /**
