@@ -25,5 +25,34 @@
             project="false">
       </wizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.laex.cg2d.entityeditor.preferences.EntityPreferencesPage"
+            id="com.laex.cg2d.entityeditor.preferences.EntityPreferencesPage"
+            name="LB2D Entity Editor">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.laex.cg2d.entityeditor.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="com.laex.cg2d.entityeditor.moveEntityContribution"
+            nameFilter="*cge*"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="com.laex.cg2d.entityeditor.action.MoveEntityAction"
+               id="com.laex.cg2d.entityeditor.action1"
+               label="Move Entity"
+               menubarPath="com.laex.cg2d.navigatorContextMenu/navigationContextMenuGroup1">
+         </action>
+      </objectContribution>
+   </extension>
 
 </plugin>
