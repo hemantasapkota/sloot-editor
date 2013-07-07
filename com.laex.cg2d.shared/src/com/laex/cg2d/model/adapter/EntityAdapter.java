@@ -121,6 +121,9 @@ public class EntityAdapter {
         eaBuilder = eaBuilder.addVertices(Vector2Adapter.asCGVector2(v));
       }
 
+      eaBuilder.addAllFrameIndices(ea.getFrameIndices());
+
+
       CGEntityAnimation cgEa = eaBuilder.build();
       entityBuilder = entityBuilder.addAnimations(cgEa);
     }
@@ -152,9 +155,13 @@ public class EntityAdapter {
       ea.setShpY(cgEa.getShpY());
       ea.setShpWidth(cgEa.getShpWidth());
       ea.setShpHeight(cgEa.getShpHeight());
+
       for (CGVector2 cv : cgEa.getVerticesList()) {
         ea.getVertices().add(new Vector2(cv.getX(), cv.getY()));
       }
+
+      ea.getFrameIndices().addAll(cgEa.getFrameIndicesList());
+
       
       entityModel.addEntityAnimation(ea);
     }
