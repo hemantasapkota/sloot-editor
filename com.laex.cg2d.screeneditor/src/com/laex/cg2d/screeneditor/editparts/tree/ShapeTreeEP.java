@@ -126,8 +126,10 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
    * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
    */
   @Override
-  public void propertyChange(PropertyChangeEvent arg0) {
-    refreshVisuals();
+  public void propertyChange(PropertyChangeEvent prop) {
+    if (prop.getPropertyName().equals(Shape.SHAPE_ID)) {
+      refreshVisuals();
+    }
   }
 
 }
