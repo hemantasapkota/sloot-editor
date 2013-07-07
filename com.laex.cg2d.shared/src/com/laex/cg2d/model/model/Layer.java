@@ -20,6 +20,8 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /** The Constant LAYER_NAME_CHANGED. */
   public static final String LAYER_NAME_CHANGED = "LayerNameChanged";
+  
+  public static final String LAYER_CHILD_ADDED  = "LayerChildAdded";
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 5186818065007054067L;
@@ -85,7 +87,9 @@ public class Layer extends ModelElement implements Comparable<Layer> {
    *          the child
    */
   public void add(Shape child) {
-    children.add(child);
+    if (children.add(child)) {
+      firePropertyChange(LAYER_CHILD_ADDED, null, child);
+    }
   }
 
   /**
