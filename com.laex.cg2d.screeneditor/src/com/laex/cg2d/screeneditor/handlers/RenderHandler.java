@@ -25,7 +25,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
@@ -166,7 +165,8 @@ public class RenderHandler extends AbstractHandler {
     cmd.append(" -screenFile ").append(screenFile);
     cmd.append(" -screenController ").append(controllerFile);
 
-    Activator.getDefault().getLog().log(new Status(IStatus.INFO, Activator.PLUGIN_ID, cmd.toString()));
+    Status renderStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, cmd.toString());
+    Activator.getDefault().getLog().log(renderStatus);
 
     return new String[]
       { "java", "-jar", InternalPrefs.gameRunner(), "-screenFile", screenFile, "-screenController", controllerFile };
