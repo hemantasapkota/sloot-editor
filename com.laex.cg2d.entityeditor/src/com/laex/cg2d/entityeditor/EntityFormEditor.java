@@ -14,6 +14,11 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.ui.IEditorInput;
@@ -84,10 +89,8 @@ public class EntityFormEditor extends FormEditor {
   protected void setInput(IEditorInput input) {
     super.setInput(input);
 
-    // entityModel = new Entity();
-    // entityModel.setInternalName(EntitiesUtil.getInternalName(input.getName()));
+    setupResourceChangeListener(input.getName());
 
-    // parseWorkspaceFile(input);
     try {
       parseEntityFile(input);
     } catch (IOException e) {
@@ -97,6 +100,32 @@ public class EntityFormEditor extends FormEditor {
     }
 
     setPartName(input.getName());
+  }
+
+  private void setupResourceChangeListener(final String resName) {
+
+    ResourcesPlugin.getWorkspace().addResourceChangeListener(new IResourceChangeListener() {
+      @Override
+      public void resourceChanged(IResourceChangeEvent event) {
+        if (event.getType() == IResourceChangeEvent.POST_CHANGE) {
+          try {
+            event.getDelta().accept(new IResourceDeltaVisitor() {
+              @Override
+              public boolean visit(IResourceDelta delta) throws CoreException {
+                if (delta.getKind() == IResourceDelta.REMOVED) {
+                  if (resName.equals(delta.getResource().getName())) {
+                    closeEditor();
+                  }
+                }
+                return true;
+              }
+            });
+          } catch (CoreException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    }, IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE);
   }
 
   /**
@@ -167,6 +196,16 @@ public class EntityFormEditor extends FormEditor {
    */
   @Override
   public void doSaveAs() {
+  }
+
+  private void closeEditor() {
+    getSite().getShell().getDisplay().asyncExec(new Runnable() {
+      @Override
+      public void run() {
+        // TODO Auto-generated method stub
+        getSite().getPage().closeEditor(EntityFormEditor.this, false);
+      }
+    });
   }
 
 }
