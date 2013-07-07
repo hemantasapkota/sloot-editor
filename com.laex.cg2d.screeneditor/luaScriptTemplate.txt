@@ -8,6 +8,9 @@ onAir = false
 screenModel = nil
 queryMgr = nil
 
+currentAnimation = "Right"
+switchAnimation = false 
+
 destroyBodyList = {}
 
 
@@ -27,7 +30,9 @@ end
 function update(world, cam, body, id)
 
 	if id == "runner" then
+
 		local posX = body:getTransform():getPosition().x
+		local posY = body:getTransform():getPosition().y
 
 		local leftBoundsCondition = posX > (cardWidth/ptm/2)
 		local rightBoundsCondition = posX < ((cardNoX - 0.5) * cardWidth) / ptm
@@ -36,30 +41,48 @@ function update(world, cam, body, id)
 			cam.position.x = posX
 		end
 
+
+		if switchAnimation then
+			local newBody = screenMgr:switchAnimation("runner", currentAnimation)
+			switchAnimation = false
+		end
+
 	end
 
 	if destroyBodyList[id] then
 		world:destroyBody(body)
-
 		destroyBodyList[id] = false
 	end
 
+end
 
+function doSwitchAnimation(anim)
+	if anim ~= currentAnimation then
+    	switchAnimation = true
+    	currentAnimation = anim
+    end
 end
 
 function handleRunner(world, cam, key)
 	local body = screenMgr:getEntityById("runner")
 
     if key == "LEFT" then   
+
 		if body:getLinearVelocity().x <= maxXVelocity then
 			body:applyLinearImpulse(-1, 0, 0.5, 0)
     	end
+
+    	doSwitchAnimation("Left")
     end
 
 	if key == "RIGHT" then
+
 		if body:getLinearVelocity().x <= maxXVelocity then
 			body:applyLinearImpulse(0.8, 0, 0, 0)
 		end
+
+
+		doSwitchAnimation("Right")
 	end
 
 	if key == "SPACE" then
@@ -84,7 +107,7 @@ function collisionCallback(idA, idB, bodyA, bodyB, fixA, fixB, world, cam)
     end
 
 	if idA == "runner" and string.match(idB, "coin") then
-		destroyBodyList[0] = idB
+		destroyBodyList[idB] = true 
 	end
 
 end
