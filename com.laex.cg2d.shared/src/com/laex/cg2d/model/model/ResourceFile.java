@@ -12,6 +12,8 @@ package com.laex.cg2d.model.model;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.laex.cg2d.model.ScreenModel.CGResourceFile;
+
 /**
  * The Class ResourceFile.
  */
@@ -46,6 +48,10 @@ public class ResourceFile {
    */
   public static ResourceFile emptyResourceFile() {
     return ResourceFile.create(StringUtils.EMPTY, StringUtils.EMPTY);
+  }
+
+  public static boolean isEmpty(CGResourceFile resFile) {
+    return StringUtils.isEmpty(resFile.getResourceFile());
   }
 
   /**
