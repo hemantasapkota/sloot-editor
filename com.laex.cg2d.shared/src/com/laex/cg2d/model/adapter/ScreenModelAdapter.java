@@ -191,16 +191,21 @@ public class ScreenModelAdapter {
     // First step: make all the shapes
     for (CGLayer cgLayer : cgModel.getLayersList()) {
       Layer layer = new Layer(cgLayer.getId(), cgLayer.getName(), cgLayer.getVisible(), cgLayer.getLocked());
+      
+      model.getDiagram().getLayers().add(layer);
+      
       for (CGShape cgShape : cgLayer.getShapeList()) {
         
         Shape shape = ScreenModelAdapter.asShape(cgShape, layer);
+        
         layer.add(shape);
+        
         model.getDiagram().addChild(shape);
+        
         shapeMap.put(cgShape.getId(), shape);
         
       }
 
-      model.getDiagram().getLayers().add(layer);
     }
     
     // Second Step: make all the joints
