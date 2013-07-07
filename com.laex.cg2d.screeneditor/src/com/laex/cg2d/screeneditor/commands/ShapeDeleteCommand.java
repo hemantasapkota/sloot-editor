@@ -140,8 +140,9 @@ public class ShapeDeleteCommand extends Command {
     // remove the child and disconnect its connections
     wasRemoved = parent.removeChild(child);
     if (wasRemoved) {
+      parent.removeChild(child);
       parentLayer = child.getParentLayer();
-      parentLayer.getChildren().remove(child);
+      parentLayer.remove(child);
       child.setParentLayer(null);
       removeConnections(sourceConnections);
       removeConnections(targetConnections);
