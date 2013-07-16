@@ -799,7 +799,7 @@ public class AnimationFormPage extends FormPage {
     if (retval == ImportSpriteDialog.CANCEL || isd.getSelectedImage() == null) {
       return;
     }
-    
+
     clearSpriteButtons();
 
     AnimationListViewItem alvi = selectedAnimationListItem();
