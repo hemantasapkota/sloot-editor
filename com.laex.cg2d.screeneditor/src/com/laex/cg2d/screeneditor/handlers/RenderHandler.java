@@ -48,11 +48,12 @@ public class RenderHandler extends AbstractHandler {
    */
   public RenderHandler() {
   }
-  
+
   /**
    * Validate.
-   *
-   * @param shell the shell
+   * 
+   * @param shell
+   *          the shell
    */
   private void validate(final Shell shell) {
     String runnerFile = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.RUNNER);
@@ -72,17 +73,19 @@ public class RenderHandler extends AbstractHandler {
   /**
    * the command has been executed, so extract extract the needed information
    * from the application context.
-   *
-   * @param event the event
+   * 
+   * @param event
+   *          the event
    * @return the object
-   * @throws ExecutionException the execution exception
+   * @throws ExecutionException
+   *           the execution exception
    */
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
     final IEditorPart editorPart = window.getActivePage().getActiveEditor();
-    
+
     validate(window.getShell());
-    
+
     // Eclipse Jobs API
     final Job job = new Job("Render Game") {
       @Override
@@ -113,11 +116,11 @@ public class RenderHandler extends AbstractHandler {
           monitor.worked(4);
           Scanner scn = new Scanner(p.getErrorStream());
           while (scn.hasNext() && !monitor.isCanceled()) {
-            
+
             if (monitor.isCanceled()) {
               throw new InterruptedException("Cancelled");
             }
-            
+
             log.log(new Status(IStatus.INFO, Activator.PLUGIN_ID, scn.nextLine()));
           }
           monitor.worked(5);
@@ -152,11 +155,14 @@ public class RenderHandler extends AbstractHandler {
 
   /**
    * Builds the runner command from properties.
-   *
-   * @param screenFile the screen file
-   * @param controllerFile the controller file
+   * 
+   * @param screenFile
+   *          the screen file
+   * @param controllerFile
+   *          the controller file
    * @return the string[]
-   * @throws CoreException the core exception
+   * @throws CoreException
+   *           the core exception
    */
   private String[] buildRunnerCommandFromProperties(String screenFile, String controllerFile) throws CoreException {
     StringBuilder cmd = new StringBuilder("java -jar ");

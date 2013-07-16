@@ -68,8 +68,12 @@ public class EditShapeIDDialog extends TitleAreaDialog {
    */
   private static class Comparator extends ViewerComparator {
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.
+     * viewers.Viewer, java.lang.Object, java.lang.Object)
      */
     @Override
     public int compare(Viewer viewer, Object e1, Object e2) {
@@ -85,10 +89,10 @@ public class EditShapeIDDialog extends TitleAreaDialog {
    * The Class InternalShapeId.
    */
   class InternalShapeId {
-    
+
     /** The shape. */
     Shape shape;
-    
+
     /** The new id. */
     String newId;
   }
@@ -98,8 +102,12 @@ public class EditShapeIDDialog extends TitleAreaDialog {
    */
   private class TableLabelProvider extends LabelProvider implements ITableLabelProvider {
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object, int)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang
+     * .Object, int)
      */
     public Image getColumnImage(Object element, int columnIndex) {
       if (columnIndex != 0)
@@ -114,7 +122,8 @@ public class EditShapeIDDialog extends TitleAreaDialog {
       case ENTITY_SHAPE:
         Rectangle r = shp.shape.getEntity().getDefaultFrame().getBounds();
         Image i = shp.shape.getEntity().getDefaultFrame();
-//        return ScreenEditorUtil.getImageDescriptor(i, r.width / 2, (r.width / r.height) * (r.height / 2)).createImage();
+        // return ScreenEditorUtil.getImageDescriptor(i, r.width / 2, (r.width /
+        // r.height) * (r.height / 2)).createImage();
         return ScreenEditorUtil.getImageDescriptor(i, 0.5f).createImage();
 
       case SIMPLE_SHAPE_BOX:
@@ -131,8 +140,12 @@ public class EditShapeIDDialog extends TitleAreaDialog {
       return null;
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object, int)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang
+     * .Object, int)
      */
     public String getColumnText(Object element, int columnIndex) {
       InternalShapeId shp = (InternalShapeId) element;
@@ -151,21 +164,31 @@ public class EditShapeIDDialog extends TitleAreaDialog {
    */
   private static class ContentProvider implements IStructuredContentProvider {
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java
+     * .lang.Object)
      */
     public Object[] getElements(Object inputElement) {
       return ((List<Shape>) inputElement).toArray();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.eclipse.jface.viewers.IContentProvider#dispose()
      */
     public void dispose() {
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface
+     * .viewers.Viewer, java.lang.Object, java.lang.Object)
      */
     public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
     }
@@ -173,21 +196,23 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   /** The shape id list. */
   private List<InternalShapeId> shapeIdList = new ArrayList<InternalShapeId>();
-  
+
   /** The table. */
   private Table table;
-  
+
   /** The table viewer. */
   private TableViewer tableViewer;
-  
+
   /** The update id map. */
   private Map<Shape, String> updateIdMap = new HashMap<Shape, String>();
 
   /**
    * Create the dialog.
-   *
-   * @param parentShell the parent shell
-   * @param selectedEditParts the selected edit parts
+   * 
+   * @param parentShell
+   *          the parent shell
+   * @param selectedEditParts
+   *          the selected edit parts
    */
   public EditShapeIDDialog(Shell parentShell, List selectedEditParts) {
     super(parentShell);
@@ -213,8 +238,9 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the dialog.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    * @return the control
    */
   @Override
@@ -268,18 +294,19 @@ public class EditShapeIDDialog extends TitleAreaDialog {
       IDCreationStrategy ics = IDCreationStrategyFactory.getIDCreator(ScreenEditorUtil.getScreenModel());
 
       private boolean validate(String idToCheck) {
-        
-        //Make a copy of list to check, otherwise we will perpetually be validating false
-        for (InternalShapeId isi: shapeIdList) {
-          
+
+        // Make a copy of list to check, otherwise we will perpetually be
+        // validating false
+        for (InternalShapeId isi : shapeIdList) {
+
           boolean idUsed = ics.isIdUsed(isi.shape.getEditorShapeType(), isi.newId);
-          
+
           if (idUsed) {
             setErrorMessage("ID already exists");
             getButton(OK).setEnabled(false);
             return false;
           }
-          
+
         }
 
         setErrorMessage(null);
@@ -291,7 +318,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
       protected void setValue(Object element, Object value) {
         ((InternalShapeId) element).newId = value.toString();
         tableViewer.refresh();
-        
+
         validate(value.toString());
       }
 
@@ -314,7 +341,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
     tableViewer.setLabelProvider(new TableLabelProvider());
     tableViewer.setContentProvider(new ContentProvider());
-//    tableViewer.setComparator(new Comparator());
+    // tableViewer.setComparator(new Comparator());
 
     tableViewer.setInput(shapeIdList);
     tableViewer.refresh();
@@ -322,7 +349,9 @@ public class EditShapeIDDialog extends TitleAreaDialog {
     return area;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.jface.dialogs.Dialog#okPressed()
    */
   @Override
@@ -340,7 +369,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   /**
    * Gets the update id map.
-   *
+   * 
    * @return the update id map
    */
   public Map<Shape, String> getUpdateIdMap() {
@@ -349,8 +378,9 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the button bar.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -362,7 +392,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
 
   /**
    * Return the initial size of the dialog.
-   *
+   * 
    * @return the initial size
    */
   @Override

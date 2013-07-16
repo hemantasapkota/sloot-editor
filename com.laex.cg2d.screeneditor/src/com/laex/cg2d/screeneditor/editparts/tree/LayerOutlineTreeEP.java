@@ -22,19 +22,23 @@ public class LayerOutlineTreeEP extends LayerTreeEP {
 
   /**
    * Instantiates a new layer outline tree ep.
-   *
-   * @param layer the layer
+   * 
+   * @param layer
+   *          the layer
    */
   public LayerOutlineTreeEP(Layer layer) {
     super(layer);
   }
-  
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.screeneditor.editparts.tree.LayerTreeEP#getModelChildren()
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.screeneditor.editparts.tree.LayerTreeEP#getModelChildren()
    */
   @Override
   protected List getModelChildren() {
-    //return empty list
+    // return empty list
     return new ArrayList();
   }
 

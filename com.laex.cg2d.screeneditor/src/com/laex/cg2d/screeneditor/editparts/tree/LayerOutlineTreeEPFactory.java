@@ -22,8 +22,12 @@ import com.laex.cg2d.model.model.Shape;
  */
 public class LayerOutlineTreeEPFactory implements EditPartFactory {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.EditPartFactory#createEditPart(org.eclipse.gef.EditPart, java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.EditPartFactory#createEditPart(org.eclipse.gef.EditPart,
+   * java.lang.Object)
    */
   @Override
   public EditPart createEditPart(EditPart context, Object model) {

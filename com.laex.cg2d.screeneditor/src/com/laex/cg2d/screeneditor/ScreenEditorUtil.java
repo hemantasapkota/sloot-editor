@@ -31,6 +31,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ILayerManager;
+import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
 import com.laex.cg2d.model.adapter.EntityAdapter;
 import com.laex.cg2d.model.adapter.ShapeAdapter;
@@ -84,7 +85,15 @@ public final class ScreenEditorUtil {
    * @return the screen layer manager
    */
   public static ILayerManager getScreenLayerManager() {
+
     return (ILayerManager) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+
+  }
+
+  public static IScreenEditorState screenEditorState() {
+
+    return (IScreenEditorState) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+
   }
 
   /**
@@ -241,7 +250,7 @@ public final class ScreenEditorUtil {
       @Override
       public ImageData getImageData() {
 
-        if (w == 0 || h == 0) 
+        if (w == 0 || h == 0)
           return i.getImageData();
 
         return i.getImageData().scaledTo(w, h);

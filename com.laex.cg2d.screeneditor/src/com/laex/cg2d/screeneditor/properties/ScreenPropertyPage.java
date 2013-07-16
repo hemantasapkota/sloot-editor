@@ -198,9 +198,11 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /**
    * Populate properties.
-   *
-   * @throws IOException Signals that an I/O exception has occurred.
-   * @throws CoreException the core exception
+   * 
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
    */
   private void populateProperties() throws IOException, CoreException {
     IFile res = (IFile) getElement();
@@ -422,28 +424,31 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /**
    * Apply changes.
-   *
-   * @param prefs the prefs
-   * @throws IOException Signals that an I/O exception has occurred.
-   * @throws CoreException the core exception
+   * 
+   * @param prefs
+   *          the prefs
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
    */
   private void applyChanges(CGScreenPreferences prefs) throws IOException, CoreException {
     // Update changes to the active screen editor
     if (ScreenEditorUtil.isScreenEditorActive()) {
-      ScreenEditorUtil.getScreenLayerManager().updateCardLayer(txtCardNoX.getSelection(), txtCardNoY.getSelection(),
+      ScreenEditorUtil.screenEditorState().updateCardLayer(txtCardNoX.getSelection(), txtCardNoY.getSelection(),
           txtCardWidth.getSelection(), txtCardHeight.getSelection());
 
       ScreenEditorUtil.getScreenPropertyManager().updateScreenProperties(prefs);
     } else {
-      //Editor is not active. Persist the properties, by loading the model and saving it again.
+      // Editor is not active. Persist the properties, by loading the model and
+      // saving it again.
       IFile file = (IFile) getElement();
       CGScreenModel model = CGScreenModel.parseFrom(file.getContents());
-      
+
       CGScreenModel updatedModel = CGScreenModel.newBuilder(model).setScreenPrefs(constructPrefs()).build();
       file.setContents(new ByteArrayInputStream(updatedModel.toByteArray()), true, false, null);
     }
-    
-    
+
   }
 
   /*
@@ -465,7 +470,7 @@ public class ScreenPropertyPage extends PropertyPage {
 
   /**
    * Construct prefs.
-   *
+   * 
    * @return the cG screen preferences
    */
   private CGScreenPreferences constructPrefs() {
@@ -493,14 +498,12 @@ public class ScreenPropertyPage extends PropertyPage {
         .setCardWidth(cardWidth).setCardNoX(cardNoX).setCardNoY(cardNoY);
 
     CGWorldPreferences.Builder worldBuildr = CGWorldPreferences.newBuilder().setGravityX(gravityX)
-        .setGravityY(gravityY).setPtmRatio(ptmRatio)
-        .setPositionIterations(posItr).setTimeStep(timeStep)
+        .setGravityY(gravityY).setPtmRatio(ptmRatio).setPositionIterations(posItr).setTimeStep(timeStep)
         .setVelocityIterations(velocityItr);
 
     CGDebugDrawPreferences.Builder dbgBuildr = CGDebugDrawPreferences.newBuilder().setDrawAABB(aabb)
-        .setDrawBodies(bodies).setDrawDebugData(debugData)
-        .setDrawEntities(entiites).setDrawInactiveBodies(inactiveBodies)
-        .setDrawJoints(joints).setInstallMouseJoint(mouseJoint);
+        .setDrawBodies(bodies).setDrawDebugData(debugData).setDrawEntities(entiites)
+        .setDrawInactiveBodies(inactiveBodies).setDrawJoints(joints).setInstallMouseJoint(mouseJoint);
 
     return CGScreenPreferences.newBuilder().setCardPrefs(cardBuildr.build()).setDebugDrawPrefs(dbgBuildr.build())
         .setWorldPrefs(worldBuildr.build()).build();

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -42,25 +43,28 @@ public class CGScreenModelAdapter {
 
   /** The model. */
   GameModel model;
-  
+
   /** The screen prefs. */
   private CGScreenPreferences screenPrefs;
 
   /**
    * Instantiates a new cG game model adapter.
-   *
-   * @param model the model
-   * @param screenPrefs the screen prefs
+   * 
+   * @param model
+   *          the model
+   * @param screenPrefs
+   *          the screen prefs
    */
   public CGScreenModelAdapter(GameModel model, CGScreenPreferences screenPrefs) {
     this.model = model;
     this.screenPrefs = screenPrefs;
   }
-  
+
   /**
    * Instantiates a new cG screen model adapter.
-   *
-   * @param model the model
+   * 
+   * @param model
+   *          the model
    */
   public CGScreenModelAdapter(GameModel model) {
     this.model = model;
@@ -168,12 +172,12 @@ public class CGScreenModelAdapter {
         .setBackgroundResourceFile(ResourceFileAdapter.asCGResourceFile(s.getBackgroundResourceFile()))
         .setEditorShapeType(asCGEditorType(s.getEditorShapeType())).setBounds(pBounds).setBodyDef(bdef)
         .setFixtureDef(fdef);
-    
-        // create entity
+
+    // create entity
     if (s.getEditorShapeType().isEntity()) {
       buildr.setEntityRefFile(ResourceFileAdapter.asCGResourceFile(s.getEntityResourceFile()));
     }
-    
+
     return buildr;
   }
 
@@ -213,7 +217,7 @@ public class CGScreenModelAdapter {
 
       cgModelBuilder.addLayers(layerBuilder.build());
     }
-    
+
     if (screenPrefs != null) {
       cgModelBuilder.setScreenPrefs(screenPrefs);
     }
@@ -223,8 +227,9 @@ public class CGScreenModelAdapter {
 
   /**
    * As cg shape.
-   *
-   * @param s the s
+   * 
+   * @param s
+   *          the s
    * @return the cG shape
    */
   public static CGShape asCGShape(Shape s) {
@@ -233,7 +238,6 @@ public class CGScreenModelAdapter {
     CGBodyDef pBodyDef = makeCGBodyDef(bdef).build();
     CGFixtureDef pFixtureDef = makeCGFixtureDef(fdef).build();
     CGShape.Builder shapeBuilder = makeShape(pFixtureDef, pBodyDef, s);
-
 
     CGShape cgShape = shapeBuilder.build();
     return cgShape;

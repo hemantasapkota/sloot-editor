@@ -18,9 +18,9 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 
 import com.laex.cg2d.model.adapter.RectAdapter;
-import com.laex.cg2d.model.joints.BEDistanceJoint;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**
  * The Class ShapeSetConstraintCommand.
@@ -38,6 +38,8 @@ public class ShapeSetConstraintCommand extends Command {
 
   /** The shape. */
   private final Shape shape;
+
+  private int ptmRatio;
 
   /**
    * Instantiates a new shape set constraint command.
@@ -57,6 +59,8 @@ public class ShapeSetConstraintCommand extends Command {
     this.request = req;
     this.newBounds = newBounds.getCopy();
     setLabel("move / resize");
+    
+    this.ptmRatio = ScreenEditorUtil.getScreenModel().getScreenPrefs().getWorldPrefs().getPtmRatio();
   }
 
   /*
@@ -81,28 +85,26 @@ public class ShapeSetConstraintCommand extends Command {
     oldBounds = RectAdapter.d2dRect(shape.getBounds());
     redo();
     // Recalculate if distance joint
-    updateJoints();
+    updateJoints(ptmRatio);
   }
 
   /**
    * Update joints.
    */
-  private void updateJoints() {
+  private void updateJoints(int ptmRatio) {
     List sj = shape.getSourceJoints();
     List tj = shape.getTargetJoints();
 
     if (sj.size() > 0) {
       for (Object jd : shape.getSourceJoints()) {
-        updateJoint((Joint) jd);
-        updateDistanceJoints((Joint) jd);
+        updateJoint((Joint) jd, ptmRatio);
       }
     }
     // This is important. A shape can be in both source and target list.
     // Therefore, the if check should be independent
     if (tj.size() > 0) {
       for (Object jd : shape.getTargetJoints()) {
-        updateJoint((Joint) jd);
-        updateDistanceJoints((Joint) jd);
+        updateJoint((Joint) jd, ptmRatio);
       }
     }
   }
@@ -113,25 +115,10 @@ public class ShapeSetConstraintCommand extends Command {
    * @param jd
    *          the jd
    */
-  private void updateJoint(Joint jd) {
-    // jd.computeWorldAnchors();
+  private void updateJoint(Joint jd, int ptmRatio) {
+     jd.computeLocalAnchors(ptmRatio);
   }
 
-  /**
-   * Update distance joints.
-   * 
-   * @param jd
-   *          the jd
-   */
-  private void updateDistanceJoints(Joint jd) {
-
-    if (jd instanceof BEDistanceJoint) {
-      BEDistanceJoint idj = (BEDistanceJoint) jd;
-      if (idj.getSource() == shape || idj.getTarget() == shape) {
-        idj.calculateLength();
-      }
-    }
-  }
 
   /*
    * (non-Javadoc)
@@ -150,7 +137,7 @@ public class ShapeSetConstraintCommand extends Command {
   public void undo() {
     shape.setBounds(RectAdapter.gdxRect(oldBounds));
     // Update after a un-do
-    updateJoints();
+    updateJoints(this.ptmRatio);
   }
 
 }

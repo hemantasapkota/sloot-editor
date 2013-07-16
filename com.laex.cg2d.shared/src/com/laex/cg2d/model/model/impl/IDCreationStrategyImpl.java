@@ -21,7 +21,7 @@ import com.laex.cg2d.model.model.Shape;
  * The Class IDCreationStrategyImpl.
  */
 public class IDCreationStrategyImpl implements IDCreationStrategy {
-  
+
   /** The box format. */
   private static String BOX_FORMAT = "box%d";
 
@@ -36,26 +36,31 @@ public class IDCreationStrategyImpl implements IDCreationStrategy {
 
   /** The background format. */
   private static String BACKGROUND_FORMAT = "bg%d";
-  
+
   /** The model. */
   private GameModel model;
-  
+
   /**
    * Instantiates a new iD creation strategy impl.
-   *
-   * @param model the model
+   * 
+   * @param model
+   *          the model
    */
   public IDCreationStrategyImpl(GameModel model) {
     this.model = model;
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.model.model.IDCreationStrategy#newId(com.laex.cg2d.model.model.EditorShapeType)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.model.model.IDCreationStrategy#newId(com.laex.cg2d.model.
+   * model.EditorShapeType)
    */
   @Override
   public String newId(EditorShapeType type) {
-  switch (type) {
-    
+    switch (type) {
+
     case BACKGROUND_SHAPE:
       return newBackgroundId(type);
 
@@ -78,11 +83,15 @@ public class IDCreationStrategyImpl implements IDCreationStrategy {
 
     }
 
-    return "otherId";    
+    return "otherId";
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.model.model.IDCreationStrategy#isIdUsed(com.laex.cg2d.model.model.EditorShapeType, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.model.model.IDCreationStrategy#isIdUsed(com.laex.cg2d.model
+   * .model.EditorShapeType, java.lang.String)
    */
   @Override
   public boolean isIdUsed(EditorShapeType type, String id) {
@@ -95,13 +104,14 @@ public class IDCreationStrategyImpl implements IDCreationStrategy {
         }
       }
     }
-    return used;    
+    return used;
   }
-  
+
   /**
    * Gets the available id.
-   *
-   * @param type the type
+   * 
+   * @param type
+   *          the type
    * @return the available id
    */
   private int getAvailableId(EditorShapeType type) {
@@ -118,8 +128,7 @@ public class IDCreationStrategyImpl implements IDCreationStrategy {
 
     return id;
   }
-  
-  
+
   /**
    * New box id.
    * 
@@ -173,7 +182,6 @@ public class IDCreationStrategyImpl implements IDCreationStrategy {
    */
   private String newBackgroundId(EditorShapeType type) {
     return String.format(BACKGROUND_FORMAT, getAvailableId(type));
-  } 
-  
+  }
 
 }

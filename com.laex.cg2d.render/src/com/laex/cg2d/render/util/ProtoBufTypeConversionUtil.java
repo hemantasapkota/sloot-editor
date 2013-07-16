@@ -24,15 +24,11 @@ import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.laex.cg2d.model.ScreenModel.CGBodyDef;
 import com.laex.cg2d.model.ScreenModel.CGBodyType;
-import com.laex.cg2d.model.ScreenModel.CGDistanceJointDef;
 import com.laex.cg2d.model.ScreenModel.CGFixtureDef;
-import com.laex.cg2d.model.ScreenModel.CGFrictionJointDef;
+import com.laex.cg2d.model.ScreenModel.CGJoint;
 import com.laex.cg2d.model.ScreenModel.CGJointType;
-import com.laex.cg2d.model.ScreenModel.CGPrismaticJointDef;
-import com.laex.cg2d.model.ScreenModel.CGPulleyJointDef;
-import com.laex.cg2d.model.ScreenModel.CGRevoluteJointDef;
 import com.laex.cg2d.model.ScreenModel.CGVector2;
-import com.laex.cg2d.model.ScreenModel.CGWeldJointDef;
+import com.laex.cg2d.model.adapter.Vector2Adapter;
 
 /**
  * The Class ProtoBufTypeConversionUtil.
@@ -121,12 +117,18 @@ public class ProtoBufTypeConversionUtil {
    *          the _jdef
    * @return the distance joint def
    */
-  public static DistanceJointDef asDistanceJointDef(Body bodyA, Body bodyB, CGDistanceJointDef _jdef) {
+  public static DistanceJointDef asDistanceJointDef(Body bodyA, Body bodyB, CGJoint _j) {
     DistanceJointDef jdef = new DistanceJointDef();
-    jdef.collideConnected = _jdef.getCollideConnected();
-    jdef.dampingRatio = _jdef.getDampingRatio();
-    jdef.frequencyHz = _jdef.getFreqencyHz();
+    jdef.collideConnected = _j.getDistanceJointDef().getCollideConnected();
+    jdef.dampingRatio = _j.getDistanceJointDef().getDampingRatio();
+    jdef.frequencyHz = _j.getDistanceJointDef().getFreqencyHz();
     jdef.initialize(bodyA, bodyB, bodyA.getWorldCenter(), bodyB.getWorldCenter());
+
+    if (_j.getUseLocalAnchors()) {
+      jdef.localAnchorA.set(Vector2Adapter.asVector2(_j.getLocalAnchorA()));
+      jdef.localAnchorB.set(Vector2Adapter.asVector2(_j.getLocalAnchorB()));
+    }
+
     return jdef;
   }
 
@@ -141,13 +143,18 @@ public class ProtoBufTypeConversionUtil {
    *          the _jdef
    * @return the pulley joint def
    */
-  public static PulleyJointDef asPulleyJointDef(Body bodyA, Body bodyB, CGPulleyJointDef _jdef) {
+  public static PulleyJointDef asPulleyJointDef(Body bodyA, Body bodyB, CGJoint _j) {
     PulleyJointDef jdef = new PulleyJointDef();
-    jdef.collideConnected = _jdef.getCollideConnected();
-    jdef.ratio = _jdef.getRatio();
-    jdef.initialize(bodyA, bodyB, ProtoBufTypeConversionUtil.asVector2(_jdef.getGroundAnchorA()),
-        ProtoBufTypeConversionUtil.asVector2(_jdef.getGroundAnchorB()), bodyA.getWorldCenter(), bodyB.getWorldCenter(),
-        _jdef.getRatio());
+    jdef.collideConnected = _j.getPulleyJointDef().getCollideConnected();
+    jdef.ratio = _j.getPulleyJointDef().getRatio();
+    jdef.initialize(bodyA, bodyB, ProtoBufTypeConversionUtil.asVector2(_j.getPulleyJointDef().getGroundAnchorA()),
+        ProtoBufTypeConversionUtil.asVector2(_j.getPulleyJointDef().getGroundAnchorB()), bodyA.getWorldCenter(),
+        bodyB.getWorldCenter(), _j.getPulleyJointDef().getRatio());
+
+    if (_j.getUseLocalAnchors()) {
+      jdef.localAnchorA.set(Vector2Adapter.asVector2(_j.getLocalAnchorA()));
+      jdef.localAnchorB.set(Vector2Adapter.asVector2(_j.getLocalAnchorB()));
+    }
 
     return jdef;
   }
@@ -163,23 +170,23 @@ public class ProtoBufTypeConversionUtil {
    *          the _jdef
    * @return the revolute joint def
    */
-  public static RevoluteJointDef asRevoluteJoint(Body bodyA, Body bodyB, CGRevoluteJointDef _jdef) {
+  public static RevoluteJointDef asRevoluteJoint(Body bodyA, Body bodyB, CGJoint _j) {
     RevoluteJointDef jdef = new RevoluteJointDef();
-    jdef.collideConnected = _jdef.getCollideConnected();
-    jdef.enableLimit = _jdef.getEnableLimit();
-    jdef.enableMotor = _jdef.getEnableMotor();
-    jdef.lowerAngle = _jdef.getLowerAngle();
-    jdef.maxMotorTorque = _jdef.getMaxMotorTorque();
-    jdef.motorSpeed = _jdef.getMotorSpeed();
-    jdef.referenceAngle = _jdef.getReferenceAngle();
-    jdef.upperAngle = _jdef.getUpperAngle();
+    jdef.collideConnected = _j.getRevoluteJointDef().getCollideConnected();
+    jdef.enableLimit = _j.getRevoluteJointDef().getEnableLimit();
+    jdef.enableMotor = _j.getRevoluteJointDef().getEnableMotor();
+    jdef.lowerAngle = _j.getRevoluteJointDef().getLowerAngle();
+    jdef.maxMotorTorque = _j.getRevoluteJointDef().getMaxMotorTorque();
+    jdef.motorSpeed = _j.getRevoluteJointDef().getMotorSpeed();
+    jdef.referenceAngle = _j.getRevoluteJointDef().getReferenceAngle();
+    jdef.upperAngle = _j.getRevoluteJointDef().getUpperAngle();
 
-    //TODO: decide what to use in anchor: the world anchor defined in screen editor
-    //or bodys world center
-//    jdef.initialize(bodyA, bodyB, ProtoBufTypeConversionUtil.asVector2(_jdef.getWorldAnchor()));
-//    Vector2 avg = bodyA.getWorldCenter().add(bdyB.getWorldCenter());
-//    jdef.initialize(bodyA, bodyB, avg.div(2))
     jdef.initialize(bodyA, bodyB, bodyA.getWorldCenter());
+
+    if (_j.getUseLocalAnchors()) {
+      jdef.localAnchorA.set(Vector2Adapter.asVector2(_j.getLocalAnchorA()));
+      jdef.localAnchorB.set(Vector2Adapter.asVector2(_j.getLocalAnchorB()));
+    }
     return jdef;
 
   }
@@ -195,12 +202,18 @@ public class ProtoBufTypeConversionUtil {
    *          the _jdef
    * @return the friction joint def
    */
-  public static FrictionJointDef asFrictionJointDef(Body bodyA, Body bodyB, CGFrictionJointDef _jdef) {
+  public static FrictionJointDef asFrictionJointDef(Body bodyA, Body bodyB, CGJoint _j) {
     FrictionJointDef jdef = new FrictionJointDef();
-    jdef.collideConnected = _jdef.getCollideConnected();
-    jdef.maxForce = _jdef.getMaxForce();
-    jdef.maxTorque = _jdef.getMaxTorque();
+    jdef.collideConnected = _j.getFrictionJointDef().getCollideConnected();
+    jdef.maxForce = _j.getFrictionJointDef().getMaxForce();
+    jdef.maxTorque = _j.getFrictionJointDef().getMaxTorque();
     jdef.initialize(bodyA, bodyB, bodyA.getWorldCenter());
+
+    if (_j.getUseLocalAnchors()) {
+      jdef.localAnchorA.set(Vector2Adapter.asVector2(_j.getLocalAnchorA()));
+      jdef.localAnchorB.set(Vector2Adapter.asVector2(_j.getLocalAnchorB()));
+    }
+
     return jdef;
   }
 
@@ -215,10 +228,16 @@ public class ProtoBufTypeConversionUtil {
    *          the _jdef
    * @return the weld joint def
    */
-  public static WeldJointDef asWeldJointDef(Body bodyA, Body bodyB, CGWeldJointDef _jdef) {
+  public static WeldJointDef asWeldJointDef(Body bodyA, Body bodyB, CGJoint _j) {
     WeldJointDef jdef = new WeldJointDef();
-    jdef.collideConnected = _jdef.getCollideConnected();
+    jdef.collideConnected = _j.getWeldJointDef().getCollideConnected();
     jdef.initialize(bodyA, bodyB, bodyB.getWorldCenter());
+
+    if (_j.getUseLocalAnchors()) {
+      jdef.localAnchorA.set(Vector2Adapter.asVector2(_j.getLocalAnchorA()));
+      jdef.localAnchorB.set(Vector2Adapter.asVector2(_j.getLocalAnchorB()));
+    }
+
     return jdef;
   }
 
@@ -233,19 +252,25 @@ public class ProtoBufTypeConversionUtil {
    *          the _jdef
    * @return the prismatic joint def
    */
-  public static PrismaticJointDef asPrimasticJointDef(Body bodyA, Body bodyB, CGPrismaticJointDef _jdef) {
+  public static PrismaticJointDef asPrimasticJointDef(Body bodyA, Body bodyB, CGJoint _j) {
     PrismaticJointDef jdef = new PrismaticJointDef();
-    jdef.collideConnected = _jdef.getCollideConnected();
-    jdef.enableLimit = _jdef.getEnableLimit();
-    jdef.enableMotor = _jdef.getEnableMotor();
-    jdef.referenceAngle = _jdef.getReferenceAngle();
-    jdef.lowerTranslation = _jdef.getLowerTranslation();
-    jdef.maxMotorForce = _jdef.getMaxMotorForce();
-    jdef.upperTranslation = _jdef.getUpperTranslation();
-    jdef.motorSpeed = _jdef.getMotorSpeed();
+    jdef.collideConnected = _j.getPrismaticJointDef().getCollideConnected();
+    jdef.enableLimit = _j.getPrismaticJointDef().getEnableLimit();
+    jdef.enableMotor = _j.getPrismaticJointDef().getEnableMotor();
+    jdef.referenceAngle = _j.getPrismaticJointDef().getReferenceAngle();
+    jdef.lowerTranslation = _j.getPrismaticJointDef().getLowerTranslation();
+    jdef.maxMotorForce = _j.getPrismaticJointDef().getMaxMotorForce();
+    jdef.upperTranslation = _j.getPrismaticJointDef().getUpperTranslation();
+    jdef.motorSpeed = _j.getPrismaticJointDef().getMotorSpeed();
 
-    jdef.initialize(bodyA, bodyB, ProtoBufTypeConversionUtil.asVector2(_jdef.getAnchor()),
-        ProtoBufTypeConversionUtil.asVector2(_jdef.getAxis()));
+    jdef.initialize(bodyA, bodyB, ProtoBufTypeConversionUtil.asVector2(_j.getPrismaticJointDef().getAnchor()),
+        ProtoBufTypeConversionUtil.asVector2(_j.getPrismaticJointDef().getAxis()));
+
+    if (_j.getUseLocalAnchors()) {
+      jdef.localAnchorA.set(Vector2Adapter.asVector2(_j.getLocalAnchorA()));
+      jdef.localAnchorB.set(Vector2Adapter.asVector2(_j.getLocalAnchorB()));
+    }
+
     return jdef;
   }
 

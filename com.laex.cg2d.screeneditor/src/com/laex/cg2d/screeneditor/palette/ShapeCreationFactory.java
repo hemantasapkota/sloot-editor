@@ -71,7 +71,7 @@ public class ShapeCreationFactory implements CreationFactory {
   @Override
   public Object getNewObject() {
     Layer layer = getSelectedLayer();
-    
+
     IDCreationStrategy creator = IDCreationStrategyFactory.getIDCreator(ScreenEditorUtil.getScreenModel());
 
     Shape shape = createShape();

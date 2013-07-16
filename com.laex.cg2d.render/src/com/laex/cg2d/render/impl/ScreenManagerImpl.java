@@ -28,7 +28,6 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.JointDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.google.common.util.concurrent.CycleDetectingLockFactory.WithExplicitOrdering;
 import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
@@ -190,24 +189,25 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
    */
   public JointDef initJoints(CGJoint joint, Body bodyA, Body bodyB) {
     JointDef jd = null;
+    
     switch (joint.getType()) {
     case DISTANCE:
-      jd = ProtoBufTypeConversionUtil.asDistanceJointDef(bodyA, bodyB, joint.getDistanceJointDef());
+      jd = ProtoBufTypeConversionUtil.asDistanceJointDef(bodyA, bodyB, joint);
       break;
     case FRICTION:
-      jd = ProtoBufTypeConversionUtil.asFrictionJointDef(bodyA, bodyB, joint.getFrictionJointDef());
+      jd = ProtoBufTypeConversionUtil.asFrictionJointDef(bodyA, bodyB, joint);
       break;
     case PRISMATIC:
-      jd = ProtoBufTypeConversionUtil.asPrimasticJointDef(bodyA, bodyB, joint.getPrismaticJointDef());
+      jd = ProtoBufTypeConversionUtil.asPrimasticJointDef(bodyA, bodyB, joint);
       break;
     case PULLEY:
-      jd = ProtoBufTypeConversionUtil.asPulleyJointDef(bodyA, bodyB, joint.getPulleyJointDef());
+      jd = ProtoBufTypeConversionUtil.asPulleyJointDef(bodyA, bodyB, joint);
       break;
     case REVOLUTE:
-      jd = ProtoBufTypeConversionUtil.asRevoluteJoint(bodyA, bodyB, joint.getRevoluteJointDef());
+      jd = ProtoBufTypeConversionUtil.asRevoluteJoint(bodyA, bodyB, joint);
       break;
     case WELD:
-      jd = ProtoBufTypeConversionUtil.asWeldJointDef(bodyA, bodyB, joint.getWeldJointDef());
+      jd = ProtoBufTypeConversionUtil.asWeldJointDef(bodyA, bodyB, joint);
       break;
     case ROPE:
       break;
@@ -222,6 +222,8 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     default:
       break;
     }
+    
+
     return jd;
   }
 
@@ -454,7 +456,7 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
    */
   @Override
   public void dispose() {
-//    backgroundManager.dispose();
+    // backgroundManager.dispose();
     entityManager.dispose();
   }
 
@@ -541,18 +543,18 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
 
       if (id.equals(shape.getId())) {
         try {
-          
+
           Vector2 positionToCopy = new Vector2(bod.getTransform().getPosition());
           float rotation = bod.getTransform().getRotation();
-          
+
           world.destroyBody(bod);
           entityManager.removeEntity(shape);
           switchedBody = entityManager.createEntity(shape, animationName);
-          
+
           if (switchedBody != null) {
             switchedBody.setTransform(positionToCopy, rotation);
           }
-          
+
         } catch (IOException e) {
           AppExceptionUtil.handle(e);
         }

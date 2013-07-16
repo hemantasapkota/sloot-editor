@@ -308,7 +308,7 @@ public class CGCProject implements ICGCProject {
     }
     return entFolder;
   }
-  
+
   /*
    * (non-Javadoc)
    * 

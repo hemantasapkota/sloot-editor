@@ -112,4 +112,10 @@ public class BERopeJoint extends Joint {
     return JointType.RopeJoint;
   }
 
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    // TODO Auto-generated method stub
+    
+  }
+
 }

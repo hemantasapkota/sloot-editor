@@ -89,7 +89,7 @@ public class ScreenEditPart extends AbstractGraphicalEditPart implements Propert
     if (adapter == ShapesDiagram.class) {
       return getModel();
     }
-    
+
     if (adapter == SnapToHelper.class) {
       List<SnapToHelper> snapStragies = new ArrayList<SnapToHelper>();
 

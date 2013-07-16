@@ -28,31 +28,34 @@ import com.laex.cg2d.screeneditor.commands.ShapeChangeIDCommand;
  */
 public class EditShapeIDHandler extends AbstractHandler {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands
+   * .ExecutionEvent)
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IEditorPart ep = (IEditorPart) HandlerUtil.getActiveEditor(event);
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
-    
+
     if (gv.getSelectedEditParts().size() <= 0)
       return null;
-    
-    
+
     EditShapeIDDialog dlg = new EditShapeIDDialog(ep.getSite().getShell(), gv.getSelectedEditParts());
-    int resp = dlg.open(); 
+    int resp = dlg.open();
     if (resp == EditShapeIDDialog.CANCEL) {
       return null;
     }
-    
+
     Map<Shape, String> updates = dlg.getUpdateIdMap();
     CompoundCommand cc = new CompoundCommand("Edit Shape ID");
     for (Shape shape : updates.keySet()) {
       ShapeChangeIDCommand cmd = new ShapeChangeIDCommand(shape, updates.get(shape));
       cc.add(cmd);
     }
-    gv.getEditDomain().getCommandStack().execute(cc);    
+    gv.getEditDomain().getCommandStack().execute(cc);
     return null;
   }
 

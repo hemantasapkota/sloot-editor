@@ -15,7 +15,6 @@ import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.JointDef.JointType;
 import com.badlogic.gdx.physics.box2d.joints.DistanceJointDef;
 import com.laex.cg2d.model.model.Joint;
@@ -26,9 +25,6 @@ import com.laex.cg2d.model.util.FloatUtil;
  * The Class BEDistanceJoint.
  */
 public class BEDistanceJoint extends Joint {
-
-  /** The Constant serialVersionUID. */
-  private static final long serialVersionUID = 1876345217033544389L;
 
   /** The Constant LENGTH_PROP. */
   public static final String LENGTH_PROP = "DistanceJoint.Length";
@@ -43,12 +39,11 @@ public class BEDistanceJoint extends Joint {
   private static PropertyDescriptor[] descriptor;
 
   static {
-    PropertyDescriptor lengthProp = new TextPropertyDescriptor(LENGTH_PROP, "Length");
     PropertyDescriptor frequencyHzProp = new TextPropertyDescriptor(FREUENCY_HZ_PROP, "Frequency");
     PropertyDescriptor dampingRatioProp = new TextPropertyDescriptor(DAMPING_RATIO, "Damping Ratio");
 
     descriptor = new PropertyDescriptor[]
-      { lengthProp, frequencyHzProp, dampingRatioProp };
+      { frequencyHzProp, dampingRatioProp };
 
   }
 
@@ -65,8 +60,8 @@ public class BEDistanceJoint extends Joint {
    */
   public BEDistanceJoint(Shape source, Shape target) {
     super(source, target);
-    calculateLength();
   }
+  
 
   /*
    * (non-Javadoc)
@@ -85,9 +80,6 @@ public class BEDistanceJoint extends Joint {
    */
   @Override
   public Object getPropertyValue(Object id) {
-    if (isLengthProp(id)) {
-      return FloatUtil.toString(this.distanceJointDef.length);
-    }
     if (isFrequencyHzProp(id)) {
       return FloatUtil.toString(this.distanceJointDef.frequencyHz);
     }
@@ -136,16 +128,6 @@ public class BEDistanceJoint extends Joint {
     return FREUENCY_HZ_PROP.equals(id);
   }
 
-  /**
-   * Checks if is length prop.
-   * 
-   * @param id
-   *          the id
-   * @return true, if is length prop
-   */
-  private boolean isLengthProp(Object id) {
-    return LENGTH_PROP.equals(id);
-  }
 
   /*
    * (non-Javadoc)
@@ -165,20 +147,6 @@ public class BEDistanceJoint extends Joint {
   @Override
   public void reconnect() {
     super.reconnect();
-    // Calculate length in reconnection
-    calculateLength();
-  }
-
-  /**
-   * Calculate length.
-   */
-  public void calculateLength() {
-    if (distanceJointDef != null) {
-      Rectangle b1 = getSource().getBounds();
-      Rectangle b2 = getTarget().getBounds();
-      int length = (int) Math.sqrt(Math.pow(b2.x - b1.x, 2) + Math.pow(b2.y - b1.y, 2));
-      distanceJointDef.length = length;
-    }
   }
 
   /*
@@ -189,6 +157,16 @@ public class BEDistanceJoint extends Joint {
   @Override
   public JointType getJointType() {
     return JointType.DistanceJoint;
+  }
+
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    getLocalAnchorA().x = (getSource().getBounds().width / ptmRatio) / 2;
+    getLocalAnchorA().y = (getSource().getBounds().height / ptmRatio) / 2;
+
+    getLocalAnchorB().x = (getTarget().getBounds().width / ptmRatio) / 2;
+    getLocalAnchorB().y = (getTarget().getBounds().height / ptmRatio) / 2;   
+    
   }
 
 }

@@ -181,6 +181,7 @@ public class JointAdapter {
       j.setPropertyValue(BERevoluteJoint.UPPER_ANGLE_PROP, cj.getRevoluteJointDef().getUpperAngle());
       j.setPropertyValue(BERevoluteJoint.COLLIDE_CONNECTED_PROP, cj.getRevoluteJointDef().getCollideConnected());
       j.setPropertyValue(BERevoluteJoint.JOINT_TYPE_PROP, jt);
+
       break;
     case WELD:
       j = new BEWeldJoint(source, target);
@@ -200,7 +201,11 @@ public class JointAdapter {
     default:
       break;
     }
-
+    
+    j.setLocalAnchorA(Vector2Adapter.asVector2(cj.getLocalAnchorA()));
+    j.setLocalAnchorB(Vector2Adapter.asVector2(cj.getLocalAnchorB()));
+    j.setUseLocalAnchors(cj.getUseLocalAnchors());
+    
     return j;
   }
 
@@ -219,7 +224,10 @@ public class JointAdapter {
    */
   public static CGJoint asCGJoint(Joint j, Shape s, CGShape source, CGShape target) {
     CGJoint.Builder jointBuilder = CGJoint.newBuilder().setSourceShapeId(source.getId())
-        .setTargetShapeId(target.getId()).setType(asCGJointType(j.getJointType()));
+        .setTargetShapeId(target.getId()).setType(asCGJointType(j.getJointType()))
+        .setLocalAnchorA(Vector2Adapter.asCGVector2(j.getLocalAnchorA()))
+        .setLocalAnchorB(Vector2Adapter.asCGVector2(j.getLocalAnchorB()))
+        .setUseLocalAnchors(j.shouldUseLocalAnchors());
 
     switch (j.getJointType()) {
     case DistanceJoint:

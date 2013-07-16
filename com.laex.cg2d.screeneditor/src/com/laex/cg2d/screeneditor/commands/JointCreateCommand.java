@@ -26,6 +26,7 @@ import com.laex.cg2d.model.joints.BERopeJoint;
 import com.laex.cg2d.model.joints.BEWeldJoint;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**
  * The Class JointCreateCommand.
@@ -87,6 +88,7 @@ public class JointCreateCommand extends Command {
    */
   public void execute() {
     // use the supplied line style
+
     switch (type) {
     case DistanceJoint:
       connection = new BEDistanceJoint(source, target);
@@ -121,6 +123,9 @@ public class JointCreateCommand extends Command {
     default:
       break;
     }
+
+    int ptmRatio = ScreenEditorUtil.getScreenModel().getScreenPrefs().getWorldPrefs().getPtmRatio();
+    connection.computeLocalAnchors(ptmRatio);
   }
 
   /*

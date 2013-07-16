@@ -26,7 +26,9 @@ public class FPSCalculator implements ScreenScaffold {
   /** The fps. */
   private int fps = 0;
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.ScreenScaffold#create()
    */
   @Override
@@ -34,7 +36,9 @@ public class FPSCalculator implements ScreenScaffold {
     lastFps = getTime();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.ScreenScaffold#render()
    */
   @Override
@@ -42,7 +46,9 @@ public class FPSCalculator implements ScreenScaffold {
     updateFPS();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.ScreenScaffold#dispose()
    */
   @Override
@@ -51,7 +57,7 @@ public class FPSCalculator implements ScreenScaffold {
 
   /**
    * Gets the time.
-   *
+   * 
    * @return the time
    */
   public long getTime() {

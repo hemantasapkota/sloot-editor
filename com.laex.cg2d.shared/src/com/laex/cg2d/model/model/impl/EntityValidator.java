@@ -20,20 +20,23 @@ import com.laex.cg2d.model.util.EntitiesUtil;
  * The Class EntityValidator.
  */
 public class EntityValidator implements ModelValidator {
-  
+
   /** The entity. */
   private Entity entity;
 
   /**
    * Instantiates a new entity validator.
-   *
-   * @param e the e
+   * 
+   * @param e
+   *          the e
    */
   public EntityValidator(Entity e) {
     this.entity = e;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.model.model.ModelValidator#isValid()
    */
   @Override
@@ -41,7 +44,7 @@ public class EntityValidator implements ModelValidator {
     if (entity == null) {
       return false;
     }
-    
+
     if (entity.getAnimationList() == null || entity.getAnimationList().size() <= 0) {
       return false;
     }

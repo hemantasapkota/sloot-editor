@@ -85,12 +85,6 @@ public class ImportSpriteDialog extends Dialog {
 
   /** The rows. */
   private int rows;
-  
-  /** The width. */
-  private int width;
-  
-  /** The height. */
-  private int height;
 
   /** The ok button. */
   private Button okButton;
@@ -194,19 +188,19 @@ public class ImportSpriteDialog extends Dialog {
     txtRows = new Spinner(composite, SWT.BORDER);
     txtRows.setSelection(1);
     txtRows.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-    
+
     Label lblWidth = new Label(composite, SWT.NONE);
     formToolkit.adapt(lblWidth, true, true);
     lblWidth.setText("Width");
-    
+
     txtWidth = new Spinner(composite, SWT.BORDER);
     formToolkit.adapt(txtWidth);
     formToolkit.paintBordersFor(txtWidth);
-    
+
     Label lblHeight = new Label(composite, SWT.NONE);
     formToolkit.adapt(lblHeight, true, true);
     lblHeight.setText("Height");
-    
+
     txtHeight = new Spinner(composite, SWT.BORDER);
     formToolkit.adapt(txtHeight);
     formToolkit.paintBordersFor(txtHeight);
@@ -287,9 +281,9 @@ public class ImportSpriteDialog extends Dialog {
     ImageFigure iff = new ImageFigure(selectedImage);
     iff.setBounds(new Rectangle(0, 0, selectedImage.getBounds().width, selectedImage.getBounds().height));
     flp.add(iff);
-    
+
     figureCanvas.setBounds(0, 0, selectedImage.getBounds().width, selectedImage.getBounds().height);
-    
+
   }
 
   /**
@@ -300,13 +294,15 @@ public class ImportSpriteDialog extends Dialog {
     int rows = txtRows.getSelection();
     int imgWidth = selectedImage.getBounds().width;
     int imgHeight = selectedImage.getBounds().height;
-    
-    if (cols == 0) cols = 1;
-    if (rows == 0) rows = 1;
-    
+
+    if (cols == 0)
+      cols = 1;
+    if (rows == 0)
+      rows = 1;
+
     int tileWidth = imgWidth / cols;
     int tileHeight = imgHeight / rows;
-   
+
     txtWidth.setSelection(tileWidth);
     txtHeight.setSelection(tileHeight);
 
@@ -318,8 +314,7 @@ public class ImportSpriteDialog extends Dialog {
         flp.add(rf);
       }
     }
-    
-   
+
     figureCanvas.setContents(flp);
   }
 

@@ -45,10 +45,10 @@ public class ShapesXYLayoutEditPolicy extends XYLayoutEditPolicy {
 
     if (childTest && constraint instanceof Rectangle && child.isActive()) {
       // return a command that can move and/or resize a Shape
-      
+
       return new ShapeSetConstraintCommand((Shape) child.getModel(), request, (Rectangle) constraint);
     }
-    
+
     return super.createChangeConstraintCommand(request, child, constraint);
   }
 
@@ -95,11 +95,14 @@ public class ShapesXYLayoutEditPolicy extends XYLayoutEditPolicy {
     Rectangle constraint = (Rectangle) getConstraintFor(request);
     ShapeCreationInfo tci = (ShapeCreationInfo) request.getNewObject();
     com.badlogic.gdx.math.Rectangle gdxRect = RectAdapter.gdxRect(constraint);
-    
-    if (gdxRect.width <= 0) gdxRect.width = 16;
-    if (gdxRect.height <= 0) gdxRect.height = 16;
 
-    //Bakground and Entity shape's bounds are determined by the images. So we dont modify them.
+    if (gdxRect.width <= 0)
+      gdxRect.width = 16;
+    if (gdxRect.height <= 0)
+      gdxRect.height = 16;
+
+    // Bakground and Entity shape's bounds are determined by the images. So we
+    // dont modify them.
     switch (tci.getShape().getEditorShapeType()) {
     case SIMPLE_SHAPE_BOX:
     case SIMPLE_SHAPE_CIRCLE:

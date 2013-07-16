@@ -120,7 +120,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGScreenModel));
   CGJoint_descriptor_ = file->message_type(1);
-  static const int CGJoint_offsets_[9] = {
+  static const int CGJoint_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, sourceshapeid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, targetshapeid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, type_),
@@ -130,6 +130,9 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, pulleyjointdef_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, frictionjointdef_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, weldjointdef_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, localanchora_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, localanchorb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGJoint, uselocalanchors_),
   };
   CGJoint_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -160,7 +163,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGDistanceJointDef));
   CGRevoluteJointDef_descriptor_ = file->message_type(3);
-  static const int CGRevoluteJointDef_offsets_[9] = {
+  static const int CGRevoluteJointDef_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, collideconnected_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, referenceangle_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, enablelimit_),
@@ -169,7 +172,6 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, enablemotor_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, motorspeed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, maxmotortorque_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGRevoluteJointDef, worldanchor_),
   };
   CGRevoluteJointDef_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -656,7 +658,7 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "\023com.laex.cg2d.model\"|\n\rCGScreenModel\022=\n"
     "\013screenPrefs\030\001 \001(\0132(.com.laex.cg2d.model"
     ".CGScreenPreferences\022,\n\006layers\030\002 \003(\0132\034.c"
-    "om.laex.cg2d.model.CGLayer\"\357\003\n\007CGJoint\022\025"
+    "om.laex.cg2d.model.CGLayer\"\364\004\n\007CGJoint\022\025"
     "\n\rsourceShapeId\030\001 \001(\t\022\025\n\rtargetShapeId\030\002"
     " \001(\t\022.\n\004type\030\003 \001(\0162 .com.laex.cg2d.model"
     ".CGJointType\022A\n\020distanceJointDef\030\005 \001(\0132\'"
@@ -669,15 +671,17 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "\n\020frictionJointDef\030\t \001(\0132\'.com.laex.cg2d"
     ".model.CGFrictionJointDef\0229\n\014weldJointDe"
     "f\030\n \001(\0132#.com.laex.cg2d.model.CGWeldJoin"
-    "tDef\"X\n\022CGDistanceJointDef\022\030\n\020collideCon"
-    "nected\030\001 \001(\010\022\022\n\nfreqencyHz\030\002 \001(\002\022\024\n\014damp"
-    "ingRatio\030\003 \001(\002\"\371\001\n\022CGRevoluteJointDef\022\030\n"
-    "\020collideConnected\030\001 \001(\010\022\026\n\016referenceAngl"
-    "e\030\002 \001(\002\022\023\n\013enableLimit\030\003 \001(\010\022\022\n\nlowerAng"
-    "le\030\004 \001(\002\022\022\n\nupperAngle\030\005 \001(\002\022\023\n\013enableMo"
-    "tor\030\006 \001(\010\022\022\n\nmotorSpeed\030\007 \001(\002\022\026\n\016maxMoto"
-    "rTorque\030\010 \001(\002\0223\n\013worldAnchor\030\t \001(\0132\036.com"
-    ".laex.cg2d.model.CGVector2\"\256\002\n\023CGPrismat"
+    "tDef\0224\n\014localAnchorA\030\013 \001(\0132\036.com.laex.cg"
+    "2d.model.CGVector2\0224\n\014localAnchorB\030\014 \001(\013"
+    "2\036.com.laex.cg2d.model.CGVector2\022\027\n\017useL"
+    "ocalAnchors\030\r \001(\010\"X\n\022CGDistanceJointDef\022"
+    "\030\n\020collideConnected\030\001 \001(\010\022\022\n\nfreqencyHz\030"
+    "\002 \001(\002\022\024\n\014dampingRatio\030\003 \001(\002\"\304\001\n\022CGRevolu"
+    "teJointDef\022\030\n\020collideConnected\030\001 \001(\010\022\026\n\016"
+    "referenceAngle\030\002 \001(\002\022\023\n\013enableLimit\030\003 \001("
+    "\010\022\022\n\nlowerAngle\030\004 \001(\002\022\022\n\nupperAngle\030\005 \001("
+    "\002\022\023\n\013enableMotor\030\006 \001(\010\022\022\n\nmotorSpeed\030\007 \001"
+    "(\002\022\026\n\016maxMotorTorque\030\010 \001(\002\"\256\002\n\023CGPrismat"
     "icJointDef\022\030\n\020collideConnected\030\001 \001(\010\022.\n\006"
     "anchor\030\002 \001(\0132\036.com.laex.cg2d.model.CGVec"
     "tor2\022,\n\004axis\030\003 \001(\0132\036.com.laex.cg2d.model"
@@ -768,7 +772,7 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "rShapeType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020S"
     "IMPLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020"
     "\003\022\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_"
-    "SHAPE\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4665);
+    "SHAPE\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4745);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/model/ScreenModel.proto", &protobuf_RegisterTypes);
   CGScreenModel::default_instance_ = new CGScreenModel();
@@ -1165,6 +1169,9 @@ const int CGJoint::kPrismaticJointDefFieldNumber;
 const int CGJoint::kPulleyJointDefFieldNumber;
 const int CGJoint::kFrictionJointDefFieldNumber;
 const int CGJoint::kWeldJointDefFieldNumber;
+const int CGJoint::kLocalAnchorAFieldNumber;
+const int CGJoint::kLocalAnchorBFieldNumber;
+const int CGJoint::kUseLocalAnchorsFieldNumber;
 #endif  // !_MSC_VER
 
 CGJoint::CGJoint()
@@ -1179,6 +1186,8 @@ void CGJoint::InitAsDefaultInstance() {
   pulleyjointdef_ = const_cast< ::com::laex::cg2d::model::CGPulleyJointDef*>(&::com::laex::cg2d::model::CGPulleyJointDef::default_instance());
   frictionjointdef_ = const_cast< ::com::laex::cg2d::model::CGFrictionJointDef*>(&::com::laex::cg2d::model::CGFrictionJointDef::default_instance());
   weldjointdef_ = const_cast< ::com::laex::cg2d::model::CGWeldJointDef*>(&::com::laex::cg2d::model::CGWeldJointDef::default_instance());
+  localanchora_ = const_cast< ::com::laex::cg2d::model::CGVector2*>(&::com::laex::cg2d::model::CGVector2::default_instance());
+  localanchorb_ = const_cast< ::com::laex::cg2d::model::CGVector2*>(&::com::laex::cg2d::model::CGVector2::default_instance());
 }
 
 CGJoint::CGJoint(const CGJoint& from)
@@ -1198,6 +1207,9 @@ void CGJoint::SharedCtor() {
   pulleyjointdef_ = NULL;
   frictionjointdef_ = NULL;
   weldjointdef_ = NULL;
+  localanchora_ = NULL;
+  localanchorb_ = NULL;
+  uselocalanchors_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1219,6 +1231,8 @@ void CGJoint::SharedDtor() {
     delete pulleyjointdef_;
     delete frictionjointdef_;
     delete weldjointdef_;
+    delete localanchora_;
+    delete localanchorb_;
   }
 }
 
@@ -1276,6 +1290,13 @@ void CGJoint::Clear() {
     if (has_weldjointdef()) {
       if (weldjointdef_ != NULL) weldjointdef_->::com::laex::cg2d::model::CGWeldJointDef::Clear();
     }
+    if (has_localanchora()) {
+      if (localanchora_ != NULL) localanchora_->::com::laex::cg2d::model::CGVector2::Clear();
+    }
+    if (has_localanchorb()) {
+      if (localanchorb_ != NULL) localanchorb_->::com::laex::cg2d::model::CGVector2::Clear();
+    }
+    uselocalanchors_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1421,6 +1442,50 @@ bool CGJoint::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(90)) goto parse_localAnchorA;
+        break;
+      }
+
+      // optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+      case 11: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_localAnchorA:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_localanchora()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(98)) goto parse_localAnchorB;
+        break;
+      }
+
+      // optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+      case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_localAnchorB:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_localanchorb()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(104)) goto parse_useLocalAnchors;
+        break;
+      }
+
+      // optional bool useLocalAnchors = 13;
+      case 13: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_useLocalAnchors:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &uselocalanchors_)));
+          set_has_uselocalanchors();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1503,6 +1568,23 @@ void CGJoint::SerializeWithCachedSizes(
       10, this->weldjointdef(), output);
   }
 
+  // optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+  if (has_localanchora()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      11, this->localanchora(), output);
+  }
+
+  // optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+  if (has_localanchorb()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      12, this->localanchorb(), output);
+  }
+
+  // optional bool useLocalAnchors = 13;
+  if (has_uselocalanchors()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(13, this->uselocalanchors(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1577,6 +1659,25 @@ void CGJoint::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         10, this->weldjointdef(), target);
+  }
+
+  // optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+  if (has_localanchora()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        11, this->localanchora(), target);
+  }
+
+  // optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+  if (has_localanchorb()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        12, this->localanchorb(), target);
+  }
+
+  // optional bool useLocalAnchors = 13;
+  if (has_uselocalanchors()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(13, this->uselocalanchors(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1654,6 +1755,25 @@ int CGJoint::ByteSize() const {
           this->weldjointdef());
     }
 
+    // optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+    if (has_localanchora()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->localanchora());
+    }
+
+    // optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+    if (has_localanchorb()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->localanchorb());
+    }
+
+    // optional bool useLocalAnchors = 13;
+    if (has_uselocalanchors()) {
+      total_size += 1 + 1;
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -1710,6 +1830,15 @@ void CGJoint::MergeFrom(const CGJoint& from) {
     if (from.has_weldjointdef()) {
       mutable_weldjointdef()->::com::laex::cg2d::model::CGWeldJointDef::MergeFrom(from.weldjointdef());
     }
+    if (from.has_localanchora()) {
+      mutable_localanchora()->::com::laex::cg2d::model::CGVector2::MergeFrom(from.localanchora());
+    }
+    if (from.has_localanchorb()) {
+      mutable_localanchorb()->::com::laex::cg2d::model::CGVector2::MergeFrom(from.localanchorb());
+    }
+    if (from.has_uselocalanchors()) {
+      set_uselocalanchors(from.uselocalanchors());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1728,14 +1857,17 @@ void CGJoint::CopyFrom(const CGJoint& from) {
 
 bool CGJoint::IsInitialized() const {
 
-  if (has_revolutejointdef()) {
-    if (!this->revolutejointdef().IsInitialized()) return false;
-  }
   if (has_prismaticjointdef()) {
     if (!this->prismaticjointdef().IsInitialized()) return false;
   }
   if (has_pulleyjointdef()) {
     if (!this->pulleyjointdef().IsInitialized()) return false;
+  }
+  if (has_localanchora()) {
+    if (!this->localanchora().IsInitialized()) return false;
+  }
+  if (has_localanchorb()) {
+    if (!this->localanchorb().IsInitialized()) return false;
   }
   return true;
 }
@@ -1751,6 +1883,9 @@ void CGJoint::Swap(CGJoint* other) {
     std::swap(pulleyjointdef_, other->pulleyjointdef_);
     std::swap(frictionjointdef_, other->frictionjointdef_);
     std::swap(weldjointdef_, other->weldjointdef_);
+    std::swap(localanchora_, other->localanchora_);
+    std::swap(localanchorb_, other->localanchorb_);
+    std::swap(uselocalanchors_, other->uselocalanchors_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -2059,7 +2194,6 @@ const int CGRevoluteJointDef::kUpperAngleFieldNumber;
 const int CGRevoluteJointDef::kEnableMotorFieldNumber;
 const int CGRevoluteJointDef::kMotorSpeedFieldNumber;
 const int CGRevoluteJointDef::kMaxMotorTorqueFieldNumber;
-const int CGRevoluteJointDef::kWorldAnchorFieldNumber;
 #endif  // !_MSC_VER
 
 CGRevoluteJointDef::CGRevoluteJointDef()
@@ -2068,7 +2202,6 @@ CGRevoluteJointDef::CGRevoluteJointDef()
 }
 
 void CGRevoluteJointDef::InitAsDefaultInstance() {
-  worldanchor_ = const_cast< ::com::laex::cg2d::model::CGVector2*>(&::com::laex::cg2d::model::CGVector2::default_instance());
 }
 
 CGRevoluteJointDef::CGRevoluteJointDef(const CGRevoluteJointDef& from)
@@ -2087,7 +2220,6 @@ void CGRevoluteJointDef::SharedCtor() {
   enablemotor_ = false;
   motorspeed_ = 0;
   maxmotortorque_ = 0;
-  worldanchor_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2097,7 +2229,6 @@ CGRevoluteJointDef::~CGRevoluteJointDef() {
 
 void CGRevoluteJointDef::SharedDtor() {
   if (this != default_instance_) {
-    delete worldanchor_;
   }
 }
 
@@ -2132,11 +2263,6 @@ void CGRevoluteJointDef::Clear() {
     enablemotor_ = false;
     motorspeed_ = 0;
     maxmotortorque_ = 0;
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    if (has_worldanchor()) {
-      if (worldanchor_ != NULL) worldanchor_->::com::laex::cg2d::model::CGVector2::Clear();
-    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -2271,20 +2397,6 @@ bool CGRevoluteJointDef::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(74)) goto parse_worldAnchor;
-        break;
-      }
-
-      // optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-      case 9: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_worldAnchor:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_worldanchor()));
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -2347,12 +2459,6 @@ void CGRevoluteJointDef::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->maxmotortorque(), output);
   }
 
-  // optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-  if (has_worldanchor()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9, this->worldanchor(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -2399,13 +2505,6 @@ void CGRevoluteJointDef::SerializeWithCachedSizes(
   // optional float maxMotorTorque = 8;
   if (has_maxmotortorque()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->maxmotortorque(), target);
-  }
-
-  // optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-  if (has_worldanchor()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        9, this->worldanchor(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2460,15 +2559,6 @@ int CGRevoluteJointDef::ByteSize() const {
     }
 
   }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-    if (has_worldanchor()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->worldanchor());
-    }
-
-  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -2520,11 +2610,6 @@ void CGRevoluteJointDef::MergeFrom(const CGRevoluteJointDef& from) {
       set_maxmotortorque(from.maxmotortorque());
     }
   }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    if (from.has_worldanchor()) {
-      mutable_worldanchor()->::com::laex::cg2d::model::CGVector2::MergeFrom(from.worldanchor());
-    }
-  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -2542,9 +2627,6 @@ void CGRevoluteJointDef::CopyFrom(const CGRevoluteJointDef& from) {
 
 bool CGRevoluteJointDef::IsInitialized() const {
 
-  if (has_worldanchor()) {
-    if (!this->worldanchor().IsInitialized()) return false;
-  }
   return true;
 }
 
@@ -2558,7 +2640,6 @@ void CGRevoluteJointDef::Swap(CGRevoluteJointDef* other) {
     std::swap(enablemotor_, other->enablemotor_);
     std::swap(motorspeed_, other->motorspeed_);
     std::swap(maxmotortorque_, other->maxmotortorque_);
-    std::swap(worldanchor_, other->worldanchor_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

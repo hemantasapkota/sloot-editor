@@ -124,10 +124,10 @@ public class NewScriptWizard extends Wizard implements INewWizard {
         byte[] barr = null;
 
         try {
-          URL url = Activator.getDefault().getBundle().getEntry("luaScriptTemplate.txt");
+          URL url = Activator.getDefault().getBundle().getEntry("luaScriptTemplate.lua");
           url = FileLocator.resolve(url);
           barr = FileUtils.readFileToByteArray(FileUtils.toFile(url));
-          
+
         } catch (IOException e1) {
           e1.printStackTrace();
         }

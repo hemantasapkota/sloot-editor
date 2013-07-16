@@ -59,7 +59,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /**
    * Default screen prefs.
-   *
+   * 
    * @return the cG screen preferences
    */
   public static CGScreenPreferences defaultScreenPrefs() {

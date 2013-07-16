@@ -207,4 +207,10 @@ public class BEPulleyJoint extends Joint {
     return ratio;
   }
 
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    // TODO Auto-generated method stub
+    
+  }
+
 }

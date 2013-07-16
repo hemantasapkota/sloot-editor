@@ -42,12 +42,13 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
   /** The manipulator. */
   private ScreenManagerImpl manipulator;
 
-
   /**
    * Instantiates a new lua script manager.
-   *
-   * @param manipulator the manipulator
-   * @param scriptFileName the script file name
+   * 
+   * @param manipulator
+   *          the manipulator
+   * @param scriptFileName
+   *          the script file name
    */
   public LuaScriptManager(ScreenManagerImpl manipulator, String scriptFileName) {
 
@@ -55,6 +56,7 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
 
     if (scriptFileName == null || !Gdx.files.absolute(scriptFileName).exists()) {
       scriptFileExists = false;
+      System.err.println("Lua script file does not exist.");
       return;
     } else {
       scriptFileExists = true;
@@ -75,7 +77,6 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
 
   }
 
-
   /*
    * (non-Javadoc)
    * 
@@ -83,8 +84,10 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
    */
   @Override
   public void create() {
-    if (!canExecute())
+    if (!canExecute()) {
       return;
+    }
+      
 
     executeInit(manipulator.model(), manipulator);
 
@@ -114,7 +117,7 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
       @Override
       public void visit(Body b, CGShape shape) {
         executeUpdate(b, shape.getId());
-        
+
       }
     });
 
@@ -174,8 +177,13 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
 
     try {
 
-      globals.get("initBody").invoke(new LuaValue[]
-        { CoerceJavaToLua.coerce(manipulator.world()), CoerceJavaToLua.coerce(manipulator.camera()), bodyLua, LuaValue.valueOf(bodyId) });
+      globals.get("initBody").invoke(
+          new LuaValue[]
+            {
+                CoerceJavaToLua.coerce(manipulator.world()),
+                CoerceJavaToLua.coerce(manipulator.camera()),
+                bodyLua,
+                LuaValue.valueOf(bodyId) });
 
     } catch (Throwable t) {
       manipulator.handleException(t);
@@ -200,8 +208,13 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
 
     try {
 
-      globals.get("update").invoke(new LuaValue[]
-        { CoerceJavaToLua.coerce(manipulator.world()), CoerceJavaToLua.coerce(manipulator.camera()), bodyLua, LuaValue.valueOf(bodyId) });
+      globals.get("update").invoke(
+          new LuaValue[]
+            {
+                CoerceJavaToLua.coerce(manipulator.world()),
+                CoerceJavaToLua.coerce(manipulator.camera()),
+                bodyLua,
+                LuaValue.valueOf(bodyId) });
 
     } catch (Throwable t) {
 
@@ -210,7 +223,7 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
     }
 
   }
-  
+
   /*
    * (non-Javadoc)
    * 
@@ -224,11 +237,15 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
 
     try {
 
-      globals.get("keyPressed").invoke(new LuaValue[]
-        { CoerceJavaToLua.coerce(manipulator.world()), CoerceJavaToLua.coerce(manipulator.camera()), LuaValue.valueOf(key) });
+      globals.get("keyPressed").invoke(
+          new LuaValue[]
+            {
+                CoerceJavaToLua.coerce(manipulator.world()),
+                CoerceJavaToLua.coerce(manipulator.camera()),
+                LuaValue.valueOf(key) });
 
     } catch (Throwable t) {
-      
+
       manipulator.handleException(t);
 
     }
@@ -274,7 +291,7 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
                 CoerceJavaToLua.coerce(manipulator.camera()) });
 
     } catch (Throwable t) {
-      
+
       manipulator.handleException(t);
 
     }

@@ -39,14 +39,17 @@ public class Entity {
   /** The default frame. */
   private Image defaultFrame;
 
-  //Factory methods
+  // Factory methods
   /**
    * Creates the from file.
-   *
-   * @param filename the filename
+   * 
+   * @param filename
+   *          the filename
    * @return the entity
-   * @throws CoreException the core exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   public static Entity createFromFile(String filename) throws CoreException, IOException {
     IFile f = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(filename));
@@ -57,11 +60,14 @@ public class Entity {
 
   /**
    * Creates the from file.
-   *
-   * @param res the res
+   * 
+   * @param res
+   *          the res
    * @return the entity
-   * @throws CoreException the core exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException
+   *           the core exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   public static Entity createFromFile(IFile res) throws CoreException, IOException {
     if (res == null || res.getContents() == null) {
@@ -73,13 +79,13 @@ public class Entity {
 
     return entityModel;
   }
-  
-   /**
+
+  /**
    * Instantiates a new entity.
    */
   public Entity() {
     animationList = new ArrayList<EntityAnimation>();
-  } 
+  }
 
   /**
    * Gets the internal name.

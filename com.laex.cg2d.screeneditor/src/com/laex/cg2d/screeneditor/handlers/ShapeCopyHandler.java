@@ -34,21 +34,25 @@ import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
  * The Class ShapeCopyHandler.
  */
 public class ShapeCopyHandler extends AbstractHandler {
-  
+
   /** The copier. */
   ModelCopier copier;
 
-  /* (non-Javadoc)
-   * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands
+   * .ExecutionEvent)
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IEditorPart ep = HandlerUtil.getActiveEditor(event);
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
     GameModel gameModel = ScreenEditorUtil.getScreenModel();
-    
+
     copier = ModelCopierFactory.getModelCopier(Shape.class);
-    
+
     try {
       doCopy(gv, gameModel);
     } catch (CoreException e) {
@@ -62,21 +66,25 @@ public class ShapeCopyHandler extends AbstractHandler {
 
   /**
    * Do copy.
-   *
-   * @param gv the gv
-   * @param model the model
-   * @throws CoreException the core exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * 
+   * @param gv
+   *          the gv
+   * @param model
+   *          the model
+   * @throws CoreException
+   *           the core exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   private void doCopy(GraphicalViewer gv, GameModel model) throws CoreException, IOException {
     List<Shape> toCopy = new ArrayList<Shape>();
-    
+
     for (Object o : gv.getSelectedEditParts()) {
-      
+
       if (o instanceof ShapeEditPart) {
-    
+
         Shape modelToCopy = (Shape) ((ShapeEditPart) o).getModel();
-        
+
         toCopy.add((Shape) copier.copy(modelToCopy));
       }
     }

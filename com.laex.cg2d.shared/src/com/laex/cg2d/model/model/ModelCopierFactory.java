@@ -16,19 +16,21 @@ import com.laex.cg2d.model.model.impl.ShapeCopier;
  * A factory for creating ModelCopier objects.
  */
 public class ModelCopierFactory {
-  
+
   /**
    * Gets the model copier.
-   *
-   * @param modelType the model type
-   * @param model the model
+   * 
+   * @param modelType
+   *          the model type
+   * @param model
+   *          the model
    * @return the model copier
    */
   public static ModelCopier getModelCopier(Class<?> modelType) {
     if (modelType == Shape.class) {
       return new ShapeCopier();
     }
-    
+
     return null;
   }
 

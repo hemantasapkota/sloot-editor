@@ -24,14 +24,18 @@ import com.laex.cg2d.model.IScreenEditorState;
  */
 public class ToggleGridHandler extends AbstractHandler {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands
+   * .ExecutionEvent)
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
     final IEditorPart editorPart = window.getActivePage().getActiveEditor();
-    
+
     IScreenEditorState editorState = (IScreenEditorState) editorPart;
     editorState.toggleGrid();
 

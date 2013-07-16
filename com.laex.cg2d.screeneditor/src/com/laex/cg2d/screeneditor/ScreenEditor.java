@@ -40,7 +40,6 @@ import org.eclipse.gef.SnapToGrid;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.dnd.AbstractTransferDropTargetListener;
 import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
-import org.eclipse.gef.editparts.RootTreeEditPart;
 import org.eclipse.gef.editparts.ScalableFreeformRootEditPart;
 import org.eclipse.gef.editparts.ZoomListener;
 import org.eclipse.gef.editparts.ZoomManager;
@@ -82,6 +81,7 @@ import com.laex.cg2d.model.adapter.ShapeAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.model.Shape;
@@ -119,8 +119,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   /** The Constant CARD_LAYER. */
   private static final String CARD_LAYER = "Card Layer";
 
+  private static final String JOINT_ANCHOR_LAYER = "Joint Anchor Layer";
+
   /** The card layer. */
   private ScalableFreeformLayeredPane cardLayer;
+
+  private ScalableFreeformLayeredPane jointAnchorLayer;
 
   /** The scalable root edit part. */
   private ScalableFreeformRootEditPart scalableRootEditPart;
@@ -132,7 +136,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   private GameModel model;
 
   /** The grid state. */
-  private boolean gridState = false;
+  private boolean gridState = true;
 
   /** The card height. */
   int x, y, cardWidthh, cardHeight;
@@ -286,17 +290,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     setGridDimension(16, 16);
 
     // Zoom manager for now
-    ZoomManager manager = (ZoomManager) getGraphicalViewer().getProperty(ZoomManager.class.toString());
-    manager.addZoomListener(new ZoomListener() {
-      @Override
-      public void zoomChanged(double zoom) {
-        updateCardLayerZoom(zoom);
-      }
-    });
-    manager.setZoom(1);
-
-    // Scroll-wheel Zoom
-    getGraphicalViewer().setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.MOD1), MouseWheelZoomHandler.SINGLETON);
+    setupZoomManager();
 
     // configure the context menu provider
     ContextMenuProvider cmProvider = new ScreenEditorContextMenuProvider(viewer, getActionRegistry());
@@ -321,6 +315,20 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     super.configureGraphicalViewer();
   }
 
+  private void setupZoomManager() {
+    ZoomManager manager = (ZoomManager) getGraphicalViewer().getProperty(ZoomManager.class.toString());
+    manager.addZoomListener(new ZoomListener() {
+      @Override
+      public void zoomChanged(double zoom) {
+        updateCardLayerZoom(zoom);
+      }
+    });
+    manager.setZoom(1);
+
+    // Scroll-wheel Zoom
+    getGraphicalViewer().setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.MOD1), MouseWheelZoomHandler.SINGLETON);
+  }
+
   /**
    * Gets the scalable free form root edit part.
    * 
@@ -330,12 +338,16 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     ScalableFreeformRootEditPart rep = new ScalableFreeformRootEditPart() {
       @Override
       protected void createLayers(LayeredPane layeredPane) {
+
         cardLayer = new ScalableFreeformLayeredPane();
         layeredPane.addLayerBefore(cardLayer, CARD_LAYER, LayerConstants.GRID_LAYER);
-
         updateCardLayer(x, y, cardWidthh, cardHeight);
 
         super.createLayers(layeredPane);
+
+        /* Create Joint Anchor Layer after other layers are created */
+        jointAnchorLayer = new ScalableFreeformLayeredPane();
+        layeredPane.addLayerAfter(jointAnchorLayer, JOINT_ANCHOR_LAYER, LayerConstants.GUIDE_LAYER);
       }
 
     };
@@ -507,8 +519,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   protected void initializeGraphicalViewer() {
     super.initializeGraphicalViewer();
     GraphicalViewer viewer = getGraphicalViewer();
-    viewer.setContents(getModel().getDiagram()); 
-    
+    viewer.setContents(getModel().getDiagram());
+
     // listen for dropped parts
     viewer.addDropTargetListener(new AbstractTransferDropTargetListener(viewer) {
 
@@ -616,8 +628,10 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     cardWidthh = cgGameModel.getScreenPrefs().getCardPrefs().getCardWidth();
     cardHeight = cgGameModel.getScreenPrefs().getCardPrefs().getCardHeight();
 
-    /* Go ahead and init entities. If some entities are invalid or have been
-     deleted, remove them from this model as well. */
+    /*
+     * Go ahead and init entities. If some entities are invalid or have been
+     * deleted, remove them from this model as well.
+     */
     if (EntitiesUtil.visitModelAndInitEntities(model)) {
 
       SafeRunnable.run(new ISafeRunnable() {
@@ -657,9 +671,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       });
 
     }
-    
+
     /* Go Ahead and activate the edit parts. */
-    
 
     setPartName(file.getProject().getName() + "/" + file.getName());
 
@@ -944,6 +957,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, gridState);
     getGraphicalViewer().setProperty(SnapToGrid.PROPERTY_GRID_VISIBLE, gridState);
 
+  }
+
+  @Override
+  public void toggleJointLayer(Joint joint) {
+    jointAnchorLayer.removeAll();
+    /* unsed */
   }
 
 }

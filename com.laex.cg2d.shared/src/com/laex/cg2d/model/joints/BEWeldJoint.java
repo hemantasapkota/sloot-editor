@@ -22,9 +22,6 @@ import com.laex.cg2d.model.model.Shape;
  */
 public class BEWeldJoint extends Joint {
 
-  /** The Constant serialVersionUID. */
-  private static final long serialVersionUID = 2541453377381176735L;
-
   /** The Constant REFERENCE_ANGLE_PROP. */
   public static final String REFERENCE_ANGLE_PROP = "PrismaticJoint.ReferenceAngle";
 
@@ -63,7 +60,6 @@ public class BEWeldJoint extends Joint {
     return super.getPropertyDescriptors();
   }
 
-
   /*
    * (non-Javadoc)
    * 
@@ -83,6 +79,16 @@ public class BEWeldJoint extends Joint {
   @Override
   public JointType getJointType() {
     return JointType.WeldJoint;
+  }
+
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    getLocalAnchorA().x = (getSource().getBounds().width / ptmRatio) / 2;
+    getLocalAnchorA().y = (getSource().getBounds().height / ptmRatio) / 2;
+
+    getLocalAnchorB().x = getLocalAnchorA().x;
+    getLocalAnchorB().y = getLocalAnchorA().y;    
+    
   }
 
 }

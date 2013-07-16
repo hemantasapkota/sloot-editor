@@ -28,7 +28,6 @@ import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.ShapesDiagram;
-import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 
 /**
  * The Class ScreenTreeEP.
@@ -129,7 +128,7 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
 
     /* Special treatment for removing ShapeTreeEP */
     if (child instanceof ShapeTreeEP) {
-      
+
       int index = child.getParent().getChildren().indexOf(child);
       fireRemovingChild(child, index);
       if (isActive())
@@ -138,7 +137,7 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
       removeChildVisual(child);
       child.getParent().getChildren().remove(child);
       child.setParent(null);
-      
+
     }
 
     super.removeChild(child);
@@ -169,7 +168,8 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
     }
 
     // If it is shape model, then we put it inside its layer
-    if (childEditPart.getModel() instanceof Shape) {
+    Object model = childEditPart.getModel();
+    if (model instanceof Shape) {
       Shape shpM = (Shape) childEditPart.getModel();
       Layer layer = shpM.getParentLayer();
       LayerTreeEP ltep = (LayerTreeEP) getViewer().getEditPartRegistry().get(layer);

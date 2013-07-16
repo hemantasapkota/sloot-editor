@@ -167,4 +167,10 @@ public class BEMouseJoint extends Joint {
     return JointType.MouseJoint;
   }
 
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    // TODO Auto-generated method stub
+    
+  }
+
 }

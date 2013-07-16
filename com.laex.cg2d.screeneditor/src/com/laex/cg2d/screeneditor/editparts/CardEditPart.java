@@ -62,10 +62,10 @@ public class CardEditPart extends AbstractGraphicalEditPart {
   protected IFigure createFigure() {
     RectangleFigure rf = new RectangleFigure();
     rf.setAlpha(80);
-//    rf.setBorder(new MarginBorder(-1));
+    // rf.setBorder(new MarginBorder(-1));
     rf.setBorder(null);
     rf.setAntialias(120);
-    rf.setBackgroundColor(new Color(null, 234, 234, 234)); //mercury color
+    rf.setBackgroundColor(new Color(null, 234, 234, 234)); // mercury color
     rf.setForegroundColor(ColorConstants.blue);
     rf.setOpaque(true);
 

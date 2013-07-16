@@ -25,13 +25,16 @@ public class ShapeCopier implements ModelCopier {
 
   /**
    * Instantiates a new shape copier.
-   *
-   * @param gameModel the game model
+   * 
+   * @param gameModel
+   *          the game model
    */
   public ShapeCopier() {
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.model.model.ModelCopier#copy(java.lang.Object)
    */
   @Override
@@ -50,7 +53,7 @@ public class ShapeCopier implements ModelCopier {
     CGShape cgModelPrototype = CGScreenModelAdapter.asCGShape(model);
     CGShape cgModelToCopy = CGShape.newBuilder(cgModelPrototype).build();
 
-    //args[0] should be the layer to copy this shape into
+    // args[0] should be the layer to copy this shape into
     Shape finalModelToCopy = ScreenModelAdapter.asShape(cgModelToCopy, model.getParentLayer());
 
     if (finalModelToCopy.getEditorShapeType().isEntity()) {
@@ -62,12 +65,11 @@ public class ShapeCopier implements ModelCopier {
         Throwables.propagate(t);
       }
     }
-    
+
     /*
-     * Copy everything but the id.
-     * The responsibility of creating new id lies with paste handler.
-     * Why is this ?
-     * Because, to generate unique id for each shape.
+     * Copy everything but the id. The responsibility of creating new id lies
+     * with paste handler. Why is this ? Because, to generate unique id for each
+     * shape.
      */
 
     return finalModelToCopy;

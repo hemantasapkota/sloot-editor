@@ -14,10 +14,10 @@ package com.laex.cg2d.model.model;
  * The Interface ModelValidator.
  */
 public interface ModelValidator {
-  
+
   /**
    * Checks if is valid.
-   *
+   * 
    * @return true, if is valid
    */
   boolean isValid();

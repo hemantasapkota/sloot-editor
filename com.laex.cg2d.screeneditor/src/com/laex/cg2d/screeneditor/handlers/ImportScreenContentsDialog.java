@@ -402,7 +402,7 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
            * the file were trying to import from.
            */
           IDCreationStrategy idCreator = IDCreationStrategyFactory.getIDCreator(ScreenEditorUtil.getScreenModel());
-          
+
           int index = 0;
 
           for (int i = 0; i < txtColumnsRepeat.getSelection(); i++) {

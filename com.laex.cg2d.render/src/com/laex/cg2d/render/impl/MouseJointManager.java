@@ -72,11 +72,11 @@ public class MouseJointManager implements ScreenScaffold, InputProcessor {
     }
   };
 
-
   /**
    * Instantiates a new mouse joint manager.
-   *
-   * @param manipulator the manipulator
+   * 
+   * @param manipulator
+   *          the manipulator
    */
   public MouseJointManager(ScreenManagerImpl manipulator) {
     this.manipulator = manipulator;
@@ -244,7 +244,9 @@ public class MouseJointManager implements ScreenScaffold, InputProcessor {
     return false;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.badlogic.gdx.InputProcessor#mouseMoved(int, int)
    */
   @Override

@@ -18,21 +18,23 @@ import com.laex.cg2d.model.model.Shape;
  * The Class ShapeChangeIDCommand.
  */
 public class ShapeChangeIDCommand extends Command {
-  
+
   /** The shape. */
   private Shape shape;
-  
+
   /** The new id. */
   private String newId;
-  
+
   /** The old id. */
   private String oldId;
 
   /**
    * Instantiates a new shape change id command.
-   *
-   * @param shape the shape
-   * @param newId the new id
+   * 
+   * @param shape
+   *          the shape
+   * @param newId
+   *          the new id
    */
   public ShapeChangeIDCommand(Shape shape, String newId) {
     this.shape = shape;
@@ -40,24 +42,30 @@ public class ShapeChangeIDCommand extends Command {
     this.oldId = shape.getId();
     setLabel("Change ID");
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#execute()
    */
   @Override
   public void execute() {
     redo();
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#redo()
    */
   @Override
   public void redo() {
     shape.setId(newId);
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.commands.Command#undo()
    */
   @Override

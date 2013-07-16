@@ -152,5 +152,4 @@ public class Card extends ModelElement {
     return super.getPropertyValue(id);
   }
 
-
 }

@@ -28,14 +28,17 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
 
   /**
    * Instantiates a new shape tree ep.
-   *
-   * @param shape the shape
+   * 
+   * @param shape
+   *          the shape
    */
   public ShapeTreeEP(Shape shape) {
     super(shape);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#activate()
    */
   public void activate() {
@@ -45,7 +48,9 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#deactivate()
    */
   public void deactivate() {
@@ -57,22 +62,31 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
 
   /**
    * Gets the casted model.
-   *
+   * 
    * @return the casted model
    */
   private Shape getCastedModel() {
     return (Shape) getModel();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractTreeEditPart#getText()
    */
   @Override
   protected String getText() {
     return getCastedModel().getId();
   }
-  
-  /* (non-Javadoc)
+
+  @Override
+  public boolean isSelectable() {
+    return !getCastedModel().isLocked();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#getAdapter(java.lang.Class)
    */
   @Override
@@ -88,7 +102,9 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     return super.getAdapter(key);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractTreeEditPart#getImage()
    */
   @Override
@@ -114,7 +130,7 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     if (shp.getEditorShapeType().isBackground()) {
       return SharedImages.HEXAGON.createImage();
     }
-    
+
     if (shp.getEditorShapeType().isEntity()) {
       return getCastedModel().getEntity().getDefaultFrame();
     }
@@ -122,8 +138,12 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     return SharedImages.HEXAGON.createImage();
   }
 
-  /* (non-Javadoc)
-   * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent
+   * )
    */
   @Override
   public void propertyChange(PropertyChangeEvent prop) {

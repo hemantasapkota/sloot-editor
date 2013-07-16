@@ -5,6 +5,6 @@ package com.laex.cg2d.entityeditor.preferences;
  */
 public class PreferenceConstants {
 
-	public static final String ANIMATION_PREVIEW = "animationPreview";
-	
+  public static final String ANIMATION_PREVIEW = "animationPreview";
+
 }

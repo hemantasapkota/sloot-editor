@@ -16,16 +16,17 @@ import com.laex.cg2d.model.model.impl.IDCreationStrategyImpl;
  * A factory for creating IDCreationStrategy objects.
  */
 public class IDCreationStrategyFactory {
-  
+
   /**
    * Gets the iD creator.
-   *
-   * @param model the model
+   * 
+   * @param model
+   *          the model
    * @return the iD creator
    */
   public static IDCreationStrategy getIDCreator(GameModel model) {
-    //We always return new instances. not singleton.
-      return new IDCreationStrategyImpl(model);
+    // We always return new instances. not singleton.
+    return new IDCreationStrategyImpl(model);
   }
 
 }

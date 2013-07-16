@@ -390,6 +390,31 @@ class CGJoint : public ::google::protobuf::Message {
   inline ::com::laex::cg2d::model::CGWeldJointDef* release_weldjointdef();
   inline void set_allocated_weldjointdef(::com::laex::cg2d::model::CGWeldJointDef* weldjointdef);
 
+  // optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+  inline bool has_localanchora() const;
+  inline void clear_localanchora();
+  static const int kLocalAnchorAFieldNumber = 11;
+  inline const ::com::laex::cg2d::model::CGVector2& localanchora() const;
+  inline ::com::laex::cg2d::model::CGVector2* mutable_localanchora();
+  inline ::com::laex::cg2d::model::CGVector2* release_localanchora();
+  inline void set_allocated_localanchora(::com::laex::cg2d::model::CGVector2* localanchora);
+
+  // optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+  inline bool has_localanchorb() const;
+  inline void clear_localanchorb();
+  static const int kLocalAnchorBFieldNumber = 12;
+  inline const ::com::laex::cg2d::model::CGVector2& localanchorb() const;
+  inline ::com::laex::cg2d::model::CGVector2* mutable_localanchorb();
+  inline ::com::laex::cg2d::model::CGVector2* release_localanchorb();
+  inline void set_allocated_localanchorb(::com::laex::cg2d::model::CGVector2* localanchorb);
+
+  // optional bool useLocalAnchors = 13;
+  inline bool has_uselocalanchors() const;
+  inline void clear_uselocalanchors();
+  static const int kUseLocalAnchorsFieldNumber = 13;
+  inline bool uselocalanchors() const;
+  inline void set_uselocalanchors(bool value);
+
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGJoint)
  private:
   inline void set_has_sourceshapeid();
@@ -410,6 +435,12 @@ class CGJoint : public ::google::protobuf::Message {
   inline void clear_has_frictionjointdef();
   inline void set_has_weldjointdef();
   inline void clear_has_weldjointdef();
+  inline void set_has_localanchora();
+  inline void clear_has_localanchora();
+  inline void set_has_localanchorb();
+  inline void clear_has_localanchorb();
+  inline void set_has_uselocalanchors();
+  inline void clear_has_uselocalanchors();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -419,12 +450,15 @@ class CGJoint : public ::google::protobuf::Message {
   ::com::laex::cg2d::model::CGRevoluteJointDef* revolutejointdef_;
   ::com::laex::cg2d::model::CGPrismaticJointDef* prismaticjointdef_;
   ::com::laex::cg2d::model::CGPulleyJointDef* pulleyjointdef_;
+  int type_;
+  bool uselocalanchors_;
   ::com::laex::cg2d::model::CGFrictionJointDef* frictionjointdef_;
   ::com::laex::cg2d::model::CGWeldJointDef* weldjointdef_;
-  int type_;
+  ::com::laex::cg2d::model::CGVector2* localanchora_;
+  ::com::laex::cg2d::model::CGVector2* localanchorb_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
@@ -647,15 +681,6 @@ class CGRevoluteJointDef : public ::google::protobuf::Message {
   inline float maxmotortorque() const;
   inline void set_maxmotortorque(float value);
 
-  // optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-  inline bool has_worldanchor() const;
-  inline void clear_worldanchor();
-  static const int kWorldAnchorFieldNumber = 9;
-  inline const ::com::laex::cg2d::model::CGVector2& worldanchor() const;
-  inline ::com::laex::cg2d::model::CGVector2* mutable_worldanchor();
-  inline ::com::laex::cg2d::model::CGVector2* release_worldanchor();
-  inline void set_allocated_worldanchor(::com::laex::cg2d::model::CGVector2* worldanchor);
-
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGRevoluteJointDef)
  private:
   inline void set_has_collideconnected();
@@ -674,8 +699,6 @@ class CGRevoluteJointDef : public ::google::protobuf::Message {
   inline void clear_has_motorspeed();
   inline void set_has_maxmotortorque();
   inline void clear_has_maxmotortorque();
-  inline void set_has_worldanchor();
-  inline void clear_has_worldanchor();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -687,10 +710,9 @@ class CGRevoluteJointDef : public ::google::protobuf::Message {
   float upperangle_;
   float motorspeed_;
   float maxmotortorque_;
-  ::com::laex::cg2d::model::CGVector2* worldanchor_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
@@ -3543,6 +3565,104 @@ inline void CGJoint::set_allocated_weldjointdef(::com::laex::cg2d::model::CGWeld
   }
 }
 
+// optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+inline bool CGJoint::has_localanchora() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void CGJoint::set_has_localanchora() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void CGJoint::clear_has_localanchora() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void CGJoint::clear_localanchora() {
+  if (localanchora_ != NULL) localanchora_->::com::laex::cg2d::model::CGVector2::Clear();
+  clear_has_localanchora();
+}
+inline const ::com::laex::cg2d::model::CGVector2& CGJoint::localanchora() const {
+  return localanchora_ != NULL ? *localanchora_ : *default_instance_->localanchora_;
+}
+inline ::com::laex::cg2d::model::CGVector2* CGJoint::mutable_localanchora() {
+  set_has_localanchora();
+  if (localanchora_ == NULL) localanchora_ = new ::com::laex::cg2d::model::CGVector2;
+  return localanchora_;
+}
+inline ::com::laex::cg2d::model::CGVector2* CGJoint::release_localanchora() {
+  clear_has_localanchora();
+  ::com::laex::cg2d::model::CGVector2* temp = localanchora_;
+  localanchora_ = NULL;
+  return temp;
+}
+inline void CGJoint::set_allocated_localanchora(::com::laex::cg2d::model::CGVector2* localanchora) {
+  delete localanchora_;
+  localanchora_ = localanchora;
+  if (localanchora) {
+    set_has_localanchora();
+  } else {
+    clear_has_localanchora();
+  }
+}
+
+// optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+inline bool CGJoint::has_localanchorb() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void CGJoint::set_has_localanchorb() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void CGJoint::clear_has_localanchorb() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void CGJoint::clear_localanchorb() {
+  if (localanchorb_ != NULL) localanchorb_->::com::laex::cg2d::model::CGVector2::Clear();
+  clear_has_localanchorb();
+}
+inline const ::com::laex::cg2d::model::CGVector2& CGJoint::localanchorb() const {
+  return localanchorb_ != NULL ? *localanchorb_ : *default_instance_->localanchorb_;
+}
+inline ::com::laex::cg2d::model::CGVector2* CGJoint::mutable_localanchorb() {
+  set_has_localanchorb();
+  if (localanchorb_ == NULL) localanchorb_ = new ::com::laex::cg2d::model::CGVector2;
+  return localanchorb_;
+}
+inline ::com::laex::cg2d::model::CGVector2* CGJoint::release_localanchorb() {
+  clear_has_localanchorb();
+  ::com::laex::cg2d::model::CGVector2* temp = localanchorb_;
+  localanchorb_ = NULL;
+  return temp;
+}
+inline void CGJoint::set_allocated_localanchorb(::com::laex::cg2d::model::CGVector2* localanchorb) {
+  delete localanchorb_;
+  localanchorb_ = localanchorb;
+  if (localanchorb) {
+    set_has_localanchorb();
+  } else {
+    clear_has_localanchorb();
+  }
+}
+
+// optional bool useLocalAnchors = 13;
+inline bool CGJoint::has_uselocalanchors() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void CGJoint::set_has_uselocalanchors() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void CGJoint::clear_has_uselocalanchors() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void CGJoint::clear_uselocalanchors() {
+  uselocalanchors_ = false;
+  clear_has_uselocalanchors();
+}
+inline bool CGJoint::uselocalanchors() const {
+  return uselocalanchors_;
+}
+inline void CGJoint::set_uselocalanchors(bool value) {
+  set_has_uselocalanchors();
+  uselocalanchors_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // CGDistanceJointDef
@@ -3791,44 +3911,6 @@ inline float CGRevoluteJointDef::maxmotortorque() const {
 inline void CGRevoluteJointDef::set_maxmotortorque(float value) {
   set_has_maxmotortorque();
   maxmotortorque_ = value;
-}
-
-// optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-inline bool CGRevoluteJointDef::has_worldanchor() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void CGRevoluteJointDef::set_has_worldanchor() {
-  _has_bits_[0] |= 0x00000100u;
-}
-inline void CGRevoluteJointDef::clear_has_worldanchor() {
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline void CGRevoluteJointDef::clear_worldanchor() {
-  if (worldanchor_ != NULL) worldanchor_->::com::laex::cg2d::model::CGVector2::Clear();
-  clear_has_worldanchor();
-}
-inline const ::com::laex::cg2d::model::CGVector2& CGRevoluteJointDef::worldanchor() const {
-  return worldanchor_ != NULL ? *worldanchor_ : *default_instance_->worldanchor_;
-}
-inline ::com::laex::cg2d::model::CGVector2* CGRevoluteJointDef::mutable_worldanchor() {
-  set_has_worldanchor();
-  if (worldanchor_ == NULL) worldanchor_ = new ::com::laex::cg2d::model::CGVector2;
-  return worldanchor_;
-}
-inline ::com::laex::cg2d::model::CGVector2* CGRevoluteJointDef::release_worldanchor() {
-  clear_has_worldanchor();
-  ::com::laex::cg2d::model::CGVector2* temp = worldanchor_;
-  worldanchor_ = NULL;
-  return temp;
-}
-inline void CGRevoluteJointDef::set_allocated_worldanchor(::com::laex::cg2d::model::CGVector2* worldanchor) {
-  delete worldanchor_;
-  worldanchor_ = worldanchor;
-  if (worldanchor) {
-    set_has_worldanchor();
-  } else {
-    clear_has_worldanchor();
-  }
 }
 
 // -------------------------------------------------------------------

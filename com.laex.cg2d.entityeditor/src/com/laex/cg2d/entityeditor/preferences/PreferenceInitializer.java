@@ -10,15 +10,16 @@ import com.laex.cg2d.entityeditor.Activator;
  */
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
-	 */
-	public void initializeDefaultPreferences() {
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#
+   * initializeDefaultPreferences()
+   */
+  public void initializeDefaultPreferences() {
+    IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 
-		store.setDefault(PreferenceConstants.ANIMATION_PREVIEW, "");
-	}
+    store.setDefault(PreferenceConstants.ANIMATION_PREVIEW, "");
+  }
 
 }

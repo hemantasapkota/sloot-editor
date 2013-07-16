@@ -11,18 +11,17 @@
 package com.laex.cg2d.screeneditor.views;
 
 /**
- * The listener interface for receiving IScreenDispose events.
- * The class that is interested in processing a IScreenDispose
- * event implements this interface, and the object created
- * with that class is registered with a component using the
- * component's <code>addIScreenDisposeListener<code> method. When
+ * The listener interface for receiving IScreenDispose events. The class that is
+ * interested in processing a IScreenDispose event implements this interface,
+ * and the object created with that class is registered with a component using
+ * the component's <code>addIScreenDisposeListener<code> method. When
  * the IScreenDispose event occurs, that object's appropriate
  * method is invoked.
- *
+ * 
  * @see IScreenDisposeEvent
  */
 public interface IScreenDisposeListener {
-  
+
   /**
    * Screen disposed.
    */

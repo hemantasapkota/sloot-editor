@@ -19,8 +19,9 @@ public final class AppExceptionUtil {
 
   /**
    * Handle.
-   *
-   * @param t the t
+   * 
+   * @param t
+   *          the t
    */
   public static void handle(Throwable t) {
     MyGdxGameDesktop.lwjglApp().error("Error Details", t.getMessage());

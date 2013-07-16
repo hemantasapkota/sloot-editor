@@ -203,7 +203,6 @@ public class EntityManager implements ScreenScaffold {
         indexedFrames.add(walkFrames[i - 1]);
       }
 
-
       spriteAnimation = new Animation(ea.getAnimationDuration(), indexedFrames);
       entityToAnimationMap.put(entity, spriteAnimation);
     }

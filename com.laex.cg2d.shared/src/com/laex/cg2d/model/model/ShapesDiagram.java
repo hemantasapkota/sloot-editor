@@ -59,8 +59,9 @@ public class ShapesDiagram extends ModelElement {
 
   /**
    * Adds the layer.
-   *
-   * @param l the l
+   * 
+   * @param l
+   *          the l
    * @return true, if successful
    */
   public boolean addLayer(Layer l) {
@@ -73,15 +74,16 @@ public class ShapesDiagram extends ModelElement {
 
   /**
    * Removes the layer.
-   *
-   * @param l the l
+   * 
+   * @param l
+   *          the l
    * @return true, if successful
    */
   public boolean removeLayer(Layer l) {
     if (l != null && layers.remove(l)) {
 
       for (Shape shape : l.getChildren()) {
-        //We first remove the child from the screen
+        // We first remove the child from the screen
         firePropertyChange(CHILD_ADDED_PROP, null, shape);
         shapes.remove(shape);
       }

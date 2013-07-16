@@ -20,8 +20,8 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /** The Constant LAYER_NAME_CHANGED. */
   public static final String LAYER_NAME_CHANGED = "LayerNameChanged";
-  
-  public static final String LAYER_CHILD_ADDED  = "LayerChildAdded";
+
+  public static final String LAYER_CHILD_ADDED = "LayerChildAdded";
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 5186818065007054067L;
@@ -113,8 +113,9 @@ public class Layer extends ModelElement implements Comparable<Layer> {
 
   /**
    * Sets the children.
-   *
-   * @param children the new children
+   * 
+   * @param children
+   *          the new children
    */
   public void setChildren(List<Shape> children) {
     this.children = children;
@@ -203,7 +204,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
    */
   public void setName(String name) {
     this.name = name;
-    
+
     firePropertyChange(LAYER_NAME_CHANGED, null, name);
   }
 

@@ -17,27 +17,30 @@ import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-
 /**
  * The Class ImportScreenContentsHandler.
  */
 public class ImportScreenContentsHandler extends AbstractHandler {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands
+   * .ExecutionEvent)
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IEditorPart ep = HandlerUtil.getActiveEditor(event);
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
-    
-    ImportScreenContentsDialog screensDialog = new ImportScreenContentsDialog(ep.getSite().getShell(), gv.getEditDomain()
-        .getCommandStack());
+
+    ImportScreenContentsDialog screensDialog = new ImportScreenContentsDialog(ep.getSite().getShell(), gv
+        .getEditDomain().getCommandStack());
     int responseCode = screensDialog.open();
     if (responseCode == ImportScreenContentsDialog.CANCEL) {
       return null;
     }
-    
+
     return null;
   }
 

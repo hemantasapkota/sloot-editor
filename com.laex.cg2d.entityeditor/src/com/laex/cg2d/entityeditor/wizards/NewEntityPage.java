@@ -103,7 +103,8 @@ public class NewEntityPage extends WizardPage {
     btnBrowse.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
-        ContainerSelectionDialog csd = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false, "Select a project");
+        ContainerSelectionDialog csd = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace()
+            .getRoot(), false, "Select a project");
         int response = csd.open();
         if (response == ContainerSelectionDialog.CANCEL) {
           return;

@@ -14,7 +14,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.Serializable;
 
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -22,10 +21,7 @@ import org.eclipse.ui.views.properties.IPropertySource;
 /**
  * The Class ModelElement.
  */
-public abstract class ModelElement implements IPropertySource, Serializable {
-
-  /** The Constant serialVersionUID. */
-  private static final long serialVersionUID = 8990388779106474478L;
+public abstract class ModelElement implements IPropertySource {
 
   /** The Constant EMPTY_ARRAY. */
   private static final IPropertyDescriptor[] EMPTY_ARRAY = new IPropertyDescriptor[0];

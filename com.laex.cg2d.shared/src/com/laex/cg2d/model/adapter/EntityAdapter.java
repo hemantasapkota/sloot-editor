@@ -123,7 +123,6 @@ public class EntityAdapter {
 
       eaBuilder.addAllFrameIndices(ea.getFrameIndices());
 
-
       CGEntityAnimation cgEa = eaBuilder.build();
       entityBuilder = entityBuilder.addAnimations(cgEa);
     }
@@ -162,10 +161,9 @@ public class EntityAdapter {
 
       ea.getFrameIndices().addAll(cgEa.getFrameIndicesList());
 
-      
       entityModel.addEntityAnimation(ea);
     }
-    
+
     entityModel.setDefaultFrame(EntitiesUtil.getDefaultFrame(entityModel));
 
     return entityModel;

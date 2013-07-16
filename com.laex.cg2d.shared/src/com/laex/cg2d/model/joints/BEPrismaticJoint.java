@@ -30,9 +30,6 @@ import com.laex.cg2d.model.util.FloatUtil;
  */
 public class BEPrismaticJoint extends Joint {
 
-  /** The Constant serialVersionUID. */
-  private static final long serialVersionUID = -7796463519254617969L;
-
   /** The Constant AXIS_PROP. */
   public static final String AXIS_PROP = "PrismaticJoint.WorldAxis";
 
@@ -315,6 +312,24 @@ public class BEPrismaticJoint extends Joint {
    */
   public Vector2 getWorldAxis() {
     return worldAxis;
+  }
+
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    getLocalAnchorA().x = (getSource().getBounds().width / ptmRatio) / 2;
+    getLocalAnchorA().y = (getSource().getBounds().height / ptmRatio) / 2;
+
+    getLocalAnchorB().x = getLocalAnchorA().x;
+    getLocalAnchorB().y = getLocalAnchorA().y;
+    
+    /* Compute world anchor for prismastic joint */
+    Vector2 a1 = new Vector2(getSource().getBounds().x, getSource().getBounds().y);
+    Vector2 a2 = new Vector2(getTarget().getBounds().x, getTarget().getBounds().y);
+    
+    Vector2 avg = a1.add(a2).div(2).div(ptmRatio);
+    
+    getWorldAnchor().x = avg.x;
+    getWorldAnchor().y = avg.y;
   }
 
 }

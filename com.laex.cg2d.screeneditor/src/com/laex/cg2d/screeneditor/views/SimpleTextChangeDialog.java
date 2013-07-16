@@ -84,7 +84,7 @@ public class SimpleTextChangeDialog extends TitleAreaDialog {
     txtName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
     txtName.setText(existingName);
     txtName.addModifyListener(new ModifyListener() {
-      
+
       @Override
       public void modifyText(ModifyEvent e) {
         if (StringUtils.isEmpty(txtName.getText())) {

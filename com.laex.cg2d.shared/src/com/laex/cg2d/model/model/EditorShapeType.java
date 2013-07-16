@@ -27,7 +27,7 @@ public enum EditorShapeType {
   BACKGROUND_SHAPE,
   /** The entity shape. */
   ENTITY_SHAPE;
-
+  
   /**
    * Checks if is box.
    * 

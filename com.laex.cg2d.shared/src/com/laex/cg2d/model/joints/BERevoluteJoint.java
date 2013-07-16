@@ -16,10 +16,8 @@ import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.JointDef.JointType;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
-import com.laex.cg2d.model.descs.Vec2PropertySource;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.util.BooleanUtil;
@@ -29,9 +27,6 @@ import com.laex.cg2d.model.util.FloatUtil;
  * The Class BERevoluteJoint.
  */
 public class BERevoluteJoint extends Joint {
-
-  /** The Constant serialVersionUID. */
-  private static final long serialVersionUID = -7428134997804508470L;
 
   /** The Constant REFERENCE_ANGLE_PROP. */
   public static final String REFERENCE_ANGLE_PROP = "RevoluteJoint.ReferenceAngle";
@@ -54,8 +49,6 @@ public class BERevoluteJoint extends Joint {
   /** The Constant MAX_MOTOR_TORQUE_PROP. */
   public static final String MAX_MOTOR_TORQUE_PROP = "RevoluteJoint.MaxMotorTorque";
 
-  /** The Constant ANCHOR_PROP. */
-  public static final String WORLD_ANCHOR_PROP = "RevoluteJoint.WorldAnchor";
 
   /** The descriptor. */
   private static IPropertyDescriptor[] descriptor;
@@ -70,7 +63,6 @@ public class BERevoluteJoint extends Joint {
         BooleanUtil.BOOLEAN_STRING_VALUES);
     PropertyDescriptor motorSpeedProp = new TextPropertyDescriptor(MOTOR_SPEED_PROP, "Motor Speed");
     PropertyDescriptor maxMotorTorqueProp = new TextPropertyDescriptor(MAX_MOTOR_TORQUE_PROP, "Max Motor Torque");
-    PropertyDescriptor worldAnchorProp = new PropertyDescriptor(WORLD_ANCHOR_PROP, "WorldAnchor");
 
     descriptor = new IPropertyDescriptor[]
       {
@@ -80,15 +72,12 @@ public class BERevoluteJoint extends Joint {
           upperAngleProp,
           enableMotorProp,
           motorSpeedProp,
-          maxMotorTorqueProp,
-          worldAnchorProp };
+          maxMotorTorqueProp
+          };
   };
 
   /** The revolute joint def. */
   private RevoluteJointDef revoluteJointDef = new RevoluteJointDef();
-
-  /** The anchor. */
-  private Vector2 worldAnchor = new Vector2();
 
   /**
    * Instantiates a new bE revolute joint.
@@ -100,6 +89,7 @@ public class BERevoluteJoint extends Joint {
    */
   public BERevoluteJoint(Shape source, Shape target) {
     super(source, target);
+    
   }
 
   /*
@@ -130,9 +120,7 @@ public class BERevoluteJoint extends Joint {
    */
   @Override
   public void setPropertyValue(Object id, Object value) {
-    if (isWorldAnchorProp(id)) {
-      this.worldAnchor = (Vector2) value;
-    } else if (isReferenceAngleProp(id)) {
+    if (isReferenceAngleProp(id)) {
       revoluteJointDef.referenceAngle = (float) Math.toRadians(FloatUtil.toFloat(value));
     } else if (isEnableLimitProp(id)) {
       revoluteJointDef.enableLimit = BooleanUtil.toBool(value);
@@ -158,9 +146,6 @@ public class BERevoluteJoint extends Joint {
    */
   @Override
   public Object getPropertyValue(Object id) {
-    if (isWorldAnchorProp(id)) {
-      return new Vec2PropertySource(this.worldAnchor);
-    }
     if (isReferenceAngleProp(id)) {
       return Double.toString(Math.toDegrees(revoluteJointDef.referenceAngle));
     }
@@ -185,15 +170,6 @@ public class BERevoluteJoint extends Joint {
     return super.getPropertyValue(id);
   }
 
-  /**
-   * Checks if is world anchor prop.
-   *
-   * @param id the id
-   * @return true, if is world anchor prop
-   */
-  private boolean isWorldAnchorProp(Object id) {
-    return WORLD_ANCHOR_PROP.equals(id);
-  }
 
   /**
    * Checks if is max motor torque prop.
@@ -272,14 +248,6 @@ public class BERevoluteJoint extends Joint {
     return REFERENCE_ANGLE_PROP.equals(id);
   }
 
-  /**
-   * Gets the anchor.
-   * 
-   * @return the anchor
-   */
-  public Vector2 getWorldAnchor() {
-    return worldAnchor;
-  }
 
   /*
    * (non-Javadoc)
@@ -289,5 +257,14 @@ public class BERevoluteJoint extends Joint {
   @Override
   public JointType getJointType() {
     return JointType.RevoluteJoint;
+  }
+
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    getLocalAnchorA().x = (getSource().getBounds().width / ptmRatio) / 2;
+    getLocalAnchorA().y = (getSource().getBounds().height / ptmRatio) / 2;
+
+    getLocalAnchorB().x = getLocalAnchorA().x;
+    getLocalAnchorB().y = getLocalAnchorA().y;
   }
 }

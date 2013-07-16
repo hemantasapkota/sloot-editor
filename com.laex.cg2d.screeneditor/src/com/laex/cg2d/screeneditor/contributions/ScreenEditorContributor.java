@@ -103,8 +103,8 @@ public class ScreenEditorContributor extends ActionBarContributor {
   public void contributeToToolBar(IToolBarManager mgr) {
     super.contributeToToolBar(mgr);
 
-//    mgr.add(getAction(ActionFactory.UNDO.getId()));
-//    mgr.add(getAction(ActionFactory.REDO.getId()));
+    // mgr.add(getAction(ActionFactory.UNDO.getId()));
+    // mgr.add(getAction(ActionFactory.REDO.getId()));
 
     String[] zoomStrings = new String[]
       { ZoomManager.FIT_ALL, ZoomManager.FIT_HEIGHT, ZoomManager.FIT_WIDTH };
@@ -154,9 +154,9 @@ public class ScreenEditorContributor extends ActionBarContributor {
     createActions();
 
     // Add these retarget actions
-//    addRetargetAction(new DeleteRetargetAction());
-//    addRetargetAction(new UndoRetargetAction());
-//    addRetargetAction(new RedoRetargetAction());
+    // addRetargetAction(new DeleteRetargetAction());
+    // addRetargetAction(new UndoRetargetAction());
+    // addRetargetAction(new RedoRetargetAction());
 
   }
 

@@ -47,10 +47,10 @@ public class CollisionDetectionManager implements ScreenScaffold {
       if (contact.isTouching()) {
         Body bodyA = contact.getFixtureA().getBody();
         Body bodyB = contact.getFixtureB().getBody();
-        
+
         String shapeIdA = manipulator.getEntityId(bodyA);
         String shapeIdB = manipulator.getEntityId(bodyB);
-       
+
         scriptMgr.collisionCallback(shapeIdA, shapeIdB, contact.getFixtureA().getBody(), contact.getFixtureB()
             .getBody(), contact.getFixtureA(), contact.getFixtureB());
       }
@@ -100,9 +100,11 @@ public class CollisionDetectionManager implements ScreenScaffold {
 
   /**
    * Instantiates a new collision detection manager.
-   *
-   * @param manipulator the manipulator
-   * @param scriptMgr the script mgr
+   * 
+   * @param manipulator
+   *          the manipulator
+   * @param scriptMgr
+   *          the script mgr
    */
   public CollisionDetectionManager(ScreenManagerImpl manipulator, LuaScriptManager scriptMgr) {
     this.manipulator = manipulator;

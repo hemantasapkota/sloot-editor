@@ -141,9 +141,9 @@ public class ShapeDeleteCommand extends Command {
     wasRemoved = parent.removeChild(child);
     if (wasRemoved) {
       parent.removeChild(child);
-      parentLayer = child.getParentLayer();
-      parentLayer.remove(child);
-      child.setParentLayer(null);
+	    parentLayer = child.getParentLayer();
+	    parentLayer.remove(child);
+	    child.setParentLayer(null);
       removeConnections(sourceConnections);
       removeConnections(targetConnections);
     }
@@ -171,12 +171,12 @@ public class ShapeDeleteCommand extends Command {
     // add the child and reconnect its connections
 
     /*
-     * First add the layers.
-     * When we add the shape, the shape tree edit part requires a layer to add the child to.
+     * First add the layers. When we add the shape, the shape tree edit part
+     * requires a layer to add the child to.
      */
     parentLayer.add(child);
     child.setParentLayer(parentLayer);
-    
+
     if (parent.addChild(child)) {
       addConnections(sourceConnections);
       addConnections(targetConnections);

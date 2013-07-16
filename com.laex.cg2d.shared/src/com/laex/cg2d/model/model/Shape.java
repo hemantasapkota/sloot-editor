@@ -30,9 +30,6 @@ import com.laex.cg2d.model.descs.RectanglePropertySource;
  */
 public class Shape extends ModelElement {
 
-  /** The Constant serialVersionUID. */
-  private static final long serialVersionUID = -3451831120051320417L;
-
   /** The Constant SHAPE_ID. */
   public static final String SHAPE_ID = "Shape.shapeId";
 
@@ -59,7 +56,7 @@ public class Shape extends ModelElement {
 
   /** The Constant TARGET_JOINT_PROP. */
   public static final String TARGET_JOINT_PROP = "Shape.TargetJoint";
-  
+
   /** The descriptors. */
   private static IPropertyDescriptor[] descriptors;
 
@@ -122,7 +119,7 @@ public class Shape extends ModelElement {
   private List<Joint> targetJoints = new ArrayList<Joint>();
 
   /** The entity. */
-  private transient Entity entity;
+  private Entity entity;
 
   /**
    * Instantiates a new shape.
@@ -213,6 +210,7 @@ public class Shape extends ModelElement {
     return entity;
   }
 
+  
   /**
    * Gets the entity resource file.
    * 
@@ -424,8 +422,9 @@ public class Shape extends ModelElement {
 
   /**
    * Sets the fixture def.
-   *
-   * @param value the new fixture def
+   * 
+   * @param value
+   *          the new fixture def
    */
   private void setFixtureDef(FixtureDef value) {
     if (value != null) {
@@ -511,7 +510,7 @@ public class Shape extends ModelElement {
    */
   public void setPropertyValue(Object propertyId, Object value) {
     if (isShapeIdProp(propertyId)) {
-      //we dont set shape id here.
+      // we dont set shape id here.
     } else if (isBodyDefProp(propertyId)) {
       setBodyDef((BodyDef) value);
     } else if (isFixtureDefProp(propertyId)) {

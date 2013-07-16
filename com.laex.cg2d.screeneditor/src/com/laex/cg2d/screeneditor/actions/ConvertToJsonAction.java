@@ -16,8 +16,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -128,11 +130,11 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
       }
 
       // Save it
-      IPath path = file.getParent().getFullPath().append(file.getName()).addFileExtension("json");
-      IFile file1 = file.getProject().getFile(path);
+      IPath path = file.getFullPath().addFileExtension("json");
+      IFile file1 = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
       ICGCProject prj = CGCProject.getInstance();
 
-      if (prj.exists(path, false)) {
+      if (file1.exists()) {
 
         MessageBox mb = new MessageBox(shell, SWT.OK | SWT.CANCEL);
         mb.setText("File exists");
@@ -143,12 +145,10 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
         }
 
         try {
-          file1.delete(true, null);
+          file1.setContents(new ByteArrayInputStream(jsonFormat.getBytes()), true, false, new NullProgressMonitor());
         } catch (CoreException e) {
           e.printStackTrace();
         }
-
-//        createFile(jsonFormat, path, prj);
 
       } else {
 
@@ -162,10 +162,13 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
 
   /**
    * Creates the file.
-   *
-   * @param jsonFormat the json format
-   * @param path the path
-   * @param prj the prj
+   * 
+   * @param jsonFormat
+   *          the json format
+   * @param path
+   *          the path
+   * @param prj
+   *          the prj
    */
   private void createFile(String jsonFormat, IPath path, ICGCProject prj) {
     try {

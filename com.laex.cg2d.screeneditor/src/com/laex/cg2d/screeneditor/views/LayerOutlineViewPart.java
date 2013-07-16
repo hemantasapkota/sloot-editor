@@ -36,16 +36,16 @@ public class LayerOutlineViewPart extends ViewPart implements ISelectionListener
 
   /** The Constant ID. */
   public static final String ID = "com.laex.cg2d.screeneditor.views.LayerOutlineViewPart"; //$NON-NLS-1$
-  
+
   /** The toolkit. */
   private final FormToolkit toolkit = new FormToolkit(Display.getCurrent());
-  
+
   /** The tree composite. */
   private Composite treeComposite;
-  
+
   /** The lov. */
   private LayerOutlineView lov;
-  
+
   /**
    * Instantiates a new layer outline view part.
    */
@@ -54,8 +54,9 @@ public class LayerOutlineViewPart extends ViewPart implements ISelectionListener
 
   /**
    * Create contents of the view part.
-   *
-   * @param parent the parent
+   * 
+   * @param parent
+   *          the parent
    */
   @Override
   public void createPartControl(Composite parent) {
@@ -69,9 +70,9 @@ public class LayerOutlineViewPart extends ViewPart implements ISelectionListener
       toolkit.paintBordersFor(treeComposite);
       treeComposite.setLayout(new TreeColumnLayout());
       {
-        //Dont remove this block of code. For layouting purpose
+        // Dont remove this block of code. For layouting purpose
         // we need it to add the LayerViewOutline to this view
-     }
+      }
     }
 
     createActions();
@@ -81,7 +82,9 @@ public class LayerOutlineViewPart extends ViewPart implements ISelectionListener
     getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(this);
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.WorkbenchPart#dispose()
    */
   public void dispose() {
@@ -110,15 +113,20 @@ public class LayerOutlineViewPart extends ViewPart implements ISelectionListener
     IMenuManager manager = getViewSite().getActionBars().getMenuManager();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
    */
   @Override
   public void setFocus() {
   }
 
-  /* (non-Javadoc)
-   * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.
+   * IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
    */
   @Override
   public void selectionChanged(IWorkbenchPart part, ISelection selection) {

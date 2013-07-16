@@ -41,9 +41,11 @@ public class BackgroundManager implements ScreenScaffold {
 
   /**
    * Instantiates a new background manager.
-   *
-   * @param manipulator the manipulator
-   * @param batch the batch
+   * 
+   * @param manipulator
+   *          the manipulator
+   * @param batch
+   *          the batch
    */
   public BackgroundManager(ScreenManagerImpl manipulator, SpriteBatch batch) {
     this.manipulator = manipulator;
@@ -71,7 +73,7 @@ public class BackgroundManager implements ScreenScaffold {
         tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
         Sprite sprite = new Sprite(tex);
-        
+
         float x = shape.getBounds().getX();
         float y = shape.getBounds().getY();
         float width = shape.getBounds().getWidth();
@@ -81,10 +83,6 @@ public class BackgroundManager implements ScreenScaffold {
         Vector2 worldPos = manipulator.screenToWorldFlipped(scrPos, height);
         sprite.setPosition(worldPos.x, worldPos.y);
 
-        // Note: we cast width to float to make the division.
-        // If we dont do that, then decimals from division would
-        // be ignored. This will result in the size of sprite
-        // being slightly off.
         float w = (width / manipulator.ptmRatio());
         float h = (height / manipulator.ptmRatio());
 

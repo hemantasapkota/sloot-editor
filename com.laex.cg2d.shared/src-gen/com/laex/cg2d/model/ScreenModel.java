@@ -1487,6 +1487,56 @@ public final class ScreenModel {
      * <code>optional .com.laex.cg2d.model.CGWeldJointDef weldJointDef = 10;</code>
      */
     com.laex.cg2d.model.ScreenModel.CGWeldJointDefOrBuilder getWeldJointDefOrBuilder();
+
+    // optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+     *
+     * <pre>
+     * Common anchors for all the joints 
+     * </pre>
+     */
+    boolean hasLocalAnchorA();
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+     *
+     * <pre>
+     * Common anchors for all the joints 
+     * </pre>
+     */
+    com.laex.cg2d.model.ScreenModel.CGVector2 getLocalAnchorA();
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+     *
+     * <pre>
+     * Common anchors for all the joints 
+     * </pre>
+     */
+    com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getLocalAnchorAOrBuilder();
+
+    // optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+     */
+    boolean hasLocalAnchorB();
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+     */
+    com.laex.cg2d.model.ScreenModel.CGVector2 getLocalAnchorB();
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+     */
+    com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getLocalAnchorBOrBuilder();
+
+    // optional bool useLocalAnchors = 13;
+    /**
+     * <code>optional bool useLocalAnchors = 13;</code>
+     */
+    boolean hasUseLocalAnchors();
+    /**
+     * <code>optional bool useLocalAnchors = 13;</code>
+     */
+    boolean getUseLocalAnchors();
   }
   /**
    * Protobuf type {@code com.laex.cg2d.model.CGJoint}
@@ -1636,6 +1686,37 @@ public final class ScreenModel {
                 weldJointDef_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000100;
+              break;
+            }
+            case 90: {
+              com.laex.cg2d.model.ScreenModel.CGVector2.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000200) == 0x00000200)) {
+                subBuilder = localAnchorA_.toBuilder();
+              }
+              localAnchorA_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGVector2.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(localAnchorA_);
+                localAnchorA_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000200;
+              break;
+            }
+            case 98: {
+              com.laex.cg2d.model.ScreenModel.CGVector2.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000400) == 0x00000400)) {
+                subBuilder = localAnchorB_.toBuilder();
+              }
+              localAnchorB_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGVector2.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(localAnchorB_);
+                localAnchorB_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000400;
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00000800;
+              useLocalAnchors_ = input.readBool();
               break;
             }
           }
@@ -1912,6 +1993,78 @@ public final class ScreenModel {
       return weldJointDef_;
     }
 
+    // optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+    public static final int LOCALANCHORA_FIELD_NUMBER = 11;
+    private com.laex.cg2d.model.ScreenModel.CGVector2 localAnchorA_;
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+     *
+     * <pre>
+     * Common anchors for all the joints 
+     * </pre>
+     */
+    public boolean hasLocalAnchorA() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+     *
+     * <pre>
+     * Common anchors for all the joints 
+     * </pre>
+     */
+    public com.laex.cg2d.model.ScreenModel.CGVector2 getLocalAnchorA() {
+      return localAnchorA_;
+    }
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+     *
+     * <pre>
+     * Common anchors for all the joints 
+     * </pre>
+     */
+    public com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getLocalAnchorAOrBuilder() {
+      return localAnchorA_;
+    }
+
+    // optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+    public static final int LOCALANCHORB_FIELD_NUMBER = 12;
+    private com.laex.cg2d.model.ScreenModel.CGVector2 localAnchorB_;
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+     */
+    public boolean hasLocalAnchorB() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+     */
+    public com.laex.cg2d.model.ScreenModel.CGVector2 getLocalAnchorB() {
+      return localAnchorB_;
+    }
+    /**
+     * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+     */
+    public com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getLocalAnchorBOrBuilder() {
+      return localAnchorB_;
+    }
+
+    // optional bool useLocalAnchors = 13;
+    public static final int USELOCALANCHORS_FIELD_NUMBER = 13;
+    private boolean useLocalAnchors_;
+    /**
+     * <code>optional bool useLocalAnchors = 13;</code>
+     */
+    public boolean hasUseLocalAnchors() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional bool useLocalAnchors = 13;</code>
+     */
+    public boolean getUseLocalAnchors() {
+      return useLocalAnchors_;
+    }
+
     private void initFields() {
       sourceShapeId_ = "";
       targetShapeId_ = "";
@@ -1922,18 +2075,15 @@ public final class ScreenModel {
       pulleyJointDef_ = com.laex.cg2d.model.ScreenModel.CGPulleyJointDef.getDefaultInstance();
       frictionJointDef_ = com.laex.cg2d.model.ScreenModel.CGFrictionJointDef.getDefaultInstance();
       weldJointDef_ = com.laex.cg2d.model.ScreenModel.CGWeldJointDef.getDefaultInstance();
+      localAnchorA_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
+      localAnchorB_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
+      useLocalAnchors_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (hasRevoluteJointDef()) {
-        if (!getRevoluteJointDef().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasPrismaticJointDef()) {
         if (!getPrismaticJointDef().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -1942,6 +2092,18 @@ public final class ScreenModel {
       }
       if (hasPulleyJointDef()) {
         if (!getPulleyJointDef().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasLocalAnchorA()) {
+        if (!getLocalAnchorA().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasLocalAnchorB()) {
+        if (!getLocalAnchorB().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -1979,6 +2141,15 @@ public final class ScreenModel {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeMessage(10, weldJointDef_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeMessage(11, localAnchorA_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeMessage(12, localAnchorB_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeBool(13, useLocalAnchors_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2024,6 +2195,18 @@ public final class ScreenModel {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, weldJointDef_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, localAnchorA_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, localAnchorB_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(13, useLocalAnchors_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2139,6 +2322,8 @@ public final class ScreenModel {
           getPulleyJointDefFieldBuilder();
           getFrictionJointDefFieldBuilder();
           getWeldJointDefFieldBuilder();
+          getLocalAnchorAFieldBuilder();
+          getLocalAnchorBFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2189,6 +2374,20 @@ public final class ScreenModel {
           weldJointDefBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000100);
+        if (localAnchorABuilder_ == null) {
+          localAnchorA_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
+        } else {
+          localAnchorABuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        if (localAnchorBBuilder_ == null) {
+          localAnchorB_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
+        } else {
+          localAnchorBBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000400);
+        useLocalAnchors_ = false;
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -2277,6 +2476,26 @@ public final class ScreenModel {
         } else {
           result.weldJointDef_ = weldJointDefBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        if (localAnchorABuilder_ == null) {
+          result.localAnchorA_ = localAnchorA_;
+        } else {
+          result.localAnchorA_ = localAnchorABuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        if (localAnchorBBuilder_ == null) {
+          result.localAnchorB_ = localAnchorB_;
+        } else {
+          result.localAnchorB_ = localAnchorBBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.useLocalAnchors_ = useLocalAnchors_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2324,17 +2543,20 @@ public final class ScreenModel {
         if (other.hasWeldJointDef()) {
           mergeWeldJointDef(other.getWeldJointDef());
         }
+        if (other.hasLocalAnchorA()) {
+          mergeLocalAnchorA(other.getLocalAnchorA());
+        }
+        if (other.hasLocalAnchorB()) {
+          mergeLocalAnchorB(other.getLocalAnchorB());
+        }
+        if (other.hasUseLocalAnchors()) {
+          setUseLocalAnchors(other.getUseLocalAnchors());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (hasRevoluteJointDef()) {
-          if (!getRevoluteJointDef().isInitialized()) {
-            
-            return false;
-          }
-        }
         if (hasPrismaticJointDef()) {
           if (!getPrismaticJointDef().isInitialized()) {
             
@@ -2343,6 +2565,18 @@ public final class ScreenModel {
         }
         if (hasPulleyJointDef()) {
           if (!getPulleyJointDef().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasLocalAnchorA()) {
+          if (!getLocalAnchorA().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasLocalAnchorB()) {
+          if (!getLocalAnchorB().isInitialized()) {
             
             return false;
           }
@@ -3255,6 +3489,309 @@ public final class ScreenModel {
         return weldJointDefBuilder_;
       }
 
+      // optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;
+      private com.laex.cg2d.model.ScreenModel.CGVector2 localAnchorA_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder> localAnchorABuilder_;
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      public boolean hasLocalAnchorA() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGVector2 getLocalAnchorA() {
+        if (localAnchorABuilder_ == null) {
+          return localAnchorA_;
+        } else {
+          return localAnchorABuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      public Builder setLocalAnchorA(com.laex.cg2d.model.ScreenModel.CGVector2 value) {
+        if (localAnchorABuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          localAnchorA_ = value;
+          onChanged();
+        } else {
+          localAnchorABuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      public Builder setLocalAnchorA(
+          com.laex.cg2d.model.ScreenModel.CGVector2.Builder builderForValue) {
+        if (localAnchorABuilder_ == null) {
+          localAnchorA_ = builderForValue.build();
+          onChanged();
+        } else {
+          localAnchorABuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      public Builder mergeLocalAnchorA(com.laex.cg2d.model.ScreenModel.CGVector2 value) {
+        if (localAnchorABuilder_ == null) {
+          if (((bitField0_ & 0x00000200) == 0x00000200) &&
+              localAnchorA_ != com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance()) {
+            localAnchorA_ =
+              com.laex.cg2d.model.ScreenModel.CGVector2.newBuilder(localAnchorA_).mergeFrom(value).buildPartial();
+          } else {
+            localAnchorA_ = value;
+          }
+          onChanged();
+        } else {
+          localAnchorABuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      public Builder clearLocalAnchorA() {
+        if (localAnchorABuilder_ == null) {
+          localAnchorA_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
+          onChanged();
+        } else {
+          localAnchorABuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGVector2.Builder getLocalAnchorABuilder() {
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return getLocalAnchorAFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getLocalAnchorAOrBuilder() {
+        if (localAnchorABuilder_ != null) {
+          return localAnchorABuilder_.getMessageOrBuilder();
+        } else {
+          return localAnchorA_;
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorA = 11;</code>
+       *
+       * <pre>
+       * Common anchors for all the joints 
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder> 
+          getLocalAnchorAFieldBuilder() {
+        if (localAnchorABuilder_ == null) {
+          localAnchorABuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder>(
+                  localAnchorA_,
+                  getParentForChildren(),
+                  isClean());
+          localAnchorA_ = null;
+        }
+        return localAnchorABuilder_;
+      }
+
+      // optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;
+      private com.laex.cg2d.model.ScreenModel.CGVector2 localAnchorB_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder> localAnchorBBuilder_;
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      public boolean hasLocalAnchorB() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGVector2 getLocalAnchorB() {
+        if (localAnchorBBuilder_ == null) {
+          return localAnchorB_;
+        } else {
+          return localAnchorBBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      public Builder setLocalAnchorB(com.laex.cg2d.model.ScreenModel.CGVector2 value) {
+        if (localAnchorBBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          localAnchorB_ = value;
+          onChanged();
+        } else {
+          localAnchorBBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      public Builder setLocalAnchorB(
+          com.laex.cg2d.model.ScreenModel.CGVector2.Builder builderForValue) {
+        if (localAnchorBBuilder_ == null) {
+          localAnchorB_ = builderForValue.build();
+          onChanged();
+        } else {
+          localAnchorBBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      public Builder mergeLocalAnchorB(com.laex.cg2d.model.ScreenModel.CGVector2 value) {
+        if (localAnchorBBuilder_ == null) {
+          if (((bitField0_ & 0x00000400) == 0x00000400) &&
+              localAnchorB_ != com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance()) {
+            localAnchorB_ =
+              com.laex.cg2d.model.ScreenModel.CGVector2.newBuilder(localAnchorB_).mergeFrom(value).buildPartial();
+          } else {
+            localAnchorB_ = value;
+          }
+          onChanged();
+        } else {
+          localAnchorBBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      public Builder clearLocalAnchorB() {
+        if (localAnchorBBuilder_ == null) {
+          localAnchorB_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
+          onChanged();
+        } else {
+          localAnchorBBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000400);
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGVector2.Builder getLocalAnchorBBuilder() {
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return getLocalAnchorBFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getLocalAnchorBOrBuilder() {
+        if (localAnchorBBuilder_ != null) {
+          return localAnchorBBuilder_.getMessageOrBuilder();
+        } else {
+          return localAnchorB_;
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGVector2 localAnchorB = 12;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder> 
+          getLocalAnchorBFieldBuilder() {
+        if (localAnchorBBuilder_ == null) {
+          localAnchorBBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder>(
+                  localAnchorB_,
+                  getParentForChildren(),
+                  isClean());
+          localAnchorB_ = null;
+        }
+        return localAnchorBBuilder_;
+      }
+
+      // optional bool useLocalAnchors = 13;
+      private boolean useLocalAnchors_ ;
+      /**
+       * <code>optional bool useLocalAnchors = 13;</code>
+       */
+      public boolean hasUseLocalAnchors() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional bool useLocalAnchors = 13;</code>
+       */
+      public boolean getUseLocalAnchors() {
+        return useLocalAnchors_;
+      }
+      /**
+       * <code>optional bool useLocalAnchors = 13;</code>
+       */
+      public Builder setUseLocalAnchors(boolean value) {
+        bitField0_ |= 0x00000800;
+        useLocalAnchors_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool useLocalAnchors = 13;</code>
+       */
+      public Builder clearUseLocalAnchors() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        useLocalAnchors_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGJoint)
     }
 
@@ -3906,20 +4443,6 @@ public final class ScreenModel {
      * <code>optional float maxMotorTorque = 8;</code>
      */
     float getMaxMotorTorque();
-
-    // optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-    /**
-     * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-     */
-    boolean hasWorldAnchor();
-    /**
-     * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-     */
-    com.laex.cg2d.model.ScreenModel.CGVector2 getWorldAnchor();
-    /**
-     * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-     */
-    com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getWorldAnchorOrBuilder();
   }
   /**
    * Protobuf type {@code com.laex.cg2d.model.CGRevoluteJointDef}
@@ -4010,19 +4533,6 @@ public final class ScreenModel {
             case 69: {
               bitField0_ |= 0x00000080;
               maxMotorTorque_ = input.readFloat();
-              break;
-            }
-            case 74: {
-              com.laex.cg2d.model.ScreenModel.CGVector2.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000100) == 0x00000100)) {
-                subBuilder = worldAnchor_.toBuilder();
-              }
-              worldAnchor_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGVector2.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(worldAnchor_);
-                worldAnchor_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000100;
               break;
             }
           }
@@ -4193,28 +4703,6 @@ public final class ScreenModel {
       return maxMotorTorque_;
     }
 
-    // optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-    public static final int WORLDANCHOR_FIELD_NUMBER = 9;
-    private com.laex.cg2d.model.ScreenModel.CGVector2 worldAnchor_;
-    /**
-     * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-     */
-    public boolean hasWorldAnchor() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-     */
-    public com.laex.cg2d.model.ScreenModel.CGVector2 getWorldAnchor() {
-      return worldAnchor_;
-    }
-    /**
-     * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-     */
-    public com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getWorldAnchorOrBuilder() {
-      return worldAnchor_;
-    }
-
     private void initFields() {
       collideConnected_ = false;
       referenceAngle_ = 0F;
@@ -4224,19 +4712,12 @@ public final class ScreenModel {
       enableMotor_ = false;
       motorSpeed_ = 0F;
       maxMotorTorque_ = 0F;
-      worldAnchor_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (hasWorldAnchor()) {
-        if (!getWorldAnchor().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4267,9 +4748,6 @@ public final class ScreenModel {
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeFloat(8, maxMotorTorque_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeMessage(9, worldAnchor_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -4311,10 +4789,6 @@ public final class ScreenModel {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(8, maxMotorTorque_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, worldAnchor_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4424,7 +4898,6 @@ public final class ScreenModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getWorldAnchorFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4449,12 +4922,6 @@ public final class ScreenModel {
         bitField0_ = (bitField0_ & ~0x00000040);
         maxMotorTorque_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000080);
-        if (worldAnchorBuilder_ == null) {
-          worldAnchor_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
-        } else {
-          worldAnchorBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -4515,14 +4982,6 @@ public final class ScreenModel {
           to_bitField0_ |= 0x00000080;
         }
         result.maxMotorTorque_ = maxMotorTorque_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        if (worldAnchorBuilder_ == null) {
-          result.worldAnchor_ = worldAnchor_;
-        } else {
-          result.worldAnchor_ = worldAnchorBuilder_.build();
-        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4563,20 +5022,11 @@ public final class ScreenModel {
         if (other.hasMaxMotorTorque()) {
           setMaxMotorTorque(other.getMaxMotorTorque());
         }
-        if (other.hasWorldAnchor()) {
-          mergeWorldAnchor(other.getWorldAnchor());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (hasWorldAnchor()) {
-          if (!getWorldAnchor().isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -4861,123 +5311,6 @@ public final class ScreenModel {
         maxMotorTorque_ = 0F;
         onChanged();
         return this;
-      }
-
-      // optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;
-      private com.laex.cg2d.model.ScreenModel.CGVector2 worldAnchor_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder> worldAnchorBuilder_;
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      public boolean hasWorldAnchor() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      public com.laex.cg2d.model.ScreenModel.CGVector2 getWorldAnchor() {
-        if (worldAnchorBuilder_ == null) {
-          return worldAnchor_;
-        } else {
-          return worldAnchorBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      public Builder setWorldAnchor(com.laex.cg2d.model.ScreenModel.CGVector2 value) {
-        if (worldAnchorBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          worldAnchor_ = value;
-          onChanged();
-        } else {
-          worldAnchorBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000100;
-        return this;
-      }
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      public Builder setWorldAnchor(
-          com.laex.cg2d.model.ScreenModel.CGVector2.Builder builderForValue) {
-        if (worldAnchorBuilder_ == null) {
-          worldAnchor_ = builderForValue.build();
-          onChanged();
-        } else {
-          worldAnchorBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000100;
-        return this;
-      }
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      public Builder mergeWorldAnchor(com.laex.cg2d.model.ScreenModel.CGVector2 value) {
-        if (worldAnchorBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100) &&
-              worldAnchor_ != com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance()) {
-            worldAnchor_ =
-              com.laex.cg2d.model.ScreenModel.CGVector2.newBuilder(worldAnchor_).mergeFrom(value).buildPartial();
-          } else {
-            worldAnchor_ = value;
-          }
-          onChanged();
-        } else {
-          worldAnchorBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000100;
-        return this;
-      }
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      public Builder clearWorldAnchor() {
-        if (worldAnchorBuilder_ == null) {
-          worldAnchor_ = com.laex.cg2d.model.ScreenModel.CGVector2.getDefaultInstance();
-          onChanged();
-        } else {
-          worldAnchorBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000100);
-        return this;
-      }
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      public com.laex.cg2d.model.ScreenModel.CGVector2.Builder getWorldAnchorBuilder() {
-        bitField0_ |= 0x00000100;
-        onChanged();
-        return getWorldAnchorFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      public com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder getWorldAnchorOrBuilder() {
-        if (worldAnchorBuilder_ != null) {
-          return worldAnchorBuilder_.getMessageOrBuilder();
-        } else {
-          return worldAnchor_;
-        }
-      }
-      /**
-       * <code>optional .com.laex.cg2d.model.CGVector2 worldAnchor = 9;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder> 
-          getWorldAnchorFieldBuilder() {
-        if (worldAnchorBuilder_ == null) {
-          worldAnchorBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.laex.cg2d.model.ScreenModel.CGVector2, com.laex.cg2d.model.ScreenModel.CGVector2.Builder, com.laex.cg2d.model.ScreenModel.CGVector2OrBuilder>(
-                  worldAnchor_,
-                  getParentForChildren(),
-                  isClean());
-          worldAnchor_ = null;
-        }
-        return worldAnchorBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGRevoluteJointDef)
@@ -22596,7 +22929,7 @@ public final class ScreenModel {
       "\023com.laex.cg2d.model\"|\n\rCGScreenModel\022=\n" +
       "\013screenPrefs\030\001 \001(\0132(.com.laex.cg2d.model" +
       ".CGScreenPreferences\022,\n\006layers\030\002 \003(\0132\034.c" +
-      "om.laex.cg2d.model.CGLayer\"\357\003\n\007CGJoint\022\025" +
+      "om.laex.cg2d.model.CGLayer\"\364\004\n\007CGJoint\022\025" +
       "\n\rsourceShapeId\030\001 \001(\t\022\025\n\rtargetShapeId\030\002" +
       " \001(\t\022.\n\004type\030\003 \001(\0162 .com.laex.cg2d.model" +
       ".CGJointType\022A\n\020distanceJointDef\030\005 \001(\0132\'" +
@@ -22609,19 +22942,21 @@ public final class ScreenModel {
       "\n\020frictionJointDef\030\t \001(\0132\'.com.laex.cg2d" +
       ".model.CGFrictionJointDef\0229\n\014weldJointDe" +
       "f\030\n \001(\0132#.com.laex.cg2d.model.CGWeldJoin" +
-      "tDef\"X\n\022CGDistanceJointDef\022\030\n\020collideCon" +
-      "nected\030\001 \001(\010\022\022\n\nfreqencyHz\030\002 \001(\002\022\024\n\014damp" +
-      "ingRatio\030\003 \001(\002\"\371\001\n\022CGRevoluteJointDef\022\030\n",
-      "\020collideConnected\030\001 \001(\010\022\026\n\016referenceAngl" +
-      "e\030\002 \001(\002\022\023\n\013enableLimit\030\003 \001(\010\022\022\n\nlowerAng" +
-      "le\030\004 \001(\002\022\022\n\nupperAngle\030\005 \001(\002\022\023\n\013enableMo" +
-      "tor\030\006 \001(\010\022\022\n\nmotorSpeed\030\007 \001(\002\022\026\n\016maxMoto" +
-      "rTorque\030\010 \001(\002\0223\n\013worldAnchor\030\t \001(\0132\036.com" +
-      ".laex.cg2d.model.CGVector2\"\256\002\n\023CGPrismat" +
+      "tDef\0224\n\014localAnchorA\030\013 \001(\0132\036.com.laex.cg" +
+      "2d.model.CGVector2\0224\n\014localAnchorB\030\014 \001(\013" +
+      "2\036.com.laex.cg2d.model.CGVector2\022\027\n\017useL",
+      "ocalAnchors\030\r \001(\010\"X\n\022CGDistanceJointDef\022" +
+      "\030\n\020collideConnected\030\001 \001(\010\022\022\n\nfreqencyHz\030" +
+      "\002 \001(\002\022\024\n\014dampingRatio\030\003 \001(\002\"\304\001\n\022CGRevolu" +
+      "teJointDef\022\030\n\020collideConnected\030\001 \001(\010\022\026\n\016" +
+      "referenceAngle\030\002 \001(\002\022\023\n\013enableLimit\030\003 \001(" +
+      "\010\022\022\n\nlowerAngle\030\004 \001(\002\022\022\n\nupperAngle\030\005 \001(" +
+      "\002\022\023\n\013enableMotor\030\006 \001(\010\022\022\n\nmotorSpeed\030\007 \001" +
+      "(\002\022\026\n\016maxMotorTorque\030\010 \001(\002\"\256\002\n\023CGPrismat" +
       "icJointDef\022\030\n\020collideConnected\030\001 \001(\010\022.\n\006" +
-      "anchor\030\002 \001(\0132\036.com.laex.cg2d.model.CGVec" +
+      "anchor\030\002 \001(\0132\036.com.laex.cg2d.model.CGVec",
       "tor2\022,\n\004axis\030\003 \001(\0132\036.com.laex.cg2d.model" +
-      ".CGVector2\022\026\n\016referenceAngle\030\005 \001(\002\022\023\n\013en",
+      ".CGVector2\022\026\n\016referenceAngle\030\005 \001(\002\022\023\n\013en" +
       "ableLimit\030\006 \001(\010\022\030\n\020lowerTranslation\030\007 \001(" +
       "\002\022\030\n\020upperTranslation\030\010 \001(\002\022\023\n\013enableMot" +
       "or\030\t \001(\010\022\025\n\rmaxMotorForce\030\n \001(\002\022\022\n\nmotor" +
@@ -22629,9 +22964,9 @@ public final class ScreenModel {
       "ideConnected\030\001 \001(\010\0225\n\rgroundAnchorA\030\002 \001(" +
       "\0132\036.com.laex.cg2d.model.CGVector2\0225\n\rgro" +
       "undAnchorB\030\003 \001(\0132\036.com.laex.cg2d.model.C" +
-      "GVector2\022\r\n\005ratio\030\004 \001(\002\"S\n\022CGFrictionJoi" +
+      "GVector2\022\r\n\005ratio\030\004 \001(\002\"S\n\022CGFrictionJoi",
       "ntDef\022\030\n\020collideConnected\030\001 \001(\010\022\020\n\010maxFo" +
-      "rce\030\002 \001(\002\022\021\n\tmaxTorque\030\003 \001(\002\"*\n\016CGWeldJo",
+      "rce\030\002 \001(\002\022\021\n\tmaxTorque\030\003 \001(\002\"*\n\016CGWeldJo" +
       "intDef\022\030\n\020collideConnected\030\001 \001(\010\"D\n\016CGRe" +
       "sourceFile\022\024\n\014resourceFile\030\001 \001(\t\022\034\n\024reso" +
       "urceFileAbsolute\030\002 \001(\t\"\305\003\n\021CGEntityAnima" +
@@ -22639,9 +22974,9 @@ public final class ScreenModel {
       "ResourceFile\030\002 \001(\0132#.com.laex.cg2d.model" +
       ".CGResourceFile\0228\n\013fixtureFile\030\003 \001(\0132#.c" +
       "om.laex.cg2d.model.CGResourceFile\022\031\n\021ani" +
-      "mationDuration\030\004 \001(\002\022\030\n\020defaultAnimation" +
+      "mationDuration\030\004 \001(\002\022\030\n\020defaultAnimation",
       "\030\005 \001(\010\022\014\n\004cols\030\006 \001(\005\022\014\n\004rows\030\007 \001(\005\022A\n\rco" +
-      "llisionType\030\010 \001(\0162*.com.laex.cg2d.model.",
+      "llisionType\030\010 \001(\0162*.com.laex.cg2d.model." +
       "CGEntityCollisionType\022\014\n\004shpX\030\t \001(\005\022\014\n\004s" +
       "hpY\030\n \001(\005\022\020\n\010shpWidth\030\013 \001(\005\022\021\n\tshpHeight" +
       "\030\014 \001(\005\0220\n\010vertices\030\r \003(\0132\036.com.laex.cg2d" +
@@ -22649,9 +22984,9 @@ public final class ScreenModel {
       "\n\010CGEntity\022\024\n\014internalName\030\001 \001(\t\022:\n\nanim" +
       "ations\030\002 \003(\0132&.com.laex.cg2d.model.CGEnt" +
       "ityAnimation\"?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y" +
-      "\030\002 \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n" +
+      "\030\002 \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n",
       "\tCGVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\203\003\n\tCGB" +
-      "odyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001",
+      "odyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001" +
       "(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 \001(" +
       "\002\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 \001(" +
       "\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010" +
@@ -22659,9 +22994,9 @@ public final class ScreenModel {
       "g\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linearV" +
       "elocity\030\014 \001(\0132\036.com.laex.cg2d.model.CGVe" +
       "ctor2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.mode" +
-      "l.CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.lae" +
+      "l.CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.lae",
       "x.cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014ca" +
-      "tegoryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngr",
+      "tegoryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngr" +
       "oupIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007densi" +
       "ty\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitutio" +
       "n\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001(\0132" +
@@ -22669,9 +23004,9 @@ public final class ScreenModel {
       "pe\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locke" +
       "d\030\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgroun" +
       "dResourceFile\030\005 \001(\0132#.com.laex.cg2d.mode" +
-      "l.CGResourceFile\022?\n\017editorShapeType\030\006 \001(" +
+      "l.CGResourceFile\022?\n\017editorShapeType\030\006 \001(",
       "\0162&.com.laex.cg2d.model.CGEditorShapeTyp" +
-      "e\022-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.model.",
+      "e\022-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.model." +
       "CGBounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.cg2" +
       "d.model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132!." +
       "com.laex.cg2d.model.CGFixtureDef\022,\n\006join" +
@@ -22679,9 +23014,9 @@ public final class ScreenModel {
       "\n\rentityRefFile\030\013 \001(\0132#.com.laex.cg2d.mo" +
       "del.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 \001(" +
       "\005\022\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006lock" +
-      "ed\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d." +
+      "ed\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d.",
       "model.CGShape\"\274\005\n\023CGScreenPreferences\022W\n" +
-      "\016debugDrawPrefs\030\001 \001(\0132?.com.laex.cg2d.mo",
+      "\016debugDrawPrefs\030\001 \001(\0132?.com.laex.cg2d.mo" +
       "del.CGScreenPreferences.CGDebugDrawPrefe" +
       "rences\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex.cg" +
       "2d.model.CGScreenPreferences.CGWorldPref" +
@@ -22689,9 +23024,9 @@ public final class ScreenModel {
       "2d.model.CGScreenPreferences.CGCardPrefe" +
       "rences\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndra" +
       "wBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010dra" +
-      "wAABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022" +
+      "wAABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022",
       "\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugD" +
-      "ata\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWo",
+      "ata\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWo" +
       "rldPreferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velo" +
       "cityIterations\030\002 \001(\005\022\032\n\022positionIteratio" +
       "ns\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005" +
@@ -22699,9 +23034,9 @@ public final class ScreenModel {
       "ces\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n" +
       "\tcardWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n" +
       "\013CGJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022" +
-      "\r\n\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005" +
+      "\r\n\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005",
       "\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD" +
-      "\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCo",
+      "\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCo" +
       "llisionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE" +
       "\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001" +
       "\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEdito" +
@@ -22726,7 +23061,7 @@ public final class ScreenModel {
           internal_static_com_laex_cg2d_model_CGJoint_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGJoint_descriptor,
-              new java.lang.String[] { "SourceShapeId", "TargetShapeId", "Type", "DistanceJointDef", "RevoluteJointDef", "PrismaticJointDef", "PulleyJointDef", "FrictionJointDef", "WeldJointDef", });
+              new java.lang.String[] { "SourceShapeId", "TargetShapeId", "Type", "DistanceJointDef", "RevoluteJointDef", "PrismaticJointDef", "PulleyJointDef", "FrictionJointDef", "WeldJointDef", "LocalAnchorA", "LocalAnchorB", "UseLocalAnchors", });
           internal_static_com_laex_cg2d_model_CGDistanceJointDef_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_laex_cg2d_model_CGDistanceJointDef_fieldAccessorTable = new
@@ -22738,7 +23073,7 @@ public final class ScreenModel {
           internal_static_com_laex_cg2d_model_CGRevoluteJointDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGRevoluteJointDef_descriptor,
-              new java.lang.String[] { "CollideConnected", "ReferenceAngle", "EnableLimit", "LowerAngle", "UpperAngle", "EnableMotor", "MotorSpeed", "MaxMotorTorque", "WorldAnchor", });
+              new java.lang.String[] { "CollideConnected", "ReferenceAngle", "EnableLimit", "LowerAngle", "UpperAngle", "EnableMotor", "MotorSpeed", "MaxMotorTorque", });
           internal_static_com_laex_cg2d_model_CGPrismaticJointDef_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_com_laex_cg2d_model_CGPrismaticJointDef_fieldAccessorTable = new

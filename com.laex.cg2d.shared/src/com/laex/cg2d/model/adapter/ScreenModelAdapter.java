@@ -156,9 +156,11 @@ public class ScreenModelAdapter {
 
   /**
    * As shape.
-   *
-   * @param cgShape the cg shape
-   * @param layer the layer
+   * 
+   * @param cgShape
+   *          the cg shape
+   * @param layer
+   *          the layer
    * @return the shape
    */
   public static Shape asShape(CGShape cgShape, Layer layer) {
@@ -170,7 +172,7 @@ public class ScreenModelAdapter {
     shape.setBounds(asRectangle(cgShape.getBounds()));
     shape.setEntityResourceFile(ResourceFileAdapter.asResourceFile(cgShape.getEntityRefFile()));
     shape.setParentLayer(layer);
-    
+
     // set body def & fixture def
     shape.setPropertyValue(Shape.BODY_DEF_PROP, asBodyDef(cgShape.getBodyDef()));
     shape.setPropertyValue(Shape.FIXTURE_DEF_PROP, asFixtureDef(cgShape.getFixtureDef()));
@@ -191,23 +193,23 @@ public class ScreenModelAdapter {
     // First step: make all the shapes
     for (CGLayer cgLayer : cgModel.getLayersList()) {
       Layer layer = new Layer(cgLayer.getId(), cgLayer.getName(), cgLayer.getVisible(), cgLayer.getLocked());
-      
+
       model.getDiagram().getLayers().add(layer);
-      
+
       for (CGShape cgShape : cgLayer.getShapeList()) {
-        
+
         Shape shape = ScreenModelAdapter.asShape(cgShape, layer);
-        
+
         layer.add(shape);
-        
+
         model.getDiagram().addChild(shape);
-        
+
         shapeMap.put(cgShape.getId(), shape);
-        
+
       }
 
     }
-    
+
     // Second Step: make all the joints
     for (CGLayer cgLayer : cgModel.getLayersList()) {
 

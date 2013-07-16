@@ -143,4 +143,13 @@ public class BEFrictionJoint extends Joint {
     return MAX_TORQUE_PROP.equals(id);
   }
 
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    getLocalAnchorA().x = (getSource().getBounds().width / ptmRatio) / 2;
+    getLocalAnchorA().y = (getSource().getBounds().height / ptmRatio) / 2;
+
+    getLocalAnchorB().x = getLocalAnchorA().x;
+    getLocalAnchorB().y = getLocalAnchorA().y;
+  }
+
 }

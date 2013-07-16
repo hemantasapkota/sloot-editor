@@ -23,23 +23,27 @@ import org.eclipse.ui.handlers.HandlerUtil;
  */
 public class UndoHandler extends AbstractHandler {
 
-  /* (non-Javadoc)
-   * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands
+   * .ExecutionEvent)
    */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
-    
+
     IEditorPart ep = HandlerUtil.getActiveEditor(event);
-    GraphicalViewer gv =  (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
-    
+    GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
+
     if (!gv.getEditDomain().getCommandStack().canUndo()) {
       return null;
     }
-    
+
     UndoAction ua = new UndoAction(HandlerUtil.getActiveEditor(event));
     ua.run();
-    
+
     return null;
   }
-  
+
 }

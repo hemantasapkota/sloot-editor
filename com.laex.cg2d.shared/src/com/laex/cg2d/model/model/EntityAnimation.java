@@ -308,7 +308,6 @@ public class EntityAnimation {
     this.rows = rows;
   }
 
-
   public void setAnimationDuration(float animationDuration) {
     this.animationDuration = animationDuration;
   }
@@ -320,6 +319,5 @@ public class EntityAnimation {
   public void setFrameIndices(List<Integer> frameIndices) {
     this.frameIndices = frameIndices;
   }
-
 
 }

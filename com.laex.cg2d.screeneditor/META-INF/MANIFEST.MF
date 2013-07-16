@@ -1,10 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Screen Editor
+Bundle-Name: %Plugin.name
+Bundle-Localization: plugin
 Bundle-SymbolicName: com.laex.cg2d.screeneditor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.laex.cg2d.screeneditor.Activator
-Bundle-Vendor: Hemanta Sapkota
+Bundle-Vendor: %Plugin.vendor
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.debug.core;bundle-version="3.6.0",
@@ -18,10 +19,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ant.core;bundle-version="3.2.400",
  libgdx-0.9.8;bundle-version="0.9.8",
  org.eclipse.ui.editors,
- org.eclipse.ui.ide,
  org.eclipse.ui.navigator,
  org.eclipse.core.expressions,
- org.eclipse.e4.ui.css.swt.theme
+ org.eclipse.e4.ui.css.swt.theme,
+ org.eclipse.ui.ide;bundle-version="3.8.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .

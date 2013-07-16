@@ -130,11 +130,11 @@ public class NewScreenWizard extends Wizard implements INewWizard {
         // create a simple model with a layer and save it to the file
         GameModel model = new GameModel(PreferenceInitializer.defaultScreenPrefs());
         model.getDiagram().getLayers().add(new Layer(0, "Layer1", true, false));
-        
+
         CGScreenPreferences screenPrefs = PreferenceInitializer.defaultScreenPrefs();
 
         CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefs).asCGGameModel();
-        
+
         createdFile.setContents(new ByteArrayInputStream(cgGameModel.toByteArray()), true, false, monitor);
 
         // Open the file in the editor

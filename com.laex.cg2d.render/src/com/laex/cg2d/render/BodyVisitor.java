@@ -17,12 +17,14 @@ import com.laex.cg2d.model.ScreenModel.CGShape;
  * The Interface BodyVisitor.
  */
 public interface BodyVisitor {
-  
+
   /**
    * Visit.
-   *
-   * @param b the b
-   * @param shape the shape
+   * 
+   * @param b
+   *          the b
+   * @param shape
+   *          the shape
    */
   void visit(Body b, CGShape shape);
 

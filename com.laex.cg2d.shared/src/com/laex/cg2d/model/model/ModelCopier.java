@@ -14,11 +14,12 @@ package com.laex.cg2d.model.model;
  * The Interface ModelCopier.
  */
 public interface ModelCopier {
-  
+
   /**
    * Copy.
-   *
-   * @param element the element
+   * 
+   * @param element
+   *          the element
    * @return the object
    */
   Object copy(Object element);

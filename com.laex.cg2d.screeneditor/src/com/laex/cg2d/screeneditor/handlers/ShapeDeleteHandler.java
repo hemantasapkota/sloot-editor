@@ -56,7 +56,7 @@ public class ShapeDeleteHandler extends AbstractHandler {
             DeleteCommandType.UNDOABLE);
         cc.add(sdc);
       }
-      
+
       if (o instanceof JointEditPart) {
         JointEditPart je = (JointEditPart) o;
         JointDeleteCommand jdc = new JointDeleteCommand((Joint) je.getModel());

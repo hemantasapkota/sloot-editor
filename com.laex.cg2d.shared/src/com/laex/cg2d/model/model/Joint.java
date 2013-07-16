@@ -15,8 +15,10 @@ import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.JointDef;
 import com.badlogic.gdx.physics.box2d.JointDef.JointType;
+import com.laex.cg2d.model.descs.Vec2PropertySource;
 import com.laex.cg2d.model.util.BooleanUtil;
 
 /**
@@ -34,14 +36,17 @@ public abstract class Joint extends ModelElement {
   public class BEJointDef extends JointDef {
   }
 
-  /** The Constant serialVersionUID. */
-  private static final long serialVersionUID = -3077525391780314571L;
-
   /** The Constant JOINT_TYPE_PROP. */
   public static final String JOINT_TYPE_PROP = "JointDef.JointType";
 
   /** The Constant COLLIDE_CONNECTED_PROP. */
   public static final String COLLIDE_CONNECTED_PROP = "JointDef.CollideConnected";
+
+  public static final String LOCAL_ANCHOR_A = "JointDef.LocalAnchorA";
+
+  public static final String LOCAL_ANCHOR_B = "JointDef.LocalAnchorB";
+
+  public static final String USE_LOCAL_ANCHORS = "JointDef.UseLocalAnchors";
 
   /** The descriptors. */
   private static IPropertyDescriptor[] descriptors;
@@ -55,6 +60,10 @@ public abstract class Joint extends ModelElement {
   /** The target. */
   private Shape target;
 
+  private Vector2 localAnchorA = new Vector2();
+
+  private Vector2 localAnchorB = new Vector2();
+
   /** The joint def. */
   private BEJointDef jointDef = new BEJointDef();
 
@@ -65,13 +74,20 @@ public abstract class Joint extends ModelElement {
   /** The coolide connected. */
   private boolean coolideConnected = false;
 
+  private boolean useLocalAnchors = false;
+
   static {
-    PropertyDescriptor jointType = new TextPropertyDescriptor(JOINT_TYPE_PROP, "#Type");
+    PropertyDescriptor jointType = new TextPropertyDescriptor(JOINT_TYPE_PROP, "1.Type");
     PropertyDescriptor collideConnectedProp = new ComboBoxPropertyDescriptor(COLLIDE_CONNECTED_PROP,
-        "#Collided Connected", BooleanUtil.BOOLEAN_STRING_VALUES);
+        "2.Collided Connected", BooleanUtil.BOOLEAN_STRING_VALUES);
+    PropertyDescriptor useLocalAnchors = new ComboBoxPropertyDescriptor(USE_LOCAL_ANCHORS, "3.Use Local Anchors",
+        BooleanUtil.BOOLEAN_STRING_VALUES);
+
+    PropertyDescriptor locAncA = new PropertyDescriptor(LOCAL_ANCHOR_A, "4.localAnchorA");
+    PropertyDescriptor locAncB = new PropertyDescriptor(LOCAL_ANCHOR_B, "5.localAnchorB");
 
     descriptors = new PropertyDescriptor[]
-      { jointType, collideConnectedProp };
+      { jointType, collideConnectedProp, useLocalAnchors, locAncA, locAncB };
   }
 
   /**
@@ -94,6 +110,8 @@ public abstract class Joint extends ModelElement {
    */
   public abstract JointType getJointType();
 
+  public abstract void computeLocalAnchors(int ptmRatio);
+
   /*
    * (non-Javadoc)
    * 
@@ -103,10 +121,10 @@ public abstract class Joint extends ModelElement {
   public Object getEditableValue() {
     return jointDef;
   }
-  
+
   /**
    * Checks if is collide connected.
-   *
+   * 
    * @return true, if is collide connected
    */
   public boolean isCollideConnected() {
@@ -121,10 +139,24 @@ public abstract class Joint extends ModelElement {
    * java.lang.Object)
    */
   public void setPropertyValue(Object id, Object value) {
+    
+    if (shouldUseLocalAnchors(id)) {
+      
+      this.useLocalAnchors = BooleanUtil.toBool(value);
+      
+    } else
     if (isCollideConnected(id)) {
 
       this.jointDef.collideConnected = BooleanUtil.toBool(value);
       this.coolideConnected = BooleanUtil.toBool(value);
+
+    } else if (isLocalAnchorA(id)) {
+
+      this.localAnchorA = (Vector2) value;
+
+    } else if (isLocalAnchorB(id)) {
+
+      this.localAnchorB = (Vector2) value;
 
     } else {
       super.setPropertyValue(id, value);
@@ -138,8 +170,22 @@ public abstract class Joint extends ModelElement {
    * com.laex.cg2d.shared.model.ModelElement#getPropertyValue(java.lang.Object)
    */
   public Object getPropertyValue(Object id) {
+    
+    if (shouldUseLocalAnchors(id)) {
+      return BooleanUtil.getIntegerFromBoolean(this.useLocalAnchors);
+    }
+    
+    
     if (isCollideConnected(id)) {
       return BooleanUtil.getIntegerFromBoolean(this.coolideConnected);
+    }
+
+    if (isLocalAnchorA(id)) {
+      return new Vec2PropertySource(localAnchorA);
+    }
+
+    if (isLocalAnchorB(id)) {
+      return new Vec2PropertySource(localAnchorB);
     }
 
     if (isJointTypeProp(id)) {
@@ -157,6 +203,18 @@ public abstract class Joint extends ModelElement {
    */
   private boolean isJointTypeProp(Object id) {
     return JOINT_TYPE_PROP.equals(id);
+  }
+
+  private boolean isLocalAnchorA(Object id) {
+    return LOCAL_ANCHOR_A.equals(id);
+  }
+
+  private boolean isLocalAnchorB(Object id) {
+    return LOCAL_ANCHOR_B.equals(id);
+  }
+
+  private boolean shouldUseLocalAnchors(Object id) {
+    return USE_LOCAL_ANCHORS.equals(id);
   }
 
   /**
@@ -186,6 +244,30 @@ public abstract class Joint extends ModelElement {
    */
   public Shape getSource() {
     return source;
+  }
+
+  public Vector2 getLocalAnchorA() {
+    return localAnchorA;
+  }
+
+  public void setLocalAnchorA(Vector2 localAnchorA) {
+    this.localAnchorA = localAnchorA;
+  }
+
+  public Vector2 getLocalAnchorB() {
+    return localAnchorB;
+  }
+  
+  public boolean shouldUseLocalAnchors() {
+    return useLocalAnchors;
+  }
+  
+  public void setUseLocalAnchors(boolean useLocalAnchors) {
+    this.useLocalAnchors = useLocalAnchors;
+  }
+
+  public void setLocalAnchorB(Vector2 localAnchorB) {
+    this.localAnchorB = localAnchorB;
   }
 
   /**

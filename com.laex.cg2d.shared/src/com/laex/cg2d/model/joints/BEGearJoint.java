@@ -41,4 +41,10 @@ public class BEGearJoint extends Joint {
     return JointType.GearJoint;
   }
 
+  @Override
+  public void computeLocalAnchors(int ptmRatio) {
+    // TODO Auto-generated method stub
+    
+  }
+
 }

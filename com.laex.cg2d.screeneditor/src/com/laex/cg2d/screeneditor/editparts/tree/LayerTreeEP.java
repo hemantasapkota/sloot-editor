@@ -60,14 +60,15 @@ public class LayerTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     }
   }
 
-   /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren()
    */
   @Override
   protected List<?> getModelChildren() {
     return getCastedModel().getChildren();
   }
-
 
   /**
    * Gets the casted model.
@@ -97,9 +98,7 @@ public class LayerTreeEP extends AbstractTreeEditPart implements PropertyChangeL
   protected String getText() {
     return getCastedModel().getName();
   }
-  
-  
-  
+
   /*
    * (non-Javadoc)
    * 
@@ -111,7 +110,7 @@ public class LayerTreeEP extends AbstractTreeEditPart implements PropertyChangeL
   public void propertyChange(PropertyChangeEvent evt) {
     if (evt.getPropertyName().equals(Layer.LAYER_NAME_CHANGED)) {
       refreshVisuals();
-    } 
+    }
   }
 
 }

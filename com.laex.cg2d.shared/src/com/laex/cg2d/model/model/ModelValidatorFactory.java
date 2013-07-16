@@ -16,17 +16,19 @@ import com.laex.cg2d.model.model.impl.EntityValidator;
  * A factory for creating ModelValidator objects.
  */
 public class ModelValidatorFactory {
-  
+
   /**
    * Gets the validator.
-   *
-   * @param modelType the model type
-   * @param model the model
+   * 
+   * @param modelType
+   *          the model type
+   * @param model
+   *          the model
    * @return the validator
    */
   public static ModelValidator getValidator(Class<?> modelType, Object model) {
     if (modelType == Entity.class) {
-      return new EntityValidator((Entity) model); 
+      return new EntityValidator((Entity) model);
     }
     return null;
   }

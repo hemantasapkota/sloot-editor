@@ -38,5 +38,4 @@ public class InternalPrefs {
     return prefStore().getString(PreferenceConstants.RUNNER);
   }
 
-
 }

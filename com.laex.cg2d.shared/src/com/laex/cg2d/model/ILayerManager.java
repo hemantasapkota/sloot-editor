@@ -78,28 +78,6 @@ public interface ILayerManager {
   void changeLayerOrder(Layer[] orderedLayers);
 
   /**
-   * Update card layer.
-   * 
-   * @param noX
-   *          the no x
-   * @param noY
-   *          the no y
-   * @param cardWidth
-   *          the card width
-   * @param cardHeight
-   *          the card height
-   */
-  void updateCardLayer(int noX, int noY, int cardWidth, int cardHeight);
-
-  /**
-   * Update card layer zoom.
-   * 
-   * @param zoom
-   *          the zoom
-   */
-  void updateCardLayerZoom(double zoom);
-
-  /**
    * Gets the current layer.
    * 
    * @return the current layer

@@ -107,10 +107,10 @@ public class LayerRemoveCommand extends Command {
    */
   @Override
   public void execute() {
-    //First remove all the shapes
+    // First remove all the shapes
     buildRemoveShapeCommands(layer, parent);
-    
-    //then remove the layer
+
+    // then remove the layer
     redo();
   }
 

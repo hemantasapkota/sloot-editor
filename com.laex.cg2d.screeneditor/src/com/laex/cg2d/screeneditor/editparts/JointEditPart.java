@@ -65,6 +65,7 @@ public class JointEditPart extends AbstractConnectionEditPart implements Propert
   protected IFigure createFigure() {
     PolylineConnection jointCon = (PolylineConnection) super.createFigure();
     jointCon.setLineStyle(Graphics.LINE_SOLID);
+    jointCon.setOutline(true);
     return jointCon;
   }
 

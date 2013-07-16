@@ -12,7 +12,7 @@
              extensions="cgs"
              icon="lb2dIcon.png"
              id="com.laex.cg2d.screeneditor.ScreenEditor"
-             name="LB2D Screen Editor">
+             name="%Plugin.editorName">
         </editor>
    </extension>
    
@@ -21,7 +21,7 @@
       <page
             class="com.laex.cg2d.screeneditor.prefs.SharedPreferencePage"
             id="com.laex.cg2d.shared.PreferencePage"
-            name="LB2D Screen Editor">
+            name="%Plugin.editorName">
       </page>
    </extension>   
    
@@ -33,14 +33,16 @@
             nameFilter="*cg*"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
+               icon="lb2dIcon.png"
                id="com.laex.cg2d.navigatorContextMenu"
-               label="LB2D">
+               label="%Plugin.abbr">
             <groupMarker
                   name="navigationContextMenuGroup1">
             </groupMarker>
          </menu>
          <action
                class="com.laex.cg2d.screeneditor.actions.ConvertToJsonAction"
+               icon="icons/json.png"
                id="com.laex.cg2d.shared.action1"
                label="To JSON"
                menubarPath="com.laex.cg2d.navigatorContextMenu/navigationContextMenuGroup1"
@@ -74,7 +76,7 @@
             adaptable="true"
             class="com.laex.cg2d.screeneditor.properties.ScreenPropertyPage"
             id="com.laex.cg2d.leveleditor.properties.ScreenPropertyPage"
-            name="LB2D Screen"
+            name="%Plugin.contentType"
             nameFilter="*.cgs"
             objectClass="org.eclipse.core.resources.IFile">
          <enabledWhen>
@@ -93,7 +95,7 @@
             hasPages="true"
             icon="lb2dIcon.png"
             id="com.laex.cg2d.screeneditor.wizards.NewScreenWizard"
-            name="Screen"
+            name="%Plugin.screenWizardName"
             project="false">
       </wizard>
       <wizard
@@ -103,7 +105,7 @@
             hasPages="true"
             icon="lb2dIcon.png"
             id="com.laex.cg2d.screeneditor.wizards.NewCGProjectWizard"
-            name="LB2D Project"
+            name="%Plugin.projectName"
             project="true">
       </wizard>
       <wizard
@@ -112,8 +114,8 @@
             finalPerspective="com.laex.cg2d.core.perspective"
             hasPages="true"
             icon="lb2dIcon.png"
-            id="com.laex.cg2d.screeneditor.wizard1"
-            name="Script"
+            id="com.laex.cg2d.screeneditor.wizards.NewScriptWizard"
+            name="%Plugin.scriptWizardName"
             project="false">
       </wizard>
    </extension>
@@ -121,12 +123,12 @@
          point="org.eclipse.ui.commands">
       <category
             id="com.laex.cg2d.screeneditor.commands.lb2d"
-            name="Laexian Bod2D Editor">
+            name="%Plugin.commandCategory">
       </category>
       <command
             categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
             id="com.laex.cg2d.screeneditor.commands.renderCommand"
-            name="Render Command">
+            name="Render">
       </command>
       <command
             categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
@@ -162,6 +164,41 @@
             categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
             id="com.laex.cg2d.screeneditor.EditShapeIDCommand"
             name="Edit Shape ID">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.joint.DistanceJointCommand"
+            name="Distance">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.joint.RevoluteJointCommand"
+            name="Revolute">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.joint.PrismaticJointCommand"
+            name="Prismatic">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.joint.PulleyJointCommand"
+            name="Pulley">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.joint.FrictionJointCommand"
+            name="Friction">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.joint.WeldJointCommand"
+            name="Weld">
+      </command>
+      <command
+            categoryId="com.laex.cg2d.screeneditor.commands.lb2d"
+            id="com.laex.cg2d.screeneditor.joint.EditJointAnchorCommand"
+            name="Edit Joint Anchor">
       </command>
    </extension>
    <extension
@@ -259,6 +296,69 @@
       <handler
             class="com.laex.cg2d.screeneditor.handlers.RedoHandler"
             commandId="org.eclipse.ui.edit.redo">
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.joints.AddJointHandler"
+            commandId="com.laex.cg2d.screeneditor.joint.DistanceJointCommand">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.joints.AddJointHandler"
+            commandId="com.laex.cg2d.screeneditor.joint.RevoluteJointCommand">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.joints.AddJointHandler"
+            commandId="com.laex.cg2d.screeneditor.joint.PrismaticJointCommand">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.joints.AddJointHandler"
+            commandId="com.laex.cg2d.screeneditor.joint.PulleyJointCommand">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.joints.AddJointHandler"
+            commandId="com.laex.cg2d.screeneditor.joint.FrictionJointCommand">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.joints.AddJointHandler"
+            commandId="com.laex.cg2d.screeneditor.joint.WeldJointCommand">
+         <activeWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.shapeEditPartSelected">
+            </reference>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.laex.cg2d.screeneditor.handlers.joints.EditJointAnchorHandler"
+            commandId="com.laex.cg2d.screeneditor.joint.EditJointAnchorCommand">
+         <enabledWhen>
+            <reference
+                  definitionId="com.laex.cg2d.screeneditor.jointEditPartSelected">
+            </reference>
+         </enabledWhen>
       </handler>
    </extension>
    <extension
@@ -453,6 +553,57 @@
                style="push">
          </command>
          <separator
+               name="com.laex.cg2d.screeneditor.separator1"
+               visible="true">
+         </separator>
+         <menu
+               commandId="com.laex.cg2d.screeneditor.joint.DistanceJointCommand"
+               icon="icons/joint.png"
+               label="Add Joint">
+            <command
+                  commandId="com.laex.cg2d.screeneditor.joint.DistanceJointCommand"
+                  icon="icons/joint2.png"
+                  label="Distance"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.laex.cg2d.screeneditor.joint.RevoluteJointCommand"
+                  icon="icons/joint2.png"
+                  label="Revolute"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.laex.cg2d.screeneditor.joint.PrismaticJointCommand"
+                  icon="icons/joint2.png"
+                  label="Prismatic"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.laex.cg2d.screeneditor.joint.PulleyJointCommand"
+                  icon="icons/joint2.png"
+                  label="Pulley"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.laex.cg2d.screeneditor.joint.FrictionJointCommand"
+                  icon="icons/joint2.png"
+                  label="Friction"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.laex.cg2d.screeneditor.joint.WeldJointCommand"
+                  icon="icons/joint2.png"
+                  label="Weld"
+                  style="push">
+            </command>
+         </menu>
+         <command
+               commandId="com.laex.cg2d.screeneditor.joint.EditJointAnchorCommand"
+               icon="icons/liveJointEdit.png"
+               label="Edit Joint Anchor"
+               style="push">
+         </command>
+         <separator
                name="com.laex.cg2d.screeneditor.separator2"
                visible="true">
          </separator>
@@ -474,11 +625,6 @@
          <command
                commandId="org.eclipse.ui.edit.undo"
                label="Undo"
-               style="push">
-         </command>
-         <command
-               commandId="org.eclipse.ui.edit.redo"
-               label="Redo"
                style="push">
          </command>
       </menuContribution>
@@ -524,6 +670,26 @@
             </iterate>
          </with>
       </definition>
+      <definition
+            id="com.laex.cg2d.screeneditor.jointEditPartSelected">
+         <with
+               variable="selection">
+            <iterate>
+               <or>
+                  <instanceof
+                        value="com.laex.cg2d.screeneditor.editparts.JointEditPart">
+                  </instanceof>
+               </or>
+            </iterate>
+         </with>
+      </definition>
+   </extension>
+   <extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.laex.cg2d.screeneditor.activity1"
+            name="name">
+      </activity>
    </extension>
 
 </plugin>

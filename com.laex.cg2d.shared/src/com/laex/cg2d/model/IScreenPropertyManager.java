@@ -19,8 +19,9 @@ public interface IScreenPropertyManager {
 
   /**
    * Update screen properties.
-   *
-   * @param screenPrefs the screen prefs
+   * 
+   * @param screenPrefs
+   *          the screen prefs
    */
   void updateScreenProperties(CGScreenPreferences screenPrefs);
 
