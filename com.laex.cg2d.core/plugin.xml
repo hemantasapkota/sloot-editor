@@ -19,7 +19,7 @@
             fixed="true"
             icon="main.png"
             id="com.laex.cg2d.core.perspective"
-            name="Laexian Box2D Editor">
+            name="%Plugin.perspectiveName">
       </perspective>
    </extension>
    <extension
@@ -52,7 +52,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.laex.cg2d.core.application"
-            name="Laexian Box2D Editor">
+            name="%Plugin.name">
          <property
                name="aboutText"
                value="Laexian Box2D Editor">
@@ -67,7 +67,7 @@
          </property>
          <property
                name="appName"
-               value="Laexian Box2D Editor">
+               value="%Plugin.name">
          </property>
       </product>
    </extension>
@@ -100,19 +100,11 @@
       </viewerContentBinding>
    </extension>
    <extension
-         id="com.laex.cg2d.core.menus"
-         name="Casual Games 2D Menu"
-         point="org.eclipse.ui.menus">
-   </extension>
-   <extension
          point="org.eclipse.ui.newWizards">
       <category
             id="com.laex.cg2d.core.wizards.CGWizard"
-            name="Box2D Editor">
+            name="%Plugin.name">
       </category>
-   </extension>
-   <extension
-         point="org.eclipse.ui.exportWizards">
    </extension>
    <extension
          point="org.eclipse.ui.splashHandlers">
@@ -148,5 +140,23 @@
             id="rcp"
             tooltip="RCP">
       </splashExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="com.laex.cg2d.core.perspective">
+         <newWizardShortcut
+               id="com.laex.cg2d.screeneditor.wizards.NewCGProjectWizard">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="com.laex.cg2d.screeneditor.wizards.NewScreenWizard">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="com.laex.cg2d.screeneditor.wizards.NewScriptWizard">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="com.laex.cg2d.entityeditor.wizards.NewEntityWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
    </extension>
 </plugin>
