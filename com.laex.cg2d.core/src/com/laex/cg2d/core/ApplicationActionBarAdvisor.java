@@ -30,6 +30,7 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 
 import com.laex.cg2d.screeneditor.views.LayersViewPart;
 import com.laex.cg2d.screeneditor.views.TexturesViewPart;
+import org.eclipse.jface.action.ToolBarManager;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of
@@ -37,15 +38,6 @@ import com.laex.cg2d.screeneditor.views.TexturesViewPart;
  * new actions.
  */
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
-
-  /** The exit action. */
-  private IWorkbenchAction exitAction;
-
-  /** The about action. */
-  private IWorkbenchAction aboutAction;
-
-  /** The save action. */
-  private IWorkbenchAction saveAction;
 
   /** The prefernces action. */
   private IWorkbenchAction preferncesAction;
@@ -58,9 +50,12 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
   /** The show layers view action. */
   private IAction showLayersViewAction;
+
+  private IAction newWizardDropDownAction;
   
-  /** The render action. */
-  private IAction renderAction;
+  private IAction openPerspectiveDialogAction;
+  private IAction saveAction;
+  private IAction saveAllAction;
 
   /**
    * Instantiates a new application action bar advisor.
@@ -81,19 +76,12 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
    */
   protected void makeActions(final IWorkbenchWindow window) {
     super.makeActions(window);
-    
-    exitAction = ActionFactory.QUIT.create(window);
-//    register(exitAction);
-    
-    aboutAction = ActionFactory.ABOUT.create(window);
-//    register(aboutAction);
-    
-//    saveAction = ActionFactory.SAVE.create(window);
-//    
+
+    //
     preferncesAction = ActionFactory.PREFERENCES.create(window);
-//    
+    //
     showViewsListAction = ContributionItemFactory.VIEWS_SHORTLIST.create(window);
-//
+    //
     showTextureViewAction = new Action("&Textures") {
       @Override
       public void run() {
@@ -115,7 +103,23 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
         }
       }
     };
-    
+
+    {
+      newWizardDropDownAction = ActionFactory.NEW_WIZARD_DROP_DOWN.create(window);
+      register(newWizardDropDownAction);
+    }
+    {
+      openPerspectiveDialogAction = ActionFactory.OPEN_PERSPECTIVE_DIALOG.create(window);
+      register(openPerspectiveDialogAction);
+    }
+    {
+      saveAction = ActionFactory.SAVE.create(window);
+      register(saveAction);
+    }
+    {
+      saveAllAction = ActionFactory.SAVE_ALL.create(window);
+      register(saveAllAction);
+    }
   }
 
   /*
@@ -127,6 +131,10 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
    */
   @Override
   protected void fillCoolBar(ICoolBarManager coolBar) {
+    
+    ToolBarManager toolBarManager = new ToolBarManager();
+    coolBar.add(toolBarManager);
+    toolBarManager.add(newWizardDropDownAction);
   }
 
   /*
@@ -147,13 +155,11 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     menuBar.add(prefsMenu);
     menuBar.add(helpMenu);
 
-    // File
-//    fileMenu.add(saveAction);
+    // fileMenu.add(saveAction);
     fileMenu.add(new Separator());
-    fileMenu.add(exitAction);
+    fileMenu.add(saveAction);
+    fileMenu.add(saveAllAction);
 
-    // Help
-    helpMenu.add(aboutAction);
 
     // prefs
     prefsMenu.add(preferncesAction);
