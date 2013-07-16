@@ -200,7 +200,7 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     for (String index : tmpIndices) {
       frameIndices.add(Integer.parseInt(index));
     }
-    
+
     LwjglApplicationConfiguration lac = new LwjglApplicationConfiguration();
     lac.width = 200;
     lac.height = 200;
