@@ -1,6 +1,5 @@
 package com.laex.cg2d.entityeditor.action;
 
-import java.beans.DesignMode;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
