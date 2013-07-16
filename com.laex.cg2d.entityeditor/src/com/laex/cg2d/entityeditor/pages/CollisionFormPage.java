@@ -618,7 +618,7 @@ public class CollisionFormPage extends FormPage {
   private void doPreview(AnimationListViewItem ai) {
     if (ai.getAnimation() != null) {
       if (ai.getFrames() != null && !ai.getFrames().isEmpty()) {
-          animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+        animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFrames());
       } else {
         freeformLayeredPane.removeAll();
       }
@@ -794,9 +794,11 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Adds the collision shape.
-   *
-   * @param _collisionShape the _collision shape
-   * @param physicsEditorFile the physics editor file
+   * 
+   * @param _collisionShape
+   *          the _collision shape
+   * @param physicsEditorFile
+   *          the physics editor file
    */
   private void showCollisionShape(EntityCollisionType _collisionShape, ResourceFile physicsEditorFile) {
     if (collisionShapeHyperLink == null) {
@@ -848,8 +850,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Auto fill collision size.
-   *
-   * @param ea the ea
+   * 
+   * @param ea
+   *          the ea
    */
   private void autoFillCollisionSize(EntityAnimation ea) {
     // If all of these are zero, then we auto fill
