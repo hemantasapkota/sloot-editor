@@ -1,10 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Entity Editor
+Bundle-Localization: plugin
+Bundle-Name: %Plugin.name
 Bundle-SymbolicName: com.laex.cg2d.entityeditor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.laex.cg2d.entityeditor.Activator
-Bundle-Vendor: Hemanta Sapkota
+Bundle-Vendor: %Plugin.vendor
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gef;bundle-version="3.7.0",
  org.eclipse.ui;bundle-version="3.7.0",

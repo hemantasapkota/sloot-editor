@@ -9,7 +9,7 @@
             extensions="cge"
             icon="main.png"
             id="com.laex.cg3d.entityeditor.EntityEditor"
-            name="Entity Editor">
+            name="%Plugin.name">
       </editor>
    </extension>
    <extension
@@ -21,7 +21,7 @@
             hasPages="true"
             icon="main.png"
             id="com.laex.cg2d.entityeditor.wizards.NewEntityWizard"
-            name="Entity"
+            name="%Plugin.contentType"
             project="false">
       </wizard>
    </extension>
@@ -30,7 +30,7 @@
       <page
             class="com.laex.cg2d.entityeditor.preferences.EntityPreferencesPage"
             id="com.laex.cg2d.entityeditor.preferences.EntityPreferencesPage"
-            name="LB2D Entity Editor">
+            name="%Plugin.name">
       </page>
    </extension>
    <extension
@@ -48,6 +48,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <action
                class="com.laex.cg2d.entityeditor.action.MoveEntityAction"
+               icon="icons/moveArrow.png"
                id="com.laex.cg2d.entityeditor.action1"
                label="Move Entity"
                menubarPath="com.laex.cg2d.navigatorContextMenu/navigationContextMenuGroup1">
