@@ -11,12 +11,21 @@
 package com.laex.cg2d.core;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.dynamichelpers.IExtensionChangeHandler;
+import org.eclipse.jface.preference.IPreferenceNode;
+import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.IPerspectiveDescriptor;
+import org.eclipse.ui.IPerspectiveRegistry;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
@@ -30,6 +39,9 @@ import org.osgi.framework.Bundle;
  * perspective id for the initial window.
  */
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
+
+  public static final String[] IGNORE_PERSPECTIVES = new String[]
+    { "org.eclipse.team.ui.TeamSynchronizingPerspective" };
 
   /*
    * (non-Javadoc)
@@ -53,6 +65,25 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     super.initialize(configurer);
     IDE.registerAdapters();
     hackForShowingProjectIconInRCPApplications(configurer);
+
+    removeUnWantedPerspectives();
+    removeUnwantedPreferences();
+  }
+
+  private void removeUnwantedPreferences() {
+    PreferenceManager pm = PlatformUI.getWorkbench().getPreferenceManager();
+    pm.remove("org.eclipse.ui.preferencePages.Workbench");
+    pm.remove("org.eclipse.team.ui.TeamPreferences");
+
+//    IPreferenceNode[] arr = pm.getRootSubNodes();
+//
+//    for (IPreferenceNode pn : arr) {
+//      System.out.println("Label:" + pn.getLabelText() + " ID:" + pn.getId());
+//    }
+  }
+
+  @Override
+  public void postWindowCreate(IWorkbenchWindowConfigurer configurer) {
   }
 
   /*
@@ -113,6 +144,28 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     URL url = ideBundle.getEntry(path);
     ImageDescriptor desc = ImageDescriptor.createFromURL(url);
     configurer_p.declareImage(symbolicName, desc, shared);
+  }
+
+  private void removeUnWantedPerspectives() {
+    IPerspectiveRegistry perspectiveRegistry = PlatformUI.getWorkbench().getPerspectiveRegistry();
+    IPerspectiveDescriptor[] perspectiveDescriptors = perspectiveRegistry.getPerspectives();
+    List ignoredPerspectives = Arrays.asList(IGNORE_PERSPECTIVES);
+    List removePerspectiveDesc = new ArrayList();
+
+    // Add the perspective descriptors with the matching perspective ids to the
+    // list
+    for (IPerspectiveDescriptor perspectiveDescriptor : perspectiveDescriptors) {
+      if (ignoredPerspectives.contains(perspectiveDescriptor.getId())) {
+        removePerspectiveDesc.add(perspectiveDescriptor);
+      }
+    }
+
+    // If the list is non-empty then remove all such perspectives from the
+    // IExtensionChangeHandler
+    if (perspectiveRegistry instanceof IExtensionChangeHandler && !removePerspectiveDesc.isEmpty()) {
+      IExtensionChangeHandler extChgHandler = (IExtensionChangeHandler) perspectiveRegistry;
+      extChgHandler.removeExtension(null, removePerspectiveDesc.toArray());
+    }
   }
 
 }
