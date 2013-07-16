@@ -14,7 +14,6 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
-import com.laex.cg2d.screeneditor.views.LayerOutlineViewPart;
 import com.laex.cg2d.screeneditor.views.LayersViewPart;
 import com.laex.cg2d.screeneditor.views.TexturesViewPart;
 
@@ -37,12 +36,13 @@ public class Perspective implements IPerspectiveFactory {
   public void createInitialLayout(IPageLayout layout) {
     {
       IFolderLayout folderLayout = layout
-          .createFolder("projectFolder", IPageLayout.LEFT, 0.10f, layout.getEditorArea());
+          .createFolder("projectFolder", IPageLayout.LEFT, 0.14f, layout.getEditorArea());
       folderLayout.addView("com.laex.cg2d.comnav");
     }
 
     {
       IFolderLayout folderLayout = layout.createFolder("rightFolder", IPageLayout.RIGHT, 0.80f, layout.getEditorArea());
+      folderLayout.addView("org.eclipse.ui.views.ContentOutline");
       folderLayout.addView(LayersViewPart.ID);
       folderLayout.addView("com.laex.cg2d.core.propertyView");
     }
