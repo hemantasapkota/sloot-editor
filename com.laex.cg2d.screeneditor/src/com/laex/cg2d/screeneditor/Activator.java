@@ -10,8 +10,14 @@
  */
 package com.laex.cg2d.screeneditor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+
+import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.model.Shape;
 
 /**
  * The activator class controls the plug-in life cycle.
@@ -21,6 +27,10 @@ public class Activator extends AbstractUIPlugin {
   // The plug-in ID
   /** The Constant PLUGIN_ID. */
   public static final String PLUGIN_ID = "com.laex.cg2d.screeneditor"; //$NON-NLS-1$
+  
+  private Map<String, Entity> entitiesMap = new HashMap<String, Entity>();
+  
+  private Map<Shape, Entity> shapeToEntitiesMap = new HashMap<Shape, Entity>();
 
   // The shared instance
   /** The plugin. */
@@ -63,6 +73,14 @@ public class Activator extends AbstractUIPlugin {
    */
   public static Activator getDefault() {
     return plugin;
+  }
+  
+  public Map<String, Entity> getEntitiesMap() {
+    return entitiesMap;
+  }
+  
+  public Map<Shape, Entity> getShapeToEntitiesMap() {
+    return shapeToEntitiesMap;
   }
 
 }
