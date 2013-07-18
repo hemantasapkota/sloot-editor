@@ -59,7 +59,7 @@ public interface ILayerManager {
   /**
    * Removes the all.
    */
-  void removeAll();
+  void removeAllLayers();
 
   /**
    * Change layer properties.
