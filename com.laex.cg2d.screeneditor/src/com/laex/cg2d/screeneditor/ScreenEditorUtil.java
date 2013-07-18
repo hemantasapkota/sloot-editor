@@ -34,8 +34,8 @@ import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
 import com.laex.cg2d.model.adapter.EntityAdapter;
-import com.laex.cg2d.model.adapter.ShapeAdapter;
 import com.laex.cg2d.model.model.GameModel;
+import com.laex.cg2d.screeneditor.model.ShapeAdapter;
 
 /**
  * The Class PlatformUtil.

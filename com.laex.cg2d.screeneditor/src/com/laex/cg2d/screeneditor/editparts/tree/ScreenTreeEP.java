@@ -12,7 +12,9 @@ package com.laex.cg2d.screeneditor.editparts.tree;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -75,7 +77,15 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
    */
   @Override
   protected List<?> getModelChildren() {
-    return (List<?>) getCastedModel().getLayers();
+    Object[] arr = getCastedModel().getLayers().toArray();
+    
+    /* Add the layers in reverse order for displaying in the correct order in Tree Editpart view. */
+    List<Layer> reverseList = new ArrayList<Layer>();
+    for (int i=arr.length - 1; i>=0; i--) {
+      reverseList.add((Layer) arr[i]);
+    }
+    
+    return reverseList;
   }
 
   /**

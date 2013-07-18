@@ -28,11 +28,12 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
 import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.adapter.RectAdapter;
-import com.laex.cg2d.model.adapter.ShapesDiagramAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
+import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.editparts.figure.BoxFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.CircleFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.HorizontalEdgeFigure;
@@ -40,6 +41,7 @@ import com.laex.cg2d.screeneditor.editparts.figure.TexturedBoxFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.VerticalEdgeFigure;
 import com.laex.cg2d.screeneditor.editparts.policies.ShapeComponentEditPolicy;
 import com.laex.cg2d.screeneditor.editparts.policies.ShapeGraphicalNodeEditPolicy;
+import com.laex.cg2d.screeneditor.model.ShapesDiagramAdapter;
 
 /**
  * The Class ShapeEditPart.
@@ -144,7 +146,8 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
           .getResourceFile()));
       break;
     case ENTITY_SHAPE:
-      figure = new TexturedBoxFigure(model.getEntity().getDefaultFrame());
+      Entity e = Activator.getDefault().getEntitiesMap().get(model.getEntityResourceFile().getResourceFile());
+      figure = new TexturedBoxFigure(e.getDefaultFrame());
       break;
 
     default:
