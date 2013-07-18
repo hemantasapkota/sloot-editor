@@ -41,6 +41,7 @@ import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.ModelValidator;
 import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.util.EntitiesUtil;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**
@@ -96,6 +97,9 @@ public final class ScreenEditorPaletteFactory {
     }
 
     String name = EntitiesUtil.getInternalName(res.getName());
+    
+    /* Store this entity in the map. */
+    Activator.getDefault().getEntitiesMap().put(res.getFullPath().toString(), e);
 
     final Image i = EntitiesUtil.getDefaultFrame(e);
     ImageDescriptor id = ScreenEditorUtil.getImageDescriptor(i, 0.5f);
@@ -145,7 +149,7 @@ public final class ScreenEditorPaletteFactory {
       entitiesDrawer.remove((PaletteEntry) entitiesDrawer.getChildren().get(i));
     }
     entitiesDrawer.getChildren().clear();
-
+    
     ICGCProject b2Prj = CGCProject.getInstance();
     IFolder folder = b2Prj.getEntititesFolder(edInp);
 
