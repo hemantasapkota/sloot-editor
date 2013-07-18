@@ -34,11 +34,11 @@ import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
-import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.screeneditor.ScreenEditor;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
+import com.laex.cg2d.screeneditor.model.CGScreenModelAdapter;
 import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
 
 /**
