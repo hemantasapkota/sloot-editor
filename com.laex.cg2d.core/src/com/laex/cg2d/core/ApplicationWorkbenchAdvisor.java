@@ -74,6 +74,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     PreferenceManager pm = PlatformUI.getWorkbench().getPreferenceManager();
     pm.remove("org.eclipse.ui.preferencePages.Workbench");
     pm.remove("org.eclipse.team.ui.TeamPreferences");
+    pm.remove("org.eclipse.debug.ui.DebugPreferencePage");
 
 //    IPreferenceNode[] arr = pm.getRootSubNodes();
 //
