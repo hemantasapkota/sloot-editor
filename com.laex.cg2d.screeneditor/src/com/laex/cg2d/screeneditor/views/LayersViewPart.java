@@ -50,12 +50,12 @@ import org.eclipse.ui.part.ViewPart;
 
 import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.SharedImages;
-import com.laex.cg2d.model.adapter.ShapesDiagramAdapter;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.model.ShapesDiagram;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.tree.LayerTreeEP;
+import com.laex.cg2d.screeneditor.model.ShapesDiagramAdapter;
 
 /***
  * LayersViewPart.
@@ -538,11 +538,15 @@ public class LayersViewPart extends ViewPart implements IAdaptable, ISelectionLi
           }
 
           ILayerManager mgr = ScreenEditorUtil.getScreenLayerManager();
-          mgr.removeAll();
+          mgr.removeAllLayers();
+          
+          layerItems.clear();
+          
 
           tableViewer.refresh();
 
-          table.select(layerItems.size() - 1);
+          int size = layerItems.size();
+          table.select(size >= 0 ? size - 1 : 0);
 
         }
       };
