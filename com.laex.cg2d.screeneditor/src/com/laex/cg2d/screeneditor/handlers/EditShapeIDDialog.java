@@ -40,7 +40,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -54,6 +53,7 @@ import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.IDCreationStrategy;
 import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 import com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEP;
@@ -120,10 +120,7 @@ public class EditShapeIDDialog extends TitleAreaDialog {
         return ResourceManager.getImage(shp.shape.getBackgroundResourceFile().getResourceFile());
 
       case ENTITY_SHAPE:
-        Rectangle r = shp.shape.getEntity().getDefaultFrame().getBounds();
-        Image i = shp.shape.getEntity().getDefaultFrame();
-        // return ScreenEditorUtil.getImageDescriptor(i, r.width / 2, (r.width /
-        // r.height) * (r.height / 2)).createImage();
+        Image i = Activator.getDefault().getEntitiesMap().get(shp.shape.getEntityResourceFile().getResourceFile()).getDefaultFrame();
         return ScreenEditorUtil.getImageDescriptor(i, 0.5f).createImage();
 
       case SIMPLE_SHAPE_BOX:
