@@ -61,7 +61,6 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
@@ -75,9 +74,6 @@ import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
-import com.laex.cg2d.model.adapter.CGScreenModelAdapter;
-import com.laex.cg2d.model.adapter.ScreenModelAdapter;
-import com.laex.cg2d.model.adapter.ShapeAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.GameModel;
@@ -97,6 +93,9 @@ import com.laex.cg2d.screeneditor.editparts.CardEditPart;
 import com.laex.cg2d.screeneditor.editparts.ScreenEditPartFactory;
 import com.laex.cg2d.screeneditor.editparts.tree.LayerOutlineTreeEPFactory;
 import com.laex.cg2d.screeneditor.editparts.tree.ScreenTreeEPFactory;
+import com.laex.cg2d.screeneditor.model.CGScreenModelAdapter;
+import com.laex.cg2d.screeneditor.model.ScreenModelAdapter;
+import com.laex.cg2d.screeneditor.model.ShapeAdapter;
 import com.laex.cg2d.screeneditor.palette.ScreenEditorPaletteFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationInfo;
@@ -140,6 +139,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /** The card height. */
   int x, y, cardWidthh, cardHeight;
+
+  private IEditorInput editorInput;
 
   /**
    * ScreenOutineView. General outline view that shows all the editparts in the
@@ -505,8 +506,10 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    * org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette#getPaletteRoot()
    */
   protected PaletteRoot getPaletteRoot() {
-    if (PALETTE_MODEL == null)
+    if (PALETTE_MODEL == null) {
       PALETTE_MODEL = ScreenEditorPaletteFactory.createPalette();
+
+    }
     return PALETTE_MODEL;
   }
 
@@ -605,9 +608,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     setupEntityResourceListener(input);
 
     try {
-
       loadScreenModel(input);
-
     } catch (CoreException e) {
       e.printStackTrace();
     } catch (IOException e) {
@@ -620,64 +621,22 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   private void loadScreenModel(final IEditorInput input) throws CoreException, IOException {
     IFile file = ((IFileEditorInput) input).getFile();
 
+    // First thing first, create all the entities in the pallete which can be
+    // referenced by editparts later on
+    ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
+
     CGScreenModel cgGameModel = CGScreenModel.parseFrom(file.getContents());
 
     model = ScreenModelAdapter.asGameModel(cgGameModel);
+
     x = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoX();
     y = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoY();
     cardWidthh = cgGameModel.getScreenPrefs().getCardPrefs().getCardWidth();
     cardHeight = cgGameModel.getScreenPrefs().getCardPrefs().getCardHeight();
 
-    /*
-     * Go ahead and init entities. If some entities are invalid or have been
-     * deleted, remove them from this model as well.
-     */
-    if (EntitiesUtil.visitModelAndInitEntities(model)) {
-
-      SafeRunnable.run(new ISafeRunnable() {
-
-        @Override
-        public void run() throws Exception {
-
-          MessageBox mb = new MessageBox(getSite().getShell(), SWT.OK);
-          mb.setMessage("Some of the entities refereneced in this file are no longer valid. They will be removed.");
-          mb.setText("Screen file inconsistent");
-          mb.open();
-
-          // remove inconsistent entities
-          CompoundCommand cc = new CompoundCommand();
-          for (int i = 0; i < model.getDiagram().getChildren().size(); i++) {
-            Shape shape = model.getDiagram().getChildren().get(i);
-            if (shape.getEditorShapeType().isEntity()) {
-              Entity e = Entity.createFromFile(shape.getEntityResourceFile().getResourceFile());
-              boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
-
-              if (!isValid) {
-                ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), shape,
-                    DeleteCommandType.NON_UNDOABLE);
-                cc.add(sdc);
-              }
-            }
-          }
-
-          if (!cc.isEmpty())
-            getCommandStack().execute(cc);
-
-        }
-
-        @Override
-        public void handleException(Throwable exception) {
-        }
-      });
-
-    }
-
     /* Go Ahead and activate the edit parts. */
 
     setPartName(file.getProject().getName() + "/" + file.getName());
-
-    // Load entities in the palette
-    ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
   }
 
   private void setupResChangeListenerForDelete(final String resName) {
@@ -725,11 +684,22 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
             ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
             // Check if the resource is valid entity or not. If not remove the
             // entity and log it
-            Entity e = Entity.createFromFile((IFile) resource);
+            Entity e = Activator.getDefault().getEntitiesMap().get(resource.getName());
+
             boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
+
             if (!isValid) {
               removeDeletedOrInvalidEntities(resource);
+              return;
             }
+
+            /*
+             * Some properties like Entity's default frame may have change. Go
+             * ahead and update that as well
+             */
+            for (Shape shape : getModel().getDiagram().getChildren()) {
+            }
+
           }
 
           @Override
@@ -753,6 +723,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
           public void run() {
             ScreenEditorPaletteFactory.removeEntity(resource);
             removeDeletedOrInvalidEntities(resource);
+            /* Also remove this entity from the map */
+            Activator.getDefault().getEntitiesMap().remove(resource.getFullPath().toString());
           }
         });
       }
@@ -813,7 +785,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    * @see com.laex.cg2d.model.ILayerManager#removeAll()
    */
   @Override
-  public void removeAll() {
+  public void removeAllLayers() {
     CompoundCommand cc = new CompoundCommand();
     for (Layer l : getModel().getDiagram().getLayers()) {
       LayerRemoveCommand lrc = new LayerRemoveCommand(l, getModel().getDiagram());
@@ -861,10 +833,19 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     // plain for loop to prevent concurrent list modification access
     CompoundCommand cc = new CompoundCommand();
     for (Shape s : model.getDiagram().getChildren()) {
-      if (s.getEntity() != null) {
-        if (s.getEntity().getInternalName().equals(entityName)) {
-          ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), s, DeleteCommandType.NON_UNDOABLE);
-          cc.add(sdc);
+
+      if (s.getEditorShapeType().isEntity()) {
+
+        Entity e = Activator.getDefault().getEntitiesMap().get(s.getEntityResourceFile().getResourceFile());
+
+        if (e != null) {
+
+          if (e.getInternalName().equals(entityName)) {
+
+            ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), s, DeleteCommandType.NON_UNDOABLE);
+            cc.add(sdc);
+
+          }
         }
       }
     }
