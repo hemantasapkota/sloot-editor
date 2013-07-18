@@ -15,14 +15,12 @@ import java.io.IOException;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -43,25 +41,23 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
-import com.laex.cg2d.model.adapter.ScreenModelAdapter;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.IDCreationStrategy;
 import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ModelCopier;
-import com.laex.cg2d.model.model.ModelCopierFactory;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.util.EntitiesUtil;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
+import com.laex.cg2d.screeneditor.model.ScreenModelAdapter;
+import com.laex.cg2d.screeneditor.model.ShapeCopier;
 
 /**
  * The Class ListExistingScreensDialog.
@@ -356,15 +352,6 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
 
           GameModel gameModel = ScreenModelAdapter.asGameModel(model);
 
-          //
-          if (EntitiesUtil.visitModelAndInitEntities(gameModel)) {
-            MessageBox mb = new MessageBox(getShell(), SWT.ERROR);
-            mb.setMessage("Some of the entities in the source import file are inconsistent. Please resolve the issue before proceeding.");
-            mb.setText("Inconsistent entities in import source file");
-            mb.open();
-            return;
-          }
-
           GameModel thisScreenModel = ScreenEditorUtil.getScreenModel();
 
           CompoundCommand cc = new CompoundCommand();
@@ -410,7 +397,7 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
             for (Shape shape : gameModel.getDiagram().getChildren()) {
               // add suffix to id
               // TODO: Create a shape cloning mechanism
-              ModelCopier shapeCopier = ModelCopierFactory.getModelCopier(Shape.class);
+              ModelCopier shapeCopier = new ShapeCopier();
 
               Shape newShape = (Shape) shapeCopier.copy(shape);
               newShape.setParentLayer(layer);
