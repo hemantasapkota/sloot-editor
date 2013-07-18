@@ -14,6 +14,12 @@
              id="com.laex.cg2d.screeneditor.ScreenEditor"
              name="%Plugin.editorName">
         </editor>
+       <editor
+             default="true"
+             icon="lb2dIcon.png"
+             id="com.laex.cg2d.screeneditor.editor1"
+             name="%Plugin.scriptEditorName">
+       </editor>
    </extension>
    
    <extension

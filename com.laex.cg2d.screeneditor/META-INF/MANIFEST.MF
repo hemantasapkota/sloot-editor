@@ -15,21 +15,15 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.forms;bundle-version="3.5.100",
  org.eclipse.jface.text;bundle-version="3.7.0",
  org.eclipse.ui.views;bundle-version="3.6.0",
- org.eclipse.core.resources,
- org.eclipse.ant.core;bundle-version="3.2.400",
  libgdx-0.9.8;bundle-version="0.9.8",
- org.eclipse.ui.editors,
- org.eclipse.ui.navigator,
- org.eclipse.core.expressions,
- org.eclipse.e4.ui.css.swt.theme,
- org.eclipse.ui.ide;bundle-version="3.8.2"
+ org.eclipse.ui.ide;bundle-version="3.8.2",
+ org.apache.commons.primitives;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Export-Package: com.laex.cg2d.screeneditor,
  com.laex.cg2d.screeneditor.views
 Import-Package: org.apache.commons.io,
- org.apache.commons.io.input,
  org.eclipse.ui,
  org.eclipse.ui.actions,
  org.eclipse.ui.dialogs
