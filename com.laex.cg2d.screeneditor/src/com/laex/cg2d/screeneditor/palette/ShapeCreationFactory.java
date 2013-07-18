@@ -29,6 +29,7 @@ import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.util.EntitiesUtil;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.views.LayersViewPart;
 
@@ -98,11 +99,17 @@ public class ShapeCreationFactory implements CreationFactory {
     case ENTITY_SHAPE:
       try {
         Entity e = Entity.createFromFile(creationInfo.getEntityResourceFile());
+        
         if (e != null) {
+          
           Image defaultFrame = EntitiesUtil.getDefaultFrame(e);
+          
           e.setDefaultFrame(defaultFrame);
-          shape.setEntity(e);
+          
           shape.setBounds(RectAdapter.gdxRect(defaultFrame.getBounds()));
+          
+          Activator.getDefault().getShapeToEntitiesMap().put(shape, e);
+          
         }
       } catch (CoreException e1) {
         e1.printStackTrace();
