@@ -226,6 +226,7 @@ public class CollisionFormPage extends FormPage {
       if (!ea.getAnimationResourceFile().isEmpty()) {
         Image frameImage = ResourceManager.getImageOfRelativePath(ea.getAnimationResourceFile().getResourceFile());
         createFramesFromStrip(frameImage, alvi);
+        updateFramesFromSpritesheet(frameImage, alvi);
       }
 
       addNewAnimation(alvi);
@@ -234,6 +235,27 @@ public class CollisionFormPage extends FormPage {
     table.select(0);
     tableViewer.refresh();
     handleAnimationListSeletionListener();
+  }
+
+  private void updateFramesFromSpritesheet(Image selectedImage, AnimationListViewItem alvi) {
+    Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage, alvi.getAnimation().getCols(), alvi
+        .getAnimation().getRows());
+
+    int frameIndexToCheck = 1;
+    List<Integer> frameIndices = alvi.getAnimation().getFrameIndices();
+
+    for (Image i : strip) {
+
+      boolean c = frameIndices.contains(frameIndexToCheck);
+
+      if (c) {
+        alvi.setFirstFrame(i);
+        animationAndCollisionShapePreview(collisionShape, i);
+      }
+
+      frameIndexToCheck++;
+    }
+
   }
 
   /*
@@ -598,7 +620,7 @@ public class CollisionFormPage extends FormPage {
       mghprlnkAdd.setEnabled(false);
       mghprlnkRem.setEnabled(true);
 
-      animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+      animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFirstFrame());
 
     } else {
       removeCollisionShape();
@@ -618,7 +640,7 @@ public class CollisionFormPage extends FormPage {
   private void doPreview(AnimationListViewItem ai) {
     if (ai.getAnimation() != null) {
       if (ai.getFrames() != null && !ai.getFrames().isEmpty()) {
-        animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFrames());
+        animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFirstFrame());
       } else {
         freeformLayeredPane.removeAll();
       }
@@ -714,12 +736,11 @@ public class CollisionFormPage extends FormPage {
    * @param animation
    *          the animation
    */
-  private void animationAndCollisionShapePreview(EntityCollisionType colType, final Queue<Image> animation) {
+  private void animationAndCollisionShapePreview(EntityCollisionType colType, Image frame) {
     freeformLayeredPane.removeAll();
 
-    Image i = animation.peek();
-    ImageFigure iff = new ImageFigure(i);
-    iff.setBounds(new Rectangle(0, 0, i.getBounds().width, i.getBounds().height));
+    ImageFigure iff = new ImageFigure(frame);
+    iff.setBounds(new Rectangle(0, 0, frame.getBounds().width, frame.getBounds().height));
 
     freeformLayeredPane.add(iff);
 
