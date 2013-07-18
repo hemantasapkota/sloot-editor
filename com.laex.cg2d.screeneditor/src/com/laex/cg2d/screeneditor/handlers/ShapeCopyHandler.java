@@ -25,10 +25,10 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.ModelCopier;
-import com.laex.cg2d.model.model.ModelCopierFactory;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
+import com.laex.cg2d.screeneditor.model.ShapeCopier;
 
 /**
  * The Class ShapeCopyHandler.
@@ -51,7 +51,7 @@ public class ShapeCopyHandler extends AbstractHandler {
     GraphicalViewer gv = (GraphicalViewer) ep.getAdapter(GraphicalViewer.class);
     GameModel gameModel = ScreenEditorUtil.getScreenModel();
 
-    copier = ModelCopierFactory.getModelCopier(Shape.class);
+    copier = new ShapeCopier();
 
     try {
       doCopy(gv, gameModel);
