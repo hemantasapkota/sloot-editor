@@ -17,9 +17,11 @@ import org.eclipse.gef.editparts.AbstractTreeEditPart;
 import org.eclipse.swt.graphics.Image;
 
 import com.laex.cg2d.model.SharedImages;
-import com.laex.cg2d.model.adapter.ShapesDiagramAdapter;
+import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.Activator;
+import com.laex.cg2d.screeneditor.model.ShapesDiagramAdapter;
 
 /**
  * The Class ShapeTreeEP.
@@ -132,7 +134,8 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     }
 
     if (shp.getEditorShapeType().isEntity()) {
-      return getCastedModel().getEntity().getDefaultFrame();
+      Entity e = Activator.getDefault().getEntitiesMap().get(shp.getEntityResourceFile().getResourceFile());
+      return e.getDefaultFrame();
     }
 
     return SharedImages.HEXAGON.createImage();
