@@ -118,9 +118,6 @@ public class Shape extends ModelElement {
   /** The target joints. */
   private List<Joint> targetJoints = new ArrayList<Joint>();
 
-  /** The entity. */
-  private Entity entity;
-
   /**
    * Instantiates a new shape.
    * 
@@ -201,15 +198,6 @@ public class Shape extends ModelElement {
     return fixtureDef;
   }
 
-  /**
-   * Gets the entity.
-   * 
-   * @return the entity
-   */
-  public Entity getEntity() {
-    return entity;
-  }
-
   
   /**
    * Gets the entity resource file.
@@ -284,15 +272,6 @@ public class Shape extends ModelElement {
     this.backgroundResourceFile = backgroundResourceFile;
   }
 
-  /**
-   * Sets the entity.
-   * 
-   * @param entity
-   *          the new entity
-   */
-  public void setEntity(Entity entity) {
-    this.entity = entity;
-  }
 
   /**
    * Sets the entity resource file.
