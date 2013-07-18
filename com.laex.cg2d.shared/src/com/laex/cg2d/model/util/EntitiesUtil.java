@@ -10,12 +10,10 @@
  */
 package com.laex.cg2d.model.util;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
@@ -25,55 +23,11 @@ import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.EntityAnimation;
-import com.laex.cg2d.model.model.GameModel;
-import com.laex.cg2d.model.model.Layer;
-import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.model.impl.EntityValidator;
 
 /**
  * The Class EntitiesUtil.
  */
 public class EntitiesUtil {
-
-  /**
-   * Visit model and init entities.
-   * 
-   * @param model
-   *          the model
-   * @return true, if successful
-   * @throws CoreException
-   *           the core exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public static boolean visitModelAndInitEntities(GameModel model) throws CoreException, IOException {
-    boolean toRemove = false;
-    for (Layer layer : model.getDiagram().getLayers()) {
-      for (Shape shape : layer.getChildren()) {
-        Entity e = null;
-
-        if (!shape.getEditorShapeType().isEntity()) {
-          continue;
-        }
-
-        e = Entity.createFromFile(shape.getEntityResourceFile().getResourceFile());
-        // Validate entities
-        // null entity means te corresponding entity (cge) is not valid or has
-        // been deleted
-        boolean isValid = new EntityValidator(e).isValid();
-        if (!isValid) {
-          toRemove = true;
-          continue;
-        }
-
-        Image frame = EntitiesUtil.getDefaultFrame(e);
-        e.setDefaultFrame(frame);
-
-        shape.setEntity(e);
-      }
-    }
-    return toRemove;
-  }
 
   /**
    * Extract sprite2.
@@ -198,13 +152,20 @@ public class EntitiesUtil {
 
     Image img = ResourceManager.getImageOfRelativePath(eaim.getAnimationResourceFile().getResourceFile());
 
-    int tileWidth = img.getBounds().width / eaim.getCols();
-    int tileHeight = img.getBounds().height / eaim.getRows();
+    Queue<Image> strip = EntitiesUtil.createImageStrip(img, eaim.getCols(), eaim.getRows());
 
-    ImageData id = extractSprite2(img.getImageData(), new Rectangle(0, 0, tileWidth, tileHeight));
-    Image i = EntitiesUtil.createImage(id);
+    int frameIndexToCheck = 1;
+    List<Integer> frameIndices = eaim.getFrameIndices();
 
-    return i;
+    for (Image i : strip) {
+      boolean c = frameIndices.contains(frameIndexToCheck);
+      if (c) {
+        return i;
+      }
+      frameIndexToCheck++;
+    }
+
+    return null;
   }
 
   public static Queue<Image> extract(Image spriteSheet, int cols, int rows, List<Integer> frameIndices) {
