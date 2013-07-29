@@ -12,10 +12,20 @@ package com.laex.cg2d.model.adapter;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import com.laex.cg2d.model.ScreenModel.CGBounds;
+
 /**
  * The Class RectAdapter.
  */
 public class RectAdapter {
+  
+  public static CGBounds cgBounds(com.badlogic.gdx.math.Rectangle r) {
+    return CGBounds.newBuilder().setX(r.getX()).setY(r.getY()).setWidth(r.getWidth()).setHeight(r.getHeight()).build();
+  }
+  
+  public static com.badlogic.gdx.math.Rectangle gdxRect(CGBounds b) {
+    return new com.badlogic.gdx.math.Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
+  }
 
   /**
    * D2d rect.
