@@ -12,7 +12,6 @@ package com.laex.cg2d.model.adapter;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
@@ -113,8 +112,7 @@ public class EntityAdapter {
 
       CGEntityAnimation.Builder eaBuilder = CGEntityAnimation.newBuilder()
           .setAnimationDuration(ea.getAnimationDuration()).setAnimationName(ea.getAnimationName())
-          .setCollisionType(toCGEntityCollisionType(ea.getShapeType()))
-          .setDefaultAnimation(ea.isDefaultAnimation())
+          .setCollisionType(toCGEntityCollisionType(ea.getShapeType())).setDefaultAnimation(ea.isDefaultAnimation())
           .setFixtureFile(ResourceFileAdapter.asCGResourceFile(ea.getFixtureResourceFile()))
           .setSpritesheetFile(ResourceFileAdapter.asCGResourceFile(ea.getSpritesheetFile()));
 
@@ -125,14 +123,13 @@ public class EntityAdapter {
 
       /* Ad entity spritesheet items */
       eaBuilder.setSpritesheetJsonFile(ResourceFileAdapter.asCGResourceFile(ea.getSpritesheetMapperFile()));
-      
+
       for (EntitySpritesheetItem esi : ea.getSpritesheetItems()) {
         CGEntitySpritesheetItem.Builder cgesiBuilder = CGEntitySpritesheetItem.newBuilder();
-        
+
         CGEntitySpritesheetItem entSpritesheetItem = cgesiBuilder.setFrameIndex(esi.getFrameIndex())
-            .setX(esi.getExtractBounds().x).setY(esi.getExtractBounds().y).setW(esi.getExtractBounds().width)
-            .setH(esi.getExtractBounds().height).build();
-        
+            .setExtractBounds(RectAdapter.cgBounds(esi.getExtractBounds())).build();
+
         eaBuilder.addSpritesheetItems(entSpritesheetItem);
 
       }
@@ -168,17 +165,17 @@ public class EntityAdapter {
       }
 
       ea.setSpritesheetMapperFile(ResourceFileAdapter.asResourceFile(cgEa.getSpritesheetJsonFile()));
-      
+
       for (CGEntitySpritesheetItem cesi : cgEa.getSpritesheetItemsList()) {
         EntitySpritesheetItem esi = new EntitySpritesheetItem();
-        esi.setExtractBounds(new Rectangle(cesi.getX(), cesi.getY(), cesi.getW(), cesi.getH()));
+        esi.setExtractBounds(RectAdapter.gdxRect(cesi.getExtractBounds()));
         esi.setFrameIndex(cesi.getFrameIndex());
         ea.getSpritesheetItems().add(esi);
       }
 
       entityModel.addEntityAnimation(ea);
     }
-    
+
     entityModel.setDefaultFrame(EntitiesUtil.getDefaultFrame(entityModel));
 
     return entityModel;
