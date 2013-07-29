@@ -12,18 +12,24 @@ package com.laex.cg2d.screeneditor;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.EventObject;
 
+import javax.swing.ProgressMonitor;
+
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
+import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.ISafeRunnable;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.LayeredPane;
 import org.eclipse.draw2d.ScalableFreeformLayeredPane;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -51,6 +57,8 @@ import org.eclipse.gef.ui.parts.ContentOutlinePage;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
 import org.eclipse.gef.ui.parts.GraphicalViewerKeyHandler;
 import org.eclipse.gef.ui.parts.TreeViewer;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
@@ -70,6 +78,8 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.laex.cg2d.model.CGCProject;
+import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
@@ -606,38 +616,85 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    */
   protected void setInput(final IEditorInput input) {
     setupResChangeListenerForDelete(input.getName());
-    setupEntityResourceListener(input);
 
     try {
+
+      setupEntityResourceListener(input);
       loadScreenModel(input);
+
     } catch (CoreException e) {
       e.printStackTrace();
     } catch (IOException e) {
+      e.printStackTrace();
+    } catch (InvocationTargetException e) {
+      e.printStackTrace();
+    } catch (InterruptedException e) {
       e.printStackTrace();
     }
 
     super.setInput(input);
   }
 
-  private void loadScreenModel(final IEditorInput input) throws CoreException, IOException {
-    IFile file = ((IFileEditorInput) input).getFile();
+  int workToDo = 0;
+
+  private void loadScreenModel(final IEditorInput input) throws CoreException, IOException, InvocationTargetException,
+      InterruptedException {
+    final IFile file = ((IFileEditorInput) input).getFile();
+    final IFolder folder = CGCProject.getInstance().getEntititesFolder(input);
+
+    /* Calculate work to do */
+    calculateNoOfEntitiesToLoad(folder);
 
     // First thing first, create all the entities in the pallete which can be
     // referenced by editparts later on
-    ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
+    ProgressMonitorDialog pmd = new ProgressMonitorDialog(getSite().getShell());
+    pmd.run(false, false, new IRunnableWithProgress() {
+      @Override
+      public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
-    CGScreenModel cgGameModel = CGScreenModel.parseFrom(file.getContents());
+        try {
 
-    model = ScreenModelAdapter.asGameModel(cgGameModel);
+          monitor.beginTask("Parse screen model", workToDo + 1);
+          ScreenEditorPaletteFactory.createEntitesPaletteItems(folder, monitor);
 
-    x = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoX();
-    y = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoY();
-    cardWidthh = cgGameModel.getScreenPrefs().getCardPrefs().getCardWidth();
-    cardHeight = cgGameModel.getScreenPrefs().getCardPrefs().getCardHeight();
+          monitor.subTask("Loading screen model");
+
+          CGScreenModel cgGameModel = CGScreenModel.parseFrom(file.getContents());
+          model = ScreenModelAdapter.asGameModel(cgGameModel);
+          monitor.worked(1);
+
+          x = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoX();
+          y = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoY();
+          cardWidthh = cgGameModel.getScreenPrefs().getCardPrefs().getCardWidth();
+          cardHeight = cgGameModel.getScreenPrefs().getCardPrefs().getCardHeight();
+
+          monitor.done();
+        } catch (IOException e) {
+          e.printStackTrace();
+        } catch (CoreException e) {
+          e.printStackTrace();
+        }
+
+      }
+    });
 
     /* Go Ahead and activate the edit parts. */
 
     setPartName(file.getProject().getName() + "/" + file.getName());
+  }
+
+  private IFolder calculateNoOfEntitiesToLoad(final IFolder folder) throws CoreException {
+
+    folder.accept(new IResourceVisitor() {
+      @Override
+      public boolean visit(IResource resource) throws CoreException {
+        if (resource.getName().endsWith(ICGCProject.ENTITIES_EXTENSION)) {
+          workToDo++;
+        }
+        return true;
+      }
+    });
+    return folder;
   }
 
   private void setupResChangeListenerForDelete(final String resName) {
@@ -666,10 +723,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     }, IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE);
   }
 
-  private void setupEntityResourceListener(final IEditorInput input) {
+  private void setupEntityResourceListener(final IEditorInput input) throws CoreException {
     ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceListener,
         IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE);
     // if there are any changes in the entities, load em up in the editor
+
+    final IFolder folder = CGCProject.getInstance().getEntititesFolder(input);
 
     resourceListener.addEntityChangeListener(new EntityChangeListener() {
       @Override
@@ -682,7 +741,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
           @Override
           public void run() throws Exception {
-            ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
+            ScreenEditorPaletteFactory.createEntitesPaletteItems(folder, new NullProgressMonitor());
             // Check if the resource is valid entity or not.
             String entityPath = resource.getFullPath().toOSString();
             Entity e = Activator.getDefault().getEntitiesMap().get(entityPath);
@@ -697,23 +756,23 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
             /*
              * Recompute the frame for entities that might have changed
              * Essentially, were re-creating a new shape by copying the old one.
-             * Following are the considerations for this:
-             * 1. The id for the new shape should be same as the old one
-             * 2. The rectagle bounds for the new shape should reflect the new image
+             * Following are the considerations for this: 1. The id for the new
+             * shape should be same as the old one 2. The rectagle bounds for
+             * the new shape should reflect the new image
              */
             CompoundCommand cc = new CompoundCommand();
             for (Shape sh : model.getDiagram().getChildren()) {
-              
+
               if (!sh.getEditorShapeType().isEntity()) {
                 continue;
               }
-              
+
               boolean isEntityUsed = entityPath.equals(sh.getEntityResourceFile().getResourceFile());
               if (isEntityUsed) {
                 ShapeCopier copier = new ShapeCopier();
                 Shape newShape = (Shape) copier.copy(sh);
                 newShape.setId(sh.getId()); /* We use the same id */
-                
+
                 /* update bounds */
                 Rectangle r = newShape.getBounds();
                 r.setWidth(e.getDefaultFrame().getBounds().width);
