@@ -825,12 +825,14 @@ public class AnimationFormPage extends FormPage {
     for (Button b : btnList) {
       imgList.add(b.getImage());
     }
+    
+    final String animName = selectedAnimationListItem().getName();
 
     Job job = new Job("Export frames") {
       @Override
       protected IStatus run(IProgressMonitor monitor) {
 
-        animController.exportFrames(imgList, new Path(dirc), monitor);
+        animController.exportFrames(animName, imgList, new Path(dirc), monitor);
 
         return Status.OK_STATUS;
       }

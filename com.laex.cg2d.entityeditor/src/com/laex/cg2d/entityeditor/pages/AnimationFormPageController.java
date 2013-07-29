@@ -214,7 +214,7 @@ public class AnimationFormPageController {
    * @param monitor
    *          the monitor
    */
-  public void exportFrames(List<Image> images, IPath destination, IProgressMonitor monitor) {
+  public void exportFrames(String animationName, List<Image> images, IPath destination, IProgressMonitor monitor) {
     int work = images.size();
     int done = 0;
     monitor.beginTask("Export Frames", work);
@@ -223,7 +223,7 @@ public class AnimationFormPageController {
       loader.data = new ImageData[]
         { i.getImageData() };
       int imgIndex = done + 1;
-      String filename = destination.append("img" + imgIndex).addFileExtension("png").toOSString();
+      String filename = destination.append(animationName + imgIndex).addFileExtension("png").toOSString();
       loader.save(filename, SWT.IMAGE_PNG);
       monitor.worked(done++);
     }
