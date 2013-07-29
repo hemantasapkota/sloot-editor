@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.editors,
  libgdx-0.9.8;bundle-version="0.9.8",
  org.apache.commons.lang;bundle-version="2.4.0",
- guava-14.0.1;bundle-version="1.0.0"
+ guava-14.0.1;bundle-version="1.0.0",
+ org.eclipse.swt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
@@ -25,6 +26,7 @@ Bundle-ClassPath: .,
  org.eclipse.e4.xwt_0.9.1.SNAPSHOT.jar,
  org.eclipse.e4.xwt.forms_0.9.1.SNAPSHOT.jar,
  swing2swt.jar,
- swt-grouplayout.jar
+ swt-grouplayout.jar,
+ swing2swt.jar
 Export-Package: com.laex.cg2d.entityeditor
 Import-Package: org.apache.commons.lang
