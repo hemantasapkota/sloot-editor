@@ -11,9 +11,7 @@
 package com.laex.cg2d.entityeditor.pages;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -35,6 +33,7 @@ import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
@@ -58,17 +57,20 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ImageHyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.part.FileEditorInput;
 
+import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.entityeditor.ui.AnimationPropertyChangeDialog;
 import com.laex.cg2d.entityeditor.ui.ImportSpriteDialog;
 import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.EntityAnimation;
+import com.laex.cg2d.model.model.EntitySpritesheetItem;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.util.EntitiesUtil;
-import com.laex.cg2d.model.util.FloatUtil;
 
 /**
  * The Class AnimationFormPage.
@@ -137,6 +139,8 @@ public class AnimationFormPage extends FormPage {
 
   private ImageHyperlink mghprlnkRemoveFrames;
 
+  private RowLayout rowLayout;
+
   /**
    * Create the form page.
    * 
@@ -174,28 +178,13 @@ public class AnimationFormPage extends FormPage {
     Entity model = this.entityFormEditor.getModel();
 
     for (EntityAnimation ea : model.getAnimationList()) {
-
       if (ea == null)
         continue;
-
-      AnimationListViewItem alvi = animController.addAnimation(ea);
-
-      if (!ea.getAnimationResourceFile().isEmpty()) {
-
-        Image frameImage = ResourceManager.getImageOfRelativePath(ea.getAnimationResourceFile().getResourceFile());
-
-        pageState = UIState.LoadingFromModel;
-
-        updateFramesFromSpritesheet(frameImage, alvi);
-
-        pageState = UIState.None;
-      }
-
-      updateUIOnNewAnimationAdd(alvi, animController.indexOf(alvi));
+      animController.addAnimation(ea);
     }
 
-    table.select(0);
     tableViewer.refresh();
+    table.select(0);
     handleAnimationListSeletionListener();
   }
 
@@ -245,32 +234,17 @@ public class AnimationFormPage extends FormPage {
 
     form.getToolBarManager().add(ac);
     form.getToolBarManager().update(true);
+    toolkit.decorateFormHeading(form.getForm());
     managedForm.getForm().getBody().setLayout(new FormLayout());
 
-    Section sctnProperties = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TITLE_BAR);
+    Section sctnProperties = managedForm.getToolkit().createSection(managedForm.getForm().getBody(),
+        Section.TWISTIE | Section.TITLE_BAR);
     FormData fd_sctnProperties = new FormData();
-    fd_sctnProperties.top = new FormAttachment(0, 12);
-    fd_sctnProperties.right = new FormAttachment(0, 648);
-    fd_sctnProperties.left = new FormAttachment(0, 176);
+    fd_sctnProperties.top = new FormAttachment(0, 11);
     sctnProperties.setLayoutData(fd_sctnProperties);
     managedForm.getToolkit().paintBordersFor(sctnProperties);
     sctnProperties.setText("Properties");
     sctnProperties.setExpanded(true);
-
-    sctnFrames = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TITLE_BAR);
-    fd_sctnProperties.bottom = new FormAttachment(sctnFrames, -6);
-    FormData fd_sctnFrames = new FormData();
-    fd_sctnFrames.bottom = new FormAttachment(100, -10);
-    fd_sctnFrames.top = new FormAttachment(100, -313);
-    fd_sctnFrames.right = new FormAttachment(0, 648);
-    fd_sctnFrames.left = new FormAttachment(0, 176);
-    sctnFrames.setLayoutData(fd_sctnFrames);
-    managedForm.getToolkit().paintBordersFor(sctnFrames);
-    sctnFrames.setText("Frames");
-
-    Composite comp = managedForm.getToolkit().createComposite(sctnFrames);
-    comp.setBackground(null);
-    sctnFrames.setTextClient(comp);
 
     Composite composite = managedForm.getToolkit().createComposite(sctnProperties, SWT.BORDER);
     managedForm.getToolkit().paintBordersFor(composite);
@@ -306,8 +280,7 @@ public class AnimationFormPage extends FormPage {
         if (alvi != null) {
 
           animController.defaultAnimationChanged(alvi, btnDefaultAnimation.getSelection());
-          dirty = true;
-          entityFormEditor.editorDirtyStateChanged();
+          editorDirtyChanged();
 
         }
       }
@@ -329,109 +302,14 @@ public class AnimationFormPage extends FormPage {
     managedForm.getToolkit().paintBordersFor(mghprlnkChangeAnimationName);
     sctnProperties.setTextClient(mghprlnkChangeAnimationName);
     mghprlnkChangeAnimationName.setText("");
-    toolkit.decorateFormHeading(form.getForm());
-    comp.setLayout(new RowLayout(SWT.HORIZONTAL));
-
-    mghprlnkAddFrames = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
-    mghprlnkAddFrames.setToolTipText("Add Frames");
-    mghprlnkAddFrames.setBackground(null);
-    mghprlnkAddFrames.addHyperlinkListener(new HyperlinkAdapter() {
-      @Override
-      public void linkActivated(HyperlinkEvent e) {
-        onClickAddFrames();
-      }
-    });
-    mghprlnkAddFrames.setImage(SharedImages.ADD_ITEM_SMALL.createImage());
-    managedForm.getToolkit().paintBordersFor(mghprlnkAddFrames);
-
-    mghprlnkRemoveFrames = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
-    mghprlnkRemoveFrames.setToolTipText("Remove unmarked Frames");
-    mghprlnkRemoveFrames.setBackground(null);
-    mghprlnkRemoveFrames.addHyperlinkListener(new HyperlinkAdapter() {
-      @Override
-      public void linkActivated(HyperlinkEvent e) {
-        onClickRemoveUnmarkedFrames();
-      }
-    });
-    mghprlnkRemoveFrames.setImage(SharedImages.REMOVE_ITEM_SMALL.createImage());
-    managedForm.getToolkit().paintBordersFor(mghprlnkRemoveFrames);
-    mghprlnkChangeAnimationName.setEnabled(false); // default state
-
-    mghprlnkPreviewExternal = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
-    mghprlnkPreviewExternal.setEnabled(false);
-    mghprlnkPreviewExternal.setToolTipText("Preview Animation");
-    managedForm.getToolkit().paintBordersFor(mghprlnkPreviewExternal);
-    mghprlnkPreviewExternal.setBackground(null);
-    mghprlnkPreviewExternal.setImage(SharedImages.RENDER.createImage());
-    mghprlnkPreviewExternal.addHyperlinkListener(new HyperlinkAdapter() {
-      @Override
-      public void linkActivated(HyperlinkEvent e) {
-        float duration = FloatUtil.toFloat(txtAnimationDuration.getText());
-        animController.previewAnimationExternal(selectedAnimationListItem().getAnimation(), duration);
-      }
-    });
-
-    mghprlnkExportFrames = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
-    mghprlnkExportFrames.setEnabled(false);
-    mghprlnkExportFrames.setToolTipText("Export Frames");
-    managedForm.getToolkit().paintBordersFor(mghprlnkPreviewExternal);
-    mghprlnkExportFrames.setBackground(null);
-    mghprlnkExportFrames.setImage(SharedImages.PNG_EXPORT.createImage());
-    mghprlnkExportFrames.addHyperlinkListener(new HyperlinkAdapter() {
-      @Override
-      public void linkActivated(HyperlinkEvent e) {
-        DirectoryDialog dd = new DirectoryDialog(getSite().getShell());
-
-        final String dirc = dd.open();
-        if (dirc == null) {
-          return;
-        }
-
-        final List<Image> imgList = new ArrayList<Image>();
-        for (Button b : btnList) {
-          imgList.add(b.getImage());
-        }
-
-        Job job = new Job("Export frames") {
-          @Override
-          protected IStatus run(IProgressMonitor monitor) {
-
-            animController.exportFrames(imgList, new Path(dirc), monitor);
-
-            return Status.OK_STATUS;
-          }
-        };
-        job.setSystem(false);
-        job.schedule();
-
-      }
-    });
+    mghprlnkChangeAnimationName.setEnabled(false);
 
     Section sctnAnimations = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TITLE_BAR);
+    fd_sctnProperties.right = new FormAttachment(sctnAnimations, 559, SWT.RIGHT);
+    fd_sctnProperties.left = new FormAttachment(sctnAnimations, 6);
     FormData fd_sctnAnimations = new FormData();
-    fd_sctnAnimations.top = new FormAttachment(0, 12);
+    fd_sctnAnimations.top = new FormAttachment(0, 10);
     fd_sctnAnimations.bottom = new FormAttachment(100, -10);
-    fd_sctnAnimations.right = new FormAttachment(0, 170);
-
-    Composite composite_2 = managedForm.getToolkit().createComposite(sctnFrames, SWT.NONE);
-    managedForm.getToolkit().paintBordersFor(composite_2);
-    sctnFrames.setClient(composite_2);
-    composite_2.setLayout(new FillLayout(SWT.HORIZONTAL));
-
-    scrolledComposite = new ScrolledComposite(composite_2, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
-    managedForm.getToolkit().adapt(scrolledComposite);
-    managedForm.getToolkit().paintBordersFor(scrolledComposite);
-    scrolledComposite.setExpandHorizontal(true);
-    scrolledComposite.setExpandVertical(true);
-
-    framesComposite = managedForm.getToolkit().createComposite(scrolledComposite, SWT.NONE);
-    managedForm.getToolkit().paintBordersFor(framesComposite);
-
-    RowLayout rl_framesComposite = new RowLayout(SWT.HORIZONTAL);
-    framesComposite.setLayout(rl_framesComposite);
-    scrolledComposite.setContent(framesComposite);
-    scrolledComposite.setMinSize(framesComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
-
     fd_sctnAnimations.left = new FormAttachment(0, 10);
     sctnAnimations.setLayoutData(fd_sctnAnimations);
     managedForm.getToolkit().paintBordersFor(sctnAnimations);
@@ -477,6 +355,89 @@ public class AnimationFormPage extends FormPage {
       }
     });
 
+    sctnFrames = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TITLE_BAR);
+    FormData fd_sctnFrames = new FormData();
+    fd_sctnFrames.bottom = new FormAttachment(sctnProperties, 400, SWT.BOTTOM);
+    fd_sctnFrames.top = new FormAttachment(sctnProperties, 6);
+    fd_sctnFrames.right = new FormAttachment(sctnProperties, 553);
+    fd_sctnFrames.left = new FormAttachment(sctnProperties, 0, SWT.LEFT);
+    sctnFrames.setLayoutData(fd_sctnFrames);
+    managedForm.getToolkit().paintBordersFor(sctnFrames);
+    sctnFrames.setText("Frames");
+
+    Composite comp = managedForm.getToolkit().createComposite(sctnFrames);
+    comp.setBackground(null);
+    sctnFrames.setTextClient(comp);
+    comp.setLayout(new RowLayout(SWT.HORIZONTAL));
+
+    mghprlnkAddFrames = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
+    mghprlnkAddFrames.setToolTipText("Add Frames");
+    mghprlnkAddFrames.setBackground(null);
+    mghprlnkAddFrames.addHyperlinkListener(new HyperlinkAdapter() {
+      @Override
+      public void linkActivated(HyperlinkEvent e) {
+        onClickAddFrames();
+      }
+    });
+    mghprlnkAddFrames.setImage(SharedImages.ADD_ITEM_SMALL.createImage());
+    managedForm.getToolkit().paintBordersFor(mghprlnkAddFrames);
+
+    mghprlnkRemoveFrames = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
+    mghprlnkRemoveFrames.setToolTipText("Remove unmarked Frames");
+    mghprlnkRemoveFrames.setBackground(null);
+    mghprlnkRemoveFrames.addHyperlinkListener(new HyperlinkAdapter() {
+      @Override
+      public void linkActivated(HyperlinkEvent e) {
+        onClickRemoveUnmarkedFrames();
+      }
+    });
+    mghprlnkRemoveFrames.setImage(SharedImages.REMOVE_ITEM_SMALL.createImage());
+    managedForm.getToolkit().paintBordersFor(mghprlnkRemoveFrames);
+
+    mghprlnkPreviewExternal = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
+    mghprlnkPreviewExternal.setEnabled(false);
+    mghprlnkPreviewExternal.setToolTipText("Preview Animation");
+    managedForm.getToolkit().paintBordersFor(mghprlnkPreviewExternal);
+    mghprlnkPreviewExternal.setBackground(null);
+    mghprlnkPreviewExternal.setImage(SharedImages.RENDER.createImage());
+    mghprlnkPreviewExternal.addHyperlinkListener(new HyperlinkAdapter() {
+      @Override
+      public void linkActivated(HyperlinkEvent e) {
+        onClickPreviewExternal();
+      }
+    });
+
+    mghprlnkExportFrames = managedForm.getToolkit().createImageHyperlink(comp, SWT.NONE);
+    mghprlnkExportFrames.setEnabled(false);
+    mghprlnkExportFrames.setToolTipText("Export Frames");
+    managedForm.getToolkit().paintBordersFor(mghprlnkPreviewExternal);
+    mghprlnkExportFrames.setBackground(null);
+    mghprlnkExportFrames.setImage(SharedImages.PNG_EXPORT.createImage());
+    mghprlnkExportFrames.addHyperlinkListener(new HyperlinkAdapter() {
+      @Override
+      public void linkActivated(HyperlinkEvent e) {
+        onClickExportFrames();
+      }
+    });
+
+    Composite composite_2 = managedForm.getToolkit().createComposite(sctnFrames, SWT.NONE);
+    managedForm.getToolkit().paintBordersFor(composite_2);
+    sctnFrames.setClient(composite_2);
+    composite_2.setLayout(new FillLayout(SWT.HORIZONTAL));
+
+    scrolledComposite = new ScrolledComposite(composite_2, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+    managedForm.getToolkit().adapt(scrolledComposite);
+    managedForm.getToolkit().paintBordersFor(scrolledComposite);
+    scrolledComposite.setExpandHorizontal(true);
+    scrolledComposite.setExpandVertical(true);
+
+    framesComposite = managedForm.getToolkit().createComposite(scrolledComposite, SWT.None);
+    managedForm.getToolkit().paintBordersFor(framesComposite);
+    rowLayout = new RowLayout(SWT.HORIZONTAL);
+    framesComposite.setLayout(rowLayout);
+    scrolledComposite.setContent(framesComposite);
+    scrolledComposite.setMinSize(framesComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
     // load animations from mode
     loadAnimationsFromModel();
 
@@ -510,8 +471,11 @@ public class AnimationFormPage extends FormPage {
       size = btnList.size();
       i++;
     }
+    
+    if (btnList.size() <= 0) {
+      animController.spritesheetImageFileChanged(selectedAnimationListItem(), ResourceFile.EMPTY);
+    }
 
-    System.err.println(btnList.size());
     toggleFramesCompositeState();
   }
 
@@ -526,8 +490,7 @@ public class AnimationFormPage extends FormPage {
     // sync with the model
     entityFormEditor.getModel().getAnimationList().remove(alvi.getAnimation());
 
-    dirty = true;
-    entityFormEditor.editorDirtyStateChanged();
+    editorDirtyChanged();
 
     tableViewer.refresh();
 
@@ -576,9 +539,8 @@ public class AnimationFormPage extends FormPage {
    * Handle animation list seletion listener.
    */
   private void handleAnimationListSeletionListener() {
-    AnimationListViewItem ai = selectedAnimationListItem();
-
-    if (ai == null) {
+    AnimationListViewItem alvi = selectedAnimationListItem();
+    if (alvi == null) {
       return;
     }
 
@@ -587,31 +549,26 @@ public class AnimationFormPage extends FormPage {
     clearSpriteButtons();
     resetFramesComposite();
 
-    txtAnimationName.setText(ai.getName());
-    txtAnimationDuration.setText(String.valueOf(ai.getAnimation().getAnimationDuration()));
-    btnDefaultAnimation.setSelection(ai.getAnimation().isDefaultAnimation());
+    txtAnimationName.setText(alvi.getName());
+    txtAnimationDuration.setText(String.valueOf(alvi.getAnimation().getAnimationDuration()));
+    btnDefaultAnimation.setSelection(alvi.getAnimation().isDefaultAnimation());
 
-    if (ai.getAnimation() != null) {
+    EntityAnimation ea = alvi.getAnimation();
+    if (ea.getSpritesheetFile().isEmpty()) {
+      return;
+    }
 
-      int frameIndexToCheck = 1;
-      Iterator<Image> itr = ai.getFrames().iterator();
+    /* Load images based on frame indices */
+    Image frameImage = ResourceManager.getImageOfRelativePath(ea.getSpritesheetFile().getResourceFile());
 
-      while (itr.hasNext()) {
-        Image frame = itr.next();
-
-        boolean c = ai.getAnimation().getFrameIndices().contains(frameIndexToCheck);
-
-        if (c) {
-          addSpriteFrame(frame, frameIndexToCheck);
-        }
-
-        frameIndexToCheck++;
-
-      }
+    for (EntitySpritesheetItem esi : ea.getSpritesheetItems()) {
+      ImageData e = EntitiesUtil.extractImageFromBounds(frameImage.getImageData(),
+          RectAdapter.d2dRect(esi.getExtractBounds()));
+      addSpriteFrame(ResourceManager.getImage(e), esi.getFrameIndex(), esi);
     }
 
     toggleFramesCompositeState();
-    setupFramesCompositeScrolling(computeHeightHint(ai));
+    setupFramesCompositeScrolling(computeHeightHint(alvi));
   }
 
   private void toggleFramesCompositeState() {
@@ -625,31 +582,43 @@ public class AnimationFormPage extends FormPage {
   private int computeHeightHint(AnimationListViewItem ai) {
     int heightHint = 300;
 
-    RowLayout rl = (RowLayout) framesComposite.getLayout();
+    /* Compute average size from all the buttons */
+    Vector2 avgSize = new Vector2();
+    for (Button b : btnList) {
+      Point p = b.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+      avgSize.x += p.x;
+      avgSize.y += p.y;
+    }
+    avgSize.div(btnList.size());
 
-    if (!ai.getFrames().isEmpty() && btnList.size() > 0) {
-      Point btnSize = btnList.get(0).computeSize(SWT.DEFAULT, SWT.DEFAULT);
-
+    if (btnList.size() > 0) {
       /*
-       * The width of sctnFrames is 472. To get accurate height and scrolling
+       * The width of sctnFrames is 553. To get accurate height and scrolling
        * parameters, we calculate the following: 1. No of rows of buttons on the
        * frame 2. No of cols of buttons on the frame 3. The size of the buttons
        * 4. heightHint = noCols * btnHeight + noCols * RowLayout.marginBottom 5.
        * Calculate the scroll bar increment for 1 Row of buttons
        */
-      int noItemsInRow = 472 / btnSize.x;
+      int noItemsInRow = 553 / (int) avgSize.x;
+
+      if (btnList.size() < noItemsInRow) {
+        return heightHint;
+      }
 
       if (noItemsInRow <= 0)
         noItemsInRow = 1;
 
-      int noCols = btnList.size() / noItemsInRow;
+      int noCols = (int) avgSize.y / noItemsInRow;
 
-      heightHint = noCols * btnSize.y + noCols * rl.marginBottom;
+      heightHint = noCols * (int) avgSize.y + noCols * rowLayout.marginBottom;
+
+      heightHint += 45; /* add some offset */
     }
 
-    scrolledComposite.getVerticalBar().setIncrement(70 + rl.marginBottom);
+    scrolledComposite.getVerticalBar().setIncrement(70 + rowLayout.marginBottom);
 
-    return heightHint;
+    // return heightHint;
+    return 300;
   }
 
   /**
@@ -691,55 +660,16 @@ public class AnimationFormPage extends FormPage {
     btnDefaultAnimation.setEnabled(true);
   }
 
-  /**
-   * Creates the animation from strip.
-   * 
-   * @param selectedImage
-   *          the selected image
-   * @param alvi
-   *          the alvi
-   */
-  private void updateFramesFromSpritesheet(Image selectedImage, AnimationListViewItem alvi) {
-    resetFramesComposite();
-
-    Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage, alvi.getAnimation().getCols(), alvi
-        .getAnimation().getRows());
-
-    int frameIndexToCheck = 1;
-    List<Integer> frameIndices = alvi.getAnimation().getFrameIndices();
-
-    for (Image i : strip) {
-
-      boolean c = frameIndices.contains(frameIndexToCheck) && pageState == UIState.LoadingFromModel;
-
-      if (c) {
-        addSpriteFrame(i, frameIndexToCheck);
-      }
-
-      /* If its a user event, we add the frames, anyways */
-      if (pageState == UIState.AddFrames) {
-        addSpriteFrame(i, frameIndexToCheck);
-      }
-
-      frameIndexToCheck++;
-    }
-
-    alvi.setFrames(strip);
-
-    // update the default frame
-    entityFormEditor.getModel().setDefaultFrame(strip.peek());
-
-    setupFramesCompositeScrolling(computeHeightHint(alvi));
-    framesComposite.layout(true);
-
-    tableViewer.refresh();
-  }
-
   private void setupFramesCompositeScrolling(int heightHint) {
+    /* heightHint is unused for now */
+    int height = 0;
+    for (Button b : btnList) {
+      Point p = b.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+      height += p.y;
+    }
+   
+    scrolledComposite.setMinHeight(height);
     framesComposite.layout(true);
-    scrolledComposite.setExpandHorizontal(true);
-    scrolledComposite.setExpandVertical(true);
-    scrolledComposite.setMinSize(SWT.DEFAULT, heightHint);
   }
 
   /**
@@ -748,11 +678,17 @@ public class AnimationFormPage extends FormPage {
    * @param extractImage
    *          the extract image
    */
-  private void addSpriteFrame(Image extractImage, int frameIndex) {
+  private void addSpriteFrame(Image extractImage, int frameIndex, Object customData) {
     final Button btn = managedForm.getToolkit().createButton(framesComposite, "", SWT.None);
 
     btn.setToolTipText(String.valueOf(frameIndex));
     btn.setImage(extractImage);
+    /*
+     * Set custom data that may be used later while computing frame indices of
+     * entity spritesheet items
+     */
+    if (customData != null)
+      btn.setData(String.valueOf(frameIndex), customData);
 
     btn.addPaintListener(new PaintListener() {
       @Override
@@ -767,9 +703,7 @@ public class AnimationFormPage extends FormPage {
     btn.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseDoubleClick(MouseEvent e) {
-
         removeSpriteButton(btn);
-
       }
 
       @Override
@@ -804,24 +738,24 @@ public class AnimationFormPage extends FormPage {
 
     AnimationListViewItem alvi = selectedAnimationListItem();
 
-    alvi.getAnimation().setAnimationResourceFile(
-        ResourceFile.create(isd.getResourceFile(), isd.getResourceFileAbsolute()));
+    animController.spritesheetImageFileChanged(alvi, isd.getSpritesheetImageFile());
 
-    alvi.getAnimation().setCols(isd.getCols());
+    for (int i = 0; i < isd.getSpritesheetItems().size(); i++) {
+      Image img = isd.getExtractedImages().poll();
+      EntitySpritesheetItem esi = isd.getSpritesheetItems().get(i);
+      /* esi is our custom data for this */
+      addSpriteFrame(img, i, esi);
+    }
 
-    alvi.getAnimation().setRows(isd.getRows());
+    animController.spritesheetItemsChanged(alvi, isd.getSpritesheetJsonMapperFile(), isd.getSpritesheetItems());
 
-    pageState = UIState.AddFrames;
-
-    updateFramesFromSpritesheet(isd.getSelectedImage(), alvi);
-
-    pageState = UIState.None;
-
-    animController.frameIndicesChanged(alvi, computeFrameIndices());
-
+    // Reset ui
     toggleFramesCompositeState();
+    setupFramesCompositeScrolling(computeHeightHint(alvi));
+    editorDirtyChanged();
+  }
 
-    //
+  private void editorDirtyChanged() {
     dirty = true;
     entityFormEditor.editorDirtyStateChanged();
   }
@@ -839,8 +773,7 @@ public class AnimationFormPage extends FormPage {
 
     animController.animationNameChange(selectedAnimationListItem(), stcd.getName(), stcd.getAnimationDuration());
 
-    dirty = true;
-    entityFormEditor.editorDirtyStateChanged();
+    editorDirtyChanged();
     tableViewer.refresh();
   }
 
@@ -850,33 +783,59 @@ public class AnimationFormPage extends FormPage {
     updateUIOnNewAnimationAdd(alvi, animController.indexOf(alvi));
 
     entityFormEditor.getModel().addEntityAnimation(alvi.getAnimation());
-    dirty = true;
-    entityFormEditor.editorDirtyStateChanged();
-  }
-
-  private List<Integer> computeFrameIndices() {
-    /* Compute Frame Indices */
-    List<Integer> fi = new ArrayList<Integer>();
-    for (Button b : btnList) {
-      fi.add(Integer.parseInt(b.getToolTipText()));
-    }
-    return fi;
+    editorDirtyChanged();
   }
 
   private void removeSpriteButton(final Button btn) {
+    Object spritesheetItemData = btn.getData(btn.getToolTipText());
+
     btn.dispose();
     btnList.remove(btn);
-
     framesComposite.layout(true);
 
     AnimationListViewItem alvi = selectedAnimationListItem();
 
     setupFramesCompositeScrolling(computeHeightHint(alvi));
 
-    List<Integer> fi = computeFrameIndices();
+    /* Is this an entitty spritesheet item ? */
+    if (spritesheetItemData != null) {
 
-    animController.frameIndicesChanged(alvi, fi);
-    dirty = true;
-    entityFormEditor.editorDirtyStateChanged();
+      animController.removeSpritesheetItem(alvi, (EntitySpritesheetItem) spritesheetItemData);
+
+    }
+
+    editorDirtyChanged();
+  }
+
+  private void onClickPreviewExternal() {
+    FileEditorInput fe = (FileEditorInput) getEditorInput();
+    animController.previewAnimationExternal(selectedAnimationListItem().getAnimation(), fe.getFile().getLocation()
+        .makeAbsolute().toOSString());
+  }
+
+  private void onClickExportFrames() {
+    DirectoryDialog dd = new DirectoryDialog(getSite().getShell());
+
+    final String dirc = dd.open();
+    if (dirc == null) {
+      return;
+    }
+
+    final List<Image> imgList = new ArrayList<Image>();
+    for (Button b : btnList) {
+      imgList.add(b.getImage());
+    }
+
+    Job job = new Job("Export frames") {
+      @Override
+      protected IStatus run(IProgressMonitor monitor) {
+
+        animController.exportFrames(imgList, new Path(dirc), monitor);
+
+        return Status.OK_STATUS;
+      }
+    };
+    job.setSystem(false);
+    job.schedule();
   }
 }
