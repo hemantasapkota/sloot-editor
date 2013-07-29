@@ -87,14 +87,13 @@ public class MoveEntityAction implements IObjectActionDelegate {
 
         CGEntityAnimation animToCopy = emodel.getAnimations(i);
 
-        CGResourceFile spriteSheetResourceFile = animToCopy.getAnimationResourceFile();
+        CGResourceFile spriteSheetResourceFile = animToCopy.getSpritesheetFile();
 
         CGResourceFile fixtureRsourceFile = animToCopy.getFixtureFile();
 
         /* Work with sprite sheet path */
         IPath spriteSheetPath = copyAnimationResource(texturesFolderPath, spriteSheetResourceFile);
-        CGResourceFile.Builder spriteSheetResourceBuilder = CGResourceFile.newBuilder(animToCopy
-            .getAnimationResourceFile());
+        CGResourceFile.Builder spriteSheetResourceBuilder = CGResourceFile.newBuilder(animToCopy.getSpritesheetFile());
 
         /*
          * If sprite sheet path is null, then most likely fixture file will also
@@ -122,7 +121,7 @@ public class MoveEntityAction implements IObjectActionDelegate {
         }
 
         CGEntityAnimation finalAnimation = newEntityBuilder.getAnimationsBuilder(i)
-            .setAnimationResourceFile(spriteSheetResourceBuilder.build())
+            .setSpritesheetFile(spriteSheetResourceBuilder.build())
             .setFixtureFile(fixtureResourceBuilder.build()).build();
 
         newEntityBuilder.setAnimations(i, finalAnimation);
