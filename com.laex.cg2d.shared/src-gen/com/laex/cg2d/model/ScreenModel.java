@@ -9164,53 +9164,27 @@ public final class ScreenModel {
   public interface CGEntitySpritesheetItemOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional float x = 1;
+    // optional .com.laex.cg2d.model.CGBounds extractBounds = 1;
     /**
-     * <code>optional float x = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
      */
-    boolean hasX();
+    boolean hasExtractBounds();
     /**
-     * <code>optional float x = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
      */
-    float getX();
+    com.laex.cg2d.model.ScreenModel.CGBounds getExtractBounds();
+    /**
+     * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
+     */
+    com.laex.cg2d.model.ScreenModel.CGBoundsOrBuilder getExtractBoundsOrBuilder();
 
-    // optional float y = 2;
+    // optional int32 frameIndex = 2;
     /**
-     * <code>optional float y = 2;</code>
-     */
-    boolean hasY();
-    /**
-     * <code>optional float y = 2;</code>
-     */
-    float getY();
-
-    // optional float w = 3;
-    /**
-     * <code>optional float w = 3;</code>
-     */
-    boolean hasW();
-    /**
-     * <code>optional float w = 3;</code>
-     */
-    float getW();
-
-    // optional float h = 4;
-    /**
-     * <code>optional float h = 4;</code>
-     */
-    boolean hasH();
-    /**
-     * <code>optional float h = 4;</code>
-     */
-    float getH();
-
-    // optional int32 frameIndex = 5;
-    /**
-     * <code>optional int32 frameIndex = 5;</code>
+     * <code>optional int32 frameIndex = 2;</code>
      */
     boolean hasFrameIndex();
     /**
-     * <code>optional int32 frameIndex = 5;</code>
+     * <code>optional int32 frameIndex = 2;</code>
      */
     int getFrameIndex();
   }
@@ -9265,28 +9239,21 @@ public final class ScreenModel {
               }
               break;
             }
-            case 13: {
+            case 10: {
+              com.laex.cg2d.model.ScreenModel.CGBounds.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = extractBounds_.toBuilder();
+              }
+              extractBounds_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGBounds.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(extractBounds_);
+                extractBounds_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000001;
-              x_ = input.readFloat();
               break;
             }
-            case 21: {
+            case 16: {
               bitField0_ |= 0x00000002;
-              y_ = input.readFloat();
-              break;
-            }
-            case 29: {
-              bitField0_ |= 0x00000004;
-              w_ = input.readFloat();
-              break;
-            }
-            case 37: {
-              bitField0_ |= 0x00000008;
-              h_ = input.readFloat();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
               frameIndex_ = input.readInt32();
               break;
             }
@@ -9330,91 +9297,46 @@ public final class ScreenModel {
     }
 
     private int bitField0_;
-    // optional float x = 1;
-    public static final int X_FIELD_NUMBER = 1;
-    private float x_;
+    // optional .com.laex.cg2d.model.CGBounds extractBounds = 1;
+    public static final int EXTRACTBOUNDS_FIELD_NUMBER = 1;
+    private com.laex.cg2d.model.ScreenModel.CGBounds extractBounds_;
     /**
-     * <code>optional float x = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
      */
-    public boolean hasX() {
+    public boolean hasExtractBounds() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional float x = 1;</code>
+     * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
      */
-    public float getX() {
-      return x_;
+    public com.laex.cg2d.model.ScreenModel.CGBounds getExtractBounds() {
+      return extractBounds_;
+    }
+    /**
+     * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
+     */
+    public com.laex.cg2d.model.ScreenModel.CGBoundsOrBuilder getExtractBoundsOrBuilder() {
+      return extractBounds_;
     }
 
-    // optional float y = 2;
-    public static final int Y_FIELD_NUMBER = 2;
-    private float y_;
+    // optional int32 frameIndex = 2;
+    public static final int FRAMEINDEX_FIELD_NUMBER = 2;
+    private int frameIndex_;
     /**
-     * <code>optional float y = 2;</code>
+     * <code>optional int32 frameIndex = 2;</code>
      */
-    public boolean hasY() {
+    public boolean hasFrameIndex() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional float y = 2;</code>
-     */
-    public float getY() {
-      return y_;
-    }
-
-    // optional float w = 3;
-    public static final int W_FIELD_NUMBER = 3;
-    private float w_;
-    /**
-     * <code>optional float w = 3;</code>
-     */
-    public boolean hasW() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional float w = 3;</code>
-     */
-    public float getW() {
-      return w_;
-    }
-
-    // optional float h = 4;
-    public static final int H_FIELD_NUMBER = 4;
-    private float h_;
-    /**
-     * <code>optional float h = 4;</code>
-     */
-    public boolean hasH() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional float h = 4;</code>
-     */
-    public float getH() {
-      return h_;
-    }
-
-    // optional int32 frameIndex = 5;
-    public static final int FRAMEINDEX_FIELD_NUMBER = 5;
-    private int frameIndex_;
-    /**
-     * <code>optional int32 frameIndex = 5;</code>
-     */
-    public boolean hasFrameIndex() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 frameIndex = 5;</code>
+     * <code>optional int32 frameIndex = 2;</code>
      */
     public int getFrameIndex() {
       return frameIndex_;
     }
 
     private void initFields() {
-      x_ = 0F;
-      y_ = 0F;
-      w_ = 0F;
-      h_ = 0F;
+      extractBounds_ = com.laex.cg2d.model.ScreenModel.CGBounds.getDefaultInstance();
       frameIndex_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -9430,19 +9352,10 @@ public final class ScreenModel {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeFloat(1, x_);
+        output.writeMessage(1, extractBounds_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeFloat(2, y_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeFloat(3, w_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeFloat(4, h_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, frameIndex_);
+        output.writeInt32(2, frameIndex_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -9455,23 +9368,11 @@ public final class ScreenModel {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(1, x_);
+          .computeMessageSize(1, extractBounds_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, y_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, w_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, h_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, frameIndex_);
+          .computeInt32Size(2, frameIndex_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9581,6 +9482,7 @@ public final class ScreenModel {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getExtractBoundsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -9589,16 +9491,14 @@ public final class ScreenModel {
 
       public Builder clear() {
         super.clear();
-        x_ = 0F;
+        if (extractBoundsBuilder_ == null) {
+          extractBounds_ = com.laex.cg2d.model.ScreenModel.CGBounds.getDefaultInstance();
+        } else {
+          extractBoundsBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
-        y_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        w_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        h_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000008);
         frameIndex_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -9630,21 +9530,13 @@ public final class ScreenModel {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.x_ = x_;
+        if (extractBoundsBuilder_ == null) {
+          result.extractBounds_ = extractBounds_;
+        } else {
+          result.extractBounds_ = extractBoundsBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
-        }
-        result.y_ = y_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.w_ = w_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.h_ = h_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
         }
         result.frameIndex_ = frameIndex_;
         result.bitField0_ = to_bitField0_;
@@ -9663,17 +9555,8 @@ public final class ScreenModel {
 
       public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGEntitySpritesheetItem other) {
         if (other == com.laex.cg2d.model.ScreenModel.CGEntitySpritesheetItem.getDefaultInstance()) return this;
-        if (other.hasX()) {
-          setX(other.getX());
-        }
-        if (other.hasY()) {
-          setY(other.getY());
-        }
-        if (other.hasW()) {
-          setW(other.getW());
-        }
-        if (other.hasH()) {
-          setH(other.getH());
+        if (other.hasExtractBounds()) {
+          mergeExtractBounds(other.getExtractBounds());
         }
         if (other.hasFrameIndex()) {
           setFrameIndex(other.getFrameIndex());
@@ -9705,166 +9588,151 @@ public final class ScreenModel {
       }
       private int bitField0_;
 
-      // optional float x = 1;
-      private float x_ ;
+      // optional .com.laex.cg2d.model.CGBounds extractBounds = 1;
+      private com.laex.cg2d.model.ScreenModel.CGBounds extractBounds_ = com.laex.cg2d.model.ScreenModel.CGBounds.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.model.ScreenModel.CGBounds, com.laex.cg2d.model.ScreenModel.CGBounds.Builder, com.laex.cg2d.model.ScreenModel.CGBoundsOrBuilder> extractBoundsBuilder_;
       /**
-       * <code>optional float x = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
        */
-      public boolean hasX() {
+      public boolean hasExtractBounds() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional float x = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
        */
-      public float getX() {
-        return x_;
+      public com.laex.cg2d.model.ScreenModel.CGBounds getExtractBounds() {
+        if (extractBoundsBuilder_ == null) {
+          return extractBounds_;
+        } else {
+          return extractBoundsBuilder_.getMessage();
+        }
       }
       /**
-       * <code>optional float x = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
        */
-      public Builder setX(float value) {
+      public Builder setExtractBounds(com.laex.cg2d.model.ScreenModel.CGBounds value) {
+        if (extractBoundsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          extractBounds_ = value;
+          onChanged();
+        } else {
+          extractBoundsBuilder_.setMessage(value);
+        }
         bitField0_ |= 0x00000001;
-        x_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional float x = 1;</code>
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
        */
-      public Builder clearX() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        x_ = 0F;
-        onChanged();
+      public Builder setExtractBounds(
+          com.laex.cg2d.model.ScreenModel.CGBounds.Builder builderForValue) {
+        if (extractBoundsBuilder_ == null) {
+          extractBounds_ = builderForValue.build();
+          onChanged();
+        } else {
+          extractBoundsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
         return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
+       */
+      public Builder mergeExtractBounds(com.laex.cg2d.model.ScreenModel.CGBounds value) {
+        if (extractBoundsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              extractBounds_ != com.laex.cg2d.model.ScreenModel.CGBounds.getDefaultInstance()) {
+            extractBounds_ =
+              com.laex.cg2d.model.ScreenModel.CGBounds.newBuilder(extractBounds_).mergeFrom(value).buildPartial();
+          } else {
+            extractBounds_ = value;
+          }
+          onChanged();
+        } else {
+          extractBoundsBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
+       */
+      public Builder clearExtractBounds() {
+        if (extractBoundsBuilder_ == null) {
+          extractBounds_ = com.laex.cg2d.model.ScreenModel.CGBounds.getDefaultInstance();
+          onChanged();
+        } else {
+          extractBoundsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGBounds.Builder getExtractBoundsBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getExtractBoundsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGBoundsOrBuilder getExtractBoundsOrBuilder() {
+        if (extractBoundsBuilder_ != null) {
+          return extractBoundsBuilder_.getMessageOrBuilder();
+        } else {
+          return extractBounds_;
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGBounds extractBounds = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.model.ScreenModel.CGBounds, com.laex.cg2d.model.ScreenModel.CGBounds.Builder, com.laex.cg2d.model.ScreenModel.CGBoundsOrBuilder> 
+          getExtractBoundsFieldBuilder() {
+        if (extractBoundsBuilder_ == null) {
+          extractBoundsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.laex.cg2d.model.ScreenModel.CGBounds, com.laex.cg2d.model.ScreenModel.CGBounds.Builder, com.laex.cg2d.model.ScreenModel.CGBoundsOrBuilder>(
+                  extractBounds_,
+                  getParentForChildren(),
+                  isClean());
+          extractBounds_ = null;
+        }
+        return extractBoundsBuilder_;
       }
 
-      // optional float y = 2;
-      private float y_ ;
+      // optional int32 frameIndex = 2;
+      private int frameIndex_ ;
       /**
-       * <code>optional float y = 2;</code>
+       * <code>optional int32 frameIndex = 2;</code>
        */
-      public boolean hasY() {
+      public boolean hasFrameIndex() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional float y = 2;</code>
-       */
-      public float getY() {
-        return y_;
-      }
-      /**
-       * <code>optional float y = 2;</code>
-       */
-      public Builder setY(float value) {
-        bitField0_ |= 0x00000002;
-        y_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float y = 2;</code>
-       */
-      public Builder clearY() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        y_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float w = 3;
-      private float w_ ;
-      /**
-       * <code>optional float w = 3;</code>
-       */
-      public boolean hasW() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional float w = 3;</code>
-       */
-      public float getW() {
-        return w_;
-      }
-      /**
-       * <code>optional float w = 3;</code>
-       */
-      public Builder setW(float value) {
-        bitField0_ |= 0x00000004;
-        w_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float w = 3;</code>
-       */
-      public Builder clearW() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        w_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float h = 4;
-      private float h_ ;
-      /**
-       * <code>optional float h = 4;</code>
-       */
-      public boolean hasH() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional float h = 4;</code>
-       */
-      public float getH() {
-        return h_;
-      }
-      /**
-       * <code>optional float h = 4;</code>
-       */
-      public Builder setH(float value) {
-        bitField0_ |= 0x00000008;
-        h_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float h = 4;</code>
-       */
-      public Builder clearH() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        h_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 frameIndex = 5;
-      private int frameIndex_ ;
-      /**
-       * <code>optional int32 frameIndex = 5;</code>
-       */
-      public boolean hasFrameIndex() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 frameIndex = 5;</code>
+       * <code>optional int32 frameIndex = 2;</code>
        */
       public int getFrameIndex() {
         return frameIndex_;
       }
       /**
-       * <code>optional int32 frameIndex = 5;</code>
+       * <code>optional int32 frameIndex = 2;</code>
        */
       public Builder setFrameIndex(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000002;
         frameIndex_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 frameIndex = 5;</code>
+       * <code>optional int32 frameIndex = 2;</code>
        */
       public Builder clearFrameIndex() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000002);
         frameIndex_ = 0;
         onChanged();
         return this;
@@ -23605,84 +23473,84 @@ public final class ScreenModel {
       "rce\030\002 \001(\002\022\021\n\tmaxTorque\030\003 \001(\002\"*\n\016CGWeldJo" +
       "intDef\022\030\n\020collideConnected\030\001 \001(\010\"D\n\016CGRe" +
       "sourceFile\022\024\n\014resourceFile\030\001 \001(\t\022\034\n\024reso" +
-      "urceFileAbsolute\030\002 \001(\t\"Y\n\027CGEntitySprite" +
-      "sheetItem\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001w\030\003 \001" +
-      "(\002\022\t\n\001h\030\004 \001(\002\022\022\n\nframeIndex\030\005 \001(\005\"\326\003\n\021CG" +
-      "EntityAnimation\022\025\n\ranimationName\030\001 \001(\t\022\031" +
-      "\n\021animationDuration\030\002 \001(\002\022\030\n\020defaultAnim" +
-      "ation\030\003 \001(\010\022A\n\rcollisionType\030\004 \001(\0162*.com",
-      ".laex.cg2d.model.CGEntityCollisionType\022<" +
-      "\n\017spritesheetFile\030\005 \001(\0132#.com.laex.cg2d." +
-      "model.CGResourceFile\022@\n\023spritesheetJsonF" +
-      "ile\030\006 \001(\0132#.com.laex.cg2d.model.CGResour" +
-      "ceFile\0228\n\013fixtureFile\030\007 \001(\0132#.com.laex.c" +
-      "g2d.model.CGResourceFile\0220\n\010vertices\030\010 \003" +
-      "(\0132\036.com.laex.cg2d.model.CGVector2\022F\n\020sp" +
-      "ritesheetItems\030\t \003(\0132,.com.laex.cg2d.mod" +
-      "el.CGEntitySpritesheetItem\"\\\n\010CGEntity\022\024" +
-      "\n\014internalName\030\001 \001(\t\022:\n\nanimations\030\002 \003(\013",
-      "2&.com.laex.cg2d.model.CGEntityAnimation" +
-      "\"?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\r\n\005wi" +
-      "dth\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n\tCGVector2\022\t" +
-      "\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\203\003\n\tCGBodyDef\022\016\n\006ac" +
-      "tive\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001(\010\022\r\n\005angle\030" +
-      "\003 \001(\002\022\026\n\016angularDamping\030\004 \001(\002\022\027\n\017angular" +
-      "Velocity\030\005 \001(\002\022\r\n\005awake\030\006 \001(\010\022\016\n\006bullet\030" +
-      "\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010\022\026\n\016intertia" +
-      "lScale\030\t \001(\002\022\025\n\rlinearDamping\030\n \001(\002\022\024\n\014g" +
-      "ravityScale\030\013 \001(\002\0226\n\016linearVelocity\030\014 \001(",
-      "\0132\036.com.laex.cg2d.model.CGVector2\022-\n\004typ" +
-      "e\030\r \001(\0162\037.com.laex.cg2d.model.CGBodyType" +
-      "\0220\n\010position\030\016 \001(\0132\036.com.laex.cg2d.model" +
-      ".CGVector2\"F\n\010CGFilter\022\024\n\014categoryBits\030\001" +
-      " \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngroupIndex\030\003 \001" +
-      "(\005\"\205\001\n\014CGFixtureDef\022\017\n\007density\030\001 \001(\002\022\020\n\010" +
-      "friction\030\002 \001(\002\022\023\n\013restitution\030\003 \001(\002\022\016\n\006s" +
-      "ensor\030\004 \001(\010\022-\n\006filter\030\005 \001(\0132\035.com.laex.c" +
-      "g2d.model.CGFilter\"\321\003\n\007CGShape\022\n\n\002id\030\001 \001" +
-      "(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nb",
-      "ackground\030\004 \001(\010\022C\n\026backgroundResourceFil" +
-      "e\030\005 \001(\0132#.com.laex.cg2d.model.CGResource" +
-      "File\022?\n\017editorShapeType\030\006 \001(\0162&.com.laex" +
-      ".cg2d.model.CGEditorShapeType\022-\n\006bounds\030" +
-      "\007 \001(\0132\035.com.laex.cg2d.model.CGBounds\022/\n\007" +
-      "bodyDef\030\010 \001(\0132\036.com.laex.cg2d.model.CGBo" +
-      "dyDef\0225\n\nfixtureDef\030\t \001(\0132!.com.laex.cg2" +
-      "d.model.CGFixtureDef\022,\n\006joints\030\n \003(\0132\034.c" +
-      "om.laex.cg2d.model.CGJoint\022:\n\rentityRefF" +
-      "ile\030\013 \001(\0132#.com.laex.cg2d.model.CGResour",
-      "ceFile\"q\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 " +
-      "\001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022+\n\005" +
-      "shape\030\005 \003(\0132\034.com.laex.cg2d.model.CGShap" +
-      "e\"\274\005\n\023CGScreenPreferences\022W\n\016debugDrawPr" +
-      "efs\030\001 \001(\0132?.com.laex.cg2d.model.CGScreen" +
-      "Preferences.CGDebugDrawPreferences\022O\n\nwo" +
-      "rldPrefs\030\002 \001(\0132;.com.laex.cg2d.model.CGS" +
-      "creenPreferences.CGWorldPreferences\022M\n\tc" +
-      "ardPrefs\030\003 \001(\0132:.com.laex.cg2d.model.CGS" +
-      "creenPreferences.CGCardPreferences\032\266\001\n\026C",
-      "GDebugDrawPreferences\022\022\n\ndrawBodies\030\001 \001(" +
-      "\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022" +
-      "\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n\021installMo" +
-      "useJoint\030\005 \001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n" +
-      "\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWorldPreferenc" +
-      "es\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velocityIteratio" +
-      "ns\030\002 \001(\005\022\032\n\022positionIterations\030\003 \001(\005\022\020\n\010" +
-      "timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010grav" +
-      "ityY\030\006 \001(\002\032\\\n\021CGCardPreferences\022\017\n\007cardN" +
-      "oX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003",
-      " \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJointType" +
-      "\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC" +
-      "\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022" +
-      "\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTI" +
-      "ON\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollisionType\022" +
-      "\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM" +
-      "\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATI" +
-      "C\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorShapeType\022\027" +
-      "\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_" +
-      "BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_",
-      "SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014E" +
-      "NTITY_SHAPE\020\006"
+      "urceFileAbsolute\030\002 \001(\t\"c\n\027CGEntitySprite" +
+      "sheetItem\0224\n\rextractBounds\030\001 \001(\0132\035.com.l" +
+      "aex.cg2d.model.CGBounds\022\022\n\nframeIndex\030\002 " +
+      "\001(\005\"\326\003\n\021CGEntityAnimation\022\025\n\ranimationNa" +
+      "me\030\001 \001(\t\022\031\n\021animationDuration\030\002 \001(\002\022\030\n\020d" +
+      "efaultAnimation\030\003 \001(\010\022A\n\rcollisionType\030\004",
+      " \001(\0162*.com.laex.cg2d.model.CGEntityColli" +
+      "sionType\022<\n\017spritesheetFile\030\005 \001(\0132#.com." +
+      "laex.cg2d.model.CGResourceFile\022@\n\023sprite" +
+      "sheetJsonFile\030\006 \001(\0132#.com.laex.cg2d.mode" +
+      "l.CGResourceFile\0228\n\013fixtureFile\030\007 \001(\0132#." +
+      "com.laex.cg2d.model.CGResourceFile\0220\n\010ve" +
+      "rtices\030\010 \003(\0132\036.com.laex.cg2d.model.CGVec" +
+      "tor2\022F\n\020spritesheetItems\030\t \003(\0132,.com.lae" +
+      "x.cg2d.model.CGEntitySpritesheetItem\"\\\n\010" +
+      "CGEntity\022\024\n\014internalName\030\001 \001(\t\022:\n\nanimat",
+      "ions\030\002 \003(\0132&.com.laex.cg2d.model.CGEntit" +
+      "yAnimation\"?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002" +
+      " \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n\tC" +
+      "GVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\203\003\n\tCGBod" +
+      "yDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001(\010" +
+      "\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 \001(\002\022" +
+      "\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 \001(\010\022" +
+      "\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010\022\026" +
+      "\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDamping\030" +
+      "\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linearVel",
+      "ocity\030\014 \001(\0132\036.com.laex.cg2d.model.CGVect" +
+      "or2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.model." +
+      "CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.laex." +
+      "cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014cate" +
+      "goryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngrou" +
+      "pIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007density" +
+      "\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitution\030" +
+      "\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001(\0132\035." +
+      "com.laex.cg2d.model.CGFilter\"\321\003\n\007CGShape" +
+      "\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locked\030",
+      "\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgroundR" +
+      "esourceFile\030\005 \001(\0132#.com.laex.cg2d.model." +
+      "CGResourceFile\022?\n\017editorShapeType\030\006 \001(\0162" +
+      "&.com.laex.cg2d.model.CGEditorShapeType\022" +
+      "-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.model.CG" +
+      "Bounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.cg2d." +
+      "model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132!.co" +
+      "m.laex.cg2d.model.CGFixtureDef\022,\n\006joints" +
+      "\030\n \003(\0132\034.com.laex.cg2d.model.CGJoint\022:\n\r" +
+      "entityRefFile\030\013 \001(\0132#.com.laex.cg2d.mode",
+      "l.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022" +
+      "\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked" +
+      "\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d.mo" +
+      "del.CGShape\"\274\005\n\023CGScreenPreferences\022W\n\016d" +
+      "ebugDrawPrefs\030\001 \001(\0132?.com.laex.cg2d.mode" +
+      "l.CGScreenPreferences.CGDebugDrawPrefere" +
+      "nces\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex.cg2d" +
+      ".model.CGScreenPreferences.CGWorldPrefer" +
+      "ences\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.cg2d" +
+      ".model.CGScreenPreferences.CGCardPrefere",
+      "nces\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndrawB" +
+      "odies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawA" +
+      "ABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n" +
+      "\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugDat" +
+      "a\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWorl" +
+      "dPreferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022veloci" +
+      "tyIterations\030\002 \001(\005\022\032\n\022positionIterations" +
+      "\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001" +
+      "(\002\022\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCardPreference" +
+      "s\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tc",
+      "ardWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013C" +
+      "GJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n" +
+      "\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t" +
+      "\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t" +
+      "\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityColl" +
+      "isionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002" +
+      "\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r" +
+      "\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorS" +
+      "hapeType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIM" +
+      "PLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022",
+      "\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SH" +
+      "APE\020\005\022\020\n\014ENTITY_SHAPE\020\006"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23748,7 +23616,7 @@ public final class ScreenModel {
           internal_static_com_laex_cg2d_model_CGEntitySpritesheetItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGEntitySpritesheetItem_descriptor,
-              new java.lang.String[] { "X", "Y", "W", "H", "FrameIndex", });
+              new java.lang.String[] { "ExtractBounds", "FrameIndex", });
           internal_static_com_laex_cg2d_model_CGEntityAnimation_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_com_laex_cg2d_model_CGEntityAnimation_fieldAccessorTable = new

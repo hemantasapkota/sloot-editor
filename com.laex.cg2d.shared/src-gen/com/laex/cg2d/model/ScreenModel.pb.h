@@ -1356,64 +1356,36 @@ class CGEntitySpritesheetItem : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional float x = 1;
-  inline bool has_x() const;
-  inline void clear_x();
-  static const int kXFieldNumber = 1;
-  inline float x() const;
-  inline void set_x(float value);
+  // optional .com.laex.cg2d.model.CGBounds extractBounds = 1;
+  inline bool has_extractbounds() const;
+  inline void clear_extractbounds();
+  static const int kExtractBoundsFieldNumber = 1;
+  inline const ::com::laex::cg2d::model::CGBounds& extractbounds() const;
+  inline ::com::laex::cg2d::model::CGBounds* mutable_extractbounds();
+  inline ::com::laex::cg2d::model::CGBounds* release_extractbounds();
+  inline void set_allocated_extractbounds(::com::laex::cg2d::model::CGBounds* extractbounds);
 
-  // optional float y = 2;
-  inline bool has_y() const;
-  inline void clear_y();
-  static const int kYFieldNumber = 2;
-  inline float y() const;
-  inline void set_y(float value);
-
-  // optional float w = 3;
-  inline bool has_w() const;
-  inline void clear_w();
-  static const int kWFieldNumber = 3;
-  inline float w() const;
-  inline void set_w(float value);
-
-  // optional float h = 4;
-  inline bool has_h() const;
-  inline void clear_h();
-  static const int kHFieldNumber = 4;
-  inline float h() const;
-  inline void set_h(float value);
-
-  // optional int32 frameIndex = 5;
+  // optional int32 frameIndex = 2;
   inline bool has_frameindex() const;
   inline void clear_frameindex();
-  static const int kFrameIndexFieldNumber = 5;
+  static const int kFrameIndexFieldNumber = 2;
   inline ::google::protobuf::int32 frameindex() const;
   inline void set_frameindex(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGEntitySpritesheetItem)
  private:
-  inline void set_has_x();
-  inline void clear_has_x();
-  inline void set_has_y();
-  inline void clear_has_y();
-  inline void set_has_w();
-  inline void clear_has_w();
-  inline void set_has_h();
-  inline void clear_has_h();
+  inline void set_has_extractbounds();
+  inline void clear_has_extractbounds();
   inline void set_has_frameindex();
   inline void clear_has_frameindex();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  float x_;
-  float y_;
-  float w_;
-  float h_;
+  ::com::laex::cg2d::model::CGBounds* extractbounds_;
   ::google::protobuf::int32 frameindex_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
@@ -4612,103 +4584,53 @@ inline void CGResourceFile::set_allocated_resourcefileabsolute(::std::string* re
 
 // CGEntitySpritesheetItem
 
-// optional float x = 1;
-inline bool CGEntitySpritesheetItem::has_x() const {
+// optional .com.laex.cg2d.model.CGBounds extractBounds = 1;
+inline bool CGEntitySpritesheetItem::has_extractbounds() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void CGEntitySpritesheetItem::set_has_x() {
+inline void CGEntitySpritesheetItem::set_has_extractbounds() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void CGEntitySpritesheetItem::clear_has_x() {
+inline void CGEntitySpritesheetItem::clear_has_extractbounds() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void CGEntitySpritesheetItem::clear_x() {
-  x_ = 0;
-  clear_has_x();
+inline void CGEntitySpritesheetItem::clear_extractbounds() {
+  if (extractbounds_ != NULL) extractbounds_->::com::laex::cg2d::model::CGBounds::Clear();
+  clear_has_extractbounds();
 }
-inline float CGEntitySpritesheetItem::x() const {
-  return x_;
+inline const ::com::laex::cg2d::model::CGBounds& CGEntitySpritesheetItem::extractbounds() const {
+  return extractbounds_ != NULL ? *extractbounds_ : *default_instance_->extractbounds_;
 }
-inline void CGEntitySpritesheetItem::set_x(float value) {
-  set_has_x();
-  x_ = value;
+inline ::com::laex::cg2d::model::CGBounds* CGEntitySpritesheetItem::mutable_extractbounds() {
+  set_has_extractbounds();
+  if (extractbounds_ == NULL) extractbounds_ = new ::com::laex::cg2d::model::CGBounds;
+  return extractbounds_;
+}
+inline ::com::laex::cg2d::model::CGBounds* CGEntitySpritesheetItem::release_extractbounds() {
+  clear_has_extractbounds();
+  ::com::laex::cg2d::model::CGBounds* temp = extractbounds_;
+  extractbounds_ = NULL;
+  return temp;
+}
+inline void CGEntitySpritesheetItem::set_allocated_extractbounds(::com::laex::cg2d::model::CGBounds* extractbounds) {
+  delete extractbounds_;
+  extractbounds_ = extractbounds;
+  if (extractbounds) {
+    set_has_extractbounds();
+  } else {
+    clear_has_extractbounds();
+  }
 }
 
-// optional float y = 2;
-inline bool CGEntitySpritesheetItem::has_y() const {
+// optional int32 frameIndex = 2;
+inline bool CGEntitySpritesheetItem::has_frameindex() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CGEntitySpritesheetItem::set_has_y() {
+inline void CGEntitySpritesheetItem::set_has_frameindex() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CGEntitySpritesheetItem::clear_has_y() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void CGEntitySpritesheetItem::clear_y() {
-  y_ = 0;
-  clear_has_y();
-}
-inline float CGEntitySpritesheetItem::y() const {
-  return y_;
-}
-inline void CGEntitySpritesheetItem::set_y(float value) {
-  set_has_y();
-  y_ = value;
-}
-
-// optional float w = 3;
-inline bool CGEntitySpritesheetItem::has_w() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void CGEntitySpritesheetItem::set_has_w() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void CGEntitySpritesheetItem::clear_has_w() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void CGEntitySpritesheetItem::clear_w() {
-  w_ = 0;
-  clear_has_w();
-}
-inline float CGEntitySpritesheetItem::w() const {
-  return w_;
-}
-inline void CGEntitySpritesheetItem::set_w(float value) {
-  set_has_w();
-  w_ = value;
-}
-
-// optional float h = 4;
-inline bool CGEntitySpritesheetItem::has_h() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void CGEntitySpritesheetItem::set_has_h() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void CGEntitySpritesheetItem::clear_has_h() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void CGEntitySpritesheetItem::clear_h() {
-  h_ = 0;
-  clear_has_h();
-}
-inline float CGEntitySpritesheetItem::h() const {
-  return h_;
-}
-inline void CGEntitySpritesheetItem::set_h(float value) {
-  set_has_h();
-  h_ = value;
-}
-
-// optional int32 frameIndex = 5;
-inline bool CGEntitySpritesheetItem::has_frameindex() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void CGEntitySpritesheetItem::set_has_frameindex() {
-  _has_bits_[0] |= 0x00000010u;
-}
 inline void CGEntitySpritesheetItem::clear_has_frameindex() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void CGEntitySpritesheetItem::clear_frameindex() {
   frameindex_ = 0;
