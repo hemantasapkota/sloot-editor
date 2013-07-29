@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
 import org.eclipse.gef.palette.MarqueeToolEntry;
@@ -30,10 +31,8 @@ import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreationFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.IEditorInput;
 
 import com.badlogic.gdx.physics.box2d.JointDef.JointType;
-import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.EditorShapeType;
@@ -71,8 +70,8 @@ public final class ScreenEditorPaletteFactory {
    * @throws CoreException
    *           the core exception
    */
-  public static void createEntitesPaletteItems(final IEditorInput edInp) throws IOException, CoreException {
-    loadEntities(edInp);
+  public static void createEntitesPaletteItems(final IFolder entitiesFoldr, final IProgressMonitor monitor) throws IOException, CoreException {
+    loadEntities(entitiesFoldr, monitor);
   }
 
   /**
@@ -97,7 +96,7 @@ public final class ScreenEditorPaletteFactory {
     }
 
     String name = EntitiesUtil.getInternalName(res.getName());
-    
+
     /* Store this entity in the map. */
     Activator.getDefault().getEntitiesMap().put(res.getFullPath().toString(), e);
 
@@ -144,24 +143,23 @@ public final class ScreenEditorPaletteFactory {
    * @throws CoreException
    *           the core exception
    */
-  private static void loadEntities(final IEditorInput edInp) throws IOException, CoreException {
+  private static void loadEntities(final IFolder entitiesFoldr, final IProgressMonitor monitor) throws IOException, CoreException {
     for (int i = 0; i < entitiesDrawer.getChildren().size(); i++) {
       entitiesDrawer.remove((PaletteEntry) entitiesDrawer.getChildren().get(i));
     }
     entitiesDrawer.getChildren().clear();
-    
-    ICGCProject b2Prj = CGCProject.getInstance();
-    IFolder folder = b2Prj.getEntititesFolder(edInp);
 
     //
-    folder.accept(new IResourceVisitor() {
+    entitiesFoldr.accept(new IResourceVisitor() {
       @Override
       public boolean visit(IResource re) throws CoreException {
 
         if (re.getName().endsWith(ICGCProject.ENTITIES_EXTENSION)) {
 
           try {
+            monitor.subTask("Loading " + re.getName());
             loadNewEntity(re);
+            monitor.worked(1);
           } catch (IOException e) {
             e.printStackTrace();
           }
