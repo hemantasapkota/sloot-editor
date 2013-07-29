@@ -95,21 +95,24 @@ message CGResourceFile {
 	optional string resourceFileAbsolute = 2;
 }
 
+message CGEntitySpritesheetItem {
+	optional float x = 1;
+	optional float y = 2;
+	optional float w = 3;
+	optional float h = 4;
+	optional int32 frameIndex = 5;
+}
+
 message CGEntityAnimation {
 	optional string animationName = 1;
-	optional CGResourceFile animationResourceFile = 2;
-	optional CGResourceFile fixtureFile = 3;
-	optional float animationDuration = 4;
-	optional bool defaultAnimation = 5;
-	optional int32 cols = 6;
-	optional int32 rows = 7;
-	optional CGEntityCollisionType collisionType = 8;
-	optional int32 shpX = 9;
-	optional int32 shpY = 10;
-	optional int32 shpWidth = 11;
-	optional int32 shpHeight = 12;
-	repeated CGVector2 vertices = 13;
-	repeated int32 frameIndices = 14;
+	optional float animationDuration = 2;
+	optional bool defaultAnimation = 3;
+	optional CGEntityCollisionType collisionType = 4;
+	optional CGResourceFile spritesheetFile = 5;
+	optional CGResourceFile spritesheetJsonFile = 6;
+	optional CGResourceFile fixtureFile = 7;
+	repeated CGVector2 vertices = 8;
+	repeated CGEntitySpritesheetItem spritesheetItems = 9;
 }
 
 message CGEntity {
