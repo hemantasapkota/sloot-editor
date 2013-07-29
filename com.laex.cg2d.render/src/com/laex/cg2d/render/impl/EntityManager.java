@@ -25,6 +25,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -37,8 +38,10 @@ import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
 import com.laex.cg2d.model.ScreenModel.CGEntityCollisionType;
+import com.laex.cg2d.model.ScreenModel.CGEntitySpritesheetItem;
 import com.laex.cg2d.model.ScreenModel.CGLayer;
 import com.laex.cg2d.model.ScreenModel.CGShape;
+import com.laex.cg2d.model.ScreenModel.CGVector2;
 import com.laex.cg2d.render.BodyVisitor;
 import com.laex.cg2d.render.ScreenScaffold;
 import com.laex.cg2d.render.util.RunnerUtil;
@@ -175,44 +178,27 @@ public class EntityManager implements ScreenScaffold {
     // image & collision shape defined. Ignore this and do not create bodies
     // or shape for
     // this kind of object.
-    if (ea.getAnimationResourceFile().getResourceFileAbsolute().trim().isEmpty()) {
+    if (ea.getSpritesheetFile().getResourceFileAbsolute().trim().isEmpty()) {
       manipulator.world().destroyBody(b);
       return null;
     }
 
-    FileHandle handle = Gdx.files.absolute(ea.getAnimationResourceFile().getResourceFileAbsolute());
+    FileHandle handle = Gdx.files.absolute(ea.getSpritesheetFile().getResourceFileAbsolute());
 
     Texture tex = new Texture(handle);
     tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
-    Animation spriteAnimation = null;
-    if (ea.getCols() / ea.getRows() >= 1) {
-      // create sprite sheet animation
+    Array<TextureRegion> walkFrames = new Array<TextureRegion>();
 
-      TextureRegion[][] tmp = TextureRegion.split(tex, tex.getWidth() / ea.getCols(), tex.getHeight() / ea.getRows());
-      TextureRegion[] walkFrames = new TextureRegion[ea.getCols() * ea.getRows()];
-      int index = 0;
-      for (int i = 0; i < ea.getRows(); i++) {
-        for (int j = 0; j < ea.getCols(); j++) {
-          walkFrames[index++] = tmp[i][j];
-        }
-      }
-
-      Array<TextureRegion> indexedFrames = new Array<TextureRegion>();
-      for (int i : ea.getFrameIndicesList()) {
-        indexedFrames.add(walkFrames[i - 1]);
-      }
-
-      spriteAnimation = new Animation(ea.getAnimationDuration(), indexedFrames);
-      entityToAnimationMap.put(entity, spriteAnimation);
+    for (CGEntitySpritesheetItem cgEi : ea.getSpritesheetItemsList()) {
+      TextureRegion tr = new TextureRegion(tex, (int) cgEi.getX(), (int) cgEi.getY(), (int) cgEi.getW(), (int) cgEi.getH());
+      walkFrames.add(tr);
     }
 
-    Sprite spr = null;
-    if (spriteAnimation == null) {
-      spr = new Sprite(tex);
-    } else {
-      spr = new Sprite(spriteAnimation.getKeyFrame(stateTime, true));
-    }
+    Animation spriteAnimation = new Animation(ea.getAnimationDuration(), walkFrames);
+    entityToAnimationMap.put(entity, spriteAnimation);
+
+    Sprite spr = new Sprite(spriteAnimation.getKeyFrame(stateTime, true));
 
     // Set the position & size
     float x = shape.getBounds().getX();
@@ -310,10 +296,8 @@ public class EntityManager implements ScreenScaffold {
           spr.setRotation(b.getAngle() * MathUtils.radiansToDegrees);
 
           Animation anim = entityToAnimationMap.get(shapeToEntityMap.get(shape));
-          if (anim != null) {
-            TextureRegion tr = anim.getKeyFrame(stateTime, true);
-            spr.setRegion(tr);
-          }
+          TextureRegion tr = anim.getKeyFrame(stateTime, true);
+          spr.setRegion(tr);
           spr.draw(batch);
         }
       }
@@ -408,30 +392,32 @@ public class EntityManager implements ScreenScaffold {
 
       CircleShape circShape = new CircleShape();
 
+      /* Decode x,y, width, height of collision shape from the vertices */
+      CGVector2 v1 = ea.getVertices(0);
+      CGVector2 v2 = ea.getVertices(2);
+      Rectangle r = new Rectangle(v1.getX(), v1.getY(), v2.getX(), v2.getY());
+      r.width = r.width - r.x;
+      r.height = r.height - r.y;
+      
       // this radius is calculated for circle's collision shape data not
       // the sprite width/height data
-      float radius = manipulator.calculateRadiusOfCircleShape(ea.getShpWidth());
+      float radius = manipulator.calculateRadiusOfCircleShape(r.getWidth());
 
       Vector2 cpos = new Vector2();
-      cpos.y = ea.getShpY();
-      cpos.x = ea.getShpX();
+      cpos.y =  r.getY();
+      cpos.x = r.getX();
       cpos = manipulator.screenToWorld(cpos);
 
-      // this formula is too arcane. explain why it is needed and where
-      // did it arise from.
-
-      // float ox = ((((ea.getShpX() + ea.getShpWidth()) / ptmRatio()) /
-      // scaleFactor()) / 2) + (scaleFactor() * radius);
-      // float oy = ((((ea.getShpY() + ea.getShpHeight()) / ptmRatio()) /
-      // scaleFactor()) / 2) + (scaleFactor() * radius);
-
-      // the formulate below was reduced from the above one
-      // float radiusScaled = scaleFactor() * radius;
-
-      float ox = ((5 * (ea.getShpX() + ea.getShpWidth())) / (manipulator.ptmRatio() * manipulator.ptmRatio())) + radius;
-
-      float oy = ((5 * (ea.getShpY() + ea.getShpHeight())) / (manipulator.ptmRatio() * manipulator.ptmRatio()))
-          + radius;
+      /* Calculate origin */
+      int x = (int) r.getX();
+      int y = (int) r.getY();
+      int w = (int) r.getWidth();
+      int h = (int) r.getHeight();
+      
+      float ptmRatioSquared = manipulator.ptmRatio() * manipulator.ptmRatio();
+      float ox = (x + w) / (ptmRatioSquared) + radius;
+      float oy = (y + h) / (ptmRatioSquared) + radius;
+      /* End origin calculatio */
 
       bodyDef.position.set(pos.add(radius, radius));
       b = manipulator.world().createBody(bodyDef);
