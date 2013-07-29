@@ -13,9 +13,6 @@ package com.laex.cg2d.entityeditor.pages;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.DuplicateFormatFlagsException;
-
-import org.eclipse.core.resources.IFile;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -34,10 +31,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.Array;
+import com.laex.cg2d.model.ScreenModel.CGBounds;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
 import com.laex.cg2d.model.ScreenModel.CGEntitySpritesheetItem;
-import com.laex.cg2d.model.model.EntitySpritesheetItem;
 
 /**
  * The Class ExternalAnimationPreview.
@@ -134,7 +131,8 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
 
     Array<TextureRegion> indexedFrames = new Array<TextureRegion>();
     for (CGEntitySpritesheetItem esi : anim.getSpritesheetItemsList()) {
-      TextureRegion tr = new TextureRegion(tex, (int) esi.getX(), (int) esi.getY(), (int) esi.getW(), (int) esi.getH());
+      CGBounds b = esi.getExtractBounds();
+      TextureRegion tr = new TextureRegion(tex, (int) b.getX(), (int) b.getY(), (int) b.getWidth(), (int) b.getHeight());
       indexedFrames.add(tr);
     }
 

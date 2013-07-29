@@ -96,11 +96,8 @@ message CGResourceFile {
 }
 
 message CGEntitySpritesheetItem {
-	optional float x = 1;
-	optional float y = 2;
-	optional float w = 3;
-	optional float h = 4;
-	optional int32 frameIndex = 5;
+	optional CGBounds extractBounds = 1;
+	optional int32 frameIndex = 2;
 }
 
 message CGEntityAnimation {
