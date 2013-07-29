@@ -26,6 +26,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.JointDef;
+import com.badlogic.gdx.physics.box2d.JointEdge;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
@@ -189,7 +190,7 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
    */
   public JointDef initJoints(CGJoint joint, Body bodyA, Body bodyB) {
     JointDef jd = null;
-    
+
     switch (joint.getType()) {
     case DISTANCE:
       jd = ProtoBufTypeConversionUtil.asDistanceJointDef(bodyA, bodyB, joint);
@@ -222,7 +223,6 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     default:
       break;
     }
-    
 
     return jd;
   }
@@ -546,11 +546,12 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
 
           Vector2 positionToCopy = new Vector2(bod.getTransform().getPosition());
           float rotation = bod.getTransform().getRotation();
-
+          
           world.destroyBody(bod);
           entityManager.removeEntity(shape);
-          switchedBody = entityManager.createEntity(shape, animationName);
 
+          switchedBody = entityManager.createEntity(shape, animationName);
+          
           if (switchedBody != null) {
             switchedBody.setTransform(positionToCopy, rotation);
           }
@@ -612,6 +613,15 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     font.setScale(0.1f);
     font.draw(spriteBatch, text, x, y);
     spriteBatch.end();
+  }
+
+  @Override
+  public void destroyJointForEntity(String id) {
+    Body b = getEntityById(id);
+    List<JointEdge> jointList = b.getJointList();
+    for (int i=0; i<jointList.size(); i++) {
+      world.destroyJoint(jointList.get(i).joint);
+    }
   }
 
 }
