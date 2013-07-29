@@ -14,7 +14,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='com/laex/cg2d/model/ScreenModel.proto',
   package='com.laex.cg2d.model',
-  serialized_pb='\n%com/laex/cg2d/model/ScreenModel.proto\x12\x13\x63om.laex.cg2d.model\"|\n\rCGScreenModel\x12=\n\x0bscreenPrefs\x18\x01 \x01(\x0b\x32(.com.laex.cg2d.model.CGScreenPreferences\x12,\n\x06layers\x18\x02 \x03(\x0b\x32\x1c.com.laex.cg2d.model.CGLayer\"\xf4\x04\n\x07\x43GJoint\x12\x15\n\rsourceShapeId\x18\x01 \x01(\t\x12\x15\n\rtargetShapeId\x18\x02 \x01(\t\x12.\n\x04type\x18\x03 \x01(\x0e\x32 .com.laex.cg2d.model.CGJointType\x12\x41\n\x10\x64istanceJointDef\x18\x05 \x01(\x0b\x32\'.com.laex.cg2d.model.CGDistanceJointDef\x12\x41\n\x10revoluteJointDef\x18\x06 \x01(\x0b\x32\'.com.laex.cg2d.model.CGRevoluteJointDef\x12\x43\n\x11prismaticJointDef\x18\x07 \x01(\x0b\x32(.com.laex.cg2d.model.CGPrismaticJointDef\x12=\n\x0epulleyJointDef\x18\x08 \x01(\x0b\x32%.com.laex.cg2d.model.CGPulleyJointDef\x12\x41\n\x10\x66rictionJointDef\x18\t \x01(\x0b\x32\'.com.laex.cg2d.model.CGFrictionJointDef\x12\x39\n\x0cweldJointDef\x18\n \x01(\x0b\x32#.com.laex.cg2d.model.CGWeldJointDef\x12\x34\n\x0clocalAnchorA\x18\x0b \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x34\n\x0clocalAnchorB\x18\x0c \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x17\n\x0fuseLocalAnchors\x18\r \x01(\x08\"X\n\x12\x43GDistanceJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x12\n\nfreqencyHz\x18\x02 \x01(\x02\x12\x14\n\x0c\x64\x61mpingRatio\x18\x03 \x01(\x02\"\xc4\x01\n\x12\x43GRevoluteJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x16\n\x0ereferenceAngle\x18\x02 \x01(\x02\x12\x13\n\x0b\x65nableLimit\x18\x03 \x01(\x08\x12\x12\n\nlowerAngle\x18\x04 \x01(\x02\x12\x12\n\nupperAngle\x18\x05 \x01(\x02\x12\x13\n\x0b\x65nableMotor\x18\x06 \x01(\x08\x12\x12\n\nmotorSpeed\x18\x07 \x01(\x02\x12\x16\n\x0emaxMotorTorque\x18\x08 \x01(\x02\"\xae\x02\n\x13\x43GPrismaticJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12.\n\x06\x61nchor\x18\x02 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12,\n\x04\x61xis\x18\x03 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x16\n\x0ereferenceAngle\x18\x05 \x01(\x02\x12\x13\n\x0b\x65nableLimit\x18\x06 \x01(\x08\x12\x18\n\x10lowerTranslation\x18\x07 \x01(\x02\x12\x18\n\x10upperTranslation\x18\x08 \x01(\x02\x12\x13\n\x0b\x65nableMotor\x18\t \x01(\x08\x12\x15\n\rmaxMotorForce\x18\n \x01(\x02\x12\x12\n\nmotorSpeed\x18\x0b \x01(\x02\"\xa9\x01\n\x10\x43GPulleyJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x35\n\rgroundAnchorA\x18\x02 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x35\n\rgroundAnchorB\x18\x03 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\r\n\x05ratio\x18\x04 \x01(\x02\"S\n\x12\x43GFrictionJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x10\n\x08maxForce\x18\x02 \x01(\x02\x12\x11\n\tmaxTorque\x18\x03 \x01(\x02\"*\n\x0e\x43GWeldJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\"D\n\x0e\x43GResourceFile\x12\x14\n\x0cresourceFile\x18\x01 \x01(\t\x12\x1c\n\x14resourceFileAbsolute\x18\x02 \x01(\t\"\xc5\x03\n\x11\x43GEntityAnimation\x12\x15\n\ranimationName\x18\x01 \x01(\t\x12\x42\n\x15\x61nimationResourceFile\x18\x02 \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\x12\x38\n\x0b\x66ixtureFile\x18\x03 \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\x12\x19\n\x11\x61nimationDuration\x18\x04 \x01(\x02\x12\x18\n\x10\x64\x65\x66\x61ultAnimation\x18\x05 \x01(\x08\x12\x0c\n\x04\x63ols\x18\x06 \x01(\x05\x12\x0c\n\x04rows\x18\x07 \x01(\x05\x12\x41\n\rcollisionType\x18\x08 \x01(\x0e\x32*.com.laex.cg2d.model.CGEntityCollisionType\x12\x0c\n\x04shpX\x18\t \x01(\x05\x12\x0c\n\x04shpY\x18\n \x01(\x05\x12\x10\n\x08shpWidth\x18\x0b \x01(\x05\x12\x11\n\tshpHeight\x18\x0c \x01(\x05\x12\x30\n\x08vertices\x18\r \x03(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x14\n\x0c\x66rameIndices\x18\x0e \x03(\x05\"\\\n\x08\x43GEntity\x12\x14\n\x0cinternalName\x18\x01 \x01(\t\x12:\n\nanimations\x18\x02 \x03(\x0b\x32&.com.laex.cg2d.model.CGEntityAnimation\"?\n\x08\x43GBounds\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\r\n\x05width\x18\x03 \x01(\x02\x12\x0e\n\x06height\x18\x04 \x01(\x02\"!\n\tCGVector2\x12\t\n\x01x\x18\x01 \x02(\x02\x12\t\n\x01y\x18\x02 \x02(\x02\"\x83\x03\n\tCGBodyDef\x12\x0e\n\x06\x61\x63tive\x18\x01 \x01(\x08\x12\x12\n\nallowSleep\x18\x02 \x01(\x08\x12\r\n\x05\x61ngle\x18\x03 \x01(\x02\x12\x16\n\x0e\x61ngularDamping\x18\x04 \x01(\x02\x12\x17\n\x0f\x61ngularVelocity\x18\x05 \x01(\x02\x12\r\n\x05\x61wake\x18\x06 \x01(\x08\x12\x0e\n\x06\x62ullet\x18\x07 \x01(\x08\x12\x15\n\rfixedRotation\x18\x08 \x01(\x08\x12\x16\n\x0eintertialScale\x18\t \x01(\x02\x12\x15\n\rlinearDamping\x18\n \x01(\x02\x12\x14\n\x0cgravityScale\x18\x0b \x01(\x02\x12\x36\n\x0elinearVelocity\x18\x0c \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12-\n\x04type\x18\r \x01(\x0e\x32\x1f.com.laex.cg2d.model.CGBodyType\x12\x30\n\x08position\x18\x0e \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\"F\n\x08\x43GFilter\x12\x14\n\x0c\x63\x61tegoryBits\x18\x01 \x01(\x05\x12\x10\n\x08maskBits\x18\x02 \x01(\x05\x12\x12\n\ngroupIndex\x18\x03 \x01(\x05\"\x85\x01\n\x0c\x43GFixtureDef\x12\x0f\n\x07\x64\x65nsity\x18\x01 \x01(\x02\x12\x10\n\x08\x66riction\x18\x02 \x01(\x02\x12\x13\n\x0brestitution\x18\x03 \x01(\x02\x12\x0e\n\x06sensor\x18\x04 \x01(\x08\x12-\n\x06\x66ilter\x18\x05 \x01(\x0b\x32\x1d.com.laex.cg2d.model.CGFilter\"\xd1\x03\n\x07\x43GShape\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07visible\x18\x02 \x01(\x08\x12\x0e\n\x06locked\x18\x03 \x01(\x08\x12\x12\n\nbackground\x18\x04 \x01(\x08\x12\x43\n\x16\x62\x61\x63kgroundResourceFile\x18\x05 \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\x12?\n\x0f\x65\x64itorShapeType\x18\x06 \x01(\x0e\x32&.com.laex.cg2d.model.CGEditorShapeType\x12-\n\x06\x62ounds\x18\x07 \x01(\x0b\x32\x1d.com.laex.cg2d.model.CGBounds\x12/\n\x07\x62odyDef\x18\x08 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGBodyDef\x12\x35\n\nfixtureDef\x18\t \x01(\x0b\x32!.com.laex.cg2d.model.CGFixtureDef\x12,\n\x06joints\x18\n \x03(\x0b\x32\x1c.com.laex.cg2d.model.CGJoint\x12:\n\rentityRefFile\x18\x0b \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\"q\n\x07\x43GLayer\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07visible\x18\x03 \x01(\x08\x12\x0e\n\x06locked\x18\x04 \x01(\x08\x12+\n\x05shape\x18\x05 \x03(\x0b\x32\x1c.com.laex.cg2d.model.CGShape\"\xbc\x05\n\x13\x43GScreenPreferences\x12W\n\x0e\x64\x65\x62ugDrawPrefs\x18\x01 \x01(\x0b\x32?.com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences\x12O\n\nworldPrefs\x18\x02 \x01(\x0b\x32;.com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences\x12M\n\tcardPrefs\x18\x03 \x01(\x0b\x32:.com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences\x1a\xb6\x01\n\x16\x43GDebugDrawPreferences\x12\x12\n\ndrawBodies\x18\x01 \x01(\x08\x12\x12\n\ndrawJoints\x18\x02 \x01(\x08\x12\x10\n\x08\x64rawAABB\x18\x03 \x01(\x08\x12\x1a\n\x12\x64rawInactiveBodies\x18\x04 \x01(\x08\x12\x19\n\x11installMouseJoint\x18\x05 \x01(\x08\x12\x15\n\rdrawDebugData\x18\x06 \x01(\x08\x12\x14\n\x0c\x64rawEntities\x18\x07 \x01(\x08\x1a\x94\x01\n\x12\x43GWorldPreferences\x12\x10\n\x08ptmRatio\x18\x01 \x01(\x05\x12\x1a\n\x12velocityIterations\x18\x02 \x01(\x05\x12\x1a\n\x12positionIterations\x18\x03 \x01(\x05\x12\x10\n\x08timeStep\x18\x04 \x01(\x02\x12\x10\n\x08gravityX\x18\x05 \x01(\x02\x12\x10\n\x08gravityY\x18\x06 \x01(\x02\x1a\\\n\x11\x43GCardPreferences\x12\x0f\n\x07\x63\x61rdNoX\x18\x01 \x01(\x05\x12\x0f\n\x07\x63\x61rdNoY\x18\x02 \x01(\x05\x12\x11\n\tcardWidth\x18\x03 \x01(\x05\x12\x12\n\ncardHeight\x18\x04 \x01(\x05*\x93\x01\n\x0b\x43GJointType\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x0c\n\x08REVOLUTE\x10\x02\x12\r\n\tPRISMATIC\x10\x03\x12\x0c\n\x08\x44ISTANCE\x10\x04\x12\n\n\x06PULLEY\x10\x05\x12\t\n\x05MOUSE\x10\x06\x12\x08\n\x04GEAR\x10\x07\x12\t\n\x05WHEEL\x10\x08\x12\x08\n\x04WELD\x10\t\x12\x0c\n\x08\x46RICTION\x10\n\x12\x08\n\x04ROPE\x10\x0b*B\n\x15\x43GEntityCollisionType\x12\x08\n\x04NONE\x10\x00\x12\x07\n\x03\x42OX\x10\x01\x12\n\n\x06\x43IRCLE\x10\x02\x12\n\n\x06\x43USTOM\x10\x03*4\n\nCGBodyType\x12\n\n\x06STATIC\x10\x01\x12\r\n\tKINEMATIC\x10\x02\x12\x0b\n\x07\x44YNAMIC\x10\x03*\x9a\x01\n\x11\x43GEditorShapeType\x12\x17\n\x13SIMPLE_SHAPE_CIRCLE\x10\x01\x12\x14\n\x10SIMPLE_SHAPE_BOX\x10\x02\x12\x16\n\x12SIMPLE_SHAPE_HEDGE\x10\x03\x12\x16\n\x12SIMPLE_SHAPE_VEDGE\x10\x04\x12\x14\n\x10\x42\x41\x43KGROUND_SHAPE\x10\x05\x12\x10\n\x0c\x45NTITY_SHAPE\x10\x06')
+  serialized_pb='\n%com/laex/cg2d/model/ScreenModel.proto\x12\x13\x63om.laex.cg2d.model\"|\n\rCGScreenModel\x12=\n\x0bscreenPrefs\x18\x01 \x01(\x0b\x32(.com.laex.cg2d.model.CGScreenPreferences\x12,\n\x06layers\x18\x02 \x03(\x0b\x32\x1c.com.laex.cg2d.model.CGLayer\"\xf4\x04\n\x07\x43GJoint\x12\x15\n\rsourceShapeId\x18\x01 \x01(\t\x12\x15\n\rtargetShapeId\x18\x02 \x01(\t\x12.\n\x04type\x18\x03 \x01(\x0e\x32 .com.laex.cg2d.model.CGJointType\x12\x41\n\x10\x64istanceJointDef\x18\x05 \x01(\x0b\x32\'.com.laex.cg2d.model.CGDistanceJointDef\x12\x41\n\x10revoluteJointDef\x18\x06 \x01(\x0b\x32\'.com.laex.cg2d.model.CGRevoluteJointDef\x12\x43\n\x11prismaticJointDef\x18\x07 \x01(\x0b\x32(.com.laex.cg2d.model.CGPrismaticJointDef\x12=\n\x0epulleyJointDef\x18\x08 \x01(\x0b\x32%.com.laex.cg2d.model.CGPulleyJointDef\x12\x41\n\x10\x66rictionJointDef\x18\t \x01(\x0b\x32\'.com.laex.cg2d.model.CGFrictionJointDef\x12\x39\n\x0cweldJointDef\x18\n \x01(\x0b\x32#.com.laex.cg2d.model.CGWeldJointDef\x12\x34\n\x0clocalAnchorA\x18\x0b \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x34\n\x0clocalAnchorB\x18\x0c \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x17\n\x0fuseLocalAnchors\x18\r \x01(\x08\"X\n\x12\x43GDistanceJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x12\n\nfreqencyHz\x18\x02 \x01(\x02\x12\x14\n\x0c\x64\x61mpingRatio\x18\x03 \x01(\x02\"\xc4\x01\n\x12\x43GRevoluteJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x16\n\x0ereferenceAngle\x18\x02 \x01(\x02\x12\x13\n\x0b\x65nableLimit\x18\x03 \x01(\x08\x12\x12\n\nlowerAngle\x18\x04 \x01(\x02\x12\x12\n\nupperAngle\x18\x05 \x01(\x02\x12\x13\n\x0b\x65nableMotor\x18\x06 \x01(\x08\x12\x12\n\nmotorSpeed\x18\x07 \x01(\x02\x12\x16\n\x0emaxMotorTorque\x18\x08 \x01(\x02\"\xae\x02\n\x13\x43GPrismaticJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12.\n\x06\x61nchor\x18\x02 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12,\n\x04\x61xis\x18\x03 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x16\n\x0ereferenceAngle\x18\x05 \x01(\x02\x12\x13\n\x0b\x65nableLimit\x18\x06 \x01(\x08\x12\x18\n\x10lowerTranslation\x18\x07 \x01(\x02\x12\x18\n\x10upperTranslation\x18\x08 \x01(\x02\x12\x13\n\x0b\x65nableMotor\x18\t \x01(\x08\x12\x15\n\rmaxMotorForce\x18\n \x01(\x02\x12\x12\n\nmotorSpeed\x18\x0b \x01(\x02\"\xa9\x01\n\x10\x43GPulleyJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x35\n\rgroundAnchorA\x18\x02 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x35\n\rgroundAnchorB\x18\x03 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\r\n\x05ratio\x18\x04 \x01(\x02\"S\n\x12\x43GFrictionJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\x12\x10\n\x08maxForce\x18\x02 \x01(\x02\x12\x11\n\tmaxTorque\x18\x03 \x01(\x02\"*\n\x0e\x43GWeldJointDef\x12\x18\n\x10\x63ollideConnected\x18\x01 \x01(\x08\"D\n\x0e\x43GResourceFile\x12\x14\n\x0cresourceFile\x18\x01 \x01(\t\x12\x1c\n\x14resourceFileAbsolute\x18\x02 \x01(\t\"Y\n\x17\x43GEntitySpritesheetItem\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01w\x18\x03 \x01(\x02\x12\t\n\x01h\x18\x04 \x01(\x02\x12\x12\n\nframeIndex\x18\x05 \x01(\x05\"\xd6\x03\n\x11\x43GEntityAnimation\x12\x15\n\ranimationName\x18\x01 \x01(\t\x12\x19\n\x11\x61nimationDuration\x18\x02 \x01(\x02\x12\x18\n\x10\x64\x65\x66\x61ultAnimation\x18\x03 \x01(\x08\x12\x41\n\rcollisionType\x18\x04 \x01(\x0e\x32*.com.laex.cg2d.model.CGEntityCollisionType\x12<\n\x0fspritesheetFile\x18\x05 \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\x12@\n\x13spritesheetJsonFile\x18\x06 \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\x12\x38\n\x0b\x66ixtureFile\x18\x07 \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\x12\x30\n\x08vertices\x18\x08 \x03(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12\x46\n\x10spritesheetItems\x18\t \x03(\x0b\x32,.com.laex.cg2d.model.CGEntitySpritesheetItem\"\\\n\x08\x43GEntity\x12\x14\n\x0cinternalName\x18\x01 \x01(\t\x12:\n\nanimations\x18\x02 \x03(\x0b\x32&.com.laex.cg2d.model.CGEntityAnimation\"?\n\x08\x43GBounds\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\r\n\x05width\x18\x03 \x01(\x02\x12\x0e\n\x06height\x18\x04 \x01(\x02\"!\n\tCGVector2\x12\t\n\x01x\x18\x01 \x02(\x02\x12\t\n\x01y\x18\x02 \x02(\x02\"\x83\x03\n\tCGBodyDef\x12\x0e\n\x06\x61\x63tive\x18\x01 \x01(\x08\x12\x12\n\nallowSleep\x18\x02 \x01(\x08\x12\r\n\x05\x61ngle\x18\x03 \x01(\x02\x12\x16\n\x0e\x61ngularDamping\x18\x04 \x01(\x02\x12\x17\n\x0f\x61ngularVelocity\x18\x05 \x01(\x02\x12\r\n\x05\x61wake\x18\x06 \x01(\x08\x12\x0e\n\x06\x62ullet\x18\x07 \x01(\x08\x12\x15\n\rfixedRotation\x18\x08 \x01(\x08\x12\x16\n\x0eintertialScale\x18\t \x01(\x02\x12\x15\n\rlinearDamping\x18\n \x01(\x02\x12\x14\n\x0cgravityScale\x18\x0b \x01(\x02\x12\x36\n\x0elinearVelocity\x18\x0c \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\x12-\n\x04type\x18\r \x01(\x0e\x32\x1f.com.laex.cg2d.model.CGBodyType\x12\x30\n\x08position\x18\x0e \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGVector2\"F\n\x08\x43GFilter\x12\x14\n\x0c\x63\x61tegoryBits\x18\x01 \x01(\x05\x12\x10\n\x08maskBits\x18\x02 \x01(\x05\x12\x12\n\ngroupIndex\x18\x03 \x01(\x05\"\x85\x01\n\x0c\x43GFixtureDef\x12\x0f\n\x07\x64\x65nsity\x18\x01 \x01(\x02\x12\x10\n\x08\x66riction\x18\x02 \x01(\x02\x12\x13\n\x0brestitution\x18\x03 \x01(\x02\x12\x0e\n\x06sensor\x18\x04 \x01(\x08\x12-\n\x06\x66ilter\x18\x05 \x01(\x0b\x32\x1d.com.laex.cg2d.model.CGFilter\"\xd1\x03\n\x07\x43GShape\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07visible\x18\x02 \x01(\x08\x12\x0e\n\x06locked\x18\x03 \x01(\x08\x12\x12\n\nbackground\x18\x04 \x01(\x08\x12\x43\n\x16\x62\x61\x63kgroundResourceFile\x18\x05 \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\x12?\n\x0f\x65\x64itorShapeType\x18\x06 \x01(\x0e\x32&.com.laex.cg2d.model.CGEditorShapeType\x12-\n\x06\x62ounds\x18\x07 \x01(\x0b\x32\x1d.com.laex.cg2d.model.CGBounds\x12/\n\x07\x62odyDef\x18\x08 \x01(\x0b\x32\x1e.com.laex.cg2d.model.CGBodyDef\x12\x35\n\nfixtureDef\x18\t \x01(\x0b\x32!.com.laex.cg2d.model.CGFixtureDef\x12,\n\x06joints\x18\n \x03(\x0b\x32\x1c.com.laex.cg2d.model.CGJoint\x12:\n\rentityRefFile\x18\x0b \x01(\x0b\x32#.com.laex.cg2d.model.CGResourceFile\"q\n\x07\x43GLayer\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07visible\x18\x03 \x01(\x08\x12\x0e\n\x06locked\x18\x04 \x01(\x08\x12+\n\x05shape\x18\x05 \x03(\x0b\x32\x1c.com.laex.cg2d.model.CGShape\"\xbc\x05\n\x13\x43GScreenPreferences\x12W\n\x0e\x64\x65\x62ugDrawPrefs\x18\x01 \x01(\x0b\x32?.com.laex.cg2d.model.CGScreenPreferences.CGDebugDrawPreferences\x12O\n\nworldPrefs\x18\x02 \x01(\x0b\x32;.com.laex.cg2d.model.CGScreenPreferences.CGWorldPreferences\x12M\n\tcardPrefs\x18\x03 \x01(\x0b\x32:.com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences\x1a\xb6\x01\n\x16\x43GDebugDrawPreferences\x12\x12\n\ndrawBodies\x18\x01 \x01(\x08\x12\x12\n\ndrawJoints\x18\x02 \x01(\x08\x12\x10\n\x08\x64rawAABB\x18\x03 \x01(\x08\x12\x1a\n\x12\x64rawInactiveBodies\x18\x04 \x01(\x08\x12\x19\n\x11installMouseJoint\x18\x05 \x01(\x08\x12\x15\n\rdrawDebugData\x18\x06 \x01(\x08\x12\x14\n\x0c\x64rawEntities\x18\x07 \x01(\x08\x1a\x94\x01\n\x12\x43GWorldPreferences\x12\x10\n\x08ptmRatio\x18\x01 \x01(\x05\x12\x1a\n\x12velocityIterations\x18\x02 \x01(\x05\x12\x1a\n\x12positionIterations\x18\x03 \x01(\x05\x12\x10\n\x08timeStep\x18\x04 \x01(\x02\x12\x10\n\x08gravityX\x18\x05 \x01(\x02\x12\x10\n\x08gravityY\x18\x06 \x01(\x02\x1a\\\n\x11\x43GCardPreferences\x12\x0f\n\x07\x63\x61rdNoX\x18\x01 \x01(\x05\x12\x0f\n\x07\x63\x61rdNoY\x18\x02 \x01(\x05\x12\x11\n\tcardWidth\x18\x03 \x01(\x05\x12\x12\n\ncardHeight\x18\x04 \x01(\x05*\x93\x01\n\x0b\x43GJointType\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x0c\n\x08REVOLUTE\x10\x02\x12\r\n\tPRISMATIC\x10\x03\x12\x0c\n\x08\x44ISTANCE\x10\x04\x12\n\n\x06PULLEY\x10\x05\x12\t\n\x05MOUSE\x10\x06\x12\x08\n\x04GEAR\x10\x07\x12\t\n\x05WHEEL\x10\x08\x12\x08\n\x04WELD\x10\t\x12\x0c\n\x08\x46RICTION\x10\n\x12\x08\n\x04ROPE\x10\x0b*B\n\x15\x43GEntityCollisionType\x12\x08\n\x04NONE\x10\x00\x12\x07\n\x03\x42OX\x10\x01\x12\n\n\x06\x43IRCLE\x10\x02\x12\n\n\x06\x43USTOM\x10\x03*4\n\nCGBodyType\x12\n\n\x06STATIC\x10\x01\x12\r\n\tKINEMATIC\x10\x02\x12\x0b\n\x07\x44YNAMIC\x10\x03*\x9a\x01\n\x11\x43GEditorShapeType\x12\x17\n\x13SIMPLE_SHAPE_CIRCLE\x10\x01\x12\x14\n\x10SIMPLE_SHAPE_BOX\x10\x02\x12\x16\n\x12SIMPLE_SHAPE_HEDGE\x10\x03\x12\x16\n\x12SIMPLE_SHAPE_VEDGE\x10\x04\x12\x14\n\x10\x42\x41\x43KGROUND_SHAPE\x10\x05\x12\x10\n\x0c\x45NTITY_SHAPE\x10\x06')
 
 _CGJOINTTYPE = _descriptor.EnumDescriptor(
   name='CGJointType',
@@ -69,8 +69,8 @@ _CGJOINTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4319,
-  serialized_end=4466,
+  serialized_start=4427,
+  serialized_end=4574,
 )
 
 CGJointType = enum_type_wrapper.EnumTypeWrapper(_CGJOINTTYPE)
@@ -99,8 +99,8 @@ _CGENTITYCOLLISIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4468,
-  serialized_end=4534,
+  serialized_start=4576,
+  serialized_end=4642,
 )
 
 CGEntityCollisionType = enum_type_wrapper.EnumTypeWrapper(_CGENTITYCOLLISIONTYPE)
@@ -125,8 +125,8 @@ _CGBODYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4536,
-  serialized_end=4588,
+  serialized_start=4644,
+  serialized_end=4696,
 )
 
 CGBodyType = enum_type_wrapper.EnumTypeWrapper(_CGBODYTYPE)
@@ -163,8 +163,8 @@ _CGEDITORSHAPETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4591,
-  serialized_end=4745,
+  serialized_start=4699,
+  serialized_end=4853,
 )
 
 CGEditorShapeType = enum_type_wrapper.EnumTypeWrapper(_CGEDITORSHAPETYPE)
@@ -699,6 +699,62 @@ _CGRESOURCEFILE = _descriptor.Descriptor(
 )
 
 
+_CGENTITYSPRITESHEETITEM = _descriptor.Descriptor(
+  name='CGEntitySpritesheetItem',
+  full_name='com.laex.cg2d.model.CGEntitySpritesheetItem',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='x', full_name='com.laex.cg2d.model.CGEntitySpritesheetItem.x', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='y', full_name='com.laex.cg2d.model.CGEntitySpritesheetItem.y', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='w', full_name='com.laex.cg2d.model.CGEntitySpritesheetItem.w', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='h', full_name='com.laex.cg2d.model.CGEntitySpritesheetItem.h', index=3,
+      number=4, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='frameIndex', full_name='com.laex.cg2d.model.CGEntitySpritesheetItem.frameIndex', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1784,
+  serialized_end=1873,
+)
+
+
 _CGENTITYANIMATION = _descriptor.Descriptor(
   name='CGEntityAnimation',
   full_name='com.laex.cg2d.model.CGEntityAnimation',
@@ -714,92 +770,57 @@ _CGENTITYANIMATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='animationResourceFile', full_name='com.laex.cg2d.model.CGEntityAnimation.animationResourceFile', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='fixtureFile', full_name='com.laex.cg2d.model.CGEntityAnimation.fixtureFile', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='animationDuration', full_name='com.laex.cg2d.model.CGEntityAnimation.animationDuration', index=3,
-      number=4, type=2, cpp_type=6, label=1,
+      name='animationDuration', full_name='com.laex.cg2d.model.CGEntityAnimation.animationDuration', index=1,
+      number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='defaultAnimation', full_name='com.laex.cg2d.model.CGEntityAnimation.defaultAnimation', index=4,
-      number=5, type=8, cpp_type=7, label=1,
+      name='defaultAnimation', full_name='com.laex.cg2d.model.CGEntityAnimation.defaultAnimation', index=2,
+      number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='cols', full_name='com.laex.cg2d.model.CGEntityAnimation.cols', index=5,
-      number=6, type=5, cpp_type=1, label=1,
+      name='collisionType', full_name='com.laex.cg2d.model.CGEntityAnimation.collisionType', index=3,
+      number=4, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='rows', full_name='com.laex.cg2d.model.CGEntityAnimation.rows', index=6,
-      number=7, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='spritesheetFile', full_name='com.laex.cg2d.model.CGEntityAnimation.spritesheetFile', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='collisionType', full_name='com.laex.cg2d.model.CGEntityAnimation.collisionType', index=7,
-      number=8, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      name='spritesheetJsonFile', full_name='com.laex.cg2d.model.CGEntityAnimation.spritesheetJsonFile', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='shpX', full_name='com.laex.cg2d.model.CGEntityAnimation.shpX', index=8,
-      number=9, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='fixtureFile', full_name='com.laex.cg2d.model.CGEntityAnimation.fixtureFile', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='shpY', full_name='com.laex.cg2d.model.CGEntityAnimation.shpY', index=9,
-      number=10, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='shpWidth', full_name='com.laex.cg2d.model.CGEntityAnimation.shpWidth', index=10,
-      number=11, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='shpHeight', full_name='com.laex.cg2d.model.CGEntityAnimation.shpHeight', index=11,
-      number=12, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='vertices', full_name='com.laex.cg2d.model.CGEntityAnimation.vertices', index=12,
-      number=13, type=11, cpp_type=10, label=3,
+      name='vertices', full_name='com.laex.cg2d.model.CGEntityAnimation.vertices', index=7,
+      number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='frameIndices', full_name='com.laex.cg2d.model.CGEntityAnimation.frameIndices', index=13,
-      number=14, type=5, cpp_type=1, label=3,
+      name='spritesheetItems', full_name='com.laex.cg2d.model.CGEntityAnimation.spritesheetItems', index=8,
+      number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -813,8 +834,8 @@ _CGENTITYANIMATION = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1785,
-  serialized_end=2238,
+  serialized_start=1876,
+  serialized_end=2346,
 )
 
 
@@ -848,8 +869,8 @@ _CGENTITY = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2240,
-  serialized_end=2332,
+  serialized_start=2348,
+  serialized_end=2440,
 )
 
 
@@ -897,8 +918,8 @@ _CGBOUNDS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2334,
-  serialized_end=2397,
+  serialized_start=2442,
+  serialized_end=2505,
 )
 
 
@@ -932,8 +953,8 @@ _CGVECTOR2 = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2399,
-  serialized_end=2432,
+  serialized_start=2507,
+  serialized_end=2540,
 )
 
 
@@ -1051,8 +1072,8 @@ _CGBODYDEF = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2435,
-  serialized_end=2822,
+  serialized_start=2543,
+  serialized_end=2930,
 )
 
 
@@ -1093,8 +1114,8 @@ _CGFILTER = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2824,
-  serialized_end=2894,
+  serialized_start=2932,
+  serialized_end=3002,
 )
 
 
@@ -1149,8 +1170,8 @@ _CGFIXTUREDEF = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2897,
-  serialized_end=3030,
+  serialized_start=3005,
+  serialized_end=3138,
 )
 
 
@@ -1247,8 +1268,8 @@ _CGSHAPE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3033,
-  serialized_end=3498,
+  serialized_start=3141,
+  serialized_end=3606,
 )
 
 
@@ -1303,8 +1324,8 @@ _CGLAYER = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3500,
-  serialized_end=3613,
+  serialized_start=3608,
+  serialized_end=3721,
 )
 
 
@@ -1373,8 +1394,8 @@ _CGSCREENPREFERENCES_CGDEBUGDRAWPREFERENCES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3889,
-  serialized_end=4071,
+  serialized_start=3997,
+  serialized_end=4179,
 )
 
 _CGSCREENPREFERENCES_CGWORLDPREFERENCES = _descriptor.Descriptor(
@@ -1435,8 +1456,8 @@ _CGSCREENPREFERENCES_CGWORLDPREFERENCES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4074,
-  serialized_end=4222,
+  serialized_start=4182,
+  serialized_end=4330,
 )
 
 _CGSCREENPREFERENCES_CGCARDPREFERENCES = _descriptor.Descriptor(
@@ -1483,8 +1504,8 @@ _CGSCREENPREFERENCES_CGCARDPREFERENCES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4224,
-  serialized_end=4316,
+  serialized_start=4332,
+  serialized_end=4424,
 )
 
 _CGSCREENPREFERENCES = _descriptor.Descriptor(
@@ -1524,8 +1545,8 @@ _CGSCREENPREFERENCES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3616,
-  serialized_end=4316,
+  serialized_start=3724,
+  serialized_end=4424,
 )
 
 _CGSCREENMODEL.fields_by_name['screenPrefs'].message_type = _CGSCREENPREFERENCES
@@ -1543,10 +1564,12 @@ _CGPRISMATICJOINTDEF.fields_by_name['anchor'].message_type = _CGVECTOR2
 _CGPRISMATICJOINTDEF.fields_by_name['axis'].message_type = _CGVECTOR2
 _CGPULLEYJOINTDEF.fields_by_name['groundAnchorA'].message_type = _CGVECTOR2
 _CGPULLEYJOINTDEF.fields_by_name['groundAnchorB'].message_type = _CGVECTOR2
-_CGENTITYANIMATION.fields_by_name['animationResourceFile'].message_type = _CGRESOURCEFILE
-_CGENTITYANIMATION.fields_by_name['fixtureFile'].message_type = _CGRESOURCEFILE
 _CGENTITYANIMATION.fields_by_name['collisionType'].enum_type = _CGENTITYCOLLISIONTYPE
+_CGENTITYANIMATION.fields_by_name['spritesheetFile'].message_type = _CGRESOURCEFILE
+_CGENTITYANIMATION.fields_by_name['spritesheetJsonFile'].message_type = _CGRESOURCEFILE
+_CGENTITYANIMATION.fields_by_name['fixtureFile'].message_type = _CGRESOURCEFILE
 _CGENTITYANIMATION.fields_by_name['vertices'].message_type = _CGVECTOR2
+_CGENTITYANIMATION.fields_by_name['spritesheetItems'].message_type = _CGENTITYSPRITESHEETITEM
 _CGENTITY.fields_by_name['animations'].message_type = _CGENTITYANIMATION
 _CGBODYDEF.fields_by_name['linearVelocity'].message_type = _CGVECTOR2
 _CGBODYDEF.fields_by_name['type'].enum_type = _CGBODYTYPE
@@ -1575,6 +1598,7 @@ DESCRIPTOR.message_types_by_name['CGPulleyJointDef'] = _CGPULLEYJOINTDEF
 DESCRIPTOR.message_types_by_name['CGFrictionJointDef'] = _CGFRICTIONJOINTDEF
 DESCRIPTOR.message_types_by_name['CGWeldJointDef'] = _CGWELDJOINTDEF
 DESCRIPTOR.message_types_by_name['CGResourceFile'] = _CGRESOURCEFILE
+DESCRIPTOR.message_types_by_name['CGEntitySpritesheetItem'] = _CGENTITYSPRITESHEETITEM
 DESCRIPTOR.message_types_by_name['CGEntityAnimation'] = _CGENTITYANIMATION
 DESCRIPTOR.message_types_by_name['CGEntity'] = _CGENTITY
 DESCRIPTOR.message_types_by_name['CGBounds'] = _CGBOUNDS
@@ -1639,6 +1663,12 @@ class CGResourceFile(_message.Message):
   DESCRIPTOR = _CGRESOURCEFILE
 
   # @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGResourceFile)
+
+class CGEntitySpritesheetItem(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CGENTITYSPRITESHEETITEM
+
+  # @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGEntitySpritesheetItem)
 
 class CGEntityAnimation(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

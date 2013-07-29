@@ -46,6 +46,7 @@ class CGPulleyJointDef;
 class CGFrictionJointDef;
 class CGWeldJointDef;
 class CGResourceFile;
+class CGEntitySpritesheetItem;
 class CGEntityAnimation;
 class CGEntity;
 class CGBounds;
@@ -1301,6 +1302,128 @@ class CGResourceFile : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class CGEntitySpritesheetItem : public ::google::protobuf::Message {
+ public:
+  CGEntitySpritesheetItem();
+  virtual ~CGEntitySpritesheetItem();
+
+  CGEntitySpritesheetItem(const CGEntitySpritesheetItem& from);
+
+  inline CGEntitySpritesheetItem& operator=(const CGEntitySpritesheetItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CGEntitySpritesheetItem& default_instance();
+
+  void Swap(CGEntitySpritesheetItem* other);
+
+  // implements Message ----------------------------------------------
+
+  CGEntitySpritesheetItem* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CGEntitySpritesheetItem& from);
+  void MergeFrom(const CGEntitySpritesheetItem& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional float x = 1;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 1;
+  inline float x() const;
+  inline void set_x(float value);
+
+  // optional float y = 2;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 2;
+  inline float y() const;
+  inline void set_y(float value);
+
+  // optional float w = 3;
+  inline bool has_w() const;
+  inline void clear_w();
+  static const int kWFieldNumber = 3;
+  inline float w() const;
+  inline void set_w(float value);
+
+  // optional float h = 4;
+  inline bool has_h() const;
+  inline void clear_h();
+  static const int kHFieldNumber = 4;
+  inline float h() const;
+  inline void set_h(float value);
+
+  // optional int32 frameIndex = 5;
+  inline bool has_frameindex() const;
+  inline void clear_frameindex();
+  static const int kFrameIndexFieldNumber = 5;
+  inline ::google::protobuf::int32 frameindex() const;
+  inline void set_frameindex(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGEntitySpritesheetItem)
+ private:
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_w();
+  inline void clear_has_w();
+  inline void set_has_h();
+  inline void clear_has_h();
+  inline void set_has_frameindex();
+  inline void clear_has_frameindex();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  float x_;
+  float y_;
+  float w_;
+  float h_;
+  ::google::protobuf::int32 frameindex_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
+  friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
+  friend void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
+
+  void InitAsDefaultInstance();
+  static CGEntitySpritesheetItem* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class CGEntityAnimation : public ::google::protobuf::Message {
  public:
   CGEntityAnimation();
@@ -1367,91 +1490,58 @@ class CGEntityAnimation : public ::google::protobuf::Message {
   inline ::std::string* release_animationname();
   inline void set_allocated_animationname(::std::string* animationname);
 
-  // optional .com.laex.cg2d.model.CGResourceFile animationResourceFile = 2;
-  inline bool has_animationresourcefile() const;
-  inline void clear_animationresourcefile();
-  static const int kAnimationResourceFileFieldNumber = 2;
-  inline const ::com::laex::cg2d::model::CGResourceFile& animationresourcefile() const;
-  inline ::com::laex::cg2d::model::CGResourceFile* mutable_animationresourcefile();
-  inline ::com::laex::cg2d::model::CGResourceFile* release_animationresourcefile();
-  inline void set_allocated_animationresourcefile(::com::laex::cg2d::model::CGResourceFile* animationresourcefile);
+  // optional float animationDuration = 2;
+  inline bool has_animationduration() const;
+  inline void clear_animationduration();
+  static const int kAnimationDurationFieldNumber = 2;
+  inline float animationduration() const;
+  inline void set_animationduration(float value);
 
-  // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 3;
+  // optional bool defaultAnimation = 3;
+  inline bool has_defaultanimation() const;
+  inline void clear_defaultanimation();
+  static const int kDefaultAnimationFieldNumber = 3;
+  inline bool defaultanimation() const;
+  inline void set_defaultanimation(bool value);
+
+  // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 4;
+  inline bool has_collisiontype() const;
+  inline void clear_collisiontype();
+  static const int kCollisionTypeFieldNumber = 4;
+  inline ::com::laex::cg2d::model::CGEntityCollisionType collisiontype() const;
+  inline void set_collisiontype(::com::laex::cg2d::model::CGEntityCollisionType value);
+
+  // optional .com.laex.cg2d.model.CGResourceFile spritesheetFile = 5;
+  inline bool has_spritesheetfile() const;
+  inline void clear_spritesheetfile();
+  static const int kSpritesheetFileFieldNumber = 5;
+  inline const ::com::laex::cg2d::model::CGResourceFile& spritesheetfile() const;
+  inline ::com::laex::cg2d::model::CGResourceFile* mutable_spritesheetfile();
+  inline ::com::laex::cg2d::model::CGResourceFile* release_spritesheetfile();
+  inline void set_allocated_spritesheetfile(::com::laex::cg2d::model::CGResourceFile* spritesheetfile);
+
+  // optional .com.laex.cg2d.model.CGResourceFile spritesheetJsonFile = 6;
+  inline bool has_spritesheetjsonfile() const;
+  inline void clear_spritesheetjsonfile();
+  static const int kSpritesheetJsonFileFieldNumber = 6;
+  inline const ::com::laex::cg2d::model::CGResourceFile& spritesheetjsonfile() const;
+  inline ::com::laex::cg2d::model::CGResourceFile* mutable_spritesheetjsonfile();
+  inline ::com::laex::cg2d::model::CGResourceFile* release_spritesheetjsonfile();
+  inline void set_allocated_spritesheetjsonfile(::com::laex::cg2d::model::CGResourceFile* spritesheetjsonfile);
+
+  // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 7;
   inline bool has_fixturefile() const;
   inline void clear_fixturefile();
-  static const int kFixtureFileFieldNumber = 3;
+  static const int kFixtureFileFieldNumber = 7;
   inline const ::com::laex::cg2d::model::CGResourceFile& fixturefile() const;
   inline ::com::laex::cg2d::model::CGResourceFile* mutable_fixturefile();
   inline ::com::laex::cg2d::model::CGResourceFile* release_fixturefile();
   inline void set_allocated_fixturefile(::com::laex::cg2d::model::CGResourceFile* fixturefile);
 
-  // optional float animationDuration = 4;
-  inline bool has_animationduration() const;
-  inline void clear_animationduration();
-  static const int kAnimationDurationFieldNumber = 4;
-  inline float animationduration() const;
-  inline void set_animationduration(float value);
-
-  // optional bool defaultAnimation = 5;
-  inline bool has_defaultanimation() const;
-  inline void clear_defaultanimation();
-  static const int kDefaultAnimationFieldNumber = 5;
-  inline bool defaultanimation() const;
-  inline void set_defaultanimation(bool value);
-
-  // optional int32 cols = 6;
-  inline bool has_cols() const;
-  inline void clear_cols();
-  static const int kColsFieldNumber = 6;
-  inline ::google::protobuf::int32 cols() const;
-  inline void set_cols(::google::protobuf::int32 value);
-
-  // optional int32 rows = 7;
-  inline bool has_rows() const;
-  inline void clear_rows();
-  static const int kRowsFieldNumber = 7;
-  inline ::google::protobuf::int32 rows() const;
-  inline void set_rows(::google::protobuf::int32 value);
-
-  // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 8;
-  inline bool has_collisiontype() const;
-  inline void clear_collisiontype();
-  static const int kCollisionTypeFieldNumber = 8;
-  inline ::com::laex::cg2d::model::CGEntityCollisionType collisiontype() const;
-  inline void set_collisiontype(::com::laex::cg2d::model::CGEntityCollisionType value);
-
-  // optional int32 shpX = 9;
-  inline bool has_shpx() const;
-  inline void clear_shpx();
-  static const int kShpXFieldNumber = 9;
-  inline ::google::protobuf::int32 shpx() const;
-  inline void set_shpx(::google::protobuf::int32 value);
-
-  // optional int32 shpY = 10;
-  inline bool has_shpy() const;
-  inline void clear_shpy();
-  static const int kShpYFieldNumber = 10;
-  inline ::google::protobuf::int32 shpy() const;
-  inline void set_shpy(::google::protobuf::int32 value);
-
-  // optional int32 shpWidth = 11;
-  inline bool has_shpwidth() const;
-  inline void clear_shpwidth();
-  static const int kShpWidthFieldNumber = 11;
-  inline ::google::protobuf::int32 shpwidth() const;
-  inline void set_shpwidth(::google::protobuf::int32 value);
-
-  // optional int32 shpHeight = 12;
-  inline bool has_shpheight() const;
-  inline void clear_shpheight();
-  static const int kShpHeightFieldNumber = 12;
-  inline ::google::protobuf::int32 shpheight() const;
-  inline void set_shpheight(::google::protobuf::int32 value);
-
-  // repeated .com.laex.cg2d.model.CGVector2 vertices = 13;
+  // repeated .com.laex.cg2d.model.CGVector2 vertices = 8;
   inline int vertices_size() const;
   inline void clear_vertices();
-  static const int kVerticesFieldNumber = 13;
+  static const int kVerticesFieldNumber = 8;
   inline const ::com::laex::cg2d::model::CGVector2& vertices(int index) const;
   inline ::com::laex::cg2d::model::CGVector2* mutable_vertices(int index);
   inline ::com::laex::cg2d::model::CGVector2* add_vertices();
@@ -1460,64 +1550,49 @@ class CGEntityAnimation : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGVector2 >*
       mutable_vertices();
 
-  // repeated int32 frameIndices = 14;
-  inline int frameindices_size() const;
-  inline void clear_frameindices();
-  static const int kFrameIndicesFieldNumber = 14;
-  inline ::google::protobuf::int32 frameindices(int index) const;
-  inline void set_frameindices(int index, ::google::protobuf::int32 value);
-  inline void add_frameindices(::google::protobuf::int32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-      frameindices() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-      mutable_frameindices();
+  // repeated .com.laex.cg2d.model.CGEntitySpritesheetItem spritesheetItems = 9;
+  inline int spritesheetitems_size() const;
+  inline void clear_spritesheetitems();
+  static const int kSpritesheetItemsFieldNumber = 9;
+  inline const ::com::laex::cg2d::model::CGEntitySpritesheetItem& spritesheetitems(int index) const;
+  inline ::com::laex::cg2d::model::CGEntitySpritesheetItem* mutable_spritesheetitems(int index);
+  inline ::com::laex::cg2d::model::CGEntitySpritesheetItem* add_spritesheetitems();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGEntitySpritesheetItem >&
+      spritesheetitems() const;
+  inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGEntitySpritesheetItem >*
+      mutable_spritesheetitems();
 
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGEntityAnimation)
  private:
   inline void set_has_animationname();
   inline void clear_has_animationname();
-  inline void set_has_animationresourcefile();
-  inline void clear_has_animationresourcefile();
-  inline void set_has_fixturefile();
-  inline void clear_has_fixturefile();
   inline void set_has_animationduration();
   inline void clear_has_animationduration();
   inline void set_has_defaultanimation();
   inline void clear_has_defaultanimation();
-  inline void set_has_cols();
-  inline void clear_has_cols();
-  inline void set_has_rows();
-  inline void clear_has_rows();
   inline void set_has_collisiontype();
   inline void clear_has_collisiontype();
-  inline void set_has_shpx();
-  inline void clear_has_shpx();
-  inline void set_has_shpy();
-  inline void clear_has_shpy();
-  inline void set_has_shpwidth();
-  inline void clear_has_shpwidth();
-  inline void set_has_shpheight();
-  inline void clear_has_shpheight();
+  inline void set_has_spritesheetfile();
+  inline void clear_has_spritesheetfile();
+  inline void set_has_spritesheetjsonfile();
+  inline void clear_has_spritesheetjsonfile();
+  inline void set_has_fixturefile();
+  inline void clear_has_fixturefile();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* animationname_;
-  ::com::laex::cg2d::model::CGResourceFile* animationresourcefile_;
-  ::com::laex::cg2d::model::CGResourceFile* fixturefile_;
   float animationduration_;
   bool defaultanimation_;
-  ::google::protobuf::int32 cols_;
-  ::google::protobuf::int32 rows_;
-  int collisiontype_;
-  ::google::protobuf::int32 shpx_;
-  ::google::protobuf::int32 shpy_;
-  ::google::protobuf::int32 shpwidth_;
+  ::com::laex::cg2d::model::CGResourceFile* spritesheetfile_;
+  ::com::laex::cg2d::model::CGResourceFile* spritesheetjsonfile_;
+  ::com::laex::cg2d::model::CGResourceFile* fixturefile_;
   ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGVector2 > vertices_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > frameindices_;
-  ::google::protobuf::int32 shpheight_;
+  ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGEntitySpritesheetItem > spritesheetitems_;
+  int collisiontype_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
@@ -4535,6 +4610,120 @@ inline void CGResourceFile::set_allocated_resourcefileabsolute(::std::string* re
 
 // -------------------------------------------------------------------
 
+// CGEntitySpritesheetItem
+
+// optional float x = 1;
+inline bool CGEntitySpritesheetItem::has_x() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CGEntitySpritesheetItem::set_has_x() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CGEntitySpritesheetItem::clear_has_x() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CGEntitySpritesheetItem::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline float CGEntitySpritesheetItem::x() const {
+  return x_;
+}
+inline void CGEntitySpritesheetItem::set_x(float value) {
+  set_has_x();
+  x_ = value;
+}
+
+// optional float y = 2;
+inline bool CGEntitySpritesheetItem::has_y() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CGEntitySpritesheetItem::set_has_y() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CGEntitySpritesheetItem::clear_has_y() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CGEntitySpritesheetItem::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline float CGEntitySpritesheetItem::y() const {
+  return y_;
+}
+inline void CGEntitySpritesheetItem::set_y(float value) {
+  set_has_y();
+  y_ = value;
+}
+
+// optional float w = 3;
+inline bool CGEntitySpritesheetItem::has_w() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CGEntitySpritesheetItem::set_has_w() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CGEntitySpritesheetItem::clear_has_w() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CGEntitySpritesheetItem::clear_w() {
+  w_ = 0;
+  clear_has_w();
+}
+inline float CGEntitySpritesheetItem::w() const {
+  return w_;
+}
+inline void CGEntitySpritesheetItem::set_w(float value) {
+  set_has_w();
+  w_ = value;
+}
+
+// optional float h = 4;
+inline bool CGEntitySpritesheetItem::has_h() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void CGEntitySpritesheetItem::set_has_h() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void CGEntitySpritesheetItem::clear_has_h() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void CGEntitySpritesheetItem::clear_h() {
+  h_ = 0;
+  clear_has_h();
+}
+inline float CGEntitySpritesheetItem::h() const {
+  return h_;
+}
+inline void CGEntitySpritesheetItem::set_h(float value) {
+  set_has_h();
+  h_ = value;
+}
+
+// optional int32 frameIndex = 5;
+inline bool CGEntitySpritesheetItem::has_frameindex() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void CGEntitySpritesheetItem::set_has_frameindex() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void CGEntitySpritesheetItem::clear_has_frameindex() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void CGEntitySpritesheetItem::clear_frameindex() {
+  frameindex_ = 0;
+  clear_has_frameindex();
+}
+inline ::google::protobuf::int32 CGEntitySpritesheetItem::frameindex() const {
+  return frameindex_;
+}
+inline void CGEntitySpritesheetItem::set_frameindex(::google::protobuf::int32 value) {
+  set_has_frameindex();
+  frameindex_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // CGEntityAnimation
 
 // optional string animationName = 1;
@@ -4607,53 +4796,158 @@ inline void CGEntityAnimation::set_allocated_animationname(::std::string* animat
   }
 }
 
-// optional .com.laex.cg2d.model.CGResourceFile animationResourceFile = 2;
-inline bool CGEntityAnimation::has_animationresourcefile() const {
+// optional float animationDuration = 2;
+inline bool CGEntityAnimation::has_animationduration() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CGEntityAnimation::set_has_animationresourcefile() {
+inline void CGEntityAnimation::set_has_animationduration() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CGEntityAnimation::clear_has_animationresourcefile() {
+inline void CGEntityAnimation::clear_has_animationduration() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void CGEntityAnimation::clear_animationresourcefile() {
-  if (animationresourcefile_ != NULL) animationresourcefile_->::com::laex::cg2d::model::CGResourceFile::Clear();
-  clear_has_animationresourcefile();
+inline void CGEntityAnimation::clear_animationduration() {
+  animationduration_ = 0;
+  clear_has_animationduration();
 }
-inline const ::com::laex::cg2d::model::CGResourceFile& CGEntityAnimation::animationresourcefile() const {
-  return animationresourcefile_ != NULL ? *animationresourcefile_ : *default_instance_->animationresourcefile_;
+inline float CGEntityAnimation::animationduration() const {
+  return animationduration_;
 }
-inline ::com::laex::cg2d::model::CGResourceFile* CGEntityAnimation::mutable_animationresourcefile() {
-  set_has_animationresourcefile();
-  if (animationresourcefile_ == NULL) animationresourcefile_ = new ::com::laex::cg2d::model::CGResourceFile;
-  return animationresourcefile_;
+inline void CGEntityAnimation::set_animationduration(float value) {
+  set_has_animationduration();
+  animationduration_ = value;
 }
-inline ::com::laex::cg2d::model::CGResourceFile* CGEntityAnimation::release_animationresourcefile() {
-  clear_has_animationresourcefile();
-  ::com::laex::cg2d::model::CGResourceFile* temp = animationresourcefile_;
-  animationresourcefile_ = NULL;
+
+// optional bool defaultAnimation = 3;
+inline bool CGEntityAnimation::has_defaultanimation() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CGEntityAnimation::set_has_defaultanimation() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CGEntityAnimation::clear_has_defaultanimation() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CGEntityAnimation::clear_defaultanimation() {
+  defaultanimation_ = false;
+  clear_has_defaultanimation();
+}
+inline bool CGEntityAnimation::defaultanimation() const {
+  return defaultanimation_;
+}
+inline void CGEntityAnimation::set_defaultanimation(bool value) {
+  set_has_defaultanimation();
+  defaultanimation_ = value;
+}
+
+// optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 4;
+inline bool CGEntityAnimation::has_collisiontype() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void CGEntityAnimation::set_has_collisiontype() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void CGEntityAnimation::clear_has_collisiontype() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void CGEntityAnimation::clear_collisiontype() {
+  collisiontype_ = 0;
+  clear_has_collisiontype();
+}
+inline ::com::laex::cg2d::model::CGEntityCollisionType CGEntityAnimation::collisiontype() const {
+  return static_cast< ::com::laex::cg2d::model::CGEntityCollisionType >(collisiontype_);
+}
+inline void CGEntityAnimation::set_collisiontype(::com::laex::cg2d::model::CGEntityCollisionType value) {
+  assert(::com::laex::cg2d::model::CGEntityCollisionType_IsValid(value));
+  set_has_collisiontype();
+  collisiontype_ = value;
+}
+
+// optional .com.laex.cg2d.model.CGResourceFile spritesheetFile = 5;
+inline bool CGEntityAnimation::has_spritesheetfile() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void CGEntityAnimation::set_has_spritesheetfile() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void CGEntityAnimation::clear_has_spritesheetfile() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void CGEntityAnimation::clear_spritesheetfile() {
+  if (spritesheetfile_ != NULL) spritesheetfile_->::com::laex::cg2d::model::CGResourceFile::Clear();
+  clear_has_spritesheetfile();
+}
+inline const ::com::laex::cg2d::model::CGResourceFile& CGEntityAnimation::spritesheetfile() const {
+  return spritesheetfile_ != NULL ? *spritesheetfile_ : *default_instance_->spritesheetfile_;
+}
+inline ::com::laex::cg2d::model::CGResourceFile* CGEntityAnimation::mutable_spritesheetfile() {
+  set_has_spritesheetfile();
+  if (spritesheetfile_ == NULL) spritesheetfile_ = new ::com::laex::cg2d::model::CGResourceFile;
+  return spritesheetfile_;
+}
+inline ::com::laex::cg2d::model::CGResourceFile* CGEntityAnimation::release_spritesheetfile() {
+  clear_has_spritesheetfile();
+  ::com::laex::cg2d::model::CGResourceFile* temp = spritesheetfile_;
+  spritesheetfile_ = NULL;
   return temp;
 }
-inline void CGEntityAnimation::set_allocated_animationresourcefile(::com::laex::cg2d::model::CGResourceFile* animationresourcefile) {
-  delete animationresourcefile_;
-  animationresourcefile_ = animationresourcefile;
-  if (animationresourcefile) {
-    set_has_animationresourcefile();
+inline void CGEntityAnimation::set_allocated_spritesheetfile(::com::laex::cg2d::model::CGResourceFile* spritesheetfile) {
+  delete spritesheetfile_;
+  spritesheetfile_ = spritesheetfile;
+  if (spritesheetfile) {
+    set_has_spritesheetfile();
   } else {
-    clear_has_animationresourcefile();
+    clear_has_spritesheetfile();
   }
 }
 
-// optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 3;
+// optional .com.laex.cg2d.model.CGResourceFile spritesheetJsonFile = 6;
+inline bool CGEntityAnimation::has_spritesheetjsonfile() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void CGEntityAnimation::set_has_spritesheetjsonfile() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void CGEntityAnimation::clear_has_spritesheetjsonfile() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void CGEntityAnimation::clear_spritesheetjsonfile() {
+  if (spritesheetjsonfile_ != NULL) spritesheetjsonfile_->::com::laex::cg2d::model::CGResourceFile::Clear();
+  clear_has_spritesheetjsonfile();
+}
+inline const ::com::laex::cg2d::model::CGResourceFile& CGEntityAnimation::spritesheetjsonfile() const {
+  return spritesheetjsonfile_ != NULL ? *spritesheetjsonfile_ : *default_instance_->spritesheetjsonfile_;
+}
+inline ::com::laex::cg2d::model::CGResourceFile* CGEntityAnimation::mutable_spritesheetjsonfile() {
+  set_has_spritesheetjsonfile();
+  if (spritesheetjsonfile_ == NULL) spritesheetjsonfile_ = new ::com::laex::cg2d::model::CGResourceFile;
+  return spritesheetjsonfile_;
+}
+inline ::com::laex::cg2d::model::CGResourceFile* CGEntityAnimation::release_spritesheetjsonfile() {
+  clear_has_spritesheetjsonfile();
+  ::com::laex::cg2d::model::CGResourceFile* temp = spritesheetjsonfile_;
+  spritesheetjsonfile_ = NULL;
+  return temp;
+}
+inline void CGEntityAnimation::set_allocated_spritesheetjsonfile(::com::laex::cg2d::model::CGResourceFile* spritesheetjsonfile) {
+  delete spritesheetjsonfile_;
+  spritesheetjsonfile_ = spritesheetjsonfile;
+  if (spritesheetjsonfile) {
+    set_has_spritesheetjsonfile();
+  } else {
+    clear_has_spritesheetjsonfile();
+  }
+}
+
+// optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 7;
 inline bool CGEntityAnimation::has_fixturefile() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void CGEntityAnimation::set_has_fixturefile() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void CGEntityAnimation::clear_has_fixturefile() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void CGEntityAnimation::clear_fixturefile() {
   if (fixturefile_ != NULL) fixturefile_->::com::laex::cg2d::model::CGResourceFile::Clear();
@@ -4683,206 +4977,7 @@ inline void CGEntityAnimation::set_allocated_fixturefile(::com::laex::cg2d::mode
   }
 }
 
-// optional float animationDuration = 4;
-inline bool CGEntityAnimation::has_animationduration() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void CGEntityAnimation::set_has_animationduration() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void CGEntityAnimation::clear_has_animationduration() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void CGEntityAnimation::clear_animationduration() {
-  animationduration_ = 0;
-  clear_has_animationduration();
-}
-inline float CGEntityAnimation::animationduration() const {
-  return animationduration_;
-}
-inline void CGEntityAnimation::set_animationduration(float value) {
-  set_has_animationduration();
-  animationduration_ = value;
-}
-
-// optional bool defaultAnimation = 5;
-inline bool CGEntityAnimation::has_defaultanimation() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void CGEntityAnimation::set_has_defaultanimation() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void CGEntityAnimation::clear_has_defaultanimation() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void CGEntityAnimation::clear_defaultanimation() {
-  defaultanimation_ = false;
-  clear_has_defaultanimation();
-}
-inline bool CGEntityAnimation::defaultanimation() const {
-  return defaultanimation_;
-}
-inline void CGEntityAnimation::set_defaultanimation(bool value) {
-  set_has_defaultanimation();
-  defaultanimation_ = value;
-}
-
-// optional int32 cols = 6;
-inline bool CGEntityAnimation::has_cols() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-inline void CGEntityAnimation::set_has_cols() {
-  _has_bits_[0] |= 0x00000020u;
-}
-inline void CGEntityAnimation::clear_has_cols() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void CGEntityAnimation::clear_cols() {
-  cols_ = 0;
-  clear_has_cols();
-}
-inline ::google::protobuf::int32 CGEntityAnimation::cols() const {
-  return cols_;
-}
-inline void CGEntityAnimation::set_cols(::google::protobuf::int32 value) {
-  set_has_cols();
-  cols_ = value;
-}
-
-// optional int32 rows = 7;
-inline bool CGEntityAnimation::has_rows() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void CGEntityAnimation::set_has_rows() {
-  _has_bits_[0] |= 0x00000040u;
-}
-inline void CGEntityAnimation::clear_has_rows() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-inline void CGEntityAnimation::clear_rows() {
-  rows_ = 0;
-  clear_has_rows();
-}
-inline ::google::protobuf::int32 CGEntityAnimation::rows() const {
-  return rows_;
-}
-inline void CGEntityAnimation::set_rows(::google::protobuf::int32 value) {
-  set_has_rows();
-  rows_ = value;
-}
-
-// optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 8;
-inline bool CGEntityAnimation::has_collisiontype() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void CGEntityAnimation::set_has_collisiontype() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void CGEntityAnimation::clear_has_collisiontype() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void CGEntityAnimation::clear_collisiontype() {
-  collisiontype_ = 0;
-  clear_has_collisiontype();
-}
-inline ::com::laex::cg2d::model::CGEntityCollisionType CGEntityAnimation::collisiontype() const {
-  return static_cast< ::com::laex::cg2d::model::CGEntityCollisionType >(collisiontype_);
-}
-inline void CGEntityAnimation::set_collisiontype(::com::laex::cg2d::model::CGEntityCollisionType value) {
-  assert(::com::laex::cg2d::model::CGEntityCollisionType_IsValid(value));
-  set_has_collisiontype();
-  collisiontype_ = value;
-}
-
-// optional int32 shpX = 9;
-inline bool CGEntityAnimation::has_shpx() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void CGEntityAnimation::set_has_shpx() {
-  _has_bits_[0] |= 0x00000100u;
-}
-inline void CGEntityAnimation::clear_has_shpx() {
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline void CGEntityAnimation::clear_shpx() {
-  shpx_ = 0;
-  clear_has_shpx();
-}
-inline ::google::protobuf::int32 CGEntityAnimation::shpx() const {
-  return shpx_;
-}
-inline void CGEntityAnimation::set_shpx(::google::protobuf::int32 value) {
-  set_has_shpx();
-  shpx_ = value;
-}
-
-// optional int32 shpY = 10;
-inline bool CGEntityAnimation::has_shpy() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
-}
-inline void CGEntityAnimation::set_has_shpy() {
-  _has_bits_[0] |= 0x00000200u;
-}
-inline void CGEntityAnimation::clear_has_shpy() {
-  _has_bits_[0] &= ~0x00000200u;
-}
-inline void CGEntityAnimation::clear_shpy() {
-  shpy_ = 0;
-  clear_has_shpy();
-}
-inline ::google::protobuf::int32 CGEntityAnimation::shpy() const {
-  return shpy_;
-}
-inline void CGEntityAnimation::set_shpy(::google::protobuf::int32 value) {
-  set_has_shpy();
-  shpy_ = value;
-}
-
-// optional int32 shpWidth = 11;
-inline bool CGEntityAnimation::has_shpwidth() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
-}
-inline void CGEntityAnimation::set_has_shpwidth() {
-  _has_bits_[0] |= 0x00000400u;
-}
-inline void CGEntityAnimation::clear_has_shpwidth() {
-  _has_bits_[0] &= ~0x00000400u;
-}
-inline void CGEntityAnimation::clear_shpwidth() {
-  shpwidth_ = 0;
-  clear_has_shpwidth();
-}
-inline ::google::protobuf::int32 CGEntityAnimation::shpwidth() const {
-  return shpwidth_;
-}
-inline void CGEntityAnimation::set_shpwidth(::google::protobuf::int32 value) {
-  set_has_shpwidth();
-  shpwidth_ = value;
-}
-
-// optional int32 shpHeight = 12;
-inline bool CGEntityAnimation::has_shpheight() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
-}
-inline void CGEntityAnimation::set_has_shpheight() {
-  _has_bits_[0] |= 0x00000800u;
-}
-inline void CGEntityAnimation::clear_has_shpheight() {
-  _has_bits_[0] &= ~0x00000800u;
-}
-inline void CGEntityAnimation::clear_shpheight() {
-  shpheight_ = 0;
-  clear_has_shpheight();
-}
-inline ::google::protobuf::int32 CGEntityAnimation::shpheight() const {
-  return shpheight_;
-}
-inline void CGEntityAnimation::set_shpheight(::google::protobuf::int32 value) {
-  set_has_shpheight();
-  shpheight_ = value;
-}
-
-// repeated .com.laex.cg2d.model.CGVector2 vertices = 13;
+// repeated .com.laex.cg2d.model.CGVector2 vertices = 8;
 inline int CGEntityAnimation::vertices_size() const {
   return vertices_.size();
 }
@@ -4907,29 +5002,29 @@ CGEntityAnimation::mutable_vertices() {
   return &vertices_;
 }
 
-// repeated int32 frameIndices = 14;
-inline int CGEntityAnimation::frameindices_size() const {
-  return frameindices_.size();
+// repeated .com.laex.cg2d.model.CGEntitySpritesheetItem spritesheetItems = 9;
+inline int CGEntityAnimation::spritesheetitems_size() const {
+  return spritesheetitems_.size();
 }
-inline void CGEntityAnimation::clear_frameindices() {
-  frameindices_.Clear();
+inline void CGEntityAnimation::clear_spritesheetitems() {
+  spritesheetitems_.Clear();
 }
-inline ::google::protobuf::int32 CGEntityAnimation::frameindices(int index) const {
-  return frameindices_.Get(index);
+inline const ::com::laex::cg2d::model::CGEntitySpritesheetItem& CGEntityAnimation::spritesheetitems(int index) const {
+  return spritesheetitems_.Get(index);
 }
-inline void CGEntityAnimation::set_frameindices(int index, ::google::protobuf::int32 value) {
-  frameindices_.Set(index, value);
+inline ::com::laex::cg2d::model::CGEntitySpritesheetItem* CGEntityAnimation::mutable_spritesheetitems(int index) {
+  return spritesheetitems_.Mutable(index);
 }
-inline void CGEntityAnimation::add_frameindices(::google::protobuf::int32 value) {
-  frameindices_.Add(value);
+inline ::com::laex::cg2d::model::CGEntitySpritesheetItem* CGEntityAnimation::add_spritesheetitems() {
+  return spritesheetitems_.Add();
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-CGEntityAnimation::frameindices() const {
-  return frameindices_;
+inline const ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGEntitySpritesheetItem >&
+CGEntityAnimation::spritesheetitems() const {
+  return spritesheetitems_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-CGEntityAnimation::mutable_frameindices() {
-  return &frameindices_;
+inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGEntitySpritesheetItem >*
+CGEntityAnimation::mutable_spritesheetitems() {
+  return &spritesheetitems_;
 }
 
 // -------------------------------------------------------------------

@@ -50,6 +50,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CGResourceFile_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGResourceFile_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CGEntitySpritesheetItem_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CGEntitySpritesheetItem_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CGEntityAnimation_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGEntityAnimation_reflection_ = NULL;
@@ -274,22 +277,36 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGResourceFile));
-  CGEntityAnimation_descriptor_ = file->message_type(9);
-  static const int CGEntityAnimation_offsets_[14] = {
+  CGEntitySpritesheetItem_descriptor_ = file->message_type(9);
+  static const int CGEntitySpritesheetItem_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntitySpritesheetItem, x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntitySpritesheetItem, y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntitySpritesheetItem, w_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntitySpritesheetItem, h_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntitySpritesheetItem, frameindex_),
+  };
+  CGEntitySpritesheetItem_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      CGEntitySpritesheetItem_descriptor_,
+      CGEntitySpritesheetItem::default_instance_,
+      CGEntitySpritesheetItem_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntitySpritesheetItem, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntitySpritesheetItem, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(CGEntitySpritesheetItem));
+  CGEntityAnimation_descriptor_ = file->message_type(10);
+  static const int CGEntityAnimation_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, animationname_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, animationresourcefile_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, fixturefile_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, animationduration_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, defaultanimation_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, cols_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, rows_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, collisiontype_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, shpx_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, shpy_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, shpwidth_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, shpheight_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, spritesheetfile_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, spritesheetjsonfile_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, fixturefile_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, vertices_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, frameindices_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntityAnimation, spritesheetitems_),
   };
   CGEntityAnimation_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -302,7 +319,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGEntityAnimation));
-  CGEntity_descriptor_ = file->message_type(10);
+  CGEntity_descriptor_ = file->message_type(11);
   static const int CGEntity_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntity, internalname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGEntity, animations_),
@@ -318,7 +335,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGEntity));
-  CGBounds_descriptor_ = file->message_type(11);
+  CGBounds_descriptor_ = file->message_type(12);
   static const int CGBounds_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBounds, x_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBounds, y_),
@@ -336,7 +353,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGBounds));
-  CGVector2_descriptor_ = file->message_type(12);
+  CGVector2_descriptor_ = file->message_type(13);
   static const int CGVector2_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGVector2, x_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGVector2, y_),
@@ -352,7 +369,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGVector2));
-  CGBodyDef_descriptor_ = file->message_type(13);
+  CGBodyDef_descriptor_ = file->message_type(14);
   static const int CGBodyDef_offsets_[14] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, active_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, allowsleep_),
@@ -380,7 +397,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGBodyDef));
-  CGFilter_descriptor_ = file->message_type(14);
+  CGFilter_descriptor_ = file->message_type(15);
   static const int CGFilter_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGFilter, categorybits_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGFilter, maskbits_),
@@ -397,7 +414,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGFilter));
-  CGFixtureDef_descriptor_ = file->message_type(15);
+  CGFixtureDef_descriptor_ = file->message_type(16);
   static const int CGFixtureDef_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGFixtureDef, density_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGFixtureDef, friction_),
@@ -416,7 +433,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGFixtureDef));
-  CGShape_descriptor_ = file->message_type(16);
+  CGShape_descriptor_ = file->message_type(17);
   static const int CGShape_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, visible_),
@@ -441,7 +458,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGShape));
-  CGLayer_descriptor_ = file->message_type(17);
+  CGLayer_descriptor_ = file->message_type(18);
   static const int CGLayer_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGLayer, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGLayer, name_),
@@ -460,7 +477,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGLayer));
-  CGScreenPreferences_descriptor_ = file->message_type(18);
+  CGScreenPreferences_descriptor_ = file->message_type(19);
   static const int CGScreenPreferences_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences, debugdrawprefs_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences, worldprefs_),
@@ -571,6 +588,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CGResourceFile_descriptor_, &CGResourceFile::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    CGEntitySpritesheetItem_descriptor_, &CGEntitySpritesheetItem::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CGEntityAnimation_descriptor_, &CGEntityAnimation::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CGEntity_descriptor_, &CGEntity::default_instance());
@@ -619,6 +638,8 @@ void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   delete CGWeldJointDef_reflection_;
   delete CGResourceFile::default_instance_;
   delete CGResourceFile_reflection_;
+  delete CGEntitySpritesheetItem::default_instance_;
+  delete CGEntitySpritesheetItem_reflection_;
   delete CGEntityAnimation::default_instance_;
   delete CGEntityAnimation_reflection_;
   delete CGEntity::default_instance_;
@@ -698,81 +719,84 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "rce\030\002 \001(\002\022\021\n\tmaxTorque\030\003 \001(\002\"*\n\016CGWeldJo"
     "intDef\022\030\n\020collideConnected\030\001 \001(\010\"D\n\016CGRe"
     "sourceFile\022\024\n\014resourceFile\030\001 \001(\t\022\034\n\024reso"
-    "urceFileAbsolute\030\002 \001(\t\"\305\003\n\021CGEntityAnima"
-    "tion\022\025\n\ranimationName\030\001 \001(\t\022B\n\025animation"
-    "ResourceFile\030\002 \001(\0132#.com.laex.cg2d.model"
-    ".CGResourceFile\0228\n\013fixtureFile\030\003 \001(\0132#.c"
-    "om.laex.cg2d.model.CGResourceFile\022\031\n\021ani"
-    "mationDuration\030\004 \001(\002\022\030\n\020defaultAnimation"
-    "\030\005 \001(\010\022\014\n\004cols\030\006 \001(\005\022\014\n\004rows\030\007 \001(\005\022A\n\rco"
-    "llisionType\030\010 \001(\0162*.com.laex.cg2d.model."
-    "CGEntityCollisionType\022\014\n\004shpX\030\t \001(\005\022\014\n\004s"
-    "hpY\030\n \001(\005\022\020\n\010shpWidth\030\013 \001(\005\022\021\n\tshpHeight"
-    "\030\014 \001(\005\0220\n\010vertices\030\r \003(\0132\036.com.laex.cg2d"
-    ".model.CGVector2\022\024\n\014frameIndices\030\016 \003(\005\"\\"
-    "\n\010CGEntity\022\024\n\014internalName\030\001 \001(\t\022:\n\nanim"
-    "ations\030\002 \003(\0132&.com.laex.cg2d.model.CGEnt"
-    "ityAnimation\"\?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y"
-    "\030\002 \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n"
-    "\tCGVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\203\003\n\tCGB"
-    "odyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001"
-    "(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 \001("
-    "\002\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 \001("
-    "\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010"
-    "\022\026\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDampin"
-    "g\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linearV"
-    "elocity\030\014 \001(\0132\036.com.laex.cg2d.model.CGVe"
-    "ctor2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.mode"
-    "l.CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.lae"
-    "x.cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014ca"
-    "tegoryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngr"
-    "oupIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007densi"
-    "ty\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitutio"
-    "n\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001(\0132"
-    "\035.com.laex.cg2d.model.CGFilter\"\321\003\n\007CGSha"
-    "pe\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locke"
-    "d\030\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgroun"
-    "dResourceFile\030\005 \001(\0132#.com.laex.cg2d.mode"
-    "l.CGResourceFile\022\?\n\017editorShapeType\030\006 \001("
-    "\0162&.com.laex.cg2d.model.CGEditorShapeTyp"
-    "e\022-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.model."
-    "CGBounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.cg2"
-    "d.model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132!."
-    "com.laex.cg2d.model.CGFixtureDef\022,\n\006join"
-    "ts\030\n \003(\0132\034.com.laex.cg2d.model.CGJoint\022:"
-    "\n\rentityRefFile\030\013 \001(\0132#.com.laex.cg2d.mo"
-    "del.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 \001("
-    "\005\022\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006lock"
-    "ed\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d."
-    "model.CGShape\"\274\005\n\023CGScreenPreferences\022W\n"
-    "\016debugDrawPrefs\030\001 \001(\0132\?.com.laex.cg2d.mo"
-    "del.CGScreenPreferences.CGDebugDrawPrefe"
-    "rences\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex.cg"
-    "2d.model.CGScreenPreferences.CGWorldPref"
-    "erences\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.cg"
-    "2d.model.CGScreenPreferences.CGCardPrefe"
-    "rences\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndra"
-    "wBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010dra"
-    "wAABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022"
-    "\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugD"
-    "ata\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWo"
-    "rldPreferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velo"
-    "cityIterations\030\002 \001(\005\022\032\n\022positionIteratio"
-    "ns\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005"
-    " \001(\002\022\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCardPreferen"
-    "ces\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n"
-    "\tcardWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n"
-    "\013CGJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022"
-    "\r\n\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005"
-    "\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD"
-    "\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCo"
-    "llisionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE"
-    "\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001"
-    "\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEdito"
-    "rShapeType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020S"
-    "IMPLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020"
-    "\003\022\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_"
-    "SHAPE\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4745);
+    "urceFileAbsolute\030\002 \001(\t\"Y\n\027CGEntitySprite"
+    "sheetItem\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001w\030\003 \001"
+    "(\002\022\t\n\001h\030\004 \001(\002\022\022\n\nframeIndex\030\005 \001(\005\"\326\003\n\021CG"
+    "EntityAnimation\022\025\n\ranimationName\030\001 \001(\t\022\031"
+    "\n\021animationDuration\030\002 \001(\002\022\030\n\020defaultAnim"
+    "ation\030\003 \001(\010\022A\n\rcollisionType\030\004 \001(\0162*.com"
+    ".laex.cg2d.model.CGEntityCollisionType\022<"
+    "\n\017spritesheetFile\030\005 \001(\0132#.com.laex.cg2d."
+    "model.CGResourceFile\022@\n\023spritesheetJsonF"
+    "ile\030\006 \001(\0132#.com.laex.cg2d.model.CGResour"
+    "ceFile\0228\n\013fixtureFile\030\007 \001(\0132#.com.laex.c"
+    "g2d.model.CGResourceFile\0220\n\010vertices\030\010 \003"
+    "(\0132\036.com.laex.cg2d.model.CGVector2\022F\n\020sp"
+    "ritesheetItems\030\t \003(\0132,.com.laex.cg2d.mod"
+    "el.CGEntitySpritesheetItem\"\\\n\010CGEntity\022\024"
+    "\n\014internalName\030\001 \001(\t\022:\n\nanimations\030\002 \003(\013"
+    "2&.com.laex.cg2d.model.CGEntityAnimation"
+    "\"\?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\r\n\005wi"
+    "dth\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n\tCGVector2\022\t"
+    "\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\203\003\n\tCGBodyDef\022\016\n\006ac"
+    "tive\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001(\010\022\r\n\005angle\030"
+    "\003 \001(\002\022\026\n\016angularDamping\030\004 \001(\002\022\027\n\017angular"
+    "Velocity\030\005 \001(\002\022\r\n\005awake\030\006 \001(\010\022\016\n\006bullet\030"
+    "\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010\022\026\n\016intertia"
+    "lScale\030\t \001(\002\022\025\n\rlinearDamping\030\n \001(\002\022\024\n\014g"
+    "ravityScale\030\013 \001(\002\0226\n\016linearVelocity\030\014 \001("
+    "\0132\036.com.laex.cg2d.model.CGVector2\022-\n\004typ"
+    "e\030\r \001(\0162\037.com.laex.cg2d.model.CGBodyType"
+    "\0220\n\010position\030\016 \001(\0132\036.com.laex.cg2d.model"
+    ".CGVector2\"F\n\010CGFilter\022\024\n\014categoryBits\030\001"
+    " \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngroupIndex\030\003 \001"
+    "(\005\"\205\001\n\014CGFixtureDef\022\017\n\007density\030\001 \001(\002\022\020\n\010"
+    "friction\030\002 \001(\002\022\023\n\013restitution\030\003 \001(\002\022\016\n\006s"
+    "ensor\030\004 \001(\010\022-\n\006filter\030\005 \001(\0132\035.com.laex.c"
+    "g2d.model.CGFilter\"\321\003\n\007CGShape\022\n\n\002id\030\001 \001"
+    "(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nb"
+    "ackground\030\004 \001(\010\022C\n\026backgroundResourceFil"
+    "e\030\005 \001(\0132#.com.laex.cg2d.model.CGResource"
+    "File\022\?\n\017editorShapeType\030\006 \001(\0162&.com.laex"
+    ".cg2d.model.CGEditorShapeType\022-\n\006bounds\030"
+    "\007 \001(\0132\035.com.laex.cg2d.model.CGBounds\022/\n\007"
+    "bodyDef\030\010 \001(\0132\036.com.laex.cg2d.model.CGBo"
+    "dyDef\0225\n\nfixtureDef\030\t \001(\0132!.com.laex.cg2"
+    "d.model.CGFixtureDef\022,\n\006joints\030\n \003(\0132\034.c"
+    "om.laex.cg2d.model.CGJoint\022:\n\rentityRefF"
+    "ile\030\013 \001(\0132#.com.laex.cg2d.model.CGResour"
+    "ceFile\"q\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 "
+    "\001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022+\n\005"
+    "shape\030\005 \003(\0132\034.com.laex.cg2d.model.CGShap"
+    "e\"\274\005\n\023CGScreenPreferences\022W\n\016debugDrawPr"
+    "efs\030\001 \001(\0132\?.com.laex.cg2d.model.CGScreen"
+    "Preferences.CGDebugDrawPreferences\022O\n\nwo"
+    "rldPrefs\030\002 \001(\0132;.com.laex.cg2d.model.CGS"
+    "creenPreferences.CGWorldPreferences\022M\n\tc"
+    "ardPrefs\030\003 \001(\0132:.com.laex.cg2d.model.CGS"
+    "creenPreferences.CGCardPreferences\032\266\001\n\026C"
+    "GDebugDrawPreferences\022\022\n\ndrawBodies\030\001 \001("
+    "\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022"
+    "\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n\021installMo"
+    "useJoint\030\005 \001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n"
+    "\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWorldPreferenc"
+    "es\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velocityIteratio"
+    "ns\030\002 \001(\005\022\032\n\022positionIterations\030\003 \001(\005\022\020\n\010"
+    "timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010grav"
+    "ityY\030\006 \001(\002\032\\\n\021CGCardPreferences\022\017\n\007cardN"
+    "oX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003"
+    " \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJointType"
+    "\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC"
+    "\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022"
+    "\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTI"
+    "ON\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollisionType\022"
+    "\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM"
+    "\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATI"
+    "C\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorShapeType\022\027"
+    "\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_"
+    "BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_"
+    "SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014E"
+    "NTITY_SHAPE\020\006", 4853);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/model/ScreenModel.proto", &protobuf_RegisterTypes);
   CGScreenModel::default_instance_ = new CGScreenModel();
@@ -784,6 +808,7 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   CGFrictionJointDef::default_instance_ = new CGFrictionJointDef();
   CGWeldJointDef::default_instance_ = new CGWeldJointDef();
   CGResourceFile::default_instance_ = new CGResourceFile();
+  CGEntitySpritesheetItem::default_instance_ = new CGEntitySpritesheetItem();
   CGEntityAnimation::default_instance_ = new CGEntityAnimation();
   CGEntity::default_instance_ = new CGEntity();
   CGBounds::default_instance_ = new CGBounds();
@@ -806,6 +831,7 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   CGFrictionJointDef::default_instance_->InitAsDefaultInstance();
   CGWeldJointDef::default_instance_->InitAsDefaultInstance();
   CGResourceFile::default_instance_->InitAsDefaultInstance();
+  CGEntitySpritesheetItem::default_instance_->InitAsDefaultInstance();
   CGEntityAnimation::default_instance_->InitAsDefaultInstance();
   CGEntity::default_instance_->InitAsDefaultInstance();
   CGBounds::default_instance_->InitAsDefaultInstance();
@@ -4342,20 +4368,375 @@ void CGResourceFile::Swap(CGResourceFile* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int CGEntitySpritesheetItem::kXFieldNumber;
+const int CGEntitySpritesheetItem::kYFieldNumber;
+const int CGEntitySpritesheetItem::kWFieldNumber;
+const int CGEntitySpritesheetItem::kHFieldNumber;
+const int CGEntitySpritesheetItem::kFrameIndexFieldNumber;
+#endif  // !_MSC_VER
+
+CGEntitySpritesheetItem::CGEntitySpritesheetItem()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void CGEntitySpritesheetItem::InitAsDefaultInstance() {
+}
+
+CGEntitySpritesheetItem::CGEntitySpritesheetItem(const CGEntitySpritesheetItem& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void CGEntitySpritesheetItem::SharedCtor() {
+  _cached_size_ = 0;
+  x_ = 0;
+  y_ = 0;
+  w_ = 0;
+  h_ = 0;
+  frameindex_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+CGEntitySpritesheetItem::~CGEntitySpritesheetItem() {
+  SharedDtor();
+}
+
+void CGEntitySpritesheetItem::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void CGEntitySpritesheetItem::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CGEntitySpritesheetItem::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CGEntitySpritesheetItem_descriptor_;
+}
+
+const CGEntitySpritesheetItem& CGEntitySpritesheetItem::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
+  return *default_instance_;
+}
+
+CGEntitySpritesheetItem* CGEntitySpritesheetItem::default_instance_ = NULL;
+
+CGEntitySpritesheetItem* CGEntitySpritesheetItem::New() const {
+  return new CGEntitySpritesheetItem;
+}
+
+void CGEntitySpritesheetItem::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    x_ = 0;
+    y_ = 0;
+    w_ = 0;
+    h_ = 0;
+    frameindex_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool CGEntitySpritesheetItem::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional float x = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &x_)));
+          set_has_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(21)) goto parse_y;
+        break;
+      }
+
+      // optional float y = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &y_)));
+          set_has_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(29)) goto parse_w;
+        break;
+      }
+
+      // optional float w = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_w:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &w_)));
+          set_has_w();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(37)) goto parse_h;
+        break;
+      }
+
+      // optional float h = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_h:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &h_)));
+          set_has_h();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_frameIndex;
+        break;
+      }
+
+      // optional int32 frameIndex = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_frameIndex:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &frameindex_)));
+          set_has_frameindex();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void CGEntitySpritesheetItem::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional float x = 1;
+  if (has_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
+  }
+
+  // optional float y = 2;
+  if (has_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->y(), output);
+  }
+
+  // optional float w = 3;
+  if (has_w()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->w(), output);
+  }
+
+  // optional float h = 4;
+  if (has_h()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->h(), output);
+  }
+
+  // optional int32 frameIndex = 5;
+  if (has_frameindex()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->frameindex(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* CGEntitySpritesheetItem::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional float x = 1;
+  if (has_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
+  }
+
+  // optional float y = 2;
+  if (has_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->y(), target);
+  }
+
+  // optional float w = 3;
+  if (has_w()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->w(), target);
+  }
+
+  // optional float h = 4;
+  if (has_h()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->h(), target);
+  }
+
+  // optional int32 frameIndex = 5;
+  if (has_frameindex()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->frameindex(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int CGEntitySpritesheetItem::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional float x = 1;
+    if (has_x()) {
+      total_size += 1 + 4;
+    }
+
+    // optional float y = 2;
+    if (has_y()) {
+      total_size += 1 + 4;
+    }
+
+    // optional float w = 3;
+    if (has_w()) {
+      total_size += 1 + 4;
+    }
+
+    // optional float h = 4;
+    if (has_h()) {
+      total_size += 1 + 4;
+    }
+
+    // optional int32 frameIndex = 5;
+    if (has_frameindex()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->frameindex());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CGEntitySpritesheetItem::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const CGEntitySpritesheetItem* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const CGEntitySpritesheetItem*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void CGEntitySpritesheetItem::MergeFrom(const CGEntitySpritesheetItem& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_x()) {
+      set_x(from.x());
+    }
+    if (from.has_y()) {
+      set_y(from.y());
+    }
+    if (from.has_w()) {
+      set_w(from.w());
+    }
+    if (from.has_h()) {
+      set_h(from.h());
+    }
+    if (from.has_frameindex()) {
+      set_frameindex(from.frameindex());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void CGEntitySpritesheetItem::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CGEntitySpritesheetItem::CopyFrom(const CGEntitySpritesheetItem& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CGEntitySpritesheetItem::IsInitialized() const {
+
+  return true;
+}
+
+void CGEntitySpritesheetItem::Swap(CGEntitySpritesheetItem* other) {
+  if (other != this) {
+    std::swap(x_, other->x_);
+    std::swap(y_, other->y_);
+    std::swap(w_, other->w_);
+    std::swap(h_, other->h_);
+    std::swap(frameindex_, other->frameindex_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata CGEntitySpritesheetItem::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = CGEntitySpritesheetItem_descriptor_;
+  metadata.reflection = CGEntitySpritesheetItem_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int CGEntityAnimation::kAnimationNameFieldNumber;
-const int CGEntityAnimation::kAnimationResourceFileFieldNumber;
-const int CGEntityAnimation::kFixtureFileFieldNumber;
 const int CGEntityAnimation::kAnimationDurationFieldNumber;
 const int CGEntityAnimation::kDefaultAnimationFieldNumber;
-const int CGEntityAnimation::kColsFieldNumber;
-const int CGEntityAnimation::kRowsFieldNumber;
 const int CGEntityAnimation::kCollisionTypeFieldNumber;
-const int CGEntityAnimation::kShpXFieldNumber;
-const int CGEntityAnimation::kShpYFieldNumber;
-const int CGEntityAnimation::kShpWidthFieldNumber;
-const int CGEntityAnimation::kShpHeightFieldNumber;
+const int CGEntityAnimation::kSpritesheetFileFieldNumber;
+const int CGEntityAnimation::kSpritesheetJsonFileFieldNumber;
+const int CGEntityAnimation::kFixtureFileFieldNumber;
 const int CGEntityAnimation::kVerticesFieldNumber;
-const int CGEntityAnimation::kFrameIndicesFieldNumber;
+const int CGEntityAnimation::kSpritesheetItemsFieldNumber;
 #endif  // !_MSC_VER
 
 CGEntityAnimation::CGEntityAnimation()
@@ -4364,7 +4745,8 @@ CGEntityAnimation::CGEntityAnimation()
 }
 
 void CGEntityAnimation::InitAsDefaultInstance() {
-  animationresourcefile_ = const_cast< ::com::laex::cg2d::model::CGResourceFile*>(&::com::laex::cg2d::model::CGResourceFile::default_instance());
+  spritesheetfile_ = const_cast< ::com::laex::cg2d::model::CGResourceFile*>(&::com::laex::cg2d::model::CGResourceFile::default_instance());
+  spritesheetjsonfile_ = const_cast< ::com::laex::cg2d::model::CGResourceFile*>(&::com::laex::cg2d::model::CGResourceFile::default_instance());
   fixturefile_ = const_cast< ::com::laex::cg2d::model::CGResourceFile*>(&::com::laex::cg2d::model::CGResourceFile::default_instance());
 }
 
@@ -4377,17 +4759,12 @@ CGEntityAnimation::CGEntityAnimation(const CGEntityAnimation& from)
 void CGEntityAnimation::SharedCtor() {
   _cached_size_ = 0;
   animationname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  animationresourcefile_ = NULL;
-  fixturefile_ = NULL;
   animationduration_ = 0;
   defaultanimation_ = false;
-  cols_ = 0;
-  rows_ = 0;
   collisiontype_ = 0;
-  shpx_ = 0;
-  shpy_ = 0;
-  shpwidth_ = 0;
-  shpheight_ = 0;
+  spritesheetfile_ = NULL;
+  spritesheetjsonfile_ = NULL;
+  fixturefile_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -4400,7 +4777,8 @@ void CGEntityAnimation::SharedDtor() {
     delete animationname_;
   }
   if (this != default_instance_) {
-    delete animationresourcefile_;
+    delete spritesheetfile_;
+    delete spritesheetjsonfile_;
     delete fixturefile_;
   }
 }
@@ -4433,26 +4811,21 @@ void CGEntityAnimation::Clear() {
         animationname_->clear();
       }
     }
-    if (has_animationresourcefile()) {
-      if (animationresourcefile_ != NULL) animationresourcefile_->::com::laex::cg2d::model::CGResourceFile::Clear();
+    animationduration_ = 0;
+    defaultanimation_ = false;
+    collisiontype_ = 0;
+    if (has_spritesheetfile()) {
+      if (spritesheetfile_ != NULL) spritesheetfile_->::com::laex::cg2d::model::CGResourceFile::Clear();
+    }
+    if (has_spritesheetjsonfile()) {
+      if (spritesheetjsonfile_ != NULL) spritesheetjsonfile_->::com::laex::cg2d::model::CGResourceFile::Clear();
     }
     if (has_fixturefile()) {
       if (fixturefile_ != NULL) fixturefile_->::com::laex::cg2d::model::CGResourceFile::Clear();
     }
-    animationduration_ = 0;
-    defaultanimation_ = false;
-    cols_ = 0;
-    rows_ = 0;
-    collisiontype_ = 0;
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    shpx_ = 0;
-    shpy_ = 0;
-    shpwidth_ = 0;
-    shpheight_ = 0;
   }
   vertices_.Clear();
-  frameindices_.Clear();
+  spritesheetitems_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -4475,40 +4848,12 @@ bool CGEntityAnimation::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_animationResourceFile;
+        if (input->ExpectTag(21)) goto parse_animationDuration;
         break;
       }
 
-      // optional .com.laex.cg2d.model.CGResourceFile animationResourceFile = 2;
+      // optional float animationDuration = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_animationResourceFile:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_animationresourcefile()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_fixtureFile;
-        break;
-      }
-
-      // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_fixtureFile:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_fixturefile()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(37)) goto parse_animationDuration;
-        break;
-      }
-
-      // optional float animationDuration = 4;
-      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
          parse_animationDuration:
@@ -4519,12 +4864,12 @@ bool CGEntityAnimation::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_defaultAnimation;
+        if (input->ExpectTag(24)) goto parse_defaultAnimation;
         break;
       }
 
-      // optional bool defaultAnimation = 5;
-      case 5: {
+      // optional bool defaultAnimation = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_defaultAnimation:
@@ -4535,44 +4880,12 @@ bool CGEntityAnimation::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(48)) goto parse_cols;
+        if (input->ExpectTag(32)) goto parse_collisionType;
         break;
       }
 
-      // optional int32 cols = 6;
-      case 6: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_cols:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &cols_)));
-          set_has_cols();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(56)) goto parse_rows;
-        break;
-      }
-
-      // optional int32 rows = 7;
-      case 7: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_rows:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &rows_)));
-          set_has_rows();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(64)) goto parse_collisionType;
-        break;
-      }
-
-      // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 8;
-      case 8: {
+      // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_collisionType:
@@ -4583,81 +4896,59 @@ bool CGEntityAnimation::MergePartialFromCodedStream(
           if (::com::laex::cg2d::model::CGEntityCollisionType_IsValid(value)) {
             set_collisiontype(static_cast< ::com::laex::cg2d::model::CGEntityCollisionType >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(8, value);
+            mutable_unknown_fields()->AddVarint(4, value);
           }
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(72)) goto parse_shpX;
+        if (input->ExpectTag(42)) goto parse_spritesheetFile;
         break;
       }
 
-      // optional int32 shpX = 9;
-      case 9: {
+      // optional .com.laex.cg2d.model.CGResourceFile spritesheetFile = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_shpX:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &shpx_)));
-          set_has_shpx();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_spritesheetFile:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_spritesheetfile()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(80)) goto parse_shpY;
+        if (input->ExpectTag(50)) goto parse_spritesheetJsonFile;
         break;
       }
 
-      // optional int32 shpY = 10;
-      case 10: {
+      // optional .com.laex.cg2d.model.CGResourceFile spritesheetJsonFile = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_shpY:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &shpy_)));
-          set_has_shpy();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_spritesheetJsonFile:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_spritesheetjsonfile()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(88)) goto parse_shpWidth;
+        if (input->ExpectTag(58)) goto parse_fixtureFile;
         break;
       }
 
-      // optional int32 shpWidth = 11;
-      case 11: {
+      // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_shpWidth:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &shpwidth_)));
-          set_has_shpwidth();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_fixtureFile:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_fixturefile()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(96)) goto parse_shpHeight;
+        if (input->ExpectTag(66)) goto parse_vertices;
         break;
       }
 
-      // optional int32 shpHeight = 12;
-      case 12: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_shpHeight:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &shpheight_)));
-          set_has_shpheight();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(106)) goto parse_vertices;
-        break;
-      }
-
-      // repeated .com.laex.cg2d.model.CGVector2 vertices = 13;
-      case 13: {
+      // repeated .com.laex.cg2d.model.CGVector2 vertices = 8;
+      case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_vertices:
@@ -4666,29 +4957,22 @@ bool CGEntityAnimation::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(106)) goto parse_vertices;
-        if (input->ExpectTag(112)) goto parse_frameIndices;
+        if (input->ExpectTag(66)) goto parse_vertices;
+        if (input->ExpectTag(74)) goto parse_spritesheetItems;
         break;
       }
 
-      // repeated int32 frameIndices = 14;
-      case 14: {
+      // repeated .com.laex.cg2d.model.CGEntitySpritesheetItem spritesheetItems = 9;
+      case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_frameIndices:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 112, input, this->mutable_frameindices())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, this->mutable_frameindices())));
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_spritesheetItems:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_spritesheetitems()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(112)) goto parse_frameIndices;
+        if (input->ExpectTag(74)) goto parse_spritesheetItems;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -4720,74 +5004,50 @@ void CGEntityAnimation::SerializeWithCachedSizes(
       1, this->animationname(), output);
   }
 
-  // optional .com.laex.cg2d.model.CGResourceFile animationResourceFile = 2;
-  if (has_animationresourcefile()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->animationresourcefile(), output);
-  }
-
-  // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 3;
-  if (has_fixturefile()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->fixturefile(), output);
-  }
-
-  // optional float animationDuration = 4;
+  // optional float animationDuration = 2;
   if (has_animationduration()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->animationduration(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->animationduration(), output);
   }
 
-  // optional bool defaultAnimation = 5;
+  // optional bool defaultAnimation = 3;
   if (has_defaultanimation()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->defaultanimation(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->defaultanimation(), output);
   }
 
-  // optional int32 cols = 6;
-  if (has_cols()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->cols(), output);
-  }
-
-  // optional int32 rows = 7;
-  if (has_rows()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->rows(), output);
-  }
-
-  // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 8;
+  // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 4;
   if (has_collisiontype()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      8, this->collisiontype(), output);
+      4, this->collisiontype(), output);
   }
 
-  // optional int32 shpX = 9;
-  if (has_shpx()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->shpx(), output);
+  // optional .com.laex.cg2d.model.CGResourceFile spritesheetFile = 5;
+  if (has_spritesheetfile()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->spritesheetfile(), output);
   }
 
-  // optional int32 shpY = 10;
-  if (has_shpy()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->shpy(), output);
+  // optional .com.laex.cg2d.model.CGResourceFile spritesheetJsonFile = 6;
+  if (has_spritesheetjsonfile()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->spritesheetjsonfile(), output);
   }
 
-  // optional int32 shpWidth = 11;
-  if (has_shpwidth()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->shpwidth(), output);
+  // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 7;
+  if (has_fixturefile()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->fixturefile(), output);
   }
 
-  // optional int32 shpHeight = 12;
-  if (has_shpheight()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->shpheight(), output);
-  }
-
-  // repeated .com.laex.cg2d.model.CGVector2 vertices = 13;
+  // repeated .com.laex.cg2d.model.CGVector2 vertices = 8;
   for (int i = 0; i < this->vertices_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      13, this->vertices(i), output);
+      8, this->vertices(i), output);
   }
 
-  // repeated int32 frameIndices = 14;
-  for (int i = 0; i < this->frameindices_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(
-      14, this->frameindices(i), output);
+  // repeated .com.laex.cg2d.model.CGEntitySpritesheetItem spritesheetItems = 9;
+  for (int i = 0; i < this->spritesheetitems_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->spritesheetitems(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -4808,77 +5068,55 @@ void CGEntityAnimation::SerializeWithCachedSizes(
         1, this->animationname(), target);
   }
 
-  // optional .com.laex.cg2d.model.CGResourceFile animationResourceFile = 2;
-  if (has_animationresourcefile()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->animationresourcefile(), target);
+  // optional float animationDuration = 2;
+  if (has_animationduration()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->animationduration(), target);
   }
 
-  // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 3;
+  // optional bool defaultAnimation = 3;
+  if (has_defaultanimation()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->defaultanimation(), target);
+  }
+
+  // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 4;
+  if (has_collisiontype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      4, this->collisiontype(), target);
+  }
+
+  // optional .com.laex.cg2d.model.CGResourceFile spritesheetFile = 5;
+  if (has_spritesheetfile()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        5, this->spritesheetfile(), target);
+  }
+
+  // optional .com.laex.cg2d.model.CGResourceFile spritesheetJsonFile = 6;
+  if (has_spritesheetjsonfile()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->spritesheetjsonfile(), target);
+  }
+
+  // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 7;
   if (has_fixturefile()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->fixturefile(), target);
+        7, this->fixturefile(), target);
   }
 
-  // optional float animationDuration = 4;
-  if (has_animationduration()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->animationduration(), target);
-  }
-
-  // optional bool defaultAnimation = 5;
-  if (has_defaultanimation()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->defaultanimation(), target);
-  }
-
-  // optional int32 cols = 6;
-  if (has_cols()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->cols(), target);
-  }
-
-  // optional int32 rows = 7;
-  if (has_rows()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->rows(), target);
-  }
-
-  // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 8;
-  if (has_collisiontype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      8, this->collisiontype(), target);
-  }
-
-  // optional int32 shpX = 9;
-  if (has_shpx()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->shpx(), target);
-  }
-
-  // optional int32 shpY = 10;
-  if (has_shpy()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->shpy(), target);
-  }
-
-  // optional int32 shpWidth = 11;
-  if (has_shpwidth()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->shpwidth(), target);
-  }
-
-  // optional int32 shpHeight = 12;
-  if (has_shpheight()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->shpheight(), target);
-  }
-
-  // repeated .com.laex.cg2d.model.CGVector2 vertices = 13;
+  // repeated .com.laex.cg2d.model.CGVector2 vertices = 8;
   for (int i = 0; i < this->vertices_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        13, this->vertices(i), target);
+        8, this->vertices(i), target);
   }
 
-  // repeated int32 frameIndices = 14;
-  for (int i = 0; i < this->frameindices_size(); i++) {
+  // repeated .com.laex.cg2d.model.CGEntitySpritesheetItem spritesheetItems = 9;
+  for (int i = 0; i < this->spritesheetitems_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32ToArray(14, this->frameindices(i), target);
+      WriteMessageNoVirtualToArray(
+        9, this->spritesheetitems(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4899,82 +5137,45 @@ int CGEntityAnimation::ByteSize() const {
           this->animationname());
     }
 
-    // optional .com.laex.cg2d.model.CGResourceFile animationResourceFile = 2;
-    if (has_animationresourcefile()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->animationresourcefile());
+    // optional float animationDuration = 2;
+    if (has_animationduration()) {
+      total_size += 1 + 4;
     }
 
-    // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 3;
+    // optional bool defaultAnimation = 3;
+    if (has_defaultanimation()) {
+      total_size += 1 + 1;
+    }
+
+    // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 4;
+    if (has_collisiontype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->collisiontype());
+    }
+
+    // optional .com.laex.cg2d.model.CGResourceFile spritesheetFile = 5;
+    if (has_spritesheetfile()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->spritesheetfile());
+    }
+
+    // optional .com.laex.cg2d.model.CGResourceFile spritesheetJsonFile = 6;
+    if (has_spritesheetjsonfile()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->spritesheetjsonfile());
+    }
+
+    // optional .com.laex.cg2d.model.CGResourceFile fixtureFile = 7;
     if (has_fixturefile()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->fixturefile());
     }
 
-    // optional float animationDuration = 4;
-    if (has_animationduration()) {
-      total_size += 1 + 4;
-    }
-
-    // optional bool defaultAnimation = 5;
-    if (has_defaultanimation()) {
-      total_size += 1 + 1;
-    }
-
-    // optional int32 cols = 6;
-    if (has_cols()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->cols());
-    }
-
-    // optional int32 rows = 7;
-    if (has_rows()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->rows());
-    }
-
-    // optional .com.laex.cg2d.model.CGEntityCollisionType collisionType = 8;
-    if (has_collisiontype()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->collisiontype());
-    }
-
   }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional int32 shpX = 9;
-    if (has_shpx()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->shpx());
-    }
-
-    // optional int32 shpY = 10;
-    if (has_shpy()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->shpy());
-    }
-
-    // optional int32 shpWidth = 11;
-    if (has_shpwidth()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->shpwidth());
-    }
-
-    // optional int32 shpHeight = 12;
-    if (has_shpheight()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->shpheight());
-    }
-
-  }
-  // repeated .com.laex.cg2d.model.CGVector2 vertices = 13;
+  // repeated .com.laex.cg2d.model.CGVector2 vertices = 8;
   total_size += 1 * this->vertices_size();
   for (int i = 0; i < this->vertices_size(); i++) {
     total_size +=
@@ -4982,14 +5183,12 @@ int CGEntityAnimation::ByteSize() const {
         this->vertices(i));
   }
 
-  // repeated int32 frameIndices = 14;
-  {
-    int data_size = 0;
-    for (int i = 0; i < this->frameindices_size(); i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::
-        Int32Size(this->frameindices(i));
-    }
-    total_size += 1 * this->frameindices_size() + data_size;
+  // repeated .com.laex.cg2d.model.CGEntitySpritesheetItem spritesheetItems = 9;
+  total_size += 1 * this->spritesheetitems_size();
+  for (int i = 0; i < this->spritesheetitems_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->spritesheetitems(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -5018,16 +5217,10 @@ void CGEntityAnimation::MergeFrom(const ::google::protobuf::Message& from) {
 void CGEntityAnimation::MergeFrom(const CGEntityAnimation& from) {
   GOOGLE_CHECK_NE(&from, this);
   vertices_.MergeFrom(from.vertices_);
-  frameindices_.MergeFrom(from.frameindices_);
+  spritesheetitems_.MergeFrom(from.spritesheetitems_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_animationname()) {
       set_animationname(from.animationname());
-    }
-    if (from.has_animationresourcefile()) {
-      mutable_animationresourcefile()->::com::laex::cg2d::model::CGResourceFile::MergeFrom(from.animationresourcefile());
-    }
-    if (from.has_fixturefile()) {
-      mutable_fixturefile()->::com::laex::cg2d::model::CGResourceFile::MergeFrom(from.fixturefile());
     }
     if (from.has_animationduration()) {
       set_animationduration(from.animationduration());
@@ -5035,28 +5228,17 @@ void CGEntityAnimation::MergeFrom(const CGEntityAnimation& from) {
     if (from.has_defaultanimation()) {
       set_defaultanimation(from.defaultanimation());
     }
-    if (from.has_cols()) {
-      set_cols(from.cols());
-    }
-    if (from.has_rows()) {
-      set_rows(from.rows());
-    }
     if (from.has_collisiontype()) {
       set_collisiontype(from.collisiontype());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    if (from.has_shpx()) {
-      set_shpx(from.shpx());
+    if (from.has_spritesheetfile()) {
+      mutable_spritesheetfile()->::com::laex::cg2d::model::CGResourceFile::MergeFrom(from.spritesheetfile());
     }
-    if (from.has_shpy()) {
-      set_shpy(from.shpy());
+    if (from.has_spritesheetjsonfile()) {
+      mutable_spritesheetjsonfile()->::com::laex::cg2d::model::CGResourceFile::MergeFrom(from.spritesheetjsonfile());
     }
-    if (from.has_shpwidth()) {
-      set_shpwidth(from.shpwidth());
-    }
-    if (from.has_shpheight()) {
-      set_shpheight(from.shpheight());
+    if (from.has_fixturefile()) {
+      mutable_fixturefile()->::com::laex::cg2d::model::CGResourceFile::MergeFrom(from.fixturefile());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -5085,19 +5267,14 @@ bool CGEntityAnimation::IsInitialized() const {
 void CGEntityAnimation::Swap(CGEntityAnimation* other) {
   if (other != this) {
     std::swap(animationname_, other->animationname_);
-    std::swap(animationresourcefile_, other->animationresourcefile_);
-    std::swap(fixturefile_, other->fixturefile_);
     std::swap(animationduration_, other->animationduration_);
     std::swap(defaultanimation_, other->defaultanimation_);
-    std::swap(cols_, other->cols_);
-    std::swap(rows_, other->rows_);
     std::swap(collisiontype_, other->collisiontype_);
-    std::swap(shpx_, other->shpx_);
-    std::swap(shpy_, other->shpy_);
-    std::swap(shpwidth_, other->shpwidth_);
-    std::swap(shpheight_, other->shpheight_);
+    std::swap(spritesheetfile_, other->spritesheetfile_);
+    std::swap(spritesheetjsonfile_, other->spritesheetjsonfile_);
+    std::swap(fixturefile_, other->fixturefile_);
     vertices_.Swap(&other->vertices_);
-    frameindices_.Swap(&other->frameindices_);
+    spritesheetitems_.Swap(&other->spritesheetitems_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
