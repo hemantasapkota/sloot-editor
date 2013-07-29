@@ -69,6 +69,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
@@ -87,6 +88,7 @@ import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangeOrderCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangePropertiesCommand;
 import com.laex.cg2d.screeneditor.commands.LayerRemoveCommand;
+import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeDeleteCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeDeleteCommand.DeleteCommandType;
 import com.laex.cg2d.screeneditor.editparts.CardEditPart;
@@ -96,6 +98,7 @@ import com.laex.cg2d.screeneditor.editparts.tree.ScreenTreeEPFactory;
 import com.laex.cg2d.screeneditor.model.CGScreenModelAdapter;
 import com.laex.cg2d.screeneditor.model.ScreenModelAdapter;
 import com.laex.cg2d.screeneditor.model.ShapeAdapter;
+import com.laex.cg2d.screeneditor.model.ShapeCopier;
 import com.laex.cg2d.screeneditor.palette.ScreenEditorPaletteFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationFactory;
 import com.laex.cg2d.screeneditor.palette.ShapeCreationInfo;
@@ -139,8 +142,6 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /** The card height. */
   int x, y, cardWidthh, cardHeight;
-
-  private IEditorInput editorInput;
 
   /**
    * ScreenOutineView. General outline view that shows all the editparts in the
@@ -682,9 +683,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
           @Override
           public void run() throws Exception {
             ScreenEditorPaletteFactory.createEntitesPaletteItems(input);
-            // Check if the resource is valid entity or not. If not remove the
-            // entity and log it
-            Entity e = Activator.getDefault().getEntitiesMap().get(resource.getName());
+            // Check if the resource is valid entity or not.
+            String entityPath = resource.getFullPath().toOSString();
+            Entity e = Activator.getDefault().getEntitiesMap().get(entityPath);
 
             boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
 
@@ -694,11 +695,39 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
             }
 
             /*
-             * Some properties like Entity's default frame may have change. Go
-             * ahead and update that as well
+             * Recompute the frame for entities that might have changed
+             * Essentially, were re-creating a new shape by copying the old one.
+             * Following are the considerations for this:
+             * 1. The id for the new shape should be same as the old one
+             * 2. The rectagle bounds for the new shape should reflect the new image
              */
-            for (Shape shape : getModel().getDiagram().getChildren()) {
+            CompoundCommand cc = new CompoundCommand();
+            for (Shape sh : model.getDiagram().getChildren()) {
+              
+              if (!sh.getEditorShapeType().isEntity()) {
+                continue;
+              }
+              
+              boolean isEntityUsed = entityPath.equals(sh.getEntityResourceFile().getResourceFile());
+              if (isEntityUsed) {
+                ShapeCopier copier = new ShapeCopier();
+                Shape newShape = (Shape) copier.copy(sh);
+                newShape.setId(sh.getId()); /* We use the same id */
+                
+                /* update bounds */
+                Rectangle r = newShape.getBounds();
+                r.setWidth(e.getDefaultFrame().getBounds().width);
+                r.setHeight(e.getDefaultFrame().getBounds().height);
+                newShape.setBounds(r);
+                /* end update bounds */
+
+                ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), sh, DeleteCommandType.NON_UNDOABLE);
+                ShapeCreateCommand scc = new ShapeCreateCommand(newShape, model.getDiagram());
+                cc.add(sdc);
+                cc.add(scc);
+              }
             }
+            getCommandStack().execute(cc);
 
           }
 
