@@ -34,6 +34,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
+import com.laex.cg2d.model.ScreenModel.CGBounds;
 import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
@@ -62,12 +63,12 @@ public class EntityManager implements ScreenScaffold {
 
   /** The shape to entity map. */
   private Map<CGShape, CGEntity> shapeToEntityMap;
-
-  /** The entity to animation map. */
-  private Map<CGEntity, Animation> entityToAnimationMap;
+  
+  private Map<CGShape, Animation> shapeToAnimationMap;
+  
   // x = origin x, y = origin y, z = radius
-  /** The entity animation origin map. */
-  private Map<CGEntityAnimation, Vector3> entityAnimationOriginMap;
+  private Map<CGShape, Vector3> shapeToAnimationOriginMap;
+
 
   /** The draw entities. */
   private boolean drawEntities;
@@ -91,8 +92,8 @@ public class EntityManager implements ScreenScaffold {
 
     this.shapeToSpriteMap = new HashMap<CGShape, Sprite>();
     this.shapeToEntityMap = new HashMap<CGShape, CGEntity>();
-    this.entityToAnimationMap = new HashMap<CGEntity, Animation>();
-    this.entityAnimationOriginMap = new HashMap<CGEntityAnimation, Vector3>();
+    this.shapeToAnimationMap = new HashMap<CGShape, Animation>();
+    this.shapeToAnimationOriginMap = new HashMap<CGShape, Vector3>();
   }
 
   /**
@@ -158,13 +159,16 @@ public class EntityManager implements ScreenScaffold {
       return b;
     }
 
+    /* For Entities */
     final CGEntity entity = CGEntity.parseFrom(Gdx.files.absolute(shape.getEntityRefFile().getResourceFileAbsolute())
         .read());
 
     shapeToEntityMap.put(shape, entity);
 
+    /* Entity Animation */
     CGEntityAnimation ea = null;
 
+    /* If name is not provided, get default animation */
     if (animationName == null) {
       ea = RunnerUtil.getDefaultAnimation(entity);
     } else {
@@ -175,9 +179,7 @@ public class EntityManager implements ScreenScaffold {
     b.setUserData(shape);
 
     // Resource file empty indicates this entity might not have
-    // image & collision shape defined. Ignore this and do not create bodies
-    // or shape for
-    // this kind of object.
+    // image & collision shape defined.
     if (ea.getSpritesheetFile().getResourceFileAbsolute().trim().isEmpty()) {
       manipulator.world().destroyBody(b);
       return null;
@@ -191,12 +193,14 @@ public class EntityManager implements ScreenScaffold {
     Array<TextureRegion> walkFrames = new Array<TextureRegion>();
 
     for (CGEntitySpritesheetItem cgEi : ea.getSpritesheetItemsList()) {
-      TextureRegion tr = new TextureRegion(tex, (int) cgEi.getX(), (int) cgEi.getY(), (int) cgEi.getW(), (int) cgEi.getH());
+      CGBounds bnds = cgEi.getExtractBounds();
+      TextureRegion tr = new TextureRegion(tex, (int) bnds.getX(), (int) bnds.getY(), (int) bnds.getWidth(),
+          (int) bnds.getHeight());
       walkFrames.add(tr);
     }
 
     Animation spriteAnimation = new Animation(ea.getAnimationDuration(), walkFrames);
-    entityToAnimationMap.put(entity, spriteAnimation);
+    shapeToAnimationMap.put(shape, spriteAnimation);
 
     Sprite spr = new Sprite(spriteAnimation.getKeyFrame(stateTime, true));
 
@@ -214,7 +218,7 @@ public class EntityManager implements ScreenScaffold {
     // a box. so
     // we need to check and set position for each types
     if (ea.getCollisionType() == CGEntityCollisionType.CIRCLE) {
-      Vector3 origin = entityAnimationOriginMap.get(ea);
+      Vector3 origin = shapeToAnimationOriginMap.get(shape);
 
       float radius = origin.z;
 
@@ -234,8 +238,9 @@ public class EntityManager implements ScreenScaffold {
   }
 
   public void removeEntity(CGShape shape) {
-    shapeToEntityMap.remove(shape);
+    shapeToAnimationMap.remove(shape);
     shapeToSpriteMap.remove(shape);
+    shapeToEntityMap.remove(shape);
   }
 
   /**
@@ -282,24 +287,27 @@ public class EntityManager implements ScreenScaffold {
 
         // Position of circle should be adjusted of radius.
         if (ea.getCollisionType() == CGEntityCollisionType.CIRCLE) {
-          float radius = entityAnimationOriginMap.get(ea).z;
+          float radius = shapeToAnimationOriginMap.get(shape).z;
           pos.x = pos.x - radius;
           pos.y = pos.y - radius;
         }
 
         Sprite spr = shapeToSpriteMap.get(shape);
-        if (spr != null) {
-          spr.setPosition(pos.x, pos.y);
-          // setting origin important for rotations to work properly
-          Vector3 origin = entityAnimationOriginMap.get(ea);
-          spr.setOrigin(origin.x, origin.y);
-          spr.setRotation(b.getAngle() * MathUtils.radiansToDegrees);
-
-          Animation anim = entityToAnimationMap.get(shapeToEntityMap.get(shape));
-          TextureRegion tr = anim.getKeyFrame(stateTime, true);
-          spr.setRegion(tr);
-          spr.draw(batch);
+        if (spr == null) {
+          return;
         }
+
+        spr.setPosition(pos.x, pos.y);
+        // setting origin important for rotations to work properly
+        Vector3 origin = shapeToAnimationOriginMap.get(shape);
+        spr.setOrigin(origin.x, origin.y);
+        spr.setRotation(b.getAngle() * MathUtils.radiansToDegrees);
+
+        Animation anim = shapeToAnimationMap.get(shape);
+
+        TextureRegion tr = anim.getKeyFrame(stateTime, true);
+        spr.setRegion(tr);
+        spr.draw(batch);
       }
     });
 
@@ -368,7 +376,7 @@ public class EntityManager implements ScreenScaffold {
     if (shapeType == CGEntityCollisionType.NONE) {
       // /set empty origin vertex so that other codes do not have to check null
       // pointer exception on its part
-      entityAnimationOriginMap.put(ea, new Vector3(0, 0, 0));
+      shapeToAnimationOriginMap.put(shape, new Vector3(0, 0, 0));
       return;
     }
 
@@ -377,7 +385,7 @@ public class EntityManager implements ScreenScaffold {
       va = manipulator.normalizeVertices(ea.getVerticesList(), shape.getBounds().getHeight());
       polyShape.set(va);
 
-      entityAnimationOriginMap.put(ea, new Vector3(0, 0, 0));
+      shapeToAnimationOriginMap.put(shape, new Vector3(0, 0, 0));
 
       fixDef.shape = polyShape;
       b.createFixture(fixDef);
@@ -398,13 +406,13 @@ public class EntityManager implements ScreenScaffold {
       Rectangle r = new Rectangle(v1.getX(), v1.getY(), v2.getX(), v2.getY());
       r.width = r.width - r.x;
       r.height = r.height - r.y;
-      
+
       // this radius is calculated for circle's collision shape data not
       // the sprite width/height data
       float radius = manipulator.calculateRadiusOfCircleShape(r.getWidth());
 
       Vector2 cpos = new Vector2();
-      cpos.y =  r.getY();
+      cpos.y = r.getY();
       cpos.x = r.getX();
       cpos = manipulator.screenToWorld(cpos);
 
@@ -413,7 +421,7 @@ public class EntityManager implements ScreenScaffold {
       int y = (int) r.getY();
       int w = (int) r.getWidth();
       int h = (int) r.getHeight();
-      
+
       float ptmRatioSquared = manipulator.ptmRatio() * manipulator.ptmRatio();
       float ox = (x + w) / (ptmRatioSquared) + radius;
       float oy = (y + h) / (ptmRatioSquared) + radius;
@@ -425,7 +433,7 @@ public class EntityManager implements ScreenScaffold {
       circShape.setRadius(radius);
       circShape.setPosition(cpos);
 
-      entityAnimationOriginMap.put(ea, new Vector3(ox, oy, radius));
+      shapeToAnimationOriginMap.put(shape, new Vector3(ox, oy, radius));
 
       fixDef.shape = circShape;
       b.createFixture(fixDef);
@@ -445,7 +453,7 @@ public class EntityManager implements ScreenScaffold {
       float bodyScale = (shape.getBounds().getWidth() / manipulator.ptmRatio());
       bel.attachFixture(b, ea.getAnimationName(), fixDef, bodyScale);
       Vector2 or = bel.getOrigin(ea.getAnimationName(), bodyScale);
-      entityAnimationOriginMap.put(ea, new Vector3(or.x, or.y, 0));
+      shapeToAnimationOriginMap.put(shape, new Vector3(or.x, or.y, 0));
       break;
 
     case NONE:
