@@ -10,10 +10,12 @@
  */
 package com.laex.cg2d.entityeditor.pages;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.DuplicateFormatFlagsException;
 
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.core.resources.IFile;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -32,24 +34,15 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.Array;
-import com.laex.cg2d.model.ResourceManager;
+import com.laex.cg2d.model.ScreenModel.CGEntity;
+import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
+import com.laex.cg2d.model.ScreenModel.CGEntitySpritesheetItem;
+import com.laex.cg2d.model.model.EntitySpritesheetItem;
 
 /**
  * The Class ExternalAnimationPreview.
  */
 public class ExternalAnimationPreview extends ApplicationAdapter {
-
-  /** The animation strip. */
-  String animationStrip;
-
-  /** The rows. */
-  private int rows;
-
-  /** The cols. */
-  private int cols;
-
-  /** The duration. */
-  private float duration;
 
   /** The state time. */
   private float stateTime;
@@ -72,7 +65,9 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
   /** The h. */
   float w, h;
 
-  private List<Integer> frameIndices;
+  private String animationName;
+
+  private String cgeFile;
 
   /**
    * Instantiates a new external animation preview.
@@ -86,12 +81,9 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
    * @param duration
    *          the duration
    */
-  public ExternalAnimationPreview(String animationStrip, int rows, int cols, float duration, List<Integer> frameIndices) {
-    this.animationStrip = animationStrip;
-    this.rows = rows;
-    this.cols = cols;
-    this.duration = duration;
-    this.frameIndices = frameIndices;
+  public ExternalAnimationPreview(String animationName, String cgeFile) {
+    this.animationName = animationName;
+    this.cgeFile = cgeFile;
   }
 
   /*
@@ -114,30 +106,39 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     cam = new OrthographicCamera(w, h);
     cam.position.set(0, 0, 0);
 
-    FileHandle handle = Gdx.files.absolute(animationStrip);
+    CGEntityAnimation anim = null;
 
+    FileInputStream fis;
+    try {
+      fis = new FileInputStream(cgeFile);
+      CGEntity entity = CGEntity.parseFrom(fis);
+      for (CGEntityAnimation ea : entity.getAnimationsList()) {
+        if (ea.getAnimationName().equals(animationName)) {
+          anim = ea;
+        }
+      }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    if (anim == null) {
+      return;
+    }
+
+    FileHandle handle = Gdx.files.absolute(anim.getSpritesheetFile().getResourceFileAbsolute());
+    
     Texture tex = new Texture(handle);
     tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
-    if (cols / rows >= 1) {
-      // create sprite sheet animation
-
-      TextureRegion[][] tmp = TextureRegion.split(tex, tex.getWidth() / cols, tex.getHeight() / rows);
-      TextureRegion[] walkFrames = new TextureRegion[cols * rows];
-      int index = 0;
-      for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-          walkFrames[index++] = tmp[i][j];
-        }
-      }
-
-      Array<TextureRegion> indexedFrames = new Array<TextureRegion>();
-      for (int i : frameIndices) {
-        indexedFrames.add(walkFrames[i - 1]);
-      }
-
-      spriteAnimation = new Animation(duration, indexedFrames);
+    Array<TextureRegion> indexedFrames = new Array<TextureRegion>();
+    for (CGEntitySpritesheetItem esi : anim.getSpritesheetItemsList()) {
+      TextureRegion tr = new TextureRegion(tex, (int) esi.getX(), (int) esi.getY(), (int) esi.getW(), (int) esi.getH());
+      indexedFrames.add(tr);
     }
+
+    spriteAnimation = new Animation(anim.getAnimationDuration(), indexedFrames);
 
     spr = new Sprite(spriteAnimation.getKeyFrame(stateTime, true));
   }
@@ -185,28 +186,15 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
   public static void main(String[] args) {
 
     String animationName = args[0];
-
     String spriteSheetFile = args[1];
 
-    float duration = Float.parseFloat(args[2]);
-
-    int cols = Integer.parseInt(args[3]);
-
-    int rows = Integer.parseInt(args[4]);
-
-    String[] tmpIndices = args[5].split(",");
-
-    List<Integer> frameIndices = new ArrayList<Integer>();
-    for (String index : tmpIndices) {
-      frameIndices.add(Integer.parseInt(index));
-    }
 
     LwjglApplicationConfiguration lac = new LwjglApplicationConfiguration();
     lac.width = 200;
     lac.height = 200;
     lac.title = animationName;
 
-    ExternalAnimationPreview eap = new ExternalAnimationPreview(spriteSheetFile, rows, cols, duration, frameIndices);
+    ExternalAnimationPreview eap = new ExternalAnimationPreview(animationName, spriteSheetFile);
     new LwjglApplication(eap, lac);
 
   }
