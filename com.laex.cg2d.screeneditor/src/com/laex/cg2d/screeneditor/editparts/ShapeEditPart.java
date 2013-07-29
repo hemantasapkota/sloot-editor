@@ -146,8 +146,7 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
           .getResourceFile()));
       break;
     case ENTITY_SHAPE:
-      Entity e = Activator.getDefault().getEntitiesMap().get(model.getEntityResourceFile().getResourceFile());
-      figure = new TexturedBoxFigure(e.getDefaultFrame());
+      figure = updateEntityFigure(model);
       break;
 
     default:
@@ -158,6 +157,13 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     figure.setVisible(model.isVisible());
     this.selectable = !model.isLocked();
 
+    return figure;
+  }
+
+  private IFigure updateEntityFigure(Shape model) {
+    IFigure figure;
+    Entity e = Activator.getDefault().getEntitiesMap().get(model.getEntityResourceFile().getResourceFile());
+    figure = new TexturedBoxFigure(e.getDefaultFrame());
     return figure;
   }
 
@@ -297,8 +303,10 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     } else if (Shape.SHAPE_LOCKED.equals(prop)) {
       boolean locked = (Boolean) evt.getNewValue();
       this.selectable = !locked;
+    } else {
+      refreshVisuals();
     }
-    refreshVisuals();
+
   }
 
   /*
