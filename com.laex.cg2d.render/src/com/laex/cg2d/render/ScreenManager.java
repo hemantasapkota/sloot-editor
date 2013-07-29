@@ -73,5 +73,12 @@ public interface ScreenManager {
    * @param y the y
    */
   void drawText(String text, float x, float y);
+  
+  /**
+   * Destroy joint for entity.
+   *
+   * @param id the id
+   */
+  void destroyJointForEntity(String id);
 
 }
