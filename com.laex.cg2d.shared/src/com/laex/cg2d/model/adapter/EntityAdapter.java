@@ -12,14 +12,17 @@ package com.laex.cg2d.model.adapter;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
 import com.laex.cg2d.model.ScreenModel.CGEntityCollisionType;
+import com.laex.cg2d.model.ScreenModel.CGEntitySpritesheetItem;
 import com.laex.cg2d.model.ScreenModel.CGVector2;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.EntityCollisionType;
+import com.laex.cg2d.model.model.EntitySpritesheetItem;
 import com.laex.cg2d.model.util.EntitiesUtil;
 
 /*
@@ -110,18 +113,29 @@ public class EntityAdapter {
 
       CGEntityAnimation.Builder eaBuilder = CGEntityAnimation.newBuilder()
           .setAnimationDuration(ea.getAnimationDuration()).setAnimationName(ea.getAnimationName())
-          .setCollisionType(toCGEntityCollisionType(ea.getShapeType())).setCols(ea.getCols())
+          .setCollisionType(toCGEntityCollisionType(ea.getShapeType()))
           .setDefaultAnimation(ea.isDefaultAnimation())
           .setFixtureFile(ResourceFileAdapter.asCGResourceFile(ea.getFixtureResourceFile()))
-          .setAnimationResourceFile(ResourceFileAdapter.asCGResourceFile(ea.getAnimationResourceFile()))
-          .setRows(ea.getRows()).setShpHeight(ea.getShpHeight()).setShpWidth(ea.getShpWidth()).setShpX(ea.getShpX())
-          .setShpY(ea.getShpY());
+          .setSpritesheetFile(ResourceFileAdapter.asCGResourceFile(ea.getSpritesheetFile()));
 
+      /* Add vertices */
       for (Vector2 v : ea.getVertices()) {
         eaBuilder = eaBuilder.addVertices(Vector2Adapter.asCGVector2(v));
       }
 
-      eaBuilder.addAllFrameIndices(ea.getFrameIndices());
+      /* Ad entity spritesheet items */
+      eaBuilder.setSpritesheetJsonFile(ResourceFileAdapter.asCGResourceFile(ea.getSpritesheetMapperFile()));
+      
+      for (EntitySpritesheetItem esi : ea.getSpritesheetItems()) {
+        CGEntitySpritesheetItem.Builder cgesiBuilder = CGEntitySpritesheetItem.newBuilder();
+        
+        CGEntitySpritesheetItem entSpritesheetItem = cgesiBuilder.setFrameIndex(esi.getFrameIndex())
+            .setX(esi.getExtractBounds().x).setY(esi.getExtractBounds().y).setW(esi.getExtractBounds().width)
+            .setH(esi.getExtractBounds().height).build();
+        
+        eaBuilder.addSpritesheetItems(entSpritesheetItem);
+
+      }
 
       CGEntityAnimation cgEa = eaBuilder.build();
       entityBuilder = entityBuilder.addAnimations(cgEa);
@@ -142,28 +156,29 @@ public class EntityAdapter {
 
     for (CGEntityAnimation cgEa : cge.getAnimationsList()) {
       EntityAnimation ea = new EntityAnimation();
-      ea.setAnimationDelay(cgEa.getAnimationDuration());
+      ea.setAnimationDuration(cgEa.getAnimationDuration());
       ea.setAnimationName(cgEa.getAnimationName());
-      ea.setCols(cgEa.getCols());
       ea.setDefaultAnimation(cgEa.getDefaultAnimation());
       ea.setFixtureResourceFile(ResourceFileAdapter.asResourceFile(cgEa.getFixtureFile()));
-      ea.setAnimationResourceFile(ResourceFileAdapter.asResourceFile(cgEa.getAnimationResourceFile()));
-      ea.setRows(cgEa.getRows());
+      ea.setSpritesheetFile(ResourceFileAdapter.asResourceFile(cgEa.getSpritesheetFile()));
       ea.setShapeType(toEntityCollisionType(cgEa.getCollisionType()));
-      ea.setShpX(cgEa.getShpX());
-      ea.setShpY(cgEa.getShpY());
-      ea.setShpWidth(cgEa.getShpWidth());
-      ea.setShpHeight(cgEa.getShpHeight());
 
       for (CGVector2 cv : cgEa.getVerticesList()) {
         ea.getVertices().add(new Vector2(cv.getX(), cv.getY()));
       }
 
-      ea.getFrameIndices().addAll(cgEa.getFrameIndicesList());
+      ea.setSpritesheetMapperFile(ResourceFileAdapter.asResourceFile(cgEa.getSpritesheetJsonFile()));
+      
+      for (CGEntitySpritesheetItem cesi : cgEa.getSpritesheetItemsList()) {
+        EntitySpritesheetItem esi = new EntitySpritesheetItem();
+        esi.setExtractBounds(new Rectangle(cesi.getX(), cesi.getY(), cesi.getW(), cesi.getH()));
+        esi.setFrameIndex(cesi.getFrameIndex());
+        ea.getSpritesheetItems().add(esi);
+      }
 
       entityModel.addEntityAnimation(ea);
     }
-
+    
     entityModel.setDefaultFrame(EntitiesUtil.getDefaultFrame(entityModel));
 
     return entityModel;
