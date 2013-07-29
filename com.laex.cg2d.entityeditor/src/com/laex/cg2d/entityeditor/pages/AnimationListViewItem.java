@@ -10,8 +10,6 @@
  */
 package com.laex.cg2d.entityeditor.pages;
 
-import java.util.Queue;
-
 import org.eclipse.swt.graphics.Image;
 
 import com.laex.cg2d.model.model.EntityAnimation;
@@ -25,10 +23,7 @@ class AnimationListViewItem {
   private String name;
 
   /** The first frame. */
-  private Image firstFrame;
-
-  /** The frames. */
-  private Queue<Image> frames;
+  private Image collisionPreviewFrame;
 
   /** The animation. */
   private EntityAnimation animation;
@@ -52,44 +47,15 @@ class AnimationListViewItem {
     this.name = name;
   }
 
-  /**
-   * Gets the first frame.
-   * 
-   * @return the first frame
-   */
-  public Image getFirstFrame() {
-    return firstFrame;
+  
+  public Image getCollisionPreviewFrame() {
+    return collisionPreviewFrame;
   }
-
-  /**
-   * Sets the first frame.
-   * 
-   * @param firstFrame
-   *          the new first frame
-   */
-  public void setFirstFrame(Image firstFrame) {
-    this.firstFrame = firstFrame;
+  
+  public void setCollisionPreviewFrame(Image collisionPreviewFrame) {
+    this.collisionPreviewFrame = collisionPreviewFrame;
   }
-
-  /**
-   * Gets the frames.
-   * 
-   * @return the frames
-   */
-  public Queue<Image> getFrames() {
-    return frames;
-  }
-
-  /**
-   * Sets the frames.
-   * 
-   * @param frames
-   *          the new frames
-   */
-  public void setFrames(Queue<Image> frames) {
-    this.frames = frames;
-  }
-
+  
   /**
    * Gets the animation.
    * 
