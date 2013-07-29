@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.CompositeImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.osgi.framework.Bundle;
@@ -101,6 +102,16 @@ public class ResourceManager extends SWTResourceManager {
       m_descriptorImageMap.put(descriptor, image);
     }
     return image;
+  }
+  
+  public static Image getImage(final ImageData imageData) {
+    ImageDescriptor id = new ImageDescriptor() {
+      @Override
+      public ImageData getImageData() {
+        return imageData;
+      }
+    };
+    return id.createImage();
   }
 
   /**
