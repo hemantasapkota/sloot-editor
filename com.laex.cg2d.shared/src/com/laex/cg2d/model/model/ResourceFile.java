@@ -18,6 +18,8 @@ import com.laex.cg2d.model.ScreenModel.CGResourceFile;
  * The Class ResourceFile.
  */
 public class ResourceFile {
+  
+  public static final ResourceFile EMPTY = ResourceFile.create("", "");
 
   /** The resource file. */
   private String resourceFile;

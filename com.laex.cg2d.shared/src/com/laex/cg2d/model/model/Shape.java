@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
@@ -56,6 +57,8 @@ public class Shape extends ModelElement {
 
   /** The Constant TARGET_JOINT_PROP. */
   public static final String TARGET_JOINT_PROP = "Shape.TargetJoint";
+  
+  public static final String FIGURE_CHANGED = "Shape.FigureChanged";
 
   /** The descriptors. */
   private static IPropertyDescriptor[] descriptors;
@@ -410,6 +413,10 @@ public class Shape extends ModelElement {
       this.fixtureDef = value;
       firePropertyChange(FIXTURE_DEF_PROP, null, this.bodyDef);
     }
+  }
+  
+  public void notifyFigureChanged() {
+    firePropertyChange(FIGURE_CHANGED, null, null);
   }
 
   /**
