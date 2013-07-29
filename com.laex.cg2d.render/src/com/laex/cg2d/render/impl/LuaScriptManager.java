@@ -56,7 +56,6 @@ public class LuaScriptManager implements ScreenScaffold, ScreenControllerScript 
 
     if (scriptFileName == null || !Gdx.files.absolute(scriptFileName).exists()) {
       scriptFileExists = false;
-      System.err.println("Lua script file does not exist.");
       return;
     } else {
       scriptFileExists = true;
