@@ -11,9 +11,7 @@
 package com.laex.cg2d.entityeditor.pages;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
@@ -35,6 +33,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -61,9 +60,11 @@ import com.laex.cg2d.entityeditor.ui.CollisionShapeSelectionDialog;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.SharedImages;
+import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.EntityCollisionType;
+import com.laex.cg2d.model.model.EntitySpritesheetItem;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.util.EntitiesUtil;
 
@@ -145,6 +146,7 @@ public class CollisionFormPage extends FormPage {
   private Ellipse ellipseFigure;
 
   /**
+   * 
    * Create the form page.
    * 
    * @param id
@@ -181,7 +183,6 @@ public class CollisionFormPage extends FormPage {
           resetAll();
 
           loadAnimationsFromModel();
-          setShapePropertiesState(true);
 
           // Edge case. Disable add/remove collision shape link if there are no
           // list view items
@@ -219,43 +220,27 @@ public class CollisionFormPage extends FormPage {
 
       AnimationListViewItem alvi = new AnimationListViewItem();
       alvi.setName(ea.getAnimationName());
-      alvi.setFirstFrame(SharedImages.BOX.createImage());
-      alvi.setFrames(new LinkedList<Image>());
       alvi.setAnimation(ea);
 
-      if (!ea.getAnimationResourceFile().isEmpty()) {
-        Image frameImage = ResourceManager.getImageOfRelativePath(ea.getAnimationResourceFile().getResourceFile());
-        createFramesFromStrip(frameImage, alvi);
-        updateFramesFromSpritesheet(frameImage, alvi);
+      if (!ea.getSpritesheetFile().isEmpty()) {
+        Image frameImage = ResourceManager.getImageOfRelativePath(ea.getSpritesheetFile().getResourceFile());
+
+        boolean containsSpriteshetItem = alvi.getAnimation().getSpritesheetItems().size() > 0;
+        if (containsSpriteshetItem) {
+          EntitySpritesheetItem esi = alvi.getAnimation().getSpritesheetItems().get(0);
+          ImageData id = EntitiesUtil.extractImageFromBounds(frameImage.getImageData(),
+              RectAdapter.d2dRect(esi.getExtractBounds()));
+          alvi.setCollisionPreviewFrame(ResourceManager.getImage(id));
+        }
+
       }
 
       addNewAnimation(alvi);
     }
 
-    table.select(0);
     tableViewer.refresh();
+    table.select(0);
     handleAnimationListSeletionListener();
-  }
-
-  private void updateFramesFromSpritesheet(Image selectedImage, AnimationListViewItem alvi) {
-    Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage, alvi.getAnimation().getCols(), alvi
-        .getAnimation().getRows());
-
-    int frameIndexToCheck = 1;
-    List<Integer> frameIndices = alvi.getAnimation().getFrameIndices();
-
-    for (Image i : strip) {
-
-      boolean c = frameIndices.contains(frameIndexToCheck);
-
-      if (c) {
-        alvi.setFirstFrame(i);
-        animationAndCollisionShapePreview(collisionShape, i);
-      }
-
-      frameIndexToCheck++;
-    }
-
   }
 
   /*
@@ -355,7 +340,7 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
-        handleAnimationListSeletionListener();
+        updateOutline();
       }
     });
     txtX.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -369,7 +354,7 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
-        handleAnimationListSeletionListener();
+        updateOutline();
       }
     });
     GridData gd_txtY = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -388,8 +373,7 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
-        handleAnimationListSeletionListener();
-
+        updateOutline();
       }
     });
     managedForm.getToolkit().adapt(txtWidth);
@@ -407,7 +391,7 @@ public class CollisionFormPage extends FormPage {
       @Override
       public void focusLost(FocusEvent e) {
         updateShapeDataToModel();
-        handleAnimationListSeletionListener();
+        updateOutline();
       }
     });
     managedForm.getToolkit().adapt(txtHeight);
@@ -427,30 +411,7 @@ public class CollisionFormPage extends FormPage {
     mghprlnkAdd.addHyperlinkListener(new HyperlinkAdapter() {
       public void linkActivated(HyperlinkEvent e) {
 
-        CollisionShapeSelectionDialog cssd = new CollisionShapeSelectionDialog(getSite().getShell());
-        int resp = cssd.open();
-        if (resp == CollisionShapeSelectionDialog.CANCEL) {
-          return;
-        }
-
-        collisionShape = cssd.getTypeSelected();
-        physEdFixtureFile = cssd.getPhsEdFixtureFile();
-
-        ResourceFile fixtureResFile = null;
-        if (collisionShape.isCustom()) {
-          fixtureResFile = ResourceFile.create(physEdFixtureFile.getFullPath().toOSString(), physEdFixtureFile
-              .getLocation().toOSString());
-
-          selectedAnimationListItem().getAnimation().setFixtureResourceFile(fixtureResFile);
-        }
-
-        showCollisionShape(collisionShape, fixtureResFile);
-
-        dirty = true;
-        entityFormEditor.editorDirtyStateChanged();
-
-        mghprlnkAdd.setEnabled(false);
-        mghprlnkRem.setEnabled(true);
+        onClickAddCollisionShape();
       }
     });
     managedForm.getToolkit().paintBordersFor(mghprlnkAdd);
@@ -504,6 +465,30 @@ public class CollisionFormPage extends FormPage {
       }
     });
     toolkit.decorateFormHeading(form.getForm());
+  }
+
+  /**
+   * Sets the shape properties.
+   * 
+   * @param ea
+   *          the new shape properties
+   */
+  private void setShapeProperties(EntityAnimation ea) {
+    /* Decode the vertex information and set to the screen */
+    List<Vector2> vertices = ea.getVertices();
+
+    if (vertices.isEmpty()) {
+      resetShapeProperties();
+      return;
+    }
+
+    Vector2 v1 = vertices.get(0);
+    Vector2 v2 = vertices.get(2).sub(v1);
+
+    txtX.setSelection((int) v1.x);
+    txtY.setSelection((int) v1.y);
+    txtWidth.setSelection((int) v2.x);
+    txtHeight.setSelection((int) v2.y);
   }
 
   /**
@@ -562,18 +547,17 @@ public class CollisionFormPage extends FormPage {
   protected void updateShapeDataToModel() {
     AnimationListViewItem alvi = selectedAnimationListItem();
 
-    Rectangle r = shapeTypeBoundingBox();
-
     alvi.getAnimation().setShapeType(collisionShape);
-    alvi.getAnimation().setShpX(r.x);
-    alvi.getAnimation().setShpY(r.y);
-    alvi.getAnimation().setShpWidth(r.width);
-    alvi.getAnimation().setShpHeight(r.height);
     alvi.getAnimation().setVertices(calculateVerticesOfShape());
 
     //
     dirty = true;
     entityFormEditor.editorDirtyStateChanged();
+  }
+
+  private void updateOutline() {
+    AnimationListViewItem alvi = selectedAnimationListItem();
+    animationAndCollisionShapePreview(collisionShape, alvi.getCollisionPreviewFrame());
   }
 
   /**
@@ -587,40 +571,36 @@ public class CollisionFormPage extends FormPage {
    * Handle animation list seletion listener.
    */
   private void handleAnimationListSeletionListener() {
-    AnimationListViewItem ai = selectedAnimationListItem();
-    if (ai == null) {
+    AnimationListViewItem alvi = selectedAnimationListItem();
+    if (alvi == null) {
       mghprlnkAdd.setEnabled(false);
       mghprlnkRem.setEnabled(false);
       return;
     }
 
     // preview animation at the end
-    doPreview(ai);
+    doPreview(alvi);
 
     // select appr. shape
-    if (ai.getAnimation().getShapeType() != null) {
-      collisionShape = ai.getAnimation().getShapeType();
+    if (alvi.getAnimation().getShapeType() != null) {
+      collisionShape = alvi.getAnimation().getShapeType();
 
       if (collisionShape.isNone()) {
-
-        ai.getAnimation().setShpX(0);
-        ai.getAnimation().setShpY(0);
-        ai.getAnimation().setShpWidth(0);
-        ai.getAnimation().setShpHeight(0);
         removeCollisionShape();
         resetShapeProperties();
         mghprlnkAdd.setEnabled(true);
         mghprlnkRem.setEnabled(false);
         return;
-
       }
 
-      showCollisionShape(collisionShape, ai.getAnimation().getFixtureResourceFile());
-      setShapeProperties(ai.getAnimation());
+      showCollisionShape(collisionShape, alvi.getAnimation().getFixtureResourceFile());
+      setShapeProperties(alvi.getAnimation());
       mghprlnkAdd.setEnabled(false);
       mghprlnkRem.setEnabled(true);
 
-      animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFirstFrame());
+      if (!alvi.getAnimation().getSpritesheetFile().isEmpty()) {
+        animationAndCollisionShapePreview(alvi.getAnimation().getShapeType(), alvi.getCollisionPreviewFrame());
+      }
 
     } else {
       removeCollisionShape();
@@ -637,27 +617,15 @@ public class CollisionFormPage extends FormPage {
    * @param ai
    *          the ai
    */
-  private void doPreview(AnimationListViewItem ai) {
-    if (ai.getAnimation() != null) {
-      if (ai.getFrames() != null && !ai.getFrames().isEmpty()) {
-        animationAndCollisionShapePreview(ai.getAnimation().getShapeType(), ai.getFirstFrame());
-      } else {
-        freeformLayeredPane.removeAll();
-      }
+  private void doPreview(AnimationListViewItem alvi) {
+    if (alvi.getAnimation() == null || alvi.getAnimation().getSpritesheetFile().isEmpty()) {
+      return;
     }
-  }
 
-  /**
-   * Sets the shape properties.
-   * 
-   * @param ea
-   *          the new shape properties
-   */
-  private void setShapeProperties(EntityAnimation ea) {
-    txtX.setSelection(ea.getShpX());
-    txtY.setSelection(ea.getShpY());
-    txtWidth.setSelection(ea.getShpWidth());
-    txtHeight.setSelection(ea.getShpHeight());
+    freeformLayeredPane.removeAll();
+
+    animationAndCollisionShapePreview(alvi.getAnimation().getShapeType(), alvi.getCollisionPreviewFrame());
+
   }
 
   /**
@@ -707,25 +675,6 @@ public class CollisionFormPage extends FormPage {
     resetFramesComposite();
     animationListItems.add(alvi);
     tableViewer.refresh();
-
-    // select the recently created object
-    int index = animationListItems.indexOf(alvi);
-    table.select(index);
-    handleAnimationListSeletionListener();
-  }
-
-  /**
-   * Creates the frames from strip.
-   * 
-   * @param selectedImage
-   *          the selected image
-   * @param alvi
-   *          the alvi
-   */
-  private void createFramesFromStrip(Image selectedImage, AnimationListViewItem alvi) {
-    Queue<Image> strip = EntitiesUtil.createImageStrip(selectedImage, alvi.getAnimation().getCols(), alvi
-        .getAnimation().getRows());
-    alvi.setFrames(strip);
   }
 
   /**
@@ -804,10 +753,6 @@ public class CollisionFormPage extends FormPage {
     AnimationListViewItem alvi = selectedAnimationListItem();
     if (alvi != null) {
       alvi.getAnimation().setShapeType(collisionShape);
-      alvi.getAnimation().setShpX(txtX.getSelection());
-      alvi.getAnimation().setShpY(txtY.getSelection());
-      alvi.getAnimation().setShpWidth(txtWidth.getSelection());
-      alvi.getAnimation().setShpHeight(txtHeight.getSelection());
       alvi.getAnimation().setVertices(new ArrayList<Vector2>());
       alvi.getAnimation().setFixtureResourceFile(ResourceFile.create("", ""));
     }
@@ -827,7 +772,8 @@ public class CollisionFormPage extends FormPage {
           sctnShapesComposite, SWT.NONE);
     }
 
-    EntityAnimation entityAnim = selectedAnimationListItem().getAnimation();
+    AnimationListViewItem alvi = selectedAnimationListItem();
+    EntityAnimation entityAnim = alvi.getAnimation();
     entityAnim.setShapeType(_collisionShape);
 
     collisionShapeHyperLink.setText(collisionShape.name());
@@ -835,12 +781,12 @@ public class CollisionFormPage extends FormPage {
     switch (_collisionShape) {
 
     case BOX:
-      autoFillCollisionSize(entityAnim);
+      autoFillCollisionSize(alvi);
       collisionShapeHyperLink.setImage(SharedImages.BOX.createImage());
       break;
 
     case CIRCLE:
-      autoFillCollisionSize(entityAnim);
+      autoFillCollisionSize(alvi);
       collisionShapeHyperLink.setImage(SharedImages.CIRCLE.createImage());
       break;
 
@@ -875,10 +821,10 @@ public class CollisionFormPage extends FormPage {
    * @param ea
    *          the ea
    */
-  private void autoFillCollisionSize(EntityAnimation ea) {
+  private void autoFillCollisionSize(AnimationListViewItem alvi) {
     // If all of these are zero, then we auto fill
-    if (ea.getShpX() == 0 && ea.getShpY() == 0 && ea.getShpWidth() == 0 && ea.getShpHeight() == 0) {
-      Image img = entityFormEditor.getModel().getDefaultFrame();
+    if (alvi.getAnimation().getVertices().isEmpty()) {
+      Image img = alvi.getCollisionPreviewFrame();
       if (img == null) {
         return;
       }
@@ -889,6 +835,33 @@ public class CollisionFormPage extends FormPage {
       updateShapeDataToModel();
     }
 
+  }
+
+  private void onClickAddCollisionShape() {
+    CollisionShapeSelectionDialog cssd = new CollisionShapeSelectionDialog(getSite().getShell());
+    int resp = cssd.open();
+    if (resp == CollisionShapeSelectionDialog.CANCEL) {
+      return;
+    }
+
+    collisionShape = cssd.getTypeSelected();
+    physEdFixtureFile = cssd.getPhsEdFixtureFile();
+
+    ResourceFile fixtureResFile = null;
+    if (collisionShape.isCustom()) {
+      fixtureResFile = ResourceFile.create(physEdFixtureFile.getFullPath().toOSString(), physEdFixtureFile
+          .getLocation().toOSString());
+
+      selectedAnimationListItem().getAnimation().setFixtureResourceFile(fixtureResFile);
+    }
+
+    showCollisionShape(collisionShape, fixtureResFile);
+
+    dirty = true;
+    entityFormEditor.editorDirtyStateChanged();
+
+    mghprlnkAdd.setEnabled(false);
+    mghprlnkRem.setEnabled(true);
   }
 
 }
