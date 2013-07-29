@@ -183,7 +183,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
         luaScriptManager.executeKeyPressed(f.getName());
       }
     }
-
+    
   }
 
   /*
