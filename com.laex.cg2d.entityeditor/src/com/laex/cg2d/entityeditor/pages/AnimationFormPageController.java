@@ -12,7 +12,6 @@ package com.laex.cg2d.entityeditor.pages;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,13 +24,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
-import org.eclipse.swt.widgets.Button;
 
 import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.entityeditor.preferences.PreferenceConstants;
-import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.EntityCollisionType;
+import com.laex.cg2d.model.model.EntitySpritesheetItem;
+import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.util.FloatUtil;
 
 // Seperates logic from UI code of AnimationFormPage
@@ -62,8 +61,6 @@ public class AnimationFormPageController {
   public AnimationListViewItem addAnimation(EntityAnimation ea) {
     AnimationListViewItem alvi = new AnimationListViewItem();
     alvi.setName(ea.getAnimationName());
-    alvi.setFirstFrame(SharedImages.BOX.createImage());
-    alvi.setFrames(new LinkedList<Image>());
     alvi.setAnimation(ea);
 
     animations.add(alvi);
@@ -80,19 +77,10 @@ public class AnimationFormPageController {
 
     AnimationListViewItem alvi = new AnimationListViewItem();
     alvi.setName(provideNewName());
-    alvi.setFirstFrame(SharedImages.BOX.createImage());
-    alvi.setFrames(new LinkedList<Image>());
     alvi.setAnimation(new EntityAnimation());
     alvi.getAnimation().setAnimationName(alvi.getName());
 
-    // alvi.getAnimation().setVertices(new ArrayList<Vector2>()); // set
-    // empty
-    // vertices
-
-    alvi.getAnimation().setShapeType(EntityCollisionType.NONE); // NONE
-                                                                // indicates no
-                                                                // collision
-                                                                // parameters
+    alvi.getAnimation().setShapeType(EntityCollisionType.NONE);
 
     if (animations.size() == 0) {
       alvi.getAnimation().setDefaultAnimation(true);
@@ -111,7 +99,6 @@ public class AnimationFormPageController {
    * @return the int
    */
   public int removeAnimation(AnimationListViewItem alvi) {
-    alvi.getFrames().clear();
     int index = animations.indexOf(alvi);
     animations.remove(index);
     return index;
@@ -125,57 +112,25 @@ public class AnimationFormPageController {
    * @param duration
    *          the duration
    */
-  public void previewAnimationExternal(final EntityAnimation entAnim, final float duration) {
+  public void previewAnimationExternal(final EntityAnimation entAnim, final String thisEntityFile) {
 
     Job job = new Job("Preview Animation") {
 
       @Override
       protected IStatus run(IProgressMonitor monitor) {
-
-        String animStrip = entAnim.getAnimationResourceFile().getResourceFileAbsolute();
-
-        if (animStrip == null)
-          return Status.CANCEL_STATUS;
-
-        int rows = entAnim.getRows();
-        int cols = entAnim.getCols();
-
         /*
          * Structure of animation preview arguments "Animation1" -- animation
-         * name
-         * "/Volumes/MyFiles/Projects/WS/runtime-com.laex.cg2d.core.product/Mario/textures/coin-sprite-animation-sprite-sheet.png"
-         * --spritesheet file 0.05 --animation dration 10 --no of cols 1 --no of
-         * rows "1,2,3,4,5,6,7,8,9,10" --frame indices
+         * "entity-filename"
          */
 
         String pathToPreviewer = Activator.getDefault().getPreferenceStore()
             .getString(PreferenceConstants.ANIMATION_PREVIEW);
 
-        StringBuilder indices = new StringBuilder();
-        for (int i : entAnim.getFrameIndices()) {
-          indices.append(i);
-
-          if (i != entAnim.getFrameIndices().size()) {
-            indices.append(",");
-          }
-
-        }
-
         String[] commands =
-          {
-              "java",
-              "-jar",
-              pathToPreviewer,
-              entAnim.getAnimationName(),
-              animStrip,
-              String.valueOf(duration),
-              String.valueOf(cols),
-              String.valueOf(rows),
-              indices.toString() };
+          { "java", "-jar", pathToPreviewer, entAnim.getAnimationName(), thisEntityFile };
 
         StringBuilder printCmd = new StringBuilder("java -jar ").append(pathToPreviewer).append(" ")
-            .append(entAnim.getAnimationName()).append(" ").append(animStrip).append(" ").append(duration).append(" ")
-            .append(cols).append(" ").append(rows).append(" ").append(indices.toString());
+            .append(entAnim.getAnimationName()).append(" ").append(thisEntityFile);
 
         Activator.getDefault().getLog().log(new Status(Status.OK, Activator.PLUGIN_ID, printCmd.toString()));
 
@@ -197,6 +152,7 @@ public class AnimationFormPageController {
       }
     };
 
+    job.setUser(true);
     job.schedule();
 
   }
@@ -210,7 +166,7 @@ public class AnimationFormPageController {
    *          the duration
    */
   public void animationDurationChanged(EntityAnimation anim, float duration) {
-    anim.setAnimationDelay(duration);
+    anim.setAnimationDuration(duration);
   }
 
   /**
@@ -229,13 +185,23 @@ public class AnimationFormPageController {
 
     if (alvi.getAnimation() != null) {
       alvi.getAnimation().setAnimationName(newName);
-      alvi.getAnimation().setAnimationDelay(FloatUtil.toFloat(animDuration));
+      alvi.getAnimation().setAnimationDuration(FloatUtil.toFloat(animDuration));
     }
 
   }
 
-  public void frameIndicesChanged(AnimationListViewItem alvi, List<Integer> frameIndices) {
-    alvi.getAnimation().setFrameIndices(frameIndices);
+  public void spritesheetImageFileChanged(AnimationListViewItem alvi, ResourceFile spritesheetFile) {
+    alvi.getAnimation().setSpritesheetFile(spritesheetFile);
+  }
+
+  public void spritesheetItemsChanged(AnimationListViewItem alvi, ResourceFile spritesheetMapperFile,
+      List<EntitySpritesheetItem> esiList) {
+    alvi.getAnimation().setSpritesheetMapperFile(spritesheetMapperFile);
+    alvi.getAnimation().setSpritesheetItems(esiList);
+  }
+
+  public void removeSpritesheetItem(AnimationListViewItem alvi, EntitySpritesheetItem esi) {
+    alvi.getAnimation().getSpritesheetItems().remove(esi);
   }
 
   /**
