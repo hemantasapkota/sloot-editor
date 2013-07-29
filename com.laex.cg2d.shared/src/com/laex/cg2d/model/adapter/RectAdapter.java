@@ -32,6 +32,7 @@ public class RectAdapter {
 
     return new Rectangle(x, y, w, h);
   }
+  
 
   /**
    * Gdx rect.
