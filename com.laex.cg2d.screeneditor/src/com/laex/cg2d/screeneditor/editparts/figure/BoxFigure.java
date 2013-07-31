@@ -24,7 +24,6 @@ public class BoxFigure extends RectangleFigure {
   public BoxFigure() {
     setFill(true);
     setBackgroundColor(ColorConstants.green);
-    setAlpha(255 / 2);
   }
 
 }
