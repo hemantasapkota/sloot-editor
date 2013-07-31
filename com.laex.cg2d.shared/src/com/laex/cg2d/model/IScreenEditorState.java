@@ -10,7 +10,7 @@
  */
 package com.laex.cg2d.model;
 
-import java.util.List;
+import org.eclipse.swt.graphics.Color;
 
 import com.laex.cg2d.model.model.Joint;
 
@@ -36,7 +36,7 @@ public interface IScreenEditorState {
    * @param cardHeight
    *          the card height
    */
-  void updateCardLayer(int noX, int noY, int cardWidth, int cardHeight);
+  void updateCardLayer(int noX, int noY, int cardWidth, int cardHeight, Color bgColor);
 
   /**
    * Update card layer zoom.
@@ -45,7 +45,8 @@ public interface IScreenEditorState {
    *          the zoom
    */
   void updateCardLayerZoom(double zoom);
-
+  
+  
   /**
    * Toggle joint layer.
    * 
