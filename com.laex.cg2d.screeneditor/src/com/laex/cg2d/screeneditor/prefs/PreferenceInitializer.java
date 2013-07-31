@@ -13,12 +13,14 @@ package com.laex.cg2d.screeneditor.prefs;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
+import com.laex.cg2d.model.ScreenModel.CGColor;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences;
 import com.laex.cg2d.model.adapter.PreferenceConstants;
 import com.laex.cg2d.screeneditor.Activator;
+import com.laex.cg2d.screeneditor.editparts.CardEditPart;
 
 /**
  * Class used to initialize default preference values.
@@ -76,8 +78,13 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
         .setDrawEntities(defaultEntitiesFlag()).setDrawInactiveBodies(defaultInactiveBodiesFlag())
         .setDrawJoints(defaultJointsFlag()).setInstallMouseJoint(defaultMouseJoint());
 
+    int r = CardEditPart.DEFAULT_BG_COLOR.getRGB().red;
+    int g = CardEditPart.DEFAULT_BG_COLOR.getRGB().green;
+    int b = CardEditPart.DEFAULT_BG_COLOR.getRGB().blue;
+
     return CGScreenPreferences.newBuilder().setCardPrefs(cardBuildr.build()).setDebugDrawPrefs(dbgBuildr.build())
-        .setWorldPrefs(worldBuildr.build()).build();
+        .setWorldPrefs(worldBuildr.build()).setBackgroundColor(CGColor.newBuilder().setR(r).setG(g).setB(b).build())
+        .build();
 
   }
 
