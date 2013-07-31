@@ -20,6 +20,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.google.common.base.Throwables;
@@ -72,6 +73,8 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   /** The time step. */
   private float timeStep;
 
+  private Vector3 bgColor;
+
   /** The velocity iterations. */
   private int velocityIterations;
 
@@ -120,6 +123,11 @@ public abstract class MyGdxGame extends ApplicationAdapter {
     timeStep = model.getScreenPrefs().getWorldPrefs().getTimeStep();
     velocityIterations = model.getScreenPrefs().getWorldPrefs().getVelocityIterations();
     positionIterations = model.getScreenPrefs().getWorldPrefs().getPositionIterations();
+
+    bgColor = new Vector3();
+    bgColor.set(model.getScreenPrefs().getBackgroundColor().getR(), model.getScreenPrefs().getBackgroundColor().getG(),
+        model.getScreenPrefs().getBackgroundColor().getB());
+    bgColor.div(255); /* convert to the floating point color */
 
     Texture.setEnforcePotImages(false);
 
@@ -183,7 +191,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
         luaScriptManager.executeKeyPressed(f.getName());
       }
     }
-    
+
   }
 
   /*
@@ -240,6 +248,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
    */
   private void updateCamera(GL10 gl) {
     gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+    gl.glClearColor(bgColor.x, bgColor.y, bgColor.z, 1f);
 
     camera.update();
     camera.apply(gl);
