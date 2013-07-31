@@ -36,7 +36,7 @@ public class AddJointHandler extends AbstractHandler {
     else if (n.equals("Friction"))
       return JointType.FrictionJoint;
     else if (n.equals("Pulley"))
-      return JointType.FrictionJoint;
+      return JointType.PulleyJoint;
 
     return null;
   }
