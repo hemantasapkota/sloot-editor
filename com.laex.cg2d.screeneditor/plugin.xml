@@ -80,9 +80,9 @@
          point="org.eclipse.ui.propertyPages">
       <page
             adaptable="true"
-            class="com.laex.cg2d.screeneditor.properties.ScreenPropertyPage"
+            class="com.laex.cg2d.screeneditor.properties.ScreenWorldPropertyPage"
             id="com.laex.cg2d.leveleditor.properties.ScreenPropertyPage"
-            name="%Plugin.contentType"
+            name="%Plugin.screenPropertyPage"
             nameFilter="*.cgs"
             objectClass="org.eclipse.core.resources.IFile">
          <enabledWhen>
