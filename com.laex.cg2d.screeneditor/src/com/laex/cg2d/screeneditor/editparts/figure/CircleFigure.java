@@ -22,8 +22,7 @@ public class CircleFigure extends Ellipse {
    * Instantiates a new circle figure.
    */
   public CircleFigure() {
-    setBackgroundColor(ColorConstants.blue);
-    setAlpha(255 / 2);
+    setBackgroundColor(ColorConstants.green);
   }
 
 }
