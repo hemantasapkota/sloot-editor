@@ -129,6 +129,12 @@ message CGVector2 {
 	required float y = 2;
 }
 
+message CGColor {
+	required int32 r = 1;
+	required int32 g = 2;
+	required int32 b = 3;
+}
+
 enum CGBodyType {
 	STATIC = 1;
 	KINEMATIC = 2;
@@ -227,5 +233,6 @@ message CGScreenPreferences {
 	optional CGDebugDrawPreferences debugDrawPrefs = 1;
 	optional CGWorldPreferences worldPrefs = 2;
 	optional CGCardPreferences cardPrefs = 3;
+	optional CGColor backgroundColor = 4;
 }
 
