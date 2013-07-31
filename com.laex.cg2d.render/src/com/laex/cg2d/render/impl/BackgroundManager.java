@@ -15,8 +15,10 @@ import java.util.Queue;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.Texture.TextureWrap;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -71,6 +73,8 @@ public class BackgroundManager implements ScreenScaffold {
 
         Texture tex = new Texture(handle);
         tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+        /* for clamping edge of background textures */
+        tex.setWrap(TextureWrap.Repeat, TextureWrap.Repeat);
 
         Sprite sprite = new Sprite(tex);
 
