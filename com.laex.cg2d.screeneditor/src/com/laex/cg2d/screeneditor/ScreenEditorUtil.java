@@ -10,14 +10,18 @@
  */
 package com.laex.cg2d.screeneditor;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
@@ -33,6 +37,9 @@ import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
+import com.laex.cg2d.model.adapter.ColorAdapter;
 import com.laex.cg2d.model.adapter.EntityAdapter;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.screeneditor.model.ShapeAdapter;
@@ -210,23 +217,6 @@ public final class ScreenEditorUtil {
   }
 
   /**
-   * Creates the image.
-   * 
-   * @param id
-   *          the id
-   * @return the image
-   */
-  public static Image createImage(final ImageData id) {
-    ImageDescriptor idd = new ImageDescriptor() {
-      @Override
-      public ImageData getImageData() {
-        return id;
-      }
-    };
-    return idd.createImage();
-  }
-
-  /**
    * Gets the image descriptor.
    * 
    * @param i
@@ -256,6 +246,28 @@ public final class ScreenEditorUtil {
         return i.getImageData().scaledTo(w, h);
       }
     };
+
+  }
+
+  public static void savePreferences(CGScreenPreferences prefs, IFile file) throws IOException, CoreException {
+    // Update changes to the active screen editor
+    if (ScreenEditorUtil.isScreenEditorActive()) {
+
+      ScreenEditorUtil.screenEditorState().updateCardLayer(prefs.getCardPrefs().getCardNoX(),
+          prefs.getCardPrefs().getCardNoY(), prefs.getCardPrefs().getCardWidth(), prefs.getCardPrefs().getCardHeight(),
+          ColorAdapter.swtColor(prefs.getBackgroundColor()));
+
+      ScreenEditorUtil.getScreenPropertyManager().updateScreenProperties(prefs);
+    } else {
+      // Editor is not active. Persist the properties, by loading the model and
+      // saving it again.
+      CGScreenModel model = CGScreenModel.parseFrom(file.getContents());
+
+      CGScreenModel updatedModel = CGScreenModel.newBuilder(model).setScreenPrefs(prefs).build();
+      file.setContents(new ByteArrayInputStream(updatedModel.toByteArray()), true, false, null);
+      
+      file.refreshLocal(0, new NullProgressMonitor());
+    }
 
   }
 }
