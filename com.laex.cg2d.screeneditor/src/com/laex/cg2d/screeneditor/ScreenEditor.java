@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.EventObject;
 
-import javax.swing.ProgressMonitor;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
@@ -67,6 +65,7 @@ import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorInput;
@@ -85,6 +84,7 @@ import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
+import com.laex.cg2d.model.adapter.ColorAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.GameModel;
@@ -131,12 +131,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   /** The Constant CARD_LAYER. */
   private static final String CARD_LAYER = "Card Layer";
 
-  private static final String JOINT_ANCHOR_LAYER = "Joint Anchor Layer";
-
   /** The card layer. */
   private ScalableFreeformLayeredPane cardLayer;
-
-  private ScalableFreeformLayeredPane jointAnchorLayer;
 
   /** The scalable root edit part. */
   private ScalableFreeformRootEditPart scalableRootEditPart;
@@ -151,7 +147,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   private boolean gridState = true;
 
   /** The card height. */
-  int x, y, cardWidthh, cardHeight;
+  private int x, y, cardWidthh, cardHeight;
+  
+  private Color cardBgColor;
 
   /**
    * ScreenOutineView. General outline view that shows all the editparts in the
@@ -353,13 +351,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
         cardLayer = new ScalableFreeformLayeredPane();
         layeredPane.addLayerBefore(cardLayer, CARD_LAYER, LayerConstants.GRID_LAYER);
-        updateCardLayer(x, y, cardWidthh, cardHeight);
+        updateCardLayer(x, y, cardWidthh, cardHeight, cardBgColor);
 
         super.createLayers(layeredPane);
 
         /* Create Joint Anchor Layer after other layers are created */
-        jointAnchorLayer = new ScalableFreeformLayeredPane();
-        layeredPane.addLayerAfter(jointAnchorLayer, JOINT_ANCHOR_LAYER, LayerConstants.GUIDE_LAYER);
       }
 
     };
@@ -667,6 +663,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
           y = cgGameModel.getScreenPrefs().getCardPrefs().getCardNoY();
           cardWidthh = cgGameModel.getScreenPrefs().getCardPrefs().getCardWidth();
           cardHeight = cgGameModel.getScreenPrefs().getCardPrefs().getCardHeight();
+          cardBgColor = ColorAdapter.swtColor(cgGameModel.getScreenPrefs().getBackgroundColor());
 
           monitor.done();
         } catch (IOException e) {
@@ -888,12 +885,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    * @see com.laex.cg2d.shared.ILayerManager#updateCardLayer(int, int, int, int)
    */
   @Override
-  public void updateCardLayer(int noX, int noY, int cardWidth, int cardHeight) {
+  public void updateCardLayer(int noX, int noY, int cardWidth, int cardHeight, Color bgColor) {
     cardLayer.removeAll();
 
     for (int i = 0; i < noY; i++) {
       for (int j = 0; j < noX; j++) {
-        CardEditPart cep = new CardEditPart(j, i, cardWidth, cardHeight);
+        CardEditPart cep = new CardEditPart(j, i, cardWidth, cardHeight, bgColor);
         cardLayer.add(cep.getFigure());
       }
     }
@@ -1030,8 +1027,6 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   @Override
   public void toggleJointLayer(Joint joint) {
-    jointAnchorLayer.removeAll();
-    /* unsed */
   }
 
 }
