@@ -51,6 +51,7 @@ class CGEntityAnimation;
 class CGEntity;
 class CGBounds;
 class CGVector2;
+class CGColor;
 class CGBodyDef;
 class CGFilter;
 class CGFixtureDef;
@@ -1879,6 +1880,108 @@ class CGVector2 : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class CGColor : public ::google::protobuf::Message {
+ public:
+  CGColor();
+  virtual ~CGColor();
+
+  CGColor(const CGColor& from);
+
+  inline CGColor& operator=(const CGColor& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CGColor& default_instance();
+
+  void Swap(CGColor* other);
+
+  // implements Message ----------------------------------------------
+
+  CGColor* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CGColor& from);
+  void MergeFrom(const CGColor& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 r = 1;
+  inline bool has_r() const;
+  inline void clear_r();
+  static const int kRFieldNumber = 1;
+  inline ::google::protobuf::int32 r() const;
+  inline void set_r(::google::protobuf::int32 value);
+
+  // required int32 g = 2;
+  inline bool has_g() const;
+  inline void clear_g();
+  static const int kGFieldNumber = 2;
+  inline ::google::protobuf::int32 g() const;
+  inline void set_g(::google::protobuf::int32 value);
+
+  // required int32 b = 3;
+  inline bool has_b() const;
+  inline void clear_b();
+  static const int kBFieldNumber = 3;
+  inline ::google::protobuf::int32 b() const;
+  inline void set_b(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGColor)
+ private:
+  inline void set_has_r();
+  inline void clear_has_r();
+  inline void set_has_g();
+  inline void clear_has_g();
+  inline void set_has_b();
+  inline void clear_has_b();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 r_;
+  ::google::protobuf::int32 g_;
+  ::google::protobuf::int32 b_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
+  friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
+  friend void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
+
+  void InitAsDefaultInstance();
+  static CGColor* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class CGBodyDef : public ::google::protobuf::Message {
  public:
   CGBodyDef();
@@ -3122,6 +3225,15 @@ class CGScreenPreferences : public ::google::protobuf::Message {
   inline ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* release_cardprefs();
   inline void set_allocated_cardprefs(::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* cardprefs);
 
+  // optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+  inline bool has_backgroundcolor() const;
+  inline void clear_backgroundcolor();
+  static const int kBackgroundColorFieldNumber = 4;
+  inline const ::com::laex::cg2d::model::CGColor& backgroundcolor() const;
+  inline ::com::laex::cg2d::model::CGColor* mutable_backgroundcolor();
+  inline ::com::laex::cg2d::model::CGColor* release_backgroundcolor();
+  inline void set_allocated_backgroundcolor(::com::laex::cg2d::model::CGColor* backgroundcolor);
+
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGScreenPreferences)
  private:
   inline void set_has_debugdrawprefs();
@@ -3130,15 +3242,18 @@ class CGScreenPreferences : public ::google::protobuf::Message {
   inline void clear_has_worldprefs();
   inline void set_has_cardprefs();
   inline void clear_has_cardprefs();
+  inline void set_has_backgroundcolor();
+  inline void clear_has_backgroundcolor();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences* debugdrawprefs_;
   ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences* worldprefs_;
   ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences* cardprefs_;
+  ::com::laex::cg2d::model::CGColor* backgroundcolor_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
@@ -5190,6 +5305,76 @@ inline void CGVector2::set_y(float value) {
 
 // -------------------------------------------------------------------
 
+// CGColor
+
+// required int32 r = 1;
+inline bool CGColor::has_r() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CGColor::set_has_r() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CGColor::clear_has_r() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CGColor::clear_r() {
+  r_ = 0;
+  clear_has_r();
+}
+inline ::google::protobuf::int32 CGColor::r() const {
+  return r_;
+}
+inline void CGColor::set_r(::google::protobuf::int32 value) {
+  set_has_r();
+  r_ = value;
+}
+
+// required int32 g = 2;
+inline bool CGColor::has_g() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CGColor::set_has_g() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CGColor::clear_has_g() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CGColor::clear_g() {
+  g_ = 0;
+  clear_has_g();
+}
+inline ::google::protobuf::int32 CGColor::g() const {
+  return g_;
+}
+inline void CGColor::set_g(::google::protobuf::int32 value) {
+  set_has_g();
+  g_ = value;
+}
+
+// required int32 b = 3;
+inline bool CGColor::has_b() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CGColor::set_has_b() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CGColor::clear_has_b() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CGColor::clear_b() {
+  b_ = 0;
+  clear_has_b();
+}
+inline ::google::protobuf::int32 CGColor::b() const {
+  return b_;
+}
+inline void CGColor::set_b(::google::protobuf::int32 value) {
+  set_has_b();
+  b_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // CGBodyDef
 
 // optional bool active = 1;
@@ -6777,6 +6962,44 @@ inline void CGScreenPreferences::set_allocated_cardprefs(::com::laex::cg2d::mode
     set_has_cardprefs();
   } else {
     clear_has_cardprefs();
+  }
+}
+
+// optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+inline bool CGScreenPreferences::has_backgroundcolor() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void CGScreenPreferences::set_has_backgroundcolor() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void CGScreenPreferences::clear_has_backgroundcolor() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void CGScreenPreferences::clear_backgroundcolor() {
+  if (backgroundcolor_ != NULL) backgroundcolor_->::com::laex::cg2d::model::CGColor::Clear();
+  clear_has_backgroundcolor();
+}
+inline const ::com::laex::cg2d::model::CGColor& CGScreenPreferences::backgroundcolor() const {
+  return backgroundcolor_ != NULL ? *backgroundcolor_ : *default_instance_->backgroundcolor_;
+}
+inline ::com::laex::cg2d::model::CGColor* CGScreenPreferences::mutable_backgroundcolor() {
+  set_has_backgroundcolor();
+  if (backgroundcolor_ == NULL) backgroundcolor_ = new ::com::laex::cg2d::model::CGColor;
+  return backgroundcolor_;
+}
+inline ::com::laex::cg2d::model::CGColor* CGScreenPreferences::release_backgroundcolor() {
+  clear_has_backgroundcolor();
+  ::com::laex::cg2d::model::CGColor* temp = backgroundcolor_;
+  backgroundcolor_ = NULL;
+  return temp;
+}
+inline void CGScreenPreferences::set_allocated_backgroundcolor(::com::laex::cg2d::model::CGColor* backgroundcolor) {
+  delete backgroundcolor_;
+  backgroundcolor_ = backgroundcolor;
+  if (backgroundcolor) {
+    set_has_backgroundcolor();
+  } else {
+    clear_has_backgroundcolor();
   }
 }
 

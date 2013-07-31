@@ -704,6 +704,12 @@ public final class ScreenModel {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (hasScreenPrefs()) {
+        if (!getScreenPrefs().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       for (int i = 0; i < getLayersCount(); i++) {
         if (!getLayers(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -965,6 +971,12 @@ public final class ScreenModel {
       }
 
       public final boolean isInitialized() {
+        if (hasScreenPrefs()) {
+          if (!getScreenPrefs().isInitialized()) {
+            
+            return false;
+          }
+        }
         for (int i = 0; i < getLayersCount(); i++) {
           if (!getLayers(i).isInitialized()) {
             
@@ -13761,6 +13773,588 @@ public final class ScreenModel {
     // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGVector2)
   }
 
+  public interface CGColorOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 r = 1;
+    /**
+     * <code>required int32 r = 1;</code>
+     */
+    boolean hasR();
+    /**
+     * <code>required int32 r = 1;</code>
+     */
+    int getR();
+
+    // required int32 g = 2;
+    /**
+     * <code>required int32 g = 2;</code>
+     */
+    boolean hasG();
+    /**
+     * <code>required int32 g = 2;</code>
+     */
+    int getG();
+
+    // required int32 b = 3;
+    /**
+     * <code>required int32 b = 3;</code>
+     */
+    boolean hasB();
+    /**
+     * <code>required int32 b = 3;</code>
+     */
+    int getB();
+  }
+  /**
+   * Protobuf type {@code com.laex.cg2d.model.CGColor}
+   */
+  public static final class CGColor extends
+      com.google.protobuf.GeneratedMessage
+      implements CGColorOrBuilder {
+    // Use CGColor.newBuilder() to construct.
+    private CGColor(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private CGColor(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CGColor defaultInstance;
+    public static CGColor getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public CGColor getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CGColor(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              r_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              g_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              b_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGColor_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGColor_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.laex.cg2d.model.ScreenModel.CGColor.class, com.laex.cg2d.model.ScreenModel.CGColor.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<CGColor> PARSER =
+        new com.google.protobuf.AbstractParser<CGColor>() {
+      public CGColor parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CGColor(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CGColor> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 r = 1;
+    public static final int R_FIELD_NUMBER = 1;
+    private int r_;
+    /**
+     * <code>required int32 r = 1;</code>
+     */
+    public boolean hasR() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 r = 1;</code>
+     */
+    public int getR() {
+      return r_;
+    }
+
+    // required int32 g = 2;
+    public static final int G_FIELD_NUMBER = 2;
+    private int g_;
+    /**
+     * <code>required int32 g = 2;</code>
+     */
+    public boolean hasG() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 g = 2;</code>
+     */
+    public int getG() {
+      return g_;
+    }
+
+    // required int32 b = 3;
+    public static final int B_FIELD_NUMBER = 3;
+    private int b_;
+    /**
+     * <code>required int32 b = 3;</code>
+     */
+    public boolean hasB() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 b = 3;</code>
+     */
+    public int getB() {
+      return b_;
+    }
+
+    private void initFields() {
+      r_ = 0;
+      g_ = 0;
+      b_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasR()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasG()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasB()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, r_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, g_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, b_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, r_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, g_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, b_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.laex.cg2d.model.ScreenModel.CGColor parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.laex.cg2d.model.ScreenModel.CGColor prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.laex.cg2d.model.CGColor}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.laex.cg2d.model.ScreenModel.CGColorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGColor_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGColor_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.laex.cg2d.model.ScreenModel.CGColor.class, com.laex.cg2d.model.ScreenModel.CGColor.Builder.class);
+      }
+
+      // Construct using com.laex.cg2d.model.ScreenModel.CGColor.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        r_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        g_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        b_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.laex.cg2d.model.ScreenModel.internal_static_com_laex_cg2d_model_CGColor_descriptor;
+      }
+
+      public com.laex.cg2d.model.ScreenModel.CGColor getDefaultInstanceForType() {
+        return com.laex.cg2d.model.ScreenModel.CGColor.getDefaultInstance();
+      }
+
+      public com.laex.cg2d.model.ScreenModel.CGColor build() {
+        com.laex.cg2d.model.ScreenModel.CGColor result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.laex.cg2d.model.ScreenModel.CGColor buildPartial() {
+        com.laex.cg2d.model.ScreenModel.CGColor result = new com.laex.cg2d.model.ScreenModel.CGColor(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.r_ = r_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.g_ = g_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.b_ = b_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.laex.cg2d.model.ScreenModel.CGColor) {
+          return mergeFrom((com.laex.cg2d.model.ScreenModel.CGColor)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGColor other) {
+        if (other == com.laex.cg2d.model.ScreenModel.CGColor.getDefaultInstance()) return this;
+        if (other.hasR()) {
+          setR(other.getR());
+        }
+        if (other.hasG()) {
+          setG(other.getG());
+        }
+        if (other.hasB()) {
+          setB(other.getB());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasR()) {
+          
+          return false;
+        }
+        if (!hasG()) {
+          
+          return false;
+        }
+        if (!hasB()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.laex.cg2d.model.ScreenModel.CGColor parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.laex.cg2d.model.ScreenModel.CGColor) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 r = 1;
+      private int r_ ;
+      /**
+       * <code>required int32 r = 1;</code>
+       */
+      public boolean hasR() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 r = 1;</code>
+       */
+      public int getR() {
+        return r_;
+      }
+      /**
+       * <code>required int32 r = 1;</code>
+       */
+      public Builder setR(int value) {
+        bitField0_ |= 0x00000001;
+        r_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 r = 1;</code>
+       */
+      public Builder clearR() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        r_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 g = 2;
+      private int g_ ;
+      /**
+       * <code>required int32 g = 2;</code>
+       */
+      public boolean hasG() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 g = 2;</code>
+       */
+      public int getG() {
+        return g_;
+      }
+      /**
+       * <code>required int32 g = 2;</code>
+       */
+      public Builder setG(int value) {
+        bitField0_ |= 0x00000002;
+        g_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 g = 2;</code>
+       */
+      public Builder clearG() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        g_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 b = 3;
+      private int b_ ;
+      /**
+       * <code>required int32 b = 3;</code>
+       */
+      public boolean hasB() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 b = 3;</code>
+       */
+      public int getB() {
+        return b_;
+      }
+      /**
+       * <code>required int32 b = 3;</code>
+       */
+      public Builder setB(int value) {
+        bitField0_ |= 0x00000004;
+        b_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 b = 3;</code>
+       */
+      public Builder clearB() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        b_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGColor)
+    }
+
+    static {
+      defaultInstance = new CGColor(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGColor)
+  }
+
   public interface CGBodyDefOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -20136,6 +20730,20 @@ public final class ScreenModel {
      * <code>optional .com.laex.cg2d.model.CGScreenPreferences.CGCardPreferences cardPrefs = 3;</code>
      */
     com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferencesOrBuilder getCardPrefsOrBuilder();
+
+    // optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+    /**
+     * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+     */
+    boolean hasBackgroundColor();
+    /**
+     * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+     */
+    com.laex.cg2d.model.ScreenModel.CGColor getBackgroundColor();
+    /**
+     * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+     */
+    com.laex.cg2d.model.ScreenModel.CGColorOrBuilder getBackgroundColorOrBuilder();
   }
   /**
    * Protobuf type {@code com.laex.cg2d.model.CGScreenPreferences}
@@ -20225,6 +20833,19 @@ public final class ScreenModel {
                 cardPrefs_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.laex.cg2d.model.ScreenModel.CGColor.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = backgroundColor_.toBuilder();
+              }
+              backgroundColor_ = input.readMessage(com.laex.cg2d.model.ScreenModel.CGColor.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(backgroundColor_);
+                backgroundColor_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
               break;
             }
           }
@@ -22655,16 +23276,45 @@ public final class ScreenModel {
       return cardPrefs_;
     }
 
+    // optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+    public static final int BACKGROUNDCOLOR_FIELD_NUMBER = 4;
+    private com.laex.cg2d.model.ScreenModel.CGColor backgroundColor_;
+    /**
+     * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+     */
+    public boolean hasBackgroundColor() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+     */
+    public com.laex.cg2d.model.ScreenModel.CGColor getBackgroundColor() {
+      return backgroundColor_;
+    }
+    /**
+     * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+     */
+    public com.laex.cg2d.model.ScreenModel.CGColorOrBuilder getBackgroundColorOrBuilder() {
+      return backgroundColor_;
+    }
+
     private void initFields() {
       debugDrawPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreferences.getDefaultInstance();
       worldPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences.getDefaultInstance();
       cardPrefs_ = com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGCardPreferences.getDefaultInstance();
+      backgroundColor_ = com.laex.cg2d.model.ScreenModel.CGColor.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (hasBackgroundColor()) {
+        if (!getBackgroundColor().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -22680,6 +23330,9 @@ public final class ScreenModel {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(3, cardPrefs_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, backgroundColor_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -22701,6 +23354,10 @@ public final class ScreenModel {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, cardPrefs_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, backgroundColor_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22813,6 +23470,7 @@ public final class ScreenModel {
           getDebugDrawPrefsFieldBuilder();
           getWorldPrefsFieldBuilder();
           getCardPrefsFieldBuilder();
+          getBackgroundColorFieldBuilder();
         }
       }
       private static Builder create() {
@@ -22839,6 +23497,12 @@ public final class ScreenModel {
           cardPrefsBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
+        if (backgroundColorBuilder_ == null) {
+          backgroundColor_ = com.laex.cg2d.model.ScreenModel.CGColor.getDefaultInstance();
+        } else {
+          backgroundColorBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -22891,6 +23555,14 @@ public final class ScreenModel {
         } else {
           result.cardPrefs_ = cardPrefsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (backgroundColorBuilder_ == null) {
+          result.backgroundColor_ = backgroundColor_;
+        } else {
+          result.backgroundColor_ = backgroundColorBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -22916,11 +23588,20 @@ public final class ScreenModel {
         if (other.hasCardPrefs()) {
           mergeCardPrefs(other.getCardPrefs());
         }
+        if (other.hasBackgroundColor()) {
+          mergeBackgroundColor(other.getBackgroundColor());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (hasBackgroundColor()) {
+          if (!getBackgroundColor().isInitialized()) {
+            
+            return false;
+          }
+        }
         return true;
       }
 
@@ -23294,6 +23975,123 @@ public final class ScreenModel {
         return cardPrefsBuilder_;
       }
 
+      // optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+      private com.laex.cg2d.model.ScreenModel.CGColor backgroundColor_ = com.laex.cg2d.model.ScreenModel.CGColor.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.model.ScreenModel.CGColor, com.laex.cg2d.model.ScreenModel.CGColor.Builder, com.laex.cg2d.model.ScreenModel.CGColorOrBuilder> backgroundColorBuilder_;
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      public boolean hasBackgroundColor() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGColor getBackgroundColor() {
+        if (backgroundColorBuilder_ == null) {
+          return backgroundColor_;
+        } else {
+          return backgroundColorBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      public Builder setBackgroundColor(com.laex.cg2d.model.ScreenModel.CGColor value) {
+        if (backgroundColorBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          backgroundColor_ = value;
+          onChanged();
+        } else {
+          backgroundColorBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      public Builder setBackgroundColor(
+          com.laex.cg2d.model.ScreenModel.CGColor.Builder builderForValue) {
+        if (backgroundColorBuilder_ == null) {
+          backgroundColor_ = builderForValue.build();
+          onChanged();
+        } else {
+          backgroundColorBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      public Builder mergeBackgroundColor(com.laex.cg2d.model.ScreenModel.CGColor value) {
+        if (backgroundColorBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              backgroundColor_ != com.laex.cg2d.model.ScreenModel.CGColor.getDefaultInstance()) {
+            backgroundColor_ =
+              com.laex.cg2d.model.ScreenModel.CGColor.newBuilder(backgroundColor_).mergeFrom(value).buildPartial();
+          } else {
+            backgroundColor_ = value;
+          }
+          onChanged();
+        } else {
+          backgroundColorBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      public Builder clearBackgroundColor() {
+        if (backgroundColorBuilder_ == null) {
+          backgroundColor_ = com.laex.cg2d.model.ScreenModel.CGColor.getDefaultInstance();
+          onChanged();
+        } else {
+          backgroundColorBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGColor.Builder getBackgroundColorBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getBackgroundColorFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      public com.laex.cg2d.model.ScreenModel.CGColorOrBuilder getBackgroundColorOrBuilder() {
+        if (backgroundColorBuilder_ != null) {
+          return backgroundColorBuilder_.getMessageOrBuilder();
+        } else {
+          return backgroundColor_;
+        }
+      }
+      /**
+       * <code>optional .com.laex.cg2d.model.CGColor backgroundColor = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.laex.cg2d.model.ScreenModel.CGColor, com.laex.cg2d.model.ScreenModel.CGColor.Builder, com.laex.cg2d.model.ScreenModel.CGColorOrBuilder> 
+          getBackgroundColorFieldBuilder() {
+        if (backgroundColorBuilder_ == null) {
+          backgroundColorBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.laex.cg2d.model.ScreenModel.CGColor, com.laex.cg2d.model.ScreenModel.CGColor.Builder, com.laex.cg2d.model.ScreenModel.CGColorOrBuilder>(
+                  backgroundColor_,
+                  getParentForChildren(),
+                  isClean());
+          backgroundColor_ = null;
+        }
+        return backgroundColorBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGScreenPreferences)
     }
 
@@ -23375,6 +24173,11 @@ public final class ScreenModel {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_laex_cg2d_model_CGVector2_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_laex_cg2d_model_CGColor_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_laex_cg2d_model_CGColor_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_laex_cg2d_model_CGBodyDef_descriptor;
   private static
@@ -23492,65 +24295,68 @@ public final class ScreenModel {
       "ions\030\002 \003(\0132&.com.laex.cg2d.model.CGEntit" +
       "yAnimation\"?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002" +
       " \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n\tC" +
-      "GVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\203\003\n\tCGBod" +
-      "yDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001(\010" +
-      "\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 \001(\002\022" +
-      "\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 \001(\010\022" +
-      "\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010\022\026" +
-      "\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDamping\030" +
-      "\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linearVel",
-      "ocity\030\014 \001(\0132\036.com.laex.cg2d.model.CGVect" +
-      "or2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.model." +
-      "CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.laex." +
-      "cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014cate" +
-      "goryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngrou" +
-      "pIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007density" +
-      "\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitution\030" +
-      "\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001(\0132\035." +
-      "com.laex.cg2d.model.CGFilter\"\321\003\n\007CGShape" +
-      "\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locked\030",
-      "\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgroundR" +
-      "esourceFile\030\005 \001(\0132#.com.laex.cg2d.model." +
-      "CGResourceFile\022?\n\017editorShapeType\030\006 \001(\0162" +
-      "&.com.laex.cg2d.model.CGEditorShapeType\022" +
-      "-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.model.CG" +
-      "Bounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.cg2d." +
-      "model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132!.co" +
-      "m.laex.cg2d.model.CGFixtureDef\022,\n\006joints" +
-      "\030\n \003(\0132\034.com.laex.cg2d.model.CGJoint\022:\n\r" +
-      "entityRefFile\030\013 \001(\0132#.com.laex.cg2d.mode",
-      "l.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022" +
-      "\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked" +
-      "\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d.mo" +
-      "del.CGShape\"\274\005\n\023CGScreenPreferences\022W\n\016d" +
-      "ebugDrawPrefs\030\001 \001(\0132?.com.laex.cg2d.mode" +
-      "l.CGScreenPreferences.CGDebugDrawPrefere" +
-      "nces\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex.cg2d" +
-      ".model.CGScreenPreferences.CGWorldPrefer" +
-      "ences\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.cg2d" +
-      ".model.CGScreenPreferences.CGCardPrefere",
-      "nces\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndrawB" +
-      "odies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawA" +
-      "ABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n" +
-      "\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugDat" +
-      "a\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWorl" +
-      "dPreferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022veloci" +
-      "tyIterations\030\002 \001(\005\022\032\n\022positionIterations" +
-      "\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001" +
-      "(\002\022\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCardPreference" +
-      "s\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tc",
-      "ardWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013C" +
-      "GJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n" +
-      "\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t" +
-      "\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t" +
-      "\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityColl" +
-      "isionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002" +
-      "\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r" +
-      "\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorS" +
-      "hapeType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIM" +
-      "PLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022",
-      "\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SH" +
-      "APE\020\005\022\020\n\014ENTITY_SHAPE\020\006"
+      "GVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"*\n\007CGColo" +
+      "r\022\t\n\001r\030\001 \002(\005\022\t\n\001g\030\002 \002(\005\022\t\n\001b\030\003 \002(\005\"\203\003\n\tC" +
+      "GBodyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002" +
+      " \001(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 " +
+      "\001(\002\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 " +
+      "\001(\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001" +
+      "(\010\022\026\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDamp",
+      "ing\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linea" +
+      "rVelocity\030\014 \001(\0132\036.com.laex.cg2d.model.CG" +
+      "Vector2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.mo" +
+      "del.CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.l" +
+      "aex.cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014" +
+      "categoryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\n" +
+      "groupIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007den" +
+      "sity\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitut" +
+      "ion\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001(" +
+      "\0132\035.com.laex.cg2d.model.CGFilter\"\321\003\n\007CGS",
+      "hape\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006loc" +
+      "ked\030\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgro" +
+      "undResourceFile\030\005 \001(\0132#.com.laex.cg2d.mo" +
+      "del.CGResourceFile\022?\n\017editorShapeType\030\006 " +
+      "\001(\0162&.com.laex.cg2d.model.CGEditorShapeT" +
+      "ype\022-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.mode" +
+      "l.CGBounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.c" +
+      "g2d.model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132" +
+      "!.com.laex.cg2d.model.CGFixtureDef\022,\n\006jo" +
+      "ints\030\n \003(\0132\034.com.laex.cg2d.model.CGJoint",
+      "\022:\n\rentityRefFile\030\013 \001(\0132#.com.laex.cg2d." +
+      "model.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 " +
+      "\001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006lo" +
+      "cked\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2" +
+      "d.model.CGShape\"\363\005\n\023CGScreenPreferences\022" +
+      "W\n\016debugDrawPrefs\030\001 \001(\0132?.com.laex.cg2d." +
+      "model.CGScreenPreferences.CGDebugDrawPre" +
+      "ferences\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex." +
+      "cg2d.model.CGScreenPreferences.CGWorldPr" +
+      "eferences\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.",
+      "cg2d.model.CGScreenPreferences.CGCardPre" +
+      "ferences\0225\n\017backgroundColor\030\004 \001(\0132\034.com." +
+      "laex.cg2d.model.CGColor\032\266\001\n\026CGDebugDrawP" +
+      "references\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJo" +
+      "ints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawInac" +
+      "tiveBodies\030\004 \001(\010\022\031\n\021installMouseJoint\030\005 " +
+      "\001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n\014drawEntiti" +
+      "es\030\007 \001(\010\032\224\001\n\022CGWorldPreferences\022\020\n\010ptmRa" +
+      "tio\030\001 \001(\005\022\032\n\022velocityIterations\030\002 \001(\005\022\032\n" +
+      "\022positionIterations\030\003 \001(\005\022\020\n\010timeStep\030\004 ",
+      "\001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002\032" +
+      "\\\n\021CGCardPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017\n" +
+      "\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\ncar" +
+      "dHeight\030\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOWN" +
+      "\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DISTA" +
+      "NCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t" +
+      "\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROP" +
+      "E\020\013*B\n\025CGEntityCollisionType\022\010\n\004NONE\020\000\022\007" +
+      "\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBod" +
+      "yType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNA",
+      "MIC\020\003*\232\001\n\021CGEditorShapeType\022\027\n\023SIMPLE_SH" +
+      "APE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022SI" +
+      "MPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDGE" +
+      "\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAPE" +
+      "\020\006"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23641,42 +24447,48 @@ public final class ScreenModel {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGVector2_descriptor,
               new java.lang.String[] { "X", "Y", });
-          internal_static_com_laex_cg2d_model_CGBodyDef_descriptor =
+          internal_static_com_laex_cg2d_model_CGColor_descriptor =
             getDescriptor().getMessageTypes().get(14);
+          internal_static_com_laex_cg2d_model_CGColor_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_laex_cg2d_model_CGColor_descriptor,
+              new java.lang.String[] { "R", "G", "B", });
+          internal_static_com_laex_cg2d_model_CGBodyDef_descriptor =
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_laex_cg2d_model_CGBodyDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGBodyDef_descriptor,
               new java.lang.String[] { "Active", "AllowSleep", "Angle", "AngularDamping", "AngularVelocity", "Awake", "Bullet", "FixedRotation", "IntertialScale", "LinearDamping", "GravityScale", "LinearVelocity", "Type", "Position", });
           internal_static_com_laex_cg2d_model_CGFilter_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_laex_cg2d_model_CGFilter_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGFilter_descriptor,
               new java.lang.String[] { "CategoryBits", "MaskBits", "GroupIndex", });
           internal_static_com_laex_cg2d_model_CGFixtureDef_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_laex_cg2d_model_CGFixtureDef_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGFixtureDef_descriptor,
               new java.lang.String[] { "Density", "Friction", "Restitution", "Sensor", "Filter", });
           internal_static_com_laex_cg2d_model_CGShape_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_laex_cg2d_model_CGShape_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGShape_descriptor,
               new java.lang.String[] { "Id", "Visible", "Locked", "Background", "BackgroundResourceFile", "EditorShapeType", "Bounds", "BodyDef", "FixtureDef", "Joints", "EntityRefFile", });
           internal_static_com_laex_cg2d_model_CGLayer_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_laex_cg2d_model_CGLayer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGLayer_descriptor,
               new java.lang.String[] { "Id", "Name", "Visible", "Locked", "Shape", });
           internal_static_com_laex_cg2d_model_CGScreenPreferences_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_laex_cg2d_model_CGScreenPreferences_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGScreenPreferences_descriptor,
-              new java.lang.String[] { "DebugDrawPrefs", "WorldPrefs", "CardPrefs", });
+              new java.lang.String[] { "DebugDrawPrefs", "WorldPrefs", "CardPrefs", "BackgroundColor", });
           internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_descriptor =
             internal_static_com_laex_cg2d_model_CGScreenPreferences_descriptor.getNestedTypes().get(0);
           internal_static_com_laex_cg2d_model_CGScreenPreferences_CGDebugDrawPreferences_fieldAccessorTable = new

@@ -65,6 +65,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CGVector2_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGVector2_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CGColor_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CGColor_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CGBodyDef_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGBodyDef_reflection_ = NULL;
@@ -366,7 +369,24 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGVector2));
-  CGBodyDef_descriptor_ = file->message_type(14);
+  CGColor_descriptor_ = file->message_type(14);
+  static const int CGColor_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGColor, r_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGColor, g_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGColor, b_),
+  };
+  CGColor_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      CGColor_descriptor_,
+      CGColor::default_instance_,
+      CGColor_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGColor, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGColor, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(CGColor));
+  CGBodyDef_descriptor_ = file->message_type(15);
   static const int CGBodyDef_offsets_[14] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, active_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGBodyDef, allowsleep_),
@@ -394,7 +414,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGBodyDef));
-  CGFilter_descriptor_ = file->message_type(15);
+  CGFilter_descriptor_ = file->message_type(16);
   static const int CGFilter_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGFilter, categorybits_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGFilter, maskbits_),
@@ -411,7 +431,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGFilter));
-  CGFixtureDef_descriptor_ = file->message_type(16);
+  CGFixtureDef_descriptor_ = file->message_type(17);
   static const int CGFixtureDef_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGFixtureDef, density_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGFixtureDef, friction_),
@@ -430,7 +450,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGFixtureDef));
-  CGShape_descriptor_ = file->message_type(17);
+  CGShape_descriptor_ = file->message_type(18);
   static const int CGShape_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, visible_),
@@ -455,7 +475,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGShape));
-  CGLayer_descriptor_ = file->message_type(18);
+  CGLayer_descriptor_ = file->message_type(19);
   static const int CGLayer_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGLayer, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGLayer, name_),
@@ -474,11 +494,12 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGLayer));
-  CGScreenPreferences_descriptor_ = file->message_type(19);
-  static const int CGScreenPreferences_offsets_[3] = {
+  CGScreenPreferences_descriptor_ = file->message_type(20);
+  static const int CGScreenPreferences_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences, debugdrawprefs_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences, worldprefs_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences, cardprefs_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGScreenPreferences, backgroundcolor_),
   };
   CGScreenPreferences_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -595,6 +616,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CGVector2_descriptor_, &CGVector2::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    CGColor_descriptor_, &CGColor::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CGBodyDef_descriptor_, &CGBodyDef::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CGFilter_descriptor_, &CGFilter::default_instance());
@@ -645,6 +668,8 @@ void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   delete CGBounds_reflection_;
   delete CGVector2::default_instance_;
   delete CGVector2_reflection_;
+  delete CGColor::default_instance_;
+  delete CGColor_reflection_;
   delete CGBodyDef::default_instance_;
   delete CGBodyDef_reflection_;
   delete CGFilter::default_instance_;
@@ -735,65 +760,68 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "ions\030\002 \003(\0132&.com.laex.cg2d.model.CGEntit"
     "yAnimation\"\?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002"
     " \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n\tC"
-    "GVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\203\003\n\tCGBod"
-    "yDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002 \001(\010"
-    "\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 \001(\002\022"
-    "\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 \001(\010\022"
-    "\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001(\010\022\026"
-    "\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDamping\030"
-    "\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linearVel"
-    "ocity\030\014 \001(\0132\036.com.laex.cg2d.model.CGVect"
-    "or2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.model."
-    "CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.laex."
-    "cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014cate"
-    "goryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\ngrou"
-    "pIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007density"
-    "\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitution\030"
-    "\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001(\0132\035."
-    "com.laex.cg2d.model.CGFilter\"\321\003\n\007CGShape"
-    "\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006locked\030"
-    "\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgroundR"
-    "esourceFile\030\005 \001(\0132#.com.laex.cg2d.model."
-    "CGResourceFile\022\?\n\017editorShapeType\030\006 \001(\0162"
-    "&.com.laex.cg2d.model.CGEditorShapeType\022"
-    "-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.model.CG"
-    "Bounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.cg2d."
-    "model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132!.co"
-    "m.laex.cg2d.model.CGFixtureDef\022,\n\006joints"
-    "\030\n \003(\0132\034.com.laex.cg2d.model.CGJoint\022:\n\r"
-    "entityRefFile\030\013 \001(\0132#.com.laex.cg2d.mode"
-    "l.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022"
-    "\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked"
-    "\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d.mo"
-    "del.CGShape\"\274\005\n\023CGScreenPreferences\022W\n\016d"
-    "ebugDrawPrefs\030\001 \001(\0132\?.com.laex.cg2d.mode"
-    "l.CGScreenPreferences.CGDebugDrawPrefere"
-    "nces\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex.cg2d"
-    ".model.CGScreenPreferences.CGWorldPrefer"
-    "ences\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.cg2d"
-    ".model.CGScreenPreferences.CGCardPrefere"
-    "nces\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndrawB"
-    "odies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawA"
-    "ABB\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n"
-    "\021installMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugDat"
-    "a\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWorl"
-    "dPreferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022veloci"
-    "tyIterations\030\002 \001(\005\022\032\n\022positionIterations"
-    "\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001"
-    "(\002\022\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCardPreference"
-    "s\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tc"
-    "ardWidth\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013C"
-    "GJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n"
-    "\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t"
-    "\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t"
-    "\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityColl"
-    "isionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002"
-    "\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r"
-    "\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorS"
-    "hapeType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIM"
-    "PLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022"
-    "\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SH"
-    "APE\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4863);
+    "GVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"*\n\007CGColo"
+    "r\022\t\n\001r\030\001 \002(\005\022\t\n\001g\030\002 \002(\005\022\t\n\001b\030\003 \002(\005\"\203\003\n\tC"
+    "GBodyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002"
+    " \001(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 "
+    "\001(\002\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 "
+    "\001(\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001"
+    "(\010\022\026\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDamp"
+    "ing\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linea"
+    "rVelocity\030\014 \001(\0132\036.com.laex.cg2d.model.CG"
+    "Vector2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.mo"
+    "del.CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.l"
+    "aex.cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014"
+    "categoryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\n"
+    "groupIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007den"
+    "sity\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitut"
+    "ion\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001("
+    "\0132\035.com.laex.cg2d.model.CGFilter\"\321\003\n\007CGS"
+    "hape\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006loc"
+    "ked\030\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgro"
+    "undResourceFile\030\005 \001(\0132#.com.laex.cg2d.mo"
+    "del.CGResourceFile\022\?\n\017editorShapeType\030\006 "
+    "\001(\0162&.com.laex.cg2d.model.CGEditorShapeT"
+    "ype\022-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.mode"
+    "l.CGBounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.c"
+    "g2d.model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132"
+    "!.com.laex.cg2d.model.CGFixtureDef\022,\n\006jo"
+    "ints\030\n \003(\0132\034.com.laex.cg2d.model.CGJoint"
+    "\022:\n\rentityRefFile\030\013 \001(\0132#.com.laex.cg2d."
+    "model.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 "
+    "\001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006lo"
+    "cked\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2"
+    "d.model.CGShape\"\363\005\n\023CGScreenPreferences\022"
+    "W\n\016debugDrawPrefs\030\001 \001(\0132\?.com.laex.cg2d."
+    "model.CGScreenPreferences.CGDebugDrawPre"
+    "ferences\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex."
+    "cg2d.model.CGScreenPreferences.CGWorldPr"
+    "eferences\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex."
+    "cg2d.model.CGScreenPreferences.CGCardPre"
+    "ferences\0225\n\017backgroundColor\030\004 \001(\0132\034.com."
+    "laex.cg2d.model.CGColor\032\266\001\n\026CGDebugDrawP"
+    "references\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJo"
+    "ints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawInac"
+    "tiveBodies\030\004 \001(\010\022\031\n\021installMouseJoint\030\005 "
+    "\001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n\014drawEntiti"
+    "es\030\007 \001(\010\032\224\001\n\022CGWorldPreferences\022\020\n\010ptmRa"
+    "tio\030\001 \001(\005\022\032\n\022velocityIterations\030\002 \001(\005\022\032\n"
+    "\022positionIterations\030\003 \001(\005\022\020\n\010timeStep\030\004 "
+    "\001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002\032"
+    "\\\n\021CGCardPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017\n"
+    "\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\ncar"
+    "dHeight\030\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOWN"
+    "\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DISTA"
+    "NCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t"
+    "\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROP"
+    "E\020\013*B\n\025CGEntityCollisionType\022\010\n\004NONE\020\000\022\007"
+    "\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBod"
+    "yType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNA"
+    "MIC\020\003*\232\001\n\021CGEditorShapeType\022\027\n\023SIMPLE_SH"
+    "APE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022SI"
+    "MPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDGE"
+    "\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAPE"
+    "\020\006", 4962);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/model/ScreenModel.proto", &protobuf_RegisterTypes);
   CGScreenModel::default_instance_ = new CGScreenModel();
@@ -810,6 +838,7 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   CGEntity::default_instance_ = new CGEntity();
   CGBounds::default_instance_ = new CGBounds();
   CGVector2::default_instance_ = new CGVector2();
+  CGColor::default_instance_ = new CGColor();
   CGBodyDef::default_instance_ = new CGBodyDef();
   CGFilter::default_instance_ = new CGFilter();
   CGFixtureDef::default_instance_ = new CGFixtureDef();
@@ -833,6 +862,7 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
   CGEntity::default_instance_->InitAsDefaultInstance();
   CGBounds::default_instance_->InitAsDefaultInstance();
   CGVector2::default_instance_->InitAsDefaultInstance();
+  CGColor::default_instance_->InitAsDefaultInstance();
   CGBodyDef::default_instance_->InitAsDefaultInstance();
   CGFilter::default_instance_->InitAsDefaultInstance();
   CGFixtureDef::default_instance_->InitAsDefaultInstance();
@@ -1155,6 +1185,9 @@ void CGScreenModel::CopyFrom(const CGScreenModel& from) {
 
 bool CGScreenModel::IsInitialized() const {
 
+  if (has_screenprefs()) {
+    if (!this->screenprefs().IsInitialized()) return false;
+  }
   for (int i = 0; i < layers_size(); i++) {
     if (!this->layers(i).IsInitialized()) return false;
   }
@@ -6016,6 +6049,295 @@ void CGVector2::Swap(CGVector2* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int CGColor::kRFieldNumber;
+const int CGColor::kGFieldNumber;
+const int CGColor::kBFieldNumber;
+#endif  // !_MSC_VER
+
+CGColor::CGColor()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void CGColor::InitAsDefaultInstance() {
+}
+
+CGColor::CGColor(const CGColor& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void CGColor::SharedCtor() {
+  _cached_size_ = 0;
+  r_ = 0;
+  g_ = 0;
+  b_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+CGColor::~CGColor() {
+  SharedDtor();
+}
+
+void CGColor::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void CGColor::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CGColor::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CGColor_descriptor_;
+}
+
+const CGColor& CGColor::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
+  return *default_instance_;
+}
+
+CGColor* CGColor::default_instance_ = NULL;
+
+CGColor* CGColor::New() const {
+  return new CGColor;
+}
+
+void CGColor::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    r_ = 0;
+    g_ = 0;
+    b_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool CGColor::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 r = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &r_)));
+          set_has_r();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_g;
+        break;
+      }
+
+      // required int32 g = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_g:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &g_)));
+          set_has_g();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_b;
+        break;
+      }
+
+      // required int32 b = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_b:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &b_)));
+          set_has_b();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void CGColor::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required int32 r = 1;
+  if (has_r()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->r(), output);
+  }
+
+  // required int32 g = 2;
+  if (has_g()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->g(), output);
+  }
+
+  // required int32 b = 3;
+  if (has_b()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->b(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* CGColor::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required int32 r = 1;
+  if (has_r()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->r(), target);
+  }
+
+  // required int32 g = 2;
+  if (has_g()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->g(), target);
+  }
+
+  // required int32 b = 3;
+  if (has_b()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->b(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int CGColor::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required int32 r = 1;
+    if (has_r()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->r());
+    }
+
+    // required int32 g = 2;
+    if (has_g()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->g());
+    }
+
+    // required int32 b = 3;
+    if (has_b()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->b());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CGColor::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const CGColor* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const CGColor*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void CGColor::MergeFrom(const CGColor& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_r()) {
+      set_r(from.r());
+    }
+    if (from.has_g()) {
+      set_g(from.g());
+    }
+    if (from.has_b()) {
+      set_b(from.b());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void CGColor::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CGColor::CopyFrom(const CGColor& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CGColor::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+
+  return true;
+}
+
+void CGColor::Swap(CGColor* other) {
+  if (other != this) {
+    std::swap(r_, other->r_);
+    std::swap(g_, other->g_);
+    std::swap(b_, other->b_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata CGColor::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = CGColor_descriptor_;
+  metadata.reflection = CGColor_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int CGBodyDef::kActiveFieldNumber;
 const int CGBodyDef::kAllowSleepFieldNumber;
 const int CGBodyDef::kAngleFieldNumber;
@@ -9616,6 +9938,7 @@ void CGScreenPreferences_CGCardPreferences::Swap(CGScreenPreferences_CGCardPrefe
 const int CGScreenPreferences::kDebugDrawPrefsFieldNumber;
 const int CGScreenPreferences::kWorldPrefsFieldNumber;
 const int CGScreenPreferences::kCardPrefsFieldNumber;
+const int CGScreenPreferences::kBackgroundColorFieldNumber;
 #endif  // !_MSC_VER
 
 CGScreenPreferences::CGScreenPreferences()
@@ -9627,6 +9950,7 @@ void CGScreenPreferences::InitAsDefaultInstance() {
   debugdrawprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_CGDebugDrawPreferences::default_instance());
   worldprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_CGWorldPreferences::default_instance());
   cardprefs_ = const_cast< ::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences*>(&::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences::default_instance());
+  backgroundcolor_ = const_cast< ::com::laex::cg2d::model::CGColor*>(&::com::laex::cg2d::model::CGColor::default_instance());
 }
 
 CGScreenPreferences::CGScreenPreferences(const CGScreenPreferences& from)
@@ -9640,6 +9964,7 @@ void CGScreenPreferences::SharedCtor() {
   debugdrawprefs_ = NULL;
   worldprefs_ = NULL;
   cardprefs_ = NULL;
+  backgroundcolor_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -9652,6 +9977,7 @@ void CGScreenPreferences::SharedDtor() {
     delete debugdrawprefs_;
     delete worldprefs_;
     delete cardprefs_;
+    delete backgroundcolor_;
   }
 }
 
@@ -9686,6 +10012,9 @@ void CGScreenPreferences::Clear() {
     }
     if (has_cardprefs()) {
       if (cardprefs_ != NULL) cardprefs_->::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences::Clear();
+    }
+    if (has_backgroundcolor()) {
+      if (backgroundcolor_ != NULL) backgroundcolor_->::com::laex::cg2d::model::CGColor::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -9735,6 +10064,20 @@ bool CGScreenPreferences::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(34)) goto parse_backgroundColor;
+        break;
+      }
+
+      // optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_backgroundColor:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_backgroundcolor()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -9775,6 +10118,12 @@ void CGScreenPreferences::SerializeWithCachedSizes(
       3, this->cardprefs(), output);
   }
 
+  // optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+  if (has_backgroundcolor()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->backgroundcolor(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -9802,6 +10151,13 @@ void CGScreenPreferences::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->cardprefs(), target);
+  }
+
+  // optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+  if (has_backgroundcolor()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, this->backgroundcolor(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -9834,6 +10190,13 @@ int CGScreenPreferences::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->cardprefs());
+    }
+
+    // optional .com.laex.cg2d.model.CGColor backgroundColor = 4;
+    if (has_backgroundcolor()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->backgroundcolor());
     }
 
   }
@@ -9872,6 +10235,9 @@ void CGScreenPreferences::MergeFrom(const CGScreenPreferences& from) {
     if (from.has_cardprefs()) {
       mutable_cardprefs()->::com::laex::cg2d::model::CGScreenPreferences_CGCardPreferences::MergeFrom(from.cardprefs());
     }
+    if (from.has_backgroundcolor()) {
+      mutable_backgroundcolor()->::com::laex::cg2d::model::CGColor::MergeFrom(from.backgroundcolor());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -9890,6 +10256,9 @@ void CGScreenPreferences::CopyFrom(const CGScreenPreferences& from) {
 
 bool CGScreenPreferences::IsInitialized() const {
 
+  if (has_backgroundcolor()) {
+    if (!this->backgroundcolor().IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -9898,6 +10267,7 @@ void CGScreenPreferences::Swap(CGScreenPreferences* other) {
     std::swap(debugdrawprefs_, other->debugdrawprefs_);
     std::swap(worldprefs_, other->worldprefs_);
     std::swap(cardprefs_, other->cardprefs_);
+    std::swap(backgroundcolor_, other->backgroundcolor_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
