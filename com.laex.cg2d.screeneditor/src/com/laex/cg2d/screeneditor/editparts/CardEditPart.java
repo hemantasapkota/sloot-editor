@@ -21,6 +21,8 @@ import org.eclipse.swt.graphics.Color;
  * The Class CardEditPart.
  */
 public class CardEditPart extends AbstractGraphicalEditPart {
+  
+  public static final Color DEFAULT_BG_COLOR = new Color(null, 234, 234, 234); /* mercury color */
 
   /** The card number x. */
   private int cardNumberX;
@@ -34,6 +36,8 @@ public class CardEditPart extends AbstractGraphicalEditPart {
   /** The card width. */
   private int cardWidth;
 
+  private Color bgColor;
+
   /**
    * Instantiates a new card edit part.
    * 
@@ -46,11 +50,12 @@ public class CardEditPart extends AbstractGraphicalEditPart {
    * @param cardHeight
    *          the card height
    */
-  public CardEditPart(int cardNumberX, int cardNumberY, int cardWidth, int cardHeight) {
+  public CardEditPart(int cardNumberX, int cardNumberY, int cardWidth, int cardHeight, Color bgColor) {
     this.cardNumberX = cardNumberX;
     this.cardNumberY = cardNumberY;
     this.cardWidth = cardWidth;
     this.cardHeight = cardHeight;
+    this.bgColor = bgColor;
   }
 
   /*
@@ -61,11 +66,9 @@ public class CardEditPart extends AbstractGraphicalEditPart {
   @Override
   protected IFigure createFigure() {
     RectangleFigure rf = new RectangleFigure();
-    rf.setAlpha(80);
-    // rf.setBorder(new MarginBorder(-1));
     rf.setBorder(null);
     rf.setAntialias(120);
-    rf.setBackgroundColor(new Color(null, 234, 234, 234)); // mercury color
+    rf.setBackgroundColor(bgColor); // mercury color
     rf.setForegroundColor(ColorConstants.blue);
     rf.setOpaque(true);
 
