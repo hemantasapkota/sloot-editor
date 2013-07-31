@@ -37,15 +37,11 @@ class ShapeResizableEditPolicy extends ResizableEditPolicy {
   @Override
   protected IFigure createDragSourceFeedbackFigure() {
     // return super.createDragSourceFeedbackFigure();
-    // Use a non-ghost rectangle for feedback
-    // TODO: dynamic feedback for triangles and polygons
 
-    // RectangleFigure r = new RectangleFigure();
     BoxFigure r = new BoxFigure();
     r.setLineStyle(Graphics.LINE_DOT);
     r.setFill(true);
     r.setBackgroundColor(ColorConstants.blue);
-    r.setAlpha(255 / 2);
     r.setBounds(getInitialFeedbackBounds());
 
     addFeedback(r);

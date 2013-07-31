@@ -30,4 +30,6 @@ public class TexturedBoxFigure extends ImageFigure {
     setImage(texture);
     setAlignment(PositionConstants.CENTER);
   }
+
+  
 }
