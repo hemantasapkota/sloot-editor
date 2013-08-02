@@ -18,6 +18,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IEditorInput;
@@ -27,6 +28,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.part.FileEditorInput;
 
+import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
@@ -129,9 +131,9 @@ public class NewEntityWizard extends Wizard implements INewWizard {
       getContainer().run(false, false, wop);
       return true;
     } catch (InvocationTargetException e) {
-      e.printStackTrace();
+      Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, e.getMessage()));
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, e.getMessage()));
     }
 
     return false;
