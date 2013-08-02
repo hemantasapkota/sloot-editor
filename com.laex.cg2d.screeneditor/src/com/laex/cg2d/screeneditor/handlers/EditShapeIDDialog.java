@@ -48,12 +48,12 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
-import com.laex.cg2d.model.ResourceManager;
+import com.laex.cg2d.model.EntityManager;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.IDCreationStrategy;
 import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.screeneditor.Activator;
+import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 import com.laex.cg2d.screeneditor.editparts.tree.ShapeTreeEP;
@@ -120,8 +120,8 @@ public class EditShapeIDDialog extends TitleAreaDialog {
         return ResourceManager.getImage(shp.shape.getBackgroundResourceFile().getResourceFile());
 
       case ENTITY_SHAPE:
-        Image i = Activator.getDefault().getEntitiesMap().get(shp.shape.getEntityResourceFile().getResourceFile()).getDefaultFrame();
-        return ScreenEditorUtil.getImageDescriptor(i, 0.5f).createImage();
+        Image i = EntityManager.entityManager().findEntity(shp.shape.getEntityResourceFile().getResourceFile()).getDefaultFrame();
+        return ResourceManager.getImageDescriptor(i, 0.5f).createImage();
 
       case SIMPLE_SHAPE_BOX:
         return SharedImages.BOX.createImage();
