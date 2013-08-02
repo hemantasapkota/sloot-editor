@@ -63,13 +63,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.entityeditor.ui.AnimationPropertyChangeDialog;
 import com.laex.cg2d.entityeditor.ui.ImportSpriteDialog;
-import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.EntitySpritesheetItem;
 import com.laex.cg2d.model.model.ResourceFile;
+import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.model.util.EntitiesUtil;
 
 /**

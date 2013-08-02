@@ -66,10 +66,10 @@ import com.badlogic.gdx.utils.ObjectMap.Entry;
 import com.badlogic.gdx.utils.OrderedMap;
 import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.model.CGCProject;
-import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.EntitySpritesheetItem;
 import com.laex.cg2d.model.model.ResourceFile;
+import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.model.util.EntitiesUtil;
 
 /**

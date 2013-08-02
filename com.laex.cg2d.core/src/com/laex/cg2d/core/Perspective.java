@@ -52,6 +52,7 @@ public class Perspective implements IPerspectiveFactory {
           layout.getEditorArea());
       folderLayout.addView(TexturesViewPart.ID);
       folderLayout.addView("com.laex.cg2d.core.LogView");
+      folderLayout.addView("com.laex.cg2d.entityeditor.views.Entities");
     }
 
   }

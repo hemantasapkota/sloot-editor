@@ -49,7 +49,7 @@ public class EntityValidator implements ModelValidator {
       return false;
     }
 
-    Image frame = EntitiesUtil.getDefaultFrame(entity);
+    Image frame = EntitiesUtil.getDefaultFrame(entity, 1);
     if (frame == null) {
       return false;
     }

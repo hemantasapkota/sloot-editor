@@ -18,10 +18,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 
 import com.laex.cg2d.model.ICGCProject;
-import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.EntityAnimation;
+import com.laex.cg2d.model.resources.ResourceManager;
 
 /**
  * The Class EntitiesUtil.
@@ -122,7 +122,7 @@ public class EntitiesUtil {
    *          the e
    * @return the default frame
    */
-  public static Image getDefaultFrame(Entity e) {
+  public static Image getDefaultFrame(Entity e, float scaleFactor) {
     EntityAnimation eaim = EntitiesUtil.getDefaultAnimation(e);
     // if no default exists, return null
     if (eaim == null) {
@@ -137,7 +137,8 @@ public class EntitiesUtil {
     
     if (eaim.getSpritesheetItems().size() > 0) {
       Rectangle extractBounds = RectAdapter.d2dRect(eaim.getSpritesheetItems().get(0).getExtractBounds());
-      Image i = ResourceManager.getImage(EntitiesUtil.extractImageFromBounds(img.getImageData(), extractBounds));
+      ImageData id = EntitiesUtil.extractImageFromBounds(img.getImageData(), extractBounds);
+      Image i =  ResourceManager.scaleImage(id, scaleFactor);
       return i;
     }
 

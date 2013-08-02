@@ -8,7 +8,7 @@
  * Contributors:
  * Hemanta Sapkota (laex.pearl@gmail.com)
  */
-package com.laex.cg2d.screeneditor;
+package com.laex.cg2d.model;
 
 import org.eclipse.core.resources.IFile;
 
@@ -37,6 +37,9 @@ public final class DNDFileTransfer {
 
   /** The file. */
   public static IFile file = null;
+  
+  /** The entity resource file. */
+  public static IFile entityResourceFile = null;
 
   /** The entity. */
   public static Entity entity = null;

@@ -26,13 +26,14 @@ import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.laex.cg2d.model.ResourceManager;
+import com.laex.cg2d.model.EntityManager;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.editparts.figure.BoxFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.CircleFigure;
@@ -162,7 +163,7 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
 
   private IFigure updateEntityFigure(Shape model) {
     IFigure figure;
-    Entity e = Activator.getDefault().getEntitiesMap().get(model.getEntityResourceFile().getResourceFile());
+    Entity e = EntityManager.entityManager().findEntity(model.getEntityResourceFile().getResourceFile());
     figure = new TexturedBoxFigure(e.getDefaultFrame());
     return figure;
   }

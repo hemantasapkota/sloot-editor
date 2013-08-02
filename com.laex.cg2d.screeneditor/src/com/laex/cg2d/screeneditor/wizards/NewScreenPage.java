@@ -29,7 +29,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
-import com.laex.cg2d.model.SWTResourceManager;
+import com.laex.cg2d.model.resources.SWTResourceManager;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**

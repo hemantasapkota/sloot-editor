@@ -8,7 +8,7 @@
  * Contributors:
  * Hemanta Sapkota (laex.pearl@gmail.com)
  */
-package com.laex.cg2d.model;
+package com.laex.cg2d.model.resources;
 
 import java.io.FileInputStream;
 import java.io.IOException;

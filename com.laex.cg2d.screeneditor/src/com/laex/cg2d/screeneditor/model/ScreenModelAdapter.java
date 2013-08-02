@@ -21,6 +21,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.laex.cg2d.model.EntityManager;
 import com.laex.cg2d.model.ScreenModel.CGBodyDef;
 import com.laex.cg2d.model.ScreenModel.CGBodyType;
 import com.laex.cg2d.model.ScreenModel.CGBounds;
@@ -212,14 +213,15 @@ public class ScreenModelAdapter {
         if (cgShape.getEditorShapeType() == CGEditorShapeType.ENTITY_SHAPE) {
           String resourceFile = cgShape.getEntityRefFile().getResourceFile();
           IPath entityPath = new Path(resourceFile);
+          
           /* Entity does not exist */
           if (!ResourcesPlugin.getWorkspace().getRoot().getFile(entityPath).exists()) {
             /* Further if an entity exists with the same mapping, then remove it */
-            Activator.getDefault().getEntitiesMap().remove(resourceFile);
+            EntityManager.entityManager().removeEntity(resourceFile);
             continue;
           }
 
-          Entity e = Activator.getDefault().getEntitiesMap().get(resourceFile);
+          Entity e = EntityManager.entityManager().findEntity(resourceFile);
           if (e == null) {
             // Null means this entity does not exist. So we dont add this shape
             // as well.

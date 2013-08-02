@@ -8,7 +8,7 @@
  * Contributors:
  * Hemanta Sapkota (laex.pearl@gmail.com)
  */
-package com.laex.cg2d.screeneditor;
+package com.laex.cg2d.model;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
@@ -16,8 +16,6 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
-
-import com.laex.cg2d.model.ICGCProject;
 
 /**
  * The listener interface for receiving entityResourceChange events. The class
@@ -42,7 +40,7 @@ public class EntityResourceChangeListener implements IResourceChangeListener {
    * 
    * @see EntityChangeEvent
    */
-  interface EntityChangeListener {
+  public interface EntityChangeListener {
 
     /**
      * Entity changed.

@@ -176,7 +176,7 @@ public class EntityAdapter {
       entityModel.addEntityAnimation(ea);
     }
 
-    entityModel.setDefaultFrame(EntitiesUtil.getDefaultFrame(entityModel));
+    entityModel.setDefaultFrame(EntitiesUtil.getDefaultFrame(entityModel, 1));
 
     return entityModel;
   }

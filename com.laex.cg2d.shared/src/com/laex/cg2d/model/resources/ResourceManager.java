@@ -8,7 +8,7 @@
  * Contributors:
  * Hemanta Sapkota (laex.pearl@gmail.com)
  */
-package com.laex.cg2d.model;
+package com.laex.cg2d.model.resources;
 
 import java.io.File;
 import java.io.InputStream;
@@ -69,6 +69,47 @@ public class ResourceManager extends SWTResourceManager {
   }
 
   /**
+   * Gets the image descriptor.
+   * 
+   * @param i
+   *          the i
+   * @param scaleFactor
+   *          the scale factor
+   * @return the image descriptor
+   */
+  public static ImageDescriptor getImageDescriptor(final Image i, float scaleFactor) {
+    final int w = (int) (i.getBounds().width * scaleFactor);
+    final int h = (int) (i.getBounds().height * scaleFactor);
+
+    return new ImageDescriptor() {
+      @Override
+      public ImageData getImageData() {
+
+        if (w == 0 || h == 0)
+          return i.getImageData();
+
+        return i.getImageData().scaledTo(w, h);
+      }
+    };
+
+  }
+
+  public static Image scaleImage(final ImageData id, float scaleFactor) {
+    final int w = (int) (id.width * scaleFactor);
+    final int h = (int) (id.height * scaleFactor);
+    return ResourceManager.getImage(id.scaledTo(w, h));
+  }
+
+  public static ImageDescriptor getImageDescriptor(final Image i) {
+    return new ImageDescriptor() {
+      @Override
+      public ImageData getImageData() {
+        return i.getImageData();
+      }
+    };
+  }
+
+  /**
    * Returns an {@link ImageDescriptor} stored in the file at the specified
    * path.
    * 
@@ -103,7 +144,7 @@ public class ResourceManager extends SWTResourceManager {
     }
     return image;
   }
-  
+
   public static Image getImage(final ImageData imageData) {
     ImageDescriptor id = new ImageDescriptor() {
       @Override

@@ -13,6 +13,7 @@ package com.laex.cg2d.model;
 import org.eclipse.jface.resource.ImageDescriptor;
 
 import com.laex.cg2d.model.activator.Activator;
+import com.laex.cg2d.model.resources.ResourceManager;
 
 /**
  * The Class SharedImages.
