@@ -16,18 +16,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.EventObject;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
-import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.ISafeRunnable;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.LayeredPane;
 import org.eclipse.draw2d.ScalableFreeformLayeredPane;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -77,8 +74,10 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
 import com.badlogic.gdx.math.Rectangle;
-import com.laex.cg2d.model.CGCProject;
-import com.laex.cg2d.model.ICGCProject;
+import com.laex.cg2d.model.DNDFileTransfer;
+import com.laex.cg2d.model.EntityManager;
+import com.laex.cg2d.model.EntityResourceChangeListener;
+import com.laex.cg2d.model.EntityResourceChangeListener.EntityChangeListener;
 import com.laex.cg2d.model.ILayerManager;
 import com.laex.cg2d.model.IScreenEditorState;
 import com.laex.cg2d.model.IScreenPropertyManager;
@@ -93,7 +92,6 @@ import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.util.EntitiesUtil;
-import com.laex.cg2d.screeneditor.EntityResourceChangeListener.EntityChangeListener;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangeOrderCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangePropertiesCommand;
@@ -148,7 +146,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   /** The card height. */
   private int x, y, cardWidthh, cardHeight;
-  
+
   private Color cardBgColor;
 
   /**
@@ -563,15 +561,20 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       @Override
       protected void handleDrop() {
         switch (DNDFileTransfer.transferType) {
+        
         case TEXTURE:
-          IFile file = DNDFileTransfer.file;
-          creationInfo = new ShapeCreationInfo.Builder().setBackgroundResourceFile(file)
+          creationInfo = new ShapeCreationInfo.Builder().setBackgroundResourceFile(DNDFileTransfer.file)
               .setEditorShapeType(EditorShapeType.BACKGROUND_SHAPE).build();
           break;
+          
         case ENTITY:
+          creationInfo = new ShapeCreationInfo.Builder().setEditorShapeType(EditorShapeType.ENTITY_SHAPE)
+              .setEntity(DNDFileTransfer.entity).setEntityResourceFile(DNDFileTransfer.entityResourceFile).build();
           break;
+          
         case NONE:
           break;
+          
         default:
           break;
         }
@@ -631,18 +634,10 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     super.setInput(input);
   }
 
-  int workToDo = 0;
-
   private void loadScreenModel(final IEditorInput input) throws CoreException, IOException, InvocationTargetException,
       InterruptedException {
     final IFile file = ((IFileEditorInput) input).getFile();
-    final IFolder folder = CGCProject.getInstance().getEntititesFolder(input);
 
-    /* Calculate work to do */
-    calculateNoOfEntitiesToLoad(folder);
-
-    // First thing first, create all the entities in the pallete which can be
-    // referenced by editparts later on
     ProgressMonitorDialog pmd = new ProgressMonitorDialog(getSite().getShell());
     pmd.run(false, false, new IRunnableWithProgress() {
       @Override
@@ -650,10 +645,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
         try {
 
-          monitor.beginTask("Parse screen model", workToDo + 1);
-          ScreenEditorPaletteFactory.createEntitesPaletteItems(folder, monitor);
-
-          monitor.subTask("Loading screen model");
+          monitor.beginTask("Parse screen model", 1);
 
           CGScreenModel cgGameModel = CGScreenModel.parseFrom(file.getContents());
           model = ScreenModelAdapter.asGameModel(cgGameModel);
@@ -678,20 +670,6 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     /* Go Ahead and activate the edit parts. */
 
     setPartName(file.getProject().getName() + "/" + file.getName());
-  }
-
-  private IFolder calculateNoOfEntitiesToLoad(final IFolder folder) throws CoreException {
-
-    folder.accept(new IResourceVisitor() {
-      @Override
-      public boolean visit(IResource resource) throws CoreException {
-        if (resource.getName().endsWith(ICGCProject.ENTITIES_EXTENSION)) {
-          workToDo++;
-        }
-        return true;
-      }
-    });
-    return folder;
   }
 
   private void setupResChangeListenerForDelete(final String resName) {
@@ -725,8 +703,6 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
         IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE);
     // if there are any changes in the entities, load em up in the editor
 
-    final IFolder folder = CGCProject.getInstance().getEntititesFolder(input);
-
     resourceListener.addEntityChangeListener(new EntityChangeListener() {
       @Override
       public void entityChanged(final IResource resource) {
@@ -738,10 +714,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
           @Override
           public void run() throws Exception {
-            ScreenEditorPaletteFactory.createEntitesPaletteItems(folder, new NullProgressMonitor());
             // Check if the resource is valid entity or not.
             String entityPath = resource.getFullPath().toOSString();
-            Entity e = Activator.getDefault().getEntitiesMap().get(entityPath);
+            Entity e = EntityManager.entityManager().findEntity(entityPath);
 
             boolean isValid = ModelValidatorFactory.getValidator(Entity.class, e).isValid();
 
@@ -806,10 +781,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
         getSite().getShell().getDisplay().asyncExec(new Runnable() {
           @Override
           public void run() {
-            ScreenEditorPaletteFactory.removeEntity(resource);
             removeDeletedOrInvalidEntities(resource);
             /* Also remove this entity from the map */
-            Activator.getDefault().getEntitiesMap().remove(resource.getFullPath().toString());
+            EntityManager.entityManager().removeEntity(resource.getFullPath().toOSString());
           }
         });
       }
@@ -921,7 +895,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
       if (s.getEditorShapeType().isEntity()) {
 
-        Entity e = Activator.getDefault().getEntitiesMap().get(s.getEntityResourceFile().getResourceFile());
+        Entity e = EntityManager.entityManager().findEntity(s.getEntityResourceFile().getResourceFile());
 
         if (e != null) {
 
