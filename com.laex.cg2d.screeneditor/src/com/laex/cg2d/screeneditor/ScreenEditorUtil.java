@@ -23,9 +23,6 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -92,15 +89,11 @@ public final class ScreenEditorUtil {
    * @return the screen layer manager
    */
   public static ILayerManager getScreenLayerManager() {
-
     return (ILayerManager) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-
   }
 
   public static IScreenEditorState screenEditorState() {
-
     return (IScreenEditorState) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-
   }
 
   /**
@@ -216,38 +209,6 @@ public final class ScreenEditorUtil {
     return resource.getLocation().makeAbsolute().toOSString();
   }
 
-  /**
-   * Gets the image descriptor.
-   * 
-   * @param i
-   *          the i
-   * @return the image descriptor
-   */
-  public static ImageDescriptor getImageDescriptor(final Image i) {
-    return new ImageDescriptor() {
-      @Override
-      public ImageData getImageData() {
-        return i.getImageData();
-      }
-    };
-  }
-
-  public static ImageDescriptor getImageDescriptor(final Image i, float scaleFactor) {
-    final int w = (int) (i.getBounds().width * scaleFactor);
-    final int h = (int) (i.getBounds().height * scaleFactor);
-
-    return new ImageDescriptor() {
-      @Override
-      public ImageData getImageData() {
-
-        if (w == 0 || h == 0)
-          return i.getImageData();
-
-        return i.getImageData().scaledTo(w, h);
-      }
-    };
-
-  }
 
   public static void savePreferences(CGScreenPreferences prefs, IFile file) throws IOException, CoreException {
     // Update changes to the active screen editor
