@@ -19,7 +19,6 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
 import com.badlogic.gdx.math.Rectangle;
-import com.laex.cg2d.model.ResourceManager;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
@@ -28,6 +27,7 @@ import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.model.util.EntitiesUtil;
 import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
@@ -102,7 +102,7 @@ public class ShapeCreationFactory implements CreationFactory {
         
         if (e != null) {
           
-          Image defaultFrame = EntitiesUtil.getDefaultFrame(e);
+          Image defaultFrame = EntitiesUtil.getDefaultFrame(e, 1);
           
           e.setDefaultFrame(defaultFrame);
           
