@@ -20,8 +20,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import com.laex.cg2d.screeneditor.palette.ScreenEditorPaletteFactory;
-
 /**
  * The Class EntityDeleteHelperDialog.
  */
@@ -99,7 +97,6 @@ public class EntityDeleteHelperDialog extends Dialog {
   @Override
   protected void okPressed() {
     super.okPressed();
-    ScreenEditorPaletteFactory.removeEntity(entityResource);
   }
 
 }
