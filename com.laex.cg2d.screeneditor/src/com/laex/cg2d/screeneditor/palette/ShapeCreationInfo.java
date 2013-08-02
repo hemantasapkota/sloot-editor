@@ -158,6 +158,17 @@ public class ShapeCreationInfo {
       creationInfo.editorShapeType = type;
       return this;
     }
+    
+    /**
+     * Sets the entity.
+     *
+     * @param entity the entity
+     * @return the builder
+     */
+    public Builder setEntity(Entity entity) {
+      creationInfo.entity = entity;
+      return this;
+    }
 
     /**
      * Sets the entity resource file.
