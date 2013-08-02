@@ -27,6 +27,7 @@ Export-Package:
  com.laex.cg2d.model.adapter,
  com.laex.cg2d.model.joints,
  com.laex.cg2d.model.model,
+ com.laex.cg2d.model.resources,
  com.laex.cg2d.model.util,
  org.eclipse.wb.swt
 Import-Package: com.badlogic.gdx.math,
