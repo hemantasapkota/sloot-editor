@@ -2,9 +2,7 @@ package com.laex.cg2d.entityeditor.views;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -22,6 +20,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
 import org.eclipse.swt.dnd.DragSourceAdapter;
@@ -29,11 +28,12 @@ import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -52,6 +52,12 @@ import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.model.util.EntitiesUtil;
 
+import org.eclipse.ui.forms.widgets.ExpandableComposite;
+import org.eclipse.ui.forms.widgets.ScrolledForm;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.eclipse.ui.forms.widgets.Section;
+
 public class EntitiesView extends ViewPart implements ISelectionListener, IEntityManager, EntityChangeListener {
 
   public static final String ID = EntityManager.ENTITIES_VIEW_ID; //$NON-NLS-1$
@@ -64,9 +70,12 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
 
   private Map<String, Button> entitiesButtons = new HashMap<String, Button>();
 
-  private Composite entComposite;
-
   private EntityResourceChangeListener entitiesResourceListener = new EntityResourceChangeListener();
+
+  int workToDO = 0;
+  private Section sctnEntities;
+  private ScrolledComposite scrolledComposite;
+  private Composite entComposite;
 
   public EntitiesView() {
   }
@@ -78,12 +87,34 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
    */
   @Override
   public void createPartControl(Composite parent) {
-    Composite container = new Composite(parent, SWT.NONE);
-    container.setLayout(new FillLayout(SWT.HORIZONTAL));
     {
-      entComposite = formToolkit.createComposite(container, SWT.NONE);
-      formToolkit.paintBordersFor(entComposite);
-      entComposite.setLayout(new RowLayout(SWT.HORIZONTAL));
+      sctnEntities = formToolkit.createSection(parent, Section.TITLE_BAR);
+      formToolkit.paintBordersFor(sctnEntities);
+      sctnEntities.setText("Entities");
+      sctnEntities.setExpanded(true);
+      {
+        scrolledComposite = new ScrolledComposite(sctnEntities, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+        formToolkit.adapt(scrolledComposite);
+        formToolkit.paintBordersFor(scrolledComposite);
+        sctnEntities.setClient(scrolledComposite);
+        scrolledComposite.setExpandHorizontal(true);
+        scrolledComposite.setExpandVertical(true);
+        
+        entComposite = formToolkit.createComposite(scrolledComposite, SWT.NONE);
+        formToolkit.paintBordersFor(entComposite);
+        entComposite.setLayout(new RowLayout(SWT.HORIZONTAL));
+        
+        entComposite.addListener(SWT.Resize, new Listener() {
+          @Override
+          public void handleEvent(Event event) {
+            int height = entComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT, true).y;
+            scrolledComposite.setMinHeight(height);
+          }
+        });
+        
+        scrolledComposite.setContent(entComposite);
+        scrolledComposite.setMinSize(entComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+      }
     }
 
     createActions();
@@ -178,8 +209,6 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     return isValid;
   }
 
-  int workToDO = 0;
-
   private void calculateNoOfEntitiesToLoad() {
     try {
       selectedProject.accept(new IResourceVisitor() {
@@ -222,6 +251,14 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
         return true;
       }
     });
+
+    entComposite.layout(true);
+    
+    int height = 0;
+    for (Button b : entitiesButtons.values()) {
+      height += b.computeSize(SWT.DEFAULT, SWT.DEFAULT).y;
+    }
+    scrolledComposite.setMinHeight(height);
   }
 
   @Override
