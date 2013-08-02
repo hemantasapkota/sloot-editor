@@ -10,46 +10,25 @@
  */
 package com.laex.cg2d.screeneditor.palette;
 
-import java.io.IOException;
-
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceVisitor;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
 import org.eclipse.gef.palette.MarqueeToolEntry;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
-import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.PaletteToolbar;
 import org.eclipse.gef.palette.PanningSelectionToolEntry;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreationFactory;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
 
 import com.badlogic.gdx.physics.box2d.JointDef.JointType;
-import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.EditorShapeType;
-import com.laex.cg2d.model.model.Entity;
-import com.laex.cg2d.model.model.ModelValidator;
-import com.laex.cg2d.model.model.ModelValidatorFactory;
-import com.laex.cg2d.model.util.EntitiesUtil;
-import com.laex.cg2d.screeneditor.Activator;
-import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 
 /**
  * A factory for creating ScreenEditorPalette objects.
  */
 public final class ScreenEditorPaletteFactory {
-
-  /** The entities drawer. */
-  private static PaletteDrawer entitiesDrawer;
 
   /** The palette root. */
   private static PaletteRoot paletteRoot;
@@ -60,126 +39,6 @@ public final class ScreenEditorPaletteFactory {
   private ScreenEditorPaletteFactory() {
   }
 
-  /**
-   * Creates a new ScreenEditorPalette object.
-   * 
-   * @param edInp
-   *          the ed inp
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws CoreException
-   *           the core exception
-   */
-  public static void createEntitesPaletteItems(final IFolder entitiesFoldr, final IProgressMonitor monitor) throws IOException, CoreException {
-    loadEntities(entitiesFoldr, monitor);
-  }
-
-  /**
-   * The following types of entities are not created: 1. With no default
-   * animation set 2. With no entity animations 3. With no animation frame
-   * 
-   * Entities with default animation, animation frame but not collision shape
-   * are allowed.
-   * 
-   * @param res
-   *          the res
-   * @throws CoreException
-   *           the core exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  private static void loadNewEntity(IResource res) throws CoreException, IOException {
-    Entity e = Entity.createFromFile((IFile) res);
-    ModelValidator entityValidator = ModelValidatorFactory.getValidator(Entity.class, e);
-    if (!entityValidator.isValid()) {
-      return;
-    }
-
-    String name = EntitiesUtil.getInternalName(res.getName());
-
-    /* Store this entity in the map. */
-    Activator.getDefault().getEntitiesMap().put(res.getFullPath().toString(), e);
-
-    final Image i = EntitiesUtil.getDefaultFrame(e);
-    ImageDescriptor id = ScreenEditorUtil.getImageDescriptor(i, 0.5f);
-
-    e.setDefaultFrame(i);
-    e.setInternalName(name);
-
-    ShapeCreationInfo ci = new ShapeCreationInfo.Builder().setEntityResourceFile((IFile) res)
-        .setEditorShapeType(EditorShapeType.ENTITY_SHAPE).build();
-    ShapeCreationFactory scf = new ShapeCreationFactory(ci);
-
-    CombinedTemplateCreationEntry component = new CombinedTemplateCreationEntry(name, "Create " + res.getName(),
-        ci.getEditorShapeType(), scf, id, id);
-    entitiesDrawer.add(component);
-  }
-
-  /**
-   * Removes the entity.
-   * 
-   * @param res
-   *          the res
-   */
-  public static void removeEntity(IResource res) {
-    String name = EntitiesUtil.getInternalName(res.getName());
-
-    for (int i = 0; i < entitiesDrawer.getChildren().size(); i++) {
-      PaletteEntry entry = (PaletteEntry) entitiesDrawer.getChildren().get(i);
-      if (entry.getLabel().equals(name)) {
-        entitiesDrawer.remove(entry);
-        break;
-      }
-    }
-  }
-
-  /**
-   * Load entities.
-   * 
-   * @param edInp
-   *          the ed inp
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws CoreException
-   *           the core exception
-   */
-  private static void loadEntities(final IFolder entitiesFoldr, final IProgressMonitor monitor) throws IOException, CoreException {
-    for (int i = 0; i < entitiesDrawer.getChildren().size(); i++) {
-      entitiesDrawer.remove((PaletteEntry) entitiesDrawer.getChildren().get(i));
-    }
-    entitiesDrawer.getChildren().clear();
-
-    //
-    entitiesFoldr.accept(new IResourceVisitor() {
-      @Override
-      public boolean visit(IResource re) throws CoreException {
-
-        if (re.getName().endsWith(ICGCProject.ENTITIES_EXTENSION)) {
-
-          try {
-            monitor.subTask("Loading " + re.getName());
-            loadNewEntity(re);
-            monitor.worked(1);
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-
-        }
-
-        return true;
-      }
-    });
-  }
-
-  /**
-   * Creates a new ScreenEditorPalette object.
-   * 
-   * @return the palette container
-   */
-  private static PaletteContainer createEntitiesDrawer() {
-    entitiesDrawer = new PaletteDrawer("Entities");
-    return entitiesDrawer;
-  }
 
   /**
    * Creates a new ScreenEditorPalette object.
@@ -264,7 +123,6 @@ public final class ScreenEditorPaletteFactory {
     paletteRoot.add(createToolsGroup(paletteRoot));
     paletteRoot.add(createShapesDrawer());
     paletteRoot.add(createJointsDrawer());
-    paletteRoot.add(createEntitiesDrawer());
     return paletteRoot;
   }
 
