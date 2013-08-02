@@ -32,10 +32,10 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.part.ViewPart;
 
+import com.laex.cg2d.model.DNDFileTransfer;
 import com.laex.cg2d.model.ICGCProject;
-import com.laex.cg2d.model.ResourceManager;
-import com.laex.cg2d.screeneditor.DNDFileTransfer;
-import com.laex.cg2d.screeneditor.DNDFileTransfer.TransferType;
+import com.laex.cg2d.model.DNDFileTransfer.TransferType;
+import com.laex.cg2d.model.resources.ResourceManager;
 
 /**
  * The Class TexturesViewPart.
