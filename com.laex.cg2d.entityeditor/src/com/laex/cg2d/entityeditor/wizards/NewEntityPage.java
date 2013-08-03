@@ -109,10 +109,7 @@ public class NewEntityPage extends WizardPage {
         if (response == ContainerSelectionDialog.CANCEL) {
           return;
         }
-        if (csd == null) {
-          return;
-        }
-
+        
         pathToProject = (IPath) csd.getResult()[0];
         txtProjectName.setText(pathToProject.toOSString());
       }
