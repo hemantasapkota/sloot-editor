@@ -13,10 +13,12 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
@@ -27,6 +29,7 @@ import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
@@ -37,6 +40,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.ViewPart;
 
 import com.laex.cg2d.model.DNDFileTransfer;
@@ -51,12 +55,6 @@ import com.laex.cg2d.model.model.ModelValidator;
 import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.model.util.EntitiesUtil;
-
-import org.eclipse.ui.forms.widgets.ExpandableComposite;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
-import org.eclipse.ui.forms.widgets.Section;
 
 public class EntitiesView extends ViewPart implements ISelectionListener, IEntityManager, EntityChangeListener {
 
@@ -99,11 +97,11 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
         sctnEntities.setClient(scrolledComposite);
         scrolledComposite.setExpandHorizontal(true);
         scrolledComposite.setExpandVertical(true);
-        
+
         entComposite = formToolkit.createComposite(scrolledComposite, SWT.NONE);
         formToolkit.paintBordersFor(entComposite);
         entComposite.setLayout(new RowLayout(SWT.HORIZONTAL));
-        
+
         entComposite.addListener(SWT.Resize, new Listener() {
           @Override
           public void handleEvent(Event event) {
@@ -111,7 +109,7 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
             scrolledComposite.setMinHeight(height);
           }
         });
-        
+
         scrolledComposite.setContent(entComposite);
         scrolledComposite.setMinSize(entComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
       }
@@ -152,11 +150,21 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
 
   @Override
   public void setFocus() {
-    // Set the focus
+  }
+
+  private void onEntityButtonClick(Button b) {
+    
+    Image newImage = ResourceManager.getImage(ResourceManager.rotate(b.getImage().getImageData(), SWT.RIGHT));
+    
+    b.setImage(newImage);
+    b.setSize(newImage.getBounds().width, newImage.getBounds().height);
+    
+    entComposite.layout(true);
+    
   }
 
   private void loadNewEntity(final IResource resource) throws IOException, CoreException {
-    String entityName = EntitiesUtil.getInternalName(resource.getName());
+    final String entityName = EntitiesUtil.getInternalName(resource.getName());
     final Entity entity = Entity.createFromFile((IFile) resource);
 
     if (!validateEntity(resource, entityName, entity)) {
@@ -166,37 +174,57 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     entitiesMap.put(resource.getFullPath().toString(), entity);
 
     final Image i = EntitiesUtil.getDefaultFrame(entity, 1);
-    String name = EntitiesUtil.getInternalName(entityName);
+    final String name = EntitiesUtil.getInternalName(entityName);
 
     entity.setDefaultFrame(i);
     entity.setInternalName(name);
 
-    Button b = entitiesButtons.get(name);
-    if (b == null || b.isDisposed()) {
+    SafeRunnable.run(new ISafeRunnable() {
 
-      b = formToolkit.createButton(entComposite, "", SWT.None);
+      @Override
+      public void run() throws Exception {
 
-      DragSource dragSource = new DragSource(b, DND.DROP_COPY);
-      dragSource.addDragListener(new DragSourceAdapter() {
-        @Override
-        public void dragSetData(DragSourceEvent event) {
-          DNDFileTransfer.transferType = TransferType.ENTITY;
-          DNDFileTransfer.entity = entity;
-          DNDFileTransfer.entityResourceFile = (IFile) resource;
-          event.data = "BOGUS";
+        Button b = entitiesButtons.get(name);
+        if (b == null || b.isDisposed()) {
+
+          b = formToolkit.createButton(entComposite, "", SWT.None);
+
+          b.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
+              
+              onEntityButtonClick((Button) e.getSource());
+              
+            };
+          });
+
+          DragSource dragSource = new DragSource(b, DND.DROP_COPY);
+          dragSource.addDragListener(new DragSourceAdapter() {
+            @Override
+            public void dragSetData(DragSourceEvent event) {
+              DNDFileTransfer.transferType = TransferType.ENTITY;
+              DNDFileTransfer.entity = entity;
+              DNDFileTransfer.entityResourceFile = (IFile) resource;
+              event.data = "BOGUS";
+            }
+          });
+          dragSource.setTransfer(new Transfer[]
+            { TextTransfer.getInstance() });
+
+          entitiesButtons.put(entityName, b);
+
         }
-      });
-      dragSource.setTransfer(new Transfer[]
-        { TextTransfer.getInstance() });
 
-      entitiesButtons.put(entityName, b);
+        b.setImage(ResourceManager.getImageDescriptor(i, 0.5f).createImage());
+        b.setToolTipText(name);
 
-    }
+        entComposite.layout(true);
+      }
 
-    b.setImage(ResourceManager.getImageDescriptor(i, 0.5f).createImage());
-    b.setToolTipText(name);
+      @Override
+      public void handleException(Throwable exception) {
+      }
+    });
 
-    entComposite.layout(true);
   }
 
   private boolean validateEntity(final IResource resource, String entityName, final Entity entity) {
@@ -253,7 +281,7 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     });
 
     entComposite.layout(true);
-    
+
     int height = 0;
     for (Button b : entitiesButtons.values()) {
       height += b.computeSize(SWT.DEFAULT, SWT.DEFAULT).y;
