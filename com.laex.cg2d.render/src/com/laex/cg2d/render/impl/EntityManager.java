@@ -395,10 +395,6 @@ public class EntityManager implements ScreenScaffold {
       break;
 
     case CIRCLE: {
-      // destroy the body and create a new one for circle because the
-      // position has to be updated
-      Vector2 pos = b.getPosition();
-
       manipulator.world().destroyBody(b);
 
       CircleShape circShape = new CircleShape();
@@ -406,35 +402,39 @@ public class EntityManager implements ScreenScaffold {
       /* Decode x,y, width, height of collision shape from the vertices */
       CGVector2 v1 = ea.getVertices(0);
       CGVector2 v2 = ea.getVertices(2);
+      
       Rectangle r = new Rectangle(v1.getX(), v1.getY(), v2.getX(), v2.getY());
       r.width = r.width - r.x;
       r.height = r.height - r.y;
 
       // this radius is calculated for circle's collision shape data not
       // the sprite width/height data
-      float radius = manipulator.calculateRadiusOfCircleShape(r.getWidth());
+      float radius = manipulator.calculateRadiusOfCircleShape(r.width);
 
-      Vector2 cpos = new Vector2();
-      cpos.y = r.getY();
-      cpos.x = r.getX();
+      Vector2 cpos = new Vector2(r.x, r.y);
+      cpos.y = shape.getBounds().getHeight() - r.height - r.y;
       cpos = manipulator.screenToWorld(cpos);
 
       /* Calculate origin */
-      int x = (int) r.getX();
-      int y = (int) r.getY();
-      int w = (int) r.getWidth();
-      int h = (int) r.getHeight();
+      int x = (int) r.x;
+      int y = (int) r.y;
+      int w = (int) r.width;
+      int h = (int) r.height;
 
-      float ptmRatioSquared = manipulator.ptmRatio() * manipulator.ptmRatio();
+      /* ptmRatioSquared should be casted to integer to avoid floating point calculation division.
+       * If not, the orirgin will actully diverge and will be clearly seen in the rotation of the circle shape 
+       */
+      int ptmRatioSquared = (int) (manipulator.ptmRatio() * manipulator.ptmRatio());
       float ox = (x + w) / (ptmRatioSquared) + radius;
       float oy = (y + h) / (ptmRatioSquared) + radius;
       /* End origin calculatio */
 
-      bodyDef.position.set(pos.add(radius, radius));
       b = manipulator.world().createBody(bodyDef);
 
       circShape.setRadius(radius);
       circShape.setPosition(cpos);
+      
+      System.err.println(circShape.getPosition());
 
       shapeToAnimationOriginMap.put(shape, new Vector3(ox, oy, radius));
 
