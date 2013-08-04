@@ -113,8 +113,7 @@ message CGEntityAnimation {
 }
 
 message CGEntity {
-	optional string internalName = 1;
-	repeated CGEntityAnimation animations = 2;
+	repeated CGEntityAnimation animations = 1;
 }
 
 message CGBounds {
