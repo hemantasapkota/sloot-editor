@@ -91,7 +91,6 @@ import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.model.util.EntitiesUtil;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangeOrderCommand;
 import com.laex.cg2d.screeneditor.commands.LayerChangePropertiesCommand;
@@ -561,20 +560,20 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       @Override
       protected void handleDrop() {
         switch (DNDFileTransfer.transferType) {
-        
+
         case TEXTURE:
           creationInfo = new ShapeCreationInfo.Builder().setBackgroundResourceFile(DNDFileTransfer.file)
               .setEditorShapeType(EditorShapeType.BACKGROUND_SHAPE).build();
           break;
-          
+
         case ENTITY:
           creationInfo = new ShapeCreationInfo.Builder().setEditorShapeType(EditorShapeType.ENTITY_SHAPE)
-              .setEntity(DNDFileTransfer.entity).setEntityResourceFile(DNDFileTransfer.entityResourceFile).build();
+              .setEntityResourceFile(DNDFileTransfer.entityResourceFile).build();
           break;
-          
+
         case NONE:
           break;
-          
+
         default:
           break;
         }
@@ -887,25 +886,22 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    *          the resource
    */
   private void removeDeletedOrInvalidEntities(final IResource resource) {
-    String entityName = EntitiesUtil.getInternalName(resource.getName());
     // Remove the deleted entites from the screen
-    // plain for loop to prevent concurrent list modification access
     CompoundCommand cc = new CompoundCommand();
     for (Shape s : model.getDiagram().getChildren()) {
 
       if (s.getEditorShapeType().isEntity()) {
 
-        Entity e = EntityManager.entityManager().findEntity(s.getEntityResourceFile().getResourceFile());
+        String entResFile = s.getEntityResourceFile().getResourceFile();
+        String resFile = resource.getFullPath().toOSString();
 
-        if (e != null) {
-
-          if (e.getInternalName().equals(entityName)) {
-
-            ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), s, DeleteCommandType.NON_UNDOABLE);
-            cc.add(sdc);
-
-          }
+        if (entResFile.equals(resFile)) {
+          
+          ShapeDeleteCommand sdc = new ShapeDeleteCommand(model.getDiagram(), s, DeleteCommandType.NON_UNDOABLE);
+          cc.add(sdc);
+          
         }
+
       }
     }
 
