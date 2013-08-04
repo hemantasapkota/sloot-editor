@@ -1630,22 +1630,10 @@ class CGEntity : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional string internalName = 1;
-  inline bool has_internalname() const;
-  inline void clear_internalname();
-  static const int kInternalNameFieldNumber = 1;
-  inline const ::std::string& internalname() const;
-  inline void set_internalname(const ::std::string& value);
-  inline void set_internalname(const char* value);
-  inline void set_internalname(const char* value, size_t size);
-  inline ::std::string* mutable_internalname();
-  inline ::std::string* release_internalname();
-  inline void set_allocated_internalname(::std::string* internalname);
-
-  // repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;
+  // repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;
   inline int animations_size() const;
   inline void clear_animations();
-  static const int kAnimationsFieldNumber = 2;
+  static const int kAnimationsFieldNumber = 1;
   inline const ::com::laex::cg2d::model::CGEntityAnimation& animations(int index) const;
   inline ::com::laex::cg2d::model::CGEntityAnimation* mutable_animations(int index);
   inline ::com::laex::cg2d::model::CGEntityAnimation* add_animations();
@@ -1656,16 +1644,13 @@ class CGEntity : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGEntity)
  private:
-  inline void set_has_internalname();
-  inline void clear_has_internalname();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* internalname_;
   ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGEntityAnimation > animations_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
@@ -5068,77 +5053,7 @@ CGEntityAnimation::mutable_spritesheetitems() {
 
 // CGEntity
 
-// optional string internalName = 1;
-inline bool CGEntity::has_internalname() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void CGEntity::set_has_internalname() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void CGEntity::clear_has_internalname() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void CGEntity::clear_internalname() {
-  if (internalname_ != &::google::protobuf::internal::kEmptyString) {
-    internalname_->clear();
-  }
-  clear_has_internalname();
-}
-inline const ::std::string& CGEntity::internalname() const {
-  return *internalname_;
-}
-inline void CGEntity::set_internalname(const ::std::string& value) {
-  set_has_internalname();
-  if (internalname_ == &::google::protobuf::internal::kEmptyString) {
-    internalname_ = new ::std::string;
-  }
-  internalname_->assign(value);
-}
-inline void CGEntity::set_internalname(const char* value) {
-  set_has_internalname();
-  if (internalname_ == &::google::protobuf::internal::kEmptyString) {
-    internalname_ = new ::std::string;
-  }
-  internalname_->assign(value);
-}
-inline void CGEntity::set_internalname(const char* value, size_t size) {
-  set_has_internalname();
-  if (internalname_ == &::google::protobuf::internal::kEmptyString) {
-    internalname_ = new ::std::string;
-  }
-  internalname_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* CGEntity::mutable_internalname() {
-  set_has_internalname();
-  if (internalname_ == &::google::protobuf::internal::kEmptyString) {
-    internalname_ = new ::std::string;
-  }
-  return internalname_;
-}
-inline ::std::string* CGEntity::release_internalname() {
-  clear_has_internalname();
-  if (internalname_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = internalname_;
-    internalname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void CGEntity::set_allocated_internalname(::std::string* internalname) {
-  if (internalname_ != &::google::protobuf::internal::kEmptyString) {
-    delete internalname_;
-  }
-  if (internalname) {
-    set_has_internalname();
-    internalname_ = internalname;
-  } else {
-    clear_has_internalname();
-    internalname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;
+// repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;
 inline int CGEntity::animations_size() const {
   return animations_.size();
 }

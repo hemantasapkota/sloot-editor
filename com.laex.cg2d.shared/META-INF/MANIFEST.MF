@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.ui.ide;bundle-version="3.6.1",
  org.eclipse.draw2d;bundle-version="3.8.0",
  org.eclipse.ui;bundle-version="3.103.0",
  libgdx-0.9.8,
- guava-14.0.1;bundle-version="1.0.0"
+ guava-14.0.1;bundle-version="1.0.0",
+ org.eclipse.swt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
