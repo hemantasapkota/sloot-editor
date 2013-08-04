@@ -18,7 +18,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.CompositeImageDescriptor;
@@ -69,6 +71,13 @@ public class ResourceManager extends SWTResourceManager {
     return ImageDescriptor.createFromFile(clazz, path);
   }
 
+  /**
+   * Rotate.
+   *
+   * @param srcData the src data
+   * @param direction the direction
+   * @return the image data
+   */
   public static ImageData rotate(ImageData srcData, int direction) {
     int bytesPerPixel = srcData.bytesPerLine / srcData.width;
     int destBytesPerLine = (direction == SWT.DOWN) ? srcData.width * bytesPerPixel : srcData.height * bytesPerPixel;
@@ -108,6 +117,13 @@ public class ResourceManager extends SWTResourceManager {
     return new ImageData(width, height, srcData.depth, srcData.palette, srcData.scanlinePad, newData);
   }
 
+  /**
+   * Flip.
+   *
+   * @param srcData the src data
+   * @param vertical the vertical
+   * @return the image data
+   */
   public static ImageData flip(ImageData srcData, boolean vertical) {
     int bytesPerPixel = srcData.bytesPerLine / srcData.width;
     int destBytesPerLine = srcData.width * bytesPerPixel;
@@ -130,6 +146,60 @@ public class ResourceManager extends SWTResourceManager {
     // destBytesPerLine is used as scanlinePad to ensure that no padding is
     // required
     return new ImageData(srcData.width, srcData.height, srcData.depth, srcData.palette, srcData.scanlinePad, newData);
+  }
+  
+  /**
+   * Creates the image strip.
+   *
+   * @param strip the strip
+   * @param cols the cols
+   * @param rows the rows
+   * @return the queue
+   */
+  public static Queue<Image> createImageStrip(Image strip, int cols, int rows) {
+    int imgWidth = strip.getBounds().width;
+    int imgHeight = strip.getBounds().height;
+
+    int tileWidth = imgWidth / cols;
+    int tileHeight = imgHeight / rows;
+
+    Queue<Image> imgStip = new LinkedList<Image>();
+
+    for (int y = 0; y < imgHeight; y += tileHeight) {
+      for (int x = 0; x < imgWidth; x += tileWidth) {
+        Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);
+        final ImageData id = ResourceManager.extractImageFromBounds(strip.getImageData(), r);
+        Image extractImage = ResourceManager.getImage(id);
+        imgStip.add(extractImage);
+      }
+    }
+
+    return imgStip;
+  }
+  
+  /**
+   * Extract image from bounds.
+   *
+   * @param baseImageData the base image data
+   * @param r the entity bounds
+   * @return the image data
+   */
+  public static ImageData extractImageFromBounds(ImageData baseImageData, Rectangle r) {
+    final ImageData id = new ImageData(r.width, r.height, baseImageData.depth,
+        baseImageData.palette);
+
+    int ey = r.y;
+    int ex = r.x;
+
+    for (int i = 0; i < r.height; i++) {
+      int py = ey + i;
+      for (int j = 0; j < r.width; j++) {
+        int px = ex + j;
+        id.setPixel(j, i, baseImageData.getPixel(px, py));
+        id.setAlpha(j, i, baseImageData.getAlpha(px, py));
+      }
+    }
+    return id;
   }
 
   /**
@@ -157,13 +227,29 @@ public class ResourceManager extends SWTResourceManager {
     };
 
   }
+  
 
+
+
+  /**
+   * Scale image.
+   *
+   * @param id the id
+   * @param scaleFactor the scale factor
+   * @return the image
+   */
   public static Image scaleImage(final ImageData id, float scaleFactor) {
     final int w = (int) (id.width * scaleFactor);
     final int h = (int) (id.height * scaleFactor);
     return ResourceManager.getImage(id.scaledTo(w, h));
   }
 
+  /**
+   * Gets the image descriptor.
+   *
+   * @param i the i
+   * @return the image descriptor
+   */
   public static ImageDescriptor getImageDescriptor(final Image i) {
     return new ImageDescriptor() {
       @Override
@@ -209,6 +295,12 @@ public class ResourceManager extends SWTResourceManager {
     return image;
   }
 
+  /**
+   * Gets the image.
+   *
+   * @param imageData the image data
+   * @return the image
+   */
   public static Image getImage(final ImageData imageData) {
     ImageDescriptor id = new ImageDescriptor() {
       @Override
