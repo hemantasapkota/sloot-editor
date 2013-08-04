@@ -54,6 +54,13 @@
                menubarPath="com.laex.cg2d.navigatorContextMenu/navigationContextMenuGroup1"
                style="push">
          </action>
+         <action
+               class="com.laex.cg2d.screeneditor.actions.Make10Copies"
+               id="com.laex.cg2d.shared.action1"
+               label="Make 10 Copies"
+               menubarPath="com.laex.cg2d.navigatorContextMenu/navigationContextMenuGroup1"
+               style="push">
+         </action>
       </objectContribution>
    </extension>   
 
