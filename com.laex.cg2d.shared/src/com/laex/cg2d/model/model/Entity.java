@@ -30,9 +30,6 @@ import com.laex.cg2d.model.adapter.EntityAdapter;
  */
 public class Entity {
 
-  /** The internal name. */
-  private String internalName;
-
   /** The animation list. */
   private List<EntityAnimation> animationList;
 
@@ -75,7 +72,10 @@ public class Entity {
     }
 
     CGEntity cgEntityModel = CGEntity.parseFrom(res.getContents());
+    
     Entity entityModel = EntityAdapter.asEntity(cgEntityModel);
+    
+    cgEntityModel = null;
 
     return entityModel;
   }
@@ -87,24 +87,6 @@ public class Entity {
     animationList = new ArrayList<EntityAnimation>();
   }
 
-  /**
-   * Gets the internal name.
-   * 
-   * @return the internal name
-   */
-  public String getInternalName() {
-    return internalName;
-  }
-
-  /**
-   * Sets the internal name.
-   * 
-   * @param internalName
-   *          the new internal name
-   */
-  public void setInternalName(String internalName) {
-    this.internalName = internalName;
-  }
 
   /**
    * Adds the entity animation.
@@ -142,6 +124,12 @@ public class Entity {
    */
   public List<EntityAnimation> getAnimationList() {
     return animationList;
+  }
+
+  public void dispose() {
+    if (defaultFrame != null) {
+      defaultFrame.dispose();
+    }
   }
 
 }
