@@ -10,49 +10,39 @@
  */
 package com.laex.cg2d.entityeditor.wizards;
 
-import org.apache.commons.lang.StringUtils;
+import java.util.List;
+import java.util.Queue;
+
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 
-import com.laex.cg2d.model.CGCProject;
-import com.laex.cg2d.model.ICGCProject;
-import com.laex.cg2d.model.resources.SWTResourceManager;
+import com.laex.cg2d.entityeditor.ui.ImportSpriteCompositeDelegate;
+import com.laex.cg2d.entityeditor.ui.ImportSpritesComposite;
+import com.laex.cg2d.model.model.EntitySpritesheetItem;
+import com.laex.cg2d.model.model.ResourceFile;
 
 /**
  * The Class NewEntityPage.
  */
-public class NewEntitiesFromSpritesheetPage extends WizardPage {
-
-  /** The lbl project name. */
-  private Label lblProjectName;
-
-  /** The txt project name. */
-  private Text txtProjectName;
-
-  /** The lbl file name. */
-  private Label lblFileName;
-
-  /** The txt file name. */
-  private Text txtFileName;
-
-  /** The btn browse. */
-  private Button btnBrowse;
+public class NewEntitiesFromSpritesheetPage extends WizardPage implements ImportSpriteCompositeDelegate {
 
   /** The path to project. */
   private IPath pathToProject;
+  private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
+  private List<EntitySpritesheetItem> spritesheetItems;
+  private Queue<Image> extractedImages;
+  private ResourceFile spritesheetFile;
+  private ResourceFile spritesheetJsonFile;
+  private IResource resourceContainer;
 
   /**
    * Create the wizard.
@@ -61,8 +51,7 @@ public class NewEntitiesFromSpritesheetPage extends WizardPage {
    */
   public NewEntitiesFromSpritesheetPage() {
     super("wizardPage");
-    setTitle("New Entities File");
-    setDescription("Create a new entities file");
+    setTitle("New Entities from Spritesheet");
     setPageComplete(false);
   }
 
@@ -72,9 +61,9 @@ public class NewEntitiesFromSpritesheetPage extends WizardPage {
    * @param pathToProject
    *          the path to project
    */
-  public NewEntitiesFromSpritesheetPage(IPath pathToProject) {
+  public NewEntitiesFromSpritesheetPage(IResource resourceContainer) {
     this();
-    this.pathToProject = pathToProject;
+    this.resourceContainer = resourceContainer;
   }
 
   /**
@@ -87,80 +76,15 @@ public class NewEntitiesFromSpritesheetPage extends WizardPage {
     Composite container = new Composite(parent, SWT.NULL);
 
     setControl(container);
-    container.setLayout(new GridLayout(3, false));
+    container.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-    lblProjectName = new Label(container, SWT.NONE);
-    lblProjectName.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-    lblProjectName.setText("Project");
+    ImportSpritesComposite importSpritesComposite = new ImportSpritesComposite(resourceContainer, container, SWT.NONE);
+    importSpritesComposite.setDelegate(this);
 
-    txtProjectName = new Text(container, SWT.BORDER);
-    txtProjectName.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-    txtProjectName.setEnabled(false);
-    txtProjectName.setEditable(false);
-    txtProjectName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-    btnBrowse = new Button(container, SWT.NONE);
-    btnBrowse.addSelectionListener(new SelectionAdapter() {
-      @Override
-      public void widgetSelected(SelectionEvent e) {
-        ContainerSelectionDialog csd = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace()
-            .getRoot(), false, "Select a project");
-        int response = csd.open();
-        if (response == ContainerSelectionDialog.CANCEL) {
-          return;
-        }
-        
-        pathToProject = (IPath) csd.getResult()[0];
-        txtProjectName.setText(pathToProject.toOSString());
-      }
-    });
-    btnBrowse.setText("Browse...");
-
-    lblFileName = new Label(container, SWT.NONE);
-    lblFileName.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-    lblFileName.setText("File Name");
-
-    txtFileName = new Text(container, SWT.BORDER);
-    txtFileName.addModifyListener(new ModifyListener() {
-      public void modifyText(ModifyEvent e) {
-        validateFileName();
-      }
-    });
-    txtFileName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-    new Label(container, SWT.NONE);
-
-    if (pathToProject != null) {
-      txtProjectName.setText(pathToProject.toOSString());
-    }
-  }
-
-  /**
-   * Validate file name.
-   */
-  private void validateFileName() {
-    String filename = txtFileName.getText();
-
-    if (StringUtils.isEmpty(filename)) {
-      setErrorMessage("Filename empty");
-      setPageComplete(false);
-      return;
-    } else {
-      setErrorMessage(null);
-    }
-
-    IPath npath = pathToProject.append(filename);
-    npath = npath.addFileExtension(ICGCProject.ENTITIES_EXTENSION);
-
-    boolean exists = CGCProject.getInstance().exists(npath, false);
-    if (exists) {
-      setErrorMessage("Resource already exists. Please try a new name");
-      setPageComplete(false);
-      return;
-    } else {
-      setErrorMessage(null);
-    }
-
-    setPageComplete(true);
+    formToolkit.adapt(importSpritesComposite);
+    formToolkit.paintBordersFor(importSpritesComposite);
+    
+    getShell().setMaximized(true);
   }
 
   /**
@@ -174,25 +98,6 @@ public class NewEntitiesFromSpritesheetPage extends WizardPage {
       return;
     }
     pathToProject = (IPath) csd.getResult()[0];
-    txtProjectName.setText(pathToProject.toOSString());
-  }
-
-  /**
-   * Gets the project name.
-   * 
-   * @return the project name
-   */
-  public String getProjectName() {
-    return txtProjectName.getText().trim();
-  }
-
-  /**
-   * Gets the file name.
-   * 
-   * @return the file name
-   */
-  public String getFileName() {
-    return txtFileName.getText().trim();
   }
 
   /**
@@ -202,6 +107,37 @@ public class NewEntitiesFromSpritesheetPage extends WizardPage {
    */
   public IPath getPathToProject() {
     return pathToProject;
+  }
+
+
+  public List<EntitySpritesheetItem> getSpritesheetItems() {
+    return spritesheetItems;
+  }
+
+  public Queue<Image> getExtractedImages() {
+    return extractedImages;
+  }
+  
+  public ResourceFile getSpritesheetFile() {
+    return spritesheetFile;
+  }
+  
+  public ResourceFile getSpritesheetJsonFile() {
+    return spritesheetJsonFile;
+  }
+
+
+  @Override
+  public void spriteExtractionComplete(ResourceFile spritesheetFile, ResourceFile spritesheetJsonFile,
+      List<EntitySpritesheetItem> spritesheetItems, Queue<Image> extractedImages) {
+    
+    setPageComplete(true);
+    
+    this.spritesheetItems = spritesheetItems;
+    this.extractedImages = extractedImages;
+    this.spritesheetFile = spritesheetFile;
+    this.spritesheetJsonFile = spritesheetJsonFile;
+    
   }
 
 }
