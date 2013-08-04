@@ -35,6 +35,7 @@ import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.adapter.EntityAdapter;
 import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.model.EntitySpritesheetItem;
 
 /**
  * The Class NewEntityWizard.
@@ -114,7 +115,7 @@ public class NewEntityWizard extends Wizard implements INewWizard {
         ICGCProject b2dMgr = CGCProject.getInstance();
 
         // default entity model
-        Entity entityModel = EntityAdapter.newDefaultEntity(filename);
+        Entity entityModel = EntityAdapter.newDefaultEntity(npath);
         CGEntity cgEntity = EntityAdapter.asCGEntity(entityModel);
         ByteArrayInputStream bios = new ByteArrayInputStream(cgEntity.toByteArray());
         IFile file = b2dMgr.createFile(npath, bios);
