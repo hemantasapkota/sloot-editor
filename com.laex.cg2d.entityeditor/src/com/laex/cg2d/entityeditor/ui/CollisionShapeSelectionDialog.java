@@ -30,12 +30,12 @@ import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ImageHyperlink;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.model.EntityCollisionType;
+import com.laex.cg2d.model.resources.SWTResourceManager;
 
 /**
  * The Class CollisionShapeSelectionDialog.
