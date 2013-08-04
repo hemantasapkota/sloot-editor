@@ -14,11 +14,9 @@ import java.io.IOException;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.requests.CreationFactory;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.PlatformUI;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.laex.cg2d.model.EntityManager;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.EditorShapeType;
 import com.laex.cg2d.model.model.Entity;
@@ -28,10 +26,7 @@ import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.resources.ResourceManager;
-import com.laex.cg2d.model.util.EntitiesUtil;
-import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
-import com.laex.cg2d.screeneditor.views.LayersViewPart;
 
 /**
  * A factory for creating ShapeCreation objects.
@@ -57,11 +52,7 @@ public class ShapeCreationFactory implements CreationFactory {
    * @return the selected layer
    */
   private Layer getSelectedLayer() {
-    // Layer layer = (Layer)
-    // PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-    // .findView(LayersViewPart.ID).getAdapter(Layer.class);
-    IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(LayersViewPart.ID);
-    return (Layer) view.getAdapter(Layer.class);
+    return ScreenEditorUtil.getScreenLayerManager().getCurrentLayer();
   }
 
   /*
@@ -97,25 +88,10 @@ public class ShapeCreationFactory implements CreationFactory {
       break;
 
     case ENTITY_SHAPE:
-      try {
-        Entity e = Entity.createFromFile(creationInfo.getEntityResourceFile());
-        
-        if (e != null) {
-          
-          Image defaultFrame = EntitiesUtil.getDefaultFrame(e, 1);
-          
-          e.setDefaultFrame(defaultFrame);
-          
-          shape.setBounds(RectAdapter.gdxRect(defaultFrame.getBounds()));
-          
-          Activator.getDefault().getShapeToEntitiesMap().put(shape, e);
-          
-        }
-      } catch (CoreException e1) {
-        e1.printStackTrace();
-      } catch (IOException e1) {
-        e1.printStackTrace();
-      }
+      Entity e = EntityManager.entityManager().findEntity(
+          creationInfo.getEntityResourceFile().getFullPath().toOSString());
+
+      shape.setBounds(RectAdapter.gdxRect(e.getDefaultFrame().getBounds()));
 
       String rs1 = ScreenEditorUtil.resourceString(creationInfo.getEntityResourceFile());
       String rsAbs = ScreenEditorUtil.resourceStringAbsolute(creationInfo.getEntityResourceFile());
