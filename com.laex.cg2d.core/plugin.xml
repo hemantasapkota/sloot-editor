@@ -157,6 +157,9 @@
          <newWizardShortcut
                id="com.laex.cg2d.entityeditor.wizards.NewEntityWizard">
          </newWizardShortcut>
+         <newWizardShortcut
+               id="com.laex.cg2d.entityeditor.wizards.EntitiesFromSpritesheetWizard">
+         </newWizardShortcut>
       </perspectiveExtension>
    </extension>
 </plugin>

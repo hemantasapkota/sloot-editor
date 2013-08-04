@@ -42,17 +42,17 @@ public class Perspective implements IPerspectiveFactory {
 
     {
       IFolderLayout folderLayout = layout.createFolder("rightFolder", IPageLayout.RIGHT, 0.80f, layout.getEditorArea());
-      folderLayout.addView("org.eclipse.ui.views.ContentOutline");
-      folderLayout.addView(LayersViewPart.ID);
+      folderLayout.addView("com.laex.cg2d.entityeditor.views.Entities");
       folderLayout.addView("com.laex.cg2d.core.propertyView");
+      folderLayout.addView(LayersViewPart.ID);
     }
 
     {
       IFolderLayout folderLayout = layout.createFolder("bottomFolder", IPageLayout.BOTTOM, 0.60f,
           layout.getEditorArea());
-      folderLayout.addView(TexturesViewPart.ID);
       folderLayout.addView("com.laex.cg2d.core.LogView");
-      folderLayout.addView("com.laex.cg2d.entityeditor.views.Entities");
+      folderLayout.addView(TexturesViewPart.ID);
+      folderLayout.addView("org.eclipse.ui.views.ContentOutline");
     }
 
   }
