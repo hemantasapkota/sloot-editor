@@ -21,6 +21,7 @@ public class Layer extends ModelElement implements Comparable<Layer> {
   /** The Constant LAYER_NAME_CHANGED. */
   public static final String LAYER_NAME_CHANGED = "LayerNameChanged";
 
+  /** The Constant LAYER_CHILD_ADDED. */
   public static final String LAYER_CHILD_ADDED = "LayerChildAdded";
 
   /** The Constant serialVersionUID. */

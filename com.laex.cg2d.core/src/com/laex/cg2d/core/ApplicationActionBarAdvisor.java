@@ -51,10 +51,16 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
   /** The show layers view action. */
   private IAction showLayersViewAction;
 
+  /** The new wizard drop down action. */
   private IAction newWizardDropDownAction;
   
+  /** The open perspective dialog action. */
   private IAction openPerspectiveDialogAction;
+  
+  /** The save action. */
   private IAction saveAction;
+  
+  /** The save all action. */
   private IAction saveAllAction;
 
   /**

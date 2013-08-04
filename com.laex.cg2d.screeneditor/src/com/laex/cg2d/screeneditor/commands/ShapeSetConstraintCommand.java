@@ -39,6 +39,7 @@ public class ShapeSetConstraintCommand extends Command {
   /** The shape. */
   private final Shape shape;
 
+  /** The ptm ratio. */
   private int ptmRatio;
 
   /**
@@ -90,6 +91,8 @@ public class ShapeSetConstraintCommand extends Command {
 
   /**
    * Update joints.
+   *
+   * @param ptmRatio the ptm ratio
    */
   private void updateJoints(int ptmRatio) {
     List sj = shape.getSourceJoints();
@@ -111,9 +114,9 @@ public class ShapeSetConstraintCommand extends Command {
 
   /**
    * Update joint.
-   * 
-   * @param jd
-   *          the jd
+   *
+   * @param jd the jd
+   * @param ptmRatio the ptm ratio
    */
   private void updateJoint(Joint jd, int ptmRatio) {
      jd.computeLocalAnchors(ptmRatio);

@@ -99,6 +99,9 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     return super.getAdapter(key);
   }
   
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.editparts.AbstractEditPart#performRequest(org.eclipse.gef.Request)
+   */
   @Override
   public void performRequest(Request req) {
     if (req.getType() == RequestConstants.REQ_OPEN) {
@@ -169,6 +172,12 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     return figure;
   }
 
+  /**
+   * Update entity figure.
+   *
+   * @param model the model
+   * @return the i figure
+   */
   private IFigure updateEntityFigure(Shape model) {
     IFigure figure;
     Entity e = EntityManager.entityManager().findEntity(model.getEntityResourceFile().getResourceFile());

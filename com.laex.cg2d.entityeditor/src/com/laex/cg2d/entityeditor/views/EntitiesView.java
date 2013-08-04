@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.entityeditor.views;
 
 import java.io.IOException;
@@ -70,42 +80,64 @@ import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.model.util.EntitiesUtil;
 import org.eclipse.swt.widgets.Combo;
 
+/**
+ * The Class EntitiesView.
+ */
 public class EntitiesView extends ViewPart implements ISelectionListener, IEntityManager, EntityChangeListener,
     ControlListener {
 
+  /** The Constant ID. */
   public static final String ID = EntityManager.ENTITIES_VIEW_ID; //$NON-NLS-1$
 
+  /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
 
+  /** The selected project. */
   private IProject selectedProject;
 
+  /** The entities map. */
   private Map<String, Entity> entitiesMap = new HashMap<String, Entity>();
 
+  /** The entities buttons. */
   private Map<String, Button> entitiesButtons = new HashMap<String, Button>();
 
+  /** The temp removed list. */
   Map<String, Button> tempRemovedList = new HashMap<String, Button>();
 
+  /** The entities resource listener. */
   private EntityResourceChangeListener entitiesResourceListener = new EntityResourceChangeListener();
 
+  /** The work to do. */
   int workToDO = 0;
 
+  /** The sctn entities. */
   private Section sctnEntities;
 
+  /** The scrolled composite. */
   private ScrolledComposite scrolledComposite;
 
+  /** The ent composite. */
   private Composite entComposite;
 
+  /** The composite. */
   private Composite composite;
+  
+  /** The txt filter. */
   private Text txtFilter;
+  
+  /** The label. */
   private Label label;
 
+  /**
+   * Instantiates a new entities view.
+   */
   public EntitiesView() {
   }
 
   /**
    * Create contents of the view part.
-   * 
-   * @param parent
+   *
+   * @param parent the parent
    */
   @Override
   public void createPartControl(Composite parent) {
@@ -177,6 +209,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     entitiesResourceListener.addEntityChangeListener(this);
   }
 
+  /**
+   * Do filter.
+   */
   protected void doFilter() {
     String text = txtFilter.getText();
     boolean empty = StringUtils.isEmpty(text);
@@ -230,10 +265,18 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     IMenuManager menuManager = getViewSite().getActionBars().getMenuManager();
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
+   */
   @Override
   public void setFocus() {
   }
 
+  /**
+   * On entity button click.
+   *
+   * @param b the b
+   */
   private void onEntityButtonClick(Button b) {
 
     Image newImage = ResourceManager.getImage(ResourceManager.rotate(b.getImage().getImageData(), SWT.RIGHT));
@@ -245,6 +288,13 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
 
   }
 
+  /**
+   * Load new entity.
+   *
+   * @param resource the resource
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException the core exception
+   */
   private void loadNewEntity(final IResource resource) throws IOException, CoreException {
     final Entity entity = Entity.createFromFile((IFile) resource);
     final String entityName = EntitiesUtil.getInternalName(resource.getFullPath());
@@ -290,6 +340,14 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     setRowLayout();
   }
 
+  /**
+   * Validate entity.
+   *
+   * @param resource the resource
+   * @param entityName the entity name
+   * @param entity the entity
+   * @return true, if successful
+   */
   private boolean validateEntity(final IResource resource, String entityName, final Entity entity) {
     ModelValidator entityValidator = ModelValidatorFactory.getValidator(Entity.class, entity);
     boolean isValid = entityValidator.isValid();
@@ -300,6 +358,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     return isValid;
   }
 
+  /**
+   * Calculate no of entities to load.
+   */
   private void calculateNoOfEntitiesToLoad() {
     workToDO = 0;
     try {
@@ -318,6 +379,12 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
 
   }
 
+  /**
+   * Load entities.
+   *
+   * @param monitor the monitor
+   * @throws CoreException the core exception
+   */
   private void loadEntities(final IProgressMonitor monitor) throws CoreException {
     /* pass 1: Calculate the amount to work */
     calculateNoOfEntitiesToLoad();
@@ -361,6 +428,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     setRowLayout();
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+   */
   @Override
   public void selectionChanged(IWorkbenchPart part, ISelection selection) {
     IStructuredSelection strucSel = (IStructuredSelection) selection;
@@ -387,6 +457,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
 
   }
 
+  /**
+   * Load all entities with progress.
+   */
   private void loadAllEntitiesWithProgress() {
 
     if (selectedProject == null) {
@@ -420,6 +493,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     }
   }
 
+  /**
+   * Clear entities.
+   */
   private void clearEntities() {
 
     for (String key : entitiesButtons.keySet()) {
@@ -433,6 +509,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     setRowLayout();
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.part.WorkbenchPart#dispose()
+   */
   @Override
   public void dispose() {
     getSite().getWorkbenchWindow().getSelectionService().removeSelectionListener(this);
@@ -441,20 +520,34 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     super.dispose();
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.IEntityManager#findEntity(java.lang.String)
+   */
   @Override
   public Entity findEntity(String key) {
     return entitiesMap.get(key);
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.IEntityManager#removeEntity(java.lang.String)
+   */
   @Override
   public void removeEntity(String key) {
     entitiesMap.remove(key);
   }
 
+  /**
+   * Run in main thread.
+   *
+   * @param r the r
+   */
   private void runInMainThread(Runnable r) {
     getSite().getShell().getDisplay().asyncExec(r);
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.EntityResourceChangeListener.EntityChangeListener#entityChanged(org.eclipse.core.resources.IResource)
+   */
   @Override
   public void entityChanged(final IResource resource) {
 
@@ -475,6 +568,11 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
 
   }
 
+  /**
+   * Removes the entity button.
+   *
+   * @param name the name
+   */
   void removeEntityButton(final String name) {
 
     Button b = entitiesButtons.get(name);
@@ -491,6 +589,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     setRowLayout();
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.EntityResourceChangeListener.EntityChangeListener#entityRemoved(org.eclipse.core.resources.IResource)
+   */
   @Override
   public void entityRemoved(final IResource resource) {
     runInMainThread(new Runnable() {
@@ -510,11 +611,17 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
 
   }
 
+  /**
+   * Update count.
+   */
   private void updateCount() {
     sctnEntities.setText("Count: " + entitiesButtons.values().size());
     sctnEntities.redraw();
   }
 
+  /**
+   * Sets the row layout.
+   */
   private void setRowLayout() {
     /*
      * Row Layout on EntComposite should be set once all the components have
@@ -534,10 +641,16 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
     scrolledComposite.addControlListener(this);
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.swt.events.ControlListener#controlMoved(org.eclipse.swt.events.ControlEvent)
+   */
   @Override
   public void controlMoved(ControlEvent e) {
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.swt.events.ControlListener#controlResized(org.eclipse.swt.events.ControlEvent)
+   */
   @Override
   public void controlResized(ControlEvent e) {
     Rectangle r = scrolledComposite.getClientArea();

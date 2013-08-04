@@ -40,6 +40,7 @@ import org.osgi.framework.Bundle;
  */
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
+  /** The Constant IGNORE_PERSPECTIVES. */
   public static final String[] IGNORE_PERSPECTIVES = new String[]
     { "org.eclipse.team.ui.TeamSynchronizingPerspective" };
 
@@ -70,6 +71,9 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     removeUnwantedPreferences();
   }
 
+  /**
+   * Removes the unwanted preferences.
+   */
   private void removeUnwantedPreferences() {
     PreferenceManager pm = PlatformUI.getWorkbench().getPreferenceManager();
     pm.remove("org.eclipse.ui.preferencePages.Workbench");
@@ -83,6 +87,9 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 //    }
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.application.WorkbenchAdvisor#postWindowCreate(org.eclipse.ui.application.IWorkbenchWindowConfigurer)
+   */
   @Override
   public void postWindowCreate(IWorkbenchWindowConfigurer configurer) {
   }
@@ -147,6 +154,9 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     configurer_p.declareImage(symbolicName, desc, shared);
   }
 
+  /**
+   * Removes the un wanted perspectives.
+   */
   private void removeUnWantedPerspectives() {
     IPerspectiveRegistry perspectiveRegistry = PlatformUI.getWorkbench().getPerspectiveRegistry();
     IPerspectiveDescriptor[] perspectiveDescriptors = perspectiveRegistry.getPerspectives();

@@ -92,6 +92,11 @@ public final class ScreenEditorUtil {
     return (ILayerManager) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
   }
 
+  /**
+   * Screen editor state.
+   *
+   * @return the i screen editor state
+   */
   public static IScreenEditorState screenEditorState() {
     return (IScreenEditorState) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
   }
@@ -210,6 +215,14 @@ public final class ScreenEditorUtil {
   }
 
 
+  /**
+   * Save preferences.
+   *
+   * @param prefs the prefs
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws CoreException the core exception
+   */
   public static void savePreferences(CGScreenPreferences prefs, IFile file) throws IOException, CoreException {
     // Update changes to the active screen editor
     if (ScreenEditorUtil.isScreenEditorActive()) {

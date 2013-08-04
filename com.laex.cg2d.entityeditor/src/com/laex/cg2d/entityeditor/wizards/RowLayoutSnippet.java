@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.entityeditor.wizards;
 
 import org.eclipse.swt.SWT;
@@ -14,8 +24,16 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
+/**
+ * The Class RowLayoutSnippet.
+ */
 public class RowLayoutSnippet {
 
+  /**
+   * The main method.
+   *
+   * @param args the arguments
+   */
   public static void main(String[] args) {
     Display display = new Display();
     Image image1 = display.getSystemImage(SWT.ICON_WORKING);

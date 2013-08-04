@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.entityeditor.action;
 
 import java.io.ByteArrayInputStream;
@@ -33,14 +43,26 @@ import com.laex.cg2d.model.ScreenModel.CGResourceFile;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.util.EntitiesUtil;
 
+/**
+ * The Class MoveEntityAction.
+ */
 public class MoveEntityAction implements IObjectActionDelegate {
 
+  /** The target part. */
   private IWorkbenchPart targetPart;
+  
+  /** The selected files. */
   private Object[] selectedFiles;
 
+  /**
+   * Instantiates a new move entity action.
+   */
   public MoveEntityAction() {
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
+   */
   @Override
   public void run(IAction action) {
     if (!action.isEnabled()) {
@@ -72,6 +94,12 @@ public class MoveEntityAction implements IObjectActionDelegate {
 
   }
 
+  /**
+   * Copy entity models.
+   *
+   * @param models the models
+   * @param destinationProject the destination project
+   */
   private void copyEntityModels(Map<String, CGEntity> models, IProject destinationProject) {
     for (String entityName : models.keySet()) {
       
@@ -153,6 +181,13 @@ public class MoveEntityAction implements IObjectActionDelegate {
     }
   }
 
+  /**
+   * Copy animation resource.
+   *
+   * @param destinationPath the destination path
+   * @param resourceFile the resource file
+   * @return the i path
+   */
   private IPath copyAnimationResource(IPath destinationPath, CGResourceFile resourceFile) {
     if (ResourceFile.isEmpty(resourceFile)) {
       return null;
@@ -187,6 +222,9 @@ public class MoveEntityAction implements IObjectActionDelegate {
 
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+   */
   @Override
   public void selectionChanged(IAction action, ISelection selection) {
     IStructuredSelection strucSel = (IStructuredSelection) selection;
@@ -194,6 +232,12 @@ public class MoveEntityAction implements IObjectActionDelegate {
 
   }
 
+  /**
+   * Make entity models from selection.
+   *
+   * @param selecObjects the selec objects
+   * @return the map
+   */
   private Map<String, CGEntity> makeEntityModelsFromSelection(Object[] selecObjects) {
     Map<String, CGEntity> entityModels = new HashMap<String, ScreenModel.CGEntity>();
     for (Object sel : selecObjects) {
@@ -214,6 +258,9 @@ public class MoveEntityAction implements IObjectActionDelegate {
     return entityModels;
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction, org.eclipse.ui.IWorkbenchPart)
+   */
   @Override
   public void setActivePart(IAction action, IWorkbenchPart targetPart) {
     this.targetPart = targetPart;

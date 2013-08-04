@@ -19,6 +19,7 @@ import com.laex.cg2d.model.ScreenModel.CGResourceFile;
  */
 public class ResourceFile {
   
+  /** The Constant EMPTY. */
   public static final ResourceFile EMPTY = ResourceFile.create("", "");
 
   /** The resource file. */
@@ -52,6 +53,12 @@ public class ResourceFile {
     return ResourceFile.create(StringUtils.EMPTY, StringUtils.EMPTY);
   }
 
+  /**
+   * Checks if is empty.
+   *
+   * @param resFile the res file
+   * @return true, if is empty
+   */
   public static boolean isEmpty(CGResourceFile resFile) {
     return StringUtils.isEmpty(resFile.getResourceFile());
   }

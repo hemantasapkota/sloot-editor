@@ -19,10 +19,22 @@ import com.laex.cg2d.model.ScreenModel.CGBounds;
  */
 public class RectAdapter {
 
+  /**
+   * Cg bounds.
+   *
+   * @param r the r
+   * @return the cG bounds
+   */
   public static CGBounds cgBounds(com.badlogic.gdx.math.Rectangle r) {
     return CGBounds.newBuilder().setX(r.getX()).setY(r.getY()).setWidth(r.getWidth()).setHeight(r.getHeight()).build();
   }
 
+  /**
+   * Gdx rect.
+   *
+   * @param b the b
+   * @return the com.badlogic.gdx.math. rectangle
+   */
   public static com.badlogic.gdx.math.Rectangle gdxRect(CGBounds b) {
     return new com.badlogic.gdx.math.Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
   }
@@ -43,6 +55,12 @@ public class RectAdapter {
     return new Rectangle(x, y, w, h);
   }
 
+  /**
+   * D2d rect.
+   *
+   * @param r the r
+   * @return the rectangle
+   */
   public static Rectangle d2dRect(org.eclipse.swt.graphics.Rectangle r) {
     int x = (int) r.x;
     int y = (int) r.y;
@@ -52,6 +70,12 @@ public class RectAdapter {
     return new Rectangle(x, y, w, h);
   }
 
+  /**
+   * Swt rect.
+   *
+   * @param r the r
+   * @return the org.eclipse.swt.graphics. rectangle
+   */
   public static org.eclipse.swt.graphics.Rectangle swtRect(com.badlogic.gdx.math.Rectangle r) {
     int x = (int) r.x;
     int y = (int) r.y;
@@ -61,6 +85,12 @@ public class RectAdapter {
     return new org.eclipse.swt.graphics.Rectangle(x, y, w, h);
   }
 
+  /**
+   * Swt rect.
+   *
+   * @param r the r
+   * @return the org.eclipse.swt.graphics. rectangle
+   */
   public static org.eclipse.swt.graphics.Rectangle swtRect(Rectangle r) {
     return new org.eclipse.swt.graphics.Rectangle(r.x, r.y, r.width, r.height);
   }

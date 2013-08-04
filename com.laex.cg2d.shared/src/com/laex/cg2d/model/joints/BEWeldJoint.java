@@ -81,6 +81,9 @@ public class BEWeldJoint extends Joint {
     return JointType.WeldJoint;
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.model.Joint#computeLocalAnchors(int)
+   */
   @Override
   public void computeLocalAnchors(int ptmRatio) {
     getLocalAnchorA().x = (getSource().getBounds().width / ptmRatio) / 2;

@@ -133,6 +133,9 @@ public class ScreenTreeEP extends AbstractTreeEditPart implements PropertyChange
 
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.editparts.AbstractEditPart#removeChild(org.eclipse.gef.EditPart)
+   */
   @Override
   protected void removeChild(EditPart child) {
 

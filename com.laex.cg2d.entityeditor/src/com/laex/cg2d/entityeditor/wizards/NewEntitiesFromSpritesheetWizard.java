@@ -42,11 +42,13 @@ public class NewEntitiesFromSpritesheetWizard extends Wizard implements INewWiza
   /** The page. */
   private NewEntitiesFromSpritesheetPage2 finalPage;
 
+  /** The spritesheet page. */
   private NewEntitiesFromSpritesheetPage spritesheetPage;
 
   /** The path to project. */
   private IPath pathToProject;
 
+  /** The resource container. */
   private IResource resourceContainer;
 
   /**

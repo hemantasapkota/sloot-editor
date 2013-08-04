@@ -73,8 +73,10 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
   /** The background manager. */
   private BackgroundManager backgroundManager;
 
+  /** The debug draw. */
   private Box2DDebugRenderer debugDraw;
 
+  /** The sprite batch. */
   private SpriteBatch spriteBatch;
 
   /**
@@ -104,6 +106,9 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     initBox2d();
   }
 
+  /**
+   * Inits the box2d.
+   */
   private void initBox2d() {
     debugDraw = new Box2DDebugRenderer();
 
@@ -242,11 +247,10 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
 
   /**
    * Creates the body.
-   * 
-   * @param shape
-   *          the shape
-   * @param entity
-   *          the entity
+   *
+   * @param shape the shape
+   * @param entity the entity
+   * @param ea the ea
    * @return the body
    */
   public Body createBody(CGShape shape, CGEntity entity, CGEntityAnimation ea) {
@@ -600,11 +604,17 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     return ((CGShape) b.getUserData()).getId();
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.render.ScreenManager#newVector(float, float)
+   */
   @Override
   public Vector2 newVector(float x, float y) {
     return new Vector2(x, y);
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.render.ScreenManager#drawText(java.lang.String, float, float)
+   */
   @Override
   public void drawText(String text, float x, float y) {
     BitmapFont font = new BitmapFont();
@@ -615,6 +625,9 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     spriteBatch.end();
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.render.ScreenManager#destroyJointForEntity(java.lang.String)
+   */
   @Override
   public void destroyJointForEntity(String id) {
     Body b = getEntityById(id);
