@@ -39,6 +39,14 @@ public class JsonSprite {
   
   /**
    * Instantiates a new json sprite.
+   *
+   * @param name the name
+   * @param x the x
+   * @param y the y
+   * @param w the w
+   * @param h the h
+   * @param px the px
+   * @param py the py
    */
   public JsonSprite(String name, int x, int y, int w, int h, int px, int py) {
     this.spriteName = name;

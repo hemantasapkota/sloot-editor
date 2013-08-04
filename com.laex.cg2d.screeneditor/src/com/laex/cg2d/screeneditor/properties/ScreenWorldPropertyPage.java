@@ -199,11 +199,20 @@ public class ScreenWorldPropertyPage extends PropertyPage {
 
   /** The txt card height. */
   private Spinner txtCardHeight;
+  
+  /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
+  
+  /** The btn choose background color. */
   private Button btnChooseBackgroundColor;
+  
+  /** The color preview canvas. */
   private Canvas colorPreviewCanvas;
+  
+  /** The label_2. */
   private Label label_2;
 
+  /** The selected color. */
   protected Color selectedColor;
 
   /**

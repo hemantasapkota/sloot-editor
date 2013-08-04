@@ -26,15 +26,12 @@ public interface IScreenEditorState {
 
   /**
    * Update card layer.
-   * 
-   * @param noX
-   *          the no x
-   * @param noY
-   *          the no y
-   * @param cardWidth
-   *          the card width
-   * @param cardHeight
-   *          the card height
+   *
+   * @param noX the no x
+   * @param noY the no y
+   * @param cardWidth the card width
+   * @param cardHeight the card height
+   * @param bgColor the bg color
    */
   void updateCardLayer(int noX, int noY, int cardWidth, int cardHeight, Color bgColor);
 
@@ -49,9 +46,8 @@ public interface IScreenEditorState {
   
   /**
    * Toggle joint layer.
-   * 
-   * @param joints
-   *          the joints
+   *
+   * @param joint the joint
    */
   void toggleJointLayer(Joint joint);
 

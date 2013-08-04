@@ -42,10 +42,13 @@ public abstract class Joint extends ModelElement {
   /** The Constant COLLIDE_CONNECTED_PROP. */
   public static final String COLLIDE_CONNECTED_PROP = "JointDef.CollideConnected";
 
+  /** The Constant LOCAL_ANCHOR_A. */
   public static final String LOCAL_ANCHOR_A = "JointDef.LocalAnchorA";
 
+  /** The Constant LOCAL_ANCHOR_B. */
   public static final String LOCAL_ANCHOR_B = "JointDef.LocalAnchorB";
 
+  /** The Constant USE_LOCAL_ANCHORS. */
   public static final String USE_LOCAL_ANCHORS = "JointDef.UseLocalAnchors";
 
   /** The descriptors. */
@@ -60,8 +63,10 @@ public abstract class Joint extends ModelElement {
   /** The target. */
   private Shape target;
 
+  /** The local anchor a. */
   private Vector2 localAnchorA = new Vector2();
 
+  /** The local anchor b. */
   private Vector2 localAnchorB = new Vector2();
 
   /** The joint def. */
@@ -74,6 +79,7 @@ public abstract class Joint extends ModelElement {
   /** The coolide connected. */
   private boolean coolideConnected = false;
 
+  /** The use local anchors. */
   private boolean useLocalAnchors = false;
 
   static {
@@ -110,6 +116,11 @@ public abstract class Joint extends ModelElement {
    */
   public abstract JointType getJointType();
 
+  /**
+   * Compute local anchors.
+   *
+   * @param ptmRatio the ptm ratio
+   */
   public abstract void computeLocalAnchors(int ptmRatio);
 
   /*
@@ -205,14 +216,32 @@ public abstract class Joint extends ModelElement {
     return JOINT_TYPE_PROP.equals(id);
   }
 
+  /**
+   * Checks if is local anchor a.
+   *
+   * @param id the id
+   * @return true, if is local anchor a
+   */
   private boolean isLocalAnchorA(Object id) {
     return LOCAL_ANCHOR_A.equals(id);
   }
 
+  /**
+   * Checks if is local anchor b.
+   *
+   * @param id the id
+   * @return true, if is local anchor b
+   */
   private boolean isLocalAnchorB(Object id) {
     return LOCAL_ANCHOR_B.equals(id);
   }
 
+  /**
+   * Should use local anchors.
+   *
+   * @param id the id
+   * @return true, if successful
+   */
   private boolean shouldUseLocalAnchors(Object id) {
     return USE_LOCAL_ANCHORS.equals(id);
   }
@@ -246,26 +275,56 @@ public abstract class Joint extends ModelElement {
     return source;
   }
 
+  /**
+   * Gets the local anchor a.
+   *
+   * @return the local anchor a
+   */
   public Vector2 getLocalAnchorA() {
     return localAnchorA;
   }
 
+  /**
+   * Sets the local anchor a.
+   *
+   * @param localAnchorA the new local anchor a
+   */
   public void setLocalAnchorA(Vector2 localAnchorA) {
     this.localAnchorA = localAnchorA;
   }
 
+  /**
+   * Gets the local anchor b.
+   *
+   * @return the local anchor b
+   */
   public Vector2 getLocalAnchorB() {
     return localAnchorB;
   }
   
+  /**
+   * Should use local anchors.
+   *
+   * @return true, if successful
+   */
   public boolean shouldUseLocalAnchors() {
     return useLocalAnchors;
   }
   
+  /**
+   * Sets the use local anchors.
+   *
+   * @param useLocalAnchors the new use local anchors
+   */
   public void setUseLocalAnchors(boolean useLocalAnchors) {
     this.useLocalAnchors = useLocalAnchors;
   }
 
+  /**
+   * Sets the local anchor b.
+   *
+   * @param localAnchorB the new local anchor b
+   */
   public void setLocalAnchorB(Vector2 localAnchorB) {
     this.localAnchorB = localAnchorB;
   }

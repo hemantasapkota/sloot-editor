@@ -82,9 +82,8 @@ public class EntityAdapter {
 
   /**
    * New default entity.
-   * 
-   * @param filename
-   *          the filename
+   *
+   * @param path the path
    * @return the entity
    */
   public static Entity newDefaultEntity(IPath path) {

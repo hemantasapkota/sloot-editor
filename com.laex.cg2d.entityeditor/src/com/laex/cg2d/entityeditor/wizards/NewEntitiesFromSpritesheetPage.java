@@ -37,11 +37,23 @@ public class NewEntitiesFromSpritesheetPage extends WizardPage implements Import
 
   /** The path to project. */
   private IPath pathToProject;
+  
+  /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
+  
+  /** The spritesheet items. */
   private List<EntitySpritesheetItem> spritesheetItems;
+  
+  /** The extracted images. */
   private Queue<Image> extractedImages;
+  
+  /** The spritesheet file. */
   private ResourceFile spritesheetFile;
+  
+  /** The spritesheet json file. */
   private ResourceFile spritesheetJsonFile;
+  
+  /** The resource container. */
   private IResource resourceContainer;
 
   /**
@@ -57,9 +69,8 @@ public class NewEntitiesFromSpritesheetPage extends WizardPage implements Import
 
   /**
    * Instantiates a new new entity page.
-   * 
-   * @param pathToProject
-   *          the path to project
+   *
+   * @param resourceContainer the resource container
    */
   public NewEntitiesFromSpritesheetPage(IResource resourceContainer) {
     this();
@@ -110,23 +121,46 @@ public class NewEntitiesFromSpritesheetPage extends WizardPage implements Import
   }
 
 
+  /**
+   * Gets the spritesheet items.
+   *
+   * @return the spritesheet items
+   */
   public List<EntitySpritesheetItem> getSpritesheetItems() {
     return spritesheetItems;
   }
 
+  /**
+   * Gets the extracted images.
+   *
+   * @return the extracted images
+   */
   public Queue<Image> getExtractedImages() {
     return extractedImages;
   }
   
+  /**
+   * Gets the spritesheet file.
+   *
+   * @return the spritesheet file
+   */
   public ResourceFile getSpritesheetFile() {
     return spritesheetFile;
   }
   
+  /**
+   * Gets the spritesheet json file.
+   *
+   * @return the spritesheet json file
+   */
   public ResourceFile getSpritesheetJsonFile() {
     return spritesheetJsonFile;
   }
 
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.entityeditor.ui.ImportSpriteCompositeDelegate#spriteExtractionComplete(com.laex.cg2d.model.model.ResourceFile, com.laex.cg2d.model.model.ResourceFile, java.util.List, java.util.Queue)
+   */
   @Override
   public void spriteExtractionComplete(ResourceFile spritesheetFile, ResourceFile spritesheetJsonFile,
       List<EntitySpritesheetItem> spritesheetItems, Queue<Image> extractedImages) {

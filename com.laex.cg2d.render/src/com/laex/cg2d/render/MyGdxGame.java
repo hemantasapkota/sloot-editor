@@ -73,6 +73,7 @@ public abstract class MyGdxGame extends ApplicationAdapter {
   /** The time step. */
   private float timeStep;
 
+  /** The bg color. */
   private Vector3 bgColor;
 
   /** The velocity iterations. */

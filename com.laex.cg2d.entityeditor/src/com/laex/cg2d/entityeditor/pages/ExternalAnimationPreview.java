@@ -62,21 +62,17 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
   /** The h. */
   float w, h;
 
+  /** The animation name. */
   private String animationName;
 
+  /** The cge file. */
   private String cgeFile;
 
   /**
    * Instantiates a new external animation preview.
-   * 
-   * @param animationStrip
-   *          the animation strip
-   * @param rows
-   *          the rows
-   * @param cols
-   *          the cols
-   * @param duration
-   *          the duration
+   *
+   * @param animationName the animation name
+   * @param cgeFile the cge file
    */
   public ExternalAnimationPreview(String animationName, String cgeFile) {
     this.animationName = animationName;
@@ -181,6 +177,11 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     shapeRenderer.end();
   }
 
+  /**
+   * The main method.
+   *
+   * @param args the arguments
+   */
   public static void main(String[] args) {
 
     String animationName = args[0];

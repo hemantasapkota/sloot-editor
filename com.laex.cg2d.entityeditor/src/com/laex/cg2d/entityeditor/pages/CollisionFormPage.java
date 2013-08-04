@@ -554,6 +554,9 @@ public class CollisionFormPage extends FormPage {
     entityFormEditor.editorDirtyStateChanged();
   }
 
+  /**
+   * Update outline.
+   */
   private void updateOutline() {
     AnimationListViewItem alvi = selectedAnimationListItem();
     animationAndCollisionShapePreview(collisionShape, alvi.getCollisionPreviewFrame());
@@ -612,9 +615,8 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Do preview.
-   * 
-   * @param ai
-   *          the ai
+   *
+   * @param alvi the alvi
    */
   private void doPreview(AnimationListViewItem alvi) {
     if (alvi.getAnimation() == null || alvi.getAnimation().getSpritesheetFile().isEmpty()) {
@@ -678,11 +680,9 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Animation frame preview.
-   * 
-   * @param colType
-   *          the col type
-   * @param animation
-   *          the animation
+   *
+   * @param colType the col type
+   * @param frame the frame
    */
   private void animationAndCollisionShapePreview(EntityCollisionType colType, Image frame) {
     freeformLayeredPane.removeAll();
@@ -816,9 +816,8 @@ public class CollisionFormPage extends FormPage {
 
   /**
    * Auto fill collision size.
-   * 
-   * @param ea
-   *          the ea
+   *
+   * @param alvi the alvi
    */
   private void autoFillCollisionSize(AnimationListViewItem alvi) {
     // If all of these are zero, then we auto fill
@@ -836,6 +835,9 @@ public class CollisionFormPage extends FormPage {
 
   }
 
+  /**
+   * On click add collision shape.
+   */
   private void onClickAddCollisionShape() {
     CollisionShapeSelectionDialog cssd = new CollisionShapeSelectionDialog(getSite().getShell());
     int resp = cssd.open();

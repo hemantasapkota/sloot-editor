@@ -58,6 +58,7 @@ public class Shape extends ModelElement {
   /** The Constant TARGET_JOINT_PROP. */
   public static final String TARGET_JOINT_PROP = "Shape.TargetJoint";
   
+  /** The Constant FIGURE_CHANGED. */
   public static final String FIGURE_CHANGED = "Shape.FigureChanged";
 
   /** The descriptors. */
@@ -415,6 +416,9 @@ public class Shape extends ModelElement {
     }
   }
   
+  /**
+   * Notify figure changed.
+   */
   public void notifyFigureChanged() {
     firePropertyChange(FIGURE_CHANGED, null, null);
   }

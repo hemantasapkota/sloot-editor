@@ -143,6 +143,9 @@ public class BEFrictionJoint extends Joint {
     return MAX_TORQUE_PROP.equals(id);
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.model.Joint#computeLocalAnchors(int)
+   */
   @Override
   public void computeLocalAnchors(int ptmRatio) {
     getLocalAnchorA().x = (getSource().getBounds().width / ptmRatio) / 2;

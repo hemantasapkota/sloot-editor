@@ -20,19 +20,19 @@ public interface ScreenManager {
 
   /**
    * Creates the entity from.
-   * 
-   * @param id
-   *          the id
+   *
+   * @param id the id
+   * @param animationName the animation name
+   * @return the body
    */
   Body createEntityFrom(String id, String animationName);
 
   /**
    * Switch animation.
-   * 
-   * @param id
-   *          the id
-   * @param animationName
-   *          the animation name
+   *
+   * @param id the id
+   * @param animationName the animation name
+   * @return the body
    */
   Body switchAnimation(String id, String animationName);
 

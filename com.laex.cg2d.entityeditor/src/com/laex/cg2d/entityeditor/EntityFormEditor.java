@@ -102,6 +102,11 @@ public class EntityFormEditor extends FormEditor {
     setPartName(input.getName());
   }
 
+  /**
+   * Sets the up resource change listener.
+   *
+   * @param resName the new up resource change listener
+   */
   private void setupResourceChangeListener(final String resName) {
 
     ResourcesPlugin.getWorkspace().addResourceChangeListener(new IResourceChangeListener() {
@@ -198,6 +203,9 @@ public class EntityFormEditor extends FormEditor {
   public void doSaveAs() {
   }
 
+  /**
+   * Close editor.
+   */
   private void closeEditor() {
     getSite().getShell().getDisplay().asyncExec(new Runnable() {
       @Override
