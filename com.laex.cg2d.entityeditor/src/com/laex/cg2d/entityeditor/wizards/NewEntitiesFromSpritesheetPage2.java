@@ -34,7 +34,7 @@ import com.laex.cg2d.model.resources.SWTResourceManager;
 /**
  * The Class NewEntityPage.
  */
-public class NewEntityPage extends WizardPage {
+public class NewEntitiesFromSpritesheetPage2 extends WizardPage {
 
   /** The lbl project name. */
   private Label lblProjectName;
@@ -59,7 +59,7 @@ public class NewEntityPage extends WizardPage {
    * 
    * @wbp.parser.constructor
    */
-  public NewEntityPage() {
+  public NewEntitiesFromSpritesheetPage2() {
     super("wizardPage");
     setTitle("New Entities File");
     setDescription("Create a new entities file");
@@ -72,7 +72,7 @@ public class NewEntityPage extends WizardPage {
    * @param pathToProject
    *          the path to project
    */
-  public NewEntityPage(IPath pathToProject) {
+  public NewEntitiesFromSpritesheetPage2(IPath pathToProject) {
     this();
     this.pathToProject = pathToProject;
   }

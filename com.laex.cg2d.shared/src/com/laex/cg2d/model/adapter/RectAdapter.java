@@ -18,11 +18,11 @@ import com.laex.cg2d.model.ScreenModel.CGBounds;
  * The Class RectAdapter.
  */
 public class RectAdapter {
-  
+
   public static CGBounds cgBounds(com.badlogic.gdx.math.Rectangle r) {
     return CGBounds.newBuilder().setX(r.getX()).setY(r.getY()).setWidth(r.getWidth()).setHeight(r.getHeight()).build();
   }
-  
+
   public static com.badlogic.gdx.math.Rectangle gdxRect(CGBounds b) {
     return new com.badlogic.gdx.math.Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
   }
@@ -42,7 +42,28 @@ public class RectAdapter {
 
     return new Rectangle(x, y, w, h);
   }
-  
+
+  public static Rectangle d2dRect(org.eclipse.swt.graphics.Rectangle r) {
+    int x = (int) r.x;
+    int y = (int) r.y;
+    int w = (int) r.width;
+    int h = (int) r.height;
+
+    return new Rectangle(x, y, w, h);
+  }
+
+  public static org.eclipse.swt.graphics.Rectangle swtRect(com.badlogic.gdx.math.Rectangle r) {
+    int x = (int) r.x;
+    int y = (int) r.y;
+    int w = (int) r.width;
+    int h = (int) r.height;
+
+    return new org.eclipse.swt.graphics.Rectangle(x, y, w, h);
+  }
+
+  public static org.eclipse.swt.graphics.Rectangle swtRect(Rectangle r) {
+    return new org.eclipse.swt.graphics.Rectangle(r.x, r.y, r.width, r.height);
+  }
 
   /**
    * Gdx rect.

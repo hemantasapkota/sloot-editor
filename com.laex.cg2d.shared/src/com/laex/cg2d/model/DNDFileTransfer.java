@@ -12,8 +12,6 @@ package com.laex.cg2d.model;
 
 import org.eclipse.core.resources.IFile;
 
-import com.laex.cg2d.model.model.Entity;
-
 /**
  * The Class DNDFileTransfer.
  */
@@ -40,8 +38,5 @@ public final class DNDFileTransfer {
   
   /** The entity resource file. */
   public static IFile entityResourceFile = null;
-
-  /** The entity. */
-  public static Entity entity = null;
 
 }

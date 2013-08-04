@@ -41,9 +41,6 @@ public class ShapeCreationInfo {
   /** The background resource file absolute. */
   private String backgroundResourceFileAbsolute;
 
-  /** The entity. */
-  private Entity entity;
-
   /**
    * Instantiates a new shape creation info.
    */
@@ -63,7 +60,6 @@ public class ShapeCreationInfo {
     backgroundResourceFileAbsolute = builder.creationInfo.backgroundResourceFileAbsolute;
     editorShapeType = builder.creationInfo.editorShapeType;
     layer = builder.creationInfo.layer;
-    entity = builder.creationInfo.entity;
   }
 
   /**
@@ -121,15 +117,6 @@ public class ShapeCreationInfo {
   }
 
   /**
-   * Gets the entity.
-   * 
-   * @return the entity
-   */
-  public Entity getEntity() {
-    return entity;
-  }
-
-  /**
    * Sets the shape.
    * 
    * @param shape
@@ -159,16 +146,6 @@ public class ShapeCreationInfo {
       return this;
     }
     
-    /**
-     * Sets the entity.
-     *
-     * @param entity the entity
-     * @return the builder
-     */
-    public Builder setEntity(Entity entity) {
-      creationInfo.entity = entity;
-      return this;
-    }
 
     /**
      * Sets the entity resource file.

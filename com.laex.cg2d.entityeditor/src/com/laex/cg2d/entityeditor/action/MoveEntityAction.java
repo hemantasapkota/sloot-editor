@@ -2,8 +2,8 @@ package com.laex.cg2d.entityeditor.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -31,6 +31,7 @@ import com.laex.cg2d.model.ScreenModel.CGEntity.Builder;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
 import com.laex.cg2d.model.ScreenModel.CGResourceFile;
 import com.laex.cg2d.model.model.ResourceFile;
+import com.laex.cg2d.model.util.EntitiesUtil;
 
 public class MoveEntityAction implements IObjectActionDelegate {
 
@@ -54,7 +55,7 @@ public class MoveEntityAction implements IObjectActionDelegate {
       return;
     }
 
-    List<CGEntity> models = makeEntityModelsFromSelection(selectedFiles);
+    Map<String, CGEntity> models = makeEntityModelsFromSelection(selectedFiles);
 
     IProject prj = ResourcesPlugin.getWorkspace().getRoot().getProject();
 
@@ -71,8 +72,10 @@ public class MoveEntityAction implements IObjectActionDelegate {
 
   }
 
-  private void copyEntityModels(List<CGEntity> models, IProject destinationProject) {
-    for (CGEntity emodel : models) {
+  private void copyEntityModels(Map<String, CGEntity> models, IProject destinationProject) {
+    for (String entityName : models.keySet()) {
+      
+      CGEntity emodel = models.get(entityName);
 
       IPath entitiesFolderPath = destinationProject.getFullPath().append(ICGCProject.ENTITIES_FOLDER);
       IPath texturesFolderPath = destinationProject.getFullPath().append(ICGCProject.TEXTURES_FOLDER);
@@ -131,7 +134,7 @@ public class MoveEntityAction implements IObjectActionDelegate {
       /* Looks like all the animation and fixtures have been copied */
       CGEntity e = newEntityBuilder.build();
 
-      IPath ePath = entitiesFolderPath.append(e.getInternalName()).addFileExtension(ICGCProject.ENTITIES_EXTENSION);
+      IPath ePath = entitiesFolderPath.append(entityName).addFileExtension(ICGCProject.ENTITIES_EXTENSION);
       IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(ePath);
       ByteArrayInputStream bais = new ByteArrayInputStream(e.toByteArray());
 
@@ -191,14 +194,16 @@ public class MoveEntityAction implements IObjectActionDelegate {
 
   }
 
-  private List<CGEntity> makeEntityModelsFromSelection(Object[] selecObjects) {
-    List<CGEntity> entityModels = new ArrayList<ScreenModel.CGEntity>();
+  private Map<String, CGEntity> makeEntityModelsFromSelection(Object[] selecObjects) {
+    Map<String, CGEntity> entityModels = new HashMap<String, ScreenModel.CGEntity>();
     for (Object sel : selecObjects) {
       IFile file = (IFile) sel;
 
       try {
         CGEntity entity = CGEntity.parseFrom(file.getContents());
-        entityModels.add(entity);
+        String entityName = EntitiesUtil.getDisplayName(file.getFullPath());
+        System.err.println(entityName);
+        entityModels.put(entityName, entity);
       } catch (IOException e) {
         e.printStackTrace();
       } catch (CoreException e) {

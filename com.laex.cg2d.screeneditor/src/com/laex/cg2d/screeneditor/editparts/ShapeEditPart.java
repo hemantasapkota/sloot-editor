@@ -24,6 +24,7 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
 import com.laex.cg2d.model.EntityManager;
@@ -34,7 +35,6 @@ import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.resources.ResourceManager;
-import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.editparts.figure.BoxFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.CircleFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.HorizontalEdgeFigure;
@@ -97,6 +97,14 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
     }
 
     return super.getAdapter(key);
+  }
+  
+  @Override
+  public void performRequest(Request req) {
+    if (req.getType() == RequestConstants.REQ_OPEN) {
+      System.err.println("double cliek");
+    }
+    super.performRequest(req);
   }
 
   /*

@@ -11799,42 +11799,27 @@ public final class ScreenModel {
   public interface CGEntityOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional string internalName = 1;
+    // repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;
     /**
-     * <code>optional string internalName = 1;</code>
-     */
-    boolean hasInternalName();
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    java.lang.String getInternalName();
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getInternalNameBytes();
-
-    // repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;
-    /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     java.util.List<com.laex.cg2d.model.ScreenModel.CGEntityAnimation> 
         getAnimationsList();
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     com.laex.cg2d.model.ScreenModel.CGEntityAnimation getAnimations(int index);
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     int getAnimationsCount();
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     java.util.List<? extends com.laex.cg2d.model.ScreenModel.CGEntityAnimationOrBuilder> 
         getAnimationsOrBuilderList();
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     com.laex.cg2d.model.ScreenModel.CGEntityAnimationOrBuilder getAnimationsOrBuilder(
         int index);
@@ -11891,14 +11876,9 @@ public final class ScreenModel {
               break;
             }
             case 10: {
-              bitField0_ |= 0x00000001;
-              internalName_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
                 animations_ = new java.util.ArrayList<com.laex.cg2d.model.ScreenModel.CGEntityAnimation>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               animations_.add(input.readMessage(com.laex.cg2d.model.ScreenModel.CGEntityAnimation.PARSER, extensionRegistry));
               break;
@@ -11911,7 +11891,7 @@ public final class ScreenModel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           animations_ = java.util.Collections.unmodifiableList(animations_);
         }
         this.unknownFields = unknownFields.build();
@@ -11945,80 +11925,36 @@ public final class ScreenModel {
       return PARSER;
     }
 
-    private int bitField0_;
-    // optional string internalName = 1;
-    public static final int INTERNALNAME_FIELD_NUMBER = 1;
-    private java.lang.Object internalName_;
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    public boolean hasInternalName() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    public java.lang.String getInternalName() {
-      java.lang.Object ref = internalName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          internalName_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string internalName = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getInternalNameBytes() {
-      java.lang.Object ref = internalName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        internalName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;
-    public static final int ANIMATIONS_FIELD_NUMBER = 2;
+    // repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;
+    public static final int ANIMATIONS_FIELD_NUMBER = 1;
     private java.util.List<com.laex.cg2d.model.ScreenModel.CGEntityAnimation> animations_;
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     public java.util.List<com.laex.cg2d.model.ScreenModel.CGEntityAnimation> getAnimationsList() {
       return animations_;
     }
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     public java.util.List<? extends com.laex.cg2d.model.ScreenModel.CGEntityAnimationOrBuilder> 
         getAnimationsOrBuilderList() {
       return animations_;
     }
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     public int getAnimationsCount() {
       return animations_.size();
     }
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     public com.laex.cg2d.model.ScreenModel.CGEntityAnimation getAnimations(int index) {
       return animations_.get(index);
     }
     /**
-     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
      */
     public com.laex.cg2d.model.ScreenModel.CGEntityAnimationOrBuilder getAnimationsOrBuilder(
         int index) {
@@ -12026,7 +11962,6 @@ public final class ScreenModel {
     }
 
     private void initFields() {
-      internalName_ = "";
       animations_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -12047,11 +11982,8 @@ public final class ScreenModel {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getInternalNameBytes());
-      }
       for (int i = 0; i < animations_.size(); i++) {
-        output.writeMessage(2, animations_.get(i));
+        output.writeMessage(1, animations_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -12062,13 +11994,9 @@ public final class ScreenModel {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getInternalNameBytes());
-      }
       for (int i = 0; i < animations_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, animations_.get(i));
+          .computeMessageSize(1, animations_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12187,11 +12115,9 @@ public final class ScreenModel {
 
       public Builder clear() {
         super.clear();
-        internalName_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         if (animationsBuilder_ == null) {
           animations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           animationsBuilder_.clear();
         }
@@ -12222,21 +12148,15 @@ public final class ScreenModel {
       public com.laex.cg2d.model.ScreenModel.CGEntity buildPartial() {
         com.laex.cg2d.model.ScreenModel.CGEntity result = new com.laex.cg2d.model.ScreenModel.CGEntity(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.internalName_ = internalName_;
         if (animationsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
             animations_ = java.util.Collections.unmodifiableList(animations_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.animations_ = animations_;
         } else {
           result.animations_ = animationsBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -12252,16 +12172,11 @@ public final class ScreenModel {
 
       public Builder mergeFrom(com.laex.cg2d.model.ScreenModel.CGEntity other) {
         if (other == com.laex.cg2d.model.ScreenModel.CGEntity.getDefaultInstance()) return this;
-        if (other.hasInternalName()) {
-          bitField0_ |= 0x00000001;
-          internalName_ = other.internalName_;
-          onChanged();
-        }
         if (animationsBuilder_ == null) {
           if (!other.animations_.isEmpty()) {
             if (animations_.isEmpty()) {
               animations_ = other.animations_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureAnimationsIsMutable();
               animations_.addAll(other.animations_);
@@ -12274,7 +12189,7 @@ public final class ScreenModel {
               animationsBuilder_.dispose();
               animationsBuilder_ = null;
               animations_ = other.animations_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
               animationsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getAnimationsFieldBuilder() : null;
@@ -12316,87 +12231,13 @@ public final class ScreenModel {
       }
       private int bitField0_;
 
-      // optional string internalName = 1;
-      private java.lang.Object internalName_ = "";
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public boolean hasInternalName() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public java.lang.String getInternalName() {
-        java.lang.Object ref = internalName_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          internalName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getInternalNameBytes() {
-        java.lang.Object ref = internalName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          internalName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public Builder setInternalName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        internalName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public Builder clearInternalName() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        internalName_ = getDefaultInstance().getInternalName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string internalName = 1;</code>
-       */
-      public Builder setInternalNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        internalName_ = value;
-        onChanged();
-        return this;
-      }
-
-      // repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;
+      // repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;
       private java.util.List<com.laex.cg2d.model.ScreenModel.CGEntityAnimation> animations_ =
         java.util.Collections.emptyList();
       private void ensureAnimationsIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
           animations_ = new java.util.ArrayList<com.laex.cg2d.model.ScreenModel.CGEntityAnimation>(animations_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -12404,7 +12245,7 @@ public final class ScreenModel {
           com.laex.cg2d.model.ScreenModel.CGEntityAnimation, com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder, com.laex.cg2d.model.ScreenModel.CGEntityAnimationOrBuilder> animationsBuilder_;
 
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public java.util.List<com.laex.cg2d.model.ScreenModel.CGEntityAnimation> getAnimationsList() {
         if (animationsBuilder_ == null) {
@@ -12414,7 +12255,7 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public int getAnimationsCount() {
         if (animationsBuilder_ == null) {
@@ -12424,7 +12265,7 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public com.laex.cg2d.model.ScreenModel.CGEntityAnimation getAnimations(int index) {
         if (animationsBuilder_ == null) {
@@ -12434,7 +12275,7 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder setAnimations(
           int index, com.laex.cg2d.model.ScreenModel.CGEntityAnimation value) {
@@ -12451,7 +12292,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder setAnimations(
           int index, com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder builderForValue) {
@@ -12465,7 +12306,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder addAnimations(com.laex.cg2d.model.ScreenModel.CGEntityAnimation value) {
         if (animationsBuilder_ == null) {
@@ -12481,7 +12322,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder addAnimations(
           int index, com.laex.cg2d.model.ScreenModel.CGEntityAnimation value) {
@@ -12498,7 +12339,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder addAnimations(
           com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder builderForValue) {
@@ -12512,7 +12353,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder addAnimations(
           int index, com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder builderForValue) {
@@ -12526,7 +12367,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder addAllAnimations(
           java.lang.Iterable<? extends com.laex.cg2d.model.ScreenModel.CGEntityAnimation> values) {
@@ -12540,12 +12381,12 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder clearAnimations() {
         if (animationsBuilder_ == null) {
           animations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           animationsBuilder_.clear();
@@ -12553,7 +12394,7 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public Builder removeAnimations(int index) {
         if (animationsBuilder_ == null) {
@@ -12566,14 +12407,14 @@ public final class ScreenModel {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder getAnimationsBuilder(
           int index) {
         return getAnimationsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public com.laex.cg2d.model.ScreenModel.CGEntityAnimationOrBuilder getAnimationsOrBuilder(
           int index) {
@@ -12583,7 +12424,7 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public java.util.List<? extends com.laex.cg2d.model.ScreenModel.CGEntityAnimationOrBuilder> 
            getAnimationsOrBuilderList() {
@@ -12594,14 +12435,14 @@ public final class ScreenModel {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder addAnimationsBuilder() {
         return getAnimationsFieldBuilder().addBuilder(
             com.laex.cg2d.model.ScreenModel.CGEntityAnimation.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder addAnimationsBuilder(
           int index) {
@@ -12609,7 +12450,7 @@ public final class ScreenModel {
             index, com.laex.cg2d.model.ScreenModel.CGEntityAnimation.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.CGEntityAnimation animations = 1;</code>
        */
       public java.util.List<com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder> 
            getAnimationsBuilderList() {
@@ -12622,7 +12463,7 @@ public final class ScreenModel {
           animationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.laex.cg2d.model.ScreenModel.CGEntityAnimation, com.laex.cg2d.model.ScreenModel.CGEntityAnimation.Builder, com.laex.cg2d.model.ScreenModel.CGEntityAnimationOrBuilder>(
                   animations_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
           animations_ = null;
@@ -24290,73 +24131,72 @@ public final class ScreenModel {
       "com.laex.cg2d.model.CGResourceFile\0220\n\010ve" +
       "rtices\030\010 \003(\0132\036.com.laex.cg2d.model.CGVec" +
       "tor2\022F\n\020spritesheetItems\030\t \003(\0132,.com.lae" +
-      "x.cg2d.model.CGEntitySpritesheetItem\"\\\n\010" +
-      "CGEntity\022\024\n\014internalName\030\001 \001(\t\022:\n\nanimat",
-      "ions\030\002 \003(\0132&.com.laex.cg2d.model.CGEntit" +
-      "yAnimation\"?\n\010CGBounds\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002" +
-      " \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n\006height\030\004 \001(\002\"!\n\tC" +
-      "GVector2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"*\n\007CGColo" +
-      "r\022\t\n\001r\030\001 \002(\005\022\t\n\001g\030\002 \002(\005\022\t\n\001b\030\003 \002(\005\"\203\003\n\tC" +
-      "GBodyDef\022\016\n\006active\030\001 \001(\010\022\022\n\nallowSleep\030\002" +
-      " \001(\010\022\r\n\005angle\030\003 \001(\002\022\026\n\016angularDamping\030\004 " +
-      "\001(\002\022\027\n\017angularVelocity\030\005 \001(\002\022\r\n\005awake\030\006 " +
-      "\001(\010\022\016\n\006bullet\030\007 \001(\010\022\025\n\rfixedRotation\030\010 \001" +
-      "(\010\022\026\n\016intertialScale\030\t \001(\002\022\025\n\rlinearDamp",
-      "ing\030\n \001(\002\022\024\n\014gravityScale\030\013 \001(\002\0226\n\016linea" +
-      "rVelocity\030\014 \001(\0132\036.com.laex.cg2d.model.CG" +
-      "Vector2\022-\n\004type\030\r \001(\0162\037.com.laex.cg2d.mo" +
-      "del.CGBodyType\0220\n\010position\030\016 \001(\0132\036.com.l" +
-      "aex.cg2d.model.CGVector2\"F\n\010CGFilter\022\024\n\014" +
-      "categoryBits\030\001 \001(\005\022\020\n\010maskBits\030\002 \001(\005\022\022\n\n" +
-      "groupIndex\030\003 \001(\005\"\205\001\n\014CGFixtureDef\022\017\n\007den" +
-      "sity\030\001 \001(\002\022\020\n\010friction\030\002 \001(\002\022\023\n\013restitut" +
-      "ion\030\003 \001(\002\022\016\n\006sensor\030\004 \001(\010\022-\n\006filter\030\005 \001(" +
-      "\0132\035.com.laex.cg2d.model.CGFilter\"\321\003\n\007CGS",
-      "hape\022\n\n\002id\030\001 \001(\t\022\017\n\007visible\030\002 \001(\010\022\016\n\006loc" +
-      "ked\030\003 \001(\010\022\022\n\nbackground\030\004 \001(\010\022C\n\026backgro" +
-      "undResourceFile\030\005 \001(\0132#.com.laex.cg2d.mo" +
-      "del.CGResourceFile\022?\n\017editorShapeType\030\006 " +
-      "\001(\0162&.com.laex.cg2d.model.CGEditorShapeT" +
-      "ype\022-\n\006bounds\030\007 \001(\0132\035.com.laex.cg2d.mode" +
-      "l.CGBounds\022/\n\007bodyDef\030\010 \001(\0132\036.com.laex.c" +
-      "g2d.model.CGBodyDef\0225\n\nfixtureDef\030\t \001(\0132" +
-      "!.com.laex.cg2d.model.CGFixtureDef\022,\n\006jo" +
-      "ints\030\n \003(\0132\034.com.laex.cg2d.model.CGJoint",
-      "\022:\n\rentityRefFile\030\013 \001(\0132#.com.laex.cg2d." +
-      "model.CGResourceFile\"q\n\007CGLayer\022\n\n\002id\030\001 " +
-      "\001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006lo" +
-      "cked\030\004 \001(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2" +
-      "d.model.CGShape\"\363\005\n\023CGScreenPreferences\022" +
-      "W\n\016debugDrawPrefs\030\001 \001(\0132?.com.laex.cg2d." +
-      "model.CGScreenPreferences.CGDebugDrawPre" +
-      "ferences\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex." +
-      "cg2d.model.CGScreenPreferences.CGWorldPr" +
-      "eferences\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.",
-      "cg2d.model.CGScreenPreferences.CGCardPre" +
-      "ferences\0225\n\017backgroundColor\030\004 \001(\0132\034.com." +
-      "laex.cg2d.model.CGColor\032\266\001\n\026CGDebugDrawP" +
-      "references\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJo" +
-      "ints\030\002 \001(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawInac" +
-      "tiveBodies\030\004 \001(\010\022\031\n\021installMouseJoint\030\005 " +
-      "\001(\010\022\025\n\rdrawDebugData\030\006 \001(\010\022\024\n\014drawEntiti" +
-      "es\030\007 \001(\010\032\224\001\n\022CGWorldPreferences\022\020\n\010ptmRa" +
-      "tio\030\001 \001(\005\022\032\n\022velocityIterations\030\002 \001(\005\022\032\n" +
-      "\022positionIterations\030\003 \001(\005\022\020\n\010timeStep\030\004 ",
-      "\001(\002\022\020\n\010gravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002\032" +
-      "\\\n\021CGCardPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017\n" +
-      "\007cardNoY\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\ncar" +
-      "dHeight\030\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOWN" +
-      "\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DISTA" +
-      "NCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t" +
-      "\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROP" +
-      "E\020\013*B\n\025CGEntityCollisionType\022\010\n\004NONE\020\000\022\007" +
-      "\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBod" +
-      "yType\022\n\n\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNA",
-      "MIC\020\003*\232\001\n\021CGEditorShapeType\022\027\n\023SIMPLE_SH" +
-      "APE_CIRCLE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022SI" +
-      "MPLE_SHAPE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDGE" +
-      "\020\004\022\024\n\020BACKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAPE" +
-      "\020\006"
+      "x.cg2d.model.CGEntitySpritesheetItem\"F\n\010" +
+      "CGEntity\022:\n\nanimations\030\001 \003(\0132&.com.laex.",
+      "cg2d.model.CGEntityAnimation\"?\n\010CGBounds" +
+      "\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\r\n\005width\030\003 \001(\002\022\016\n" +
+      "\006height\030\004 \001(\002\"!\n\tCGVector2\022\t\n\001x\030\001 \002(\002\022\t\n" +
+      "\001y\030\002 \002(\002\"*\n\007CGColor\022\t\n\001r\030\001 \002(\005\022\t\n\001g\030\002 \002(" +
+      "\005\022\t\n\001b\030\003 \002(\005\"\203\003\n\tCGBodyDef\022\016\n\006active\030\001 \001" +
+      "(\010\022\022\n\nallowSleep\030\002 \001(\010\022\r\n\005angle\030\003 \001(\002\022\026\n" +
+      "\016angularDamping\030\004 \001(\002\022\027\n\017angularVelocity" +
+      "\030\005 \001(\002\022\r\n\005awake\030\006 \001(\010\022\016\n\006bullet\030\007 \001(\010\022\025\n" +
+      "\rfixedRotation\030\010 \001(\010\022\026\n\016intertialScale\030\t" +
+      " \001(\002\022\025\n\rlinearDamping\030\n \001(\002\022\024\n\014gravitySc",
+      "ale\030\013 \001(\002\0226\n\016linearVelocity\030\014 \001(\0132\036.com." +
+      "laex.cg2d.model.CGVector2\022-\n\004type\030\r \001(\0162" +
+      "\037.com.laex.cg2d.model.CGBodyType\0220\n\010posi" +
+      "tion\030\016 \001(\0132\036.com.laex.cg2d.model.CGVecto" +
+      "r2\"F\n\010CGFilter\022\024\n\014categoryBits\030\001 \001(\005\022\020\n\010" +
+      "maskBits\030\002 \001(\005\022\022\n\ngroupIndex\030\003 \001(\005\"\205\001\n\014C" +
+      "GFixtureDef\022\017\n\007density\030\001 \001(\002\022\020\n\010friction" +
+      "\030\002 \001(\002\022\023\n\013restitution\030\003 \001(\002\022\016\n\006sensor\030\004 " +
+      "\001(\010\022-\n\006filter\030\005 \001(\0132\035.com.laex.cg2d.mode" +
+      "l.CGFilter\"\321\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007vi",
+      "sible\030\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackgroun" +
+      "d\030\004 \001(\010\022C\n\026backgroundResourceFile\030\005 \001(\0132" +
+      "#.com.laex.cg2d.model.CGResourceFile\022?\n\017" +
+      "editorShapeType\030\006 \001(\0162&.com.laex.cg2d.mo" +
+      "del.CGEditorShapeType\022-\n\006bounds\030\007 \001(\0132\035." +
+      "com.laex.cg2d.model.CGBounds\022/\n\007bodyDef\030" +
+      "\010 \001(\0132\036.com.laex.cg2d.model.CGBodyDef\0225\n" +
+      "\nfixtureDef\030\t \001(\0132!.com.laex.cg2d.model." +
+      "CGFixtureDef\022,\n\006joints\030\n \003(\0132\034.com.laex." +
+      "cg2d.model.CGJoint\022:\n\rentityRefFile\030\013 \001(",
+      "\0132#.com.laex.cg2d.model.CGResourceFile\"q" +
+      "\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007v" +
+      "isible\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022+\n\005shape\030\005 " +
+      "\003(\0132\034.com.laex.cg2d.model.CGShape\"\363\005\n\023CG" +
+      "ScreenPreferences\022W\n\016debugDrawPrefs\030\001 \001(" +
+      "\0132?.com.laex.cg2d.model.CGScreenPreferen" +
+      "ces.CGDebugDrawPreferences\022O\n\nworldPrefs" +
+      "\030\002 \001(\0132;.com.laex.cg2d.model.CGScreenPre" +
+      "ferences.CGWorldPreferences\022M\n\tcardPrefs" +
+      "\030\003 \001(\0132:.com.laex.cg2d.model.CGScreenPre",
+      "ferences.CGCardPreferences\0225\n\017background" +
+      "Color\030\004 \001(\0132\034.com.laex.cg2d.model.CGColo" +
+      "r\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndrawBodi" +
+      "es\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawAABB" +
+      "\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n\021in" +
+      "stallMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugData\030\006" +
+      " \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWorldPr" +
+      "eferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velocityI" +
+      "terations\030\002 \001(\005\022\032\n\022positionIterations\030\003 " +
+      "\001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001(\002\022",
+      "\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCardPreferences\022\017" +
+      "\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcard" +
+      "Width\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJo" +
+      "intType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPR" +
+      "ISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005M" +
+      "OUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n" +
+      "\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollisi" +
+      "onType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n" +
+      "\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\tK" +
+      "INEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorShap",
+      "eType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPLE" +
+      "_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n\022" +
+      "SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAPE" +
+      "\020\005\022\020\n\014ENTITY_SHAPE\020\006"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -24434,7 +24274,7 @@ public final class ScreenModel {
           internal_static_com_laex_cg2d_model_CGEntity_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGEntity_descriptor,
-              new java.lang.String[] { "InternalName", "Animations", });
+              new java.lang.String[] { "Animations", });
           internal_static_com_laex_cg2d_model_CGBounds_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_laex_cg2d_model_CGBounds_fieldAccessorTable = new

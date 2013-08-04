@@ -12,6 +12,7 @@ package com.laex.cg2d.entityeditor.pages;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -20,12 +21,16 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.PaintEvent;
@@ -35,6 +40,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -44,11 +50,14 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
@@ -59,10 +68,10 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.FileEditorInput;
 
-import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.entityeditor.ui.AnimationPropertyChangeDialog;
-import com.laex.cg2d.entityeditor.ui.ImportSpriteDialog;
+import com.laex.cg2d.entityeditor.ui.ImportSpriteCompositeDelegate;
+import com.laex.cg2d.entityeditor.ui.ImportSpritesComposite;
 import com.laex.cg2d.model.SharedImages;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.Entity;
@@ -70,12 +79,11 @@ import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.EntitySpritesheetItem;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.resources.ResourceManager;
-import com.laex.cg2d.model.util.EntitiesUtil;
 
 /**
  * The Class AnimationFormPage.
  */
-public class AnimationFormPage extends FormPage {
+public class AnimationFormPage extends FormPage implements ImportSpriteCompositeDelegate, ControlListener {
 
   /** The txt animation name. */
   private Text txtAnimationName;
@@ -135,11 +143,50 @@ public class AnimationFormPage extends FormPage {
     None, LoadingFromModel, NewAnimation, AddFrames, SelectionChanged
   }
 
-  private UIState pageState = UIState.None;
-
   private ImageHyperlink mghprlnkRemoveFrames;
 
   private RowLayout rowLayout;
+
+  class ImportSpritesDialog extends TitleAreaDialog {
+
+    private ImportSpritesComposite spritesComposite = null;
+
+    public ImportSpritesDialog(Shell parentShell) {
+      super(parentShell);
+      setShellStyle(SWT.BORDER | SWT.MAX | SWT.RESIZE);
+    }
+
+    @Override
+    protected Control createDialogArea(Composite parent) {
+      setTitle("Import Sprites from Spritesheet");
+      Composite area = (Composite) super.createDialogArea(parent);
+      Composite container = new Composite(area, SWT.NONE);
+      container.setLayout(new FillLayout(SWT.HORIZONTAL));
+      container.setLayoutData(new GridData(GridData.FILL_BOTH));
+
+      IFileEditorInput fe = (IFileEditorInput) getEditorInput();
+      spritesComposite = new ImportSpritesComposite(fe.getFile(), container, SWT.None);
+      spritesComposite.setDelegate(AnimationFormPage.this);
+
+      return spritesComposite;
+    }
+
+    public ImportSpritesComposite getSpritesComposite() {
+      return spritesComposite;
+    }
+
+    @Override
+    protected void createButtonsForButtonBar(Composite parent) {
+      createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+//      createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+    }
+
+    @Override
+    protected Point getInitialSize() {
+      return new Point(641, 447);
+    }
+
+  }
 
   /**
    * Create the form page.
@@ -471,7 +518,7 @@ public class AnimationFormPage extends FormPage {
       size = btnList.size();
       i++;
     }
-    
+
     if (btnList.size() <= 0) {
       animController.spritesheetImageFileChanged(selectedAnimationListItem(), ResourceFile.EMPTY);
     }
@@ -562,13 +609,13 @@ public class AnimationFormPage extends FormPage {
     Image frameImage = ResourceManager.getImageOfRelativePath(ea.getSpritesheetFile().getResourceFile());
 
     for (EntitySpritesheetItem esi : ea.getSpritesheetItems()) {
-      ImageData e = EntitiesUtil.extractImageFromBounds(frameImage.getImageData(),
-          RectAdapter.d2dRect(esi.getExtractBounds()));
+      ImageData e = ResourceManager.extractImageFromBounds(frameImage.getImageData(),
+          RectAdapter.swtRect(esi.getExtractBounds()));
       addSpriteFrame(ResourceManager.getImage(e), esi.getFrameIndex(), esi);
     }
 
     toggleFramesCompositeState();
-    setupFramesCompositeScrolling(computeHeightHint(alvi));
+    setRowLayout();
   }
 
   private void toggleFramesCompositeState() {
@@ -577,48 +624,8 @@ public class AnimationFormPage extends FormPage {
     mghprlnkRemoveFrames.setEnabled(state);
     mghprlnkExportFrames.setEnabled(state);
     mghprlnkPreviewExternal.setEnabled(state);
-  }
 
-  private int computeHeightHint(AnimationListViewItem ai) {
-    int heightHint = 300;
-
-    /* Compute average size from all the buttons */
-    Vector2 avgSize = new Vector2();
-    for (Button b : btnList) {
-      Point p = b.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-      avgSize.x += p.x;
-      avgSize.y += p.y;
-    }
-    avgSize.div(btnList.size());
-
-    if (btnList.size() > 0) {
-      /*
-       * The width of sctnFrames is 553. To get accurate height and scrolling
-       * parameters, we calculate the following: 1. No of rows of buttons on the
-       * frame 2. No of cols of buttons on the frame 3. The size of the buttons
-       * 4. heightHint = noCols * btnHeight + noCols * RowLayout.marginBottom 5.
-       * Calculate the scroll bar increment for 1 Row of buttons
-       */
-      int noItemsInRow = 553 / (int) avgSize.x;
-
-      if (btnList.size() < noItemsInRow) {
-        return heightHint;
-      }
-
-      if (noItemsInRow <= 0)
-        noItemsInRow = 1;
-
-      int noCols = (int) avgSize.y / noItemsInRow;
-
-      heightHint = noCols * (int) avgSize.y + noCols * rowLayout.marginBottom;
-
-      heightHint += 45; /* add some offset */
-    }
-
-    scrolledComposite.getVerticalBar().setIncrement(70 + rowLayout.marginBottom);
-
-    // return heightHint;
-    return 300;
+    setRowLayout();
   }
 
   /**
@@ -667,7 +674,7 @@ public class AnimationFormPage extends FormPage {
       Point p = b.computeSize(SWT.DEFAULT, SWT.DEFAULT);
       height += p.y;
     }
-   
+
     scrolledComposite.setMinHeight(height);
     framesComposite.layout(true);
   }
@@ -727,32 +734,12 @@ public class AnimationFormPage extends FormPage {
    * Adds the new frames to animation.
    */
   private void onClickAddFrames() {
-    ImportSpriteDialog isd = new ImportSpriteDialog(getSite().getShell());
+    ImportSpritesDialog isd = new ImportSpritesDialog(getSite().getShell());
     int retval = isd.open();
 
-    if (retval == ImportSpriteDialog.CANCEL || isd.getSelectedImage() == null) {
+    if (retval == TitleAreaDialog.CANCEL) {
       return;
     }
-
-    clearSpriteButtons();
-
-    AnimationListViewItem alvi = selectedAnimationListItem();
-
-    animController.spritesheetImageFileChanged(alvi, isd.getSpritesheetImageFile());
-
-    for (int i = 0; i < isd.getSpritesheetItems().size(); i++) {
-      Image img = isd.getExtractedImages().poll();
-      EntitySpritesheetItem esi = isd.getSpritesheetItems().get(i);
-      /* esi is our custom data for this */
-      addSpriteFrame(img, i, esi);
-    }
-
-    animController.spritesheetItemsChanged(alvi, isd.getSpritesheetJsonMapperFile(), isd.getSpritesheetItems());
-
-    // Reset ui
-    toggleFramesCompositeState();
-    setupFramesCompositeScrolling(computeHeightHint(alvi));
-    editorDirtyChanged();
   }
 
   private void editorDirtyChanged() {
@@ -795,8 +782,6 @@ public class AnimationFormPage extends FormPage {
 
     AnimationListViewItem alvi = selectedAnimationListItem();
 
-    setupFramesCompositeScrolling(computeHeightHint(alvi));
-
     /* Is this an entitty spritesheet item ? */
     if (spritesheetItemData != null) {
 
@@ -825,7 +810,7 @@ public class AnimationFormPage extends FormPage {
     for (Button b : btnList) {
       imgList.add(b.getImage());
     }
-    
+
     final String animName = selectedAnimationListItem().getName();
 
     Job job = new Job("Export frames") {
@@ -839,5 +824,59 @@ public class AnimationFormPage extends FormPage {
     };
     job.setSystem(false);
     job.schedule();
+  }
+
+  @Override
+  public void spriteExtractionComplete(ResourceFile spritesheetFile, ResourceFile spritesheetJsonFile,
+      List<EntitySpritesheetItem> spritesheetItems, Queue<Image> extractedImages) {
+
+    clearSpriteButtons();
+
+    AnimationListViewItem alvi = selectedAnimationListItem();
+
+    animController.spritesheetImageFileChanged(alvi, spritesheetFile);
+
+    for (int i = 0; i < spritesheetItems.size(); i++) {
+      Image img = extractedImages.poll();
+      EntitySpritesheetItem esi = spritesheetItems.get(i);
+      /* esi is our custom data for this */
+      addSpriteFrame(img, i, esi);
+    }
+
+    animController.spritesheetItemsChanged(alvi, spritesheetJsonFile, spritesheetItems);
+
+    // Reset ui
+    toggleFramesCompositeState();
+    setRowLayout();
+    editorDirtyChanged();
+  }
+
+  @Override
+  public void controlMoved(ControlEvent e) {
+  }
+
+  @Override
+  public void controlResized(ControlEvent e) {
+    Rectangle r = scrolledComposite.getClientArea();
+    scrolledComposite.setMinSize(framesComposite.computeSize(r.width, SWT.DEFAULT));
+  }
+
+  private void setRowLayout() {
+    /*
+     * Row Layout on EntComposite should be set once all the components have
+     * been created
+     */
+    RowLayout rl = new RowLayout(SWT.HORIZONTAL);
+    rl.wrap = true;
+    framesComposite.setLayout(rl);
+    framesComposite.layout(true);
+
+    scrolledComposite.setContent(framesComposite);
+
+    Rectangle r = scrolledComposite.getClientArea();
+    scrolledComposite.setMinSize(framesComposite.computeSize(r.width, SWT.DEFAULT));
+
+    scrolledComposite.removeControlListener(this);
+    scrolledComposite.addControlListener(this);
   }
 }

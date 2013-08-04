@@ -10,14 +10,16 @@
  */
 package com.laex.cg2d.model.util;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 
-import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.EntityAnimation;
@@ -28,33 +30,8 @@ import com.laex.cg2d.model.resources.ResourceManager;
  */
 public class EntitiesUtil {
 
-  /**
-   * Extract sprite2.
-   * 
-   * @param baseImageData
-   *          the base image data
-   * @param entityBounds
-   *          the entity bounds
-   * @return the image data
-   */
-  public static ImageData extractImageFromBounds(ImageData baseImageData, Rectangle entityBounds) {
-    final ImageData id = new ImageData(entityBounds.width, entityBounds.height, baseImageData.depth,
-        baseImageData.palette);
-
-    int ey = entityBounds.y;
-    int ex = entityBounds.x;
-
-    for (int i = 0; i < entityBounds.height; i++) {
-      int py = ey + i;
-      for (int j = 0; j < entityBounds.width; j++) {
-        int px = ex + j;
-        id.setPixel(j, i, baseImageData.getPixel(px, py));
-        id.setAlpha(j, i, baseImageData.getAlpha(px, py));
-      }
-    }
-    return id;
-  }
-
+  private static Map<String, Image> ssMap = new HashMap<String, Image>();
+  private static boolean shouldCacheLargeSpritesheet = false;
 
   /**
    * Creates the image strip.
@@ -79,7 +56,7 @@ public class EntitiesUtil {
     for (int y = 0; y < imgHeight; y += tileHeight) {
       for (int x = 0; x < imgWidth; x += tileWidth) {
         Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);
-        final ImageData id = extractImageFromBounds(strip.getImageData(), r);
+        final ImageData id = ResourceManager.extractImageFromBounds(strip.getImageData(), RectAdapter.swtRect(r));
         Image extractImage = ResourceManager.getImage(id);
         imgStip.add(extractImage);
       }
@@ -111,8 +88,25 @@ public class EntitiesUtil {
    *          the resource name
    * @return the internal name
    */
-  public static String getInternalName(String resourceName) {
-    return resourceName.replaceFirst("\\." + ICGCProject.ENTITIES_EXTENSION, "").trim();
+  public static String getInternalName(IPath path) {
+    return path.toOSString();
+  }
+
+  public static String getDisplayName(IPath path) {
+    return path.removeFileExtension().segment(path.segmentCount() - 1);
+  }
+
+  public static void startCacheSpritesheets() {
+    shouldCacheLargeSpritesheet = true;
+  }
+
+  public static void stopCacheSpritesheet() {
+    shouldCacheLargeSpritesheet = false;
+
+    for (String key : ssMap.keySet()) {
+      ssMap.get(key).dispose();
+    }
+    ssMap.clear();
   }
 
   /**
@@ -126,23 +120,46 @@ public class EntitiesUtil {
     EntityAnimation eaim = EntitiesUtil.getDefaultAnimation(e);
     // if no default exists, return null
     if (eaim == null) {
-      return null;
+      return ResourceManager.getImage("missing");
     }
     // if no entity resource file has been defined, return null
     if (eaim.getSpritesheetFile().isEmpty()) {
-      return null;
+      return ResourceManager.getImage("missing");
     }
 
-    Image img = ResourceManager.getImageOfRelativePath(eaim.getSpritesheetFile().getResourceFile());
-    
+    Image img = null;
+    String key = eaim.getSpritesheetFile().getResourceFile();
+
+    if (shouldCacheLargeSpritesheet) {
+      img = ssMap.get(key);
+    } 
+
+    if (img == null || img.isDisposed()) {
+      img = ResourceManager.getImageOfRelativePath(eaim.getSpritesheetFile().getResourceFile());
+      ssMap.put(key, img);
+    }
+
     if (eaim.getSpritesheetItems().size() > 0) {
+
       Rectangle extractBounds = RectAdapter.d2dRect(eaim.getSpritesheetItems().get(0).getExtractBounds());
-      ImageData id = EntitiesUtil.extractImageFromBounds(img.getImageData(), extractBounds);
-      Image i =  ResourceManager.scaleImage(id, scaleFactor);
+
+      ImageData id = ResourceManager.extractImageFromBounds(img.getImageData(), RectAdapter.swtRect(extractBounds));
+      Image i = null;
+      
+      if (scaleFactor == 1) {
+        i = ResourceManager.getImage(id);
+      } else {
+        i = ResourceManager.scaleImage(id, scaleFactor);
+      }
+
+      /* Very important to dispose this image */
+      if (!shouldCacheLargeSpritesheet) {
+        img.dispose();
+      }
+
       return i;
     }
 
     return null;
   }
-
 }

@@ -21,7 +21,16 @@
             hasPages="true"
             icon="main.png"
             id="com.laex.cg2d.entityeditor.wizards.NewEntityWizard"
-            name="%Plugin.contentType"
+            name="%Plugin.entityWizard"
+            project="false">
+      </wizard>
+      <wizard
+            category="com.laex.cg2d.core.wizards.CGWizard"
+            class="com.laex.cg2d.entityeditor.wizards.NewEntitiesFromSpritesheetWizard"
+            hasPages="true"
+            icon="main.png"
+            id="com.laex.cg2d.entityeditor.wizards.EntitiesFromSpritesheetWizard"
+            name="%Plugin.entitiesFromSpritesheet"
             project="false">
       </wizard>
    </extension>

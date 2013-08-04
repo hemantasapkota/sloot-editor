@@ -12,6 +12,9 @@ package com.laex.cg2d.model.adapter;
 
 import java.util.ArrayList;
 
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.swt.graphics.Image;
+
 import com.badlogic.gdx.math.Vector2;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
@@ -22,6 +25,7 @@ import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.EntityCollisionType;
 import com.laex.cg2d.model.model.EntitySpritesheetItem;
+import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.model.util.EntitiesUtil;
 
 /*
@@ -83,9 +87,8 @@ public class EntityAdapter {
    *          the filename
    * @return the entity
    */
-  public static Entity newDefaultEntity(String filename) {
+  public static Entity newDefaultEntity(IPath path) {
     Entity entityModel = new Entity();
-    entityModel.setInternalName(EntitiesUtil.getInternalName(filename));
 
     EntityAnimation ea = new EntityAnimation();
     ea.setAnimationName("Animation 1");
@@ -106,7 +109,7 @@ public class EntityAdapter {
    * @return the cG entity
    */
   public static CGEntity asCGEntity(Entity e) {
-    CGEntity.Builder entityBuilder = CGEntity.newBuilder().setInternalName(e.getInternalName());
+    CGEntity.Builder entityBuilder = CGEntity.newBuilder();
 
     for (EntityAnimation ea : e.getAnimationList()) {
 
@@ -149,7 +152,6 @@ public class EntityAdapter {
    */
   public static Entity asEntity(CGEntity cge) {
     Entity entityModel = new Entity();
-    entityModel.setInternalName(cge.getInternalName());
 
     for (CGEntityAnimation cgEa : cge.getAnimationsList()) {
       EntityAnimation ea = new EntityAnimation();
@@ -167,7 +169,9 @@ public class EntityAdapter {
       ea.setSpritesheetMapperFile(ResourceFileAdapter.asResourceFile(cgEa.getSpritesheetJsonFile()));
 
       for (CGEntitySpritesheetItem cesi : cgEa.getSpritesheetItemsList()) {
+        
         EntitySpritesheetItem esi = new EntitySpritesheetItem();
+        
         esi.setExtractBounds(RectAdapter.gdxRect(cesi.getExtractBounds()));
         esi.setFrameIndex(cesi.getFrameIndex());
         ea.getSpritesheetItems().add(esi);
@@ -176,7 +180,9 @@ public class EntityAdapter {
       entityModel.addEntityAnimation(ea);
     }
 
-    entityModel.setDefaultFrame(EntitiesUtil.getDefaultFrame(entityModel, 1));
+    Image defaultFrame = EntitiesUtil.getDefaultFrame(entityModel, 1);
+    
+    entityModel.setDefaultFrame(defaultFrame);
 
     return entityModel;
   }

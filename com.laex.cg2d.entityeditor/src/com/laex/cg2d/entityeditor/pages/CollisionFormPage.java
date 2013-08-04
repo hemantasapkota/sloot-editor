@@ -66,7 +66,6 @@ import com.laex.cg2d.model.model.EntityCollisionType;
 import com.laex.cg2d.model.model.EntitySpritesheetItem;
 import com.laex.cg2d.model.model.ResourceFile;
 import com.laex.cg2d.model.resources.ResourceManager;
-import com.laex.cg2d.model.util.EntitiesUtil;
 
 /**
  * The Class CollisionFormPage.
@@ -228,8 +227,8 @@ public class CollisionFormPage extends FormPage {
         boolean containsSpriteshetItem = alvi.getAnimation().getSpritesheetItems().size() > 0;
         if (containsSpriteshetItem) {
           EntitySpritesheetItem esi = alvi.getAnimation().getSpritesheetItems().get(0);
-          ImageData id = EntitiesUtil.extractImageFromBounds(frameImage.getImageData(),
-              RectAdapter.d2dRect(esi.getExtractBounds()));
+          ImageData id = ResourceManager.extractImageFromBounds(frameImage.getImageData(),
+              RectAdapter.swtRect(esi.getExtractBounds()));
           alvi.setCollisionPreviewFrame(ResourceManager.getImage(id));
         }
 

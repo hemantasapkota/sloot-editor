@@ -10,11 +10,8 @@
  */
 package com.laex.cg2d.model.model.impl;
 
-import org.eclipse.swt.graphics.Image;
-
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.model.ModelValidator;
-import com.laex.cg2d.model.util.EntitiesUtil;
 
 /**
  * The Class EntityValidator.
@@ -46,11 +43,6 @@ public class EntityValidator implements ModelValidator {
     }
 
     if (entity.getAnimationList() == null || entity.getAnimationList().size() <= 0) {
-      return false;
-    }
-
-    Image frame = EntitiesUtil.getDefaultFrame(entity, 1);
-    if (frame == null) {
       return false;
     }
 

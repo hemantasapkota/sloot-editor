@@ -12,8 +12,8 @@ package com.laex.cg2d.entityeditor.wizards;
 
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -21,37 +21,38 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-import org.eclipse.ui.part.FileEditorInput;
 
 import com.laex.cg2d.entityeditor.Activator;
-import com.laex.cg2d.entityeditor.EntityFormEditor;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.adapter.EntityAdapter;
 import com.laex.cg2d.model.model.Entity;
+import com.laex.cg2d.model.model.EntityAnimation;
 import com.laex.cg2d.model.model.EntitySpritesheetItem;
 
 /**
  * The Class NewEntityWizard.
  */
-public class NewEntityWizard extends Wizard implements INewWizard {
+public class NewEntitiesFromSpritesheetWizard extends Wizard implements INewWizard {
 
   /** The page. */
-  private NewEntityPage page;
+  private NewEntitiesFromSpritesheetPage2 finalPage;
+
+  private NewEntitiesFromSpritesheetPage spritesheetPage;
 
   /** The path to project. */
   private IPath pathToProject;
 
+  private IResource resourceContainer;
+
   /**
    * Instantiates a new new entity wizard.
    */
-  public NewEntityWizard() {
+  public NewEntitiesFromSpritesheetWizard() {
     setNeedsProgressMonitor(true);
   }
 
@@ -62,12 +63,19 @@ public class NewEntityWizard extends Wizard implements INewWizard {
    */
   @Override
   public void addPages() {
+
+    spritesheetPage = new NewEntitiesFromSpritesheetPage(resourceContainer);
+
+    addPage(spritesheetPage);
+
     if (pathToProject != null) {
-      page = new NewEntityPage(pathToProject);
+      finalPage = new NewEntitiesFromSpritesheetPage2(pathToProject);
     } else {
-      page = new NewEntityPage();
+      finalPage = new NewEntitiesFromSpritesheetPage2();
     }
-    addPage(page);
+
+    addPage(finalPage);
+
   }
 
   /*
@@ -90,7 +98,9 @@ public class NewEntityWizard extends Wizard implements INewWizard {
     default:
       path = ires.getFullPath();
     }
+    
     pathToProject = path;
+    resourceContainer = ires;
   }
 
   /*
@@ -100,31 +110,42 @@ public class NewEntityWizard extends Wizard implements INewWizard {
    */
   @Override
   public boolean performFinish() {
-    final IPath path = page.getPathToProject();
-    final String filename = page.getFileName();
+    final IPath path = finalPage.getPathToProject();
+    final String filename = finalPage.getFileName();
 
     WorkspaceModifyOperation wop = new WorkspaceModifyOperation() {
       @Override
       protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException,
           InterruptedException {
-        monitor.beginTask("Create entities file", 1);
+        List<EntitySpritesheetItem> ssItems = spritesheetPage.getSpritesheetItems();
 
-        IPath npath = path.append(filename);
-        npath = npath.addFileExtension(ICGCProject.ENTITIES_EXTENSION);
+        monitor.beginTask("Create entities file", ssItems.size());
 
-        ICGCProject b2dMgr = CGCProject.getInstance();
+        for (int i = 0; i < ssItems.size(); i++) {
 
-        // default entity model
-        Entity entityModel = EntityAdapter.newDefaultEntity(npath);
-        CGEntity cgEntity = EntityAdapter.asCGEntity(entityModel);
-        ByteArrayInputStream bios = new ByteArrayInputStream(cgEntity.toByteArray());
-        IFile file = b2dMgr.createFile(npath, bios);
+          IPath npath = path.append(filename + i);
+          npath = npath.addFileExtension(ICGCProject.ENTITIES_EXTENSION);
 
-        // open the file
-        IEditorInput edInp = new FileEditorInput(file);
-        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(edInp, EntityFormEditor.ID);
-        monitor.worked(1);
+          ICGCProject b2dMgr = CGCProject.getInstance();
+
+          // default entity model
+          monitor.subTask("Create " + npath.toString());
+          Entity entityModel = EntityAdapter.newDefaultEntity(npath);
+          
+          EntityAnimation ea = entityModel.getAnimationList().get(0);
+          ea.getSpritesheetItems().add(ssItems.get(i));
+          ea.setSpritesheetFile(spritesheetPage.getSpritesheetFile());
+          ea.setSpritesheetMapperFile(spritesheetPage.getSpritesheetJsonFile());
+          
+          CGEntity cgEntity = EntityAdapter.asCGEntity(entityModel);
+          ByteArrayInputStream bios = new ByteArrayInputStream(cgEntity.toByteArray());
+          b2dMgr.createFile(npath, bios);
+
+          monitor.worked(1);
+        }
+
         monitor.done();
+
       }
     };
 
@@ -139,4 +160,5 @@ public class NewEntityWizard extends Wizard implements INewWizard {
 
     return false;
   }
+
 }

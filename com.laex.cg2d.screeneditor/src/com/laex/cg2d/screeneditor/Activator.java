@@ -27,8 +27,6 @@ public class Activator extends AbstractUIPlugin {
   // The plug-in ID
   /** The Constant PLUGIN_ID. */
   public static final String PLUGIN_ID = "com.laex.cg2d.screeneditor"; //$NON-NLS-1$
-  
-  private Map<Shape, Entity> shapeToEntitiesMap = new HashMap<Shape, Entity>();
 
   // The shared instance
   /** The plugin. */
@@ -73,9 +71,5 @@ public class Activator extends AbstractUIPlugin {
     return plugin;
   }
   
-  
-  public Map<Shape, Entity> getShapeToEntitiesMap() {
-    return shapeToEntitiesMap;
-  }
 
 }
