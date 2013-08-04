@@ -21,9 +21,7 @@ public class ShapeCopier implements ModelCopier {
 
   /**
    * Instantiates a new shape copier.
-   * 
-   * @param gameModel
-   *          the game model
+   *
    */
   public ShapeCopier() {
   }

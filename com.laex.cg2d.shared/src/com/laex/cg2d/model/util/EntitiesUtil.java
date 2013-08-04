@@ -30,7 +30,10 @@ import com.laex.cg2d.model.resources.ResourceManager;
  */
 public class EntitiesUtil {
 
+  /** The ss map. */
   private static Map<String, Image> ssMap = new HashMap<String, Image>();
+  
+  /** The should cache large spritesheet. */
   private static boolean shouldCacheLargeSpritesheet = false;
 
   /**
@@ -83,23 +86,34 @@ public class EntitiesUtil {
 
   /**
    * Gets the internal name.
-   * 
-   * @param resourceName
-   *          the resource name
+   *
+   * @param path the path
    * @return the internal name
    */
   public static String getInternalName(IPath path) {
     return path.toOSString();
   }
 
+  /**
+   * Gets the display name.
+   *
+   * @param path the path
+   * @return the display name
+   */
   public static String getDisplayName(IPath path) {
     return path.removeFileExtension().segment(path.segmentCount() - 1);
   }
 
+  /**
+   * Start cache spritesheets.
+   */
   public static void startCacheSpritesheets() {
     shouldCacheLargeSpritesheet = true;
   }
 
+  /**
+   * Stop cache spritesheet.
+   */
   public static void stopCacheSpritesheet() {
     shouldCacheLargeSpritesheet = false;
 
@@ -111,9 +125,9 @@ public class EntitiesUtil {
 
   /**
    * Gets the default frame.
-   * 
-   * @param e
-   *          the e
+   *
+   * @param e the e
+   * @param scaleFactor the scale factor
    * @return the default frame
    */
   public static Image getDefaultFrame(Entity e, float scaleFactor) {

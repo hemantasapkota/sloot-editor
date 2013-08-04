@@ -81,6 +81,9 @@ public class ShapeTreeEP extends AbstractTreeEditPart implements PropertyChangeL
     return getCastedModel().getId();
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.gef.editparts.AbstractEditPart#isSelectable()
+   */
   @Override
   public boolean isSelectable() {
     return !getCastedModel().isLocked();

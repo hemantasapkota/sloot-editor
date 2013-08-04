@@ -146,6 +146,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
   /** The card height. */
   private int x, y, cardWidthh, cardHeight;
 
+  /** The card bg color. */
   private Color cardBgColor;
 
   /**
@@ -322,6 +323,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     super.configureGraphicalViewer();
   }
 
+  /**
+   * Setup zoom manager.
+   */
   private void setupZoomManager() {
     ZoomManager manager = (ZoomManager) getGraphicalViewer().getProperty(ZoomManager.class.toString());
     manager.addZoomListener(new ZoomListener() {
@@ -598,6 +602,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     return false;
   }
 
+  /**
+   * Close editor.
+   */
   private void closeEditor() {
     getSite().getShell().getDisplay().asyncExec(new Runnable() {
       @Override
@@ -633,6 +640,15 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     super.setInput(input);
   }
 
+  /**
+   * Load screen model.
+   *
+   * @param input the input
+   * @throws CoreException the core exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws InvocationTargetException the invocation target exception
+   * @throws InterruptedException the interrupted exception
+   */
   private void loadScreenModel(final IEditorInput input) throws CoreException, IOException, InvocationTargetException,
       InterruptedException {
     final IFile file = ((IFileEditorInput) input).getFile();
@@ -671,6 +687,11 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     setPartName(file.getProject().getName() + "/" + file.getName());
   }
 
+  /**
+   * Sets the up res change listener for delete.
+   *
+   * @param resName the new up res change listener for delete
+   */
   private void setupResChangeListenerForDelete(final String resName) {
 
     ResourcesPlugin.getWorkspace().addResourceChangeListener(new IResourceChangeListener() {
@@ -697,6 +718,12 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
     }, IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE);
   }
 
+  /**
+   * Sets the up entity resource listener.
+   *
+   * @param input the new up entity resource listener
+   * @throws CoreException the core exception
+   */
   private void setupEntityResourceListener(final IEditorInput input) throws CoreException {
     ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceListener,
         IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE);
@@ -995,6 +1022,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.IScreenEditorState#toggleJointLayer(com.laex.cg2d.model.model.Joint)
+   */
   @Override
   public void toggleJointLayer(Joint joint) {
   }

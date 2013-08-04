@@ -18,6 +18,7 @@ public class PreferenceConstants {
   /** The Constant RUNNER. */
   public static final String RUNNER = "RUNNER";
 
+  /** The Constant ANIMATION_PREVIEWER. */
   public static final String ANIMATION_PREVIEWER = "ANIMATION_PREVIEWER";
 
   /** The Constant SCREEN_FILE. */

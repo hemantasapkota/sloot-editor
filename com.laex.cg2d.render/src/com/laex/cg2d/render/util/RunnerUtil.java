@@ -39,6 +39,13 @@ public class RunnerUtil {
     return null;
   }
 
+  /**
+   * Gets the animation from.
+   *
+   * @param e the e
+   * @param animationName the animation name
+   * @return the animation from
+   */
   public static CGEntityAnimation getAnimationFrom(CGEntity e, String animationName) {
     for (CGEntityAnimation ea : e.getAnimationsList()) {
       if (ea.getAnimationName().equals(animationName)) {

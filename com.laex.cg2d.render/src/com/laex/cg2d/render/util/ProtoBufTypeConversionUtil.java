@@ -108,13 +108,10 @@ public class ProtoBufTypeConversionUtil {
 
   /**
    * As distance joint def.
-   * 
-   * @param bodyA
-   *          the body a
-   * @param bodyB
-   *          the body b
-   * @param _jdef
-   *          the _jdef
+   *
+   * @param bodyA the body a
+   * @param bodyB the body b
+   * @param _j the _j
    * @return the distance joint def
    */
   public static DistanceJointDef asDistanceJointDef(Body bodyA, Body bodyB, CGJoint _j) {
@@ -134,13 +131,10 @@ public class ProtoBufTypeConversionUtil {
 
   /**
    * As pulley joint def.
-   * 
-   * @param bodyA
-   *          the body a
-   * @param bodyB
-   *          the body b
-   * @param _jdef
-   *          the _jdef
+   *
+   * @param bodyA the body a
+   * @param bodyB the body b
+   * @param _j the _j
    * @return the pulley joint def
    */
   public static PulleyJointDef asPulleyJointDef(Body bodyA, Body bodyB, CGJoint _j) {
@@ -161,13 +155,10 @@ public class ProtoBufTypeConversionUtil {
 
   /**
    * As revolute joint.
-   * 
-   * @param bodyA
-   *          the body a
-   * @param bodyB
-   *          the body b
-   * @param _jdef
-   *          the _jdef
+   *
+   * @param bodyA the body a
+   * @param bodyB the body b
+   * @param _j the _j
    * @return the revolute joint def
    */
   public static RevoluteJointDef asRevoluteJoint(Body bodyA, Body bodyB, CGJoint _j) {
@@ -193,13 +184,10 @@ public class ProtoBufTypeConversionUtil {
 
   /**
    * As friction joint def.
-   * 
-   * @param bodyA
-   *          the body a
-   * @param bodyB
-   *          the body b
-   * @param _jdef
-   *          the _jdef
+   *
+   * @param bodyA the body a
+   * @param bodyB the body b
+   * @param _j the _j
    * @return the friction joint def
    */
   public static FrictionJointDef asFrictionJointDef(Body bodyA, Body bodyB, CGJoint _j) {
@@ -219,13 +207,10 @@ public class ProtoBufTypeConversionUtil {
 
   /**
    * As weld joint def.
-   * 
-   * @param bodyA
-   *          the body a
-   * @param bodyB
-   *          the body b
-   * @param _jdef
-   *          the _jdef
+   *
+   * @param bodyA the body a
+   * @param bodyB the body b
+   * @param _j the _j
    * @return the weld joint def
    */
   public static WeldJointDef asWeldJointDef(Body bodyA, Body bodyB, CGJoint _j) {
@@ -243,13 +228,10 @@ public class ProtoBufTypeConversionUtil {
 
   /**
    * As primastic joint def.
-   * 
-   * @param bodyA
-   *          the body a
-   * @param bodyB
-   *          the body b
-   * @param _jdef
-   *          the _jdef
+   *
+   * @param bodyA the body a
+   * @param bodyB the body b
+   * @param _j the _j
    * @return the prismatic joint def
    */
   public static PrismaticJointDef asPrimasticJointDef(Body bodyA, Body bodyB, CGJoint _j) {

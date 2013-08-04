@@ -112,6 +112,9 @@ public class BERopeJoint extends Joint {
     return JointType.RopeJoint;
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.model.model.Joint#computeLocalAnchors(int)
+   */
   @Override
   public void computeLocalAnchors(int ptmRatio) {
     // TODO Auto-generated method stub

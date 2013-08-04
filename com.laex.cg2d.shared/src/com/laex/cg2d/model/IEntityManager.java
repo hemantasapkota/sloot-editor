@@ -12,9 +12,18 @@ package com.laex.cg2d.model;
 
 import com.laex.cg2d.model.model.Entity;
 
+/**
+ * The Interface IEntityManager.
+ */
 public interface IEntityManager {
   
   /* Key: IResource.getFullPath().toOssString() */
+  /**
+   * Find entity.
+   *
+   * @param key the key
+   * @return the entity
+   */
   Entity findEntity(String key);
   
   /**

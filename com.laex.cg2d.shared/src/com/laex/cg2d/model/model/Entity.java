@@ -126,6 +126,9 @@ public class Entity {
     return animationList;
   }
 
+  /**
+   * Dispose.
+   */
   public void dispose() {
     if (defaultFrame != null) {
       defaultFrame.dispose();

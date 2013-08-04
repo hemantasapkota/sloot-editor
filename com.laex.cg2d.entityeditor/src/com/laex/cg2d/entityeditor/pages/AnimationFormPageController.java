@@ -106,11 +106,9 @@ public class AnimationFormPageController {
 
   /**
    * Preview animation external.
-   * 
-   * @param entAnim
-   *          the ent anim
-   * @param duration
-   *          the duration
+   *
+   * @param entAnim the ent anim
+   * @param thisEntityFile the this entity file
    */
   public void previewAnimationExternal(final EntityAnimation entAnim, final String thisEntityFile) {
 
@@ -190,29 +188,46 @@ public class AnimationFormPageController {
 
   }
 
+  /**
+   * Spritesheet image file changed.
+   *
+   * @param alvi the alvi
+   * @param spritesheetFile the spritesheet file
+   */
   public void spritesheetImageFileChanged(AnimationListViewItem alvi, ResourceFile spritesheetFile) {
     alvi.getAnimation().setSpritesheetFile(spritesheetFile);
   }
 
+  /**
+   * Spritesheet items changed.
+   *
+   * @param alvi the alvi
+   * @param spritesheetMapperFile the spritesheet mapper file
+   * @param esiList the esi list
+   */
   public void spritesheetItemsChanged(AnimationListViewItem alvi, ResourceFile spritesheetMapperFile,
       List<EntitySpritesheetItem> esiList) {
     alvi.getAnimation().setSpritesheetMapperFile(spritesheetMapperFile);
     alvi.getAnimation().setSpritesheetItems(esiList);
   }
 
+  /**
+   * Removes the spritesheet item.
+   *
+   * @param alvi the alvi
+   * @param esi the esi
+   */
   public void removeSpritesheetItem(AnimationListViewItem alvi, EntitySpritesheetItem esi) {
     alvi.getAnimation().getSpritesheetItems().remove(esi);
   }
 
   /**
    * Export frames.
-   * 
-   * @param alvi
-   *          the alvi
-   * @param destination
-   *          the destination
-   * @param monitor
-   *          the monitor
+   *
+   * @param animationName the animation name
+   * @param images the images
+   * @param destination the destination
+   * @param monitor the monitor
    */
   public void exportFrames(String animationName, List<Image> images, IPath destination, IProgressMonitor monitor) {
     int work = images.size();

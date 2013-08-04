@@ -64,9 +64,11 @@ public class EntityManager implements ScreenScaffold {
   /** The shape to entity map. */
   private Map<CGShape, CGEntity> shapeToEntityMap;
   
+  /** The shape to animation map. */
   private Map<CGShape, Animation> shapeToAnimationMap;
   
   // x = origin x, y = origin y, z = radius
+  /** The shape to animation origin map. */
   private Map<CGShape, Vector3> shapeToAnimationOriginMap;
 
 
@@ -138,11 +140,11 @@ public class EntityManager implements ScreenScaffold {
 
   /**
    * Creates the entity.
-   * 
-   * @param shape
-   *          the shape
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   *
+   * @param shape the shape
+   * @param animationName the animation name
+   * @return the body
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public Body createEntity(CGShape shape, String animationName) throws IOException {
     CGEditorShapeType eType = shape.getEditorShapeType();
@@ -237,6 +239,11 @@ public class EntityManager implements ScreenScaffold {
     return b;
   }
 
+  /**
+   * Removes the entity.
+   *
+   * @param shape the shape
+   */
   public void removeEntity(CGShape shape) {
     shapeToAnimationMap.remove(shape);
     shapeToSpriteMap.remove(shape);
@@ -350,17 +357,13 @@ public class EntityManager implements ScreenScaffold {
    */
   /**
    * Creates the entity collision shape.
-   * 
-   * @param shape
-   *          the shape
-   * @param entity
-   *          the entity
-   * @param bodyDef
-   *          the body def
-   * @param fixDef
-   *          the fix def
-   * @param b
-   *          the b
+   *
+   * @param shape the shape
+   * @param entity the entity
+   * @param ea the ea
+   * @param bodyDef the body def
+   * @param fixDef the fix def
+   * @param b the b
    */
   public void createEntityCollisionShape(CGShape shape, CGEntity entity, CGEntityAnimation ea, BodyDef bodyDef,
       FixtureDef fixDef, Body b) {

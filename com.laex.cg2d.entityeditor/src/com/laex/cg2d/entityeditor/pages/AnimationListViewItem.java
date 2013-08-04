@@ -48,10 +48,20 @@ class AnimationListViewItem {
   }
 
   
+  /**
+   * Gets the collision preview frame.
+   *
+   * @return the collision preview frame
+   */
   public Image getCollisionPreviewFrame() {
     return collisionPreviewFrame;
   }
   
+  /**
+   * Sets the collision preview frame.
+   *
+   * @param collisionPreviewFrame the new collision preview frame
+   */
   public void setCollisionPreviewFrame(Image collisionPreviewFrame) {
     this.collisionPreviewFrame = collisionPreviewFrame;
   }

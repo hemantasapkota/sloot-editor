@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.screeneditor.handlers.joints;
 
 import java.util.List;
@@ -26,13 +36,27 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.Shape;
 
+/**
+ * The Class LiveJointEditingDialog.
+ */
 public class LiveJointEditingDialog extends TitleAreaDialog {
 
+  /**
+   * The Class JointRenderer.
+   */
   class JointRenderer {
 
+    /** The figure canvas. */
     private FigureCanvas figureCanvas;
+    
+    /** The layered pane. */
     private FreeformLayeredPane layeredPane;
 
+    /**
+     * Instantiates a new joint renderer.
+     *
+     * @param composite the composite
+     */
     public JointRenderer(Composite composite) {
 
       initRenderer(composite);
@@ -52,6 +76,11 @@ public class LiveJointEditingDialog extends TitleAreaDialog {
 
     }
 
+    /**
+     * Inits the renderer.
+     *
+     * @param composite the composite
+     */
     private void initRenderer(Composite composite) {
       figureCanvas = new FigureCanvas(composite);
       layeredPane = new FreeformLayeredPane();
@@ -61,14 +90,16 @@ public class LiveJointEditingDialog extends TitleAreaDialog {
 
   }
 
+  /** The form toolkit. */
   private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
 
+  /** The models. */
   private List<Shape> models;
 
   /**
    * Create the dialog.
-   * 
-   * @param parentShell
+   *
+   * @param parentShell the parent shell
    * @wbp.parser.constructor
    */
   public LiveJointEditingDialog(Shell parentShell) {
@@ -76,6 +107,12 @@ public class LiveJointEditingDialog extends TitleAreaDialog {
     setShellStyle(SWT.MAX);
   }
 
+  /**
+   * Instantiates a new live joint editing dialog.
+   *
+   * @param parentShell the parent shell
+   * @param models the models
+   */
   public LiveJointEditingDialog(Shell parentShell, List<Shape> models) {
     super(parentShell);
 
@@ -84,8 +121,9 @@ public class LiveJointEditingDialog extends TitleAreaDialog {
 
   /**
    * Create contents of the dialog.
-   * 
-   * @param parent
+   *
+   * @param parent the parent
+   * @return the control
    */
   @Override
   protected Control createDialogArea(Composite parent) {
@@ -100,13 +138,16 @@ public class LiveJointEditingDialog extends TitleAreaDialog {
     return area;
   }
 
+  /**
+   * Setup joints renderer.
+   */
   private void setupJointsRenderer() {
   }
 
   /**
    * Create contents of the button bar.
-   * 
-   * @param parent
+   *
+   * @param parent the parent
    */
   @Override
   protected void createButtonsForButtonBar(Composite parent) {
@@ -116,6 +157,8 @@ public class LiveJointEditingDialog extends TitleAreaDialog {
 
   /**
    * Return the initial size of the dialog.
+   *
+   * @return the initial size
    */
   @Override
   protected Point getInitialSize() {

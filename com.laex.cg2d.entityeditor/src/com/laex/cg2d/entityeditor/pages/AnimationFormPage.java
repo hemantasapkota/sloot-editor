@@ -100,6 +100,7 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
   /** The table viewer. */
   private TableViewer tableViewer;
 
+  /** The btn list. */
   private List<Button> btnList = new ArrayList<Button>();
 
   /** The dirty. */
@@ -135,27 +136,56 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
   /** The anim controller. */
   private AnimationFormPageController animController = new AnimationFormPageController();
 
+  /** The scrolled composite. */
   private ScrolledComposite scrolledComposite;
 
+  /** The frames composite. */
   private Composite framesComposite;
 
+  /**
+   * The Enum UIState.
+   */
   enum UIState {
-    None, LoadingFromModel, NewAnimation, AddFrames, SelectionChanged
+    
+    /** The None. */
+    None, 
+ /** The Loading from model. */
+ LoadingFromModel, 
+ /** The New animation. */
+ NewAnimation, 
+ /** The Add frames. */
+ AddFrames, 
+ /** The Selection changed. */
+ SelectionChanged
   }
 
+  /** The mghprlnk remove frames. */
   private ImageHyperlink mghprlnkRemoveFrames;
 
+  /** The row layout. */
   private RowLayout rowLayout;
 
+  /**
+   * The Class ImportSpritesDialog.
+   */
   class ImportSpritesDialog extends TitleAreaDialog {
 
+    /** The sprites composite. */
     private ImportSpritesComposite spritesComposite = null;
 
+    /**
+     * Instantiates a new import sprites dialog.
+     *
+     * @param parentShell the parent shell
+     */
     public ImportSpritesDialog(Shell parentShell) {
       super(parentShell);
       setShellStyle(SWT.BORDER | SWT.MAX | SWT.RESIZE);
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.dialogs.TitleAreaDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
+     */
     @Override
     protected Control createDialogArea(Composite parent) {
       setTitle("Import Sprites from Spritesheet");
@@ -171,16 +201,27 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
       return spritesComposite;
     }
 
+    /**
+     * Gets the sprites composite.
+     *
+     * @return the sprites composite
+     */
     public ImportSpritesComposite getSpritesComposite() {
       return spritesComposite;
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
+     */
     @Override
     protected void createButtonsForButtonBar(Composite parent) {
       createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
 //      createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.dialogs.TitleAreaDialog#getInitialSize()
+     */
     @Override
     protected Point getInitialSize() {
       return new Point(641, 447);
@@ -493,6 +534,9 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     }
   }
 
+  /**
+   * On click remove unmarked frames.
+   */
   private void onClickRemoveUnmarkedFrames() {
 
     int i = 0, size = btnList.size();
@@ -575,6 +619,9 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     setupFramesCompositeScrolling(SWT.DEFAULT);
   }
 
+  /**
+   * Clear sprite buttons.
+   */
   private void clearSpriteButtons() {
     for (int i = 0; i < btnList.size(); i++) {
       btnList.get(i).dispose();
@@ -618,6 +665,9 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     setRowLayout();
   }
 
+  /**
+   * Toggle frames composite state.
+   */
   private void toggleFramesCompositeState() {
     boolean state = btnList.isEmpty() ? false : true;
 
@@ -667,6 +717,11 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     btnDefaultAnimation.setEnabled(true);
   }
 
+  /**
+   * Sets the up frames composite scrolling.
+   *
+   * @param heightHint the new up frames composite scrolling
+   */
   private void setupFramesCompositeScrolling(int heightHint) {
     /* heightHint is unused for now */
     int height = 0;
@@ -681,9 +736,10 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
 
   /**
    * Adds the group frame to frames composite.
-   * 
-   * @param extractImage
-   *          the extract image
+   *
+   * @param extractImage the extract image
+   * @param frameIndex the frame index
+   * @param customData the custom data
    */
   private void addSpriteFrame(Image extractImage, int frameIndex, Object customData) {
     final Button btn = managedForm.getToolkit().createButton(framesComposite, "", SWT.None);
@@ -742,11 +798,17 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     }
   }
 
+  /**
+   * Editor dirty changed.
+   */
   private void editorDirtyChanged() {
     dirty = true;
     entityFormEditor.editorDirtyStateChanged();
   }
 
+  /**
+   * On edit animation properties.
+   */
   private void onEditAnimationProperties() {
     AnimationPropertyChangeDialog stcd = new AnimationPropertyChangeDialog(getSite().getShell(),
         txtAnimationName.getText(), txtAnimationDuration.getText());
@@ -764,6 +826,9 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     tableViewer.refresh();
   }
 
+  /**
+   * On click add animation.
+   */
   private void onClickAddAnimation() {
     AnimationListViewItem alvi = animController.createEmptyAnimation();
 
@@ -773,6 +838,11 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     editorDirtyChanged();
   }
 
+  /**
+   * Removes the sprite button.
+   *
+   * @param btn the btn
+   */
   private void removeSpriteButton(final Button btn) {
     Object spritesheetItemData = btn.getData(btn.getToolTipText());
 
@@ -792,12 +862,18 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     editorDirtyChanged();
   }
 
+  /**
+   * On click preview external.
+   */
   private void onClickPreviewExternal() {
     FileEditorInput fe = (FileEditorInput) getEditorInput();
     animController.previewAnimationExternal(selectedAnimationListItem().getAnimation(), fe.getFile().getLocation()
         .makeAbsolute().toOSString());
   }
 
+  /**
+   * On click export frames.
+   */
   private void onClickExportFrames() {
     DirectoryDialog dd = new DirectoryDialog(getSite().getShell());
 
@@ -826,6 +902,9 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     job.schedule();
   }
 
+  /* (non-Javadoc)
+   * @see com.laex.cg2d.entityeditor.ui.ImportSpriteCompositeDelegate#spriteExtractionComplete(com.laex.cg2d.model.model.ResourceFile, com.laex.cg2d.model.model.ResourceFile, java.util.List, java.util.Queue)
+   */
   @Override
   public void spriteExtractionComplete(ResourceFile spritesheetFile, ResourceFile spritesheetJsonFile,
       List<EntitySpritesheetItem> spritesheetItems, Queue<Image> extractedImages) {
@@ -851,16 +930,25 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
     editorDirtyChanged();
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.swt.events.ControlListener#controlMoved(org.eclipse.swt.events.ControlEvent)
+   */
   @Override
   public void controlMoved(ControlEvent e) {
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.swt.events.ControlListener#controlResized(org.eclipse.swt.events.ControlEvent)
+   */
   @Override
   public void controlResized(ControlEvent e) {
     Rectangle r = scrolledComposite.getClientArea();
     scrolledComposite.setMinSize(framesComposite.computeSize(r.width, SWT.DEFAULT));
   }
 
+  /**
+   * Sets the row layout.
+   */
   private void setRowLayout() {
     /*
      * Row Layout on EntComposite should be set once all the components have

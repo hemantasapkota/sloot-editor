@@ -22,6 +22,7 @@ import org.eclipse.swt.graphics.Color;
  */
 public class CardEditPart extends AbstractGraphicalEditPart {
   
+  /** The Constant DEFAULT_BG_COLOR. */
   public static final Color DEFAULT_BG_COLOR = new Color(null, 234, 234, 234); /* mercury color */
 
   /** The card number x. */
@@ -36,19 +37,17 @@ public class CardEditPart extends AbstractGraphicalEditPart {
   /** The card width. */
   private int cardWidth;
 
+  /** The bg color. */
   private Color bgColor;
 
   /**
    * Instantiates a new card edit part.
-   * 
-   * @param cardNumberX
-   *          the card number x
-   * @param cardNumberY
-   *          the card number y
-   * @param cardWidth
-   *          the card width
-   * @param cardHeight
-   *          the card height
+   *
+   * @param cardNumberX the card number x
+   * @param cardNumberY the card number y
+   * @param cardWidth the card width
+   * @param cardHeight the card height
+   * @param bgColor the bg color
    */
   public CardEditPart(int cardNumberX, int cardNumberY, int cardWidth, int cardHeight, Color bgColor) {
     this.cardNumberX = cardNumberX;

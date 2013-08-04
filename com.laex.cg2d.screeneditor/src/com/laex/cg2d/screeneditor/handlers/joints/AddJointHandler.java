@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2012, 2013 Hemanta Sapkota.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Hemanta Sapkota (laex.pearl@gmail.com)
+ */
 package com.laex.cg2d.screeneditor.handlers.joints;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -15,8 +25,17 @@ import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.screeneditor.commands.JointCreateCommand;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 
+/**
+ * The Class AddJointHandler.
+ */
 public class AddJointHandler extends AbstractHandler {
 
+  /**
+   * Gets the joint type.
+   *
+   * @param c the c
+   * @return the joint type
+   */
   private JointType getJointType(Command c) {
     String n = "";
     try {
@@ -41,6 +60,9 @@ public class AddJointHandler extends AbstractHandler {
     return null;
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+   */
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
 
