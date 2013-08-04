@@ -14,6 +14,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.ChopboxAnchor;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.EllipseAnchor;
@@ -26,6 +28,9 @@ import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 
 import com.laex.cg2d.model.EntityManager;
 import com.laex.cg2d.model.adapter.RectAdapter;
@@ -105,9 +110,23 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
   @Override
   public void performRequest(Request req) {
     if (req.getType() == RequestConstants.REQ_OPEN) {
-      System.err.println("double cliek");
+      requestOpen();
     }
     super.performRequest(req);
+  }
+
+  private void requestOpen() {
+    /* Request open: Open entity editor */
+    Shape shp = getCastedModel();
+    if (shp.getEditorShapeType().isEntity()) {
+      String pathFile = shp.getEntityResourceFile().getResourceFile();
+      FileEditorInput fei = new FileEditorInput(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathFile)));
+      try {
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(fei, "com.laex.cg3d.entityeditor.EntityEditor");
+      } catch (PartInitException e) {
+        e.printStackTrace();
+      }
+    }
   }
 
   /*
