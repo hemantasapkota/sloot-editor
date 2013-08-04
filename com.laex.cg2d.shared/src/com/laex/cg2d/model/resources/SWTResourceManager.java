@@ -231,7 +231,7 @@ public class SWTResourceManager {
     Image image = new Image(Display.getCurrent(), MISSING_IMAGE_SIZE, MISSING_IMAGE_SIZE);
     //
     GC gc = new GC(image);
-    gc.setBackground(getColor(SWT.COLOR_RED));
+    gc.setBackground(new Color(null, 255, 0, 0));
     gc.fillRectangle(0, 0, MISSING_IMAGE_SIZE, MISSING_IMAGE_SIZE);
     gc.dispose();
     //
