@@ -16,7 +16,7 @@ Bundle-ClassPath: gdx-backend-android.jar,
  gdx-backend-lwjgl-sources.jar,
  gdx-openal-sources.jar,
  gdx-sources.jar
-Bundle-Vendor: Hemanta Sapkota
+Bundle-Vendor: http://libgdx.badlogicgames.com/
 Export-Package: aurelienribon.bodyeditor,
  aurelienribon.tweenengine,
  aurelienribon.tweenengine.equations,
