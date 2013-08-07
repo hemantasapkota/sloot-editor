@@ -52,7 +52,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.laex.cg2d.core.application"
-            name="%Plugin.name">
+            name="Unboxed">
          <property
                name="aboutText"
                value="Laexian Box2D Editor">
@@ -67,7 +67,7 @@
          </property>
          <property
                name="appName"
-               value="%Plugin.name">
+               value="Unboxed">
          </property>
       </product>
    </extension>
