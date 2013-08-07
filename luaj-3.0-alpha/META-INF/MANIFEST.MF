@@ -14,3 +14,5 @@ Export-Package: org.luaj.vm2,
  org.luaj.vm2.parser,
  org.luaj.vm2.script
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: http://luaj.org/
+Bundle-ActivationPolicy: lazy

@@ -433,6 +433,10 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
    */
   @Override
   public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+    if (!(selection instanceof IStructuredSelection)) {
+      return;
+    }
+    
     IStructuredSelection strucSel = (IStructuredSelection) selection;
     Object firstElement = strucSel.getFirstElement();
 

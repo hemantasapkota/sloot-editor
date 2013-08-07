@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Render Engine
+Bundle-Name: Render Engine (Desktop)
 Bundle-SymbolicName: com.laex.cg2d.render;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Hemanta Sapkota

@@ -434,8 +434,6 @@ public class EntityManager implements ScreenScaffold {
       circShape.setRadius(radius);
       circShape.setPosition(cpos);
       
-      System.err.println(circShape.getPosition());
-
       shapeToAnimationOriginMap.put(shape, new Vector3(ox, oy, radius));
 
       fixDef.shape = circShape;
