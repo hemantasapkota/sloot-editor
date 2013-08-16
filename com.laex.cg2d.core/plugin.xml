@@ -52,10 +52,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.laex.cg2d.core.application"
-            name="Unboxed">
+            name="Sloot Editor">
          <property
                name="aboutText"
-               value="Laexian Box2D Editor">
+               value="Sloot Editor">
          </property>
          <property
                name="windowImages"
@@ -67,7 +67,7 @@
          </property>
          <property
                name="appName"
-               value="Unboxed">
+               value="Sloot Editor">
          </property>
       </product>
    </extension>

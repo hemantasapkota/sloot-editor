@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Unboxed" uid="Unboxed" id="com.laex.cg2d.core.product" application="com.laex.cg2d.core.application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="Sloot Editor" uid="SlootEditor" id="com.laex.cg2d.core.product" application="com.laex.cg2d.core.application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="product_lg.gif"/>
       <text>
-         Laexian Box2D Editor
+         Sloot Editor
       </text>
    </aboutInfo>
 
@@ -25,6 +25,7 @@
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
