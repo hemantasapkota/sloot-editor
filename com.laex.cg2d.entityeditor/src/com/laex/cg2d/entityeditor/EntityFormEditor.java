@@ -76,7 +76,7 @@ public class EntityFormEditor extends FormEditor {
       addPage(animationFormPage);
       addPage(collisionFormPage);
     } catch (PartInitException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
   }
 
@@ -94,9 +94,9 @@ public class EntityFormEditor extends FormEditor {
     try {
       parseEntityFile(input);
     } catch (IOException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     setPartName(input.getName());
@@ -126,7 +126,7 @@ public class EntityFormEditor extends FormEditor {
               }
             });
           } catch (CoreException e) {
-            e.printStackTrace();
+            Activator.log(e);
           }
         }
       }
@@ -175,7 +175,7 @@ public class EntityFormEditor extends FormEditor {
       collisionFormPage.setDirty(false);
       this.editorDirtyStateChanged();
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
   }
 
@@ -210,7 +210,6 @@ public class EntityFormEditor extends FormEditor {
     getSite().getShell().getDisplay().asyncExec(new Runnable() {
       @Override
       public void run() {
-        // TODO Auto-generated method stub
         getSite().getPage().closeEditor(EntityFormEditor.this, false);
       }
     });
