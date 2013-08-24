@@ -65,6 +65,7 @@ import org.eclipse.ui.forms.widgets.ImageHyperlink;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.ViewPart;
 
+import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.DNDFileTransfer;
 import com.laex.cg2d.model.DNDFileTransfer.TransferType;
@@ -78,7 +79,6 @@ import com.laex.cg2d.model.model.ModelValidator;
 import com.laex.cg2d.model.model.ModelValidatorFactory;
 import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.model.util.EntitiesUtil;
-import org.eclipse.swt.widgets.Combo;
 
 /**
  * The Class EntitiesView.
@@ -213,7 +213,7 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
    * Do filter.
    */
   protected void doFilter() {
-    String text = txtFilter.getText();
+    String text = txtFilter.getText().toLowerCase();
     boolean empty = StringUtils.isEmpty(text);
 
     for (String key : entitiesButtons.keySet()) {
@@ -374,7 +374,7 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
         }
       });
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
   }
@@ -415,7 +415,7 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
         try {
           loadNewEntity(resource);
         } catch (IOException e) {
-          e.printStackTrace();
+          Activator.log(e);
         }
         monitor.worked(1);
 
@@ -486,14 +486,14 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
           try {
             loadEntities(monitor);
           } catch (CoreException e) {
-            e.printStackTrace();
+            Activator.log(e);
           }
         }
       });
     } catch (InvocationTargetException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
   }
 
@@ -563,9 +563,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
           loadNewEntity(resource);
 
         } catch (IOException e) {
-          e.printStackTrace();
+          Activator.log(e);
         } catch (CoreException e) {
-          e.printStackTrace();
+          Activator.log(e);
         }
       }
     });
