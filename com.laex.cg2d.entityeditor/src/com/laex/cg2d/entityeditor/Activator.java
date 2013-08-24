@@ -10,6 +10,7 @@
  */
 package com.laex.cg2d.entityeditor;
 
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -63,6 +64,11 @@ public class Activator extends AbstractUIPlugin {
    */
   public static Activator getDefault() {
     return plugin;
+  }
+
+  public static void log(Exception e) {
+    e.printStackTrace();
+    Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID, e.getMessage()));
   }
 
 }
