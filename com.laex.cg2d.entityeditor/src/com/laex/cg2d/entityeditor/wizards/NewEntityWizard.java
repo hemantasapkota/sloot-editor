@@ -13,14 +13,11 @@ package com.laex.cg2d.entityeditor.wizards;
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.InvocationTargetException;
 
-import javax.xml.ws.handler.MessageContext;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IEditorInput;
@@ -133,24 +130,9 @@ public class NewEntityWizard extends Wizard implements INewWizard {
       getContainer().run(false, false, wop);
       return true;
     } catch (InvocationTargetException e) {
-
-      StringBuilder sb = new StringBuilder();
-      for (StackTraceElement ste : e.getStackTrace()) {
-        sb.append(ste.toString());
-        sb.append("\n");
-      }
-
-      Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, sb.toString()));
-
+      Activator.log(e);
     } catch (InterruptedException e) {
-
-      StringBuilder sb = new StringBuilder();
-      for (StackTraceElement ste : e.getStackTrace()) {
-        sb.append(ste.toString());
-        sb.append("\n");
-      }
-
-      Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, sb.toString()));
+      Activator.log(e);
     }
 
     return false;
