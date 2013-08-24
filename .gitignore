@@ -2,3 +2,5 @@
 .class
 bin/
 *.swp
+
+com.laex.cg2d.entityeditor/src/com/laex/cg2d/entityeditor/ui/ImportSpritesComposite.java
