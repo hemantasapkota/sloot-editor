@@ -175,7 +175,7 @@ public class MoveEntityAction implements IObjectActionDelegate {
         }
 
       } catch (CoreException ce) {
-        ce.printStackTrace();
+        Activator.log(ce);
       }
 
     }
@@ -249,9 +249,9 @@ public class MoveEntityAction implements IObjectActionDelegate {
         System.err.println(entityName);
         entityModels.put(entityName, entity);
       } catch (IOException e) {
-        e.printStackTrace();
+        Activator.log(e);
       } catch (CoreException e) {
-        e.printStackTrace();
+        Activator.log(e);
       }
     }
 
