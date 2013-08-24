@@ -23,6 +23,10 @@ Technology
 4. [Google Protobuf](https://code.google.com/p/protobuf/) for defining format for entities and screens
 5. [LuaJ](http://luaj.org/luaj/README.html) for executing lua scripts from Java
 
+Limitations
+====================
+1. Cannot rotate entities/non-entities in editor. [GEF does not support rotating edit parts]
+
 Build/Install/Run
 ====================
 
