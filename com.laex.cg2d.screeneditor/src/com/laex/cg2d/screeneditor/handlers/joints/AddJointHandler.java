@@ -22,6 +22,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.badlogic.gdx.physics.box2d.JointDef.JointType;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.commands.JointCreateCommand;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 
@@ -41,7 +42,7 @@ public class AddJointHandler extends AbstractHandler {
     try {
       n = c.getName();
     } catch (NotDefinedException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     if (n.equals("Distance"))
