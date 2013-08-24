@@ -41,6 +41,7 @@ import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGDebugDrawPreference
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences.CGWorldPreferences;
 import com.laex.cg2d.model.adapter.ColorAdapter;
 import com.laex.cg2d.model.util.FloatUtil;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
 
@@ -440,9 +441,9 @@ public class ScreenWorldPropertyPage extends PropertyPage {
     try {
       populateProperties();
     } catch (IOException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     return composite_2;
@@ -476,9 +477,9 @@ public class ScreenWorldPropertyPage extends PropertyPage {
     try {
       ScreenEditorUtil.savePreferences(constructPrefs(), (IFile) getElement());
     } catch (IOException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     super.performDefaults();
@@ -494,9 +495,9 @@ public class ScreenWorldPropertyPage extends PropertyPage {
     try {
       ScreenEditorUtil.savePreferences(constructPrefs(), (IFile) getElement());
     } catch (IOException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
     return true;
   }
