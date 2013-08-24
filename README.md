@@ -1,7 +1,7 @@
 Sloot Editor
 ====================
 
-Sloot Editor is a ![Box2D](http://box2d.org/) editor with support for entities, screens and scripting.
+Sloot Editor is a [Box2D](http://box2d.org/) editor with support for entities, screens and scripting.
 
 Features
 ===================
@@ -17,16 +17,16 @@ Features
 
 Technology
 ====================
-1. ![Eclipse RCP](http://www.eclipse.org/home/categories/rcp.php) for platform management
-2. ![Eclipse GEF](https://github.com/eclipse/gef) for screen editor
-3. ![Libgdx](https://github.com/libgdx/libgdx) for rendering
-4. ![Google Protobuf](https://code.google.com/p/protobuf/) for defining format for entities and screens
-5. ![LuaJ](http://luaj.org/luaj/README.html) for executing lua scripts from Java
+1. [Eclipse RCP](http://www.eclipse.org/home/categories/rcp.php) for platform management
+2. [Eclipse GEF](https://github.com/eclipse/gef) for screen editor
+3. [Libgdx](https://github.com/libgdx/libgdx) for rendering
+4. [Google Protobuf](https://code.google.com/p/protobuf/) for defining format for entities and screens
+5. [LuaJ](http://luaj.org/luaj/README.html) for executing lua scripts from Java
 
 Build/Install/Run
 ====================
 
-See wiki page ![How to Build](https://github.com/hemantasapkota/Laexian_Box2D_Editor/wiki/How-to-Build)
+See wiki page [How to Build](https://github.com/hemantasapkota/Laexian_Box2D_Editor/wiki/How-to-Build)
 
 Screenshots
 ===========
