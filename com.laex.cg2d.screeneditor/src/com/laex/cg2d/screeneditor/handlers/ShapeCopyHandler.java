@@ -26,6 +26,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.ModelCopier;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.editparts.ShapeEditPart;
 import com.laex.cg2d.screeneditor.model.ShapeCopier;
@@ -56,9 +57,9 @@ public class ShapeCopyHandler extends AbstractHandler {
     try {
       doCopy(gv, gameModel);
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (IOException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     return null;
