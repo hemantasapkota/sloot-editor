@@ -132,6 +132,8 @@ public class NewEntityPage extends WizardPage {
     if (pathToProject != null) {
       txtProjectName.setText(pathToProject.toOSString());
     }
+
+    txtFileName.setFocus();
   }
 
   /**
