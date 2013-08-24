@@ -10,14 +10,10 @@
  */
 package com.laex.cg2d.screeneditor;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.omg.PortableServer.Servant;
 import org.osgi.framework.BundleContext;
-
-import com.laex.cg2d.model.model.Entity;
-import com.laex.cg2d.model.model.Shape;
 
 /**
  * The activator class controls the plug-in life cycle.
@@ -69,6 +65,15 @@ public class Activator extends AbstractUIPlugin {
    */
   public static Activator getDefault() {
     return plugin;
+  }
+
+  public static void log(Exception e) {
+    e.printStackTrace();
+    Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID, e.getMessage()));
+  }
+
+  public static void log(int severity, String message) {
+    Activator.getDefault().getLog().log(new Status(severity, PLUGIN_ID, message));
   }
   
 

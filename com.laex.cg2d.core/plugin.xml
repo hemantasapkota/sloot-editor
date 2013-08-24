@@ -59,7 +59,7 @@
          </property>
          <property
                name="windowImages"
-               value="icons/sample2.gif">
+               value="icons/sloot_16x16.png,icons/sloot_32x32.png,icons/sloot_48x48.png,icons/sloot_64x64.png,icons/sloot_124x124.png">
          </property>
          <property
                name="aboutImage"

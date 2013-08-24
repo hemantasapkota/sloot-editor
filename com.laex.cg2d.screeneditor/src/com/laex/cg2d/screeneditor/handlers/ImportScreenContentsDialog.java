@@ -53,6 +53,7 @@ import com.laex.cg2d.model.model.IDCreationStrategyFactory;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.ModelCopier;
 import com.laex.cg2d.model.model.Shape;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditorUtil;
 import com.laex.cg2d.screeneditor.commands.LayerAddCommand;
 import com.laex.cg2d.screeneditor.commands.ShapeCreateCommand;
@@ -206,7 +207,7 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
     try {
       loadScreens();
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     return container;
@@ -434,9 +435,9 @@ public class ImportScreenContentsDialog extends TitleAreaDialog {
           commandStack.execute(cc);
 
         } catch (IOException e) {
-          e.printStackTrace();
+          Activator.log(e);
         } catch (CoreException e) {
-          e.printStackTrace();
+          Activator.log(e);
         }
 
       }

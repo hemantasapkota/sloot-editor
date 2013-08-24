@@ -36,6 +36,7 @@ import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGScreenPreferences;
 import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Layer;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.ScreenEditor;
 import com.laex.cg2d.screeneditor.model.CGScreenModelAdapter;
 import com.laex.cg2d.screeneditor.prefs.PreferenceInitializer;
@@ -147,7 +148,7 @@ public class NewScreenWizard extends Wizard implements INewWizard {
             try {
               page.openEditor(edInp, ScreenEditor.ID);
             } catch (PartInitException e) {
-              e.printStackTrace();
+              Activator.log(e);
             }
 
           }
@@ -163,9 +164,9 @@ public class NewScreenWizard extends Wizard implements INewWizard {
       getContainer().run(false, false, wop);
       return true;
     } catch (InvocationTargetException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     return false;

@@ -133,6 +133,8 @@ public class NewScriptPage extends WizardPage {
     if (pathToProject != null) {
       txtProjectName.setText(pathToProject.toOSString());
     }
+
+    txtFileName.setFocus();
   }
 
   /**

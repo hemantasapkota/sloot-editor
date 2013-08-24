@@ -10,18 +10,27 @@
  */
 package com.laex.cg2d.screeneditor.wizards;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 
+import org.apache.commons.collections.primitives.adapters.io.InputStreamByteIterator;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IEditorInput;
@@ -33,6 +42,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.internal.util.BundleUtility;
 import org.eclipse.ui.part.FileEditorInput;
 
 import com.laex.cg2d.model.CGCProject;
@@ -122,14 +132,11 @@ public class NewScriptWizard extends Wizard implements INewWizard {
         ICGCProject b2dMgr = CGCProject.getInstance();
 
         byte[] barr = null;
-
         try {
-          URL url = Activator.getDefault().getBundle().getEntry("luaScriptTemplate.lua");
-          url = FileLocator.resolve(url);
-          barr = FileUtils.readFileToByteArray(FileUtils.toFile(url));
-
+          InputStream io = FileLocator.openStream(Activator.getDefault().getBundle(), new Path("luaScriptTemplate.lua"), false);
+          barr = IOUtils.toByteArray(io);
         } catch (IOException e1) {
-          e1.printStackTrace();
+          Activator.log(e1);
         }
 
         ByteArrayInputStream bios = new ByteArrayInputStream(barr);
@@ -146,7 +153,7 @@ public class NewScriptWizard extends Wizard implements INewWizard {
             try {
               page.openEditor(edInp, IEditorRegistry.SYSTEM_EXTERNAL_EDITOR_ID);
             } catch (PartInitException e) {
-              e.printStackTrace();
+              Activator.log(e);
             }
 
           }
@@ -162,9 +169,9 @@ public class NewScriptWizard extends Wizard implements INewWizard {
       getContainer().run(false, false, wop);
       return true;
     } catch (InvocationTargetException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     return false;

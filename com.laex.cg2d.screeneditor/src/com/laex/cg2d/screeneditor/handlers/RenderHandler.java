@@ -144,7 +144,7 @@ public class RenderHandler extends AbstractHandler {
       }
 
       private IStatus handleException(Exception e) {
-        e.printStackTrace();
+        Activator.log(e);
         return Status.CANCEL_STATUS;
       }
     };

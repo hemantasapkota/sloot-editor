@@ -56,6 +56,7 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.ObjectMap.Entries;
 import com.badlogic.gdx.utils.ObjectMap.Entry;
 import com.badlogic.gdx.utils.OrderedMap;
+import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.EntitySpritesheetItem;
@@ -297,7 +298,7 @@ public class ImportSpritesComposite extends Composite {
       }
 
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     return list;
@@ -404,9 +405,13 @@ public class ImportSpritesComposite extends Composite {
     if (!btnEnableExtract.getSelection()) {
       txtRows.setEnabled(false);
       txtCols.setEnabled(false);
+      txtTileHeight.setEnabled(false);
+      txtTileWidth.setEnabled(false);
     } else {
       txtRows.setEnabled(true);
       txtCols.setEnabled(true);
+      txtTileWidth.setEnabled(false);
+      txtTileHeight.setEnabled(false);
     }
   }
 
@@ -485,11 +490,13 @@ public class ImportSpritesComposite extends Composite {
 
     txtTileWidth = new Spinner(composite_1, SWT.BORDER);
     txtTileWidth.setEnabled(false);
+//    txtTileWidth.addModifyListener(edm);
 
     Label lblTileHeight = toolkit.createLabel(composite_1, "Tile Height", SWT.NONE);
 
     txtTileHeight = new Spinner(composite_1, SWT.BORDER);
     txtTileHeight.setEnabled(false);
+//    txtTileHeight.addModifyListener(edm);
     toolkit.adapt(txtTileHeight);
     toolkit.paintBordersFor(txtTileHeight);
 

@@ -31,6 +31,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.Array;
+import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.model.ScreenModel.CGBounds;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
@@ -111,9 +112,9 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
         }
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (IOException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     if (anim == null) {

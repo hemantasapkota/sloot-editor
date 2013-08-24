@@ -428,9 +428,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       performSave(file, monitor);
 
     } catch (CoreException ce) {
-      ce.printStackTrace();
+      Activator.log(ce);
     } catch (IOException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
   }
 
@@ -628,13 +628,13 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       loadScreenModel(input);
 
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (IOException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (InvocationTargetException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
 
     super.setInput(input);
@@ -674,9 +674,9 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
 
           monitor.done();
         } catch (IOException e) {
-          e.printStackTrace();
+          Activator.log(e);
         } catch (CoreException e) {
-          e.printStackTrace();
+          Activator.log(e);
         }
 
       }
@@ -711,7 +711,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
               }
             });
           } catch (CoreException e) {
-            e.printStackTrace();
+            Activator.log(e);
           }
         }
       }
@@ -954,7 +954,7 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
       getCommandStack().markSaveLocation();
 
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
   }
 

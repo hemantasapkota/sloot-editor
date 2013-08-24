@@ -35,6 +35,7 @@ import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
+import com.laex.cg2d.screeneditor.Activator;
 
 /**
  * The Class ConvertToJsonAction.
@@ -116,9 +117,9 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
         try {
           entity = CGEntity.parseFrom(file.getContents());
         } catch (IOException e) {
-          e.printStackTrace();
+          Activator.log(e);
         } catch (CoreException e) {
-          e.printStackTrace();
+          Activator.log(e);
         }
 
         if (entity == null) {
@@ -147,7 +148,7 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
         try {
           file1.setContents(new ByteArrayInputStream(jsonFormat.getBytes()), true, false, new NullProgressMonitor());
         } catch (CoreException e) {
-          e.printStackTrace();
+          Activator.log(e);
         }
 
       } else {
@@ -174,9 +175,9 @@ public class ConvertToJsonAction implements IObjectActionDelegate {
     try {
       prj.createFile(path, new ByteArrayInputStream(jsonFormat.getBytes("utf-8")));
     } catch (UnsupportedEncodingException e) {
-      e.printStackTrace();
+      Activator.log(e);
     } catch (CoreException e) {
-      e.printStackTrace();
+      Activator.log(e);
     }
   }
 

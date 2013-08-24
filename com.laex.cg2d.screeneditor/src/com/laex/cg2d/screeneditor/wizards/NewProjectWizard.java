@@ -23,6 +23,7 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import com.laex.cg2d.model.CGCProject;
 import com.laex.cg2d.model.ICGCProject;
+import com.laex.cg2d.screeneditor.Activator;
 
 /**
  * The Class NewProjectWizard.
@@ -83,10 +84,10 @@ public class NewProjectWizard extends Wizard implements INewWizard {
     try {
       getContainer().run(true, false, op);
     } catch (InvocationTargetException e) {
-      e.printStackTrace();
+      Activator.log(e);
       return false;
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Activator.log(e);
       return false;
     }
 

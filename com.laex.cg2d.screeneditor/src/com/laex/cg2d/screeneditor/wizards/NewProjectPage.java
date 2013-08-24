@@ -68,13 +68,17 @@ public class NewProjectPage extends WizardPage {
     txtProjectName.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(ModifyEvent e) {
+
         try {
           validateProjectName();
         } catch (CoreException e1) {
           e1.printStackTrace();
         }
+
       }
     });
+
+    txtProjectName.setFocus();
   }
 
   /**

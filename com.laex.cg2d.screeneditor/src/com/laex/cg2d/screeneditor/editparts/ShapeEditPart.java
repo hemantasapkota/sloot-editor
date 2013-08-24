@@ -40,6 +40,7 @@ import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.resources.ResourceManager;
+import com.laex.cg2d.screeneditor.Activator;
 import com.laex.cg2d.screeneditor.editparts.figure.BoxFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.CircleFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.HorizontalEdgeFigure;
@@ -124,7 +125,7 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
       try {
         PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(fei, "com.laex.cg3d.entityeditor.EntityEditor");
       } catch (PartInitException e) {
-        e.printStackTrace();
+        Activator.log(e);
       }
     }
   }
