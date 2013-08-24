@@ -155,9 +155,9 @@ public class NewEntitiesFromSpritesheetWizard extends Wizard implements INewWiza
       getContainer().run(false, false, wop);
       return true;
     } catch (InvocationTargetException e) {
-      Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, e.getMessage()));
+      Activator.log(e);
     } catch (InterruptedException e) {
-      Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, e.getMessage()));
+      Activator.log(e);
     }
 
     return false;
