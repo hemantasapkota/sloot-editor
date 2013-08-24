@@ -26,6 +26,7 @@ Technology
 Limitations
 ====================
 1. Cannot rotate entities/non-entities in editor. [GEF does not support rotating edit parts]
+2. Joint support is basic. (No ragdolls yet...)
 
 Build/Install/Run
 ====================
