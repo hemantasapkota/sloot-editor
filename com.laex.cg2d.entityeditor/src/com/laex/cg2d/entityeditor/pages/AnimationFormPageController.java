@@ -148,7 +148,7 @@ public class AnimationFormPageController {
           }
 
         } catch (IOException e) {
-          e.printStackTrace();
+          Activator.log(e);
         }
 
         return Status.OK_STATUS;
