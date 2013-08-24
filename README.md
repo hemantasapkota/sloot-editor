@@ -3,6 +3,9 @@ Sloot Editor
 
 Sloot Editor is a [Box2D](http://box2d.org/) editor with support for entities, screens and scripting.
 
+See [sloot-api](https://github.com/hemantasapkota/sloot-api), if you're interested in integrating sloot projects
+in your custom app.
+
 Features
 ===================
 1. Extract from spritesheet, convert to entities
