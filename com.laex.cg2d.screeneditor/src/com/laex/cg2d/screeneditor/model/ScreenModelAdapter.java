@@ -38,7 +38,6 @@ import com.laex.cg2d.model.model.GameModel;
 import com.laex.cg2d.model.model.Joint;
 import com.laex.cg2d.model.model.Layer;
 import com.laex.cg2d.model.model.Shape;
-import com.laex.cg2d.screeneditor.Activator;
 
 /**
  * The Class GameModelAdapter.
@@ -175,6 +174,7 @@ public class ScreenModelAdapter {
     Shape shape = new Shape(asEditorShapeType(cgShape.getEditorShapeType()));
     shape.setId(cgShape.getId());
     shape.setLocked(cgShape.getLocked());
+    shape.setText(cgShape.getText());
     shape.setBackground(cgShape.getBackground());
     shape.setBackgroundResourceFile(ResourceFileAdapter.asResourceFile(cgShape.getBackgroundResourceFile()));
     shape.setBounds(asRectangle(cgShape.getBounds()));
