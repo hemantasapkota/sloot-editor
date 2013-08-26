@@ -11,19 +11,34 @@
 package com.laex.cg2d.screeneditor.editparts.figure;
 
 import org.eclipse.draw2d.ColorConstants;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.StackLayout;
 
 /**
  * The Class BoxFigure.
  */
 public class BoxFigure extends RectangleFigure {
 
+  private Label textLabel;
+
   /**
    * Instantiates a new box figure.
    */
-  public BoxFigure() {
+  public BoxFigure(String label) {
     setFill(true);
     setBackgroundColor(ColorConstants.green);
+    setLayoutManager(new StackLayout());
+
+    textLabel = new Label(label == null ? "" : label);
+    add(textLabel);
+  }
+
+  public void updateLabel(String text) {
+    if (text == null) text = "";
+
+    textLabel.setText(text);
+    repaint();
   }
 
 }
