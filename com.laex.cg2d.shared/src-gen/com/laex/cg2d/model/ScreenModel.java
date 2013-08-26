@@ -17441,6 +17441,21 @@ public final class ScreenModel {
      * <code>optional .com.laex.cg2d.model.CGResourceFile entityRefFile = 11;</code>
      */
     com.laex.cg2d.model.ScreenModel.CGResourceFileOrBuilder getEntityRefFileOrBuilder();
+
+    // optional string text = 12;
+    /**
+     * <code>optional string text = 12;</code>
+     */
+    boolean hasText();
+    /**
+     * <code>optional string text = 12;</code>
+     */
+    java.lang.String getText();
+    /**
+     * <code>optional string text = 12;</code>
+     */
+    com.google.protobuf.ByteString
+        getTextBytes();
   }
   /**
    * Protobuf type {@code com.laex.cg2d.model.CGShape}
@@ -17595,6 +17610,11 @@ public final class ScreenModel {
                 entityRefFile_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000200;
+              break;
+            }
+            case 98: {
+              bitField0_ |= 0x00000400;
+              text_ = input.readBytes();
               break;
             }
           }
@@ -17893,6 +17913,49 @@ public final class ScreenModel {
       return entityRefFile_;
     }
 
+    // optional string text = 12;
+    public static final int TEXT_FIELD_NUMBER = 12;
+    private java.lang.Object text_;
+    /**
+     * <code>optional string text = 12;</code>
+     */
+    public boolean hasText() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional string text = 12;</code>
+     */
+    public java.lang.String getText() {
+      java.lang.Object ref = text_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          text_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string text = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTextBytes() {
+      java.lang.Object ref = text_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        text_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       id_ = "";
       visible_ = false;
@@ -17905,6 +17968,7 @@ public final class ScreenModel {
       fixtureDef_ = com.laex.cg2d.model.ScreenModel.CGFixtureDef.getDefaultInstance();
       joints_ = java.util.Collections.emptyList();
       entityRefFile_ = com.laex.cg2d.model.ScreenModel.CGResourceFile.getDefaultInstance();
+      text_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -17963,6 +18027,9 @@ public final class ScreenModel {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeMessage(11, entityRefFile_);
       }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeBytes(12, getTextBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -18015,6 +18082,10 @@ public final class ScreenModel {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(11, entityRefFile_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(12, getTextBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -18184,6 +18255,8 @@ public final class ScreenModel {
           entityRefFileBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000400);
+        text_ = "";
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -18281,6 +18354,10 @@ public final class ScreenModel {
         } else {
           result.entityRefFile_ = entityRefFileBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.text_ = text_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -18354,6 +18431,11 @@ public final class ScreenModel {
         }
         if (other.hasEntityRefFile()) {
           mergeEntityRefFile(other.getEntityRefFile());
+        }
+        if (other.hasText()) {
+          bitField0_ |= 0x00000800;
+          text_ = other.text_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -19426,6 +19508,80 @@ public final class ScreenModel {
           entityRefFile_ = null;
         }
         return entityRefFileBuilder_;
+      }
+
+      // optional string text = 12;
+      private java.lang.Object text_ = "";
+      /**
+       * <code>optional string text = 12;</code>
+       */
+      public boolean hasText() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional string text = 12;</code>
+       */
+      public java.lang.String getText() {
+        java.lang.Object ref = text_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          text_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string text = 12;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTextBytes() {
+        java.lang.Object ref = text_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          text_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string text = 12;</code>
+       */
+      public Builder setText(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        text_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string text = 12;</code>
+       */
+      public Builder clearText() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        text_ = getDefaultInstance().getText();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string text = 12;</code>
+       */
+      public Builder setTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        text_ = value;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.laex.cg2d.model.CGShape)
@@ -24152,7 +24308,7 @@ public final class ScreenModel {
       "GFixtureDef\022\017\n\007density\030\001 \001(\002\022\020\n\010friction" +
       "\030\002 \001(\002\022\023\n\013restitution\030\003 \001(\002\022\016\n\006sensor\030\004 " +
       "\001(\010\022-\n\006filter\030\005 \001(\0132\035.com.laex.cg2d.mode" +
-      "l.CGFilter\"\321\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007vi",
+      "l.CGFilter\"\337\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007vi",
       "sible\030\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackgroun" +
       "d\030\004 \001(\010\022C\n\026backgroundResourceFile\030\005 \001(\0132" +
       "#.com.laex.cg2d.model.CGResourceFile\022?\n\017" +
@@ -24163,40 +24319,40 @@ public final class ScreenModel {
       "\nfixtureDef\030\t \001(\0132!.com.laex.cg2d.model." +
       "CGFixtureDef\022,\n\006joints\030\n \003(\0132\034.com.laex." +
       "cg2d.model.CGJoint\022:\n\rentityRefFile\030\013 \001(",
-      "\0132#.com.laex.cg2d.model.CGResourceFile\"q" +
-      "\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007v" +
-      "isible\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022+\n\005shape\030\005 " +
-      "\003(\0132\034.com.laex.cg2d.model.CGShape\"\363\005\n\023CG" +
-      "ScreenPreferences\022W\n\016debugDrawPrefs\030\001 \001(" +
-      "\0132?.com.laex.cg2d.model.CGScreenPreferen" +
-      "ces.CGDebugDrawPreferences\022O\n\nworldPrefs" +
-      "\030\002 \001(\0132;.com.laex.cg2d.model.CGScreenPre" +
-      "ferences.CGWorldPreferences\022M\n\tcardPrefs" +
-      "\030\003 \001(\0132:.com.laex.cg2d.model.CGScreenPre",
-      "ferences.CGCardPreferences\0225\n\017background" +
-      "Color\030\004 \001(\0132\034.com.laex.cg2d.model.CGColo" +
-      "r\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndrawBodi" +
-      "es\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawAABB" +
-      "\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n\021in" +
-      "stallMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugData\030\006" +
-      " \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWorldPr" +
-      "eferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velocityI" +
-      "terations\030\002 \001(\005\022\032\n\022positionIterations\030\003 " +
-      "\001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001(\002\022",
-      "\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCardPreferences\022\017" +
-      "\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcard" +
-      "Width\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJo" +
-      "intType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPR" +
-      "ISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005M" +
-      "OUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n" +
-      "\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollisi" +
-      "onType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n" +
-      "\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\tK" +
-      "INEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorShap",
-      "eType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPLE" +
-      "_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n\022" +
-      "SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAPE" +
-      "\020\005\022\020\n\014ENTITY_SHAPE\020\006"
+      "\0132#.com.laex.cg2d.model.CGResourceFile\022\014" +
+      "\n\004text\030\014 \001(\t\"q\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004n" +
+      "ame\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004 \001" +
+      "(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d.model." +
+      "CGShape\"\363\005\n\023CGScreenPreferences\022W\n\016debug" +
+      "DrawPrefs\030\001 \001(\0132?.com.laex.cg2d.model.CG" +
+      "ScreenPreferences.CGDebugDrawPreferences" +
+      "\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex.cg2d.mod" +
+      "el.CGScreenPreferences.CGWorldPreference" +
+      "s\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.cg2d.mod",
+      "el.CGScreenPreferences.CGCardPreferences" +
+      "\0225\n\017backgroundColor\030\004 \001(\0132\034.com.laex.cg2" +
+      "d.model.CGColor\032\266\001\n\026CGDebugDrawPreferenc" +
+      "es\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001" +
+      "(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawInactiveBodi" +
+      "es\030\004 \001(\010\022\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\rd" +
+      "rawDebugData\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010" +
+      "\032\224\001\n\022CGWorldPreferences\022\020\n\010ptmRatio\030\001 \001(" +
+      "\005\022\032\n\022velocityIterations\030\002 \001(\005\022\032\n\022positio" +
+      "nIterations\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010g",
+      "ravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCar" +
+      "dPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY" +
+      "\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\ncardHeight\030" +
+      "\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010RE" +
+      "VOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n" +
+      "\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020" +
+      "\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025C" +
+      "GEntityCollisionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022" +
+      "\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n" +
+      "\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001",
+      "\n\021CGEditorShapeType\022\027\n\023SIMPLE_SHAPE_CIRC" +
+      "LE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHA" +
+      "PE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BA" +
+      "CKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAPE\020\006"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -24316,7 +24472,7 @@ public final class ScreenModel {
           internal_static_com_laex_cg2d_model_CGShape_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_CGShape_descriptor,
-              new java.lang.String[] { "Id", "Visible", "Locked", "Background", "BackgroundResourceFile", "EditorShapeType", "Bounds", "BodyDef", "FixtureDef", "Joints", "EntityRefFile", });
+              new java.lang.String[] { "Id", "Visible", "Locked", "Background", "BackgroundResourceFile", "EditorShapeType", "Bounds", "BodyDef", "FixtureDef", "Joints", "EntityRefFile", "Text", });
           internal_static_com_laex_cg2d_model_CGLayer_descriptor =
             getDescriptor().getMessageTypes().get(19);
           internal_static_com_laex_cg2d_model_CGLayer_fieldAccessorTable = new
