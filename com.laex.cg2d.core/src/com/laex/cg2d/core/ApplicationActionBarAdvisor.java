@@ -62,6 +62,9 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
   
   /** The save all action. */
   private IAction saveAllAction;
+  private IAction quitAction;
+  private IAction newWizardDropDownAction_1;
+  private IAction printAction;
 
   /**
    * Instantiates a new application action bar advisor.
@@ -126,6 +129,18 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
       saveAllAction = ActionFactory.SAVE_ALL.create(window);
       register(saveAllAction);
     }
+    {
+      quitAction = ActionFactory.QUIT.create(window);
+      register(quitAction);
+    }
+    {
+      newWizardDropDownAction_1 = ActionFactory.NEW_WIZARD_DROP_DOWN.create(window);
+      register(newWizardDropDownAction_1);
+    }
+    {
+      printAction = ActionFactory.PRINT.create(window);
+      register(printAction);
+    }
   }
 
   /*
@@ -160,11 +175,16 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     menuBar.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
     menuBar.add(prefsMenu);
     menuBar.add(helpMenu);
+    fileMenu.add(newWizardDropDownAction_1);
 
     // fileMenu.add(saveAction);
     fileMenu.add(new Separator());
     fileMenu.add(saveAction);
     fileMenu.add(saveAllAction);
+    fileMenu.add(new Separator());
+    fileMenu.add(printAction);
+    fileMenu.add(new Separator());
+    fileMenu.add(quitAction);
 
 
     // prefs

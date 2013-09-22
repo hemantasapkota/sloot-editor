@@ -20,11 +20,12 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.dynamichelpers.IExtensionChangeHandler;
-import org.eclipse.jface.preference.IPreferenceNode;
 import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IPerspectiveRegistry;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
@@ -92,6 +93,34 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
    */
   @Override
   public void postWindowCreate(IWorkbenchWindowConfigurer configurer) {
+  }
+
+  @Override
+  public void postWindowOpen(IWorkbenchWindowConfigurer configurer) {
+//    super.postWindowOpen(configurer);
+
+ // remove unwanted UI contributions that eclipse makes by default
+    IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
+
+    for (int i = 0; i < windows.length; ++i) {
+        IWorkbenchPage page = windows[i].getActivePage();
+        if (page != null) {
+            // hide generic 'File' commands
+            page.hideActionSet("org.eclipse.ui.actionSet.openFiles");
+
+            // hide 'Convert Line Delimiters To...'
+            page.hideActionSet("org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo");
+
+            // hide 'Search' commands
+            page.hideActionSet("org.eclipse.search.searchActionSet");
+
+            // hide 'Annotation' commands
+            page.hideActionSet("org.eclipse.ui.edit.text.actionSet.annotationNavigation");
+
+            // hide 'Forward/Back' type navigation commands
+            page.hideActionSet("org.eclipse.ui.edit.text.actionSet.navigation");
+        }
+    }
   }
 
   /*
