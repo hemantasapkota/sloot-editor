@@ -41,6 +41,7 @@ import com.laex.cg2d.model.model.ModelElement;
 import com.laex.cg2d.model.model.Shape;
 import com.laex.cg2d.model.resources.ResourceManager;
 import com.laex.cg2d.screeneditor.Activator;
+import com.laex.cg2d.screeneditor.commands.ShapeChangeTextCommand;
 import com.laex.cg2d.screeneditor.editparts.figure.BoxFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.CircleFigure;
 import com.laex.cg2d.screeneditor.editparts.figure.HorizontalEdgeFigure;
@@ -49,6 +50,7 @@ import com.laex.cg2d.screeneditor.editparts.figure.VerticalEdgeFigure;
 import com.laex.cg2d.screeneditor.editparts.policies.ShapeComponentEditPolicy;
 import com.laex.cg2d.screeneditor.editparts.policies.ShapeGraphicalNodeEditPolicy;
 import com.laex.cg2d.screeneditor.model.ShapesDiagramAdapter;
+import com.laex.cg2d.screeneditor.views.SimpleTextChangeDialog;
 
 /**
  * The Class ShapeEditPart.
@@ -104,9 +106,13 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
 
     return super.getAdapter(key);
   }
-  
-  /* (non-Javadoc)
-   * @see org.eclipse.gef.editparts.AbstractEditPart#performRequest(org.eclipse.gef.Request)
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.gef.editparts.AbstractEditPart#performRequest(org.eclipse.gef
+   * .Request)
    */
   @Override
   public void performRequest(Request req) {
@@ -119,14 +125,29 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
   private void requestOpen() {
     /* Request open: Open entity editor */
     Shape shp = getCastedModel();
+
     if (shp.getEditorShapeType().isEntity()) {
       String pathFile = shp.getEntityResourceFile().getResourceFile();
       FileEditorInput fei = new FileEditorInput(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathFile)));
       try {
-        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(fei, "com.laex.cg3d.entityeditor.EntityEditor");
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+            .openEditor(fei, "com.laex.cg3d.entityeditor.EntityEditor");
       } catch (PartInitException e) {
         Activator.log(e);
       }
+    }
+
+    if (shp.getEditorShapeType().isBox()) {
+      SimpleTextChangeDialog stcd = new SimpleTextChangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+          .getShell(), getCastedModel().getText(), "Change the text of the figure");
+      int resp = stcd.open();
+      if (resp == SimpleTextChangeDialog.CANCEL) {
+        return;
+      }
+
+      ShapeChangeTextCommand sctc = new ShapeChangeTextCommand(getCastedModel(), stcd.getName());
+      getViewer().getEditDomain().getCommandStack().execute(sctc);
+      ((BoxFigure) getFigure()).updateLabel(stcd.getName());
     }
   }
 
@@ -162,7 +183,7 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
 
     switch (type) {
     case SIMPLE_SHAPE_BOX:
-      figure = new BoxFigure();
+      figure = new BoxFigure(model.getText());
       break;
     case SIMPLE_SHAPE_CIRCLE:
       figure = new CircleFigure();
@@ -194,8 +215,9 @@ public class ShapeEditPart extends AbstractGraphicalEditPart implements Property
 
   /**
    * Update entity figure.
-   *
-   * @param model the model
+   * 
+   * @param model
+   *          the model
    * @return the i figure
    */
   private IFigure updateEntityFigure(Shape model) {

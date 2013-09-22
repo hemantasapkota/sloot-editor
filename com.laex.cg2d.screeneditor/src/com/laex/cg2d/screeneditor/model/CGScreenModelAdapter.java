@@ -168,7 +168,7 @@ public class CGScreenModelAdapter {
     CGBounds pBounds = CGBounds.newBuilder().setX(b.x).setY(b.y).setWidth(b.width).setHeight(b.height).build();
 
     CGShape.Builder buildr = CGShape.newBuilder().setId(s.getId()).setVisible(s.isVisible()).setLocked(s.isLocked())
-        .setBackground(s.isBackground())
+        .setBackground(s.isBackground()).setText(s.getText())
         .setBackgroundResourceFile(ResourceFileAdapter.asCGResourceFile(s.getBackgroundResourceFile()))
         .setEditorShapeType(asCGEditorType(s.getEditorShapeType())).setBounds(pBounds).setBodyDef(bdef)
         .setFixtureDef(fdef);

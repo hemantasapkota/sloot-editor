@@ -450,7 +450,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CGFixtureDef));
   CGShape_descriptor_ = file->message_type(18);
-  static const int CGShape_offsets_[11] = {
+  static const int CGShape_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, visible_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, locked_),
@@ -462,6 +462,7 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, fixturedef_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, joints_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, entityreffile_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGShape, text_),
   };
   CGShape_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -775,7 +776,7 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "GFixtureDef\022\017\n\007density\030\001 \001(\002\022\020\n\010friction"
     "\030\002 \001(\002\022\023\n\013restitution\030\003 \001(\002\022\016\n\006sensor\030\004 "
     "\001(\010\022-\n\006filter\030\005 \001(\0132\035.com.laex.cg2d.mode"
-    "l.CGFilter\"\321\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007vi"
+    "l.CGFilter\"\337\003\n\007CGShape\022\n\n\002id\030\001 \001(\t\022\017\n\007vi"
     "sible\030\002 \001(\010\022\016\n\006locked\030\003 \001(\010\022\022\n\nbackgroun"
     "d\030\004 \001(\010\022C\n\026backgroundResourceFile\030\005 \001(\0132"
     "#.com.laex.cg2d.model.CGResourceFile\022\?\n\017"
@@ -786,40 +787,40 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto() {
     "\nfixtureDef\030\t \001(\0132!.com.laex.cg2d.model."
     "CGFixtureDef\022,\n\006joints\030\n \003(\0132\034.com.laex."
     "cg2d.model.CGJoint\022:\n\rentityRefFile\030\013 \001("
-    "\0132#.com.laex.cg2d.model.CGResourceFile\"q"
-    "\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007v"
-    "isible\030\003 \001(\010\022\016\n\006locked\030\004 \001(\010\022+\n\005shape\030\005 "
-    "\003(\0132\034.com.laex.cg2d.model.CGShape\"\363\005\n\023CG"
-    "ScreenPreferences\022W\n\016debugDrawPrefs\030\001 \001("
-    "\0132\?.com.laex.cg2d.model.CGScreenPreferen"
-    "ces.CGDebugDrawPreferences\022O\n\nworldPrefs"
-    "\030\002 \001(\0132;.com.laex.cg2d.model.CGScreenPre"
-    "ferences.CGWorldPreferences\022M\n\tcardPrefs"
-    "\030\003 \001(\0132:.com.laex.cg2d.model.CGScreenPre"
-    "ferences.CGCardPreferences\0225\n\017background"
-    "Color\030\004 \001(\0132\034.com.laex.cg2d.model.CGColo"
-    "r\032\266\001\n\026CGDebugDrawPreferences\022\022\n\ndrawBodi"
-    "es\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001(\010\022\020\n\010drawAABB"
-    "\030\003 \001(\010\022\032\n\022drawInactiveBodies\030\004 \001(\010\022\031\n\021in"
-    "stallMouseJoint\030\005 \001(\010\022\025\n\rdrawDebugData\030\006"
-    " \001(\010\022\024\n\014drawEntities\030\007 \001(\010\032\224\001\n\022CGWorldPr"
-    "eferences\022\020\n\010ptmRatio\030\001 \001(\005\022\032\n\022velocityI"
-    "terations\030\002 \001(\005\022\032\n\022positionIterations\030\003 "
-    "\001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010gravityX\030\005 \001(\002\022"
-    "\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCardPreferences\022\017"
-    "\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY\030\002 \001(\005\022\021\n\tcard"
-    "Width\030\003 \001(\005\022\022\n\ncardHeight\030\004 \001(\005*\223\001\n\013CGJo"
-    "intType\022\013\n\007UNKNOWN\020\001\022\014\n\010REVOLUTE\020\002\022\r\n\tPR"
-    "ISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n\006PULLEY\020\005\022\t\n\005M"
-    "OUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020\010\022\010\n\004WELD\020\t\022\014\n"
-    "\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025CGEntityCollisi"
-    "onType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022\n\n\006CIRCLE\020\002\022\n\n"
-    "\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n\006STATIC\020\001\022\r\n\tK"
-    "INEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001\n\021CGEditorShap"
-    "eType\022\027\n\023SIMPLE_SHAPE_CIRCLE\020\001\022\024\n\020SIMPLE"
-    "_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHAPE_HEDGE\020\003\022\026\n\022"
-    "SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BACKGROUND_SHAPE"
-    "\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4940);
+    "\0132#.com.laex.cg2d.model.CGResourceFile\022\014"
+    "\n\004text\030\014 \001(\t\"q\n\007CGLayer\022\n\n\002id\030\001 \001(\005\022\014\n\004n"
+    "ame\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\016\n\006locked\030\004 \001"
+    "(\010\022+\n\005shape\030\005 \003(\0132\034.com.laex.cg2d.model."
+    "CGShape\"\363\005\n\023CGScreenPreferences\022W\n\016debug"
+    "DrawPrefs\030\001 \001(\0132\?.com.laex.cg2d.model.CG"
+    "ScreenPreferences.CGDebugDrawPreferences"
+    "\022O\n\nworldPrefs\030\002 \001(\0132;.com.laex.cg2d.mod"
+    "el.CGScreenPreferences.CGWorldPreference"
+    "s\022M\n\tcardPrefs\030\003 \001(\0132:.com.laex.cg2d.mod"
+    "el.CGScreenPreferences.CGCardPreferences"
+    "\0225\n\017backgroundColor\030\004 \001(\0132\034.com.laex.cg2"
+    "d.model.CGColor\032\266\001\n\026CGDebugDrawPreferenc"
+    "es\022\022\n\ndrawBodies\030\001 \001(\010\022\022\n\ndrawJoints\030\002 \001"
+    "(\010\022\020\n\010drawAABB\030\003 \001(\010\022\032\n\022drawInactiveBodi"
+    "es\030\004 \001(\010\022\031\n\021installMouseJoint\030\005 \001(\010\022\025\n\rd"
+    "rawDebugData\030\006 \001(\010\022\024\n\014drawEntities\030\007 \001(\010"
+    "\032\224\001\n\022CGWorldPreferences\022\020\n\010ptmRatio\030\001 \001("
+    "\005\022\032\n\022velocityIterations\030\002 \001(\005\022\032\n\022positio"
+    "nIterations\030\003 \001(\005\022\020\n\010timeStep\030\004 \001(\002\022\020\n\010g"
+    "ravityX\030\005 \001(\002\022\020\n\010gravityY\030\006 \001(\002\032\\\n\021CGCar"
+    "dPreferences\022\017\n\007cardNoX\030\001 \001(\005\022\017\n\007cardNoY"
+    "\030\002 \001(\005\022\021\n\tcardWidth\030\003 \001(\005\022\022\n\ncardHeight\030"
+    "\004 \001(\005*\223\001\n\013CGJointType\022\013\n\007UNKNOWN\020\001\022\014\n\010RE"
+    "VOLUTE\020\002\022\r\n\tPRISMATIC\020\003\022\014\n\010DISTANCE\020\004\022\n\n"
+    "\006PULLEY\020\005\022\t\n\005MOUSE\020\006\022\010\n\004GEAR\020\007\022\t\n\005WHEEL\020"
+    "\010\022\010\n\004WELD\020\t\022\014\n\010FRICTION\020\n\022\010\n\004ROPE\020\013*B\n\025C"
+    "GEntityCollisionType\022\010\n\004NONE\020\000\022\007\n\003BOX\020\001\022"
+    "\n\n\006CIRCLE\020\002\022\n\n\006CUSTOM\020\003*4\n\nCGBodyType\022\n\n"
+    "\006STATIC\020\001\022\r\n\tKINEMATIC\020\002\022\013\n\007DYNAMIC\020\003*\232\001"
+    "\n\021CGEditorShapeType\022\027\n\023SIMPLE_SHAPE_CIRC"
+    "LE\020\001\022\024\n\020SIMPLE_SHAPE_BOX\020\002\022\026\n\022SIMPLE_SHA"
+    "PE_HEDGE\020\003\022\026\n\022SIMPLE_SHAPE_VEDGE\020\004\022\024\n\020BA"
+    "CKGROUND_SHAPE\020\005\022\020\n\014ENTITY_SHAPE\020\006", 4954);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/model/ScreenModel.proto", &protobuf_RegisterTypes);
   CGScreenModel::default_instance_ = new CGScreenModel();
@@ -7672,6 +7673,7 @@ const int CGShape::kBodyDefFieldNumber;
 const int CGShape::kFixtureDefFieldNumber;
 const int CGShape::kJointsFieldNumber;
 const int CGShape::kEntityRefFileFieldNumber;
+const int CGShape::kTextFieldNumber;
 #endif  // !_MSC_VER
 
 CGShape::CGShape()
@@ -7705,6 +7707,7 @@ void CGShape::SharedCtor() {
   bodydef_ = NULL;
   fixturedef_ = NULL;
   entityreffile_ = NULL;
+  text_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -7715,6 +7718,9 @@ CGShape::~CGShape() {
 void CGShape::SharedDtor() {
   if (id_ != &::google::protobuf::internal::kEmptyString) {
     delete id_;
+  }
+  if (text_ != &::google::protobuf::internal::kEmptyString) {
+    delete text_;
   }
   if (this != default_instance_) {
     delete backgroundresourcefile_;
@@ -7773,6 +7779,11 @@ void CGShape::Clear() {
     }
     if (has_entityreffile()) {
       if (entityreffile_ != NULL) entityreffile_->::com::laex::cg2d::model::CGResourceFile::Clear();
+    }
+    if (has_text()) {
+      if (text_ != &::google::protobuf::internal::kEmptyString) {
+        text_->clear();
+      }
     }
   }
   joints_.Clear();
@@ -7952,6 +7963,23 @@ bool CGShape::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(98)) goto parse_text;
+        break;
+      }
+
+      // optional string text = 12;
+      case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_text:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_text()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->text().data(), this->text().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -8040,6 +8068,15 @@ void CGShape::SerializeWithCachedSizes(
       11, this->entityreffile(), output);
   }
 
+  // optional string text = 12;
+  if (has_text()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->text().data(), this->text().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      12, this->text(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -8121,6 +8158,16 @@ void CGShape::SerializeWithCachedSizes(
         11, this->entityreffile(), target);
   }
 
+  // optional string text = 12;
+  if (has_text()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->text().data(), this->text().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        12, this->text(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -8197,6 +8244,13 @@ int CGShape::ByteSize() const {
           this->entityreffile());
     }
 
+    // optional string text = 12;
+    if (has_text()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->text());
+    }
+
   }
   // repeated .com.laex.cg2d.model.CGJoint joints = 10;
   total_size += 1 * this->joints_size();
@@ -8265,6 +8319,9 @@ void CGShape::MergeFrom(const CGShape& from) {
     if (from.has_entityreffile()) {
       mutable_entityreffile()->::com::laex::cg2d::model::CGResourceFile::MergeFrom(from.entityreffile());
     }
+    if (from.has_text()) {
+      set_text(from.text());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -8305,6 +8362,7 @@ void CGShape::Swap(CGShape* other) {
     std::swap(fixturedef_, other->fixturedef_);
     joints_.Swap(&other->joints_);
     std::swap(entityreffile_, other->entityreffile_);
+    std::swap(text_, other->text_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

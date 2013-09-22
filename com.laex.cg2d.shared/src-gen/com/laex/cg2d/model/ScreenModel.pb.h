@@ -2560,6 +2560,18 @@ class CGShape : public ::google::protobuf::Message {
   inline ::com::laex::cg2d::model::CGResourceFile* release_entityreffile();
   inline void set_allocated_entityreffile(::com::laex::cg2d::model::CGResourceFile* entityreffile);
 
+  // optional string text = 12;
+  inline bool has_text() const;
+  inline void clear_text();
+  static const int kTextFieldNumber = 12;
+  inline const ::std::string& text() const;
+  inline void set_text(const ::std::string& value);
+  inline void set_text(const char* value);
+  inline void set_text(const char* value, size_t size);
+  inline ::std::string* mutable_text();
+  inline ::std::string* release_text();
+  inline void set_allocated_text(::std::string* text);
+
   // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.CGShape)
  private:
   inline void set_has_id();
@@ -2582,6 +2594,8 @@ class CGShape : public ::google::protobuf::Message {
   inline void clear_has_fixturedef();
   inline void set_has_entityreffile();
   inline void clear_has_entityreffile();
+  inline void set_has_text();
+  inline void clear_has_text();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -2596,9 +2610,10 @@ class CGShape : public ::google::protobuf::Message {
   ::com::laex::cg2d::model::CGFixtureDef* fixturedef_;
   ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::CGJoint > joints_;
   ::com::laex::cg2d::model::CGResourceFile* entityreffile_;
+  ::std::string* text_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fScreenModel_2eproto();
@@ -6208,6 +6223,76 @@ inline void CGShape::set_allocated_entityreffile(::com::laex::cg2d::model::CGRes
     set_has_entityreffile();
   } else {
     clear_has_entityreffile();
+  }
+}
+
+// optional string text = 12;
+inline bool CGShape::has_text() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void CGShape::set_has_text() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void CGShape::clear_has_text() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void CGShape::clear_text() {
+  if (text_ != &::google::protobuf::internal::kEmptyString) {
+    text_->clear();
+  }
+  clear_has_text();
+}
+inline const ::std::string& CGShape::text() const {
+  return *text_;
+}
+inline void CGShape::set_text(const ::std::string& value) {
+  set_has_text();
+  if (text_ == &::google::protobuf::internal::kEmptyString) {
+    text_ = new ::std::string;
+  }
+  text_->assign(value);
+}
+inline void CGShape::set_text(const char* value) {
+  set_has_text();
+  if (text_ == &::google::protobuf::internal::kEmptyString) {
+    text_ = new ::std::string;
+  }
+  text_->assign(value);
+}
+inline void CGShape::set_text(const char* value, size_t size) {
+  set_has_text();
+  if (text_ == &::google::protobuf::internal::kEmptyString) {
+    text_ = new ::std::string;
+  }
+  text_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* CGShape::mutable_text() {
+  set_has_text();
+  if (text_ == &::google::protobuf::internal::kEmptyString) {
+    text_ = new ::std::string;
+  }
+  return text_;
+}
+inline ::std::string* CGShape::release_text() {
+  clear_has_text();
+  if (text_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = text_;
+    text_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void CGShape::set_allocated_text(::std::string* text) {
+  if (text_ != &::google::protobuf::internal::kEmptyString) {
+    delete text_;
+  }
+  if (text) {
+    set_has_text();
+    text_ = text;
+  } else {
+    clear_has_text();
+    text_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

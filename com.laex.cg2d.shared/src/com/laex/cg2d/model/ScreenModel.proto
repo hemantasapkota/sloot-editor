@@ -192,6 +192,7 @@ message CGShape {
 	optional CGFixtureDef fixtureDef = 9;
 	repeated CGJoint joints = 10;
 	optional CGResourceFile entityRefFile = 11;
+	optional string text = 12;
 }
 
 message CGLayer {

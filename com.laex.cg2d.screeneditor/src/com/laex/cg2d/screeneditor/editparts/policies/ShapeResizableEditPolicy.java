@@ -38,7 +38,7 @@ class ShapeResizableEditPolicy extends ResizableEditPolicy {
   protected IFigure createDragSourceFeedbackFigure() {
     // return super.createDragSourceFeedbackFigure();
 
-    BoxFigure r = new BoxFigure();
+    BoxFigure r = new BoxFigure("");
     r.setLineStyle(Graphics.LINE_DOT);
     r.setFill(true);
     r.setBackgroundColor(ColorConstants.blue);

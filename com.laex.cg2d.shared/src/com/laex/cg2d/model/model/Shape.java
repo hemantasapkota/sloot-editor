@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
@@ -86,6 +85,8 @@ public class Shape extends ModelElement {
   /** The id. */
   private String id;
 
+  private String text;
+
   /** The visible. */
   private boolean visible = true;
 
@@ -130,6 +131,7 @@ public class Shape extends ModelElement {
    */
   public Shape(EditorShapeType shapeType) {
     id = StringUtils.EMPTY;
+    text = StringUtils.EMPTY;
     backgroundResourceFile = ResourceFile.create(StringUtils.EMPTY, StringUtils.EMPTY);
     this.editorShapeType = shapeType;
     this.visible = true;
@@ -489,6 +491,14 @@ public class Shape extends ModelElement {
    */
   private boolean isFixtureDefProp(Object propertyId) {
     return FIXTURE_DEF_PROP.equals(propertyId);
+  }
+
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
   }
 
   /*
