@@ -10,13 +10,37 @@
  */
 package com.laex.cg2d.render;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.World;
+import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 
 /**
  * The Interface ScreenManager.
  */
 public interface ScreenManager {
+
+  /**
+   * Screen model.
+   *
+   * @return the cG screen model
+   */
+  CGScreenModel model();
+
+  /**
+   * World.
+   *
+   * @return the world
+   */
+  World world();
+
+  /**
+   * Camera.
+   *
+   * @return the camera
+   */
+  Camera camera();
 
   /**
    * Creates the entity from.

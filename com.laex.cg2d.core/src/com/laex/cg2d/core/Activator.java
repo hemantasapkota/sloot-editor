@@ -10,6 +10,7 @@
  */
 package com.laex.cg2d.core;
 
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -76,5 +77,10 @@ public class Activator extends AbstractUIPlugin {
    */
   public static ImageDescriptor getImageDescriptor(String path) {
     return imageDescriptorFromPlugin(PLUGIN_ID, path);
+  }
+
+  public static void log(Exception e) {
+    e.printStackTrace();
+    Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID, e.getMessage()));
   }
 }

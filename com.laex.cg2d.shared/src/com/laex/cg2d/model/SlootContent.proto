@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package com.laex.cg2d.model;
+
+/* Sloot Item */
+message SlootItem {
+	optional string id = 1;
+	optional string title = 2;
+	optional string imgUrl = 3;
+	optional float  price = 4;
+}
+
+/* Collection of Items */
+message SlootCollection {
+	optional string title = 1;
+	repeated SlootItem slootItems = 2;
+}
+
+/* Collection of collections */
+message SlootCollectionList {
+	repeated SlootCollection slootCollection = 1;
+}

@@ -14,7 +14,9 @@ Require-Bundle: com.laex.cg2d.screeneditor;bundle-version="1.0.0",
  com.laex.cg2d.entityeditor;bundle-version="1.0.0",
  org.eclipse.ui.views;bundle-version="3.6.100",
  org.eclipse.ui.views.log;bundle-version="1.0.400",
- com.laex.cg2d.model;bundle-version="1.0.0"
+ com.laex.cg2d.model;bundle-version="1.0.0",
+ org.apache.commons.io;bundle-version="2.0.1",
+ org.eclipse.swt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
 Bundle-Vendor: %Plugin.vendor

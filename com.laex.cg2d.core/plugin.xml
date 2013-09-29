@@ -162,4 +162,27 @@
          </newWizardShortcut>
       </perspectiveExtension>
    </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.laex.cg2d.core.contribution1"
+            objectClass="org.eclipse.core.resources.IProject">
+         <menu
+               icon="main.png"
+               id="com.laex.cg2d.core.menu1"
+               label="Sloot Editor"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="com.laex.cg2d.core.popup.actions.UploadToSpritesSlootAction"
+               icon="icons/upload-cloud.png"
+               id="com.laex.cg2d.core.newAction"
+               label="Upload to SpritesSloot"
+               menubarPath="com.laex.cg2d.core.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
 </plugin>

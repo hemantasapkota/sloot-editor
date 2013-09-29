@@ -25,6 +25,7 @@ import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGLayer;
 import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.render.ScreenScaffold;
+import com.laex.cg2d.render.util.ScreenToWorld;
 
 /**
  * The Class BackgroundManager.
@@ -83,7 +84,7 @@ public class BackgroundManager implements ScreenScaffold {
         float height = shape.getBounds().getHeight();
 
         Vector2 scrPos = new Vector2(x, y);
-        Vector2 worldPos = manipulator.screenToWorldFlipped(scrPos, height);
+        Vector2 worldPos = ScreenToWorld.inst(manipulator.model()).screenToWorldFlipped(scrPos, height);
         sprite.setPosition(worldPos.x, worldPos.y);
 
         float w = (width / manipulator.ptmRatio());

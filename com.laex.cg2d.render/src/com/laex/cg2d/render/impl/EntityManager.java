@@ -12,6 +12,7 @@ package com.laex.cg2d.render.impl;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import aurelienribon.bodyeditor.BodyEditorLoader;
@@ -45,7 +46,9 @@ import com.laex.cg2d.model.ScreenModel.CGShape;
 import com.laex.cg2d.model.ScreenModel.CGVector2;
 import com.laex.cg2d.render.BodyVisitor;
 import com.laex.cg2d.render.ScreenScaffold;
+import com.laex.cg2d.render.impl.bodies.CircleBody;
 import com.laex.cg2d.render.util.RunnerUtil;
+import com.laex.cg2d.render.util.ScreenToWorld;
 
 /**
  * The Class EntityManager.
@@ -213,7 +216,7 @@ public class EntityManager implements ScreenScaffold {
     float height = shape.getBounds().getHeight();
 
     Vector2 scrPos = new Vector2(x, y);
-    Vector2 worldPos = manipulator.screenToWorldFlipped(scrPos, height);
+    Vector2 worldPos = ScreenToWorld.inst(manipulator.model()).screenToWorldFlipped(scrPos, height);
     spr.setPosition(worldPos.x, worldPos.y);
 
     // the position circle (collision shape) will vary with that of
@@ -344,6 +347,26 @@ public class EntityManager implements ScreenScaffold {
 
   }
 
+  public Vector2[] normalizeVertices(List<CGVector2> vertices, float height) {
+    Vector2[] vss = new Vector2[vertices.size()];
+
+    for (int i = 0; i < vertices.size(); i++) {
+      CGVector2 vi = vertices.get(i);
+      Vector2 v = new Vector2(vi.getX(), vi.getY());
+      v.y = height - v.y;
+      vss[i] = ScreenToWorld.inst(manipulator.model()).screenToWorld(v);
+    }
+
+    // after flipping, reverse the vertices
+    Vector2[] inverse = new Vector2[vertices.size()];
+    int len = vertices.size() - 1;
+    for (int i = 0; i < vertices.size(); i++) {
+      inverse[i] = vss[len--];
+    }
+
+    return inverse;
+  }
+
   /*
    * (non-Javadoc)
    * 
@@ -385,7 +408,7 @@ public class EntityManager implements ScreenScaffold {
 
     switch (shapeType) {
     case BOX:
-      va = manipulator.normalizeVertices(ea.getVerticesList(), shape.getBounds().getHeight());
+      va = normalizeVertices(ea.getVerticesList(), shape.getBounds().getHeight());
       polyShape.set(va);
 
       shapeToAnimationOriginMap.put(shape, new Vector3(0, 0, 0));
@@ -409,11 +432,11 @@ public class EntityManager implements ScreenScaffold {
 
       // this radius is calculated for circle's collision shape data not
       // the sprite width/height data
-      float radius = manipulator.calculateRadiusOfCircleShape(r.width);
+      float radius = CircleBody.calculateRadiusOfCircleShape(r.width, manipulator.ptmRatio());
 
       Vector2 cpos = new Vector2(r.x, r.y);
       cpos.y = shape.getBounds().getHeight() - r.height - r.y;
-      cpos = manipulator.screenToWorld(cpos);
+      cpos = ScreenToWorld.inst(manipulator.model()).screenToWorld(cpos);
 
       /* Calculate origin */
       int x = (int) r.x;

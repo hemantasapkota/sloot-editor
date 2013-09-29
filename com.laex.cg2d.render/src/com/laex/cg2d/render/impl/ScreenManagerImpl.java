@@ -22,24 +22,24 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.JointDef;
 import com.badlogic.gdx.physics.box2d.JointEdge;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
 import com.laex.cg2d.model.ScreenModel.CGJoint;
 import com.laex.cg2d.model.ScreenModel.CGLayer;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGShape;
-import com.laex.cg2d.model.ScreenModel.CGVector2;
 import com.laex.cg2d.render.BodyVisitor;
+import com.laex.cg2d.render.Box2DBody;
 import com.laex.cg2d.render.ScreenManager;
 import com.laex.cg2d.render.ScreenScaffold;
+import com.laex.cg2d.render.impl.bodies.BoxBody;
+import com.laex.cg2d.render.impl.bodies.CircleBody;
+import com.laex.cg2d.render.impl.bodies.EdgeBody;
+import com.laex.cg2d.render.impl.bodies.EntityBody;
 import com.laex.cg2d.render.util.AppExceptionUtil;
 import com.laex.cg2d.render.util.ProtoBufTypeConversionUtil;
 
@@ -60,9 +60,6 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
 
   /** The ptm ratio. */
   private int ptmRatio;
-
-  /** The card height. */
-  private int cardHeight;
 
   /** The camera. */
   private Camera camera;
@@ -97,7 +94,6 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     this.camera = camera;
     this.spriteBatch = batch;
 
-    this.cardHeight = model.getScreenPrefs().getCardPrefs().getCardHeight();
     this.ptmRatio = model.getScreenPrefs().getWorldPrefs().getPtmRatio();
 
     this.entityManager = new EntityManager(this, batch);
@@ -232,18 +228,6 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     return jd;
   }
 
-  /**
-   * Calculate radius of circle shape.
-   * 
-   * @param width
-   *          the width
-   * @return the float
-   */
-  public float calculateRadiusOfCircleShape(float width) {
-    float w = width / this.ptmRatio;
-    float rad = w / 2;
-    return rad;
-  }
 
   /**
    * Creates the body.
@@ -255,80 +239,34 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
    */
   public Body createBody(CGShape shape, CGEntity entity, CGEntityAnimation ea) {
     BodyDef bodyDef = ProtoBufTypeConversionUtil.asBodyDef(shape.getBodyDef());
-    FixtureDef fixDef = ProtoBufTypeConversionUtil.asFixtureDef(shape.getFixtureDef());
+    FixtureDef fixtureDef = ProtoBufTypeConversionUtil.asFixtureDef(shape.getFixtureDef());
 
-    float x = shape.getBounds().getX();
-    float y = shape.getBounds().getY();
-    float width = shape.getBounds().getWidth();
-    float height = shape.getBounds().getHeight();
-
-    Vector2 tmp = new Vector2(x, y);
-    Vector2 position = screenToWorldFlipped(tmp, height);
     Body b = null;
+    Box2DBody b2Body;
 
     switch (shape.getEditorShapeType()) {
     case SIMPLE_SHAPE_BOX: {
-      bodyDef.position.set(position);
-      b = world.createBody(bodyDef);
-
-      PolygonShape polyShape = new PolygonShape();
-      float hx = (width / ptmRatio);
-      float hy = (height / ptmRatio);
-
-      hx = hx / 2;
-      hy = hy / 2;
-
-      polyShape.setAsBox(hx, hy, new Vector2(hx, hy), 0);
-
-      fixDef.shape = polyShape;
-      b.createFixture(fixDef);
+      b2Body = new BoxBody(shape, this);
+      b = b2Body.create(bodyDef, fixtureDef);
     }
       break;
 
     case SIMPLE_SHAPE_CIRCLE: {
-      CircleShape circShape = new CircleShape();
-      float radius = calculateRadiusOfCircleShape(width);
-
-      bodyDef.position.set(position.add(radius, radius));
-      b = world.createBody(bodyDef);
-
-      circShape.setRadius(radius);
-      fixDef.shape = circShape;
-      b.createFixture(fixDef);
+      b2Body = new CircleBody(shape, this);
+      b = b2Body.create(bodyDef, fixtureDef);
     }
       break;
 
     case SIMPLE_SHAPE_HEDGE:
     case SIMPLE_SHAPE_VEDGE: {
-
-      EdgeShape edge = new EdgeShape();
-
-      Vector2 v1 = new Vector2(x, y);
-      Vector2 v2 = new Vector2(x + width, y);
-
-      Vector2 v2Vertical = new Vector2(x, y + height);
-
-      v1 = screenToWorldFlipped(v1, 0);
-      v2 = screenToWorldFlipped(v2, 0);
-      v2Vertical = screenToWorldFlipped(v2Vertical, 0);
-
-      if (shape.getEditorShapeType() == CGEditorShapeType.SIMPLE_SHAPE_VEDGE) {
-        edge.set(v1, v2Vertical);
-      } else {
-        edge.set(v1, v2);
-      }
-
-      b = world.createBody(bodyDef);
-
-      fixDef.shape = edge;
-      b.createFixture(fixDef);
+      b2Body = new EdgeBody(shape, this);
+      b = b2Body.create(bodyDef, fixtureDef);
     }
       break;
 
     case ENTITY_SHAPE: {
-      bodyDef.position.set(position);
-      b = world.createBody(bodyDef);
-      entityManager.createEntityCollisionShape(shape, entity, ea, bodyDef, fixDef, b);
+      b2Body = new EntityBody(shape, this, entityManager, entity, ea);
+      b = b2Body.create(bodyDef, fixtureDef);
     }
       break;
 
@@ -338,73 +276,6 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     }
 
     return b;
-  }
-
-  /**
-   * Normalize vertices.
-   * 
-   * @param vertices
-   *          the vertices
-   * @param height
-   *          the height
-   * @return the vector2[]
-   */
-  public Vector2[] normalizeVertices(List<CGVector2> vertices, float height) {
-    Vector2[] vss = new Vector2[vertices.size()];
-
-    for (int i = 0; i < vertices.size(); i++) {
-      CGVector2 vi = vertices.get(i);
-      Vector2 v = new Vector2(vi.getX(), vi.getY());
-      v.y = height - v.y;
-      vss[i] = screenToWorld(v);
-    }
-
-    // after flipping, reverse the vertices
-    Vector2[] inverse = new Vector2[vertices.size()];
-    int len = vertices.size() - 1;
-    for (int i = 0; i < vertices.size(); i++) {
-      inverse[i] = vss[len--];
-    }
-
-    return inverse;
-  }
-
-  /**
-   * Screen to world.
-   * 
-   * @param argScreen
-   *          the arg screen
-   * @return the vector2
-   */
-  public Vector2 screenToWorld(Vector2 argScreen) {
-    return new Vector2(argScreen.x / ptmRatio, argScreen.y / ptmRatio);
-  }
-
-  /**
-   * Screen to world flipped.
-   * 
-   * @param argScreen
-   *          the arg screen
-   * @param height
-   *          the height
-   * @return the vector2
-   */
-  public Vector2 screenToWorldFlipped(Vector2 argScreen, float height) {
-    float x = argScreen.x;
-    float y = (cardHeight - height - argScreen.y);
-
-    return new Vector2(x / ptmRatio, y / ptmRatio);
-  }
-
-  /**
-   * World to screen.
-   * 
-   * @param argWorld
-   *          the arg world
-   * @return the vector2
-   */
-  public Vector2 worldToScreen(Vector2 argWorld) {
-    return new Vector2(argWorld.x * ptmRatio, argWorld.y * ptmRatio);
   }
 
   /**
@@ -478,6 +349,7 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
    * 
    * @return the camera
    */
+  @Override
   public Camera camera() {
     return this.camera;
   }
@@ -487,18 +359,11 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
    * 
    * @return the world
    */
+  @Override
   public World world() {
     return this.world;
   }
 
-  /**
-   * Model.
-   * 
-   * @return the cG screen model
-   */
-  public CGScreenModel model() {
-    return this.model;
-  }
 
   /*
    * (non-Javadoc)
@@ -635,6 +500,11 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     for (int i=0; i<jointList.size(); i++) {
       world.destroyJoint(jointList.get(i).joint);
     }
+  }
+
+  @Override
+  public CGScreenModel model() {
+    return model;
   }
 
 }
