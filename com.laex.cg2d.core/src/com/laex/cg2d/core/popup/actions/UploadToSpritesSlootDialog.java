@@ -3,6 +3,7 @@ package com.laex.cg2d.core.popup.actions;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -35,7 +36,12 @@ import org.eclipse.swt.widgets.TreeColumn;
 import com.laex.cg2d.core.Activator;
 import com.laex.cg2d.core.popup.actions.UploadToSpritesSlootController.SlootProjectProvider;
 
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.ModifyEvent;
+
 public class UploadToSpritesSlootDialog extends TitleAreaDialog {
+
+  private static String lastDirectoryPath = "";
 
   private class TreeContentProvider implements ITreeContentProvider {
     public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -95,6 +101,9 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
   private IResource toExport;
   private UploadToSpritesSlootController controller;
   private SlootProjectProvider slootProjectProvider;
+  private Text txtDeveloperID;
+  private Text txtCollectionID;
+  private Text txtCollectionTitle;
 
   /**
    * Create the dialog.
@@ -122,14 +131,41 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     setMessage("This dialog allows you to upload the selected project to SpritesSloot. To export the project locally, just select the \"Export Locally\" tab.");
     setTitle("Upload project to SpritesSloot");
     Composite area = (Composite) super.createDialogArea(parent);
+
+    Composite composite_2 = new Composite(area, SWT.NONE);
+    composite_2.setLayout(new GridLayout(2, false));
+    composite_2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+
+    Label lblNewLabel = new Label(composite_2, SWT.NONE);
+    lblNewLabel.setText("Developer ID");
+
+    txtDeveloperID = new Text(composite_2, SWT.BORDER);
+    txtDeveloperID.addModifyListener(new ModifyListener() {
+      public void modifyText(ModifyEvent e) {
+        validate();
+      }
+    });
+    txtDeveloperID.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+
+    Label lblCollectionId = new Label(composite_2, SWT.NONE);
+    lblCollectionId.setText("Collection ID");
+
+    txtCollectionID = new Text(composite_2, SWT.BORDER);
+    txtCollectionID.setEditable(false);
+    txtCollectionID.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+
+    Label lblCollectionTitle = new Label(composite_2, SWT.NONE);
+    lblCollectionTitle.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+    lblCollectionTitle.setText("Collection Title");
+
+    txtCollectionTitle = new Text(composite_2, SWT.BORDER);
+    txtCollectionTitle.setEditable(false);
+    txtCollectionTitle.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
     Composite container = new Composite(area, SWT.NONE);
     container.setLayout(new FillLayout(SWT.HORIZONTAL));
     container.setLayoutData(new GridData(GridData.FILL_BOTH));
 
     TabFolder tabFolder = new TabFolder(container, SWT.NONE);
-
-    TabItem tbtmUpload = new TabItem(tabFolder, SWT.NONE);
-    tbtmUpload.setText("Upload");
 
     TabItem tbtmExportLocally = new TabItem(tabFolder, SWT.NONE);
     tbtmExportLocally.setText("Export Locally");
@@ -143,6 +179,11 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     lblTargetDirectory.setText("Target Directory");
 
     txtTargetLocalExport = new Text(composite, SWT.BORDER);
+    txtTargetLocalExport.addModifyListener(new ModifyListener() {
+      public void modifyText(ModifyEvent e) {
+        validate();
+      }
+    });
     txtTargetLocalExport.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
     Button btnBrowse = new Button(composite, SWT.NONE);
@@ -154,6 +195,7 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
         String targetDirectory = dd.open();
         if (targetDirectory != null) {
           txtTargetLocalExport.setText(targetDirectory);
+          lastDirectoryPath = targetDirectory;
         }
       }
     });
@@ -176,13 +218,22 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     treeViewer.setContentProvider(new TreeContentProvider());
     treeViewer.setLabelProvider(new ViewerLabelProvider());
 
+    TabItem tbtmUpload = new TabItem(tabFolder, SWT.NONE);
+    tbtmUpload.setText("Upload");
+
+    txtTargetLocalExport.setText(UploadToSpritesSlootDialog.lastDirectoryPath);
+
     /* generate sloot project provider */
     try {
 
-      slootProjectProvider = UploadToSpritesSlootController.slootProjectProvider((IProject) toExport);
+      slootProjectProvider = UploadToSpritesSlootController.slootProjectProvider("laex.pearl@gmail.com",
+          (IProject) toExport);
+
+      txtCollectionID.setText(slootProjectProvider.collectionID);
+      txtCollectionTitle.setText(slootProjectProvider.collectionTitle);
+      txtDeveloperID.setText(slootProjectProvider.developerID);
 
       treeViewer.setInput(slootProjectProvider);
-
       treeViewer.expandAll();
 
     } catch (CoreException e1) {
@@ -190,6 +241,29 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     }
 
     return area;
+  }
+
+  private void validate() {
+
+    setOKButtonStatus(false);
+
+    if (StringUtils.isEmpty(txtDeveloperID.getText())) {
+      setErrorMessage("Developer ID cannot be empty");
+    } else if (StringUtils.isEmpty(txtTargetLocalExport.getText())) {
+      setErrorMessage("Target directory cannot be empty");
+    } else {
+
+      setErrorMessage(null);
+      setOKButtonStatus(true);
+
+    }
+
+  }
+
+  private void setOKButtonStatus(boolean status) {
+    if (getButton(OK) != null) {
+      getButton(OK).setEnabled(status);
+    }
   }
 
   /**

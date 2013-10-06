@@ -883,42 +883,72 @@ public final class SlootContent {
   public interface SlootCollectionOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional string title = 1;
+    // optional string developerId = 1;
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string developerId = 1;</code>
+     */
+    boolean hasDeveloperId();
+    /**
+     * <code>optional string developerId = 1;</code>
+     */
+    java.lang.String getDeveloperId();
+    /**
+     * <code>optional string developerId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getDeveloperIdBytes();
+
+    // optional string slootCollectionId = 2;
+    /**
+     * <code>optional string slootCollectionId = 2;</code>
+     */
+    boolean hasSlootCollectionId();
+    /**
+     * <code>optional string slootCollectionId = 2;</code>
+     */
+    java.lang.String getSlootCollectionId();
+    /**
+     * <code>optional string slootCollectionId = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSlootCollectionIdBytes();
+
+    // optional string title = 3;
+    /**
+     * <code>optional string title = 3;</code>
      */
     boolean hasTitle();
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string title = 3;</code>
      */
     java.lang.String getTitle();
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string title = 3;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
-    // repeated .com.laex.cg2d.model.SlootItem slootItems = 2;
+    // repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     java.util.List<com.laex.cg2d.model.SlootContent.SlootItem> 
         getSlootItemsList();
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     com.laex.cg2d.model.SlootContent.SlootItem getSlootItems(int index);
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     int getSlootItemsCount();
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     java.util.List<? extends com.laex.cg2d.model.SlootContent.SlootItemOrBuilder> 
         getSlootItemsOrBuilderList();
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     com.laex.cg2d.model.SlootContent.SlootItemOrBuilder getSlootItemsOrBuilder(
         int index);
@@ -980,13 +1010,23 @@ public final class SlootContent {
             }
             case 10: {
               bitField0_ |= 0x00000001;
-              title_ = input.readBytes();
+              developerId_ = input.readBytes();
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              bitField0_ |= 0x00000002;
+              slootCollectionId_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              title_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 slootItems_ = new java.util.ArrayList<com.laex.cg2d.model.SlootContent.SlootItem>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000008;
               }
               slootItems_.add(input.readMessage(com.laex.cg2d.model.SlootContent.SlootItem.PARSER, extensionRegistry));
               break;
@@ -999,7 +1039,7 @@ public final class SlootContent {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           slootItems_ = java.util.Collections.unmodifiableList(slootItems_);
         }
         this.unknownFields = unknownFields.build();
@@ -1034,17 +1074,103 @@ public final class SlootContent {
     }
 
     private int bitField0_;
-    // optional string title = 1;
-    public static final int TITLE_FIELD_NUMBER = 1;
-    private java.lang.Object title_;
+    // optional string developerId = 1;
+    public static final int DEVELOPERID_FIELD_NUMBER = 1;
+    private java.lang.Object developerId_;
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string developerId = 1;</code>
      */
-    public boolean hasTitle() {
+    public boolean hasDeveloperId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string developerId = 1;</code>
+     */
+    public java.lang.String getDeveloperId() {
+      java.lang.Object ref = developerId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          developerId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string developerId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDeveloperIdBytes() {
+      java.lang.Object ref = developerId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        developerId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string slootCollectionId = 2;
+    public static final int SLOOTCOLLECTIONID_FIELD_NUMBER = 2;
+    private java.lang.Object slootCollectionId_;
+    /**
+     * <code>optional string slootCollectionId = 2;</code>
+     */
+    public boolean hasSlootCollectionId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string slootCollectionId = 2;</code>
+     */
+    public java.lang.String getSlootCollectionId() {
+      java.lang.Object ref = slootCollectionId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          slootCollectionId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string slootCollectionId = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSlootCollectionIdBytes() {
+      java.lang.Object ref = slootCollectionId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        slootCollectionId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string title = 3;
+    public static final int TITLE_FIELD_NUMBER = 3;
+    private java.lang.Object title_;
+    /**
+     * <code>optional string title = 3;</code>
+     */
+    public boolean hasTitle() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string title = 3;</code>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -1061,7 +1187,7 @@ public final class SlootContent {
       }
     }
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string title = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -1077,36 +1203,36 @@ public final class SlootContent {
       }
     }
 
-    // repeated .com.laex.cg2d.model.SlootItem slootItems = 2;
-    public static final int SLOOTITEMS_FIELD_NUMBER = 2;
+    // repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
+    public static final int SLOOTITEMS_FIELD_NUMBER = 4;
     private java.util.List<com.laex.cg2d.model.SlootContent.SlootItem> slootItems_;
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     public java.util.List<com.laex.cg2d.model.SlootContent.SlootItem> getSlootItemsList() {
       return slootItems_;
     }
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     public java.util.List<? extends com.laex.cg2d.model.SlootContent.SlootItemOrBuilder> 
         getSlootItemsOrBuilderList() {
       return slootItems_;
     }
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     public int getSlootItemsCount() {
       return slootItems_.size();
     }
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     public com.laex.cg2d.model.SlootContent.SlootItem getSlootItems(int index) {
       return slootItems_.get(index);
     }
     /**
-     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+     * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
      */
     public com.laex.cg2d.model.SlootContent.SlootItemOrBuilder getSlootItemsOrBuilder(
         int index) {
@@ -1114,6 +1240,8 @@ public final class SlootContent {
     }
 
     private void initFields() {
+      developerId_ = "";
+      slootCollectionId_ = "";
       title_ = "";
       slootItems_ = java.util.Collections.emptyList();
     }
@@ -1130,10 +1258,16 @@ public final class SlootContent {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getTitleBytes());
+        output.writeBytes(1, getDeveloperIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getSlootCollectionIdBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getTitleBytes());
       }
       for (int i = 0; i < slootItems_.size(); i++) {
-        output.writeMessage(2, slootItems_.get(i));
+        output.writeMessage(4, slootItems_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1146,11 +1280,19 @@ public final class SlootContent {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getTitleBytes());
+          .computeBytesSize(1, getDeveloperIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getSlootCollectionIdBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getTitleBytes());
       }
       for (int i = 0; i < slootItems_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, slootItems_.get(i));
+          .computeMessageSize(4, slootItems_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1273,11 +1415,15 @@ public final class SlootContent {
 
       public Builder clear() {
         super.clear();
-        title_ = "";
+        developerId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        slootCollectionId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        title_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (slootItemsBuilder_ == null) {
           slootItems_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           slootItemsBuilder_.clear();
         }
@@ -1312,11 +1458,19 @@ public final class SlootContent {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
+        result.developerId_ = developerId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.slootCollectionId_ = slootCollectionId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.title_ = title_;
         if (slootItemsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             slootItems_ = java.util.Collections.unmodifiableList(slootItems_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.slootItems_ = slootItems_;
         } else {
@@ -1338,8 +1492,18 @@ public final class SlootContent {
 
       public Builder mergeFrom(com.laex.cg2d.model.SlootContent.SlootCollection other) {
         if (other == com.laex.cg2d.model.SlootContent.SlootCollection.getDefaultInstance()) return this;
-        if (other.hasTitle()) {
+        if (other.hasDeveloperId()) {
           bitField0_ |= 0x00000001;
+          developerId_ = other.developerId_;
+          onChanged();
+        }
+        if (other.hasSlootCollectionId()) {
+          bitField0_ |= 0x00000002;
+          slootCollectionId_ = other.slootCollectionId_;
+          onChanged();
+        }
+        if (other.hasTitle()) {
+          bitField0_ |= 0x00000004;
           title_ = other.title_;
           onChanged();
         }
@@ -1347,7 +1511,7 @@ public final class SlootContent {
           if (!other.slootItems_.isEmpty()) {
             if (slootItems_.isEmpty()) {
               slootItems_ = other.slootItems_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureSlootItemsIsMutable();
               slootItems_.addAll(other.slootItems_);
@@ -1360,7 +1524,7 @@ public final class SlootContent {
               slootItemsBuilder_.dispose();
               slootItemsBuilder_ = null;
               slootItems_ = other.slootItems_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000008);
               slootItemsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSlootItemsFieldBuilder() : null;
@@ -1396,16 +1560,164 @@ public final class SlootContent {
       }
       private int bitField0_;
 
-      // optional string title = 1;
-      private java.lang.Object title_ = "";
+      // optional string developerId = 1;
+      private java.lang.Object developerId_ = "";
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string developerId = 1;</code>
        */
-      public boolean hasTitle() {
+      public boolean hasDeveloperId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string developerId = 1;</code>
+       */
+      public java.lang.String getDeveloperId() {
+        java.lang.Object ref = developerId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          developerId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string developerId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDeveloperIdBytes() {
+        java.lang.Object ref = developerId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          developerId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string developerId = 1;</code>
+       */
+      public Builder setDeveloperId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        developerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string developerId = 1;</code>
+       */
+      public Builder clearDeveloperId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        developerId_ = getDefaultInstance().getDeveloperId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string developerId = 1;</code>
+       */
+      public Builder setDeveloperIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        developerId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string slootCollectionId = 2;
+      private java.lang.Object slootCollectionId_ = "";
+      /**
+       * <code>optional string slootCollectionId = 2;</code>
+       */
+      public boolean hasSlootCollectionId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string slootCollectionId = 2;</code>
+       */
+      public java.lang.String getSlootCollectionId() {
+        java.lang.Object ref = slootCollectionId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          slootCollectionId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string slootCollectionId = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSlootCollectionIdBytes() {
+        java.lang.Object ref = slootCollectionId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          slootCollectionId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string slootCollectionId = 2;</code>
+       */
+      public Builder setSlootCollectionId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        slootCollectionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string slootCollectionId = 2;</code>
+       */
+      public Builder clearSlootCollectionId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        slootCollectionId_ = getDefaultInstance().getSlootCollectionId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string slootCollectionId = 2;</code>
+       */
+      public Builder setSlootCollectionIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        slootCollectionId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string title = 3;
+      private java.lang.Object title_ = "";
+      /**
+       * <code>optional string title = 3;</code>
+       */
+      public boolean hasTitle() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string title = 3;</code>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -1419,7 +1731,7 @@ public final class SlootContent {
         }
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string title = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -1435,48 +1747,48 @@ public final class SlootContent {
         }
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string title = 3;</code>
        */
       public Builder setTitle(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000004;
         title_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string title = 3;</code>
        */
       public Builder clearTitle() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000004);
         title_ = getDefaultInstance().getTitle();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string title = 3;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000004;
         title_ = value;
         onChanged();
         return this;
       }
 
-      // repeated .com.laex.cg2d.model.SlootItem slootItems = 2;
+      // repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
       private java.util.List<com.laex.cg2d.model.SlootContent.SlootItem> slootItems_ =
         java.util.Collections.emptyList();
       private void ensureSlootItemsIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           slootItems_ = new java.util.ArrayList<com.laex.cg2d.model.SlootContent.SlootItem>(slootItems_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -1484,7 +1796,7 @@ public final class SlootContent {
           com.laex.cg2d.model.SlootContent.SlootItem, com.laex.cg2d.model.SlootContent.SlootItem.Builder, com.laex.cg2d.model.SlootContent.SlootItemOrBuilder> slootItemsBuilder_;
 
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public java.util.List<com.laex.cg2d.model.SlootContent.SlootItem> getSlootItemsList() {
         if (slootItemsBuilder_ == null) {
@@ -1494,7 +1806,7 @@ public final class SlootContent {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public int getSlootItemsCount() {
         if (slootItemsBuilder_ == null) {
@@ -1504,7 +1816,7 @@ public final class SlootContent {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public com.laex.cg2d.model.SlootContent.SlootItem getSlootItems(int index) {
         if (slootItemsBuilder_ == null) {
@@ -1514,7 +1826,7 @@ public final class SlootContent {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder setSlootItems(
           int index, com.laex.cg2d.model.SlootContent.SlootItem value) {
@@ -1531,7 +1843,7 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder setSlootItems(
           int index, com.laex.cg2d.model.SlootContent.SlootItem.Builder builderForValue) {
@@ -1545,7 +1857,7 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder addSlootItems(com.laex.cg2d.model.SlootContent.SlootItem value) {
         if (slootItemsBuilder_ == null) {
@@ -1561,7 +1873,7 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder addSlootItems(
           int index, com.laex.cg2d.model.SlootContent.SlootItem value) {
@@ -1578,7 +1890,7 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder addSlootItems(
           com.laex.cg2d.model.SlootContent.SlootItem.Builder builderForValue) {
@@ -1592,7 +1904,7 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder addSlootItems(
           int index, com.laex.cg2d.model.SlootContent.SlootItem.Builder builderForValue) {
@@ -1606,7 +1918,7 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder addAllSlootItems(
           java.lang.Iterable<? extends com.laex.cg2d.model.SlootContent.SlootItem> values) {
@@ -1620,12 +1932,12 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder clearSlootItems() {
         if (slootItemsBuilder_ == null) {
           slootItems_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           slootItemsBuilder_.clear();
@@ -1633,7 +1945,7 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public Builder removeSlootItems(int index) {
         if (slootItemsBuilder_ == null) {
@@ -1646,14 +1958,14 @@ public final class SlootContent {
         return this;
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public com.laex.cg2d.model.SlootContent.SlootItem.Builder getSlootItemsBuilder(
           int index) {
         return getSlootItemsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public com.laex.cg2d.model.SlootContent.SlootItemOrBuilder getSlootItemsOrBuilder(
           int index) {
@@ -1663,7 +1975,7 @@ public final class SlootContent {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public java.util.List<? extends com.laex.cg2d.model.SlootContent.SlootItemOrBuilder> 
            getSlootItemsOrBuilderList() {
@@ -1674,14 +1986,14 @@ public final class SlootContent {
         }
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public com.laex.cg2d.model.SlootContent.SlootItem.Builder addSlootItemsBuilder() {
         return getSlootItemsFieldBuilder().addBuilder(
             com.laex.cg2d.model.SlootContent.SlootItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public com.laex.cg2d.model.SlootContent.SlootItem.Builder addSlootItemsBuilder(
           int index) {
@@ -1689,7 +2001,7 @@ public final class SlootContent {
             index, com.laex.cg2d.model.SlootContent.SlootItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 2;</code>
+       * <code>repeated .com.laex.cg2d.model.SlootItem slootItems = 4;</code>
        */
       public java.util.List<com.laex.cg2d.model.SlootContent.SlootItem.Builder> 
            getSlootItemsBuilderList() {
@@ -1702,7 +2014,7 @@ public final class SlootContent {
           slootItemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.laex.cg2d.model.SlootContent.SlootItem, com.laex.cg2d.model.SlootContent.SlootItem.Builder, com.laex.cg2d.model.SlootContent.SlootItemOrBuilder>(
                   slootItems_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           slootItems_ = null;
@@ -2430,11 +2742,12 @@ public final class SlootContent {
       "\n&com/laex/cg2d/model/SlootContent.proto" +
       "\022\023com.laex.cg2d.model\"E\n\tSlootItem\022\n\n\002id" +
       "\030\001 \001(\t\022\r\n\005title\030\002 \001(\t\022\016\n\006imgUrl\030\003 \001(\t\022\r\n" +
-      "\005price\030\004 \001(\002\"T\n\017SlootCollection\022\r\n\005title" +
-      "\030\001 \001(\t\0222\n\nslootItems\030\002 \003(\0132\036.com.laex.cg" +
-      "2d.model.SlootItem\"T\n\023SlootCollectionLis" +
-      "t\022=\n\017slootCollection\030\001 \003(\0132$.com.laex.cg" +
-      "2d.model.SlootCollection"
+      "\005price\030\004 \001(\002\"\204\001\n\017SlootCollection\022\023\n\013deve" +
+      "loperId\030\001 \001(\t\022\031\n\021slootCollectionId\030\002 \001(\t" +
+      "\022\r\n\005title\030\003 \001(\t\0222\n\nslootItems\030\004 \003(\0132\036.co" +
+      "m.laex.cg2d.model.SlootItem\"T\n\023SlootColl" +
+      "ectionList\022=\n\017slootCollection\030\001 \003(\0132$.co" +
+      "m.laex.cg2d.model.SlootCollection"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2452,7 +2765,7 @@ public final class SlootContent {
           internal_static_com_laex_cg2d_model_SlootCollection_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_laex_cg2d_model_SlootCollection_descriptor,
-              new java.lang.String[] { "Title", "SlootItems", });
+              new java.lang.String[] { "DeveloperId", "SlootCollectionId", "Title", "SlootItems", });
           internal_static_com_laex_cg2d_model_SlootCollectionList_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_laex_cg2d_model_SlootCollectionList_fieldAccessorTable = new

@@ -167,6 +167,9 @@ public class EntitiesView extends ViewPart implements ISelectionListener, IEntit
         ImageHyperlink mghprlnkNewImagehyperlink = formToolkit.createImageHyperlink(composite, SWT.NONE);
         mghprlnkNewImagehyperlink.addHyperlinkListener(new IHyperlinkListener() {
           public void linkActivated(HyperlinkEvent e) {
+
+            txtFilter.setText("");
+
             loadAllEntitiesWithProgress();
           }
 
