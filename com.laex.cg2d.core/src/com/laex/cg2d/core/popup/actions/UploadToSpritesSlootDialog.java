@@ -14,6 +14,8 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -34,10 +36,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 
 import com.laex.cg2d.core.Activator;
-import com.laex.cg2d.core.popup.actions.UploadToSpritesSlootController.SlootProjectProvider;
-
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.ModifyEvent;
+import com.laex.cg2d.core.popup.actions.UploadToSpritesProjectProvider.SlootProjectProvider;
 
 public class UploadToSpritesSlootDialog extends TitleAreaDialog {
 
@@ -102,8 +101,8 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
   private UploadToSpritesSlootController controller;
   private SlootProjectProvider slootProjectProvider;
   private Text txtDeveloperID;
-  private Text txtCollectionID;
   private Text txtCollectionTitle;
+  private Text txtServer;
 
   /**
    * Create the dialog.
@@ -119,6 +118,8 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     super(parentShell);
 
     this.toExport = toExport;
+
+
   }
 
   /**
@@ -135,6 +136,14 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     Composite composite_2 = new Composite(area, SWT.NONE);
     composite_2.setLayout(new GridLayout(2, false));
     composite_2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+    
+    Label lblServerAddress = new Label(composite_2, SWT.NONE);
+    lblServerAddress.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+    lblServerAddress.setText("Server Address");
+    
+    txtServer = new Text(composite_2, SWT.BORDER);
+    txtServer.setText("localhost:3000/");
+    txtServer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
     Label lblNewLabel = new Label(composite_2, SWT.NONE);
     lblNewLabel.setText("Developer ID");
@@ -146,13 +155,6 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
       }
     });
     txtDeveloperID.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-    Label lblCollectionId = new Label(composite_2, SWT.NONE);
-    lblCollectionId.setText("Collection ID");
-
-    txtCollectionID = new Text(composite_2, SWT.BORDER);
-    txtCollectionID.setEditable(false);
-    txtCollectionID.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
     Label lblCollectionTitle = new Label(composite_2, SWT.NONE);
     lblCollectionTitle.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -168,7 +170,7 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     TabFolder tabFolder = new TabFolder(container, SWT.NONE);
 
     TabItem tbtmExportLocally = new TabItem(tabFolder, SWT.NONE);
-    tbtmExportLocally.setText("Export Locally");
+    tbtmExportLocally.setText("Upload");
 
     Composite composite = new Composite(tabFolder, SWT.NONE);
     tbtmExportLocally.setControl(composite);
@@ -176,9 +178,10 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
 
     Label lblTargetDirectory = new Label(composite, SWT.NONE);
     lblTargetDirectory.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-    lblTargetDirectory.setText("Target Directory");
+    lblTargetDirectory.setText("Local Target Directory");
 
     txtTargetLocalExport = new Text(composite, SWT.BORDER);
+    txtTargetLocalExport.setEditable(false);
     txtTargetLocalExport.addModifyListener(new ModifyListener() {
       public void modifyText(ModifyEvent e) {
         validate();
@@ -218,18 +221,13 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     treeViewer.setContentProvider(new TreeContentProvider());
     treeViewer.setLabelProvider(new ViewerLabelProvider());
 
-    TabItem tbtmUpload = new TabItem(tabFolder, SWT.NONE);
-    tbtmUpload.setText("Upload");
-
-    txtTargetLocalExport.setText(UploadToSpritesSlootDialog.lastDirectoryPath);
+    String exportPath = this.toExport.getLocation().append("tmp").toOSString();
+    txtTargetLocalExport.setText(exportPath);
 
     /* generate sloot project provider */
     try {
 
-      slootProjectProvider = UploadToSpritesSlootController.slootProjectProvider("laex.pearl@gmail.com",
-          (IProject) toExport);
-
-      txtCollectionID.setText(slootProjectProvider.collectionID);
+      slootProjectProvider = UploadToSpritesProjectProvider.slootProjectProvider("laex.pearl@gmail.com", (IProject) toExport);
       txtCollectionTitle.setText(slootProjectProvider.collectionTitle);
       txtDeveloperID.setText(slootProjectProvider.developerID);
 

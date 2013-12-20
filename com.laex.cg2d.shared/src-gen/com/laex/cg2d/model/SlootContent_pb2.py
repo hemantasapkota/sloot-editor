@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='com/laex/cg2d/model/SlootContent.proto',
   package='com.laex.cg2d.model',
-  serialized_pb='\n&com/laex/cg2d/model/SlootContent.proto\x12\x13\x63om.laex.cg2d.model\"E\n\tSlootItem\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06imgUrl\x18\x03 \x01(\t\x12\r\n\x05price\x18\x04 \x01(\x02\"\x84\x01\n\x0fSlootCollection\x12\x13\n\x0b\x64\x65veloperId\x18\x01 \x01(\t\x12\x19\n\x11slootCollectionId\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x32\n\nslootItems\x18\x04 \x03(\x0b\x32\x1e.com.laex.cg2d.model.SlootItem\"T\n\x13SlootCollectionList\x12=\n\x0fslootCollection\x18\x01 \x03(\x0b\x32$.com.laex.cg2d.model.SlootCollection')
+  serialized_pb='\n&com/laex/cg2d/model/SlootContent.proto\x12\x13\x63om.laex.cg2d.model\"E\n\tSlootItem\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06imgUrl\x18\x03 \x01(\t\x12\r\n\x05price\x18\x04 \x01(\x02\"s\n\x0fSlootCollection\x12\x13\n\x0b\x64\x65veloperId\x18\x01 \x01(\t\x12\x17\n\x0f\x63ollectionTitle\x18\x02 \x01(\t\x12\x32\n\nslootItems\x18\x03 \x03(\x0b\x32\x1e.com.laex.cg2d.model.SlootItem')
 
 
 
@@ -82,22 +82,15 @@ _SLOOTCOLLECTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='slootCollectionId', full_name='com.laex.cg2d.model.SlootCollection.slootCollectionId', index=1,
+      name='collectionTitle', full_name='com.laex.cg2d.model.SlootCollection.collectionTitle', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='title', full_name='com.laex.cg2d.model.SlootCollection.title', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='slootItems', full_name='com.laex.cg2d.model.SlootCollection.slootItems', index=3,
-      number=4, type=11, cpp_type=10, label=3,
+      name='slootItems', full_name='com.laex.cg2d.model.SlootCollection.slootItems', index=2,
+      number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -111,43 +104,13 @@ _SLOOTCOLLECTION = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=135,
-  serialized_end=267,
-)
-
-
-_SLOOTCOLLECTIONLIST = _descriptor.Descriptor(
-  name='SlootCollectionList',
-  full_name='com.laex.cg2d.model.SlootCollectionList',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='slootCollection', full_name='com.laex.cg2d.model.SlootCollectionList.slootCollection', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=269,
-  serialized_end=353,
+  serialized_start=134,
+  serialized_end=249,
 )
 
 _SLOOTCOLLECTION.fields_by_name['slootItems'].message_type = _SLOOTITEM
-_SLOOTCOLLECTIONLIST.fields_by_name['slootCollection'].message_type = _SLOOTCOLLECTION
 DESCRIPTOR.message_types_by_name['SlootItem'] = _SLOOTITEM
 DESCRIPTOR.message_types_by_name['SlootCollection'] = _SLOOTCOLLECTION
-DESCRIPTOR.message_types_by_name['SlootCollectionList'] = _SLOOTCOLLECTIONLIST
 
 class SlootItem(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -160,12 +123,6 @@ class SlootCollection(_message.Message):
   DESCRIPTOR = _SLOOTCOLLECTION
 
   # @@protoc_insertion_point(class_scope:com.laex.cg2d.model.SlootCollection)
-
-class SlootCollectionList(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SLOOTCOLLECTIONLIST
-
-  # @@protoc_insertion_point(class_scope:com.laex.cg2d.model.SlootCollectionList)
 
 
 # @@protoc_insertion_point(module_scope)

@@ -38,7 +38,6 @@ void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto();
 
 class SlootItem;
 class SlootCollection;
-class SlootCollectionList;
 
 // ===================================================================
 
@@ -235,34 +234,22 @@ class SlootCollection : public ::google::protobuf::Message {
   inline ::std::string* release_developerid();
   inline void set_allocated_developerid(::std::string* developerid);
 
-  // optional string slootCollectionId = 2;
-  inline bool has_slootcollectionid() const;
-  inline void clear_slootcollectionid();
-  static const int kSlootCollectionIdFieldNumber = 2;
-  inline const ::std::string& slootcollectionid() const;
-  inline void set_slootcollectionid(const ::std::string& value);
-  inline void set_slootcollectionid(const char* value);
-  inline void set_slootcollectionid(const char* value, size_t size);
-  inline ::std::string* mutable_slootcollectionid();
-  inline ::std::string* release_slootcollectionid();
-  inline void set_allocated_slootcollectionid(::std::string* slootcollectionid);
+  // optional string collectionTitle = 2;
+  inline bool has_collectiontitle() const;
+  inline void clear_collectiontitle();
+  static const int kCollectionTitleFieldNumber = 2;
+  inline const ::std::string& collectiontitle() const;
+  inline void set_collectiontitle(const ::std::string& value);
+  inline void set_collectiontitle(const char* value);
+  inline void set_collectiontitle(const char* value, size_t size);
+  inline ::std::string* mutable_collectiontitle();
+  inline ::std::string* release_collectiontitle();
+  inline void set_allocated_collectiontitle(::std::string* collectiontitle);
 
-  // optional string title = 3;
-  inline bool has_title() const;
-  inline void clear_title();
-  static const int kTitleFieldNumber = 3;
-  inline const ::std::string& title() const;
-  inline void set_title(const ::std::string& value);
-  inline void set_title(const char* value);
-  inline void set_title(const char* value, size_t size);
-  inline ::std::string* mutable_title();
-  inline ::std::string* release_title();
-  inline void set_allocated_title(::std::string* title);
-
-  // repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
+  // repeated .com.laex.cg2d.model.SlootItem slootItems = 3;
   inline int slootitems_size() const;
   inline void clear_slootitems();
-  static const int kSlootItemsFieldNumber = 4;
+  static const int kSlootItemsFieldNumber = 3;
   inline const ::com::laex::cg2d::model::SlootItem& slootitems(int index) const;
   inline ::com::laex::cg2d::model::SlootItem* mutable_slootitems(int index);
   inline ::com::laex::cg2d::model::SlootItem* add_slootitems();
@@ -275,20 +262,17 @@ class SlootCollection : public ::google::protobuf::Message {
  private:
   inline void set_has_developerid();
   inline void clear_has_developerid();
-  inline void set_has_slootcollectionid();
-  inline void clear_has_slootcollectionid();
-  inline void set_has_title();
-  inline void clear_has_title();
+  inline void set_has_collectiontitle();
+  inline void clear_has_collectiontitle();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* developerid_;
-  ::std::string* slootcollectionid_;
-  ::std::string* title_;
+  ::std::string* collectiontitle_;
   ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::SlootItem > slootitems_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto();
   friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto();
@@ -296,91 +280,6 @@ class SlootCollection : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static SlootCollection* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class SlootCollectionList : public ::google::protobuf::Message {
- public:
-  SlootCollectionList();
-  virtual ~SlootCollectionList();
-
-  SlootCollectionList(const SlootCollectionList& from);
-
-  inline SlootCollectionList& operator=(const SlootCollectionList& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SlootCollectionList& default_instance();
-
-  void Swap(SlootCollectionList* other);
-
-  // implements Message ----------------------------------------------
-
-  SlootCollectionList* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const SlootCollectionList& from);
-  void MergeFrom(const SlootCollectionList& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .com.laex.cg2d.model.SlootCollection slootCollection = 1;
-  inline int slootcollection_size() const;
-  inline void clear_slootcollection();
-  static const int kSlootCollectionFieldNumber = 1;
-  inline const ::com::laex::cg2d::model::SlootCollection& slootcollection(int index) const;
-  inline ::com::laex::cg2d::model::SlootCollection* mutable_slootcollection(int index);
-  inline ::com::laex::cg2d::model::SlootCollection* add_slootcollection();
-  inline const ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::SlootCollection >&
-      slootcollection() const;
-  inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::SlootCollection >*
-      mutable_slootcollection();
-
-  // @@protoc_insertion_point(class_scope:com.laex.cg2d.model.SlootCollectionList)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::SlootCollection > slootcollection_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-
-  friend void  protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto();
-  friend void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto();
-  friend void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto();
-
-  void InitAsDefaultInstance();
-  static SlootCollectionList* default_instance_;
 };
 // ===================================================================
 
@@ -695,147 +594,77 @@ inline void SlootCollection::set_allocated_developerid(::std::string* developeri
   }
 }
 
-// optional string slootCollectionId = 2;
-inline bool SlootCollection::has_slootcollectionid() const {
+// optional string collectionTitle = 2;
+inline bool SlootCollection::has_collectiontitle() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void SlootCollection::set_has_slootcollectionid() {
+inline void SlootCollection::set_has_collectiontitle() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void SlootCollection::clear_has_slootcollectionid() {
+inline void SlootCollection::clear_has_collectiontitle() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void SlootCollection::clear_slootcollectionid() {
-  if (slootcollectionid_ != &::google::protobuf::internal::kEmptyString) {
-    slootcollectionid_->clear();
+inline void SlootCollection::clear_collectiontitle() {
+  if (collectiontitle_ != &::google::protobuf::internal::kEmptyString) {
+    collectiontitle_->clear();
   }
-  clear_has_slootcollectionid();
+  clear_has_collectiontitle();
 }
-inline const ::std::string& SlootCollection::slootcollectionid() const {
-  return *slootcollectionid_;
+inline const ::std::string& SlootCollection::collectiontitle() const {
+  return *collectiontitle_;
 }
-inline void SlootCollection::set_slootcollectionid(const ::std::string& value) {
-  set_has_slootcollectionid();
-  if (slootcollectionid_ == &::google::protobuf::internal::kEmptyString) {
-    slootcollectionid_ = new ::std::string;
+inline void SlootCollection::set_collectiontitle(const ::std::string& value) {
+  set_has_collectiontitle();
+  if (collectiontitle_ == &::google::protobuf::internal::kEmptyString) {
+    collectiontitle_ = new ::std::string;
   }
-  slootcollectionid_->assign(value);
+  collectiontitle_->assign(value);
 }
-inline void SlootCollection::set_slootcollectionid(const char* value) {
-  set_has_slootcollectionid();
-  if (slootcollectionid_ == &::google::protobuf::internal::kEmptyString) {
-    slootcollectionid_ = new ::std::string;
+inline void SlootCollection::set_collectiontitle(const char* value) {
+  set_has_collectiontitle();
+  if (collectiontitle_ == &::google::protobuf::internal::kEmptyString) {
+    collectiontitle_ = new ::std::string;
   }
-  slootcollectionid_->assign(value);
+  collectiontitle_->assign(value);
 }
-inline void SlootCollection::set_slootcollectionid(const char* value, size_t size) {
-  set_has_slootcollectionid();
-  if (slootcollectionid_ == &::google::protobuf::internal::kEmptyString) {
-    slootcollectionid_ = new ::std::string;
+inline void SlootCollection::set_collectiontitle(const char* value, size_t size) {
+  set_has_collectiontitle();
+  if (collectiontitle_ == &::google::protobuf::internal::kEmptyString) {
+    collectiontitle_ = new ::std::string;
   }
-  slootcollectionid_->assign(reinterpret_cast<const char*>(value), size);
+  collectiontitle_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* SlootCollection::mutable_slootcollectionid() {
-  set_has_slootcollectionid();
-  if (slootcollectionid_ == &::google::protobuf::internal::kEmptyString) {
-    slootcollectionid_ = new ::std::string;
+inline ::std::string* SlootCollection::mutable_collectiontitle() {
+  set_has_collectiontitle();
+  if (collectiontitle_ == &::google::protobuf::internal::kEmptyString) {
+    collectiontitle_ = new ::std::string;
   }
-  return slootcollectionid_;
+  return collectiontitle_;
 }
-inline ::std::string* SlootCollection::release_slootcollectionid() {
-  clear_has_slootcollectionid();
-  if (slootcollectionid_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* SlootCollection::release_collectiontitle() {
+  clear_has_collectiontitle();
+  if (collectiontitle_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = slootcollectionid_;
-    slootcollectionid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = collectiontitle_;
+    collectiontitle_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
-inline void SlootCollection::set_allocated_slootcollectionid(::std::string* slootcollectionid) {
-  if (slootcollectionid_ != &::google::protobuf::internal::kEmptyString) {
-    delete slootcollectionid_;
+inline void SlootCollection::set_allocated_collectiontitle(::std::string* collectiontitle) {
+  if (collectiontitle_ != &::google::protobuf::internal::kEmptyString) {
+    delete collectiontitle_;
   }
-  if (slootcollectionid) {
-    set_has_slootcollectionid();
-    slootcollectionid_ = slootcollectionid;
+  if (collectiontitle) {
+    set_has_collectiontitle();
+    collectiontitle_ = collectiontitle;
   } else {
-    clear_has_slootcollectionid();
-    slootcollectionid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    clear_has_collectiontitle();
+    collectiontitle_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 
-// optional string title = 3;
-inline bool SlootCollection::has_title() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void SlootCollection::set_has_title() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void SlootCollection::clear_has_title() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void SlootCollection::clear_title() {
-  if (title_ != &::google::protobuf::internal::kEmptyString) {
-    title_->clear();
-  }
-  clear_has_title();
-}
-inline const ::std::string& SlootCollection::title() const {
-  return *title_;
-}
-inline void SlootCollection::set_title(const ::std::string& value) {
-  set_has_title();
-  if (title_ == &::google::protobuf::internal::kEmptyString) {
-    title_ = new ::std::string;
-  }
-  title_->assign(value);
-}
-inline void SlootCollection::set_title(const char* value) {
-  set_has_title();
-  if (title_ == &::google::protobuf::internal::kEmptyString) {
-    title_ = new ::std::string;
-  }
-  title_->assign(value);
-}
-inline void SlootCollection::set_title(const char* value, size_t size) {
-  set_has_title();
-  if (title_ == &::google::protobuf::internal::kEmptyString) {
-    title_ = new ::std::string;
-  }
-  title_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* SlootCollection::mutable_title() {
-  set_has_title();
-  if (title_ == &::google::protobuf::internal::kEmptyString) {
-    title_ = new ::std::string;
-  }
-  return title_;
-}
-inline ::std::string* SlootCollection::release_title() {
-  clear_has_title();
-  if (title_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = title_;
-    title_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void SlootCollection::set_allocated_title(::std::string* title) {
-  if (title_ != &::google::protobuf::internal::kEmptyString) {
-    delete title_;
-  }
-  if (title) {
-    set_has_title();
-    title_ = title;
-  } else {
-    clear_has_title();
-    title_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
+// repeated .com.laex.cg2d.model.SlootItem slootItems = 3;
 inline int SlootCollection::slootitems_size() const {
   return slootitems_.size();
 }
@@ -858,35 +687,6 @@ SlootCollection::slootitems() const {
 inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::SlootItem >*
 SlootCollection::mutable_slootitems() {
   return &slootitems_;
-}
-
-// -------------------------------------------------------------------
-
-// SlootCollectionList
-
-// repeated .com.laex.cg2d.model.SlootCollection slootCollection = 1;
-inline int SlootCollectionList::slootcollection_size() const {
-  return slootcollection_.size();
-}
-inline void SlootCollectionList::clear_slootcollection() {
-  slootcollection_.Clear();
-}
-inline const ::com::laex::cg2d::model::SlootCollection& SlootCollectionList::slootcollection(int index) const {
-  return slootcollection_.Get(index);
-}
-inline ::com::laex::cg2d::model::SlootCollection* SlootCollectionList::mutable_slootcollection(int index) {
-  return slootcollection_.Mutable(index);
-}
-inline ::com::laex::cg2d::model::SlootCollection* SlootCollectionList::add_slootcollection() {
-  return slootcollection_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::SlootCollection >&
-SlootCollectionList::slootcollection() const {
-  return slootcollection_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::com::laex::cg2d::model::SlootCollection >*
-SlootCollectionList::mutable_slootcollection() {
-  return &slootcollection_;
 }
 
 

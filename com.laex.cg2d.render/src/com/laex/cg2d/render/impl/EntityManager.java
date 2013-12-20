@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.lwjgl.Sys;
+
 import aurelienribon.bodyeditor.BodyEditorLoader;
 
 import com.badlogic.gdx.Gdx;
@@ -66,14 +68,13 @@ public class EntityManager implements ScreenScaffold {
 
   /** The shape to entity map. */
   private Map<CGShape, CGEntity> shapeToEntityMap;
-  
+
   /** The shape to animation map. */
   private Map<CGShape, Animation> shapeToAnimationMap;
-  
+
   // x = origin x, y = origin y, z = radius
   /** The shape to animation origin map. */
   private Map<CGShape, Vector3> shapeToAnimationOriginMap;
-
 
   /** The draw entities. */
   private boolean drawEntities;
@@ -143,11 +144,14 @@ public class EntityManager implements ScreenScaffold {
 
   /**
    * Creates the entity.
-   *
-   * @param shape the shape
-   * @param animationName the animation name
+   * 
+   * @param shape
+   *          the shape
+   * @param animationName
+   *          the animation name
    * @return the body
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
   public Body createEntity(CGShape shape, String animationName) throws IOException {
     CGEditorShapeType eType = shape.getEditorShapeType();
@@ -165,8 +169,8 @@ public class EntityManager implements ScreenScaffold {
     }
 
     /* For Entities */
-    final CGEntity entity = CGEntity.parseFrom(Gdx.files.absolute(shape.getEntityRefFile().getResourceFileAbsolute())
-        .read());
+    String entPath = shape.getEntityRefFile().getResourceFileAbsolute();
+    final CGEntity entity = CGEntity.parseFrom(Gdx.files.absolute(entPath).read());
 
     shapeToEntityMap.put(shape, entity);
 
@@ -244,8 +248,9 @@ public class EntityManager implements ScreenScaffold {
 
   /**
    * Removes the entity.
-   *
-   * @param shape the shape
+   * 
+   * @param shape
+   *          the shape
    */
   public void removeEntity(CGShape shape) {
     shapeToAnimationMap.remove(shape);
@@ -380,13 +385,19 @@ public class EntityManager implements ScreenScaffold {
    */
   /**
    * Creates the entity collision shape.
-   *
-   * @param shape the shape
-   * @param entity the entity
-   * @param ea the ea
-   * @param bodyDef the body def
-   * @param fixDef the fix def
-   * @param b the b
+   * 
+   * @param shape
+   *          the shape
+   * @param entity
+   *          the entity
+   * @param ea
+   *          the ea
+   * @param bodyDef
+   *          the body def
+   * @param fixDef
+   *          the fix def
+   * @param b
+   *          the b
    */
   public void createEntityCollisionShape(CGShape shape, CGEntity entity, CGEntityAnimation ea, BodyDef bodyDef,
       FixtureDef fixDef, Body b) {
@@ -425,7 +436,7 @@ public class EntityManager implements ScreenScaffold {
       /* Decode x,y, width, height of collision shape from the vertices */
       CGVector2 v1 = ea.getVertices(0);
       CGVector2 v2 = ea.getVertices(2);
-      
+
       Rectangle r = new Rectangle(v1.getX(), v1.getY(), v2.getX(), v2.getY());
       r.width = r.width - r.x;
       r.height = r.height - r.y;
@@ -444,8 +455,10 @@ public class EntityManager implements ScreenScaffold {
       int w = (int) r.width;
       int h = (int) r.height;
 
-      /* ptmRatioSquared should be casted to integer to avoid floating point calculation division.
-       * If not, the orirgin will actully diverge and will be clearly seen in the rotation of the circle shape 
+      /*
+       * ptmRatioSquared should be casted to integer to avoid floating point
+       * calculation division. If not, the orirgin will actully diverge and will
+       * be clearly seen in the rotation of the circle shape
        */
       int ptmRatioSquared = (int) (manipulator.ptmRatio() * manipulator.ptmRatio());
       float ox = (x + w) / (ptmRatioSquared) + radius;
@@ -456,7 +469,7 @@ public class EntityManager implements ScreenScaffold {
 
       circShape.setRadius(radius);
       circShape.setPosition(cpos);
-      
+
       shapeToAnimationOriginMap.put(shape, new Vector3(ox, oy, radius));
 
       fixDef.shape = circShape;

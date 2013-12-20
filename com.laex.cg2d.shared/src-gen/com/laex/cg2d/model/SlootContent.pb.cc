@@ -29,9 +29,6 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* SlootCollection_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SlootCollection_reflection_ = NULL;
-const ::google::protobuf::Descriptor* SlootCollectionList_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  SlootCollectionList_reflection_ = NULL;
 
 }  // namespace
 
@@ -61,10 +58,9 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SlootItem));
   SlootCollection_descriptor_ = file->message_type(1);
-  static const int SlootCollection_offsets_[4] = {
+  static const int SlootCollection_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlootCollection, developerid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlootCollection, slootcollectionid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlootCollection, title_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlootCollection, collectiontitle_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlootCollection, slootitems_),
   };
   SlootCollection_reflection_ =
@@ -78,21 +74,6 @@ void protobuf_AssignDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SlootCollection));
-  SlootCollectionList_descriptor_ = file->message_type(2);
-  static const int SlootCollectionList_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlootCollectionList, slootcollection_),
-  };
-  SlootCollectionList_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      SlootCollectionList_descriptor_,
-      SlootCollectionList::default_instance_,
-      SlootCollectionList_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlootCollectionList, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlootCollectionList, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(SlootCollectionList));
 }
 
 namespace {
@@ -109,8 +90,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
     SlootItem_descriptor_, &SlootItem::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SlootCollection_descriptor_, &SlootCollection::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    SlootCollectionList_descriptor_, &SlootCollectionList::default_instance());
 }
 
 }  // namespace
@@ -120,8 +99,6 @@ void protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto() {
   delete SlootItem_reflection_;
   delete SlootCollection::default_instance_;
   delete SlootCollection_reflection_;
-  delete SlootCollectionList::default_instance_;
-  delete SlootCollectionList_reflection_;
 }
 
 void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto() {
@@ -134,20 +111,16 @@ void protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto() {
     "\n&com/laex/cg2d/model/SlootContent.proto"
     "\022\023com.laex.cg2d.model\"E\n\tSlootItem\022\n\n\002id"
     "\030\001 \001(\t\022\r\n\005title\030\002 \001(\t\022\016\n\006imgUrl\030\003 \001(\t\022\r\n"
-    "\005price\030\004 \001(\002\"\204\001\n\017SlootCollection\022\023\n\013deve"
-    "loperId\030\001 \001(\t\022\031\n\021slootCollectionId\030\002 \001(\t"
-    "\022\r\n\005title\030\003 \001(\t\0222\n\nslootItems\030\004 \003(\0132\036.co"
-    "m.laex.cg2d.model.SlootItem\"T\n\023SlootColl"
-    "ectionList\022=\n\017slootCollection\030\001 \003(\0132$.co"
-    "m.laex.cg2d.model.SlootCollection", 353);
+    "\005price\030\004 \001(\002\"s\n\017SlootCollection\022\023\n\013devel"
+    "operId\030\001 \001(\t\022\027\n\017collectionTitle\030\002 \001(\t\0222\n"
+    "\nslootItems\030\003 \003(\0132\036.com.laex.cg2d.model."
+    "SlootItem", 249);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "com/laex/cg2d/model/SlootContent.proto", &protobuf_RegisterTypes);
   SlootItem::default_instance_ = new SlootItem();
   SlootCollection::default_instance_ = new SlootCollection();
-  SlootCollectionList::default_instance_ = new SlootCollectionList();
   SlootItem::default_instance_->InitAsDefaultInstance();
   SlootCollection::default_instance_->InitAsDefaultInstance();
-  SlootCollectionList::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto);
 }
 
@@ -539,8 +512,7 @@ void SlootItem::Swap(SlootItem* other) {
 
 #ifndef _MSC_VER
 const int SlootCollection::kDeveloperIdFieldNumber;
-const int SlootCollection::kSlootCollectionIdFieldNumber;
-const int SlootCollection::kTitleFieldNumber;
+const int SlootCollection::kCollectionTitleFieldNumber;
 const int SlootCollection::kSlootItemsFieldNumber;
 #endif  // !_MSC_VER
 
@@ -561,8 +533,7 @@ SlootCollection::SlootCollection(const SlootCollection& from)
 void SlootCollection::SharedCtor() {
   _cached_size_ = 0;
   developerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  slootcollectionid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  title_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  collectiontitle_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -574,11 +545,8 @@ void SlootCollection::SharedDtor() {
   if (developerid_ != &::google::protobuf::internal::kEmptyString) {
     delete developerid_;
   }
-  if (slootcollectionid_ != &::google::protobuf::internal::kEmptyString) {
-    delete slootcollectionid_;
-  }
-  if (title_ != &::google::protobuf::internal::kEmptyString) {
-    delete title_;
+  if (collectiontitle_ != &::google::protobuf::internal::kEmptyString) {
+    delete collectiontitle_;
   }
   if (this != default_instance_) {
   }
@@ -612,14 +580,9 @@ void SlootCollection::Clear() {
         developerid_->clear();
       }
     }
-    if (has_slootcollectionid()) {
-      if (slootcollectionid_ != &::google::protobuf::internal::kEmptyString) {
-        slootcollectionid_->clear();
-      }
-    }
-    if (has_title()) {
-      if (title_ != &::google::protobuf::internal::kEmptyString) {
-        title_->clear();
+    if (has_collectiontitle()) {
+      if (collectiontitle_ != &::google::protobuf::internal::kEmptyString) {
+        collectiontitle_->clear();
       }
     }
   }
@@ -646,46 +609,29 @@ bool SlootCollection::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_slootCollectionId;
+        if (input->ExpectTag(18)) goto parse_collectionTitle;
         break;
       }
 
-      // optional string slootCollectionId = 2;
+      // optional string collectionTitle = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_slootCollectionId:
+         parse_collectionTitle:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_slootcollectionid()));
+                input, this->mutable_collectiontitle()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->slootcollectionid().data(), this->slootcollectionid().length(),
+            this->collectiontitle().data(), this->collectiontitle().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_title;
+        if (input->ExpectTag(26)) goto parse_slootItems;
         break;
       }
 
-      // optional string title = 3;
+      // repeated .com.laex.cg2d.model.SlootItem slootItems = 3;
       case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_title:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_title()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->title().data(), this->title().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_slootItems;
-        break;
-      }
-
-      // repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
-      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_slootItems:
@@ -694,7 +640,7 @@ bool SlootCollection::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_slootItems;
+        if (input->ExpectTag(26)) goto parse_slootItems;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -726,28 +672,19 @@ void SlootCollection::SerializeWithCachedSizes(
       1, this->developerid(), output);
   }
 
-  // optional string slootCollectionId = 2;
-  if (has_slootcollectionid()) {
+  // optional string collectionTitle = 2;
+  if (has_collectiontitle()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->slootcollectionid().data(), this->slootcollectionid().length(),
+      this->collectiontitle().data(), this->collectiontitle().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->slootcollectionid(), output);
+      2, this->collectiontitle(), output);
   }
 
-  // optional string title = 3;
-  if (has_title()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->title().data(), this->title().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->title(), output);
-  }
-
-  // repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
+  // repeated .com.laex.cg2d.model.SlootItem slootItems = 3;
   for (int i = 0; i < this->slootitems_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->slootitems(i), output);
+      3, this->slootitems(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -768,31 +705,21 @@ void SlootCollection::SerializeWithCachedSizes(
         1, this->developerid(), target);
   }
 
-  // optional string slootCollectionId = 2;
-  if (has_slootcollectionid()) {
+  // optional string collectionTitle = 2;
+  if (has_collectiontitle()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->slootcollectionid().data(), this->slootcollectionid().length(),
+      this->collectiontitle().data(), this->collectiontitle().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->slootcollectionid(), target);
+        2, this->collectiontitle(), target);
   }
 
-  // optional string title = 3;
-  if (has_title()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->title().data(), this->title().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->title(), target);
-  }
-
-  // repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
+  // repeated .com.laex.cg2d.model.SlootItem slootItems = 3;
   for (int i = 0; i < this->slootitems_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->slootitems(i), target);
+        3, this->slootitems(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -813,22 +740,15 @@ int SlootCollection::ByteSize() const {
           this->developerid());
     }
 
-    // optional string slootCollectionId = 2;
-    if (has_slootcollectionid()) {
+    // optional string collectionTitle = 2;
+    if (has_collectiontitle()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->slootcollectionid());
-    }
-
-    // optional string title = 3;
-    if (has_title()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->title());
+          this->collectiontitle());
     }
 
   }
-  // repeated .com.laex.cg2d.model.SlootItem slootItems = 4;
+  // repeated .com.laex.cg2d.model.SlootItem slootItems = 3;
   total_size += 1 * this->slootitems_size();
   for (int i = 0; i < this->slootitems_size(); i++) {
     total_size +=
@@ -866,11 +786,8 @@ void SlootCollection::MergeFrom(const SlootCollection& from) {
     if (from.has_developerid()) {
       set_developerid(from.developerid());
     }
-    if (from.has_slootcollectionid()) {
-      set_slootcollectionid(from.slootcollectionid());
-    }
-    if (from.has_title()) {
-      set_title(from.title());
+    if (from.has_collectiontitle()) {
+      set_collectiontitle(from.collectiontitle());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -896,8 +813,7 @@ bool SlootCollection::IsInitialized() const {
 void SlootCollection::Swap(SlootCollection* other) {
   if (other != this) {
     std::swap(developerid_, other->developerid_);
-    std::swap(slootcollectionid_, other->slootcollectionid_);
-    std::swap(title_, other->title_);
+    std::swap(collectiontitle_, other->collectiontitle_);
     slootitems_.Swap(&other->slootitems_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -910,209 +826,6 @@ void SlootCollection::Swap(SlootCollection* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = SlootCollection_descriptor_;
   metadata.reflection = SlootCollection_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int SlootCollectionList::kSlootCollectionFieldNumber;
-#endif  // !_MSC_VER
-
-SlootCollectionList::SlootCollectionList()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void SlootCollectionList::InitAsDefaultInstance() {
-}
-
-SlootCollectionList::SlootCollectionList(const SlootCollectionList& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void SlootCollectionList::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-SlootCollectionList::~SlootCollectionList() {
-  SharedDtor();
-}
-
-void SlootCollectionList::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void SlootCollectionList::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* SlootCollectionList::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return SlootCollectionList_descriptor_;
-}
-
-const SlootCollectionList& SlootCollectionList::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_com_2flaex_2fcg2d_2fmodel_2fSlootContent_2eproto();
-  return *default_instance_;
-}
-
-SlootCollectionList* SlootCollectionList::default_instance_ = NULL;
-
-SlootCollectionList* SlootCollectionList::New() const {
-  return new SlootCollectionList;
-}
-
-void SlootCollectionList::Clear() {
-  slootcollection_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool SlootCollectionList::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .com.laex.cg2d.model.SlootCollection slootCollection = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_slootCollection:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_slootcollection()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(10)) goto parse_slootCollection;
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void SlootCollectionList::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .com.laex.cg2d.model.SlootCollection slootCollection = 1;
-  for (int i = 0; i < this->slootcollection_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->slootcollection(i), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* SlootCollectionList::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // repeated .com.laex.cg2d.model.SlootCollection slootCollection = 1;
-  for (int i = 0; i < this->slootcollection_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->slootcollection(i), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int SlootCollectionList::ByteSize() const {
-  int total_size = 0;
-
-  // repeated .com.laex.cg2d.model.SlootCollection slootCollection = 1;
-  total_size += 1 * this->slootcollection_size();
-  for (int i = 0; i < this->slootcollection_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->slootcollection(i));
-  }
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void SlootCollectionList::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const SlootCollectionList* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const SlootCollectionList*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void SlootCollectionList::MergeFrom(const SlootCollectionList& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  slootcollection_.MergeFrom(from.slootcollection_);
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void SlootCollectionList::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void SlootCollectionList::CopyFrom(const SlootCollectionList& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool SlootCollectionList::IsInitialized() const {
-
-  return true;
-}
-
-void SlootCollectionList::Swap(SlootCollectionList* other) {
-  if (other != this) {
-    slootcollection_.Swap(&other->slootcollection_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata SlootCollectionList::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = SlootCollectionList_descriptor_;
-  metadata.reflection = SlootCollectionList_reflection_;
   return metadata;
 }
 

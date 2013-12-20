@@ -1,25 +1,22 @@
 package com.laex.cg2d.core.popup.actions;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.tools.ant.Project;
+import org.apache.tools.ant.taskdefs.Zip;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceVisitor;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -32,6 +29,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.googlecode.protobuf.format.JsonFormat;
 import com.laex.cg2d.core.Activator;
+import com.laex.cg2d.core.popup.actions.UploadToSpritesProjectProvider.SlootProjectProvider;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.ScreenModel.CGEditorShapeType;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
@@ -41,25 +39,18 @@ import com.laex.cg2d.model.ScreenModel.CGLayer;
 import com.laex.cg2d.model.ScreenModel.CGResourceFile;
 import com.laex.cg2d.model.ScreenModel.CGScreenModel;
 import com.laex.cg2d.model.ScreenModel.CGShape;
-import com.laex.cg2d.model.SlootContent;
 import com.laex.cg2d.model.SlootContent.SlootCollection;
-import com.laex.cg2d.model.SlootContent.SlootCollectionList;
 import com.laex.cg2d.model.SlootContent.SlootItem;
 import com.laex.cg2d.model.adapter.EntityAdapter;
 import com.laex.cg2d.model.model.Entity;
 import com.laex.cg2d.model.util.EntitiesUtil;
+import com.ning.http.client.AsyncCompletionHandler;
+import com.ning.http.client.AsyncHttpClient;
+import com.ning.http.client.AsyncHttpClient.BoundRequestBuilder;
+import com.ning.http.client.Response;
+import com.ning.http.multipart.FilePart;
 
 public class UploadToSpritesSlootController {
-
-  public static class SlootProjectProvider {
-    public String developerID = "";
-    public String collectionID = "";
-    public String collectionTitle = "";
-
-    public List<IResource> entities = new ArrayList<IResource>();
-    public List<IResource> screens = new ArrayList<IResource>();
-    public List<IResource> textures = new ArrayList<IResource>();
-  }
 
   public IResource toExport;
   public String targetDirectory;
@@ -89,39 +80,32 @@ public class UploadToSpritesSlootController {
       CGEntity.Builder bldr = CGEntity.newBuilder(cgEntity);
       for (CGEntityAnimation.Builder animBldr : bldr.getAnimationsBuilderList()) {
 
-        IPath trimmedBasePath = basePath.removeFirstSegments(basePath.segmentCount() - 2);
+        IPath trimmedBasePath = basePath.removeFirstSegments(basePath.segmentCount() - 1);
 
         if (!animBldr.getSpritesheetFileBuilder().getResourceFile().isEmpty()) {
-
           String lastSegmentSpritesheetFile = new Path(animBldr.getSpritesheetFileBuilder().getResourceFile())
               .lastSegment();
           String rewrittenPath = trimmedBasePath.append(lastSegmentSpritesheetFile).toOSString();
 
           animBldr.getSpritesheetFileBuilder().setResourceFile(rewrittenPath).setResourceFileAbsolute("");
-
         }
 
         if (!animBldr.getSpritesheetJsonFile().getResourceFile().isEmpty()) {
-
           String lastSegmentSpritesheetJsonFile = new Path(animBldr.getSpritesheetJsonFileBuilder().getResourceFile())
               .lastSegment();
 
           String rewrittenPath = trimmedBasePath.append(lastSegmentSpritesheetJsonFile).toOSString();
 
           animBldr.getSpritesheetJsonFileBuilder().setResourceFile(rewrittenPath).setResourceFileAbsolute("");
-
         }
 
         /* For custom collision type */
         if (animBldr.getCollisionType() == CGEntityCollisionType.CUSTOM) {
-
           String lastSegment = new Path(animBldr.getFixtureFileBuilder().getResourceFile()).lastSegment();
           String rewrittenPath = trimmedBasePath.append(lastSegment).toOSString();
 
           animBldr.getFixtureFileBuilder().setResourceFile(rewrittenPath).setResourceFileAbsolute("");
-
         }
-
       }
 
       CGEntity modifiedCGEntity = bldr.build();
@@ -165,7 +149,7 @@ public class UploadToSpritesSlootController {
             CGResourceFile entityRefFile = shpBuilder.getEntityRefFile();
             if (!entityRefFile.getResourceFile().isEmpty()) {
               String lastSegment = new Path(entityRefFile.getResourceFile()).lastSegment();
-              String rewrittenPath = basePath.removeFirstSegments(basePath.segmentCount() - 2).append(lastSegment)
+              String rewrittenPath = basePath.removeFirstSegments(basePath.segmentCount() - 1).append(lastSegment)
                   .addFileExtension("json").toOSString();
 
               entityRefFile = CGResourceFile.newBuilder(entityRefFile).setResourceFile(rewrittenPath)
@@ -180,8 +164,11 @@ public class UploadToSpritesSlootController {
             if (!bgResourceFile.getResourceFile().isEmpty()) {
               String lastSegment = new Path(bgResourceFile.getResourceFile()).lastSegment();
 
-              /* Background Resource File: has extension PNG, we dont append JSON extend to this file */
-              String rewrittenPath = basePath.removeFirstSegments(basePath.segmentCount() - 2).append(lastSegment)
+              /*
+               * Background Resource File: has extension PNG, we dont append
+               * JSON extend to this file
+               */
+              String rewrittenPath = basePath.removeFirstSegments(basePath.segmentCount() - 1).append(lastSegment)
                   .toOSString();
 
               bgResourceFile = CGResourceFile.newBuilder(bgResourceFile).setResourceFile(rewrittenPath)
@@ -213,88 +200,36 @@ public class UploadToSpritesSlootController {
     return resource.getName().endsWith(ICGCProject.ENTITIES_EXTENSION);
   }
 
-  private void generateSlootContent(IPath basePath, String targetDir) throws IOException, CoreException {
+  private String generateSlootContent(IPath basePath, String targetDir) throws IOException, CoreException {
+
     /*
      * We write sloot-content.json to a directory one step outside of the
      * collection
      */
     File fileJson = basePath.removeLastSegments(1).append("sloot-content.json").toFile();
     File fileProtobuf = basePath.removeLastSegments(1).append("sloot-content.cmf").toFile();
-    IPath imgFileBasePath = basePath.removeFirstSegments(basePath.segmentCount() - 2); // our
-                                                                                       // url
-                                                                                       // should
-                                                                                       // be:
-                                                                                       // sloot-content/<folder_name>/...
+    IPath imgFileBasePath = basePath.removeFirstSegments(basePath.segmentCount() - 1); 
 
-    final SlootCollection.Builder builder = SlootCollection.newBuilder().setTitle(slootProjectProvider.collectionTitle)
-        .setDeveloperId(slootProjectProvider.developerID).setSlootCollectionId(slootProjectProvider.collectionID);
+    final SlootCollection.Builder builder = SlootCollection.newBuilder().setCollectionTitle(slootProjectProvider.collectionTitle)
+        .setDeveloperId(slootProjectProvider.developerID);
 
+    /* Build sloot content */
     for (IResource resource : slootProjectProvider.entities) {
       String imgUrlPath = imgFileBasePath.append(resource.getName()).addFileExtension(ICGCProject.PNG_EXTENSION)
           .toOSString();
       String title = resource.getLocation().removeFileExtension().lastSegment();
 
       String id = toExport.getName() + "_" + resource.getName();
-      SlootItem si = SlootItem.newBuilder().setId(id).setImgUrl(imgUrlPath).setTitle(title).setPrice(0.99f).build();
+      SlootItem si = SlootItem.newBuilder().setId(id).setImgUrl(imgUrlPath).setTitle(title).setPrice(0).build();
       builder.addSlootItems(si);
     }
 
-    SlootCollectionList newCollectionList = SlootCollectionList.newBuilder().addSlootCollection(builder.build())
-        .build();
-    String newJsonCollection = JsonFormat.printToString(newCollectionList);
-    try {
-      /* Combine existing Json with new one and write it to file. */
-      SlootCollectionList existinglistOfCollections = SlootContent.SlootCollectionList.parseFrom(new FileInputStream(
-          fileProtobuf));
+    SlootCollection collection = builder.build();
+    String newJsonCollection = JsonFormat.printToString(collection);
+    FileUtils.writeByteArrayToFile(fileJson, newJsonCollection.toString().getBytes());
+    FileUtils.writeByteArrayToFile(fileProtobuf, collection.toByteArray());
 
-      /*
-       * We might have to update information on one of the existng collections
-       * already present on the list
-       */
-      boolean shouldAppend = true;
-      SlootCollectionList.Builder bldr = SlootCollectionList.newBuilder(existinglistOfCollections);
-
-      for (SlootCollection.Builder colBldr : bldr.getSlootCollectionBuilderList()) {
-
-        SlootCollection c = newCollectionList.getSlootCollection(0);
-
-        /* Ok definitely, we have to update the list instead of appending it */
-        if (colBldr.getDeveloperId().equals(c.getDeveloperId()) && colBldr.getTitle().equals(c.getTitle())) {
-
-          // colBldr.setDeveloperId(c.getDeveloperId()).setTitle(c.getTitle()).setSlootCollectionId(c.getSlootCollectionId());
-
-          for (int i = 0; i < c.getSlootItemsCount(); i++) {
-            SlootItem si = c.getSlootItems(i);
-            colBldr.setSlootItems(i, si);
-          }
-
-          shouldAppend = false;
-
-        }
-      }
-
-      /* update */
-      existinglistOfCollections = bldr.build();
-
-      if (shouldAppend) {
-
-        existinglistOfCollections = SlootCollectionList.newBuilder()
-            .addAllSlootCollection(existinglistOfCollections.getSlootCollectionList())
-            .addSlootCollection(newCollectionList.getSlootCollection(0)).build();
-
-      }
-
-      String existingCollectionJson = JsonFormat.printToString(existinglistOfCollections);
-      FileUtils.writeByteArrayToFile(fileJson, existingCollectionJson.toString().getBytes());
-      FileUtils.writeByteArrayToFile(fileProtobuf, existinglistOfCollections.toByteArray());
-
-    } catch (FileNotFoundException e) {
-      /* Let's do something here */
-      /* Just write the new json */
-      FileUtils.writeByteArrayToFile(fileJson, newJsonCollection.toString().getBytes());
-      FileUtils.writeByteArrayToFile(fileProtobuf, newCollectionList.toByteArray());
-    }
-
+    return newJsonCollection;
   }
 
   public void exportLocally(final Shell shell) throws CoreException, InvocationTargetException, InterruptedException,
@@ -304,7 +239,9 @@ public class UploadToSpritesSlootController {
     /* Clear directory first */
     FileUtils.deleteDirectory(basePath.toFile());
 
-    Job job = new Job("Export locally") {
+    toExport.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+
+    Job job = new Job("Upload to SpritesLoot") {
 
       private IStatus handleError(final Exception e) {
 
@@ -352,12 +289,25 @@ public class UploadToSpritesSlootController {
             monitor.worked(1);
           }
 
+          monitor.subTask("Generating Sloot Content");
+          String slootContentJsonFile = generateSlootContent(basePath, targetDirectory);
+          monitor.worked(1);
+
+          monitor.subTask("Compressing folders");
+          File zipFile = zipFolder(toExport.getLocation().append("tmp").append(slootProjectProvider.collectionTitle));
+
+          monitor.subTask("Refreshing filesystem");
+          toExport.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+
+          /* Finally upload */
+          monitor.subTask("Uploading....");
+          upload(zipFile, slootContentJsonFile);
+          monitor.worked(1);
+
           monitor.done();
 
         } catch (Exception e) {
-
           return handleError(e);
-
         }
 
         return Status.OK_STATUS;
@@ -366,42 +316,54 @@ public class UploadToSpritesSlootController {
 
     job.setUser(true);
     job.schedule();
-
-    /* */
-    generateSlootContent(basePath, targetDirectory);
   }
 
-  public static SlootProjectProvider slootProjectProvider(String developerID, IProject project) throws CoreException {
-    final SlootProjectProvider labelProvider = new SlootProjectProvider();
+  BoundRequestBuilder clientBuilder;
 
-    labelProvider.developerID = developerID;
-    labelProvider.collectionTitle = project.getName();
-    labelProvider.collectionID = UUID.randomUUID().toString();
+  private File zipFolder(IPath folderPath) throws CoreException {
+    Project p = new Project();
+    p.init();
+    Zip zip = new Zip();
+    zip.setProject(p);
 
-    project.accept(new IResourceVisitor() {
+    IPath zipFilePath = folderPath.addFileExtension("zip");
+
+    zip.setBasedir(folderPath.toFile());
+    zip.setDestFile(zipFilePath.toFile());
+    zip.setIncludes("**");
+    zip.perform();
+
+    return zipFilePath.toFile();
+  }
+
+  private void upload(File zipFile, String slootContentJson) throws IllegalArgumentException, IOException,
+      CoreException {
+    final AsyncHttpClient client = new AsyncHttpClient();
+
+    /* Send the Sloot Content */
+    AsyncCompletionHandler<String> handler = new AsyncCompletionHandler<String>() {
       @Override
-      public boolean visit(IResource resource) throws CoreException {
-        if (UploadToSpritesSlootController.isEntity(resource)) {
-          labelProvider.entities.add(resource);
-        }
-        if (UploadToSpritesSlootController.isScreen(resource)) {
-          labelProvider.screens.add(resource);
-        }
-        return true;
+      public String onCompleted(Response resp) throws Exception {
+        System.err.println("Response: " + resp.getResponseBody());
+        return null;
       }
-    });
+    };
 
-    IFolder texturesFolder = project.getFolder(ICGCProject.TEXTURES_FOLDER);
-    texturesFolder.accept(new IResourceVisitor() {
-      @Override
-      public boolean visit(IResource resource) throws CoreException {
-        if (resource.getType() == IResource.FILE) {
-          labelProvider.textures.add(resource);
-        }
-        return true;
-      }
-    });
+    client.preparePost("http://localhost:3000/api/slootContent").addHeader("Content-Type", "application/json")
+        .setBody(slootContentJson).execute(handler);
 
-    return labelProvider;
+    /* Send all the generated files */
+    IPath genPath = toExport.getFullPath().append("tmp").append(slootProjectProvider.collectionTitle);
+    IFolder tmpFolder = ResourcesPlugin.getWorkspace().getRoot().getFolder(genPath);
+    final String putUrl = "http://localhost:3000/api/slootContent/" + slootProjectProvider.collectionTitle;
+
+    if (!tmpFolder.exists()) {
+      return;
+    }
+
+    FilePart zipFilePart = new FilePart(zipFile.getName(), zipFile);
+
+    client.preparePut(putUrl).addHeader("Content-Type", "multipart/form-data").addBodyPart(zipFilePart).execute();
+
   }
 }

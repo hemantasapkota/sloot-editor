@@ -83,4 +83,8 @@ public class Activator extends AbstractUIPlugin {
     e.printStackTrace();
     Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID, e.getMessage()));
   }
+
+  public static void log(String message) {
+    Activator.getDefault().getLog().log(new Status(Status.INFO, PLUGIN_ID, message));
+  }
 }

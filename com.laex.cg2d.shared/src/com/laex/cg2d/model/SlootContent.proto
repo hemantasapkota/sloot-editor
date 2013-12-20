@@ -13,12 +13,6 @@ message SlootItem {
 /* Collection of Items */
 message SlootCollection {
 	optional string developerId = 1;
-	optional string slootCollectionId = 2;
-	optional string title = 3;
-	repeated SlootItem slootItems = 4;
-}
-
-/* Collection of collections */
-message SlootCollectionList {
-	repeated SlootCollection slootCollection = 1;
+	optional string collectionTitle = 2;
+	repeated SlootItem slootItems = 3;
 }

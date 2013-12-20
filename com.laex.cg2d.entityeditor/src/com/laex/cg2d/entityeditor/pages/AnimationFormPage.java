@@ -956,8 +956,8 @@ public class AnimationFormPage extends FormPage implements ImportSpriteComposite
      */
     RowLayout rl = new RowLayout(SWT.HORIZONTAL);
     rl.wrap = true;
-    framesComposite.setLayout(rl);
-    framesComposite.layout(true);
+//    framesComposite.setLayout(rl);
+//    framesComposite.layout(true);
 
     scrolledComposite.setContent(framesComposite);
 

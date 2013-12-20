@@ -179,8 +179,15 @@
          <action
                class="com.laex.cg2d.core.popup.actions.UploadToSpritesSlootAction"
                icon="icons/upload-cloud.png"
-               id="com.laex.cg2d.core.newAction"
+               id="com.laex.cg2d.core.UploadToSpritesLootAction"
                label="Upload to SpritesSloot"
+               menubarPath="com.laex.cg2d.core.menu1/group1">
+         </action>
+         <action
+               class="com.laex.cg2d.core.popup.actions.SlootProjectFixImagePaths"
+               icon="icons/fix.png"
+               id="com.laex.cg2d.core.FixEntitiesAction"
+               label="Fix Absolute Paths"
                menubarPath="com.laex.cg2d.core.menu1/group1">
          </action>
       </objectContribution>
