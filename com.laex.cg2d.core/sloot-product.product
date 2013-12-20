@@ -27,13 +27,16 @@
       <plugin id="com.laex.cg2d.core"/>
       <plugin id="com.laex.cg2d.entityeditor"/>
       <plugin id="com.laex.cg2d.model"/>
+      <plugin id="com.laex.cg2d.render"/>
       <plugin id="com.laex.cg2d.screeneditor"/>
       <plugin id="com.ning.async-http-client"/>
+      <plugin id="de.bastiankrol.startexplorer"/>
       <plugin id="guava-14.0.1"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
       <plugin id="javax.xml"/>
       <plugin id="libgdx-0.9.8"/>
+      <plugin id="luaj-3.0-alpha"/>
       <plugin id="org.apache.ant"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.util"/>

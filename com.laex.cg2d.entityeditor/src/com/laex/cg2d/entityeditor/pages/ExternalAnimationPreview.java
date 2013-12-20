@@ -31,6 +31,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.Array;
+import com.google.common.base.Optional;
 import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.model.ScreenModel.CGBounds;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
@@ -55,7 +56,7 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
   private OrthographicCamera cam;
 
   /** The sprite animation. */
-  private Animation spriteAnimation;
+  private Optional<Animation> spriteAnimation = Optional.absent();
 
   /** The shape renderer. */
   private ShapeRenderer shapeRenderer;
@@ -71,9 +72,11 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
 
   /**
    * Instantiates a new external animation preview.
-   *
-   * @param animationName the animation name
-   * @param cgeFile the cge file
+   * 
+   * @param animationName
+   *          the animation name
+   * @param cgeFile
+   *          the cge file
    */
   public ExternalAnimationPreview(String animationName, String cgeFile) {
     this.animationName = animationName;
@@ -112,9 +115,7 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
         }
       }
     } catch (FileNotFoundException e) {
-      Activator.log(e);
     } catch (IOException e) {
-      Activator.log(e);
     }
 
     if (anim == null) {
@@ -122,7 +123,10 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     }
 
     FileHandle handle = Gdx.files.absolute(anim.getSpritesheetFile().getResourceFileAbsolute());
-    
+    if (!handle.exists()) {
+      return;
+    }
+
     Texture tex = new Texture(handle);
     tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
@@ -133,9 +137,10 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
       indexedFrames.add(tr);
     }
 
-    spriteAnimation = new Animation(anim.getAnimationDuration(), indexedFrames);
+    Animation sa = new Animation(anim.getAnimationDuration(), indexedFrames);
+    spriteAnimation = Optional.fromNullable(sa);
 
-    spr = new Sprite(spriteAnimation.getKeyFrame(stateTime, true));
+    spr = new Sprite(sa.getKeyFrame(stateTime, true));
   }
 
   /*
@@ -147,7 +152,9 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
   public void dispose() {
     super.dispose();
 
-    spr.getTexture().dispose();
+    if (spr != null)
+      spr.getTexture().dispose();
+
     batch.dispose();
   }
 
@@ -164,7 +171,11 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
     stateTime += Gdx.graphics.getDeltaTime();
     batch.setProjectionMatrix(cam.combined);
 
-    TextureRegion tr = spriteAnimation.getKeyFrame(stateTime, true);
+    if (!spriteAnimation.isPresent()) {
+      return;
+    }
+
+    TextureRegion tr = spriteAnimation.get().getKeyFrame(stateTime, true);
     spr.setRegion(tr);
 
     batch.begin();
@@ -180,22 +191,26 @@ public class ExternalAnimationPreview extends ApplicationAdapter {
 
   /**
    * The main method.
-   *
-   * @param args the arguments
+   * 
+   * @param args
+   *          the arguments
    */
   public static void main(String[] args) {
 
     String animationName = args[0];
     String spriteSheetFile = args[1];
 
-
     LwjglApplicationConfiguration lac = new LwjglApplicationConfiguration();
     lac.width = 200;
     lac.height = 200;
     lac.title = animationName;
 
-    ExternalAnimationPreview eap = new ExternalAnimationPreview(animationName, spriteSheetFile);
-    new LwjglApplication(eap, lac);
+    try {
+      ExternalAnimationPreview eap = new ExternalAnimationPreview(animationName, spriteSheetFile);
+      new LwjglApplication(eap, lac);
+    } catch (Exception ge) {
+      System.exit(0);
+    }
 
   }
 
