@@ -290,7 +290,7 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
 
       controller = new UploadToSpritesSlootController(toExport, txtTargetLocalExport.getText(), slootProjectProvider);
 
-      controller.exportLocally(getParentShell());
+      controller.exportLocally(txtServer.getText().trim(), getParentShell());
 
     } catch (CoreException e) {
       Activator.log(e);

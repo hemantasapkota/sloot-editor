@@ -11,6 +11,8 @@
 package com.laex.cg2d.screeneditor.views;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.draw2d.ColorConstants;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.viewers.ISelection;
@@ -23,6 +25,7 @@ import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
@@ -33,8 +36,8 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.part.ViewPart;
 
 import com.laex.cg2d.model.DNDFileTransfer;
-import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.DNDFileTransfer.TransferType;
+import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.resources.ResourceManager;
 
 /**
@@ -133,6 +136,7 @@ public class TexturesViewPart extends ViewPart {
 
   /** The image composite. */
   private ScrolledComposite imageComposite;
+  private Action toggleBGAction;
 
   /**
    * Instantiates a new textures view part.
@@ -187,6 +191,15 @@ public class TexturesViewPart extends ViewPart {
     // }
     //
 
+    {
+      toggleBGAction = new Action("Toggle BG") {
+        boolean toggled = false;
+
+        @Override
+        public void run() {
+        }
+      };
+    }
   }
 
   /**

@@ -232,7 +232,7 @@ public class UploadToSpritesSlootController {
     return newJsonCollection;
   }
 
-  public void exportLocally(final Shell shell) throws CoreException, InvocationTargetException, InterruptedException,
+  public void exportLocally(final String baseUrl, final Shell shell) throws CoreException, InvocationTargetException, InterruptedException,
       IOException {
     final IPath basePath = createDestinationFolderStructure(this.targetDirectory);
 
@@ -301,7 +301,7 @@ public class UploadToSpritesSlootController {
 
           /* Finally upload */
           monitor.subTask("Uploading....");
-          upload(zipFile, slootContentJsonFile);
+          upload(baseUrl, zipFile, slootContentJsonFile);
           monitor.worked(1);
 
           monitor.done();
@@ -336,7 +336,7 @@ public class UploadToSpritesSlootController {
     return zipFilePath.toFile();
   }
 
-  private void upload(File zipFile, String slootContentJson) throws IllegalArgumentException, IOException,
+  private void upload(String baseUrl, File zipFile, String slootContentJson) throws IllegalArgumentException, IOException,
       CoreException {
     final AsyncHttpClient client = new AsyncHttpClient();
 
@@ -349,7 +349,9 @@ public class UploadToSpritesSlootController {
       }
     };
 
-    client.preparePost("http://localhost:3000/api/slootContent").addHeader("Content-Type", "application/json")
+    String url = baseUrl + "api/slootContent";
+
+    client.preparePost(url).addHeader("Content-Type", "application/json")
         .setBody(slootContentJson).execute(handler);
 
     /* Send all the generated files */

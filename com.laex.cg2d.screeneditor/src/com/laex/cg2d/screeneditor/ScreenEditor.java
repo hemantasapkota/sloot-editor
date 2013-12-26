@@ -25,6 +25,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.ISafeRunnable;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.LayeredPane;
 import org.eclipse.draw2d.ScalableFreeformLayeredPane;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -448,6 +449,8 @@ public class ScreenEditor extends GraphicalEditorWithFlyoutPalette implements IL
    */
   private void performSave(IFile file, IProgressMonitor monitor) throws CoreException, IOException {
     // Use existing preferences
+    file.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+
     CGScreenPreferences screenPrefsExisting = CGScreenModel.parseFrom(file.getContents()).getScreenPrefs();
     CGScreenModel cgGameModel = new CGScreenModelAdapter(model, screenPrefsExisting).asCGGameModel();
     file.setContents(new ByteArrayInputStream(cgGameModel.toByteArray()), true, false, monitor);

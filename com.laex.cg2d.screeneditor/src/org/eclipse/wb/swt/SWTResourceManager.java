@@ -1,13 +1,13 @@
-/*
- * Copyright (c) 2012, 2013 Hemanta Sapkota.
+/*******************************************************************************
+ * Copyright (c) 2011 Google, Inc.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Hemanta Sapkota (laex.pearl@gmail.com)
- */
+ *    Google, Inc. - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.wb.swt;
 
 import java.io.FileInputStream;
@@ -46,7 +46,6 @@ public class SWTResourceManager {
 	// Color
 	//
 	////////////////////////////////////////////////////////////////////////////
-	/** The m_color map. */
 	private static Map<RGB, Color> m_colorMap = new HashMap<RGB, Color>();
 	/**
 	 * Returns the system {@link Color} matching the specific ID.
@@ -107,13 +106,12 @@ public class SWTResourceManager {
 	 * Maps image paths to images.
 	 */
 	private static Map<String, Image> m_imageMap = new HashMap<String, Image>();
-	
 	/**
 	 * Returns an {@link Image} encoded by the specified {@link InputStream}.
-	 *
-	 * @param stream the {@link InputStream} encoding the image data
+	 * 
+	 * @param stream
+	 *            the {@link InputStream} encoding the image data
 	 * @return the {@link Image} encoded by the specified input stream
-	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	protected static Image getImage(InputStream stream) throws IOException {
 		try {
@@ -170,13 +168,8 @@ public class SWTResourceManager {
 		}
 		return image;
 	}
-	
-	/** The Constant MISSING_IMAGE_SIZE. */
 	private static final int MISSING_IMAGE_SIZE = 10;
-	
 	/**
-	 * Gets the missing image.
-	 *
 	 * @return the small {@link Image} that can be used as placeholder for missing image.
 	 */
 	private static Image getMissingImage() {
