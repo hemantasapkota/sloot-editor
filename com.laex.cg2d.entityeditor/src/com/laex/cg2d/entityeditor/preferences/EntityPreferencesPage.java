@@ -34,7 +34,7 @@ public class EntityPreferencesPage extends FieldEditorPreferencePage implements 
   public EntityPreferencesPage() {
     super(GRID);
     setPreferenceStore(Activator.getDefault().getPreferenceStore());
-    setDescription("Preferences related to Entities");
+    setDescription("");
   }
 
   /**

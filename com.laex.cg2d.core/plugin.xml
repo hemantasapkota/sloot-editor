@@ -59,7 +59,7 @@
          </property>
          <property
                name="windowImages"
-               value="icons/sloot_16x16.png,icons/sloot_32x32.png,icons/sloot_48x48.png,icons/sloot_64x64.png,icons/sloot_124x124.png">
+               value="icons/logo16.png,icons/logo32.png,icons/logo48.png,icons/logo64.png,icons/logo128.png">
          </property>
          <property
                name="aboutImage"
@@ -115,31 +115,6 @@
    </extension>
    <extension
          point="com.laex.cg2d.core.splashExtension">
-      <splashExtension
-            icon="icons/af.png"
-            id="af"
-            tooltip="Application Framework">
-      </splashExtension>
-      <splashExtension
-            icon="icons/embedded.png"
-            id="embedded"
-            tooltip="Embedded">
-      </splashExtension>
-      <splashExtension
-            icon="icons/enterprise.png"
-            id="enterprise"
-            tooltip="Enterprise">
-      </splashExtension>
-      <splashExtension
-            icon="icons/languages.png"
-            id="languages"
-            tooltip="Languages">
-      </splashExtension>
-      <splashExtension
-            icon="icons/rcp.png"
-            id="rcp"
-            tooltip="RCP">
-      </splashExtension>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">

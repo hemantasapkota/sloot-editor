@@ -63,7 +63,7 @@ public class RenderHandler extends AbstractHandler {
         @Override
         public void run() {
           MessageBox mb = new MessageBox(shell, SWT.ERROR);
-          mb.setMessage("The runner JAR file has not been specified. Check Laexian Box2D Editor from the Preferences menu.");
+          mb.setMessage("The runner JAR file has not been specified. Please ensure a runner is specified in global preferences.");
           mb.setText("Runner file not specified");
           mb.open();
         }
