@@ -4,7 +4,9 @@ angular.module('ghPagesSrcApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui',
+  'ui.bootstrap'
 ])
   .config(function ($routeProvider) {
     $routeProvider

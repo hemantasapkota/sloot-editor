@@ -1,36 +1,64 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">gh pages src</h3>
+<!-- Github ribbon -->
+<div class="container-fluid" style="">
+  <div class="row">
+    <a href="https://github.com/hemantasapkota/sloot-editor">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" 
+      src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
+    </a>
+  </div>
 </div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+<!-- Sloot Editor -->
+<div id="head2" class="container-fluid" >
+  <div class="container">
+
+    <div style="text-align:center;">
+      <h2 id="editor" style="font-weight:200;color:rbg(19, 122, 143)">Sloot Editor Beta</h2>
+      <p class="lead">Open Source Box2D Editor</p>
+      <p><a class="btn btn-lg btn-success" role="button" href="https://github.com/hemantasapkota/sloot-editor/releases/tag/v1.0-beta" >Download</a></p>
+    </div>
+
+    <carouselstatic 
+      images="url('images/screenshots/SlootEditorMain.png'),url('images/screenshots/SlootEditorRender.png'),url('images/screenshots/SlootEditorEntity.png'),
+        url('images/screenshots/SlootEditorScripting.png')"
+
+      description="Sloot Editor Main, Render Screen, Entity Editor, Lua Scripting">
+
+      </carouselstatic>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h2>Features</h2>
+        <ul style="font-weight:lighter">
+          <li>Sprietsheet Extraction</li>
+          <li>Entities Animation</li>
+          <li>Collision Shapes</li>
+          <li>Support for <a href="http://www.aurelienribon.com/blog/projects/physics-body-editor/">Physics Editor</a> generated fixtures</li>
+          <li>Box2D Joints Support</li>
+          <li>Experimental Lua scripting support</li>
+          <li>Export to JSON</li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4">
+        <h2>Technology</h2>
+        <ul style="font-weight:lighter">
+          <li><a href="http://www.eclipse.org/home/categories/rcp.php">Eclipse RCP</a> as a platform</li>
+          <li><a href="https://github.com/eclipse/gef">Eclipse GEF</a> for the Screen Editor</li>
+          <li><a href="https://github.com/libgdx/libgdx">LibGdx</a> for rendering in the desktop</li>
+          <li><a href="https://code.google.com/p/protobuf/">Google Protobuf</a> for file formats</li>
+          <li><a href="http://luaj.org/luaj/README.html">LuaJ</a> for executing lua scripts</li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4">
+        <h2>Limitation</h2>
+        <ul style="font-weight:lighter">
+          <li>Cannot rotate entities in editor.</li>
+          <li>Joint support is basic.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
-</div>
