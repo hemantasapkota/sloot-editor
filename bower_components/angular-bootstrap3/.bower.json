@@ -1,0 +1,23 @@
+{
+  "author": {
+    "name": "https://github.com/paptamas"
+  },
+  "name": "angular-bootstrap3",
+  "main": [
+    "./ui-bootstrap-tpls.js"
+  ],
+  "dependencies": {
+    "angular": ">=1"
+  },
+  "homepage": "https://github.com/paptamas/bower-angular-bootstrap3",
+  "_release": "master",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0d9afdd717f5e2478e274a2ecf526b1b640e1ff3"
+  },
+  "_source": "git://github.com/paptamas/bower-angular-bootstrap3.git",
+  "_target": "*",
+  "_originalSource": "angular-bootstrap3",
+  "_direct": true
+}
