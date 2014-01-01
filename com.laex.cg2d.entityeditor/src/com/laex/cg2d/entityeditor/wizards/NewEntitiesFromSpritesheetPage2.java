@@ -53,7 +53,6 @@ public class NewEntitiesFromSpritesheetPage2 extends WizardPage {
 
   /** The path to project. */
   private IPath pathToProject;
-  private Button btnCreateDefaultRoom;
 
   /**
    * Create the wizard.
@@ -128,11 +127,6 @@ public class NewEntitiesFromSpritesheetPage2 extends WizardPage {
       }
     });
     txtFileName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-    new Label(container, SWT.NONE);
-    new Label(container, SWT.NONE);
-    
-    btnCreateDefaultRoom = new Button(container, SWT.CHECK);
-    btnCreateDefaultRoom.setText("Create Default Room");
     new Label(container, SWT.NONE);
 
     if (pathToProject != null) {

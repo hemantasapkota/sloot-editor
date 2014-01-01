@@ -40,8 +40,6 @@ import com.laex.cg2d.core.popup.actions.UploadToSpritesProjectProvider.SlootProj
 
 public class UploadToSpritesSlootDialog extends TitleAreaDialog {
 
-  private static String lastDirectoryPath = "";
-
   private class TreeContentProvider implements ITreeContentProvider {
     public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
     }
@@ -130,7 +128,7 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
   @Override
   protected Control createDialogArea(Composite parent) {
     setMessage("This dialog allows you to upload the selected project to SpritesSloot. To export the project locally, just select the \"Export Locally\" tab.");
-    setTitle("Upload project to SpritesSloot");
+    setTitle("Upload project to SpritesSloot [Experimental]");
     Composite area = (Composite) super.createDialogArea(parent);
 
     Composite composite_2 = new Composite(area, SWT.NONE);
@@ -198,7 +196,6 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
         String targetDirectory = dd.open();
         if (targetDirectory != null) {
           txtTargetLocalExport.setText(targetDirectory);
-          lastDirectoryPath = targetDirectory;
         }
       }
     });

@@ -349,15 +349,14 @@ public class UploadToSpritesSlootController {
       }
     };
 
-    String url = baseUrl + "api/slootContent";
-
+    String url = String.format("http://%s/api/slootContent", baseUrl); 
     client.preparePost(url).addHeader("Content-Type", "application/json")
         .setBody(slootContentJson).execute(handler);
 
     /* Send all the generated files */
     IPath genPath = toExport.getFullPath().append("tmp").append(slootProjectProvider.collectionTitle);
     IFolder tmpFolder = ResourcesPlugin.getWorkspace().getRoot().getFolder(genPath);
-    final String putUrl = "http://localhost:3000/api/slootContent/" + slootProjectProvider.collectionTitle;
+    final String putUrl = url + "/" + slootProjectProvider.collectionTitle;
 
     if (!tmpFolder.exists()) {
       return;

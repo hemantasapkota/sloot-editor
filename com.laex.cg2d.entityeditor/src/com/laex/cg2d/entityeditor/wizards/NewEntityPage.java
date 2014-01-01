@@ -53,7 +53,6 @@ public class NewEntityPage extends WizardPage {
 
   /** The path to project. */
   private IPath pathToProject;
-  private Button btnCreateDefaultScreen;
 
   /**
    * Create the wizard.
@@ -129,11 +128,6 @@ public class NewEntityPage extends WizardPage {
     });
     txtFileName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
     new Label(container, SWT.NONE);
-    new Label(container, SWT.NONE);
-    
-    btnCreateDefaultScreen = new Button(container, SWT.CHECK);
-    btnCreateDefaultScreen.setText("Create default screen");
-    new Label(container, SWT.NONE);
 
     if (pathToProject != null) {
       txtProjectName.setText(pathToProject.toOSString());
@@ -204,7 +198,7 @@ public class NewEntityPage extends WizardPage {
   }
 
   public boolean shouldCreateDefaultScreen() {
-    return btnCreateDefaultScreen.getSelection();
+    return false;
   }
 
   /**
