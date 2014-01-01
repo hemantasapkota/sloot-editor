@@ -1,0 +1,16 @@
+{
+  "name": "angular",
+  "version": "1.2.7-build.2036+sha.e415e91",
+  "main": "./angular.js",
+  "dependencies": {},
+  "homepage": "https://github.com/angular/bower-angular",
+  "_release": "1.2.7-build.2036+sha.e415e91",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.7-build.2036+sha.e415e91",
+    "commit": "aa7fbdb75dcb6ed88bb64aa50ad551f6092220ca"
+  },
+  "_source": "git://github.com/angular/bower-angular.git",
+  "_target": "~1.2.0",
+  "_originalSource": "angular"
+}
