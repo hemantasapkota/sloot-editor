@@ -1,10 +1,23 @@
 'use strict';
 
 angular.module('ghPagesSrcApp')
-  .controller('MainCtrl', ['$scope', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  }]);
+  .controller('MainCtrl', function ($scope) {
+
+    $scope.myInterval = 5000;
+    var slides = $scope.slides = [];
+
+    $scope.addSlide = function(img, desc) {
+
+      slides.push({
+        image: img,
+        text: desc
+      });
+
+    };
+
+    $scope.addSlide('https://raw.github.com/hemantasapkota/sloot-editor/master/screenshots/EdLuaScript.png', 'Sloot Editor');
+    $scope.addSlide('', 'Sloot Editor');
+    $scope.addSlide('', 'Sloot Editor');
+    $scope.addSlide('', 'Sloot Editor');
+
+  });
