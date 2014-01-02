@@ -3,3 +3,7 @@ body {
   font-family: ProximaNova-Regular,Helvetica,Arial,sans-serif;
   padding-top: 70px;
 }
+
+p {
+  font-weight:lighter;
+}
