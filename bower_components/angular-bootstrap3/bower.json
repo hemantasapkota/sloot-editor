@@ -1,0 +1,11 @@
+{
+    "author": {
+        "name": "https://github.com/paptamas"
+    },
+    "name": "angular-bootstrap3",
+    "version": "0.7.0",
+    "main": ["./ui-bootstrap-tpls.js"],
+    "dependencies": {
+        "angular": ">=1"
+    }    
+}
