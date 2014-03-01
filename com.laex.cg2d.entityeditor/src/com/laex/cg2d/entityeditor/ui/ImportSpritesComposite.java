@@ -19,7 +19,6 @@ import java.util.Queue;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.FreeformLayeredPane;
@@ -52,11 +51,6 @@ import org.eclipse.ui.forms.widgets.Section;
 
 import swing2swt.layout.BorderLayout;
 
-import com.badlogic.gdx.utils.JsonReader;
-import com.badlogic.gdx.utils.ObjectMap.Entries;
-import com.badlogic.gdx.utils.ObjectMap.Entry;
-import com.badlogic.gdx.utils.OrderedMap;
-import com.laex.cg2d.entityeditor.Activator;
 import com.laex.cg2d.model.ICGCProject;
 import com.laex.cg2d.model.adapter.RectAdapter;
 import com.laex.cg2d.model.model.EntitySpritesheetItem;
@@ -271,35 +265,34 @@ public class ImportSpritesComposite extends Composite {
 
     spritesheetJsonMapperFile = ResourceFile.create(spritesheetJsonFile, spritesheetJsonAbs);
 
-    JsonReader jr = new JsonReader();
-    try {
-
-      OrderedMap json = (OrderedMap) jr.parse(selectedFile.getContents());
-
-      Entries entries = json.entries();
-
-      while (entries.hasNext()) {
-        Entry e = entries.next();
-
-        if (e.key.equals("image") || e.key.equals("spriteCount")) {
-          continue;
-        }
-
-        OrderedMap sprite = (OrderedMap) e.value;
-
-        String spriteName = (String) sprite.get("id");
-        int x = (int) Float.parseFloat(sprite.get("x").toString());
-        int y = (int) Float.parseFloat(sprite.get("y").toString());
-        int width = (int) Float.parseFloat(sprite.get("width").toString());
-        int height = (int) Float.parseFloat(sprite.get("height").toString());
-
-        JsonSprite js = new JsonSprite(spriteName, x, y, width, height, 0, 0);
-        list.add(js);
-      }
-
-    } catch (CoreException e) {
-      Activator.log(e);
-    }
+//    JsonReader jr = new JsonReader();
+//    try {
+//      JsonValue json = jr.parse(selectedFile.getContents());
+//
+//      Entries entries = json.entries();
+//
+//      while (entries.hasNext()) {
+//        Entry e = entries.next();
+//
+//        if (e.key.equals("image") || e.key.equals("spriteCount")) {
+//          continue;
+//        }
+//
+//        OrderedMap sprite = (OrderedMap) e.value;
+//
+//        String spriteName = (String) sprite.get("id");
+//        int x = (int) Float.parseFloat(sprite.get("x").toString());
+//        int y = (int) Float.parseFloat(sprite.get("y").toString());
+//        int width = (int) Float.parseFloat(sprite.get("width").toString());
+//        int height = (int) Float.parseFloat(sprite.get("height").toString());
+//
+//        JsonSprite js = new JsonSprite(spriteName, x, y, width, height, 0, 0);
+//        list.add(js);
+//      }
+//
+//    } catch (CoreException e) {
+//      Activator.log(e);
+//    }
 
     return list;
   }

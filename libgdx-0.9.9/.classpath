@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="bodyeditor-loader-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="bodyeditor-loader.jar"/>
+	<classpathentry exported="true" kind="lib" path="tween-engine-api-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="tween-engine-api.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry exported="true" kind="lib" path="gdx-backend-android.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-backend-jglfw-natives.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-backend-jglfw.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-backend-lwjgl-natives.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-backend-lwjgl.jar" sourcepath="sources/gdx-backend-lwjgl-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-backend-robovm.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-natives.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-openal.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-setup-ui.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx-setup.jar"/>
+	<classpathentry exported="true" kind="lib" path="gdx.jar" sourcepath="sources/gdx-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

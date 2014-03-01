@@ -11,7 +11,6 @@
 package com.laex.cg2d.render.impl;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Camera;
@@ -26,6 +25,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.JointDef;
 import com.badlogic.gdx.physics.box2d.JointEdge;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.laex.cg2d.model.ScreenModel.CGEntity;
 import com.laex.cg2d.model.ScreenModel.CGEntityAnimation;
 import com.laex.cg2d.model.ScreenModel.CGJoint;
@@ -122,20 +122,18 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
    *          the bv
    */
   public void acceptBodyVisitor(BodyVisitor bv) {
-    Iterator<Body> bodiesIterator = world.getBodies();
+    Array<Body> bodies = new Array<Body>();
+    world.getBodies(bodies);
 
-    while (bodiesIterator.hasNext()) {
-
-      Body b = bodiesIterator.next();
+    for (Body b : bodies) {
       if (b == null) {
         continue;
       }
 
       CGShape shape = (CGShape) b.getUserData();
-
       bv.visit(b, shape);
-
     }
+
   }
 
   /**
@@ -153,18 +151,18 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
       Body bodyA = null;
       Body bodyB = null;
 
-      Iterator<Body> bodyList = world.getBodies();
-      while (bodyList.hasNext()) {
-        Body body = bodyList.next();
-        CGShape shp = (CGShape) body.getUserData();
+      Array<Body> bodies = new Array<Body>();
+      world.getBodies(bodies);
+      for (Body b : bodies) {
+        CGShape shp = (CGShape) b.getUserData();
 
         if (shp != null) {
           String shpId = shp.getId();
 
           if (shpId.equals(sourceId)) {
-            bodyA = body;
+            bodyA = b;
           } else if (shpId.equals(targetId)) {
-            bodyB = body;
+            bodyB = b;
           }
         }
       }
@@ -228,13 +226,15 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     return jd;
   }
 
-
   /**
    * Creates the body.
-   *
-   * @param shape the shape
-   * @param entity the entity
-   * @param ea the ea
+   * 
+   * @param shape
+   *          the shape
+   * @param entity
+   *          the entity
+   * @param ea
+   *          the ea
    * @return the body
    */
   public Body createBody(CGShape shape, CGEntity entity, CGEntityAnimation ea) {
@@ -364,7 +364,6 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     return this.world;
   }
 
-
   /*
    * (non-Javadoc)
    * 
@@ -404,23 +403,22 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
   @Override
   public Body switchAnimation(final String id, final String animationName) {
     Body switchedBody = null;
-    Iterator<Body> bodyItr = world.getBodies();
+    Array<Body> bodies = new Array<Body>();
+    world.getBodies(bodies);
 
-    while (bodyItr.hasNext()) {
-      Body bod = bodyItr.next();
+    for (Body bod : bodies) {
       CGShape shape = (CGShape) bod.getUserData();
 
       if (id.equals(shape.getId())) {
         try {
-
           Vector2 positionToCopy = new Vector2(bod.getTransform().getPosition());
           float rotation = bod.getTransform().getRotation();
-          
+
           world.destroyBody(bod);
           entityManager.removeEntity(shape);
 
           switchedBody = entityManager.createEntity(shape, animationName);
-          
+
           if (switchedBody != null) {
             switchedBody.setTransform(positionToCopy, rotation);
           }
@@ -442,11 +440,9 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
    */
   @Override
   public Body getEntityById(String id) {
-    Iterator<Body> body = world.getBodies();
+    Array<Body> bodies = new Array<Body>();
 
-    while (body.hasNext()) {
-      Body b = body.next();
-
+    for (Body b : bodies) {
       CGShape shape = (CGShape) b.getUserData();
 
       if (shape.getId().equals(id)) {
@@ -469,7 +465,9 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     return ((CGShape) b.getUserData()).getId();
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see com.laex.cg2d.render.ScreenManager#newVector(float, float)
    */
   @Override
@@ -477,8 +475,11 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     return new Vector2(x, y);
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.render.ScreenManager#drawText(java.lang.String, float, float)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.laex.cg2d.render.ScreenManager#drawText(java.lang.String, float,
+   * float)
    */
   @Override
   public void drawText(String text, float x, float y) {
@@ -490,15 +491,18 @@ public class ScreenManagerImpl implements ScreenScaffold, ScreenManager {
     spriteBatch.end();
   }
 
-  /* (non-Javadoc)
-   * @see com.laex.cg2d.render.ScreenManager#destroyJointForEntity(java.lang.String)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.laex.cg2d.render.ScreenManager#destroyJointForEntity(java.lang.String)
    */
   @Override
   public void destroyJointForEntity(String id) {
     Body b = getEntityById(id);
-    List<JointEdge> jointList = b.getJointList();
-    for (int i=0; i<jointList.size(); i++) {
-      world.destroyJoint(jointList.get(i).joint);
+    Array<JointEdge> jointList = b.getJointList();
+    for (JointEdge je : jointList) {
+      world.destroyJoint(je.joint);
     }
   }
 

@@ -140,7 +140,7 @@ public class UploadToSpritesSlootDialog extends TitleAreaDialog {
     lblServerAddress.setText("Server Address");
     
     txtServer = new Text(composite_2, SWT.BORDER);
-    txtServer.setText("localhost:3000/");
+    txtServer.setText("localhost:3000");
     txtServer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
     Label lblNewLabel = new Label(composite_2, SWT.NONE);

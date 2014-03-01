@@ -15,12 +15,12 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.ide;bundle-version="3.7.0",
  org.eclipse.jface.text,
  org.eclipse.ui.editors,
- libgdx-0.9.8;bundle-version="0.9.8",
  org.apache.commons.lang;bundle-version="2.4.0",
  guava-14.0.1;bundle-version="1.0.0",
  org.eclipse.swt,
  org.eclipse.draw2d,
- org.eclipse.jface
+ org.eclipse.jface,
+ libgdx-0.9.9;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
